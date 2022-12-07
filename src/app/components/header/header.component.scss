@@ -8,6 +8,6 @@
   align-items: center;
   flex-grow: 1;
   height: 90px;
-  padding: 0 30px;
-  background-color: bisque;
+  padding: 0 var(--bordering-padding);
+  background-color: var(--primary-color);
 }
