@@ -5,10 +5,25 @@
 
 .header {
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-grow: 1;
-  height: 90px;
+  height: 70px;
   padding: 0 var(--bordering-padding);
-  background-color: var(--primary-color);
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  margin-right: var(--bordering-padding);
+  font-size: 36px;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  font-size: 30px;
+  text-transform: uppercase;
 }
