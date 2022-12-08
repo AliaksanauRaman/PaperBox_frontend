@@ -10,6 +10,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ContentComponent } from './components/content/content.component';
 import { HelpOffersBoardComponent } from './components/help-offers-board/help-offers-board.component';
 import { HelpRequestsBoardComponent } from './components/help-requests-board/help-requests-board.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { HelpRequestsBoardComponent } from './components/help-requests-board/hel
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
