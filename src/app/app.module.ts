@@ -8,6 +8,8 @@ import { MainPageComponent } from './pages/main/main-page.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ContentComponent } from './components/content/content.component';
+import { HelpOffersBoardComponent } from './components/help-offers-board/help-offers-board.component';
+import { HelpRequestsBoardComponent } from './components/help-requests-board/help-requests-board.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { ContentComponent } from './components/content/content.component';
     HeaderComponent,
     FooterComponent,
     ContentComponent,
+    HelpOffersBoardComponent,
+    HelpRequestsBoardComponent,
   ],
   imports: [
     BrowserModule,
