@@ -5,6 +5,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -18,6 +19,7 @@ import { HelpRequestsBoardComponent } from './components/help-requests-board/hel
 import { GridOfHelpOffersComponent } from './components/grid-of-help-offers/grid-of-help-offers.component';
 import { HelpOfferCardComponent } from './components/help-offer-card/help-offer-card.component';
 import { HelpOffersBoardHeaderComponent } from './components/help-offers-board-header/help-offers-board-header.component';
+import { NewHelpOfferDialogComponent } from './dialogs/new-help-offer-dialog/new-help-offer-dialog.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ import { HelpOffersBoardHeaderComponent } from './components/help-offers-board-h
     GridOfHelpOffersComponent,
     HelpOfferCardComponent,
     HelpOffersBoardHeaderComponent,
+    NewHelpOfferDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,6 +43,7 @@ import { HelpOffersBoardHeaderComponent } from './components/help-offers-board-h
     MatIconModule,
     MatCardModule,
     MatButtonModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
