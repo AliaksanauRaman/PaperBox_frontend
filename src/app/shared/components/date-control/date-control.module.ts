@@ -1,9 +1,12 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { DateControlComponent } from './date-control.component';
 
 @NgModule({
-  imports: [],
+  imports: [
+    CommonModule,
+  ],
   declarations: [
     DateControlComponent,
   ],
