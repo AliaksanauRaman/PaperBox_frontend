@@ -1,0 +1,31 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.grid-of-help-offers {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5px;
+}
+
+.tile {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: 50%;
+  padding: 5px;
+}
+
+.tile__card {
+  /**/
+}
+
+@media (max-width: 999px) {
+  .tile {
+    width: 100%;
+  }
+}
