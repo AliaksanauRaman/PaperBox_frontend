@@ -1,0 +1,67 @@
+$iconSize: 22px;
+$flagBoxShadow: 0px 0px 2px 2px rgba($color: #000000, $alpha: 0.15);
+
+:host {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  min-width: 230px;
+}
+
+.help-offer-card {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.header__subtitle {
+  display: flex;
+  align-items: center;
+  height: 30px;
+}
+
+.header__subtitle-icon {
+  margin-right: 5px;
+}
+
+.header__subtitle-content {
+  display: flex;
+  align-items: center;
+
+  .flag {
+    margin: 0 5px;
+
+    &.flag_belarus {
+      display: block;
+      width: 27px;
+      height: 15px;
+      box-shadow: $flagBoxShadow;
+    }
+
+    &.flag_poland {
+      display: block;
+      width: 24px;
+      height: 15px;
+      box-shadow: $flagBoxShadow;
+    }
+  }
+}
+
+.content {
+  height: 40px;
+}
+
+.content__date {
+  display: flex;
+  align-items: center;
+}
+
+.content__date-icon {
+  margin-right: 5px;
+}
+
+.icon {
+  font-size: $iconSize;
+  width: $iconSize;
+  height: $iconSize;
+}
