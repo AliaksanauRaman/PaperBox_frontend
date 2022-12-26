@@ -1,8 +1,16 @@
 <div class="input-control">
-  <label [for]="controlId" *ngIf="_label">
+  <label [for]="inputId" *ngIf="_label">
     <span>{{ _label }}</span>
   </label>
 
-  <input [id]="controlId" type="text">
+  <input
+    #inputRef
+    type="text"
+    [id]="inputId"
+    [disabled]="inputDisabled"
+    [value]="inputValue"
+    (input)="handleInputValueChange(inputRef.value)"
+    (blur)="handleInputBlur()"
+  >
 </div>
 
