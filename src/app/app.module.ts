@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
@@ -27,6 +28,8 @@ import { HelpOffersPageComponent } from './pages/help-offers-page/help-offers-pa
 import { HelpRequestsPageComponent } from './pages/help-requests-page/help-requests-page.component';
 import { InnerPageLayoutComponent } from './layouts/inner-page-layout/inner-page-layout.component';
 
+import { API_URL, API_URL_VALUE } from './shared/dependencies/api-url';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,6 +50,7 @@ import { InnerPageLayoutComponent } from './layouts/inner-page-layout/inner-page
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    HttpClientModule,
     AppRoutingModule,
     InputControlModule,
     DateControlModule,
@@ -57,7 +61,12 @@ import { InnerPageLayoutComponent } from './layouts/inner-page-layout/inner-page
     MatButtonModule,
     MatDialogModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: API_URL,
+      useValue: API_URL_VALUE,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
