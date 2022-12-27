@@ -1,0 +1,24 @@
+{
+  "header": {
+    "title": "Pushka"
+  },
+  "helpOffers": {
+    "header": {
+      "title": "I can help!",
+      "callToAction": "Help!"
+    }
+  },
+  "newHelpOfferDialog": {
+    "title": "New help offer",
+    "fullNameFieldLabel": "Full name",
+    "countryFromFieldLabel": "Country (from)",
+    "cityFromFieldLabel": "City (from)",
+    "countryToFieldLabel": "Country (to)",
+    "cityToFieldLabel": "City (to)",
+    "diallingCodeFieldLabel": "Phone code",
+    "phoneNumberFieldLabel": "Phone number",
+    "commentFieldLabel": "Comment",
+    "cancelButtonLabel": "Cancel",
+    "createButtonLabel": "Create"
+  }
+}
