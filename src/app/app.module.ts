@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { DateControlModule } from './shared/components/date-control/date-control.module';
@@ -29,6 +30,7 @@ import { HelpRequestsPageComponent } from './pages/help-requests-page/help-reque
 import { InnerPageLayoutComponent } from './layouts/inner-page-layout/inner-page-layout.component';
 
 import { API_URL, API_URL_VALUE } from './shared/dependencies/api-url';
+import { translateLoaderFactory } from './core/factories/translate-loader.factory';
 
 @NgModule({
   declarations: [
@@ -60,6 +62,14 @@ import { API_URL, API_URL_VALUE } from './shared/dependencies/api-url';
     MatCardModule,
     MatButtonModule,
     MatDialogModule,
+
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: translateLoaderFactory,
+        deps: [HttpClient],
+      },
+    }),
   ],
   providers: [
     {
