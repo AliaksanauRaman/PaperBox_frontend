@@ -13,10 +13,6 @@ export class AdminLoginCardComponent {
     private readonly routingService: RoutingService,
   ) {}
 
-  public handleHomeClick(): void {
-    this.routingService.navigateToHomePage();
-  }
-
   public handleLoginClick(): void {
     this.routingService.navigateToAdminMainPage();
   }
