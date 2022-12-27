@@ -2,6 +2,15 @@
   <mat-icon class="logo">unarchive</mat-icon>
   <span class="title">{{ "header.title" | translate }}</span>
 
+  <!-- TODO: NEEDED IN DEV MODE ONLY -->
+  <button
+    mat-flat-button
+    color="warn"
+    (click)="navigateToAdminLoginPage()"
+  >
+    <span>Admin</span>
+  </button>
+
   <ng-container *ngIf="selectedLanguage$ | async as selectedLanguage">
     <select [formControl]="selectedLanguageControl">
       <option

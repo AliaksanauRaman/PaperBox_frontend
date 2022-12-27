@@ -3,6 +3,8 @@ import { FormControl } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
 import { startWith, tap, takeUntil } from 'rxjs';
 
+import { RoutingService } from './../../services/routing.service';
+
 import { DestroyEmitter } from '../../shared/abstracts/destroy-emitter.class';
 import { AppLanguage } from './../../shared/enums/app-language.enum';
 
@@ -23,12 +25,18 @@ export class HeaderComponent extends DestroyEmitter implements OnInit {
 
   constructor(
     private readonly translateService: TranslateService,
+    private readonly routingService: RoutingService,
   ) {
     super();
   }
 
   public ngOnInit(): void {
     this.subToSelectedLanguageChanges();
+  }
+
+  // TODO: NEEDED IN DEV MODE ONLY
+  public navigateToAdminLoginPage(): void {
+    this.routingService.navigateToAdminLoginPage();
   }
 
   private subToSelectedLanguageChanges(): void {
