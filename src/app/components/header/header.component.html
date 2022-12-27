@@ -1,4 +1,22 @@
 <mat-toolbar class="header" color="primary">
   <mat-icon class="logo">unarchive</mat-icon>
-  <span class="title">пушка</span>
+  <span class="title">{{ "header.title" | translate }}</span>
+
+  <ng-container *ngIf="selectedLanguage$ | async as selectedLanguage">
+    <select [formControl]="selectedLanguageControl">
+      <option
+        [value]="appLanguage.BELARUSIAN"
+        [selected]="selectedLanguage === appLanguage.BELARUSIAN"
+      >
+        <span>Бел</span>
+      </option>
+
+      <option
+        [value]="appLanguage.ENGLISH"
+        [selected]="selectedLanguage === appLanguage.ENGLISH"
+      >
+        <span>Eng</span>
+      </option>
+    </select>
+  </ng-container>
 </mat-toolbar>
