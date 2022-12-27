@@ -21,7 +21,7 @@ import { ContentComponent } from './components/content/content.component';
 import { HelpOffersBoardComponent } from './components/help-offers-board/help-offers-board.component';
 import { HelpRequestsBoardComponent } from './components/help-requests-board/help-requests-board.component';
 import { GridOfHelpOffersComponent } from './components/grid-of-help-offers/grid-of-help-offers.component';
-import { HelpOfferCardComponent } from './components/help-offer-card/help-offer-card.component';
+import { PublicHelpOfferCardComponent } from './components/public-help-offer-card/public-help-offer-card.component';
 import { HelpOffersBoardHeaderComponent } from './components/help-offers-board-header/help-offers-board-header.component';
 import { NewHelpOfferDialogComponent } from './dialogs/new-help-offer-dialog/new-help-offer-dialog.component';
 import { HelpOffersPageComponent } from './pages/help-offers-page/help-offers-page.component';
@@ -40,7 +40,7 @@ import { API_URL, API_URL_VALUE } from './shared/dependencies/api-url';
     HelpOffersBoardComponent,
     HelpRequestsBoardComponent,
     GridOfHelpOffersComponent,
-    HelpOfferCardComponent,
+    PublicHelpOfferCardComponent,
     HelpOffersBoardHeaderComponent,
     NewHelpOfferDialogComponent,
     HelpOffersPageComponent,
