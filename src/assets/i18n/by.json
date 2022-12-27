@@ -1,0 +1,24 @@
+{
+  "header": {
+    "title": "Пушка"
+  },
+  "helpOffers": {
+    "header": {
+      "title": "Я магу дапамагчы!",
+      "callToAction": "Дапамагчы!"
+    }
+  },
+  "newHelpOfferDialog": {
+    "title": "Новая прапанова дапамогі",
+    "fullNameFieldLabel": "Поўнае імя",
+    "countryFromFieldLabel": "Краіна (адкуль)",
+    "cityFromFieldLabel": "Горад (адкуль)",
+    "countryToFieldLabel": "Краіна (куды)",
+    "cityToFieldLabel": "Горад (куды)",
+    "diallingCodeFieldLabel": "Код тэлефону",
+    "phoneNumberFieldLabel": "Нумар тэлефону",
+    "commentFieldLabel": "Каментар",
+    "cancelButtonLabel": "Адмена",
+    "createButtonLabel": "Стварыць"
+  }
+}
