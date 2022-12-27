@@ -5,7 +5,6 @@ import { MatButtonModule } from '@angular/material/button';
 
 import { AdminRoutingModule } from './admin-routing.module';
 
-import { AdminMainPageComponent } from './pages/admin-main-page/admin-main-page.component';
 import { AdminLoginPageComponent } from './pages/admin-login-page/admin-login-page.component';
 import { AdminLoginCardComponent } from './components/admin-login-card/admin-login-card.component';
 import { AdminHelpOffersPageComponent } from './pages/admin-help-offers-page/admin-help-offers-page.component';
@@ -22,7 +21,6 @@ import { AdminHelpOffersHttpService } from './services/admin-help-offers-http.se
     AdminRoutingModule,
   ],
   declarations: [
-    AdminMainPageComponent,
     AdminLoginPageComponent,
     AdminLoginCardComponent,
     AdminHelpOffersPageComponent,
