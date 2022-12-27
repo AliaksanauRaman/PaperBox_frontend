@@ -1,0 +1,13 @@
+:host {
+  display: flex;
+}
+
+.login-card {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+
+button:not(:last-child) {
+  margin-right: 15px;
+}
