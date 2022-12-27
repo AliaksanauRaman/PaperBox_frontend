@@ -8,6 +8,8 @@
 .admin-login-page {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   flex-grow: 1;
   min-height: 0;
 }
