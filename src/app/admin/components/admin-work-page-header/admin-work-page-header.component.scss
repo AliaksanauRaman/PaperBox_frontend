@@ -1,0 +1,28 @@
+:host {
+  display: flex;
+}
+
+.admin-work-page-header {
+  display: flex;
+  flex-grow: 1;
+  height: 50px;
+}
+
+a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  width: 120px;
+  text-decoration: none;
+
+  &.active {
+    color: var(--white-color);
+    background-color: var(--primary-color);
+  }
+
+  &.disabled {
+    pointer-events: none;
+    color: lightgray;
+  }
+}

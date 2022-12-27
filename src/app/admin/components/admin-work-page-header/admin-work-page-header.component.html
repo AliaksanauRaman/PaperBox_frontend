@@ -1,0 +1,10 @@
+<div class="admin-work-page-header">
+  <a
+    [class.disabled]="link.disabled"
+    *ngFor="let link of links"
+    [routerLink]="link.path"
+    routerLinkActive="active"
+  >
+    <span>{{ link.label }}</span>
+  </a>
+</div>
