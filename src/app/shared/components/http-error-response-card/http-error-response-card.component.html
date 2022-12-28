@@ -1,0 +1,26 @@
+<mat-card class="http-error-response-card">
+  <mat-card-header>
+    <mat-card-title>Error</mat-card-title>
+  </mat-card-header>
+
+  <mat-card-content>
+    <ng-container *ngIf="_httpErrorResponse; else completelyUnknownErrorView">
+      <p>
+        <strong>Status:</strong>
+        <span>{{ _httpErrorResponse.status }}</span>
+      </p>
+      <p>
+        <strong>Status text:</strong>
+        <span>{{ _httpErrorResponse.statusText }}</span>
+      </p>
+      <p>
+        <strong>Message:</strong>
+        <span>{{ _httpErrorResponse.message }}</span>
+      </p>
+    </ng-container>
+  </mat-card-content>
+
+  <ng-template #completelyUnknownErrorView>
+    <p>Unknown exception!</p>
+  </ng-template>
+</mat-card>
