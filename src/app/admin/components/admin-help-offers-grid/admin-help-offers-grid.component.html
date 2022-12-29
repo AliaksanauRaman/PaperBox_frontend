@@ -1,0 +1,20 @@
+<div class="admin-help-offers-grid">
+  <ng-container
+    *ngIf="_fullPreviewsOfAllHelpOffers.length !== 0; else emptyListView"
+  >
+    <div
+      class="grid-cell"
+      *ngFor="let preview of _fullPreviewsOfAllHelpOffers"
+    >
+      <app-admin-help-offer-card
+        class="grid-cell__card"
+        [helpOfferFullPreview]="preview"
+      >
+      </app-admin-help-offer-card>
+    </div>
+  </ng-container>
+
+  <ng-template #emptyListView>
+    <span>The list is empty.</span>
+  </ng-template>
+</div>
