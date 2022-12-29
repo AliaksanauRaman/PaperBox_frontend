@@ -1,5 +1,34 @@
 <div class="admin-help-offers-page">
-  <div>
-    {{ fullPreviewsOfAllHelpOffers$ | async | json }}
-  </div>
+  <ng-container
+    *ngIf="getFullPreviewsOfAllRequestStateStream | async as httpRequestState"
+  >
+    <ng-container
+      *ngIf="httpRequestState.name === httpRequestStateName.INITIAL"
+    >
+      <div class="loading-view">
+        <mat-spinner></mat-spinner>
+      </div>
+    </ng-container>
+
+    <ng-container
+      *ngIf="httpRequestState.name === httpRequestStateName.SUCCESS"
+    >
+      <div class="content-view">
+        <app-admin-help-offers-grid
+          [fullPreviewsOfAllHelpOffers]="httpRequestState.data"
+        >
+        </app-admin-help-offers-grid>
+      </div>
+    </ng-container>
+
+    <ng-container
+      *ngIf="httpRequestState.name === httpRequestStateName.FAILURE"
+    >
+      <div class="error-view">
+        <app-http-error-response-card
+          [httpErrorResponse]="httpRequestState.error"
+        ></app-http-error-response-card>
+      </div>
+    </ng-container>
+  </ng-container>
 </div>
