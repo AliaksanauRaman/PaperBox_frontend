@@ -1,11 +1,93 @@
+<!-- TODO: Check if everything is needed here or some other components can be created -->
 <div class="new-help-offer-dialog">
-  <h2 mat-dialog-title>Новая прапанова дапамогі</h2>
+  <h2 mat-dialog-title>{{ "newHelpOfferDialog.title" | translate }}</h2>
 
   <mat-dialog-content>
+    <form [formGroup]="newHelpOfferForm">
+      <app-input-control
+        [label]="'newHelpOfferDialog.fullNameFieldLabel' | translate"
+        formControlName="authorFullName"
+      ></app-input-control>
 
+      <ng-container *ngIf="dateType$ | async as dateType">
+        <fieldset>
+          <legend>Абярыце фармат даты</legend>
+
+          <div class="date-option" [class.active]="dateType === 'specific'" (click)="switchToSpecificDate()">
+            <span>Дакладная дата</span>
+          </div>
+
+          <div class="date-option" [class.active]="dateType ==='range'" (click)="switchToDateRange()">
+            <span>Інтэрвал дат</span>
+          </div>
+        </fieldset>
+
+        <ng-container *ngIf="dateType === 'specific'">
+          <app-date-control formControlName="specificDateAsString"></app-date-control>
+        </ng-container>
+
+        <ng-container *ngIf="dateType === 'range'">
+          <div>
+            <span>З</span>
+            <app-date-control formControlName="dateFromAsString"></app-date-control>
+          </div>
+
+          <div>
+            <span>Па</span>
+            <app-date-control formControlName="dateToAsString"></app-date-control>
+          </div>
+        </ng-container>
+      </ng-container>
+
+      <app-input-control
+        [label]="'newHelpOfferDialog.countryFromFieldLabel' | translate"
+        formControlName="countryFrom"
+      ></app-input-control>
+      <app-input-control
+        [label]="'newHelpOfferDialog.cityFromFieldLabel' | translate"
+        formControlName="cityFrom"
+      ></app-input-control>
+      <app-input-control
+        [label]="'newHelpOfferDialog.countryToFieldLabel' | translate"
+        formControlName="countryTo"
+      ></app-input-control>
+      <app-input-control
+        [label]="'newHelpOfferDialog.cityToFieldLabel' | translate"
+        formControlName="cityTo"
+      ></app-input-control>
+
+      <div class="phones">
+        <form *ngFor="let phone of newHelpOfferForm.controls.phones.controls" [formGroup]="phone">
+          <div>
+            <app-input-control
+              [label]="'newHelpOfferDialog.diallingCodeFieldLabel' | translate"
+              formControlName="diallingCode"
+            ></app-input-control>
+            <app-input-control
+              [label]="'newHelpOfferDialog.phoneNumberFieldLabel' | translate"
+              formControlName="number"
+            ></app-input-control>
+          </div>
+        </form>
+      </div>
+
+      <div>
+        <label for="comment">{{ "newHelpOfferDialog.commentFieldLabel" | translate }}</label>
+        <textarea id="comment" formControlName="comment"></textarea>
+      </div>
+    </form>
   </mat-dialog-content>
 
   <mat-dialog-actions align="end">
-    <button mat-stroked-button mat-dialog-close>Адмена</button>
+    <button mat-stroked-button mat-dialog-close>
+      <span>{{ "newHelpOfferDialog.cancelButtonLabel" | translate }}</span>
+    </button>
+
+    <button
+      mat-flat-button color="primary"
+      (click)="handleCreateClick()"
+    >
+      <span>{{ "newHelpOfferDialog.createButtonLabel" | translate }}</span>
+    </button>
   </mat-dialog-actions>
 </div>

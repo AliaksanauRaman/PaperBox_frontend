@@ -1,3 +1,13 @@
 :host {
   display: block;
 }
+
+// TODO: Temp
+.date-option {
+  cursor: pointer;
+
+  &.active {
+    color: var(--white-color);
+    background-color: var(--black-color);
+  }
+}
