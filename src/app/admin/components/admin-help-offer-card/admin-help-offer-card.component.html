@@ -1,0 +1,46 @@
+<mat-card class="admin-help-offer-card">
+  <ng-container *ngIf="_helpOfferFullPreview; else emptyCardView">
+    <mat-card-header class="header">
+      <mat-card-title class="header__title">
+        <span>{{ _helpOfferFullPreview.authorFullName }}</span>
+      </mat-card-title>
+
+      <div
+        class="header__status"
+        [class.header__status_published]="_helpOfferFullPreview.status === helpOfferStatus.PUBLISHED"
+        [class.header__status_unpublished]="_helpOfferFullPreview.status === helpOfferStatus.UNPUBLISHED"
+        [class.header__status_rejected]="_helpOfferFullPreview.status === helpOfferStatus.REJECTED"
+      >
+        <span>{{ _helpOfferFullPreview.status }}</span>
+      </div>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div>
+        {{ _helpOfferFullPreview.countryFrom }} => {{ _helpOfferFullPreview.countryTo }}
+      </div>
+    </mat-card-content>
+
+    <mat-card-footer class="footer">
+      <div class="creation-date">
+        <span>{{ _helpOfferFullPreview.createdAt | date:'MM/dd/YYYY' }}</span>
+      </div>
+
+      <div class="actions">
+        <button mat-flat-button color="primary">
+          <span>Look</span>
+        </button>
+      </div>
+    </mat-card-footer>
+  </ng-container>
+
+  <ng-template #emptyCardView>
+    <mat-card-header>
+      <mat-card-title>Error</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <p>No content.</p>
+    </mat-card-content>
+  </ng-template>
+</mat-card>
