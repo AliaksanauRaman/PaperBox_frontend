@@ -1,4 +1,4 @@
-export type NavigationAnchorType = Readonly<{
+export type NavigationLinkType = Readonly<{
   label: string;
   path: string;
   // TODO: Temporary
