@@ -1,26 +1,33 @@
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
+import { AdminWorkPageLayoutComponent } from './layouts/admin-work-page-layout/admin-work-page-layout.component';
 import { AdminLoginPageComponent } from './pages/admin-login-page/admin-login-page.component';
-import { AdminMainPageComponent } from './pages/admin-main-page/admin-main-page.component';
+import { AdminHelpOffersPageComponent } from './pages/admin-help-offers-page/admin-help-offers-page.component';
 
 const adminRoutes: Routes = [
   {
     path: '',
-    pathMatch: 'full',
-    redirectTo: 'login',
+    component: AdminWorkPageLayoutComponent,
+    children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'help-offers',
+      },
+      {
+        path: 'help-offers',
+        component: AdminHelpOffersPageComponent,
+      },
+    ],
   },
   {
     path: 'login',
     component: AdminLoginPageComponent,
   },
   {
-    path: 'main',
-    component: AdminMainPageComponent,
-  },
-  {
     path: '**',
-    redirectTo: 'login',
+    redirectTo: '',
   },
 ];
 
