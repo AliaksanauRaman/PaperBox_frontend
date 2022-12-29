@@ -59,7 +59,7 @@ export class NewHelpOfferDialogComponent {
     private readonly typesAssertionService: TypesAssertionService,
   ) {}
 
-  public handleCreateClick(): void {
+  public handleCreateButtonClick(): void {
     const value = this.newHelpOfferForm.getRawValue();
 
     // TODO: Temp

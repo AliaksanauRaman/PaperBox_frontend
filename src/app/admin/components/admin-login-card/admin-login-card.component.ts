@@ -13,7 +13,7 @@ export class AdminLoginCardComponent {
     private readonly routingService: RoutingService,
   ) {}
 
-  public handleLoginClick(): void {
+  public handleLoginButtonClick(): void {
     this.routingService.navigateToAdminMainPage();
   }
 }
