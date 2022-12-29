@@ -1,7 +1,47 @@
 :host {
   display: flex;
+  max-width: 400px;
 }
 
 .http-error-response-card {
   display: flex;
+}
+
+.header {
+  margin-bottom: 10px;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+}
+
+.title__icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  font-size: 24px;
+  margin-right: 5px;
+}
+
+.title__label {
+  font-size: 24px;
+}
+
+.paragraph {
+  display: flex;
+  align-items: flex-start;
+}
+
+.paragraph__label {
+  flex-shrink: 0;
+  width: 120px;
+  margin-right: 5px;
+  font-size: 18px;
+}
+
+.paragraph__text {
+  flex-grow: 1;
 }
