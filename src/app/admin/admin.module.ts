@@ -11,7 +11,7 @@ import { AdminLoginPageComponent } from './pages/admin-login-page/admin-login-pa
 import { AdminLoginCardComponent } from './components/admin-login-card/admin-login-card.component';
 import { AdminHelpOffersPageComponent } from './pages/admin-help-offers-page/admin-help-offers-page.component';
 import { AdminWorkPageLayoutComponent } from './layouts/admin-work-page-layout/admin-work-page-layout.component';
-import { AdminWorkPageHeaderComponent } from './components/admin-work-page-header/admin-work-page-header.component';
+import { AdminWorkPageToolbarComponent } from './components/admin-work-page-toolbar/admin-work-page-toolbar.component';
 import { AdminHelpOffersGridComponent } from './components/admin-help-offers-grid/admin-help-offers-grid.component';
 import { AdminHelpOfferCardComponent } from './components/admin-help-offer-card/admin-help-offer-card.component';
 
@@ -32,9 +32,9 @@ import { AdminHelpOffersService } from './services/admin-help-offers.service';
     AdminLoginCardComponent,
     AdminHelpOffersPageComponent,
     AdminWorkPageLayoutComponent,
-    AdminWorkPageHeaderComponent,
+    AdminWorkPageToolbarComponent,
     AdminHelpOffersGridComponent,
-    AdminHelpOfferCardComponent
+    AdminHelpOfferCardComponent,
   ],
   providers: [
     AdminHelpOffersHttpService,

@@ -4,9 +4,9 @@ import { LIST_OF_NAVIGATION_LINKS, NAVIGATION_LINKS } from './admin-work-page-to
 import { NavigationLinkType } from '../../../shared/types/navigation-link.type';
 
 @Component({
-  selector: 'app-admin-work-page-header',
-  templateUrl: './admin-work-page-header.component.html',
-  styleUrls: ['./admin-work-page-header.component.scss'],
+  selector: 'app-admin-work-page-toolbar',
+  templateUrl: './admin-work-page-toolbar.component.html',
+  styleUrls: ['./admin-work-page-toolbar.component.scss'],
   providers: [
     {
       provide: NAVIGATION_LINKS,
@@ -15,7 +15,7 @@ import { NavigationLinkType } from '../../../shared/types/navigation-link.type';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class AdminWorkPageHeaderComponent {
+export class AdminWorkPageToolbarComponent {
   constructor(
     @Inject(NAVIGATION_LINKS)
     public readonly navigationLinks: ReadonlyArray<NavigationLinkType>,
