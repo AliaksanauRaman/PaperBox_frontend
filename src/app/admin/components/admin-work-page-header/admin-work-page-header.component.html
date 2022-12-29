@@ -1,7 +1,8 @@
 <div class="admin-work-page-header">
   <a
+    class="navigation-link"
     [class.disabled]="link.disabled"
-    *ngFor="let link of links"
+    *ngFor="let link of navigationLinks"
     [routerLink]="link.path"
     routerLinkActive="active"
   >
