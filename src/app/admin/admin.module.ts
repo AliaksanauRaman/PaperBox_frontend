@@ -1,8 +1,11 @@
 import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 import { NgModule } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
 
 import { HttpErrorResponseCardModule } from './../shared/components/http-error-response-card/http-error-response-card.module';
 import { AdminRoutingModule } from './admin-routing.module';
@@ -22,9 +25,12 @@ import { AdminHelpOffersService } from './services/admin-help-offers.service';
 @NgModule({
   imports: [
     CommonModule,
+    TranslateModule,
     MatCardModule,
     MatButtonModule,
     MatProgressSpinnerModule,
+    MatDialogModule,
+    MatIconModule,
     HttpErrorResponseCardModule,
     AdminRoutingModule,
   ],
