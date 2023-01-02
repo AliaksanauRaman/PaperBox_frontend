@@ -25,6 +25,12 @@
         <app-admin-help-offer-details
           [helpOffer]="fullHelpOffer"
         ></app-admin-help-offer-details>
+
+        <ng-container *ngIf="viewContext.updateStatusError as updateStatusError">
+          <div class="update-status-error-message">
+            <span>{{ updateStatusError | appHttpErrorMessage }}</span>
+          </div>
+        </ng-container>
       </mat-dialog-content>
 
       <mat-dialog-actions class="actions">

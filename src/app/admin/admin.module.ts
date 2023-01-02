@@ -8,6 +8,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 
 import { HttpErrorResponseCardModule } from '../shared/components/http-error-response-card/http-error-response-card.module';
+import { HttpErrorMessagePipeModule } from '../shared/pipes/http-error-message/http-error-message-pipe.module';
 import { AdminRoutingModule } from './admin-routing.module';
 
 import { AdminLoginPageComponent } from './pages/admin-login-page/admin-login-page.component';
@@ -35,6 +36,7 @@ import { AdminEventsProcessorService } from './services/admin-events-processor.s
     MatDialogModule,
     MatIconModule,
     HttpErrorResponseCardModule,
+    HttpErrorMessagePipeModule,
     AdminRoutingModule,
   ],
   declarations: [
