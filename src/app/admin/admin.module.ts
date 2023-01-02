@@ -7,7 +7,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 
-import { HttpErrorResponseCardModule } from './../shared/components/http-error-response-card/http-error-response-card.module';
+import { HttpErrorResponseCardModule } from '../shared/components/http-error-response-card/http-error-response-card.module';
 import { AdminRoutingModule } from './admin-routing.module';
 
 import { AdminLoginPageComponent } from './pages/admin-login-page/admin-login-page.component';
@@ -17,6 +17,7 @@ import { AdminWorkPageLayoutComponent } from './layouts/admin-work-page-layout/a
 import { AdminWorkPageToolbarComponent } from './components/admin-work-page-toolbar/admin-work-page-toolbar.component';
 import { AdminHelpOffersGridComponent } from './components/admin-help-offers-grid/admin-help-offers-grid.component';
 import { AdminHelpOfferCardComponent } from './components/admin-help-offer-card/admin-help-offer-card.component';
+import { AdminSmallHelpOfferStatusComponent } from './components/admin-small-help-offer-status/admin-small-help-offer-status.component';
 import { AdminManageHelpOfferDialogComponent } from './dialogs/admin-manage-help-offer-dialog/admin-manage-help-offer-dialog.component';
 
 import { AdminHelpOffersHttpService } from './services/admin-help-offers-http.service';
@@ -42,12 +43,10 @@ import { AdminHelpOffersService } from './services/admin-help-offers.service';
     AdminWorkPageToolbarComponent,
     AdminHelpOffersGridComponent,
     AdminHelpOfferCardComponent,
+    AdminSmallHelpOfferStatusComponent,
     AdminManageHelpOfferDialogComponent,
   ],
-  providers: [
-    AdminHelpOffersHttpService,
-    AdminHelpOffersService,
-  ],
+  providers: [AdminHelpOffersHttpService, AdminHelpOffersService],
   exports: [],
 })
 export class AdminModule {}
