@@ -6,12 +6,12 @@ export const NAVIGATION_LINKS = new InjectionToken<ReadonlyArray<NavigationLinkT
 
 export const LIST_OF_NAVIGATION_LINKS: ReadonlyArray<NavigationLinkType> = [
   {
-    label: 'Help offers',
+    label: 'pages.adminHelpOffers.toolbar.linkToHelpOffersLabel',
     path: '/admin/help-offers',
     disabled: false,
   },
   {
-    label: 'Help requests',
+    label: 'pages.adminHelpOffers.toolbar.linkToHelpRequestsLabel',
     path: '/admin/help-requests',
     disabled: true,
   },
