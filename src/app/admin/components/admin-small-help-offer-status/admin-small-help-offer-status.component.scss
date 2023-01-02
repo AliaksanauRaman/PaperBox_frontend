@@ -1,3 +1,28 @@
 :host {
   display: block;
 }
+
+.status {
+  padding: 3px 5px;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: bold;
+  color: var(--black-color);
+  background-color: var(--light-black-color);
+  border-radius: 5px;
+
+  &.status--published {
+    color: var(--green-color);
+    background-color: var(--light-green-color);
+  }
+
+  &.status--unpublished {
+    color: var(--amber-color);
+    background-color: var(--light-amber-color);
+  }
+
+  &.status--rejected {
+    color: var(--red-color);
+    background-color: var(--light-red-color);
+  }
+}

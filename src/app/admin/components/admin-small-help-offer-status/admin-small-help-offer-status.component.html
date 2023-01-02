@@ -1,1 +1,8 @@
-<p>admin-small-help-offer-status works!</p>
+<div
+  class="admin-small-help-offer-status status"
+  [class.status--published]="_status === helpOfferStatus.PUBLISHED"
+  [class.status--unpublished]="_status === helpOfferStatus.UNPUBLISHED"
+  [class.status--rejected]="_status === helpOfferStatus.REJECTED"
+>
+  <span>{{ 'helpOfferStatus.' + _status | translate }}</span>
+</div>
