@@ -23,6 +23,7 @@ import { AdminManageHelpOfferDialogComponent } from './dialogs/admin-manage-help
 
 import { AdminHelpOffersHttpService } from './services/admin-help-offers-http.service';
 import { AdminHelpOffersService } from './services/admin-help-offers.service';
+import { AdminEventsProcessorService } from './services/admin-events-processor.service';
 
 @NgModule({
   imports: [
@@ -48,7 +49,15 @@ import { AdminHelpOffersService } from './services/admin-help-offers.service';
     AdminHelpOfferDetailsComponent,
     AdminManageHelpOfferDialogComponent,
   ],
-  providers: [AdminHelpOffersHttpService, AdminHelpOffersService],
+  providers: [
+    AdminHelpOffersHttpService,
+    AdminHelpOffersService,
+    AdminEventsProcessorService,
+  ],
   exports: [],
 })
-export class AdminModule {}
+export class AdminModule {
+  constructor(
+    private readonly _adminEventsProcessorService: AdminEventsProcessorService
+  ) {}
+}

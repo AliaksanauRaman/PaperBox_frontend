@@ -1,4 +1,3 @@
-<!-- TODO: Remove comments, handle error cases -->
 <div class="admin-manage-help-offer-dialog">
   <div class="header">
     <h1 class="header__title" mat-dialog-title>
@@ -14,81 +13,63 @@
     </button>
   </div>
 
-  <!-- <ng-container *ngIf="getOneFullByIdRequestStateStream | async as httpRequestState"> -->
-
-    <!-- <ng-container *ngIf="httpRequestState.name === httpRequestStateName.INITIAL">
+  <ng-container *ngIf="viewContext$ | async as viewContext">
+    <ng-container *ngIf="viewContext.getByIdInProgress">
       <div class="loading-view">
         <mat-spinner [diameter]="50"></mat-spinner>
       </div>
-    </ng-container> -->
+    </ng-container>
 
-    <!-- <ng-container *ngIf="httpRequestState.name === httpRequestStateName.SUCCESS"> -->
-      <ng-container *ngIf="fullHelpOffer$ | async as fullHelpOffer">
-        <mat-dialog-content class="content">
-          <app-admin-help-offer-details
-            [helpOffer]="fullHelpOffer"
-          ></app-admin-help-offer-details>
-        </mat-dialog-content>
+    <ng-container *ngIf="viewContext.fullHelpOffer as fullHelpOffer">
+      <mat-dialog-content class="content">
+        <app-admin-help-offer-details
+          [helpOffer]="fullHelpOffer"
+        ></app-admin-help-offer-details>
+      </mat-dialog-content>
 
-        <mat-dialog-actions class="actions">
-          <ng-container *ngIf="!(publishingInProgress$ | async); else loadingPublishButton">
-            <button
-              class="actions__item"
-              [disabled]="allButtonsDisabled$ | async"
-              *ngIf="fullHelpOffer.status !== helpOfferStatus.PUBLISHED"
-              mat-raised-button
-              color="publish"
-              (click)="handlePublishButtonClick()"
-            >
-              <span>{{ "dialogs.adminManageHelpOffer.publishButtonLabel" | translate }}</span>
-            </button>
-          </ng-container>
+      <mat-dialog-actions class="actions">
+        <button
+          class="actions__item"
+          *ngIf="fullHelpOffer.status !== helpOfferStatus.PUBLISHED"
+          mat-raised-button
+          color="publish"
+          [disabled]="viewContext.updateStatusInProgress"
+          (click)="handlePublishButtonClick()"
+        >
+          <span>{{ "dialogs.adminManageHelpOffer.publishButtonLabel" | translate }}</span>
+        </button>
 
-          <ng-template #loadingPublishButton>
-            <button
-              class="actions__item"
-              [disabled]="allButtonsDisabled$ | async"
-              *ngIf="fullHelpOffer.status !== helpOfferStatus.PUBLISHED"
-              mat-raised-button
-              color="publish"
-            >
-              <mat-spinner [diameter]="20"></mat-spinner>
-            </button>
-          </ng-template>
+        <button
+          class="actions__item"
+          *ngIf="fullHelpOffer.status !== helpOfferStatus.UNPUBLISHED"
+          mat-raised-button
+          color="unpublish"
+          [disabled]="viewContext.updateStatusInProgress"
+          (click)="handleUnpublishButtonClick()"
+        >
+          <span>{{ "dialogs.adminManageHelpOffer.unpublishButtonLabel" | translate }}</span>
+        </button>
 
-          <button
-            class="actions__item"
-            [disabled]="allButtonsDisabled$ | async"
-            *ngIf="fullHelpOffer.status !== helpOfferStatus.UNPUBLISHED"
-            mat-raised-button
-            color="unpublish"
-            (click)="handleUnpublishButtonClick()"
-          >
-            <span>{{ "dialogs.adminManageHelpOffer.unpublishButtonLabel" | translate }}</span>
-          </button>
+        <button
+          class="actions__item"
+          *ngIf="fullHelpOffer.status !== helpOfferStatus.REJECTED"
+          mat-raised-button
+          color="reject"
+          [disabled]="viewContext.updateStatusInProgress"
+          (click)="handleRejectButtonClick()"
+        >
+          <span>{{ "dialogs.adminManageHelpOffer.rejectButtonLabel" | translate }}</span>
+        </button>
 
-          <button
-            class="actions__item"
-            [disabled]="allButtonsDisabled$ | async"
-            *ngIf="fullHelpOffer.status !== helpOfferStatus.REJECTED"
-            mat-raised-button
-            color="reject"
-            (click)="handleRejectButtonClick()"
-          >
-            <span>{{ "dialogs.adminManageHelpOffer.rejectButtonLabel" | translate }}</span>
-          </button>
+      </mat-dialog-actions>
+    </ng-container>
 
-        </mat-dialog-actions>
-      </ng-container>
-    <!-- </ng-container> -->
-
-    <!-- <ng-container *ngIf="httpRequestState.name === httpRequestStateName.FAILURE">
+    <ng-container *ngIf="viewContext.getByIdError as error">
       <div class="error-view">
         <app-http-error-response-card
-          [httpErrorResponse]="httpRequestState.error"
+          [httpErrorResponse]="error"
         ></app-http-error-response-card>
       </div>
-    </ng-container> -->
-
-  <!-- </ng-container> -->
+    </ng-container>
+  </ng-container>
 </div>
