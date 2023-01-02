@@ -34,20 +34,6 @@
   min-height: 0;
 }
 
-.paragraph {
-  display: flex;
-}
-
-.paragraph__label {
-  flex-shrink: 0;
-  width: 120px;
-  margin-right: 5px;
-}
-
-.paragraph__text {
-  flex-grow: 1;
-}
-
 .actions {
   display: flex;
   padding: 24px;
