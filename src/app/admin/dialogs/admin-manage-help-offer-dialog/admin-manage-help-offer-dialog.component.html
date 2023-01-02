@@ -30,14 +30,12 @@
               {{ "dialogs.adminManageHelpOffer.statusFieldLabel" | translate }}
             </strong>
 
-            <span
-              class="paragraph__text status"
-              [class.status_published]="fullHelpOffer.status === helpOfferStatus.PUBLISHED"
-              [class.status_unpublished]="fullHelpOffer.status === helpOfferStatus.UNPUBLISHED"
-              [class.status_rejected]="fullHelpOffer.status === helpOfferStatus.REJECTED"
+            <app-admin-small-help-offer-status
+              class="paragraph__text"
+              [status]="fullHelpOffer.status"
+              size="big"
             >
-              {{ 'helpOfferStatus.' + fullHelpOffer.status | translate }}
-            </span>
+            </app-admin-small-help-offer-status>
           </p>
 
           <p class="paragraph">

@@ -34,33 +34,6 @@
   min-height: 0;
 }
 
-.status {
-  display: flex;
-  justify-content: center;
-  padding: 6px 4px;
-  font-weight: bold;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  color: var(--black-color);
-  background-color: var(--light-black-color);
-  border-radius: 6px;
-
-  &.status_published {
-    color: var(--green-color);
-    background-color: var(--light-green-color);
-  }
-
-  &.status_unpublished {
-    color: var(--amber-color);
-    background-color: var(--light-amber-color);
-  }
-
-  &.status_rejected {
-    color: var(--red-color);
-    background-color: var(--light-red-color);
-  }
-}
-
 .paragraph {
   display: flex;
 }
