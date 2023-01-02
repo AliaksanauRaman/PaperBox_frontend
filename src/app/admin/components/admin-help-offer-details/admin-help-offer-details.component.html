@@ -1,0 +1,100 @@
+<div
+  class="admin-help-offer-details"
+  *ngIf="_helpOffer; else errorView"
+>
+  <p class="paragraph">
+    <strong class="paragraph__label">
+      {{ "dialogs.adminManageHelpOffer.statusFieldLabel" | translate }}
+    </strong>
+
+    <app-admin-help-offer-status
+      class="paragraph__text"
+      [status]="_helpOffer.status"
+      size="big"
+    >
+    </app-admin-help-offer-status>
+  </p>
+
+  <p class="paragraph">
+    <strong class="paragraph__label">
+      {{ "dialogs.adminManageHelpOffer.fullNameFieldLabel" | translate }}
+    </strong>
+
+    <span class="paragraph__text">{{ _helpOffer.authorFullName }}</span>
+  </p>
+
+  <p class="paragraph">
+    <strong class="paragraph__label">
+      {{ "dialogs.adminManageHelpOffer.whereFromFieldLabel" | translate }}
+    </strong>
+
+    <span class="paragraph__text">
+      <span>{{ _helpOffer.countryFrom }}, </span>
+      <span>{{ _helpOffer.cityFrom }}</span>
+    </span>
+  </p>
+
+  <p class="paragraph">
+    <strong class="paragraph__label">
+      {{ "dialogs.adminManageHelpOffer.whereToFieldLabel" | translate }}
+    </strong>
+
+    <span class="paragraph__text">
+      <span>{{ _helpOffer.countryTo }}, </span>
+      <span>{{ _helpOffer.cityTo }}</span>
+    </span>
+  </p>
+
+  <p class="paragraph">
+    <strong class="paragraph__label">
+      {{ "dialogs.adminManageHelpOffer.dateFieldLabel" | translate }}
+    </strong>
+
+    <span class="paragraph__text">
+      <ng-container *ngIf="_helpOffer.date.type === 'specific'">
+        <span>{{ _helpOffer.date.specificDateAsString }}</span>
+      </ng-container>
+
+      <ng-container *ngIf="_helpOffer.date.type === 'range'">
+        <span>З </span>
+        <span>{{ _helpOffer.date.dateFromAsString }} </span>
+        <span>па </span>
+        <span>{{ _helpOffer.date.dateToAsString }}</span>
+      </ng-container>
+    </span>
+  </p>
+
+  <p class="paragraph">
+    <strong class="paragraph__label">
+      {{ "dialogs.adminManageHelpOffer.phonesFieldLabel" | translate }}
+    </strong>
+
+    <span class="paragraph__text">
+      <ng-container *ngFor="let phone of _helpOffer.phones; let isLast = last">
+        <span>{{ phone.diallingCode }} </span>
+        <span>{{ phone.number }}</span>
+        <span *ngIf="!isLast">, </span>
+      </ng-container>
+    </span>
+  </p>
+
+  <p class="paragraph">
+    <strong class="paragraph__label">
+      {{ "dialogs.adminManageHelpOffer.commentFieldLabel" | translate }}
+    </strong>
+
+    <span class="paragraph__text">{{ _helpOffer.comment }}</span>
+  </p>
+
+  <p class="paragraph">
+    <strong class="paragraph__label">
+      {{ "dialogs.adminManageHelpOffer.createdDateTimeFieldLabel" | translate }}
+    </strong>
+
+    <span class="paragraph__text">{{ _helpOffer.createdAt | date:'MM/dd/YYYY HH:mm:ss' }}</span>
+  </p>
+</div>
+
+<ng-template #errorView>
+  <span>Error.</span>
+</ng-template>
