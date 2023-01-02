@@ -2,30 +2,51 @@
   <mat-card-header class="header">
     <mat-card-title class="header__title title">
       <mat-icon class="title__icon" color="warn">error</mat-icon>
-      <span class="title__label">Error</span>
+
+      <span class="title__label">
+        {{ 'components.httpErrorResponseCard.title' | translate }}
+      </span>
     </mat-card-title>
   </mat-card-header>
 
   <mat-card-content>
     <ng-container *ngIf="_httpErrorResponse; else completelyUnknownErrorView">
       <p class="paragraph">
-        <strong class="paragraph__label">Status:</strong>
+        <strong class="paragraph__label">
+          {{ 'components.httpErrorResponseCard.statusFieldLabel' | translate }}
+        </strong>
+
         <span class="paragraph__text">{{ _httpErrorResponse.status }}</span>
       </p>
 
       <p class="paragraph">
-        <strong class="paragraph__label">Status text:</strong>
+        <strong class="paragraph__label">
+          {{ 'components.httpErrorResponseCard.statusTextFieldLabel' | translate }}
+        </strong>
+
         <span class="paragraph__text">{{ _httpErrorResponse.statusText }}</span>
       </p>
 
       <p class="paragraph">
-        <strong class="paragraph__label">Message:</strong>
+        <strong class="paragraph__label">
+          {{ 'components.httpErrorResponseCard.messageFieldLabel' | translate }}
+        </strong>
+
         <span class="paragraph__text">{{ _httpErrorResponse.message }}</span>
+      </p>
+
+      <p class="paragraph" *ngIf="_httpErrorResponse.error.message">
+        <strong class="paragraph__label">
+          {{ 'components.httpErrorResponseCard.detailsFieldLabel' | translate }}
+        </strong>
+
+        <span class="paragraph__text">{{ _httpErrorResponse.error.message }}</span>
       </p>
     </ng-container>
   </mat-card-content>
 
   <ng-template #completelyUnknownErrorView>
+    <!-- TODO: Translations -->
     <p>Unknown exception!</p>
   </ng-template>
 </mat-card>
