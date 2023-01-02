@@ -11,7 +11,7 @@
         [class.header__status_unpublished]="_helpOfferFullPreview.status === helpOfferStatus.UNPUBLISHED"
         [class.header__status_rejected]="_helpOfferFullPreview.status === helpOfferStatus.REJECTED"
       >
-        <span>{{ _helpOfferFullPreview.status }}</span>
+        <span>{{ 'helpOfferStatus.' + _helpOfferFullPreview.status | translate }}</span>
       </div>
     </mat-card-header>
 
@@ -27,13 +27,14 @@
       </div>
 
       <div class="actions">
-        <button mat-flat-button color="primary">
-          <span>Look</span>
+        <button mat-flat-button color="primary" (click)="handleManageButtonClick()">
+          <span>{{ 'pages.adminHelpOffers.helpOfferCard.manageButtonLabel' | translate }}</span>
         </button>
       </div>
     </mat-card-footer>
   </ng-container>
 
+  <!-- TODO: Translate -->
   <ng-template #emptyCardView>
     <mat-card-header>
       <mat-card-title>Error</mat-card-title>
