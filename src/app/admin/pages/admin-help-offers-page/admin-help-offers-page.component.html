@@ -1,27 +1,29 @@
+<!-- TODO: Remove comments, handle error cases -->
 <div class="admin-help-offers-page">
-  <ng-container
+  <!-- <ng-container
     *ngIf="getFullPreviewsOfAllRequestStateStream | async as httpRequestState"
-  >
-    <ng-container
+  > -->
+
+    <!-- <ng-container
       *ngIf="httpRequestState.name === httpRequestStateName.INITIAL"
     >
       <div class="loading-view">
-        <mat-spinner></mat-spinner>
+        <mat-spinner [diameter]="50"></mat-spinner>
       </div>
-    </ng-container>
+    </ng-container> -->
 
     <ng-container
-      *ngIf="httpRequestState.name === httpRequestStateName.SUCCESS"
+      *ngIf="fullPreviewsOfAllHelpOffers$ | async as fullPreviewsOfAllHelpOffers"
     >
       <div class="content-view">
         <app-admin-help-offers-grid
-          [fullPreviewsOfAllHelpOffers]="httpRequestState.data"
+          [fullPreviewsOfAllHelpOffers]="fullPreviewsOfAllHelpOffers"
         >
         </app-admin-help-offers-grid>
       </div>
     </ng-container>
 
-    <ng-container
+    <!-- <ng-container
       *ngIf="httpRequestState.name === httpRequestStateName.FAILURE"
     >
       <div class="error-view">
@@ -29,6 +31,7 @@
           [httpErrorResponse]="httpRequestState.error"
         ></app-http-error-response-card>
       </div>
-    </ng-container>
-  </ng-container>
+    </ng-container> -->
+
+  <!-- </ng-container> -->
 </div>
