@@ -1,11 +1,11 @@
 <!-- TODO: Check if everything is needed here or some other components can be created -->
 <div class="new-help-offer-dialog">
-  <h2 mat-dialog-title>{{ "newHelpOfferDialog.title" | translate }}</h2>
+  <h2 mat-dialog-title>{{ "dialogs.newHelpOffer.title" | translate }}</h2>
 
   <mat-dialog-content>
     <form [formGroup]="newHelpOfferForm">
       <app-input-control
-        [label]="'newHelpOfferDialog.fullNameFieldLabel' | translate"
+        [label]="'dialogs.newHelpOffer.fullNameFieldLabel' | translate"
         formControlName="authorFullName"
       ></app-input-control>
 
@@ -40,19 +40,19 @@
       </ng-container>
 
       <app-input-control
-        [label]="'newHelpOfferDialog.countryFromFieldLabel' | translate"
+        [label]="'dialogs.newHelpOffer.countryFromFieldLabel' | translate"
         formControlName="countryFrom"
       ></app-input-control>
       <app-input-control
-        [label]="'newHelpOfferDialog.cityFromFieldLabel' | translate"
+        [label]="'dialogs.newHelpOffer.cityFromFieldLabel' | translate"
         formControlName="cityFrom"
       ></app-input-control>
       <app-input-control
-        [label]="'newHelpOfferDialog.countryToFieldLabel' | translate"
+        [label]="'dialogs.newHelpOffer.countryToFieldLabel' | translate"
         formControlName="countryTo"
       ></app-input-control>
       <app-input-control
-        [label]="'newHelpOfferDialog.cityToFieldLabel' | translate"
+        [label]="'dialogs.newHelpOffer.cityToFieldLabel' | translate"
         formControlName="cityTo"
       ></app-input-control>
 
@@ -60,11 +60,11 @@
         <form *ngFor="let phone of newHelpOfferForm.controls.phones.controls" [formGroup]="phone">
           <div>
             <app-input-control
-              [label]="'newHelpOfferDialog.diallingCodeFieldLabel' | translate"
+              [label]="'dialogs.newHelpOffer.diallingCodeFieldLabel' | translate"
               formControlName="diallingCode"
             ></app-input-control>
             <app-input-control
-              [label]="'newHelpOfferDialog.phoneNumberFieldLabel' | translate"
+              [label]="'dialogs.newHelpOffer.phoneNumberFieldLabel' | translate"
               formControlName="number"
             ></app-input-control>
           </div>
@@ -72,7 +72,7 @@
       </div>
 
       <div>
-        <label for="comment">{{ "newHelpOfferDialog.commentFieldLabel" | translate }}</label>
+        <label for="comment">{{ "dialogs.newHelpOffer.commentFieldLabel" | translate }}</label>
         <textarea id="comment" formControlName="comment"></textarea>
       </div>
     </form>
@@ -80,14 +80,14 @@
 
   <mat-dialog-actions align="end">
     <button mat-stroked-button mat-dialog-close>
-      <span>{{ "newHelpOfferDialog.cancelButtonLabel" | translate }}</span>
+      <span>{{ "dialogs.newHelpOffer.cancelButtonLabel" | translate }}</span>
     </button>
 
     <button
       mat-flat-button color="primary"
       (click)="handleCreateButtonClick()"
     >
-      <span>{{ "newHelpOfferDialog.createButtonLabel" | translate }}</span>
+      <span>{{ "dialogs.newHelpOffer.createButtonLabel" | translate }}</span>
     </button>
   </mat-dialog-actions>
 </div>
