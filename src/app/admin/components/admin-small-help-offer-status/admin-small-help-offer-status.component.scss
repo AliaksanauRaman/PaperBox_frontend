@@ -3,13 +3,11 @@
 }
 
 .status {
-  padding: 3px 5px;
+  display: flex;
   text-transform: uppercase;
-  font-size: 12px;
   font-weight: bold;
   color: var(--black-color);
   background-color: var(--light-black-color);
-  border-radius: 5px;
 
   &.status--published {
     color: var(--green-color);
@@ -24,5 +22,18 @@
   &.status--rejected {
     color: var(--red-color);
     background-color: var(--light-red-color);
+  }
+
+  &.status--small {
+    padding: 3px 5px;
+    font-size: 12px;
+    border-radius: 5px;
+  }
+
+  &.status--big {
+    justify-content: center;
+    padding: 6px 4px;
+    letter-spacing: 2px;
+    border-radius: 6px;
   }
 }
