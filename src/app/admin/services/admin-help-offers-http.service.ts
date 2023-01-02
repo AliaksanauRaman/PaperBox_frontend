@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 import { API_URL } from '../../shared/dependencies/api-url/injection-token';
 import { HelpOfferFullPreviewType } from '../../shared/types/help-offer-full-preview.type';
 import { FullHelpOfferType } from '../types/full-help-offer.type';
+import { UpdateHelpOfferStatusResponseType } from '../types/update-help-offer-status-response.type';
+import { HelpOfferStatus } from '../../shared/enums/help-offer-status.enum';
 
 @Injectable()
 export class AdminHelpOffersHttpService {
@@ -26,11 +28,13 @@ export class AdminHelpOffersHttpService {
     );
   }
 
-  public publishOneWithId(helpOfferId: string): Observable<unknown> {
-    // TODO: Think about empty body
-    return this.httpClient.patch<unknown>(
-      `${this.apiUrl}/help-offers/publish-one/${helpOfferId}`,
-      {}
+  public updateStatusOfOneWithId(
+    helpOfferId: string,
+    newStatus: HelpOfferStatus
+  ): Observable<UpdateHelpOfferStatusResponseType> {
+    return this.httpClient.patch<UpdateHelpOfferStatusResponseType>(
+      `${this.apiUrl}/help-offers/update-status-of-one/${helpOfferId}`,
+      { newStatus }
     );
   }
 }
