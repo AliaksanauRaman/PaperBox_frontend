@@ -1,5 +1,6 @@
 <div
   class="admin-help-offer-status status"
+  *ngIf="_status; else errorView"
   [class.status--published]="_status === helpOfferStatus.PUBLISHED"
   [class.status--unpublished]="_status === helpOfferStatus.UNPUBLISHED"
   [class.status--rejected]="_status === helpOfferStatus.REJECTED"
@@ -8,3 +9,7 @@
 >
   <span>{{ 'helpOfferStatus.' + _status | translate }}</span>
 </div>
+
+<ng-template #errorView>
+  <span>Error.</span>
+</ng-template>
