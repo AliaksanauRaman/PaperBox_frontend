@@ -1,3 +1,114 @@
 :host {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.admin-manage-help-offer-dialog {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-height: 0;
+}
+
+.header {
+  display: flex;
+}
+
+.header__title {
+  flex-grow: 1;
+}
+
+.header__close-button {
+  flex-shrink: 0;
+  margin: 12px 24px 0 15px;
+}
+
+.loading-view {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  min-height: 0;
+}
+
+.status {
+  display: flex;
+  justify-content: center;
+  padding: 6px 4px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--black-color);
+  background-color: var(--light-black-color);
+  border-radius: 6px;
+
+  &.status_published {
+    color: var(--green-color);
+    background-color: var(--light-green-color);
+  }
+
+  &.status_unpublished {
+    color: var(--amber-color);
+    background-color: var(--light-amber-color);
+  }
+
+  &.status_rejected {
+    color: var(--red-color);
+    background-color: var(--light-red-color);
+  }
+}
+
+.paragraph {
+  display: flex;
+}
+
+.paragraph__label {
+  flex-shrink: 0;
+  width: 120px;
+  margin-right: 5px;
+}
+
+.paragraph__text {
+  flex-grow: 1;
+}
+
+.actions {
+  display: flex;
+  padding: 24px;
+}
+
+.actions__item {
+  min-width: 140px;
+  text-transform: capitalize;
+
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
+}
+
+.mat-publish {
+  color: var(--green-color);
+  background-color: var(--light-green-color);
+}
+
+.mat-unpublish {
+  color: var(--amber-color);
+  background-color: var(--light-amber-color);
+}
+
+.mat-reject {
+  color: var(--red-color);
+  background-color: var(--light-red-color);
+}
+
+.error-view {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  min-height: 0;
 }
