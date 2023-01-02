@@ -2,23 +2,64 @@
   "header": {
     "title": "Pushka"
   },
-  "helpOffers": {
-    "header": {
-      "title": "I can help!",
-      "callToAction": "Help!"
+  "pages": {
+    "helpOffers": {
+      "header": {
+        "title": "I can help!",
+        "callToAction": "Help!"
+      }
+    },
+    "adminHelpOffers": {
+      "toolbar": {
+        "linkToHelpOffersLabel": "Help offers",
+        "linkToHelpRequestsLabel": "Help requests"
+      },
+      "helpOfferCard": {
+        "manageButtonLabel": "Manage"
+      }
     }
   },
-  "newHelpOfferDialog": {
-    "title": "New help offer",
-    "fullNameFieldLabel": "Full name",
-    "countryFromFieldLabel": "Country (from)",
-    "cityFromFieldLabel": "City (from)",
-    "countryToFieldLabel": "Country (to)",
-    "cityToFieldLabel": "City (to)",
-    "diallingCodeFieldLabel": "Phone code",
-    "phoneNumberFieldLabel": "Phone number",
-    "commentFieldLabel": "Comment",
-    "cancelButtonLabel": "Cancel",
-    "createButtonLabel": "Create"
+  "dialogs": {
+    "newHelpOffer": {
+      "title": "New help offer",
+      "fullNameFieldLabel": "Full name",
+      "countryFromFieldLabel": "Country (from)",
+      "cityFromFieldLabel": "City (from)",
+      "countryToFieldLabel": "Country (to)",
+      "cityToFieldLabel": "City (to)",
+      "diallingCodeFieldLabel": "Phone code",
+      "phoneNumberFieldLabel": "Phone number",
+      "commentFieldLabel": "Comment",
+      "cancelButtonLabel": "Cancel",
+      "createButtonLabel": "Create"
+    },
+    "adminManageHelpOffer": {
+      "title": "Manage help offer",
+      "statusFieldLabel": "Status",
+      "fullNameFieldLabel":"Full name",
+      "whereFromFieldLabel": "Where from",
+      "whereToFieldLabel": "Where to",
+      "dateFieldLabel": "Date",
+      "phonesFieldLabel": "Phones",
+      "commentFieldLabel": "Comment",
+      "createdDateTimeFieldLabel": "Created",
+      "publishButtonLabel": "Publish",
+      "unpublishButtonLabel": "Unpublish",
+      "rejectButtonLabel": "Reject"
+    }
+  },
+  "components": {
+    "httpErrorResponseCard": {
+      "title": "Error",
+      "statusFieldLabel": "Status",
+      "statusTextFieldLabel": "Status text",
+      "messageFieldLabel": "Message",
+      "detailsFieldLabel": "Details"
+    }
+  },
+  "helpOfferStatus": {
+    "published": "Published",
+    "unpublished": "Unpublished",
+    "rejected": "Rejected"
   }
 }
