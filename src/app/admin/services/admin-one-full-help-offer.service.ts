@@ -44,6 +44,8 @@ export class AdminOneFullHelpOfferService extends DestroyEmitter {
 
   public makeRequestToGetById(helpOfferId: string): void {
     this._getByIdInProgress$.next(true);
+    this._fullHelpOffer$.next(null);
+    this._getByIdError$.next(null);
     this.eventBusService.emit(
       new MakeGetOneFullHelpOfferRequest({ id: helpOfferId })
     );
@@ -54,6 +56,7 @@ export class AdminOneFullHelpOfferService extends DestroyEmitter {
     status: HelpOfferStatus
   ): void {
     this._updateStatusInProgress$.next(true);
+    this._updateStatusError$.next(null);
     this.eventBusService.emit(
       new MakeHelpOfferStatusUpdateRequest({
         id: helpOfferId,
