@@ -5,14 +5,10 @@
         <span>{{ _helpOfferFullPreview.authorFullName }}</span>
       </mat-card-title>
 
-      <div
+      <app-admin-small-help-offer-status
         class="header__status"
-        [class.header__status_published]="_helpOfferFullPreview.status === helpOfferStatus.PUBLISHED"
-        [class.header__status_unpublished]="_helpOfferFullPreview.status === helpOfferStatus.UNPUBLISHED"
-        [class.header__status_rejected]="_helpOfferFullPreview.status === helpOfferStatus.REJECTED"
-      >
-        <span>{{ 'helpOfferStatus.' + _helpOfferFullPreview.status | translate }}</span>
-      </div>
+        [status]="_helpOfferFullPreview.status"
+      ></app-admin-small-help-offer-status>
     </mat-card-header>
 
     <mat-card-content>
