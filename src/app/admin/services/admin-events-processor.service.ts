@@ -8,10 +8,13 @@ import { DestroyEmitter } from '../../shared/abstracts/destroy-emitter.class';
 import {
   AppEventBusService,
   AppEventName,
+  FailedDeleteHelpOffer,
   FailedGetOneFullHelpOffer,
   FailedHelpOfferStatusUpdate,
+  MakeDeleteHelpOfferRequestPayload,
   MakeGetOneFullHelpOfferRequestPayload,
   MakeHelpOfferStatusUpdateRequestPayload,
+  SuccessDeleteHelpOffer,
   SuccessGetOneFullHelpOffer,
   SuccessHelpOfferStatusUpdate,
 } from '../../events';
@@ -23,9 +26,12 @@ export class AdminEventsProcessorService extends DestroyEmitter {
     private readonly adminHelpOffersHttpService: AdminHelpOffersHttpService
   ) {
     super();
+  }
 
+  public setUpProcessors(): void {
     this.processGetOneFullHelpOfferRequests();
     this.processHelpOfferStatusUpdateRequests();
+    this.processDeleteHelpOfferRequests();
   }
 
   private processGetOneFullHelpOfferRequests(): void {
@@ -75,6 +81,32 @@ export class AdminEventsProcessorService extends DestroyEmitter {
                 this.eventBusService.emit(
                   new FailedHelpOfferStatusUpdate(error)
                 );
+                return of(null);
+              }),
+              takeUntil(this.destroy$)
+            )
+            .subscribe();
+        }),
+        takeUntil(this.destroy$)
+      )
+      .subscribe();
+  }
+
+  private processDeleteHelpOfferRequests(): void {
+    this.eventBusService
+      .on<MakeDeleteHelpOfferRequestPayload>(
+        AppEventName.MAKE_DELETE_HELP_OFFER_REQUEST
+      )
+      .pipe(
+        tap(({ id }) => {
+          this.adminHelpOffersHttpService
+            .deleteOneById(id)
+            .pipe(
+              tap((response) =>
+                this.eventBusService.emit(new SuccessDeleteHelpOffer(response))
+              ),
+              catchError((error: HttpErrorResponse) => {
+                this.eventBusService.emit(new FailedDeleteHelpOffer(error));
                 return of(null);
               }),
               takeUntil(this.destroy$)
