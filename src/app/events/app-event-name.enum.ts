@@ -10,4 +10,8 @@ export enum AppEventName {
   MAKE_HELP_OFFER_STATUS_UPDATE_REQUEST = 'make-help-offer-status-update-request',
   SUCCESS_HELP_OFFER_STATUS_UPDATE = 'success-help-offer-status-update',
   FAILED_HELP_OFFER_STATUS_UPDATE = 'failed-help-offer-status-update',
+
+  MAKE_DELETE_HELP_OFFER_REQUEST = 'make-delete-help-offer-request',
+  SUCCESS_DELETE_HELP_OFFER = 'success-delete-help-offer',
+  FAILED_DELETE_HELP_OFFER = 'failed-delete-help-offer',
 }
