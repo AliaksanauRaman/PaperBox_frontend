@@ -9,3 +9,7 @@ export * from './failed-get-one-full-help-offer';
 export * from './make-help-offer-status-update-request';
 export * from './success-help-offer-status-update';
 export * from './failed-help-offer-status-update';
+
+export * from './make-delete-help-offer-request';
+export * from './success-delete-help-offer';
+export * from './failed-delete-help-offer';
