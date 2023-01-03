@@ -8,6 +8,9 @@ import {
   MakeHelpOfferStatusUpdateRequest,
   SuccessHelpOfferStatusUpdate,
   FailedHelpOfferStatusUpdate,
+  MakeDeleteHelpOfferRequest,
+  SuccessDeleteHelpOffer,
+  FailedDeleteHelpOffer,
 } from './entries';
 
 export type AppEventUnion =
@@ -19,4 +22,7 @@ export type AppEventUnion =
   | FailedGetOneFullHelpOffer
   | MakeHelpOfferStatusUpdateRequest
   | SuccessHelpOfferStatusUpdate
-  | FailedHelpOfferStatusUpdate;
+  | FailedHelpOfferStatusUpdate
+  | MakeDeleteHelpOfferRequest
+  | SuccessDeleteHelpOffer
+  | FailedDeleteHelpOffer;
