@@ -60,6 +60,8 @@ import { AdminEventsProcessorService } from './services/admin-events-processor.s
 })
 export class AdminModule {
   constructor(
-    private readonly _adminEventsProcessorService: AdminEventsProcessorService
-  ) {}
+    private readonly adminEventsProcessorService: AdminEventsProcessorService
+  ) {
+    this.adminEventsProcessorService.setUpProcessors();
+  }
 }
