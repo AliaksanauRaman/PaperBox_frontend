@@ -1,3 +1,4 @@
+<!-- TODO: Refactor, viewContext and errors streams -->
 <div class="admin-manage-help-offer-dialog">
   <div class="header">
     <h1 class="header__title" mat-dialog-title>
@@ -14,68 +15,100 @@
   </div>
 
   <ng-container *ngIf="viewContext$ | async as viewContext">
-    <ng-container *ngIf="viewContext.getByIdInProgress">
-      <div class="loading-view">
-        <mat-spinner [diameter]="50"></mat-spinner>
-      </div>
-    </ng-container>
+    <ng-container *ngIf="!viewContext.deleted; else deletedHelpOfferView">
+      <ng-container *ngIf="viewContext.getByIdInProgress">
+        <div class="loading-view">
+          <mat-spinner diameter="50"></mat-spinner>
+        </div>
+      </ng-container>
 
-    <ng-container *ngIf="viewContext.fullHelpOffer as fullHelpOffer">
-      <mat-dialog-content class="content">
-        <app-admin-help-offer-details
-          [helpOffer]="fullHelpOffer"
-        ></app-admin-help-offer-details>
+      <ng-container *ngIf="viewContext.fullHelpOffer as fullHelpOffer">
+        <mat-dialog-content class="content">
+          <app-admin-help-offer-details
+            [helpOffer]="fullHelpOffer"
+          ></app-admin-help-offer-details>
 
-        <ng-container *ngIf="viewContext.updateStatusError as updateStatusError">
-          <div class="update-status-error-message">
-            <span>{{ updateStatusError | appHttpErrorMessage }}</span>
+          <ng-container *ngIf="viewContext.updateStatusError || viewContext.deleteByIdError as error">
+            <div class="update-status-error-message">
+              <span>{{ error | appHttpErrorMessage }}</span>
+            </div>
+          </ng-container>
+        </mat-dialog-content>
+
+        <mat-dialog-actions class="actions">
+          <div class="actions__status-changes">
+            <button
+              class="actions__item"
+              *ngIf="fullHelpOffer.status !== helpOfferStatus.PUBLISHED"
+              mat-raised-button
+              color="custom-green"
+              [disabled]="viewContext.updateStatusInProgress || viewContext.deleteByIdInProgress"
+              (click)="handlePublishButtonClick()"
+            >
+              <span>{{ "dialogs.adminManageHelpOffer.publishButtonLabel" | translate }}</span>
+            </button>
+
+            <button
+              class="actions__item"
+              *ngIf="fullHelpOffer.status !== helpOfferStatus.UNPUBLISHED"
+              mat-raised-button
+              color="custom-yellow"
+              [disabled]="viewContext.updateStatusInProgress || viewContext.deleteByIdInProgress"
+              (click)="handleUnpublishButtonClick()"
+            >
+              <span>{{ "dialogs.adminManageHelpOffer.unpublishButtonLabel" | translate }}</span>
+            </button>
+
+            <button
+              class="actions__item"
+              *ngIf="fullHelpOffer.status !== helpOfferStatus.REJECTED"
+              mat-raised-button
+              color="custom-red"
+              [disabled]="viewContext.updateStatusInProgress || viewContext.deleteByIdInProgress"
+              (click)="handleRejectButtonClick()"
+            >
+              <span>{{ "dialogs.adminManageHelpOffer.rejectButtonLabel" | translate }}</span>
+            </button>
           </div>
-        </ng-container>
-      </mat-dialog-content>
 
-      <mat-dialog-actions class="actions">
-        <button
-          class="actions__item"
-          *ngIf="fullHelpOffer.status !== helpOfferStatus.PUBLISHED"
-          mat-raised-button
-          color="publish"
-          [disabled]="viewContext.updateStatusInProgress"
-          (click)="handlePublishButtonClick()"
-        >
-          <span>{{ "dialogs.adminManageHelpOffer.publishButtonLabel" | translate }}</span>
-        </button>
+          <div class="actions__other">
+            <div class="delete-button-container">
+              <mat-spinner
+                class="circle-timer"
+                [value]="spinnerLength$ | async"
+                mode="determinate"
+                diameter="58"
+                strokeWidth="2"
+                color="primary"
+              >
+              </mat-spinner>
 
-        <button
-          class="actions__item"
-          *ngIf="fullHelpOffer.status !== helpOfferStatus.UNPUBLISHED"
-          mat-raised-button
-          color="unpublish"
-          [disabled]="viewContext.updateStatusInProgress"
-          (click)="handleUnpublishButtonClick()"
-        >
-          <span>{{ "dialogs.adminManageHelpOffer.unpublishButtonLabel" | translate }}</span>
-        </button>
+              <button
+                mat-icon-button
+                color="custom-red"
+                [disabled]="!(deleteButtonEnabled$ | async) || viewContext.updateStatusInProgress || viewContext.deleteByIdInProgress"
+                (click)="handleDeleteButtonClick()"
+              >
+                <mat-icon>delete</mat-icon>
+              </button>
+            </div>
+          </div>
+        </mat-dialog-actions>
+      </ng-container>
 
-        <button
-          class="actions__item"
-          *ngIf="fullHelpOffer.status !== helpOfferStatus.REJECTED"
-          mat-raised-button
-          color="reject"
-          [disabled]="viewContext.updateStatusInProgress"
-          (click)="handleRejectButtonClick()"
-        >
-          <span>{{ "dialogs.adminManageHelpOffer.rejectButtonLabel" | translate }}</span>
-        </button>
-
-      </mat-dialog-actions>
+      <ng-container *ngIf="viewContext.getByIdError as error">
+        <div class="error-view">
+          <app-http-error-response-card
+            [httpErrorResponse]="error"
+          ></app-http-error-response-card>
+        </div>
+      </ng-container>
     </ng-container>
 
-    <ng-container *ngIf="viewContext.getByIdError as error">
-      <div class="error-view">
-        <app-http-error-response-card
-          [httpErrorResponse]="error"
-        ></app-http-error-response-card>
-      </div>
-    </ng-container>
+    <ng-template #deletedHelpOfferView>
+      <app-admin-deleted-help-offer-dialog-view
+        (ok)="closeDialog()"
+      ></app-admin-deleted-help-offer-dialog-view>
+    </ng-template>
   </ng-container>
 </div>

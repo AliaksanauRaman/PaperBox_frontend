@@ -43,6 +43,27 @@
   padding: 24px;
 }
 
+.actions__status-changes {
+  flex-grow: 1;
+}
+
+.actions__other {
+  flex-shrink: 0;
+  margin-left: 10px;
+}
+
+.delete-button-container {
+  position: relative;
+  width: 48px;
+  height: 48px;
+
+  .circle-timer {
+    position: absolute;
+    top: -5px;
+    left: -5px;
+  }
+}
+
 .actions__item {
   min-width: 140px;
   text-transform: capitalize;
@@ -50,21 +71,6 @@
   &:not(:last-child) {
     margin-right: 10px;
   }
-}
-
-.mat-publish {
-  color: var(--green-color);
-  background-color: var(--light-green-color);
-}
-
-.mat-unpublish {
-  color: var(--amber-color);
-  background-color: var(--light-amber-color);
-}
-
-.mat-reject {
-  color: var(--red-color);
-  background-color: var(--light-red-color);
 }
 
 .error-view {
