@@ -11,6 +11,8 @@ import { HelpOfferPublicPreviewType } from "../shared/types/help-offer-public-pr
   providedIn: 'root',
 })
 export class HelpOffersHttpService {
+  private readonly helpOffersApiUrl = `${this.apiUrl}/help-offers`;
+
   constructor(
     @Inject(API_URL)
     private readonly apiUrl: string,
@@ -19,13 +21,13 @@ export class HelpOffersHttpService {
 
   public getPublicPreviewsOfPublished(): Observable<Array<HelpOfferPublicPreviewType>> {
     return this.httpClient.get<Array<HelpOfferPublicPreviewType>>(
-      `${this.apiUrl}/help-offers/public-previews-of-published`
+      `${this.helpOffersApiUrl}/public-previews-of-published`
     );
   }
 
   public createOneUnpublished(createHelpOfferDto: CreateHelpOfferDto): Observable<unknown> {
     return this.httpClient.post(
-      `${this.apiUrl}/help-offers/create-one-unpublished`,
+      `${this.helpOffersApiUrl}/one-unpublished`,
       createHelpOfferDto,
     );
   }

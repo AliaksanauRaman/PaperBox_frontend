@@ -36,7 +36,7 @@ export class AdminHelpOffersHttpService {
     newStatus: HelpOfferStatus
   ): Observable<UpdateHelpOfferStatusResponseType> {
     return this.httpClient.patch<UpdateHelpOfferStatusResponseType>(
-      `${this.helpOffersApiUrl}/update-status-of-one/${helpOfferId}`,
+      `${this.helpOffersApiUrl}/status-of-one/${helpOfferId}`,
       { newStatus }
     );
   }
