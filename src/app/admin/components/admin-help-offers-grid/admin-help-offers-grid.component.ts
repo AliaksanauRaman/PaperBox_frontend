@@ -10,7 +10,7 @@ import { HelpOfferFullPreviewType } from '../../../shared/types/help-offer-full-
 })
 export class AdminHelpOffersGridComponent {
   @Input()
-  set fullPreviewsOfAllHelpOffers(value: ReadonlyArray<HelpOfferFullPreviewType>) {
+  public set fullPreviewsOfAllHelpOffers(value: ReadonlyArray<HelpOfferFullPreviewType>) {
     // TODO: More strict types check?
     if (!Array.isArray(value)) {
       throw new Error('Only arrays are allowed here!');

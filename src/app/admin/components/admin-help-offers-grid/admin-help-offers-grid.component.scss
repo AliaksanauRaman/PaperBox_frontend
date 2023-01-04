@@ -1,11 +1,21 @@
 @import '../../../styles/scss-variables';
 
 :host {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-height: 0;
 }
 
 // TODO: Move grid styles to a shared place
 .admin-help-offers-grid {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-height: 0;
+}
+
+.grid-content {
   display: flex;
   flex-wrap: wrap;
 }
@@ -17,6 +27,15 @@
   &:not(:last-child) {
     padding-bottom: 10px;
   }
+}
+
+.empty-list-view {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  min-height: 0;
 }
 
 @media (min-width: $minLaptopScreenWidth) {
