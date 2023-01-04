@@ -48,7 +48,10 @@
       "createdDateTimeFieldLabel": "Created",
       "publishButtonLabel": "Publish",
       "unpublishButtonLabel": "Unpublish",
-      "rejectButtonLabel": "Reject"
+      "rejectButtonLabel": "Reject",
+      "successfulHelpOfferDeletionMessage": "The deletion was successful!",
+      "accidentalHelpOfferDeletionWarningMessage": "If the deletion was accidental, please contact the main developer.",
+      "okButtonLabel": "Ok"
     }
   },
   "components": {

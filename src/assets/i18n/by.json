@@ -48,7 +48,10 @@
       "createdDateTimeFieldLabel": "Створаны",
       "publishButtonLabel": "Апублікаваць",
       "unpublishButtonLabel": "Схаваць",
-      "rejectButtonLabel": "Адхіліць"
+      "rejectButtonLabel": "Адхіліць",
+      "successfulHelpOfferDeletionMessage": "Выдаленне прайшло паспяхова!",
+      "accidentalHelpOfferDeletionWarningMessage": "Калі выдаленне было выпадковым звярніцеся, калі ласка, да галоўнага распрацоўніка.",
+      "okButtonLabel": "Добра"
     }
   },
   "components": {
