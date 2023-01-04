@@ -9,12 +9,14 @@ import {
   AppEventBusService,
   AppEventName,
   FailedDeleteHelpOffer,
+  FailedGetFullPreviewsOfAllHelpOffers,
   FailedGetOneFullHelpOffer,
   FailedHelpOfferStatusUpdate,
   MakeDeleteHelpOfferRequestPayload,
   MakeGetOneFullHelpOfferRequestPayload,
   MakeHelpOfferStatusUpdateRequestPayload,
   SuccessDeleteHelpOffer,
+  SuccessGetFullPreviewsOfAllHelpOffers,
   SuccessGetOneFullHelpOffer,
   SuccessHelpOfferStatusUpdate,
 } from '../../events';
@@ -29,9 +31,38 @@ export class AdminEventsProcessorService extends DestroyEmitter {
   }
 
   public setUpProcessors(): void {
+    this.processGetFullPreviewsOfAllHelpOffersRequests();
     this.processGetOneFullHelpOfferRequests();
     this.processHelpOfferStatusUpdateRequests();
     this.processDeleteHelpOfferRequests();
+  }
+
+  private processGetFullPreviewsOfAllHelpOffersRequests(): void {
+    this.eventBusService
+      .on(AppEventName.MAKE_GET_FULL_PREVIEWS_OF_ALL_HELP_OFFERS_REQUEST)
+      .pipe(
+        tap(() => {
+          this.adminHelpOffersHttpService
+            .getFullPreviewsOfAll()
+            .pipe(
+              tap((response) =>
+                this.eventBusService.emit(
+                  new SuccessGetFullPreviewsOfAllHelpOffers(response)
+                )
+              ),
+              catchError((error: HttpErrorResponse) => {
+                this.eventBusService.emit(
+                  new FailedGetFullPreviewsOfAllHelpOffers(error)
+                );
+                return of(null);
+              }),
+              takeUntil(this.destroy$)
+            )
+            .subscribe();
+        }),
+        takeUntil(this.destroy$)
+      )
+      .subscribe();
   }
 
   private processGetOneFullHelpOfferRequests(): void {
