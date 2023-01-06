@@ -15,7 +15,7 @@ import { DateControlModule } from './shared/components/date-control/date-control
 import { InputControlModule } from './shared/components/input-control/input-control.module';
 
 import { AppComponent } from './app.component';
-import { MainPageComponent } from './pages/main/main-page.component';
+import { IndexPageLayoutComponent } from './core/layouts/index-page-layout/index-page-layout.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ContentComponent } from './components/content/content.component';
@@ -35,7 +35,7 @@ import { translateLoaderFactory } from './core/factories/translate-loader.factor
 @NgModule({
   declarations: [
     AppComponent,
-    MainPageComponent,
+    IndexPageLayoutComponent,
     HeaderComponent,
     FooterComponent,
     ContentComponent,
