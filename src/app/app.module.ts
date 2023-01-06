@@ -10,15 +10,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 
+import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './app-routing.module';
 import { DateControlModule } from './shared/components/date-control/date-control.module';
 import { InputControlModule } from './shared/components/input-control/input-control.module';
 
 import { AppComponent } from './app.component';
-import { IndexPageLayoutComponent } from './core/layouts/index-page-layout/index-page-layout.component';
-import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { ContentComponent } from './components/content/content.component';
 import { HelpOffersBoardComponent } from './components/help-offers-board/help-offers-board.component';
 import { HelpRequestsBoardComponent } from './components/help-requests-board/help-requests-board.component';
 import { GridOfHelpOffersComponent } from './components/grid-of-help-offers/grid-of-help-offers.component';
@@ -35,10 +32,6 @@ import { translateLoaderFactory } from './core/factories/translate-loader.factor
 @NgModule({
   declarations: [
     AppComponent,
-    IndexPageLayoutComponent,
-    HeaderComponent,
-    FooterComponent,
-    ContentComponent,
     HelpOffersBoardComponent,
     HelpRequestsBoardComponent,
     GridOfHelpOffersComponent,
@@ -53,6 +46,7 @@ import { translateLoaderFactory } from './core/factories/translate-loader.factor
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
+    CoreModule,
     AppRoutingModule,
     InputControlModule,
     DateControlModule,
