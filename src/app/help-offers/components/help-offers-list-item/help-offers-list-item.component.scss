@@ -1,3 +1,61 @@
 :host {
-  display: block;
+  display: flex;
+  width: 100%;
+
+  &.hovered {
+    .help-offers-list-item {
+      z-index: 1;
+      box-shadow: 5px 5px 15px 3px rgba($color: #4E91F7, $alpha: .2); // PRIMARY COLOR
+
+      .info-area__direction {
+        color: var(--primary-color);
+      }
+    }
+  }
+}
+
+.help-offers-list-item {
+  cursor: pointer;
+  z-index: 0;
+  display: flex;
+  width: inherit;
+  padding: 20px 16px;
+  background-color: var(--white-color);
+  border-radius: 12px;
+  transition: .25s all ease-in-out;
+}
+
+.info-area {
+  flex-grow: 1;
+}
+
+.info-area__direction {
+  margin-bottom: 5px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--black-color);
+  transition: .25s color ease-in-out;
+}
+
+.info-area__full-name {
+  margin-bottom: 12px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--grey-color);
+}
+
+.info-area__date {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--grey-color);
+  opacity: 0.5;
+}
+
+.toggle-icon-area {
+  flex-shrink: 0;
+  margin-left: 10px;
+}
+
+.toggle-icon-area__icon {
+  margin-top: 3px;
 }
