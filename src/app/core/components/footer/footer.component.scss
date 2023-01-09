@@ -1,3 +1,23 @@
 :host {
-  display: block;
+  display: flex;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  padding: 20px;
+  background-color: var(--primary-color);
+}
+
+.leave-feedback-button {
+  flex-shrink: 0;
+  margin-bottom: 20px;
+}
+
+.copyright {
+  flex-shrink: 0;
+  color: var(--white-color);
 }

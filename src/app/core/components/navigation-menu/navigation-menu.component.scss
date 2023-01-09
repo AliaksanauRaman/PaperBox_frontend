@@ -1,3 +1,41 @@
 :host {
   display: block;
 }
+
+.navigation-menu {
+  display: flex;
+}
+
+.item {
+  position: relative;
+  display: flex;
+  flex-shrink: 0;
+  width: 50%;
+
+  &:first-child {
+    justify-content: flex-end;
+    padding-right: 14px;
+
+    &::after {
+      content: '';
+      position: absolute;
+      right: -0.75px;
+      width: 1.5px;
+      height: 20px;
+      background-color: var(--primary-color);
+      border-radius: 1px;
+    }
+  }
+
+  &:last-child {
+    padding-left: 14px;
+  }
+}
+
+.item__link {
+  font-size: 0.9rem;
+
+  &.item__link--active {
+    color: var(--primary-color)
+  }
+}

@@ -1,3 +1,42 @@
+$logoWidth: 88px;
+$logoHeight: 44px;
+
 :host {
-  display: block;
+  display: flex;
+  width: 100%;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  height: $logoHeight;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  width: $logoWidth;
+  height: $logoHeight;
+  // TODO: Temp
+  font-size: 32px;
+  text-transform: capitalize;
+  border: 2px solid black;
+}
+
+.tools {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-grow: 1;
+  height: $logoHeight;
+}
+
+.tools__item {
+
+  &:first-child {
+    margin-right: 10px;
+  }
 }
