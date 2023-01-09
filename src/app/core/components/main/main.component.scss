@@ -17,13 +17,15 @@
   flex-direction: column;
   flex-grow: 1;
   min-height: 0;
-  padding: 30px 20px;
   background-color: var(--white-color);
   border-radius: 12px;
+  overflow: hidden;
 }
 
 .container__navigation-menu {
   flex-shrink: 0;
+  margin-top: 30px;
+  margin-bottom: 20px;
 }
 
 .container__content {
@@ -31,5 +33,4 @@
   flex-direction: column;
   flex-grow: 1;
   min-height: 0;
-  padding-top: 30px;
 }

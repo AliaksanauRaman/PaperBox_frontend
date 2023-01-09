@@ -11,21 +11,14 @@
 
 .item {
   display: flex;
+  justify-content: center;
   flex-shrink: 0;
   width: 50%;
-
-  &:first-child {
-    justify-content: flex-end;
-    padding-right: 14px;
-  }
-
-  &:last-child {
-    padding-left: 14px;
-  }
 }
 
 .item__link {
   font-size: 0.9rem;
+  text-align: center;
 
   &.item__link--active {
     color: var(--primary-color)
