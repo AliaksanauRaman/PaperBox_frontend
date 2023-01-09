@@ -1,4 +1,4 @@
-$logoWidth: 88px;
+$logoWidth: 59px;
 $logoHeight: 44px;
 
 :host {
@@ -20,10 +20,11 @@ $logoHeight: 44px;
   flex-shrink: 0;
   width: $logoWidth;
   height: $logoHeight;
-  // TODO: Temp
-  font-size: 32px;
-  text-transform: capitalize;
-  border: 2px solid black;
+}
+
+.logo__image {
+  width: inherit;
+  height: inherit;
 }
 
 .tools {
