@@ -3,11 +3,13 @@
 }
 
 .navigation-menu {
+  position: relative;
   display: flex;
+  align-items: center;
+  height: 18px;
 }
 
 .item {
-  position: relative;
   display: flex;
   flex-shrink: 0;
   width: 50%;
@@ -15,16 +17,6 @@
   &:first-child {
     justify-content: flex-end;
     padding-right: 14px;
-
-    &::after {
-      content: '';
-      position: absolute;
-      right: -0.75px;
-      width: 1.5px;
-      height: 20px;
-      background-color: var(--primary-color);
-      border-radius: 1px;
-    }
   }
 
   &:last-child {
@@ -38,4 +30,15 @@
   &.item__link--active {
     color: var(--primary-color)
   }
+}
+
+.divider {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1.5px;
+  height: 18px;
+  background-color: var(--primary-color);
+  border-radius: 1px;
+  transform: translateX(-50%);
 }
