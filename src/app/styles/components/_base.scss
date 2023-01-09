@@ -1,3 +1,11 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 14px;
+}
+
 body {
   position: relative;
   display: flex;
@@ -7,17 +15,24 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-* {
-  box-sizing: border-box;
-}
-
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
   padding: 0;
 }
 
-button[disabled=true] {
-  pointer-events: none !important;
-  color: gray !important;
-  background-color: lightgray !important;
+button {
+  cursor: pointer;
+
+  // TODO: Check
+  &[disabled=true] {
+    pointer-events: none !important;
+    color: gray !important;
+    background-color: lightgray !important;
+  }
+}
+
+a {
+  cursor: pointer;
+  color: var(--black-color);
+  text-decoration: none;
 }
