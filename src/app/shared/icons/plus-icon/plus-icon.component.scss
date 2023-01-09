@@ -5,6 +5,8 @@
 }
 
 path {
+  transition: .25s stroke ease-in-out;
+
   &.black {
     stroke: var(--black-color);
   }
