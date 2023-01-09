@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import { HelpOffersRoutingModule } from './help-offers-routing.module';
 
@@ -8,7 +9,7 @@ import { HelpOffersListComponent } from './components/help-offers-list/help-offe
 import { HelpOffersListItemComponent } from './components/help-offers-list-item/help-offers-list-item.component';
 
 @NgModule({
-  imports: [HelpOffersRoutingModule],
+  imports: [CommonModule, HelpOffersRoutingModule],
   declarations: [
     HelpOffersMainViewComponent,
     HelpOffersListComponent,
