@@ -3,3 +3,13 @@
   width: 18px;
   height: 18px;
 }
+
+path {
+  &.black {
+    stroke: var(--black-color);
+  }
+
+  &.grey {
+    stroke: var(--grey-color);
+  }
+}

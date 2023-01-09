@@ -1,6 +1,7 @@
-import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
-// TODO: Remove redundant functionality
+type PlusIconColor = 'black' | 'grey';
+
 @Component({
   selector: 'app-plus-icon',
   templateUrl: './plus-icon.component.html',
@@ -8,26 +9,10 @@ import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PlusIconComponent {
-  @HostBinding('style.width')
-  public get cssWidth(): string {
-    return this._cssWidth;
-  }
-
-  @HostBinding('style.height')
-  public get cssHeight(): string {
-    return this._cssHeight;
-  }
-
   @Input()
-  public set width(cssWidth: string) {
-    this._cssWidth = cssWidth;
+  public set color(value: PlusIconColor) {
+    this._color = value;
   }
 
-  @Input()
-  public set height(cssHeight: string) {
-    this._cssHeight = cssHeight;
-  }
-
-  private _cssWidth = '18px';
-  private _cssHeight = '18px';
+  protected _color: PlusIconColor = 'black';
 }
