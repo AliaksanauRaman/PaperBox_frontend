@@ -3,9 +3,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { IndexPageLayoutComponent } from './core/layouts/index-page-layout/index-page-layout.component';
 
-import { HelpOffersPageComponent } from './pages/help-offers-page/help-offers-page.component';
-import { HelpRequestsPageComponent } from './pages/help-requests-page/help-requests-page.component';
-
 const routes: Routes = [
   {
     path: '',
@@ -18,11 +15,11 @@ const routes: Routes = [
       },
       {
         path: 'help-offers',
-        component: HelpOffersPageComponent,
+        loadChildren: () => import('./help-offers/help-offers.module').then(m => m.HelpOffersModule),
       },
       {
         path: 'help-requests',
-        component: HelpRequestsPageComponent,
+        loadChildren: () => import('./help-requests/help-requests.module').then(m => m.HelpRequestsModule),
       },
       {
         path: 'admin',

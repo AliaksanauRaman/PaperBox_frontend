@@ -22,9 +22,6 @@ import { GridOfHelpOffersComponent } from './components/grid-of-help-offers/grid
 import { PublicHelpOfferCardComponent } from './components/public-help-offer-card/public-help-offer-card.component';
 import { HelpOffersBoardHeaderComponent } from './components/help-offers-board-header/help-offers-board-header.component';
 import { NewHelpOfferDialogComponent } from './dialogs/new-help-offer-dialog/new-help-offer-dialog.component';
-import { HelpOffersPageComponent } from './pages/help-offers-page/help-offers-page.component';
-import { HelpRequestsPageComponent } from './pages/help-requests-page/help-requests-page.component';
-import { InnerPageLayoutComponent } from './layouts/inner-page-layout/inner-page-layout.component';
 
 import { API_URL, API_URL_VALUE } from './shared/dependencies/api-url';
 import { translateLoaderFactory } from './core/factories/translate-loader.factory';
@@ -38,9 +35,6 @@ import { translateLoaderFactory } from './core/factories/translate-loader.factor
     PublicHelpOfferCardComponent,
     HelpOffersBoardHeaderComponent,
     NewHelpOfferDialogComponent,
-    HelpOffersPageComponent,
-    HelpRequestsPageComponent,
-    InnerPageLayoutComponent,
   ],
   imports: [
     BrowserModule,
