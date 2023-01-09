@@ -1,3 +1,17 @@
 :host {
-  display: block;
+  display: flex;
+  width: 22px;
+  height: 10px;
+}
+
+path {
+  transition: .25s stroke ease-in-out;
+
+  &.grey {
+    stroke: var(--grey-color);
+  }
+
+  &.primary {
+    stroke: var(--primary-color);
+  }
 }

@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+
+type ArrowDownIconColor = 'grey' | 'primary';
 
 @Component({
   selector: 'app-arrow-down-icon',
@@ -7,5 +9,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ArrowDownIconComponent {
+  @Input()
+  public set color(value: ArrowDownIconColor) {
+    this._color = value;
+  }
 
+  protected _color: ArrowDownIconColor = 'grey';
 }
