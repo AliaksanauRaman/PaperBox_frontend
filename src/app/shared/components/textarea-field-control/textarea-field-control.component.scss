@@ -1,3 +1,33 @@
+// TODO: Think about common styles
+$padding: 12px;
+
 :host {
-  display: block;
+  display: flex;
+  width: 100%;
+}
+
+.textarea-field-control {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.label {
+  flex-shrink: 0;
+  margin-bottom: 3px;
+  padding: 0 $padding;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--grey-color);
+}
+
+.control {
+  flex-shrink: 0;
+  min-height: 136px;
+  padding: 0 $padding;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--primary-color);
+  resize: none;
 }

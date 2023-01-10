@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import { TextareaFieldControlComponent } from './textarea-field-control.component';
 
 @NgModule({
-  imports: [],
+  imports: [CommonModule],
   declarations: [TextareaFieldControlComponent],
   providers: [],
   exports: [TextareaFieldControlComponent],

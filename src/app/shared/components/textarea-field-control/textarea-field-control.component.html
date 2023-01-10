@@ -1,3 +1,16 @@
 <div class="textarea-field-control">
-  textarea-field-control
+  <label class="label" *ngIf="controlLabel" [for]="controlId">
+    <span>{{ controlLabel }}</span>
+  </label>
+
+  <textarea
+    #textareaRef
+    class="control"
+    [id]="controlId"
+    [disabled]="controlDisabled"
+    [value]="controlValue"
+    (input)="handleControlValueChange(textareaRef.value)"
+    (blur)="handleControlBlur()"
+  >
+  </textarea>
 </div>
