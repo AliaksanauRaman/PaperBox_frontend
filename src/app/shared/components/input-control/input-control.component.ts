@@ -1,7 +1,15 @@
-import { ChangeDetectionStrategy, Component, Input, forwardRef, ChangeDetectorRef } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  forwardRef,
+  ChangeDetectorRef,
+} from '@angular/core';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
 import { UniqueIdGeneratorService } from './../../../services/unique-id-generator.service';
+
+import { CustomControl } from '../../abstracts/custom-control.class';
 
 @Component({
   selector: 'app-input-control',
@@ -14,57 +22,36 @@ import { UniqueIdGeneratorService } from './../../../services/unique-id-generato
       multi: true,
     },
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class InputControlComponent implements ControlValueAccessor {
+export class InputControlComponent extends CustomControl<string> {
   @Input()
   public set label(value: string) {
-    this._label = value;
+    this.controlLabel = value;
   }
 
-  protected _label = '';
-  protected inputDisabled = false;
-  protected inputValue = '';
-  protected readonly inputId = this.uniqueIdGeneratorService.generate();
+  protected controlValue = '';
 
   constructor(
-    private readonly uniqueIdGeneratorService: UniqueIdGeneratorService,
-    private readonly cdRef: ChangeDetectorRef,
-  ) {}
+    uniqueIdGeneratorService: UniqueIdGeneratorService,
+    cdRef: ChangeDetectorRef
+  ) {
+    super(uniqueIdGeneratorService, cdRef);
+  }
 
   public writeValue(value: unknown): void {
     if (!this.isStringOrNull(value)) {
       throw new Error('Only strings and null are allowed!');
     }
 
-    this.inputValue = value === null ? '' : value;
+    this.controlValue = value === null ? '' : value;
     this.cdRef.markForCheck();
   }
 
-  public registerOnChange(fn: (value: string) => void): void {
-    this.onChange = fn;
+  public handleControlValueChange(inputValue: string): void {
+    this.controlValue = inputValue;
+    this.onChange(this.controlValue);
   }
-
-  public registerOnTouched(fn: () => void): void {
-    this.onTouch = fn;
-  }
-
-  public setDisabledState(isDisabled: boolean): void {
-    this.inputDisabled = isDisabled;
-    this.cdRef.markForCheck();
-  }
-
-  public handleInputValueChange(inputValue: string): void {
-    this.inputValue = inputValue;
-    this.onChange(this.inputValue);
-  }
-
-  public handleInputBlur(): void {
-    this.onTouch();
-  }
-
-  private onChange = (value: string) => {};
-  private onTouch = () => {};
 
   private isStringOrNull(value: unknown): value is string | null {
     return typeof value === 'string' || value === null;
