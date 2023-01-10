@@ -7,6 +7,7 @@ import { PlusIconModule } from '../shared/icons/plus-icon/plus-icon.module';
 import { ManWithGlobeImageModule } from '../shared/images/man-with-globe-image/man-with-globe-image.module';
 import { FeedbackImageModule } from '../shared/images/feedback-image/feedback-image.module';
 import { InputControlModule } from '../shared/components/input-control/input-control.module';
+import { TextareaFieldControlModule } from '../shared/components/textarea-field-control/textarea-field-control.module';
 
 import { IndexPageLayoutComponent } from './layouts/index-page-layout/index-page-layout.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -41,6 +42,7 @@ const CORE_DECLARATIONS = [
     ManWithGlobeImageModule,
     FeedbackImageModule,
     InputControlModule,
+    TextareaFieldControlModule,
   ],
   declarations: CORE_DECLARATIONS,
   exports: CORE_DECLARATIONS,
