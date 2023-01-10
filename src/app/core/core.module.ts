@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 import { PlusIconModule } from '../shared/icons/plus-icon/plus-icon.module';
@@ -29,6 +30,7 @@ const CORE_DECLARATIONS = [
 
 @NgModule({
   imports: [
+    CommonModule,
     RouterModule,
     PlusIconModule,
     ManWithGlobeImageModule,
