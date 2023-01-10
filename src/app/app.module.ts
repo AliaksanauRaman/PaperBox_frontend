@@ -17,7 +17,6 @@ import { InputControlModule } from './shared/components/input-control/input-cont
 
 import { AppComponent } from './app.component';
 import { HelpOffersBoardComponent } from './components/help-offers-board/help-offers-board.component';
-import { HelpRequestsBoardComponent } from './components/help-requests-board/help-requests-board.component';
 import { GridOfHelpOffersComponent } from './components/grid-of-help-offers/grid-of-help-offers.component';
 import { PublicHelpOfferCardComponent } from './components/public-help-offer-card/public-help-offer-card.component';
 import { HelpOffersBoardHeaderComponent } from './components/help-offers-board-header/help-offers-board-header.component';
@@ -30,7 +29,6 @@ import { translateLoaderFactory } from './core/factories/translate-loader.factor
   declarations: [
     AppComponent,
     HelpOffersBoardComponent,
-    HelpRequestsBoardComponent,
     GridOfHelpOffersComponent,
     PublicHelpOfferCardComponent,
     HelpOffersBoardHeaderComponent,
