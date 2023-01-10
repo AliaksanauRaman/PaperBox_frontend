@@ -1,26 +1,35 @@
 <!-- TODO: Fill in with real data -->
 <div class="help-offers-list-item">
-  <div class="info-area">
-    <div class="info-area__direction">
-      <span class="from">Минск</span>
-      <span class="dash"> - </span>
-      <span class="to">Вильнюс</span>
+  <div #staticPart class="static-part">
+    <div class="info-area">
+      <div class="info-area__direction">
+        <span class="from">Минск</span>
+        <span class="dash"> - </span>
+        <span class="to">Вильнюс</span>
+      </div>
+
+      <div class="info-area__full-name">
+        <span>Шик Дмитрий</span>
+      </div>
+
+      <div class="info-area__date">
+        <!-- TODO: Depends on type of date (range or specific) -->
+        <span>09.01.2023</span>
+      </div>
     </div>
 
-    <div class="info-area__full-name">
-      <span>Шик Дмитрий</span>
-    </div>
-
-    <div class="info-area__date">
-      <!-- TODO: Depends on type of date (range or specific) -->
-      <span>09.01.2023</span>
+    <div class="toggle-icon-area">
+      <app-arrow-down-icon
+        class="toggle-icon-area__icon"
+        [color]="_isHovered ? 'primary' : 'grey'"
+      >
+      </app-arrow-down-icon>
     </div>
   </div>
 
-  <div class="toggle-icon-area">
-    <app-arrow-down-icon
-      class="toggle-icon-area__icon"
-      [color]="_isHovered ? 'primary' : 'grey'"
-    ></app-arrow-down-icon>
+  <div #collapsiblePart class="collapsible-part">
+    <div class="comment">
+      <span>Передать нужно небольшой пакетик. Размеры 40*60. Желательно в руки утром до 09.00. Дополнительно доплачу за это. Чем быстрее, тем лучше.</span>
+    </div>
   </div>
 </div>

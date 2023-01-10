@@ -1,8 +1,10 @@
 :host {
   display: flex;
   width: 100%;
+  transition: .25s height ease-in-out;
 
-  &.hovered {
+  &.hovered,
+  &.expanded {
     .help-offers-list-item {
       z-index: 1;
       box-shadow: 5px 5px 15px 3px rgba($color: #4E91F7, $alpha: .2); // PRIMARY COLOR
@@ -12,17 +14,34 @@
       }
     }
   }
+
+  &.expanded {
+    .toggle-icon-area__icon {
+      transform: rotate(180deg);
+    }
+
+    .comment {
+      color: var(--grey-color);
+    }
+  }
 }
 
 .help-offers-list-item {
   cursor: pointer;
   z-index: 0;
   display: flex;
+  flex-direction: column;
   width: inherit;
   padding: 20px 16px;
   background-color: var(--white-color);
   border-radius: 12px;
   transition: .25s all ease-in-out;
+}
+
+.static-part {
+  display: flex;
+  flex-shrink: 0;
+  margin-bottom: 22px;
 }
 
 .info-area {
@@ -58,4 +77,17 @@
 
 .toggle-icon-area__icon {
   margin-top: 3px;
+  transition: .25s transform ease-in-out;
+}
+
+.collapsible-part {
+  pointer-events: none;
+  flex-shrink: 0;
+}
+
+.comment {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: transparent;
+  transition: .25s color ease-in-out;
 }
