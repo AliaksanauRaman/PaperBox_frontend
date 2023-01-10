@@ -1,13 +1,18 @@
 <div class="actions">
-  <button class="item item--inactive">
-    <app-plus-icon class="item__icon" color="grey"></app-plus-icon>
+  <ng-container *ngIf="activeView$ | async as activeView">
+    <ng-container *ngFor="let action of actions">
+      <button
+        class="item"
+        [class.item--inactive]="activeView !== action.relatedToView"
+      >
+        <app-plus-icon
+          class="item__icon"
+          [color]="activeView !== action.relatedToView ? 'grey' : 'black'"
+        >
+        </app-plus-icon>
 
-    <span class="item__text">Знайсці дапамогу</span>
-  </button>
-
-  <button class="item item--active">
-    <app-plus-icon class="item__icon"></app-plus-icon>
-
-    <span class="item__text">Прапанаваць дапамогу</span>
-  </button>
+        <span class="item__text">{{ action.label }}</span>
+      </button>
+    </ng-container>
+  </ng-container>
 </div>

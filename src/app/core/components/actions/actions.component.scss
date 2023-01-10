@@ -18,16 +18,14 @@ $actionItemHeight: 38px;
   width: 100%;
   height: $actionItemHeight;
   background-color: var(--white-color);
-  border: none;
+  border: 1px solid var(--primary-color);
   border-radius: 9px;
+  transition: .25s all ease-in-out;
 
   &.item--inactive {
     pointer-events: none;
     color: var(--grey-color);
-  }
-
-  &.item--active {
-    border: 1px solid var(--primary-color);
+    border-color: transparent;
   }
 
   &:first-child {
