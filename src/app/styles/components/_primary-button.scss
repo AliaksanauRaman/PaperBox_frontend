@@ -1,0 +1,21 @@
+button.app-primary-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 52px;
+  font-size: 18px; // TODO: Probably rem
+  font-weight: 600;
+  color: var(--white-color);
+  background-color: var(--primary-color);
+  border: none;
+  border-radius: var(--border-radius);
+  transition: .15s background-color ease-in-out;
+
+  &:hover {
+    background-color: var(--primary-hover-color);
+  }
+
+  &:active {
+    background-color: var(--primary-click-color);
+  }
+}
