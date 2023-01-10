@@ -2,18 +2,18 @@ import { Injectable } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject } from 'rxjs';
 
-import { AppLanguage } from '../../shared/enums/app-language.enum';
+import { AppLanguageValue } from '../../shared/enums/app-language-value.enum';
 
 // TODO: Inject?
 const DEFAULT_APP_LANGUAGES = [
   {
     label: 'BY',
-    value: AppLanguage.BELARUSIAN,
+    value: AppLanguageValue.BELARUSIAN,
     selected: true,
   },
   {
     label: 'EN',
-    value: AppLanguage.ENGLISH,
+    value: AppLanguageValue.ENGLISH,
     selected: false,
   },
 ];
@@ -29,8 +29,8 @@ export class AppLanguagesService {
   constructor(private readonly translateService: TranslateService) {}
 
   public setUp(): void {
-    this.translateService.setDefaultLang(AppLanguage.BELARUSIAN);
-    this.translateService.use(AppLanguage.BELARUSIAN);
+    this.translateService.setDefaultLang(AppLanguageValue.BELARUSIAN);
+    this.translateService.use(AppLanguageValue.BELARUSIAN);
   }
 
   // TODO: Types?
