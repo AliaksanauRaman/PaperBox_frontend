@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { DialogModule } from '@angular/cdk/dialog';
 
 import { PlusIconModule } from '../shared/icons/plus-icon/plus-icon.module';
 import { ManWithGlobeImageModule } from '../shared/images/man-with-globe-image/man-with-globe-image.module';
@@ -15,6 +16,7 @@ import { MainComponent } from './components/main/main.component';
 import { NavigationMenuComponent } from './components/navigation-menu/navigation-menu.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LeaveFeedbackButtonComponent } from './components/leave-feedback-button/leave-feedback-button.component';
+import { FeedbackDialogComponent } from './dialogs/feedback-dialog/feedback-dialog.component';
 
 const CORE_DECLARATIONS = [
   IndexPageLayoutComponent,
@@ -26,12 +28,14 @@ const CORE_DECLARATIONS = [
   NavigationMenuComponent,
   FooterComponent,
   LeaveFeedbackButtonComponent,
+  FeedbackDialogComponent,
 ];
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
+    DialogModule,
     PlusIconModule,
     ManWithGlobeImageModule,
     FeedbackImageModule,
