@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
 
-import { AppLanguage } from './shared/enums/app-language.enum';
+import { AppLanguagesService } from './core/services/app-languages.service';
 
 @Component({
   selector: 'app-root',
@@ -11,11 +10,10 @@ import { AppLanguage } from './shared/enums/app-language.enum';
 })
 export class AppComponent implements OnInit {
   constructor(
-    private readonly translateService: TranslateService,
+    private readonly languagesService: AppLanguagesService,
   ) {}
 
   public ngOnInit(): void {
-    this.translateService.setDefaultLang(AppLanguage.BELARUSIAN);
-    this.translateService.use(AppLanguage.BELARUSIAN);
+    this.languagesService.setUp();
   }
 }

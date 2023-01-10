@@ -19,10 +19,11 @@
   text-transform: capitalize;
 
   &.language--selected {
+    pointer-events: none;
     color: var(--black-color);
   }
 
-  &:first-child {
+  &:not(:last-child) {
     margin-right: 6px;
   }
 }

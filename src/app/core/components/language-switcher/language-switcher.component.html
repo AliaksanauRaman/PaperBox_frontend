@@ -1,4 +1,10 @@
 <div class="language-switcher">
-  <div class="language language--selected">BY</div>
-  <div class="language">EN</div>
+  <div
+    class="language"
+    *ngFor="let language of languages$ | async"
+    [class.language--selected]="language.selected"
+    (click)="handleLanguageSelection(language.value)"
+  >
+    <span>{{ language.label }}</span>
+  </div>
 </div>
