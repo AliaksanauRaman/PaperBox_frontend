@@ -1,6 +1,6 @@
 <div class="toolbar">
   <div class="logo">
-    <img class="logo__image" src="assets/images/logo.png" alt="Pushka">
+    <img class="logo__image" src="assets/images/logo.png" alt="Pushka" />
   </div>
 
   <div class="tools">
@@ -8,6 +8,10 @@
       class="tools__item language-switcher"
     ></app-language-switcher>
 
-    <app-leave-feedback-button class="tools__item"></app-leave-feedback-button>
+    <app-leave-feedback-button
+      class="tools__item"
+      (click)="handleLeaveFeedbackButtonClick()"
+    >
+    </app-leave-feedback-button>
   </div>
 </div>
