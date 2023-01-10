@@ -24,9 +24,10 @@ $padding: 12px;
 .control {
   flex-shrink: 0;
   min-height: 136px;
-  padding: 0 $padding;
+  padding: 15px $padding;
   font-size: 1rem;
   font-weight: 500;
+  line-height: 20px;
   border-radius: var(--border-radius);
   border: 1px solid var(--primary-color);
   resize: none;
