@@ -1,3 +1,30 @@
 <div class="feedback-dialog">
-  feedback-dialog
+  <h2 class="title">Обратная связь</h2>
+
+  <div class="close-button" (click)="closeDialog()">
+    <app-plus-icon class="close-button__icon"></app-plus-icon>
+  </div>
+
+  <form>
+    <app-input-control
+      class="full-name-control"
+      label="ФИО"
+    >
+    </app-input-control>
+
+    <app-input-control
+      class="email-control"
+      label="Email"
+    >
+    </app-input-control>
+
+    <!-- TODO: Textarea control -->
+    <app-input-control
+      class="comment-control"
+      label="Как улучшить сервис пушка?"
+    >
+    </app-input-control>
+
+    <button class="send-button app-primary-button">Отправить</button>
+  </form>
 </div>
