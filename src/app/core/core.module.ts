@@ -6,6 +6,7 @@ import { DialogModule } from '@angular/cdk/dialog';
 import { PlusIconModule } from '../shared/icons/plus-icon/plus-icon.module';
 import { ManWithGlobeImageModule } from '../shared/images/man-with-globe-image/man-with-globe-image.module';
 import { FeedbackImageModule } from '../shared/images/feedback-image/feedback-image.module';
+import { InputControlModule } from '../shared/components/input-control/input-control.module';
 
 import { IndexPageLayoutComponent } from './layouts/index-page-layout/index-page-layout.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -39,6 +40,7 @@ const CORE_DECLARATIONS = [
     PlusIconModule,
     ManWithGlobeImageModule,
     FeedbackImageModule,
+    InputControlModule,
   ],
   declarations: CORE_DECLARATIONS,
   exports: CORE_DECLARATIONS,
