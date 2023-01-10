@@ -48,11 +48,12 @@ export class InputControlComponent extends CustomControl<string> {
     this.cdRef.markForCheck();
   }
 
-  public handleControlValueChange(inputValue: string): void {
-    this.controlValue = inputValue;
+  public handleControlValueChange(newValue: string): void {
+    this.controlValue = newValue;
     this.onChange(this.controlValue);
   }
 
+  // TODO: Move to a shared place
   private isStringOrNull(value: unknown): value is string | null {
     return typeof value === 'string' || value === null;
   }
