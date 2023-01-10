@@ -1,7 +1,11 @@
 :root {
-  --bordering-padding: 15px;
+  --bordering-padding: 15px; // TODO: Is needed?
+
+  --border-radius: 12px;
 
   --primary-color: #4E91F7;
+  --primary-hover-color: #6AA2F6;
+  --primary-click-color: #8BB4F3;
   --primary-background-color: #EAEFF8;
 
   --white-color: #ffffff;
