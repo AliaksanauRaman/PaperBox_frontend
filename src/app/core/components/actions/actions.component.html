@@ -1,18 +1,31 @@
 <div class="actions">
   <ng-container *ngIf="activeView$ | async as activeView">
-    <ng-container *ngFor="let action of actions">
-      <button
-        class="item"
-        [class.item--inactive]="activeView !== action.relatedToView"
+    <button
+      class="item"
+      [class.item--inactive]="activeView !== viewName.HELP_OFFERS"
+      (click)="handleOfferHelpButtonClick()"
+    >
+      <app-plus-icon
+        class="item__icon"
+        [color]="activeView !== viewName.HELP_OFFERS ? 'grey' : 'black'"
       >
-        <app-plus-icon
-          class="item__icon"
-          [color]="activeView !== action.relatedToView ? 'grey' : 'black'"
-        >
-        </app-plus-icon>
+      </app-plus-icon>
 
-        <span class="item__text">{{ action.label | translate }}</span>
-      </button>
-    </ng-container>
+      <span class="item__text">{{ 'pages.index.actions.offerHelpButtonLabel' | translate }}</span>
+    </button>
+
+    <button
+      class="item"
+      [class.item--inactive]="activeView !== viewName.HELP_REQUESTS"
+      (click)="handleFindHelpButtonClick()"
+    >
+      <app-plus-icon
+        class="item__icon"
+        [color]="activeView !== viewName.HELP_REQUESTS ? 'grey' : 'black'"
+      >
+      </app-plus-icon>
+
+      <span class="item__text">{{ 'pages.index.actions.findHelpButtonLabel' | translate }}</span>
+    </button>
   </ng-container>
 </div>
