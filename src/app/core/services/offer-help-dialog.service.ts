@@ -10,6 +10,9 @@ export class OfferHelpDialogService {
   constructor(private readonly dialog: Dialog) {}
 
   public openDialog(): void {
-    this.dialog.open(OfferHelpDialogComponent);
+    this.dialog.open(OfferHelpDialogComponent, {
+      // TODO: Move to constants
+      panelClass: 'app-custom-dialog',
+    });
   }
 }

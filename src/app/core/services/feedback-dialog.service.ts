@@ -4,14 +4,15 @@ import { Dialog } from '@angular/cdk/dialog';
 import { FeedbackDialogComponent } from '../dialogs/feedback-dialog/feedback-dialog.component';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FeedbackDialogService {
-  constructor(
-    private readonly dialog: Dialog,
-  ) { }
+  constructor(private readonly dialog: Dialog) {}
 
   public openDialog(): void {
-    this.dialog.open(FeedbackDialogComponent);
+    this.dialog.open(FeedbackDialogComponent, {
+      // TODO: Move to constants
+      panelClass: 'app-custom-dialog',
+    });
   }
 }
