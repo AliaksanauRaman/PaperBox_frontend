@@ -1,5 +1,7 @@
 <div class="feedback-dialog">
-  <h2 class="title">Обратная связь</h2>
+  <h2 class="title">
+    {{ 'dialogs.feedback.title' | translate }}
+  </h2>
 
   <div class="close-button" (click)="closeDialog()">
     <app-plus-icon class="close-button__icon"></app-plus-icon>
@@ -8,22 +10,24 @@
   <form>
     <app-input-control
       class="full-name-control"
-      label="ФИО"
+      [label]="'dialogs.feedback.fullNameFieldLabel' | translate"
     >
     </app-input-control>
 
     <app-input-control
       class="email-control"
-      label="Email"
+      [label]="'dialogs.feedback.emailFieldLabel' | translate"
     >
     </app-input-control>
 
     <app-textarea-field-control
       class="comment-control"
-      label="Як палепшыць наш сэрвіс?"
+      [label]="'dialogs.feedback.commentFieldLabel' | translate"
     >
     </app-textarea-field-control>
 
-    <button class="send-button app-primary-button">Отправить</button>
+    <button class="send-button app-primary-button" disabled>
+      <span>{{ 'dialogs.feedback.sendButtonLabel' | translate }}</span>
+    </button>
   </form>
 </div>
