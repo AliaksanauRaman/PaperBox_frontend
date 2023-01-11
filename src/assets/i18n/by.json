@@ -23,6 +23,13 @@
     }
   },
   "dialogs": {
+    "feedback": {
+      "title": "Зваротная сувязь",
+      "fullNameFieldLabel": "Поўнае імя",
+      "emailFieldLabel": "Электронная пошта",
+      "commentFieldLabel": "Як палепшыць наш сэрвіс?",
+      "sendButtonLabel": "Адправіць"
+    },
     "newHelpOffer": {
       "title": "Новая прапанова аб дапамозе",
       "fullNameFieldLabel": "Поўнае імя",
