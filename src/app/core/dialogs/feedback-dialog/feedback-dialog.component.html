@@ -1,9 +1,9 @@
 <div class="feedback-dialog">
-  <h2 class="title">
-    {{ 'dialogs.feedback.title' | translate }}
+  <h2 class="app-custom-dialog-title">
+    {{ "dialogs.feedback.title" | translate }}
   </h2>
 
-  <div class="close-button" (click)="closeDialog()">
+  <div class="app-custom-dialog-close-button" (click)="closeDialog()">
     <app-plus-icon class="close-button__icon"></app-plus-icon>
   </div>
 
@@ -27,7 +27,7 @@
     </app-textarea-field-control>
 
     <button class="send-button app-primary-button">
-      <span>{{ 'dialogs.feedback.sendButtonLabel' | translate }}</span>
+      <span>{{ "dialogs.feedback.sendButtonLabel" | translate }}</span>
     </button>
   </form>
 </div>

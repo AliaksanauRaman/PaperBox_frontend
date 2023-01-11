@@ -1,43 +1,12 @@
-$offset: 20px;
-
 :host {
-  position: fixed;
-  top: 50%;
-  right: $offset;
-  left: $offset;
   display: flex;
-  flex-direction: column;
-  background-color: var(--primary-background-color);
-  border-radius: var(--border-radius);
-  transform: translateY(-50%);
 }
 
 .feedback-dialog {
-  position: relative;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   min-height: 0;
-  padding: 40px 20px;
-}
-
-.title {
-  margin-bottom: 30px;
-  font-size: 1.4rem;
-  font-weight: 700;
-  text-align: center;
-}
-
-.close-button {
-  cursor: pointer;
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 24px;
-  height: 24px;
 }
 
 .close-button__icon {
