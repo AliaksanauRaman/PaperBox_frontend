@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { DialogModule } from '@angular/cdk/dialog';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { PlusIconModule } from '../shared/icons/plus-icon/plus-icon.module';
 import { ManWithGlobeImageModule } from '../shared/images/man-with-globe-image/man-with-globe-image.module';
@@ -38,6 +39,7 @@ const CORE_DECLARATIONS = [
     CommonModule,
     RouterModule,
     DialogModule,
+    TranslateModule,
     PlusIconModule,
     ManWithGlobeImageModule,
     FeedbackImageModule,
