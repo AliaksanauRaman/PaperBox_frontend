@@ -11,11 +11,11 @@ export type Actions = ReadonlyArray<Action>;
 export const ACTIONS = new InjectionToken<Actions>('ACTIONS');
 export const ACTIONS_VALUE: Actions = [
   {
-    label: 'Прапанаваць дапамогу',
+    label: 'pages.index.actions.offerHelpButtonLabel',
     relatedToView: ViewName.HELP_OFFERS,
   },
   {
-    label: 'Знайсці дапамогу',
+    label: 'pages.index.actions.findHelpButtonLabel',
     relatedToView: ViewName.HELP_REQUESTS,
   },
 ];

@@ -3,6 +3,16 @@
     "title": "Пушка"
   },
   "pages": {
+    "index": {
+      "actions": {
+        "offerHelpButtonLabel": "Прапанаваць дапамогу",
+        "findHelpButtonLabel": "Знайсці дапамогу"
+      },
+      "navigationMenu": {
+        "offerHelpLinkLabel": "Прапанаваць дапамогу",
+        "findHelpLinkLabel": "Знайсці дапамогу"
+      }
+    },
     "helpOffers": {
       "header": {
         "title": "Я магу дапамагчы!",
