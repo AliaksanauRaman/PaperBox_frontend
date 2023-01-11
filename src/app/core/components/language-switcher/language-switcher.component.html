@@ -3,8 +3,9 @@
     class="language"
     *ngFor="let language of languages$ | async"
     [class.language--selected]="language.selected"
-    (click)="handleLanguageSelection(language.value)"
   >
-    <span>{{ language.label }}</span>
+    <span (click)="handleLanguageSelection(language.value)">
+      {{ language.label }}
+    </span>
   </div>
 </div>
