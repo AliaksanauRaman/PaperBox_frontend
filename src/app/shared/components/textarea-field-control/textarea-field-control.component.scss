@@ -29,6 +29,11 @@ $padding: 12px;
   font-weight: 500;
   line-height: 20px;
   border-radius: var(--border-radius);
-  border: 1px solid var(--primary-color);
+  border: 1px solid var(--grey-color);
   resize: none;
+  transition: .25s border-color ease-in-out;
+
+  &:focus {
+    border-color: var(--primary-color);
+  }
 }
