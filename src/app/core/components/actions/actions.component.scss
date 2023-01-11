@@ -31,6 +31,10 @@ $actionItemHeight: 38px;
   &:first-child {
     margin-bottom: 10px;
   }
+
+  &:active {
+    border-color: var(--primary-click-color);
+  }
 }
 
 .item__icon {
