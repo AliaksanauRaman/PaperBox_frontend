@@ -23,6 +23,13 @@
     }
   },
   "dialogs": {
+    "feedback": {
+      "title": "Feedback",
+      "fullNameFieldLabel": "Full name",
+      "emailFieldLabel": "Email",
+      "commentFieldLabel": "How to improve our service?",
+      "sendButtonLabel": "Send"
+    },
     "newHelpOffer": {
       "title": "New help offer",
       "fullNameFieldLabel": "Full name",
