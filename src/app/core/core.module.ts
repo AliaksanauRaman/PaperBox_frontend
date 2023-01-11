@@ -20,8 +20,9 @@ import { NavigationMenuComponent } from './components/navigation-menu/navigation
 import { FooterComponent } from './components/footer/footer.component';
 import { LeaveFeedbackButtonComponent } from './components/leave-feedback-button/leave-feedback-button.component';
 import { FeedbackDialogComponent } from './dialogs/feedback-dialog/feedback-dialog.component';
+import { OfferHelpDialogComponent } from './dialogs/offer-help-dialog/offer-help-dialog.component';
 
-const CORE_DECLARATIONS = [
+const CORE_MODULE_DECLARATIONS = [
   IndexPageLayoutComponent,
   HeaderComponent,
   ToolbarComponent,
@@ -32,6 +33,7 @@ const CORE_DECLARATIONS = [
   FooterComponent,
   LeaveFeedbackButtonComponent,
   FeedbackDialogComponent,
+  OfferHelpDialogComponent,
 ];
 
 @NgModule({
@@ -46,7 +48,7 @@ const CORE_DECLARATIONS = [
     InputControlModule,
     TextareaFieldControlModule,
   ],
-  declarations: CORE_DECLARATIONS,
-  exports: CORE_DECLARATIONS,
+  declarations: CORE_MODULE_DECLARATIONS,
+  exports: CORE_MODULE_DECLARATIONS,
 })
 export class CoreModule {}
