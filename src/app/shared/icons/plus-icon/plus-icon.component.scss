@@ -1,7 +1,14 @@
+@import '../../../styles/scss-variables';
+
 :host {
   display: block;
-  width: 18px;
-  height: 18px;
+  width: 15px;
+  height: 15px;
+}
+
+svg {
+  width: 15px;
+  height: 15px;
 }
 
 path {
@@ -13,5 +20,17 @@ path {
 
   &.grey {
     stroke: var(--grey-color);
+  }
+}
+
+@media (min-width: $smallMobileScreenWidth) {
+  :host {
+    width: 18px;
+    height: 18px;
+  }
+
+  svg {
+    width: 18px;
+    height: 18px;
   }
 }
