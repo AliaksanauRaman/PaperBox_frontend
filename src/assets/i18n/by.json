@@ -84,5 +84,28 @@
     "published": "Апублікаваны",
     "unpublished": "Неапублікаваны",
     "rejected": "Адхілены"
+  },
+  "country": {
+    "belarus": "Беларусь",
+    "poland": "Польшча"
+  },
+  "city": {
+    "belarusian": {
+      "minsk": "Мінск",
+      "vitebsk": "Віцебск",
+      "gomel": "Гомель",
+      "mogilev": "Магілёў",
+      "grodno": "Гродна",
+      "brest": "Брэст"
+    },
+    "polish": {
+      "warsaw": "Варшава",
+      "krakow": "Кракаў",
+      "wroclaw": "Вроцлаў",
+      "gdansk": "Гданьск",
+      "lodz": "Лодзь",
+      "poznan": "Познань"
+    },
+    "other": "Іншы"
   }
 }
