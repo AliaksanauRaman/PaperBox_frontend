@@ -1,5 +1,7 @@
+@import './scss-variables';
+
 :root {
-  --bordering-padding: 15px; // TODO: Is needed?
+  --bordering-padding: 13px;
 
   --border-radius: 12px;
 
@@ -18,4 +20,10 @@
   --light-red-color: rgba(244, 67, 54, 0.12);
   --amber-color: #FFC107;
   --light-amber-color: rgba(255, 193, 7, 0.12);
+}
+
+@media (min-width: $smallMobileScreenWidth) {
+  :root {
+    --bordering-padding: 20px;
+  }
 }

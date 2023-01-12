@@ -8,7 +8,7 @@
   justify-content: center;
   align-items: center;
   flex-grow: 1;
-  padding: 20px;
+  padding: var(--bordering-padding);
   background-color: var(--primary-color);
 }
 

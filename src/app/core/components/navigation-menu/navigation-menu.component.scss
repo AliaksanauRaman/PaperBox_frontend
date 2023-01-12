@@ -6,7 +6,9 @@
   position: relative;
   display: flex;
   align-items: center;
-  height: 18px;
+  min-height: 18px;
+  max-height: 29px;
+  padding: 0 var(--bordering-padding);
 }
 
 .item {
@@ -14,6 +16,7 @@
   justify-content: center;
   flex-shrink: 0;
   width: 50%;
+  padding: 0 8px;
 }
 
 .item__link {
@@ -30,7 +33,7 @@
   top: 0;
   left: 50%;
   width: 1.5px;
-  height: 18px;
+  height: 100%;
   background-color: var(--primary-color);
   border-radius: 1px;
   transform: translateX(-50%);

@@ -1,3 +1,5 @@
+$borderingPadding: var(--bordering-padding);
+
 :host {
   display: flex;
   flex-direction: column;
@@ -10,7 +12,7 @@
   flex-direction: column;
   flex-grow: 1;
   min-height: 0;
-  padding: 10px 20px 20px 20px;
+  padding: 10px $borderingPadding 20px $borderingPadding;
   overflow-y: auto;
 }
 

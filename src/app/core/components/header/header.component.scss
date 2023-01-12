@@ -1,3 +1,7 @@
+@import '../../../styles/scss-variables';
+
+$borderingPadding: var(--bordering-padding);
+
 :host {
   display: flex;
   flex-direction: column;
@@ -7,7 +11,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: 20px 20px 30px 20px;
+  padding: $borderingPadding $borderingPadding 30px $borderingPadding;
 }
 
 .toolbar {
@@ -18,12 +22,18 @@
 .actions {
   z-index: 1;
   flex-grow: 1;
-  margin-top: 100px;
+  margin-top: 80px;
 }
 
 .man-with-globe-image {
   position: absolute;
   bottom: 0;
-  right: 20px;
+  right: $borderingPadding;
   z-index: 0;
+}
+
+@media (min-width: $smallMobileScreenWidth) {
+  .actions {
+    margin-top: 100px;
+  }
 }
