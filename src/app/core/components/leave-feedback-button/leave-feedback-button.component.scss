@@ -1,7 +1,9 @@
+@import '../../../styles/scss-variables';
+
 :host {
   display: flex;
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
 }
 
 .leave-feedback-button {
@@ -12,5 +14,12 @@
   height: inherit;
   background-color: var(--white-color);
   border: none;
-  border-radius: 12px;
+  border-radius: var(--border-radius);
+}
+
+@media (min-width: $smallMobileScreenWidth) {
+  :host {
+    width: 40px;
+    height: 40px;
+  }
 }

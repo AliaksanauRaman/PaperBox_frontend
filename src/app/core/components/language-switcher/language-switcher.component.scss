@@ -1,3 +1,5 @@
+@import "../../../styles/scss-variables";
+
 :host {
   display: flex;
 }
@@ -6,10 +8,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 66px;
-  height: 40px;
+  width: 57.75px;
+  height: 35px;
   background-color: var(--white-color);
-  border-radius: 12px;
+  border-radius: var(--border-radius);
 }
 
 .language {
@@ -25,5 +27,12 @@
 
   &:not(:last-child) {
     margin-right: 6px;
+  }
+}
+
+@media (min-width: $smallMobileScreenWidth) {
+  .language-switcher {
+    width: 66px;
+    height: 40px;
   }
 }
