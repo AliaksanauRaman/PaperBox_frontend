@@ -84,5 +84,28 @@
     "published": "Published",
     "unpublished": "Unpublished",
     "rejected": "Rejected"
+  },
+  "country": {
+    "belarus": "Belarus",
+    "poland": "Poland"
+  },
+  "city": {
+    "belarusian": {
+      "minsk": "Minsk",
+      "vitebsk": "Vitebsk",
+      "gomel": "Gomel",
+      "mogilev": "Mogilev",
+      "grodno": "Grodno",
+      "brest": "Brest"
+    },
+    "polish": {
+      "warsaw": "Warsaw",
+      "krakow": "Krakow",
+      "wroclaw": "Wroclaw",
+      "gdansk": "Gdansk",
+      "lodz": "Lodz",
+      "poznan": "Poznan"
+    },
+    "other": "Other"
   }
 }
