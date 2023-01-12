@@ -4,7 +4,7 @@
   </h2>
 
   <div class="app-custom-dialog-close-button" (click)="closeDialog()">
-    <app-plus-icon class="close-button__icon"></app-plus-icon>
+    <app-plus-icon class="app-custom-dialog-close-button-icon"></app-plus-icon>
   </div>
 
   <form>
@@ -25,9 +25,9 @@
       [label]="'dialogs.feedback.commentFieldLabel' | translate"
     >
     </app-textarea-field-control>
-
-    <button class="send-button app-primary-button">
-      <span>{{ "dialogs.feedback.sendButtonLabel" | translate }}</span>
-    </button>
   </form>
+
+  <button class="app-custom-dialog-action-button app-primary-button">
+    <span>{{ "dialogs.feedback.sendButtonLabel" | translate }}</span>
+  </button>
 </div>
