@@ -3,6 +3,7 @@ $padding: 12px;
 
 :host {
   display: flex;
+  flex-shrink: 0;
   width: 100%;
 }
 
@@ -23,7 +24,7 @@ $padding: 12px;
 
 .control {
   flex-shrink: 0;
-  min-height: 136px;
+  min-height: 112px;
   padding: 15px $padding;
   font-size: 1rem;
   font-weight: 500;
