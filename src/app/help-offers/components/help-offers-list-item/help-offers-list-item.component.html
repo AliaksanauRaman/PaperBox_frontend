@@ -21,7 +21,7 @@
     <div class="toggle-icon-area">
       <app-arrow-down-icon
         class="toggle-icon-area__icon"
-        [color]="_isHovered ? 'primary' : 'grey'"
+        [color]="_isHovered || _isExpanded ? 'primary' : 'grey'"
       >
       </app-arrow-down-icon>
     </div>
