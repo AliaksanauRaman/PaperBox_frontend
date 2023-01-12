@@ -14,7 +14,7 @@ button.app-primary-button {
   transition: .15s all ease-in-out;
 
   &:focus {
-    border-color: var(--white-color);
+    border-color: var(--primary-click-color);
   }
 
   &:hover {
