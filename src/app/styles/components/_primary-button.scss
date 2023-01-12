@@ -1,9 +1,11 @@
+@import '../scss-variables';
+
 button.app-primary-button {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 52px;
-  font-size: 18px; // TODO: Probably rem
+  height: 46px;
+  font-size: 1.2rem;
   font-weight: 600;
   color: var(--white-color);
   background-color: var(--primary-color);
@@ -26,5 +28,11 @@ button.app-primary-button {
   &:disabled {
     pointer-events: none;
     background-color: var(--grey-color);
+  }
+}
+
+@media (min-width: $smallMobileScreenWidth) {
+  button.app-primary-button {
+    height: 52px;
   }
 }
