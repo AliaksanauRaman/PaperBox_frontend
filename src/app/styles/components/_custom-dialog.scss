@@ -1,16 +1,21 @@
-$offset: 20px;
+@import '../scss-variables';
 
 div.app-custom-dialog {
-  position: fixed !important;
-  right: $offset;
-  left: $offset;
-  padding: 40px 20px;
+  position: relative !important;
+  margin: 0 15px;
+  padding: 30px 15px;
   background-color: var(--primary-background-color);
   border-radius: var(--border-radius);
+  overflow-y: auto;
+
+  .cdk-dialog-container {
+    max-width: 100%;
+    max-height: 100%;
+  }
 }
 
 h2.app-custom-dialog-title {
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   font-size: 1.4rem;
   font-weight: 700;
   text-align: center;
@@ -18,11 +23,45 @@ h2.app-custom-dialog-title {
 
 div.app-custom-dialog-close-button {
   position: absolute;
-  top: 15px;
-  right: 15px;
+  top: 12px;
+  right: 12px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
+
+  .app-custom-dialog-close-button-icon {
+    transform: rotate(45deg) scale(1.05);
+  }
+}
+
+button.app-custom-dialog-action-button {
+  margin-top: 30px;
+}
+
+@media (min-width: $smallMobileScreenWidth) {
+  div.app-custom-dialog {
+    margin: 0 20px;
+    padding: 40px 20px;
+  }
+
+  h2.app-custom-dialog-title {
+    margin-bottom: 30px;
+  }
+
+  div.app-custom-dialog-close-button {
+    top: 15px;
+    right: 15px;
+    width: 24px;
+    height: 24px;
+
+    .app-custom-dialog-close-button-icon {
+      transform: rotate(45deg) scale(1.1);
+    }
+  }
+
+  button.app-custom-dialog-action-button {
+    margin-top: 40px;
+  }
 }
