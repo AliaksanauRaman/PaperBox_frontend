@@ -1,4 +1,7 @@
-<div class="input-control">
+<div
+  class="input-control"
+  [class.input-control--with-trailing-icon]="trailingIcon.children.length !== 0"
+>
   <label class="label" *ngIf="controlLabel" [for]="controlId">
     <span>{{ controlLabel }}</span>
   </label>
@@ -13,4 +16,8 @@
     (input)="handleControlValueChange(inputRef.value)"
     (blur)="handleControlBlur()"
   />
+
+  <div #trailingIcon class="trailing-icon">
+    <ng-content select="[trailingIcon]"></ng-content>
+  </div>
 </div>
