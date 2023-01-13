@@ -21,6 +21,7 @@ const DEFAULT_APP_LANGUAGES = [
 @Injectable({
   providedIn: 'root',
 })
+// TODO: Name?
 export class AppLanguagesService {
   private readonly _languages$ = new BehaviorSubject(DEFAULT_APP_LANGUAGES);
 
@@ -46,5 +47,9 @@ export class AppLanguagesService {
         };
       })
     );
+  }
+
+  public translateByKey(key: string): string {
+    return this.translateService.instant(key);
   }
 }
