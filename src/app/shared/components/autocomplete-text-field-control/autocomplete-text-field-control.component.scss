@@ -10,9 +10,16 @@ $padding: 12px;
 }
 
 .autocomplete-text-field-control {
+  position: relative;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+
+  &.autocomplete-text-field-control--trailing-icon {
+    .control {
+      padding-right: 46px;
+    }
+  }
 }
 
 .label {
@@ -27,7 +34,7 @@ $padding: 12px;
 .control {
   flex-shrink: 0;
   height: 40px;
-  padding: 15px $padding;
+  padding: 0 $padding;
   font-size: 1rem;
   font-weight: 500;
   line-height: 20px;
@@ -37,6 +44,21 @@ $padding: 12px;
 
   &:focus {
     border-color: var(--primary-color);
+  }
+}
+
+.trailing-icon {
+  pointer-events: none;
+  position: absolute;
+  right: $padding;
+  bottom: 14px; // TODO
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 22px;
+
+  &:empty {
+    display: none;
   }
 }
 

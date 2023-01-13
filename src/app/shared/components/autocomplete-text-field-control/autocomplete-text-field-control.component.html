@@ -1,4 +1,9 @@
-<div class="autocomplete-text-field-control">
+<div
+  class="autocomplete-text-field-control"
+  [class.autocomplete-text-field-control--trailing-icon]="
+    trailingIcon.children.length !== 0
+  "
+>
   <label class="label" *ngIf="controlLabel" [for]="controlId">
     <span>{{ controlLabel }}</span>
   </label>
@@ -13,6 +18,10 @@
     (input)="handleControlValueChange(inputRef.value)"
     (blur)="handleControlBlur()"
   />
+
+  <div #trailingIcon class="trailing-icon">
+    <ng-content select="[trailingIcon]"></ng-content>
+  </div>
 
   <mat-autocomplete
     #matAutocompleteRef="matAutocomplete"
