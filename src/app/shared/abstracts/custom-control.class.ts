@@ -4,7 +4,6 @@ import { ControlValueAccessor } from '@angular/forms';
 import { UniqueIdGeneratorService } from '../../services/unique-id-generator.service';
 
 export abstract class CustomControl<T = unknown> implements ControlValueAccessor {
-  protected abstract controlValue: T;
   protected controlLabel = '';
   protected controlDisabled = false;
 
