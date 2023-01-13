@@ -34,8 +34,7 @@ $padding: 12px;
 .control {
   flex-shrink: 0;
   height: 40px;
-  padding-left: $padding;
-  padding-right: $padding;
+  padding: 0 $padding;
   font-size: 1rem;
   font-weight: 500;
   border-radius: var(--border-radius);
