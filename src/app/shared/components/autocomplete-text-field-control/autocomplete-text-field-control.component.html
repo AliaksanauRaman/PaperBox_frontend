@@ -1,1 +1,28 @@
-<p>autocomplete-text-field-control works!</p>
+<div class="autocomplete-text-field-control">
+  <label class="label" *ngIf="controlLabel" [for]="controlId">
+    <span>{{ controlLabel }}</span>
+  </label>
+
+  <!-- TODO: Initial value? -->
+  <input
+    #inputRef
+    class="control"
+    [id]="controlId"
+    [disabled]="controlDisabled"
+    [matAutocomplete]="matAutocompleteRef"
+    (input)="handleControlValueChange(inputRef.value)"
+    (blur)="handleControlBlur()"
+  />
+
+  <mat-autocomplete
+    #matAutocompleteRef="matAutocomplete"
+    (optionSelected)="handleOptionSelection($event)"
+  >
+    <mat-option
+      *ngFor="let option of filteredOptions$ | async"
+      [value]="option.label"
+    >
+      <span>{{ option.label }}</span>
+    </mat-option>
+  </mat-autocomplete>
+</div>

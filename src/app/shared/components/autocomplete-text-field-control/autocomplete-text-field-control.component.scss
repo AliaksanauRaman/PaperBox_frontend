@@ -1,3 +1,47 @@
+@import '../../../styles/scss-variables';
+
+// TODO: Think about common styles
+$padding: 12px;
+
 :host {
-  display: block;
+  display: flex;
+  flex-shrink: 0;
+  width: 100%;
+}
+
+.autocomplete-text-field-control {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.label {
+  flex-shrink: 0;
+  margin-bottom: 3px;
+  padding: 0 $padding;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--grey-color);
+}
+
+.control {
+  flex-shrink: 0;
+  height: 40px;
+  padding: 15px $padding;
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 20px;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--grey-color);
+  transition: .25s border-color ease-in-out;
+
+  &:focus {
+    border-color: var(--primary-color);
+  }
+}
+
+@media (min-width: $smallMobileScreenWidth) {
+  .control {
+    height: 48px;
+  }
 }
