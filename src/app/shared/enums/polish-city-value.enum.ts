@@ -5,6 +5,7 @@ export enum PolishCityValue {
   GDANSK = 20004,
   LODZ = 20005,
   POZNAN = 20006,
+  BIALYSTOK = 20007,
 
   OTHER = 20000,
 }

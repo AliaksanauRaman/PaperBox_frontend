@@ -27,6 +27,10 @@ export const POLISH_CITIES: ReadonlyArray<CityType<PolishCityValue>> = [
     label: 'city.polish.poznan',
   },
   {
+    value: PolishCityValue.BIALYSTOK,
+    label: 'city.polish.bialystok',
+  },
+  {
     value: PolishCityValue.OTHER,
     label: 'city.other',
   },
