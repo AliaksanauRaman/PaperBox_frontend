@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 import { DialogModule } from '@angular/cdk/dialog';
 import { TranslateModule } from '@ngx-translate/core';
 
@@ -12,6 +13,7 @@ import { ManWithGlobeImageModule } from '../shared/images/man-with-globe-image/m
 import { FeedbackImageModule } from '../shared/images/feedback-image/feedback-image.module';
 import { InputControlModule } from '../shared/components/input-control/input-control.module';
 import { TextareaFieldControlModule } from '../shared/components/textarea-field-control/textarea-field-control.module';
+import { AutocompleteTextFieldControlModule } from '../shared/components/autocomplete-text-field-control/autocomplete-text-field-control.module';
 
 import { IndexPageLayoutComponent } from './layouts/index-page-layout/index-page-layout.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -43,6 +45,7 @@ const CORE_MODULE_DECLARATIONS = [
   imports: [
     CommonModule,
     RouterModule,
+    ReactiveFormsModule,
     DialogModule,
     TranslateModule,
     PlusIconModule,
@@ -53,6 +56,7 @@ const CORE_MODULE_DECLARATIONS = [
     FeedbackImageModule,
     InputControlModule,
     TextareaFieldControlModule,
+    AutocompleteTextFieldControlModule,
   ],
   declarations: CORE_MODULE_DECLARATIONS,
   exports: CORE_MODULE_DECLARATIONS,
