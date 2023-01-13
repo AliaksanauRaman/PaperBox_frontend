@@ -27,6 +27,24 @@ import { LeaveFeedbackButtonComponent } from './components/leave-feedback-button
 import { FeedbackDialogComponent } from './dialogs/feedback-dialog/feedback-dialog.component';
 import { OfferHelpDialogComponent } from './dialogs/offer-help-dialog/offer-help-dialog.component';
 
+import {
+  COUNTRIES_MAP,
+  COUNTRIES_MAP_VALUE,
+} from './dependencies/countries-map';
+import {
+  BELARUSIAN_CITIES,
+  BELARUSIAN_CITIES_VALUE,
+} from './dependencies/belarusian-cities';
+import {
+  POLISH_CITIES,
+  POLISH_CITIES_VALUE,
+} from './dependencies/polish-cities';
+import { ALL_CITIES, allCitiesFactory } from './dependencies/all-cities';
+import {
+  ALL_LOCATIONS,
+  allLocationsFactory,
+} from './dependencies/all-locations';
+
 const CORE_MODULE_DECLARATIONS = [
   IndexPageLayoutComponent,
   HeaderComponent,
@@ -59,6 +77,30 @@ const CORE_MODULE_DECLARATIONS = [
     AutocompleteTextFieldControlModule,
   ],
   declarations: CORE_MODULE_DECLARATIONS,
+  providers: [
+    {
+      provide: COUNTRIES_MAP,
+      useValue: COUNTRIES_MAP_VALUE,
+    },
+    {
+      provide: BELARUSIAN_CITIES,
+      useValue: BELARUSIAN_CITIES_VALUE,
+    },
+    {
+      provide: POLISH_CITIES,
+      useValue: POLISH_CITIES_VALUE,
+    },
+    {
+      provide: ALL_CITIES,
+      useFactory: allCitiesFactory,
+      deps: [BELARUSIAN_CITIES, POLISH_CITIES],
+    },
+    {
+      provide: ALL_LOCATIONS,
+      useFactory: allLocationsFactory,
+      deps: [COUNTRIES_MAP, ALL_CITIES],
+    },
+  ],
   exports: CORE_MODULE_DECLARATIONS,
 })
 export class CoreModule {}
