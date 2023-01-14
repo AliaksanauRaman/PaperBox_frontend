@@ -1,12 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+
+import { ALL_LOCATIONS, AllLocationsType } from '../dependencies/all-locations';
 
 import { LocationType } from '../../shared/types/location.type';
 import { CountryType } from '../../shared/types/country.type';
-import { BELARUSIAN_LOCATIONS } from '../../shared/constants/belarusian-locations.constant';
-import { POLISH_LOCATIONS } from '../../shared/constants/polish-locations.constant';
 
-// TODO: Enhance
+// TODO: Enhance, check if it used
 @Injectable({
   providedIn: 'root',
 })
@@ -23,11 +23,16 @@ export class LocationSelectionOptionsService {
   public readonly locationsOfDestination$ =
     this._locationsOfDestination$.asObservable();
 
+  constructor(
+    @Inject(ALL_LOCATIONS)
+    private readonly allLocations: AllLocationsType
+  ) {}
+
   public handleDepartureLocationSelection(
     departureLocationValue: string
   ): void {
-    const departureLocation = this.getAllLocations().find(
-      (l) => l.value === departureLocationValue
+    const departureLocation = this.allLocations.find(
+      ({ value }) => value === departureLocationValue
     );
 
     if (departureLocation === undefined) {
@@ -40,11 +45,7 @@ export class LocationSelectionOptionsService {
   }
 
   private getLocationsOfDeparture(): ReadonlyArray<LocationType> {
-    return this.getAllLocations();
-  }
-
-  private getAllLocations(): ReadonlyArray<LocationType> {
-    return [...BELARUSIAN_LOCATIONS, ...POLISH_LOCATIONS];
+    return this.allLocations;
   }
 
   private getLocationsOfDestination(
@@ -54,8 +55,8 @@ export class LocationSelectionOptionsService {
       return [];
     }
 
-    return this.getAllLocations().filter(
-      (location) => location.country.value !== departureCountry.value
+    return this.allLocations.filter(
+      ({ country }) => country.value !== departureCountry.value
     );
   }
 }
