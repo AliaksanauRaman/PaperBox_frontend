@@ -18,5 +18,9 @@ export class DataSource<T = unknown> {
     return new DataSource(options);
   }
 
+  public static createEmpty<T = unknown>(): DataSource<T> {
+    return new DataSource([]);
+  }
+
   constructor(public readonly options: ReadonlyArray<DataSourceOption<T>>) {}
 }
