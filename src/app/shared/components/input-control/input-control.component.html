@@ -1,14 +1,14 @@
 <div
-  class="input-control"
-  [class.input-control--with-trailing-icon]="trailingIcon.children.length !== 0"
+  class="input-control custom-control"
+  [class.custom-control--with-trailing-icon]="trailingIcon.children.length !== 0"
 >
-  <label class="label" *ngIf="controlLabel" [for]="controlId">
+  <label class="custom-control__label" *ngIf="controlLabel" [for]="controlId">
     <span>{{ controlLabel }}</span>
   </label>
 
   <input
     #inputRef
-    class="control"
+    class="custom-control__field"
     type="text"
     [id]="controlId"
     [disabled]="controlDisabled"
@@ -17,7 +17,7 @@
     (blur)="handleControlBlur()"
   />
 
-  <div #trailingIcon class="trailing-icon">
+  <div #trailingIcon class="custom-control__trailing-icon">
     <ng-content select="[trailingIcon]"></ng-content>
   </div>
 </div>
