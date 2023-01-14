@@ -1,0 +1,72 @@
+@import '../scss-variables';
+
+$padding: 12px;
+
+.custom-control {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-width: 220px;
+
+  &.custom-control--with-trailing-icon {
+    .custom-control__field {
+      padding-right: 46px;
+    }
+  }
+}
+
+.custom-control__label {
+  flex-shrink: 0;
+  margin-bottom: 3px;
+  padding: 0 $padding;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--grey-color);
+}
+
+.custom-control__field {
+  flex-shrink: 0;
+  height: 40px;
+  padding: 0 $padding;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--grey-color);
+  transition: .25s border-color ease-in-out;
+
+  &:focus {
+    border-color: var(--primary-color);
+  }
+}
+
+.custom-control__trailing-icon {
+  pointer-events: none;
+  position: absolute;
+  right: $padding;
+  bottom: 14px; // TODO
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 22px;
+
+  &:empty {
+    display: none;
+  }
+}
+
+@media (min-width: $smallMobileScreenWidth) {
+  .custom-control {
+    min-width: 240px;
+  }
+
+  .custom-control__field {
+    height: 48px;
+  }
+}
+
+@media (min-width: 360px) {
+  .custom-control {
+    min-width: 260px;
+  }
+}
