@@ -1,13 +1,14 @@
+<!-- TODO: Check if this component is needed, remove elsewhere -->
 <!-- TODO: Check if everything is needed here or some other components can be created -->
 <div class="new-help-offer-dialog">
   <h2 mat-dialog-title>{{ "dialogs.newHelpOffer.title" | translate }}</h2>
 
   <mat-dialog-content>
     <form [formGroup]="newHelpOfferForm">
-      <app-input-control
+      <!-- <app-input-control
         [label]="'dialogs.newHelpOffer.fullNameFieldLabel' | translate"
         formControlName="authorFullName"
-      ></app-input-control>
+      ></app-input-control> -->
 
       <ng-container *ngIf="dateType$ | async as dateType">
         <fieldset>
@@ -39,7 +40,7 @@
         </ng-container>
       </ng-container>
 
-      <app-input-control
+      <!-- <app-input-control
         [label]="'dialogs.newHelpOffer.countryFromFieldLabel' | translate"
         formControlName="countryFrom"
       ></app-input-control>
@@ -54,19 +55,19 @@
       <app-input-control
         [label]="'dialogs.newHelpOffer.cityToFieldLabel' | translate"
         formControlName="cityTo"
-      ></app-input-control>
+      ></app-input-control> -->
 
       <div class="phones">
         <form *ngFor="let phone of newHelpOfferForm.controls.phones.controls" [formGroup]="phone">
           <div>
-            <app-input-control
+            <!-- <app-input-control
               [label]="'dialogs.newHelpOffer.diallingCodeFieldLabel' | translate"
               formControlName="diallingCode"
             ></app-input-control>
             <app-input-control
               [label]="'dialogs.newHelpOffer.phoneNumberFieldLabel' | translate"
               formControlName="number"
-            ></app-input-control>
+            ></app-input-control> -->
           </div>
         </form>
       </div>
