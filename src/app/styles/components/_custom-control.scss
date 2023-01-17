@@ -35,8 +35,13 @@ $padding: 12px;
   border: 1px solid var(--grey-color);
   transition: .25s border-color ease-in-out;
 
+  &.custom-control__field--active,
   &:focus {
     border-color: var(--primary-color);
+  }
+
+  &:read-only {
+    color: var(--grey-color);
   }
 }
 
@@ -65,7 +70,7 @@ $padding: 12px;
   }
 }
 
-@media (min-width: 360px) {
+@media (min-width: $mediumMobileScreenWidth) {
   .custom-control {
     min-width: 260px;
   }
