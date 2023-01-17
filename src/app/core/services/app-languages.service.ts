@@ -27,6 +27,10 @@ export class AppLanguagesService {
 
   public readonly languages$ = this._languages$.asObservable();
 
+  public get currentLanguage(): string {
+    return this.translateService.currentLang;
+  }
+
   constructor(private readonly translateService: TranslateService) {}
 
   public setUp(): void {
