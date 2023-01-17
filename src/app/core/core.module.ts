@@ -29,6 +29,10 @@ import { FeedbackDialogComponent } from './dialogs/feedback-dialog/feedback-dial
 import { OfferHelpDialogComponent } from './dialogs/offer-help-dialog/offer-help-dialog.component';
 
 import {
+  LOCAL_STORAGE,
+  LOCAL_STORAGE_VALUE,
+} from './dependencies/local-storage';
+import {
   COUNTRIES_MAP,
   COUNTRIES_MAP_VALUE,
 } from './dependencies/countries-map';
@@ -80,6 +84,10 @@ const CORE_MODULE_DECLARATIONS = [
   ],
   declarations: CORE_MODULE_DECLARATIONS,
   providers: [
+    {
+      provide: LOCAL_STORAGE,
+      useValue: LOCAL_STORAGE_VALUE,
+    },
     {
       provide: COUNTRIES_MAP,
       useValue: COUNTRIES_MAP_VALUE,
