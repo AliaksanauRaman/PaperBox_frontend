@@ -1,5 +1,15 @@
 * {
   box-sizing: border-box;
+
+  &::-moz-selection {
+    color: var(--white-color);
+    background-color: var(--primary-color);
+  }
+
+  &::selection {
+    color: var(--white-color);
+    background-color: var(--primary-color);
+  }
 }
 
 body {
@@ -8,11 +18,16 @@ body {
   flex-direction: column;
   width: 100vw;
   height: 100vh;
-  font-family: 'Manrope', sans-serif;
+  font-family: "Manrope", sans-serif;
   background-color: var(--primary-background-color);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   margin: 0;
   padding: 0;
 }
@@ -25,7 +40,7 @@ button {
   outline: none;
 
   // TODO: Check
-  &[disabled=true] {
+  &[disabled="true"] {
     pointer-events: none !important;
     color: gray !important;
     background-color: lightgray !important;
@@ -38,6 +53,7 @@ a {
   text-decoration: none;
 }
 
-input, textarea {
+input,
+textarea {
   outline: none;
 }
