@@ -33,6 +33,16 @@
     }
   },
   "dialogs": {
+    "offerHelp": {
+      "title": "Offer help",
+      "whereFromFieldLabel": "Where from",
+      "whereToFieldLabel": "Where to",
+      "whenFieldLabel": "When",
+      "commentFieldLabel": "Comment",
+      "fullNameFieldLabel":"Full name",
+      "phoneNumbersFieldLabel": "Phone numbers",
+      "sendButtonLabel": "Send"
+    },
     "feedback": {
       "title": "Feedback",
       "fullNameFieldLabel": "Full name",
