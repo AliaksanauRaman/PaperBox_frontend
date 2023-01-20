@@ -7,16 +7,22 @@ $padding: 12px;
   width: 100%;
 }
 
-.textarea-field-control {
+.top-panel {
   display: flex;
-  flex-direction: column;
-  flex-grow: 1;
+  padding: 0 $padding;
+  margin-bottom: 3px;
 }
 
 .label {
+  flex-grow: 1;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--grey-color);
+}
+
+.characters-counter {
   flex-shrink: 0;
-  margin-bottom: 3px;
-  padding: 0 $padding;
+  margin-left: 10px;
   font-size: 1rem;
   font-weight: 600;
   color: var(--grey-color);

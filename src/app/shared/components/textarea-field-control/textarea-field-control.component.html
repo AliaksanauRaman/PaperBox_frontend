@@ -1,7 +1,15 @@
-<div class="textarea-field-control">
-  <label class="label" *ngIf="controlLabel" [for]="controlId">
-    <span>{{ controlLabel }}</span>
-  </label>
+<div class="textarea-field-control custom-control">
+  <div class="top-panel">
+    <label class="label" *ngIf="controlLabel" [for]="controlId">
+      <span>{{ controlLabel }}</span>
+    </label>
+
+    <div class="characters-counter" *ngIf="controlMaxCharacters">
+      <span>{{ textareaRef.value.length }}</span>
+      <span>/</span>
+      <span>{{ controlMaxCharacters }}</span>
+    </div>
+  </div>
 
   <textarea
     #textareaRef
@@ -9,6 +17,7 @@
     [id]="controlId"
     [disabled]="controlDisabled"
     [value]="controlValue"
+    [maxLength]="controlMaxCharacters"
     (input)="handleControlValueChange(textareaRef.value)"
     (blur)="handleControlBlur()"
   >
