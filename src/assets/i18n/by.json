@@ -33,6 +33,16 @@
     }
   },
   "dialogs": {
+    "offerHelp": {
+      "title": "Прапанаваць дапамогу",
+      "whereFromFieldLabel": "Адкуль",
+      "whereToFieldLabel": "Куды",
+      "whenFieldLabel": "Калі",
+      "commentFieldLabel": "Каментар",
+      "fullNameFieldLabel":"Поўнае імя",
+      "phoneNumbersFieldLabel": "Нумары тэлефонаў",
+      "sendButtonLabel": "Адправіць"
+    },
     "feedback": {
       "title": "Зваротная сувязь",
       "fullNameFieldLabel": "Поўнае імя",
