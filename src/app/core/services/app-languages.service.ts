@@ -1,15 +1,25 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject } from 'rxjs';
 
-import { AppLanguageValue } from '../../shared/enums/app-language-value.enum';
+import { LocalStorageType, LOCAL_STORAGE } from '../dependencies/local-storage';
+import { AppLocaleService } from './app-locale.service';
 
+import { AppLanguageValue } from '../../shared/enums/app-language-value.enum';
+import { LocalStorageKey } from '../../shared/enums/local-storage-key.enum';
+
+const DEFAULT_APP_LANGUAGE = AppLanguageValue.BELARUSIAN;
+type AppLanguage = Readonly<{
+  label: string;
+  value: AppLanguageValue;
+  selected: boolean;
+}>;
 // TODO: Inject?
-const DEFAULT_APP_LANGUAGES = [
+const APP_LANGUAGES: ReadonlyArray<AppLanguage> = [
   {
     label: 'BY',
     value: AppLanguageValue.BELARUSIAN,
-    selected: true,
+    selected: false,
   },
   {
     label: 'EN',
@@ -18,12 +28,39 @@ const DEFAULT_APP_LANGUAGES = [
   },
 ];
 
+// TODO: Refactor it please
+const getInitialStateOfAppLanguages = (
+  initiallySelectedLanguageValue: string
+): ReadonlyArray<typeof APP_LANGUAGES[number]> => {
+  return APP_LANGUAGES.map((language) => ({
+    ...language,
+    selected: language.value === initiallySelectedLanguageValue,
+  }));
+};
+
+const getLocaleByLanguageValue = (languageValue: string): string => {
+  if (AppLanguageValue.BELARUSIAN === languageValue) {
+    return 'be-BY';
+  }
+
+  if (AppLanguageValue.ENGLISH === languageValue) {
+    return 'en-GB';
+  }
+
+  throw new Error(`No locale found for '${languageValue}' language!`);
+};
+
 @Injectable({
   providedIn: 'root',
 })
-// TODO: Name?
+// TODO: Name? AppLocalizationService
 export class AppLanguagesService {
-  private readonly _languages$ = new BehaviorSubject(DEFAULT_APP_LANGUAGES);
+  private readonly _languages$ = new BehaviorSubject(
+    getInitialStateOfAppLanguages(
+      this.localStorage.getItem(LocalStorageKey.APP_CURRENT_LANGUAGE) ||
+        DEFAULT_APP_LANGUAGE
+    )
+  );
 
   public readonly languages$ = this._languages$.asObservable();
 
@@ -31,18 +68,35 @@ export class AppLanguagesService {
     return this.translateService.currentLang;
   }
 
-  constructor(private readonly translateService: TranslateService) {}
+  constructor(
+    @Inject(LOCAL_STORAGE)
+    private readonly localStorage: LocalStorageType,
+    private readonly translateService: TranslateService,
+    private readonly localeService: AppLocaleService
+  ) {}
 
   public setUp(): void {
-    this.translateService.setDefaultLang(AppLanguageValue.BELARUSIAN);
-    this.translateService.use(AppLanguageValue.BELARUSIAN);
+    this.translateService.setDefaultLang(DEFAULT_APP_LANGUAGE);
+    this.translateService.use(
+      this.localStorage.getItem(LocalStorageKey.APP_CURRENT_LANGUAGE) ||
+        DEFAULT_APP_LANGUAGE
+    );
   }
 
   // TODO: Types?
   public selectLanguage(languageValue: string): void {
     const currentLanguages = this._languages$.getValue();
 
+    // TODO: Refactor it please
     this.translateService.use(languageValue);
+    this.localStorage.setItem(
+      LocalStorageKey.APP_CURRENT_LANGUAGE,
+      languageValue
+    );
+    this.localeService.setCurrentLocale(
+      getLocaleByLanguageValue(languageValue)
+    );
+
     this._languages$.next(
       currentLanguages.map((language) => {
         return {
