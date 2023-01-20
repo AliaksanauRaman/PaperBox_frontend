@@ -12,6 +12,7 @@ import { LocationIconModule } from '../shared/icons/location-icon/location-icon.
 import { ManWithGlobeImageModule } from '../shared/images/man-with-globe-image/man-with-globe-image.module';
 import { FeedbackImageModule } from '../shared/images/feedback-image/feedback-image.module';
 import { InputControlModule } from '../shared/components/input-control/input-control.module';
+import { PhoneControlModule } from '../shared/components/phone-control/phone-control.module';
 import { DateControlModule } from '../shared/components/date-control/date-control.module';
 import { TextareaFieldControlModule } from '../shared/components/textarea-field-control/textarea-field-control.module';
 import { AutocompleteTextFieldControlModule } from '../shared/components/autocomplete-text-field-control/autocomplete-text-field-control.module';
@@ -78,6 +79,7 @@ const CORE_MODULE_DECLARATIONS = [
     ManWithGlobeImageModule,
     FeedbackImageModule,
     InputControlModule,
+    PhoneControlModule,
     DateControlModule,
     TextareaFieldControlModule,
     AutocompleteTextFieldControlModule,
