@@ -57,3 +57,15 @@ input,
 textarea {
   outline: none;
 }
+
+// Remove controls from number inputs START
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+// Remove controls from number inputs END
