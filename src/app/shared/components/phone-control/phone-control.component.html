@@ -1,0 +1,16 @@
+<div class="phone-control custom-control">
+  <label class="custom-control__label" *ngIf="controlLabel" [for]="controlId">
+    <span>{{ controlLabel }}</span>
+  </label>
+
+  <input
+    #inputRef
+    class="custom-control__field"
+    type="number"
+    [id]="controlId"
+    [disabled]="controlDisabled"
+    [value]="controlValue"
+    (input)="handleControlValueChange(inputRef.value)"
+    (blur)="handleControlBlur()"
+  />
+</div>
