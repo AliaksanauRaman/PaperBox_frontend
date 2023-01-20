@@ -1,3 +1,57 @@
+<!-- TODO: Refactor -->
 <div class="offer-help-dialog">
-  offer-help-dialog
+  <h2 class="title app-custom-dialog-title">
+    {{ "dialogs.offerHelp.title" | translate }}
+  </h2>
+
+  <div class="app-custom-dialog-close-button" (click)="closeDialog()">
+    <app-plus-icon class="app-custom-dialog-close-button-icon"></app-plus-icon>
+  </div>
+
+  <form class="form" [formGroup]="offerHelpForm">
+    <!-- <app-autocomplete-text-field-control
+      [dataSource]="locationsFromDataSource"
+      [label]="'dialogs.offerHelp.whereFromFieldLabel' | translate"
+      formControlName="locationFrom"
+    >
+      <app-location-icon trailingIcon></app-location-icon>
+    </app-autocomplete-text-field-control>
+
+    <ng-container
+      *ngIf="locationsToDataSource$ | async as locationsToDataSource"
+    >
+      <app-direction-icon></app-direction-icon>
+
+      <app-autocomplete-text-field-control
+        [dataSource]="locationsToDataSource"
+        [label]="'dialogs.offerHelp.whereToFieldLabel' | translate"
+        formControlName="locationTo"
+      >
+        <app-location-icon trailingIcon></app-location-icon>
+      </app-autocomplete-text-field-control>
+    </ng-container> -->
+
+    <app-date-control
+      [label]="'dialogs.offerHelp.whenFieldLabel' | translate"
+    ></app-date-control>
+
+    <app-textarea-field-control
+      [label]="'dialogs.offerHelp.commentFieldLabel' | translate"
+    >
+    </app-textarea-field-control>
+
+    <app-input-control
+      [label]="'dialogs.offerHelp.fullNameFieldLabel' | translate"
+    >
+    </app-input-control>
+
+    <app-input-control
+      [label]="'dialogs.offerHelp.phoneNumbersFieldLabel' | translate"
+    >
+    </app-input-control>
+  </form>
+
+  <button class="app-custom-dialog-action-button app-primary-button">
+    <span>{{ "dialogs.offerHelp.sendButtonLabel" | translate }}</span>
+  </button>
 </div>
