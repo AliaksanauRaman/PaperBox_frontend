@@ -1,3 +1,35 @@
+@import '../../../styles/scss-variables';
+
 :host {
-  display: block;
+  display: flex;
+  flex-shrink: 0;
+  width: 100%;
+}
+
+.date-range-input {
+  pointer-events: none;
+  width: 0;
+  height: 0;
+  font-size: 0;
+}
+
+.calendar-button {
+  position: absolute;
+  right: 12px;
+  bottom: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+@media (min-width: $smallMobileScreenWidth) {
+  .calendar-button {
+    bottom: 6px;
+    width: 36px;
+    height: 36px;
+  }
 }

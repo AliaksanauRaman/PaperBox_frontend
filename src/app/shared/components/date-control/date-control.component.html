@@ -1,15 +1,38 @@
-<div class="date-control">
-  <label [for]="inputId" *ngIf="_label">
-    <span>{{ _label }}</span>
+<div class="date-control custom-control">
+  <label class="custom-control__label" *ngIf="controlLabel" [for]="controlId">
+    <span>{{ controlLabel }}</span>
   </label>
 
   <input
     #inputRef
-    type="date"
-    [id]="inputId"
-    [disabled]="inputDisabled"
-    [value]="inputValue"
-    (input)="handleInputValueChange(inputRef.value)"
-    (blur)="handleInputBlur()"
+    class="custom-control__field"
+    [id]="controlId"
+    [class.custom-control__field--active]="matDateRangePickerRef.opened"
+    [disabled]="controlDisabled"
+    [value]="viewValue$ | async"
+    type="text"
+    readonly
+    (click)="toggleDateRangePicker(matDateRangePickerRef)"
+    (focus)="toggleDateRangePicker(matDateRangePickerRef)"
+  />
+
+  <mat-date-range-input
+    class="date-range-input"
+    [rangePicker]="matDateRangePickerRef"
+    [min]="minimalDate"
+    [max]="maximalDate"
   >
+    <input matStartDate (dateChange)="handleStartDateChange($event)" />
+    <input matEndDate (dateChange)="handleEndDateChange($event)" />
+  </mat-date-range-input>
+
+  <mat-date-range-picker #matDateRangePickerRef></mat-date-range-picker>
+
+  <button
+    class="calendar-button"
+    matRipple
+    (click)="toggleDateRangePicker(matDateRangePickerRef)"
+  >
+    <app-calendar-icon></app-calendar-icon>
+  </button>
 </div>
