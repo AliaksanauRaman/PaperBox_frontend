@@ -39,7 +39,7 @@
       "whereToFieldLabel": "Where to",
       "whenFieldLabel": "When",
       "commentFieldLabel": "Comment",
-      "fullNameFieldLabel":"Full name",
+      "fullNameFieldLabel": "Full name",
       "phoneNumbersFieldLabel": "Phone numbers",
       "sendButtonLabel": "Send"
     },
@@ -66,7 +66,7 @@
     "adminManageHelpOffer": {
       "title": "Manage help offer",
       "statusFieldLabel": "Status",
-      "fullNameFieldLabel":"Full name",
+      "fullNameFieldLabel": "Full name",
       "whereFromFieldLabel": "Where from",
       "whereToFieldLabel": "Where to",
       "dateFieldLabel": "Date",
@@ -88,6 +88,9 @@
       "statusTextFieldLabel": "Status text",
       "messageFieldLabel": "Message",
       "detailsFieldLabel": "Details"
+    },
+    "phoneControl": {
+      "codePlaceholder": "Code"
     }
   },
   "helpOfferStatus": {
