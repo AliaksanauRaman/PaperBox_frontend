@@ -3,7 +3,9 @@ import { ControlValueAccessor } from '@angular/forms';
 
 import { UniqueIdGeneratorService } from '../../services/unique-id-generator.service';
 
-export abstract class CustomControl<T = unknown> implements ControlValueAccessor {
+import { DestroyEmitter } from './destroy-emitter.class';
+
+export abstract class CustomControl<T = unknown> extends DestroyEmitter implements ControlValueAccessor {
   protected controlLabel = '';
   protected controlDisabled = false;
 
@@ -12,7 +14,9 @@ export abstract class CustomControl<T = unknown> implements ControlValueAccessor
   constructor(
     private readonly uniqueIdGeneratorService: UniqueIdGeneratorService,
     protected readonly cdRef: ChangeDetectorRef,
-  ) {}
+  ) {
+    super();
+  }
 
   public abstract writeValue(value: unknown): void;
 
