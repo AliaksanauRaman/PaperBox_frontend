@@ -39,7 +39,7 @@
       "whereToFieldLabel": "Куды",
       "whenFieldLabel": "Калі",
       "commentFieldLabel": "Каментар",
-      "fullNameFieldLabel":"Поўнае імя",
+      "fullNameFieldLabel": "Поўнае імя",
       "phoneNumbersFieldLabel": "Нумары тэлефонаў",
       "sendButtonLabel": "Адправіць"
     },
@@ -66,7 +66,7 @@
     "adminManageHelpOffer": {
       "title": "Кіраванне прапановай аб дапамозе",
       "statusFieldLabel": "Статус",
-      "fullNameFieldLabel":"Поўнае імя",
+      "fullNameFieldLabel": "Поўнае імя",
       "whereFromFieldLabel": "Адкуль",
       "whereToFieldLabel": "Куды",
       "dateFieldLabel": "Дата",
@@ -88,6 +88,9 @@
       "statusTextFieldLabel": "Тэкст статусу",
       "messageFieldLabel": "Паведамленне",
       "detailsFieldLabel": "Дэталі"
+    },
+    "phoneControl": {
+      "codePlaceholder": "Код"
     }
   },
   "helpOfferStatus": {
