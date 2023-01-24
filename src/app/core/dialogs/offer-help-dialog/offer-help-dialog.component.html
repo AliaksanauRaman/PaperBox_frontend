@@ -9,49 +9,44 @@
   </div>
 
   <form class="form" [formGroup]="offerHelpForm">
-    <!-- <app-autocomplete-text-field-control
-      [dataSource]="locationsFromDataSource"
-      [label]="'dialogs.offerHelp.whereFromFieldLabel' | translate"
-      formControlName="locationFrom"
+    <app-locations-control
+      class="locations-control"
+      formControlName="locations"
     >
-      <app-location-icon trailingIcon></app-location-icon>
-    </app-autocomplete-text-field-control>
-
-    <ng-container
-      *ngIf="locationsToDataSource$ | async as locationsToDataSource"
-    >
-      <app-direction-icon></app-direction-icon>
-
-      <app-autocomplete-text-field-control
-        [dataSource]="locationsToDataSource"
-        [label]="'dialogs.offerHelp.whereToFieldLabel' | translate"
-        formControlName="locationTo"
-      >
-        <app-location-icon trailingIcon></app-location-icon>
-      </app-autocomplete-text-field-control>
-    </ng-container> -->
+    </app-locations-control>
 
     <app-date-control
+      class="date-control"
       [label]="'dialogs.offerHelp.whenFieldLabel' | translate"
-    ></app-date-control>
+      formControlName="date"
+    >
+    </app-date-control>
 
     <app-textarea-field-control
+      class="comment-control"
       [label]="'dialogs.offerHelp.commentFieldLabel' | translate"
+      formControlName="comment"
     >
     </app-textarea-field-control>
 
     <app-input-control
+      class="full-name-control"
       [label]="'dialogs.offerHelp.fullNameFieldLabel' | translate"
+      formControlName="fullName"
     >
     </app-input-control>
 
-    <app-input-control
-      [label]="'dialogs.offerHelp.phoneNumbersFieldLabel' | translate"
+    <app-dynamic-phone-list-control
+      class="phones-control"
+      formControlName="phones"
     >
-    </app-input-control>
+    </app-dynamic-phone-list-control>
   </form>
 
-  <button class="app-custom-dialog-action-button app-primary-button">
+  <button
+    class="app-custom-dialog-action-button app-primary-button"
+    (click)="handleSendButtonClick()"
+  >
     <span>{{ "dialogs.offerHelp.sendButtonLabel" | translate }}</span>
   </button>
 </div>
