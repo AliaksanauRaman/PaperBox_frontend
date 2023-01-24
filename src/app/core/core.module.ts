@@ -26,6 +26,7 @@ import { MainComponent } from './components/main/main.component';
 import { NavigationMenuComponent } from './components/navigation-menu/navigation-menu.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { LeaveFeedbackButtonComponent } from './components/leave-feedback-button/leave-feedback-button.component';
+import { DynamicPhoneListControlComponent } from './components/dynamic-phone-list-control/dynamic-phone-list-control.component';
 import { FeedbackDialogComponent } from './dialogs/feedback-dialog/feedback-dialog.component';
 import { OfferHelpDialogComponent } from './dialogs/offer-help-dialog/offer-help-dialog.component';
 
@@ -61,6 +62,7 @@ const CORE_MODULE_DECLARATIONS = [
   NavigationMenuComponent,
   FooterComponent,
   LeaveFeedbackButtonComponent,
+  DynamicPhoneListControlComponent,
   FeedbackDialogComponent,
   OfferHelpDialogComponent,
 ];
