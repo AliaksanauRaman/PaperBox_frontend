@@ -1,3 +1,30 @@
 :host {
-  display: block;
+  display: flex;
+}
+
+.dynamic-phone-list-control {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  flex-shrink: 0;
+  margin-bottom: 6px;
+  padding: 0 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--grey-color);
+}
+
+.control-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.control-list__item {
+  flex-shrink: 0;
+
+  &:not(:last-child) {
+    margin-bottom: 6px; // TODO: Align with the design
+  }
 }

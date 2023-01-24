@@ -1,1 +1,27 @@
-<p>dynamic-phone-list-control works!</p>
+<div class="dynamic-phone-list-control">
+  <div class="label">
+    <span>
+      {{ "components.dynamicListPhoneControl.phoneNumbersLabel" | translate }}
+    </span>
+  </div>
+
+  <div class="control-list" *ngIf="phoneControlsFormArray.controls as phones">
+    <form
+      class="control-list__item"
+      *ngFor="
+        let phone of phones;
+        let phoneIndex = index;
+        let isLastPhone = last
+      "
+    >
+      <app-phone-control
+        [formControl]="phone"
+        [showPlus]="isLastPhone && phones.length < maxPhonesAmount"
+        [showMinus]="!isLastPhone"
+        (plusClick)="appendEmptyPhoneControl()"
+        (minusClick)="removePhoneControlByIndex(phoneIndex)"
+      >
+      </app-phone-control>
+    </form>
+  </div>
+</div>
