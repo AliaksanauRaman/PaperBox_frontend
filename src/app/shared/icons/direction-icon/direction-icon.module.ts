@@ -8,4 +8,5 @@ import { DirectionIconComponent } from './direction-icon.component';
   providers: [],
   exports: [DirectionIconComponent],
 })
+// TODO: Is it used?
 export class DirectionIconModule {}

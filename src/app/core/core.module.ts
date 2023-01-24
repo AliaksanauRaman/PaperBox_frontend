@@ -6,7 +6,6 @@ import { DialogModule } from '@angular/cdk/dialog';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { PlusIconModule } from '../shared/icons/plus-icon/plus-icon.module';
-import { DirectionIconModule } from '../shared/icons/direction-icon/direction-icon.module';
 import { CalendarIconModule } from '../shared/icons/calendar-icon/calendar-icon.module';
 import { LocationIconModule } from '../shared/icons/location-icon/location-icon.module';
 import { ManWithGlobeImageModule } from '../shared/images/man-with-globe-image/man-with-globe-image.module';
@@ -81,7 +80,6 @@ const CORE_MODULE_DECLARATIONS = [
     DialogModule,
     TranslateModule,
     PlusIconModule,
-    DirectionIconModule,
     CalendarIconModule,
     LocationIconModule,
     ManWithGlobeImageModule,
