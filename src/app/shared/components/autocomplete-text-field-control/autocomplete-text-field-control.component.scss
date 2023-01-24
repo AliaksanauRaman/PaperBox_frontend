@@ -10,11 +10,6 @@ $padding: 12px;
 }
 
 .autocomplete-text-field-control {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-
   &.autocomplete-text-field-control--trailing-icon {
     .control {
       padding-right: 46px;

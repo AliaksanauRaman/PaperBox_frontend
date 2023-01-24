@@ -1,5 +1,5 @@
 <div
-  class="autocomplete-text-field-control"
+  class="autocomplete-text-field-control custom-control"
   [class.autocomplete-text-field-control--trailing-icon]="
     trailingIcon.children.length !== 0
   "
@@ -9,13 +9,13 @@
   </label>
 
   <!-- TODO: Initial value? -->
+  <!-- Disabled? -->
   <input
     #inputRef
     class="control"
     [id]="controlId"
-    [disabled]="controlDisabled"
     [matAutocomplete]="matAutocompleteRef"
-    (input)="handleControlValueChange(inputRef.value)"
+    [formControl]="inputControl"
     (blur)="handleControlBlur()"
   />
 
