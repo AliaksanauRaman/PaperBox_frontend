@@ -1,3 +1,45 @@
+// TODO: Adaptive layout
+
 :host {
   display: block;
+}
+
+.phone-control {
+  position: relative;
+}
+
+.phone-control-form {
+  display: flex;
+  flex-shrink: 0;
+}
+
+.phone-code-dropdown {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 48px;
+}
+
+.custom-control__field {
+  padding-left: 73px;
+  padding-right: 40px;
+}
+
+.trailing-button-container {
+  position: absolute;
+  right: 12px;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  height: 48px;
+}
+
+.plus-button,
+.minus-button {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 16px;
+  height: 16px;
 }

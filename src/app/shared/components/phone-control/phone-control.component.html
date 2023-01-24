@@ -3,14 +3,67 @@
     <span>{{ controlLabel }}</span>
   </label>
 
-  <input
-    #inputRef
-    class="custom-control__field"
-    type="number"
-    [id]="controlId"
-    [disabled]="controlDisabled"
-    [value]="controlValue"
-    (input)="handleControlValueChange(inputRef.value)"
-    (blur)="handleControlBlur()"
-  />
+  <form class="phone-control-form" [formGroup]="phoneForm">
+    <app-dropdown-control
+      class="phone-code-dropdown"
+      [dataSource]="phoneDiallingCodesDataSource"
+      [placeholder]="'components.phoneControl.codePlaceholder' | translate"
+      formControlName="diallingCode"
+    >
+    </app-dropdown-control>
+
+    <input
+      #inputRef
+      class="custom-control__field"
+      [id]="controlId"
+      type="text"
+      autocomplete="chrome-off"
+      formControlName="number"
+      (blur)="handleControlBlur()"
+    />
+  </form>
+
+  <div class="trailing-button-container" *ngIf="showPlus || showMinus">
+    <div class="plus-button" *ngIf="showPlus" (click)="handlePlusClick()">
+      <ng-container *ngTemplateOutlet="plusIconSvg"></ng-container>
+    </div>
+
+    <div class="minus-button" *ngIf="showMinus" (click)="handleMinusClick()">
+      <ng-container *ngTemplateOutlet="minusIconSvg"></ng-container>
+    </div>
+  </div>
 </div>
+
+<ng-template #plusIconSvg>
+  <svg
+    width="16"
+    height="16"
+    viewBox="0 0 20 20"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M19 10L1 10M10 19L10 1"
+      stroke="#B1B1B1"
+      stroke-width="2"
+      stroke-linecap="round"
+    />
+  </svg>
+</ng-template>
+
+<ng-template #minusIconSvg>
+  <svg
+    width="16"
+    height="2"
+    viewBox="0 0 20 2"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M19 1L1 1"
+      stroke="#B1B1B1"
+      stroke-width="2"
+      stroke-linecap="round"
+    />
+  </svg>
+</ng-template>
