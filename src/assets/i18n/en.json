@@ -40,7 +40,6 @@
       "whenFieldLabel": "When",
       "commentFieldLabel": "Comment",
       "fullNameFieldLabel": "Full name",
-      "phoneNumbersFieldLabel": "Phone numbers",
       "sendButtonLabel": "Send"
     },
     "feedback": {
@@ -91,6 +90,9 @@
     },
     "phoneControl": {
       "codePlaceholder": "Code"
+    },
+    "dynamicListPhoneControl": {
+      "phoneNumbersLabel": "Phone numbers"
     }
   },
   "helpOfferStatus": {

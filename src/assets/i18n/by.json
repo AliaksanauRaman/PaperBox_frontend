@@ -40,7 +40,6 @@
       "whenFieldLabel": "Калі",
       "commentFieldLabel": "Каментар",
       "fullNameFieldLabel": "Поўнае імя",
-      "phoneNumbersFieldLabel": "Нумары тэлефонаў",
       "sendButtonLabel": "Адправіць"
     },
     "feedback": {
@@ -91,6 +90,9 @@
     },
     "phoneControl": {
       "codePlaceholder": "Код"
+    },
+    "dynamicListPhoneControl": {
+      "phoneNumbersLabel": "Нумары тэлефонаў"
     }
   },
   "helpOfferStatus": {
