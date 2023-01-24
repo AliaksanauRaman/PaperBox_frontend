@@ -51,6 +51,10 @@ import {
   ALL_LOCATIONS,
   allLocationsFactory,
 } from './dependencies/all-locations';
+import {
+  PHONE_DIALLING_CODES,
+  PHONE_DIALLING_CODES_VALUE,
+} from './dependencies/phone-dialling-codes';
 
 const CORE_MODULE_DECLARATIONS = [
   IndexPageLayoutComponent,
@@ -113,6 +117,10 @@ const CORE_MODULE_DECLARATIONS = [
       provide: ALL_LOCATIONS,
       useFactory: allLocationsFactory,
       deps: [COUNTRIES_MAP, ALL_CITIES],
+    },
+    {
+      provide: PHONE_DIALLING_CODES,
+      useValue: PHONE_DIALLING_CODES_VALUE,
     },
   ],
   exports: CORE_MODULE_DECLARATIONS,
