@@ -6,18 +6,20 @@ import {
   Input,
   OnInit,
 } from '@angular/core';
-import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import {
-  MatDateRangePicker,
-  MatDatepickerInputEvent,
-} from '@angular/material/datepicker';
+import { NG_VALUE_ACCESSOR, FormGroup, FormControl } from '@angular/forms';
+import { MatDateRangePicker } from '@angular/material/datepicker';
 import { DateAdapter } from '@angular/material/core';
-import { BehaviorSubject, combineLatest, map } from 'rxjs';
+import { map, takeUntil, tap } from 'rxjs';
 
 import { UniqueIdGeneratorService } from '../../../services/unique-id-generator.service';
 import { AppLocaleService } from '../../../core/services/app-locale.service';
 
 import { CustomControl } from '../../abstracts/custom-control.class';
+
+type DateValue = Readonly<{
+  start: Date | null;
+  end: Date | null;
+}>;
 
 @Component({
   selector: 'app-date-control',
@@ -34,92 +36,78 @@ import { CustomControl } from '../../abstracts/custom-control.class';
 })
 // TODO: Refactor this all!
 export class DateControlComponent
-  extends CustomControl<string>
+  extends CustomControl<DateValue>
   implements OnInit
 {
-  public readonly minimalDate = new Date();
-  public readonly maximalDate = new Date(
-    new Date().setMonth(this.minimalDate.getMonth() + 3)
-  );
-
-  private readonly startDate$ = new BehaviorSubject<Date | null>(null);
-  private readonly endDate$ = new BehaviorSubject<Date | null>(null);
-  private readonly controlValue$ = combineLatest([
-    this.startDate$.asObservable(),
-    this.endDate$.asObservable(),
-  ]).pipe(
-    map(([startDate, endDate]) => {
-      if (startDate?.getTime() === endDate?.getTime()) {
-        return {
-          start: startDate,
-          end: null,
-        };
-      }
-
-      return { start: startDate, end: endDate };
-    })
-  );
-
-  protected readonly viewValue$ = this.controlValue$.pipe(
-    map(({ start, end }) => {
-      if (start === null) {
-        return '';
-      }
-
-      const formattedStartDate = new Intl.DateTimeFormat('be-BY', {
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit',
-      }).format(start);
-
-      if (end === null) {
-        return formattedStartDate;
-      }
-
-      const formattedEndDate = new Intl.DateTimeFormat('be-BY', {
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit',
-      }).format(end);
-
-      return `${formattedStartDate} - ${formattedEndDate}`;
-    })
-  );
-
   @Input()
   public set label(value: string) {
     this.controlLabel = value;
   }
 
+  protected readonly minDate = new Date();
+  protected readonly maxDate = new Date(
+    new Date().setMonth(this.minDate.getMonth() + 3)
+  );
+  protected readonly dateForm = new FormGroup({
+    start: new FormControl<Date | null>(null),
+    end: new FormControl<Date | null>(null),
+  });
+  protected readonly viewValue$ = this.dateForm.valueChanges.pipe(
+    map(({ start, end }) => {
+      if (start === null || start === undefined) {
+        return '';
+      }
+
+      const formattedStartDate = this.formatDate(start);
+
+      if (
+        end === null ||
+        end === undefined ||
+        start.getTime() === end.getTime()
+      ) {
+        return formattedStartDate;
+      }
+
+      const formattedEndDate = this.formatDate(end);
+
+      return `${formattedStartDate} - ${formattedEndDate}`;
+    })
+  );
+
   constructor(
     uniqueIdGeneratorService: UniqueIdGeneratorService,
     cdRef: ChangeDetectorRef,
     private readonly dateAdapter: DateAdapter<Date>,
-    private readonly localeService: AppLocaleService,
+    private readonly localeService: AppLocaleService
   ) {
     super(uniqueIdGeneratorService, cdRef);
   }
 
   public ngOnInit(): void {
-    this.controlValue$.subscribe((val) => console.log(val));
     this.dateAdapter.setLocale(this.localeService.currentLocale);
+    this.dateForm.valueChanges
+      .pipe(
+        tap(({ start, end }) => {
+          if (start === undefined || end === undefined) {
+            throw new Error('Values cannot be undefined!');
+          }
+
+          if (start?.getTime() === end?.getTime()) {
+            this.onChange({ start, end: null });
+            return;
+          }
+
+          this.onChange({ start, end });
+        }),
+        takeUntil(this.destroy$)
+      )
+      .subscribe();
   }
 
-  public writeValue(value: unknown): void {
-    if (!this.isStringOrNull(value)) {
-      throw new Error('Only strings and null are allowed!');
-    }
+  public writeValue(value: DateValue): void {
+    // TODO: Assert value type
 
-    // this.inputValue = value === null ? '' : value;
-    this.cdRef.markForCheck();
-  }
-
-  public handleStartDateChange(event: MatDatepickerInputEvent<Date>): void {
-    this.startDate$.next(event.value);
-  }
-
-  public handleEndDateChange(event: MatDatepickerInputEvent<Date>): void {
-    this.endDate$.next(event.value);
+    this.dateForm.setValue(value);
   }
 
   public toggleDateRangePicker(
@@ -132,7 +120,14 @@ export class DateControlComponent
     }
   }
 
-  private isStringOrNull(value: unknown): value is string | null {
-    return typeof value === 'string' || value === null;
+  private formatDate(date: Date): string {
+    return new Intl.DateTimeFormat(
+      this.localeService.currentLocale,
+      {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+      }
+    ).format(date);
   }
 }

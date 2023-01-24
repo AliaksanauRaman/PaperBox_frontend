@@ -18,12 +18,13 @@
 
   <mat-date-range-input
     class="date-range-input"
+    [formGroup]="dateForm"
     [rangePicker]="matDateRangePickerRef"
-    [min]="minimalDate"
-    [max]="maximalDate"
+    [min]="minDate"
+    [max]="maxDate"
   >
-    <input matStartDate (dateChange)="handleStartDateChange($event)" />
-    <input matEndDate (dateChange)="handleEndDateChange($event)" />
+    <input matStartDate formControlName="start" />
+    <input matEndDate formControlName="end" />
   </mat-date-range-input>
 
   <mat-date-range-picker #matDateRangePickerRef></mat-date-range-picker>
