@@ -1,11 +1,108 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  forwardRef,
+  Inject,
+  OnInit,
+} from '@angular/core';
+import { FormControl, NG_VALUE_ACCESSOR, FormGroup } from '@angular/forms';
+import { tap, takeUntil, merge } from 'rxjs';
+
+import { UniqueIdGeneratorService } from '../../../services/unique-id-generator.service';
+import { AppLanguagesService } from '../../services/app-languages.service';
+import { ALL_LOCATIONS } from '../../dependencies/all-locations';
+import {
+  ALL_LOCATIONS_WITH_TRANSLATED_LABELS,
+  allLocationsWithTranslatedLabelsFactory,
+  AllLocationsWithTranslatedLabelsType,
+} from './all-locations-with-translated-labels';
+
+import { CustomControl } from '../../../shared/abstracts/custom-control.class';
+import { DataSource } from '../../../shared/classes/data-source.class';
+
+type LocationsControlValue = Readonly<{
+  from: string;
+  to: string;
+}>;
 
 @Component({
   selector: 'app-locations-control',
   templateUrl: './locations-control.component.html',
   styleUrls: ['./locations-control.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  providers: [
+    {
+      provide: ALL_LOCATIONS_WITH_TRANSLATED_LABELS,
+      useFactory: allLocationsWithTranslatedLabelsFactory,
+      deps: [AppLanguagesService, ALL_LOCATIONS],
+    },
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => LocationsControlComponent),
+      multi: true,
+    },
+  ],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LocationsControlComponent {
+export class LocationsControlComponent
+  extends CustomControl<LocationsControlValue>
+  implements OnInit
+{
+  protected readonly locationsForm = new FormGroup({
+    from: new FormControl<string>(''),
+    to: new FormControl<string>(''),
+  });
+  protected readonly locationsDataSource = DataSource.createFromLocations(
+    this.allLocationsWithTranslatedLabels
+  );
 
+  constructor(
+    uniqueIdGeneratorService: UniqueIdGeneratorService,
+    cdRef: ChangeDetectorRef,
+    @Inject(ALL_LOCATIONS_WITH_TRANSLATED_LABELS)
+    private readonly allLocationsWithTranslatedLabels: AllLocationsWithTranslatedLabelsType
+  ) {
+    super(uniqueIdGeneratorService, cdRef);
+  }
+
+  public ngOnInit(): void {
+    merge(
+      this.locationsForm.controls.from.valueChanges,
+      this.locationsForm.controls.to.valueChanges
+    )
+      .pipe(
+        tap(() => this.emitChangeEvent()),
+        takeUntil(this.destroy$)
+      )
+      .subscribe();
+  }
+
+  public writeValue(value: LocationsControlValue): void {
+    // TODO: Assert value type
+
+    this.locationsForm.setValue(value);
+  }
+
+  public switchLocations(): void {
+    const fromValue = this.locationsForm.controls.from.getRawValue() || '';
+    const toValue = this.locationsForm.controls.to.getRawValue() || '';
+    this.locationsForm.setValue(
+      {
+        from: toValue,
+        to: fromValue,
+      },
+      { emitEvent: false, onlySelf: true }
+    );
+    this.emitChangeEvent();
+  }
+
+  private emitChangeEvent(): void {
+    const fromValue = this.locationsForm.controls.from.getRawValue() || '';
+    const toValue = this.locationsForm.controls.to.getRawValue() || '';
+
+    this.onChange({
+      from: fromValue,
+      to: toValue,
+    });
+  }
 }

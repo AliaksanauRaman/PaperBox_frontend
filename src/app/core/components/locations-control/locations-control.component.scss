@@ -1,7 +1,45 @@
 :host {
   display: flex;
+  flex-shrink: 0;
+  width: 100%;
 }
 
 .locations-control {
+  width: inherit;
+}
+
+.locations-control-form {
+  position: relative;
   display: flex;
+  flex-direction: column;
+}
+
+.from-control {
+  margin-bottom: 30px;
+}
+
+.switch-locations-button {
+  position: absolute;
+  z-index: 1;
+  right: 6px;
+  bottom: 57px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 31px;
+  height: 30px;
+  transition: 0.25s opacity ease-in-out;
+
+  svg path {
+    transition: 0.25s fill ease-in-out;
+  }
+
+  &:disabled {
+    pointer-events: none;
+    opacity: 0.3;
+
+    svg path {
+      fill: var(--grey-color);
+    }
+  }
 }

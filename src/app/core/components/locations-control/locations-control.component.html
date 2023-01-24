@@ -1,3 +1,50 @@
 <div class="locations-control">
-  locations-control
+  <form class="locations-control-form" [formGroup]="locationsForm">
+    <app-autocomplete-text-field-control
+      class="from-control"
+      [dataSource]="locationsDataSource"
+      [label]="'dialogs.offerHelp.whereFromFieldLabel' | translate"
+      formControlName="from"
+    >
+      <app-location-icon trailingIcon></app-location-icon>
+    </app-autocomplete-text-field-control>
+
+    <button
+      class="switch-locations-button"
+      [disabled]="
+        !locationsForm.controls.from.value || !locationsForm.controls.to.value
+      "
+      (click)="switchLocations()"
+    >
+      <ng-container *ngTemplateOutlet="directionIconSvg"></ng-container>
+    </button>
+
+    <app-autocomplete-text-field-control
+      class="to-control"
+      [dataSource]="locationsDataSource"
+      [label]="'dialogs.offerHelp.whereToFieldLabel' | translate"
+      formControlName="to"
+    >
+      <app-location-icon trailingIcon></app-location-icon>
+    </app-autocomplete-text-field-control>
+  </form>
 </div>
+
+<ng-template #directionIconSvg>
+  <svg
+    width="23"
+    height="24"
+    viewBox="0 0 30 31"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M29.7071 8.70711C30.0976 8.31658 30.0976 7.68342 29.7071 7.29289L23.3431 0.928932C22.9526 0.538408 22.3195 0.538408 21.9289 0.928932C21.5384 1.31946 21.5384 1.95262 21.9289 2.34315L27.5858 8L21.9289 13.6569C21.5384 14.0474 21.5384 14.6805 21.9289 15.0711C22.3195 15.4616 22.9526 15.4616 23.3431 15.0711L29.7071 8.70711ZM1 9H29V7H1V9Z"
+      fill="#4E91F7"
+    />
+    <path
+      d="M0.292892 22.2929C-0.0976315 22.6834 -0.0976314 23.3166 0.292892 23.7071L6.65685 30.0711C7.04738 30.4616 7.68054 30.4616 8.07107 30.0711C8.46159 29.6805 8.46159 29.0474 8.07107 28.6569L2.41421 23L8.07107 17.3431C8.46159 16.9526 8.46159 16.3195 8.07107 15.9289C7.68054 15.5384 7.04738 15.5384 6.65685 15.9289L0.292892 22.2929ZM29 22L1 22L1 24L29 24L29 22Z"
+      fill="#4E91F7"
+    />
+  </svg>
+</ng-template>
