@@ -18,6 +18,17 @@ export class DataSource<T = unknown> {
     return new DataSource(options);
   }
 
+  public static createFromPhoneDiallingCodes(
+    phoneDiallingCodes: ReadonlyArray<string>
+  ): DataSource<string> {
+    const options = phoneDiallingCodes.map((code) => ({
+      label: code,
+      value: code,
+    }));
+
+    return new DataSource(options);
+  }
+
   public static createEmpty<T = unknown>(): DataSource<T> {
     return new DataSource([]);
   }
