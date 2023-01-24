@@ -1,5 +1,3 @@
-@import '../../../styles/scss-variables';
-
 // TODO: Think about common styles
 $padding: 12px;
 
@@ -28,7 +26,7 @@ $padding: 12px;
 
 .control {
   flex-shrink: 0;
-  height: 40px;
+  height: var(--field-height);
   padding: 0 $padding;
   font-size: 1rem;
   font-weight: 500;
@@ -54,11 +52,5 @@ $padding: 12px;
 
   &:empty {
     display: none;
-  }
-}
-
-@media (min-width: $smallMobileScreenWidth) {
-  .control {
-    height: 48px;
   }
 }

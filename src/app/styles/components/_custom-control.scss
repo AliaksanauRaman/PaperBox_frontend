@@ -27,7 +27,7 @@ $padding: 12px;
 
 .custom-control__field {
   flex-shrink: 0;
-  height: 40px;
+  height: var(--field-height);
   padding: 0 $padding;
   font-size: 1rem;
   font-weight: 500;
@@ -63,10 +63,6 @@ $padding: 12px;
 @media (min-width: $smallMobileScreenWidth) {
   .custom-control {
     min-width: 240px;
-  }
-
-  .custom-control__field {
-    height: 48px;
   }
 }
 

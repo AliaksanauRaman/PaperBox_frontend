@@ -1,15 +1,12 @@
 // TODO: Adaptive layout
 
 :host {
-  display: block;
-}
-
-.phone-control {
-  position: relative;
+  display: flex;
 }
 
 .phone-control-form {
   display: flex;
+  flex-direction: column;
   flex-shrink: 0;
 }
 
@@ -17,7 +14,8 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  height: 48px;
+  z-index: 1;
+  height: var(--field-height);
 }
 
 .custom-control__field {
@@ -31,7 +29,7 @@
   bottom: 0;
   display: flex;
   align-items: center;
-  height: 48px;
+  height: var(--field-height);
 }
 
 .plus-button,
