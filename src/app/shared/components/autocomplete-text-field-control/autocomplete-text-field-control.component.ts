@@ -4,19 +4,10 @@ import {
   Component,
   forwardRef,
   Input,
-  OnInit,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR, FormControl } from '@angular/forms';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
-import {
-  BehaviorSubject,
-  combineLatest,
-  distinctUntilChanged,
-  map,
-  startWith,
-  takeUntil,
-  tap,
-} from 'rxjs';
+import { BehaviorSubject, combineLatest, map, startWith } from 'rxjs';
 
 import { UniqueIdGeneratorService } from '../../../services/unique-id-generator.service';
 
@@ -36,10 +27,8 @@ import { DataSource } from '../../classes/data-source.class';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AutocompleteTextFieldControlComponent
-  extends CustomControl<string>
-  implements OnInit
-{
+// TODO: Think about making this component "less shared"
+export class AutocompleteTextFieldControlComponent extends CustomControl<string> {
   @Input()
   public set label(value: string) {
     this.controlLabel = value;
@@ -62,7 +51,17 @@ export class AutocompleteTextFieldControlComponent
     this.inputControl.valueChanges.pipe(startWith('')),
   ]).pipe(
     map(([controlDataSource, inputValue]) => {
-      this.controlValue$.next('');
+      if (
+        !controlDataSource.options.some(({ label }) => label === inputValue)
+      ) {
+        const nextValue = '';
+
+        if (this.isNewValue(nextValue)) {
+          this.emitValueChange(nextValue);
+        }
+
+        this.updateControlValue(nextValue);
+      }
 
       if (inputValue === '' || inputValue === null) {
         return controlDataSource.options;
@@ -81,23 +80,13 @@ export class AutocompleteTextFieldControlComponent
     super(uniqueIdGeneratorService, cdRef);
   }
 
-  public ngOnInit(): void {
-    this.controlValue$
-      .pipe(
-        distinctUntilChanged(),
-        tap((value) => this.onChange(value)),
-        takeUntil(this.destroy$)
-      )
-      .subscribe();
-  }
-
   public writeValue(value: unknown): void {
     if (!this.isStringOrNull(value)) {
       throw new Error('Only strings and null are allowed!');
     }
 
     if (value === null || value === '') {
-      this.controlValue$.next('');
+      this.updateControlValue('');
       return;
     }
 
@@ -110,7 +99,7 @@ export class AutocompleteTextFieldControlComponent
     }
 
     this.inputControl.setValue(foundOption.label);
-    this.controlValue$.next(value);
+    this.updateControlValue(value);
   }
 
   public handleOptionSelection(event: MatAutocompleteSelectedEvent): void {
@@ -122,11 +111,29 @@ export class AutocompleteTextFieldControlComponent
       throw new Error('It cannot be that no option was found!');
     }
 
-    this.controlValue$.next(foundOption.value);
+    const nextValue = foundOption.value;
+
+    if (this.isNewValue(nextValue)) {
+      this.emitValueChange(nextValue);
+    }
+
+    this.updateControlValue(nextValue);
   }
 
   // TODO: Move to a shared place
   private isStringOrNull(value: unknown): value is string | null {
     return typeof value === 'string' || value === null;
+  }
+
+  private isNewValue(value: string): boolean {
+    return this.controlValue$.getValue() !== value;
+  }
+
+  private emitValueChange(value: string): void {
+    this.onChange(value);
+  }
+
+  private updateControlValue(value: string): void {
+    this.controlValue$.next(value);
   }
 }
