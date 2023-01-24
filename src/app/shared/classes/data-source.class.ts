@@ -23,4 +23,8 @@ export class DataSource<T = unknown> {
   }
 
   constructor(public readonly options: ReadonlyArray<DataSourceOption<T>>) {}
+
+  public getOptionsValues(): ReadonlyArray<T> {
+    return this.options.map(({ value }) => value);
+  }
 }
