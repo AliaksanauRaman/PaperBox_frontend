@@ -21,6 +21,7 @@ const DEFAULT_MAX_CHARACTERS = 255;
     {
       provide: NG_VALUE_ACCESSOR,
       useExisting: forwardRef(() => TextareaFieldControlComponent),
+      multi: true,
     },
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
