@@ -34,6 +34,13 @@
 }
 // MAT-CALENDAR END
 
+// MAT-AUTOCOMPLETE START
+.mdc-list-item--selected .mdc-list-item__primary-text,
+.mdc-list-item--activated .mdc-list-item__primary-text {
+  color: var(--primary-color);
+}
+// MAT-AUTOCOMPLETE END
+
 // TODO: Check if colors still needed
 .mat-custom-green {
   color: var(--green-color) !important;
