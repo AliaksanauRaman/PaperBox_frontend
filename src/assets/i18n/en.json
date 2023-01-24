@@ -37,7 +37,7 @@
       "title": "Offer help",
       "whereFromFieldLabel": "Where from",
       "whereToFieldLabel": "Where to",
-      "whenFieldLabel": "When",
+      "whenFieldLabel": "When (DD/MM/YYYY)",
       "commentFieldLabel": "Comment",
       "fullNameFieldLabel": "Full name",
       "sendButtonLabel": "Send"
