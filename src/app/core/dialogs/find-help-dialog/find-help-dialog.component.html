@@ -1,1 +1,51 @@
-<p>find-help-dialog works!</p>
+<div class="find-help-dialog">
+  <h2 class="title app-custom-dialog-title">
+    {{ "dialogs.findHelp.title" | translate }}
+  </h2>
+
+  <div class="app-custom-dialog-close-button" (click)="closeDialog()">
+    <app-plus-icon class="app-custom-dialog-close-button-icon"></app-plus-icon>
+  </div>
+
+  <form class="form" [formGroup]="offerHelpForm">
+    <app-locations-control
+      class="locations-control"
+      formControlName="locations"
+    >
+    </app-locations-control>
+
+    <app-date-control
+      class="date-control"
+      [label]="'dialogs.findHelp.whenFieldLabel' | translate"
+      formControlName="date"
+    >
+    </app-date-control>
+
+    <app-textarea-field-control
+      class="comment-control"
+      [label]="'dialogs.findHelp.commentFieldLabel' | translate"
+      formControlName="comment"
+    >
+    </app-textarea-field-control>
+
+    <app-input-control
+      class="full-name-control"
+      [label]="'dialogs.findHelp.fullNameFieldLabel' | translate"
+      formControlName="fullName"
+    >
+    </app-input-control>
+
+    <app-dynamic-phone-list-control
+      class="phones-control"
+      formControlName="phones"
+    >
+    </app-dynamic-phone-list-control>
+  </form>
+
+  <button
+    class="app-custom-dialog-action-button app-primary-button"
+    (click)="handleSendButtonClick()"
+  >
+    <span>{{ "dialogs.findHelp.sendButtonLabel" | translate }}</span>
+  </button>
+</div>
