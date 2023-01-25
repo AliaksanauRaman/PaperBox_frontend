@@ -4,21 +4,20 @@
 
 .footer {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
   flex-grow: 1;
-  padding: var(--bordering-padding);
+  padding: 16px var(--bordering-padding);
   background-color: var(--primary-color);
+}
+
+.copyright {
+  flex-grow: 1;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--white-color);
 }
 
 .leave-feedback-button {
   flex-shrink: 0;
-  margin-bottom: 20px;
-}
-
-.copyright {
-  flex-shrink: 0;
-  font-size: 1rem;
-  color: var(--white-color);
+  margin-left: 10px;
 }
