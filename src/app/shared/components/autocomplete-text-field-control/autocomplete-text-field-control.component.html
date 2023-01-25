@@ -31,7 +31,34 @@
       *ngFor="let option of filteredOptions$ | async"
       [value]="option.label"
     >
-      <span>{{ option.label }}</span>
+      <!-- TODO: Refactor this! -->
+      <div class="option-content">
+        <div class="option-content__text">
+          <div class="option-content__city">
+            <span>{{ option.label.split(",")[1].trim() }}</span>
+          </div>
+
+          <div class="option-content__country">
+            <span>{{ option.label.split(",")[0].trim() }}</span>
+          </div>
+        </div>
+
+        <div class="option-content__icon">
+          <ng-container *ngTemplateOutlet="arrowRightSvg"></ng-container>
+        </div>
+      </div>
     </mat-option>
   </mat-autocomplete>
 </div>
+
+<ng-template #arrowRightSvg>
+  <svg
+    width="6"
+    height="11"
+    viewBox="0 0 6 11"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M1 10.5L5 5.37179L1 0.5" stroke="#000000" stroke-linecap="round" />
+  </svg>
+</ng-template>

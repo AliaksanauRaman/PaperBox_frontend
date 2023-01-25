@@ -54,3 +54,29 @@ $padding: 12px;
     display: none;
   }
 }
+
+.option-content {
+  display: flex;
+  align-items: flex-start;
+}
+
+.option-content__text {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.option-content__city {
+  flex-shrink: 0;
+  font-size: 1.1rem;
+}
+
+.option-content__country {
+  flex-shrink: 0;
+  font-size: 0.85rem;
+}
+
+.option-content__icon {
+  flex-shrink: 0;
+  margin-left: 10px;
+}
