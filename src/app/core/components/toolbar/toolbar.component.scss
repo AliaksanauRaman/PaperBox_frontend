@@ -1,7 +1,7 @@
-@import '../../../styles/scss-variables';
+@import "../../../styles/scss-variables";
 
-$xsLogoWidth: 46.9px;
-$xsLogoHeight: 35px;
+$xsLogoWidth: 100px;
+$xsLogoHeight: 30px;
 
 :host {
   display: flex;
@@ -12,7 +12,7 @@ $xsLogoHeight: 35px;
   display: flex;
   align-items: center;
   flex-grow: 1;
-  height: $xsLogoHeight;
+  height: 35px;
 }
 
 .logo {
@@ -34,7 +34,7 @@ $xsLogoHeight: 35px;
   justify-content: flex-end;
   align-items: center;
   flex-grow: 1;
-  height: $xsLogoHeight;
+  height: 35px;
 }
 
 .tools__item {
@@ -44,11 +44,11 @@ $xsLogoHeight: 35px;
 }
 
 @media (min-width: $smallMobileScreenWidth) {
-  $sLogoWidth: 59px;
-  $sLogoHeight: 44px;
+  $sLogoWidth: 127px;
+  $sLogoHeight: 38px;
 
   .toolbar {
-    height: $sLogoHeight;
+    height: 40px;
   }
 
   .logo {
@@ -57,6 +57,6 @@ $xsLogoHeight: 35px;
   }
 
   .tools {
-    height: $sLogoHeight;
+    height: 40px;
   }
 }
