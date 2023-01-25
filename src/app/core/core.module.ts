@@ -46,6 +46,10 @@ import {
   POLISH_CITIES,
   POLISH_CITIES_VALUE,
 } from './dependencies/polish-cities';
+import {
+  GEORGIAN_CITIES,
+  GEORGIAN_CITIES_VALUE,
+} from './dependencies/georgian-cities';
 import { ALL_CITIES, allCitiesFactory } from './dependencies/all-cities';
 import {
   ALL_LOCATIONS,
@@ -109,9 +113,13 @@ const CORE_MODULE_DECLARATIONS = [
       useValue: POLISH_CITIES_VALUE,
     },
     {
+      provide: GEORGIAN_CITIES,
+      useValue: GEORGIAN_CITIES_VALUE,
+    },
+    {
       provide: ALL_CITIES,
       useFactory: allCitiesFactory,
-      deps: [BELARUSIAN_CITIES, POLISH_CITIES],
+      deps: [BELARUSIAN_CITIES, POLISH_CITIES, GEORGIAN_CITIES],
     },
     {
       provide: ALL_LOCATIONS,
