@@ -1,13 +1,13 @@
 :host {
   display: flex;
   width: 100%;
-  transition: .25s height ease-in-out;
+  transition: 0.25s height ease-in-out;
 
   &.hovered,
   &.expanded {
     .help-offers-list-item {
       z-index: 1;
-      box-shadow: 5px 5px 15px 3px rgba($color: #4E91F7, $alpha: .2); // PRIMARY COLOR
+      box-shadow: 5px 5px 15px 3px rgba($color: #4e91f7, $alpha: 0.2); // PRIMARY COLOR
 
       .info-area__direction {
         color: var(--primary-color);
@@ -20,8 +20,16 @@
       transform: rotate(180deg);
     }
 
+    .collapsible-part {
+      pointer-events: all;
+    }
+
     .comment {
       color: var(--grey-color);
+    }
+
+    .phones__item {
+      color: var(--primary-color);
     }
   }
 }
@@ -35,7 +43,7 @@
   padding: 20px 16px;
   background-color: var(--white-color);
   border-radius: 12px;
-  transition: .25s all ease-in-out;
+  transition: 0.25s all ease-in-out;
 }
 
 .static-part {
@@ -53,7 +61,7 @@
   font-size: 1rem;
   font-weight: 700;
   color: var(--black-color);
-  transition: .25s color ease-in-out;
+  transition: 0.25s color ease-in-out;
 }
 
 .info-area__full-name {
@@ -77,7 +85,7 @@
 
 .toggle-icon-area__icon {
   margin-top: 3px;
-  transition: .25s transform ease-in-out;
+  transition: 0.25s transform ease-in-out;
 }
 
 .collapsible-part {
@@ -89,5 +97,22 @@
   font-size: 0.9rem;
   font-weight: 500;
   color: transparent;
-  transition: .25s color ease-in-out;
+  transition: 0.15s color ease-in-out;
+}
+
+.phones {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.phones__item {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: transparent;
+  transition: 0.15s color ease-in-out;
+
+  &:not(:last-child) {
+    margin-bottom: 6px;
+  }
 }
