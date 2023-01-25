@@ -2,13 +2,15 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { DialogRef } from '@angular/cdk/dialog';
 import { FormBuilder } from '@angular/forms';
 
+import { DialogComponent } from '../../../shared/abstracts/dialog-component.class';
+
 @Component({
   selector: 'app-offer-help-dialog',
   templateUrl: './offer-help-dialog.component.html',
   styleUrls: ['./offer-help-dialog.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class OfferHelpDialogComponent {
+export class OfferHelpDialogComponent extends DialogComponent {
   protected readonly offerHelpForm = this.formBuilder.group({
     locations: [
       {
@@ -35,13 +37,10 @@ export class OfferHelpDialogComponent {
   });
 
   constructor(
-    private readonly dialogRef: DialogRef<void>,
+    dialogRef: DialogRef<void>,
     private readonly formBuilder: FormBuilder
-  ) {}
-
-  // TODO: Abstract class
-  public closeDialog(): void {
-    this.dialogRef.close();
+  ) {
+    super(dialogRef);
   }
 
   public handleSendButtonClick(): void {
