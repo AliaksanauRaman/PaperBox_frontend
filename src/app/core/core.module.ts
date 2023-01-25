@@ -29,6 +29,7 @@ import { DynamicPhoneListControlComponent } from './components/dynamic-phone-lis
 import { LocationsControlComponent } from './components/locations-control/locations-control.component';
 import { FeedbackDialogComponent } from './dialogs/feedback-dialog/feedback-dialog.component';
 import { OfferHelpDialogComponent } from './dialogs/offer-help-dialog/offer-help-dialog.component';
+import { FindHelpDialogComponent } from './dialogs/find-help-dialog/find-help-dialog.component';
 
 import {
   LOCAL_STORAGE,
@@ -74,6 +75,7 @@ const CORE_MODULE_DECLARATIONS = [
   LocationsControlComponent,
   FeedbackDialogComponent,
   OfferHelpDialogComponent,
+  FindHelpDialogComponent,
 ];
 
 @NgModule({
