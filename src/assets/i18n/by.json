@@ -32,8 +32,13 @@
   "dialogs": {
     "offerHelp": {
       "title": "Прапанаваць дапамогу",
-      "whereFromFieldLabel": "Адкуль",
-      "whereToFieldLabel": "Куды",
+      "whenFieldLabel": "Калі (ДД.ММ.ГГГГ)",
+      "commentFieldLabel": "Каментар",
+      "fullNameFieldLabel": "Поўнае імя",
+      "sendButtonLabel": "Адправіць"
+    },
+    "findHelp": {
+      "title": "Знайсці дапамогу",
       "whenFieldLabel": "Калі (ДД.ММ.ГГГГ)",
       "commentFieldLabel": "Каментар",
       "fullNameFieldLabel": "Поўнае імя",
@@ -90,6 +95,10 @@
     },
     "dynamicListPhoneControl": {
       "phoneNumbersLabel": "Нумары тэлефонаў"
+    },
+    "locationsControl": {
+      "whereFromFieldLabel": "Адкуль",
+      "whereToFieldLabel": "Куды"
     }
   },
   "helpOfferStatus": {

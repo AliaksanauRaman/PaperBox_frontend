@@ -32,8 +32,13 @@
   "dialogs": {
     "offerHelp": {
       "title": "Offer help",
-      "whereFromFieldLabel": "Where from",
-      "whereToFieldLabel": "Where to",
+      "whenFieldLabel": "When (DD/MM/YYYY)",
+      "commentFieldLabel": "Comment",
+      "fullNameFieldLabel": "Full name",
+      "sendButtonLabel": "Send"
+    },
+    "findHelp": {
+      "title": "Find help",
       "whenFieldLabel": "When (DD/MM/YYYY)",
       "commentFieldLabel": "Comment",
       "fullNameFieldLabel": "Full name",
@@ -90,6 +95,10 @@
     },
     "dynamicListPhoneControl": {
       "phoneNumbersLabel": "Phone numbers"
+    },
+    "locationsControl": {
+      "whereFromFieldLabel": "Where from",
+      "whereToFieldLabel": "Where to"
     }
   },
   "helpOfferStatus": {
