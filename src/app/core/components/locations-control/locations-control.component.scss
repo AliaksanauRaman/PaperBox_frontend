@@ -1,3 +1,5 @@
+@import "../../../styles/scss-variables";
+
 :host {
   display: flex;
   flex-shrink: 0;
@@ -22,7 +24,7 @@
   position: absolute;
   z-index: 1;
   right: 6px;
-  bottom: 57px;
+  bottom: 49px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -41,5 +43,11 @@
     svg path {
       fill: var(--grey-color);
     }
+  }
+}
+
+@media (min-width: $smallMobileScreenWidth) {
+  .switch-locations-button {
+    bottom: 57px;
   }
 }
