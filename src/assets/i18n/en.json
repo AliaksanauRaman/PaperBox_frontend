@@ -102,7 +102,8 @@
   },
   "country": {
     "belarus": "Belarus",
-    "poland": "Poland"
+    "poland": "Poland",
+    "georgia": "Georgia"
   },
   "city": {
     "belarusian": {
@@ -121,6 +122,10 @@
       "lodz": "Lodz",
       "poznan": "Poznan",
       "bialystok": "Bialystok"
+    },
+    "georgian": {
+      "tbilisi": "Tbilisi",
+      "batumi": "Batumi"
     },
     "other": "Other"
   }
