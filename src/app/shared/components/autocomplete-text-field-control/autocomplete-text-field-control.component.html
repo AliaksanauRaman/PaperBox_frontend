@@ -31,15 +31,17 @@
       *ngFor="let option of filteredOptions$ | async"
       [value]="option.label"
     >
-      <!-- TODO: Refactor this! -->
       <div class="option-content">
-        <div class="option-content__text">
+        <div
+          class="option-content__text"
+          *ngIf="option.label | destructureLocationLabel as location"
+        >
           <div class="option-content__city">
-            <span>{{ option.label.split(",")[1].trim() }}</span>
+            <span>{{ location.cityName }}</span>
           </div>
 
           <div class="option-content__country">
-            <span>{{ option.label.split(",")[0].trim() }}</span>
+            <span>{{ location.countryName }}</span>
           </div>
         </div>
 
