@@ -34,6 +34,7 @@ export class TextareaFieldControlComponent extends CustomControl<string> {
 
   protected controlValue = '';
   protected controlMaxCharacters = DEFAULT_MAX_CHARACTERS;
+  protected isFocused = false;
 
   constructor(
     uniqueIdGeneratorService: UniqueIdGeneratorService,
@@ -54,6 +55,16 @@ export class TextareaFieldControlComponent extends CustomControl<string> {
   public handleControlValueChange(newValue: string): void {
     this.controlValue = newValue;
     this.onChange(this.controlValue);
+  }
+
+  public handleControlFocus(): void {
+    this.isFocused = true;
+  }
+
+  public override handleControlBlur(): void {
+    super.handleControlBlur();
+
+    this.isFocused = false;
   }
 
   // TODO: Move to a shared place
