@@ -98,7 +98,9 @@
     },
     "locationsControl": {
       "whereFromFieldLabel": "Where from",
-      "whereToFieldLabel": "Where to"
+      "whereToFieldLabel": "Where to",
+      "whereFromRequiredErrorMessage": "Select an option from the list",
+      "whereToRequiredErrorMessage": "Select an option from the list"
     }
   },
   "helpOfferStatus": {

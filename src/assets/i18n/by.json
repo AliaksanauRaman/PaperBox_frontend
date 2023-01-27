@@ -98,7 +98,9 @@
     },
     "locationsControl": {
       "whereFromFieldLabel": "Адкуль",
-      "whereToFieldLabel": "Куды"
+      "whereToFieldLabel": "Куды",
+      "whereFromRequiredErrorMessage": "Абярыце варыянт з спісу",
+      "whereToRequiredErrorMessage": "Абярыце варыянт з спісу"
     }
   },
   "helpOfferStatus": {
