@@ -1,4 +1,4 @@
-@import '../scss-variables';
+@import "../scss-variables";
 
 button.app-primary-button {
   display: flex;
@@ -11,7 +11,7 @@ button.app-primary-button {
   background-color: var(--primary-color);
   border: 1px solid transparent;
   border-radius: var(--border-radius);
-  transition: .15s all ease-in-out;
+  transition: 0.15s all ease-in-out;
 
   &:focus {
     border-color: var(--primary-click-color);
