@@ -37,9 +37,6 @@
 }
 
 .calendar-button__icon {
-  width: 15px;
-  height: 16.7px;
-
   & path {
     // TODO: Move transition speed to a variable
     transition: 0.25s fill ease-in-out;
