@@ -1,4 +1,4 @@
-@import './scss-variables';
+@import "./scss-variables";
 
 :root {
   --bordering-padding: 13px;
@@ -6,21 +6,22 @@
 
   --border-radius: 12px;
 
-  --primary-color: #4E91F7;
-  --primary-hover-color: #6AA2F6;
-  --primary-click-color: #8BB4F3;
-  --primary-highlight-color: rgba(78, 145, 247, .2);
-  --primary-background-color: #EAEFF8;
+  --primary-color: #4e91f7;
+  --primary-hover-color: #6aa2f6;
+  --primary-click-color: #8bb4f3;
+  --primary-highlight-color: rgba(78, 145, 247, 0.2);
+  --primary-background-color: #eaeff8;
+  --error-color: #f77968;
 
   --white-color: #ffffff;
   --black-color: #000000;
   --light-black-color: rgba(0, 0, 0, 0.12);
-  --grey-color: #B1B1B1;
-  --green-color: #4CAF50;
+  --grey-color: #b1b1b1;
+  --green-color: #4caf50;
   --light-green-color: rgba(76, 175, 80, 0.12);
-  --red-color: #F44336;
+  --red-color: #f44336;
   --light-red-color: rgba(244, 67, 54, 0.12);
-  --amber-color: #FFC107;
+  --amber-color: #ffc107;
   --light-amber-color: rgba(255, 193, 7, 0.12);
 }
 
