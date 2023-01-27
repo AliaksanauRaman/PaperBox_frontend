@@ -6,7 +6,16 @@ import {
   Inject,
   OnInit,
 } from '@angular/core';
-import { FormControl, NG_VALUE_ACCESSOR, FormGroup } from '@angular/forms';
+import {
+  FormControl,
+  NG_VALUE_ACCESSOR,
+  FormGroup,
+  NG_VALIDATORS,
+  Validator,
+  Validators,
+  AbstractControl,
+  ValidationErrors,
+} from '@angular/forms';
 import { tap, takeUntil, merge } from 'rxjs';
 
 import { UniqueIdGeneratorService } from '../../../services/unique-id-generator.service';
@@ -41,16 +50,21 @@ type LocationsControlValue = Readonly<{
       useExisting: forwardRef(() => LocationsControlComponent),
       multi: true,
     },
+    {
+      provide: NG_VALIDATORS,
+      useExisting: forwardRef(() => LocationsControlComponent),
+      multi: true,
+    },
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LocationsControlComponent
   extends CustomControl<LocationsControlValue>
-  implements OnInit
+  implements OnInit, Validator
 {
   protected readonly locationsForm = new FormGroup({
-    from: new FormControl<string>(''),
-    to: new FormControl<string>(''),
+    from: new FormControl<string>('', [Validators.required]),
+    to: new FormControl<string>('', [Validators.required]),
   });
   protected readonly locationsDataSource = DataSource.createFromLocations(
     this.allLocationsWithTranslatedLabels
@@ -83,6 +97,25 @@ export class LocationsControlComponent
     this.locationsForm.setValue(value);
   }
 
+  public validate(thisControl: AbstractControl): ValidationErrors | null {
+    const thisControlValue: LocationsControlValue | null =
+      thisControl.getRawValue();
+
+    if (
+      thisControlValue === null ||
+      thisControlValue.from === '' ||
+      thisControlValue.to === ''
+    ) {
+      return { invalid: true };
+    }
+
+    return null;
+  }
+
+  public registerOnValidatorChange(fn: () => void): void {
+    this.onValidatorChange = fn;
+  }
+
   public switchLocations(): void {
     const fromValue = this.locationsForm.controls.from.getRawValue() || '';
     const toValue = this.locationsForm.controls.to.getRawValue() || '';
@@ -104,5 +137,8 @@ export class LocationsControlComponent
       from: fromValue,
       to: toValue,
     });
+    this.onValidatorChange();
   }
+
+  private onValidatorChange = () => {};
 }
