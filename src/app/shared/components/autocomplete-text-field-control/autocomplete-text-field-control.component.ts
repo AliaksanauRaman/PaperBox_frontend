@@ -45,7 +45,6 @@ export class AutocompleteTextFieldControlComponent extends CustomControl<string>
 
   protected readonly inputControl = new FormControl('');
   protected readonly controlValue$ = new BehaviorSubject<string>('');
-
   protected readonly filteredOptions$ = combineLatest([
     this.controlDataSource$.asObservable(),
     this.inputControl.valueChanges.pipe(startWith('')),
@@ -72,6 +71,8 @@ export class AutocompleteTextFieldControlComponent extends CustomControl<string>
       );
     })
   );
+
+  protected isFocused = false;
 
   constructor(
     uniqueIdGeneratorService: UniqueIdGeneratorService,
@@ -100,6 +101,16 @@ export class AutocompleteTextFieldControlComponent extends CustomControl<string>
 
     this.inputControl.setValue(foundOption.label);
     this.updateControlValue(value);
+  }
+
+  public handleControlFocus(): void {
+    this.isFocused = true;
+  }
+
+  public override handleControlBlur(): void {
+    super.handleControlBlur();
+
+    this.isFocused = false;
   }
 
   public handleOptionSelection(event: MatAutocompleteSelectedEvent): void {

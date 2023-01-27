@@ -1,3 +1,5 @@
+@import "../../../styles/scss-variables";
+
 // TODO: Think about common styles
 $padding: 12px;
 
@@ -10,13 +12,9 @@ $padding: 12px;
     .control {
       border-color: var(--error-color);
     }
-  }
-}
 
-.autocomplete-text-field-control {
-  &.autocomplete-text-field-control--trailing-icon {
-    .control {
-      padding-right: 46px;
+    .location-icon path {
+      fill: var(--error-color);
     }
   }
 }
@@ -33,7 +31,7 @@ $padding: 12px;
 .control {
   flex-shrink: 0;
   height: var(--field-height);
-  padding: 0 $padding;
+  padding: 0 38px 0 12px;
   font-size: 1rem;
   font-weight: 500;
   line-height: 20px;
@@ -48,18 +46,19 @@ $padding: 12px;
   }
 }
 
-.trailing-icon {
+.location-icon {
   pointer-events: none;
   position: absolute;
-  right: $padding;
-  bottom: 14px; // TODO
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 22px;
+  right: 15px;
+  bottom: 12px;
+  display: block;
 
-  &:empty {
-    display: none;
+  & path {
+    transition: 0.25s fill ease-in-out;
+  }
+
+  &.location-icon--primary-colored path {
+    fill: var(--primary-color);
   }
 }
 
@@ -87,4 +86,17 @@ $padding: 12px;
 .option-content__icon {
   flex-shrink: 0;
   margin-left: 10px;
+}
+
+@media (min-width: $smallMobileScreenWidth) {
+  .control {
+    padding-right: 48px;
+  }
+
+  .location-icon {
+    right: 17px;
+    bottom: 14px;
+    width: 14px;
+    height: 20px;
+  }
 }
