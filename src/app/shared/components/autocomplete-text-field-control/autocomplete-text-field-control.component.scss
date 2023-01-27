@@ -5,6 +5,12 @@ $padding: 12px;
   display: flex;
   flex-shrink: 0;
   width: 100%;
+
+  &.ng-invalid.ng-touched {
+    .control {
+      border-color: var(--error-color);
+    }
+  }
 }
 
 .autocomplete-text-field-control {
@@ -32,8 +38,10 @@ $padding: 12px;
   font-weight: 500;
   line-height: 20px;
   border-radius: var(--border-radius);
-  border: 1px solid var(--grey-color);
-  transition: .25s border-color ease-in-out;
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--grey-color);
+  transition: 0.25s border-color ease-in-out;
 
   &:focus {
     border-color: var(--primary-color);
