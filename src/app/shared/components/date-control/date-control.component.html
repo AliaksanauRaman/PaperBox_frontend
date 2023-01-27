@@ -13,7 +13,7 @@
     type="text"
     readonly
     (click)="toggleDateRangePicker(matDateRangePickerRef)"
-    (focus)="toggleDateRangePicker(matDateRangePickerRef)"
+    (focus)="handleControlFocus(matDateRangePickerRef)"
     (blur)="handleControlBlur()"
   />
 
@@ -43,6 +43,7 @@
   <svg
     class="calendar-button__icon"
     [class.calendar-button__icon--active]="matDateRangePickerRef.opened"
+    [class.calendar-button__icon--primary-colored]="isFocused"
     width="15"
     height="16.7"
     viewBox="0 0 18 20"

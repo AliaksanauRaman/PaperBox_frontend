@@ -41,6 +41,14 @@
     // TODO: Move transition speed to a variable
     transition: 0.25s fill ease-in-out;
   }
+
+  &.calendar-button__icon--active path {
+    fill: var(--primary-color);
+  }
+
+  &.calendar-button__icon--primary-colored path {
+    fill: var(--primary-color);
+  }
 }
 
 @media (min-width: $smallMobileScreenWidth) {
