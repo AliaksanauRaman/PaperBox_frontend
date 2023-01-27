@@ -8,4 +8,5 @@ import { CalendarIconComponent } from './calendar-icon.component';
   providers: [],
   exports: [CalendarIconComponent],
 })
+// TODO: Check if it is needed?
 export class CalendarIconModule {}
