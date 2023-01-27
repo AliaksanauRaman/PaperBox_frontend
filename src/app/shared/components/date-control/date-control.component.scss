@@ -1,9 +1,19 @@
-@import '../../../styles/scss-variables';
+@import "../../../styles/scss-variables";
 
 :host {
   display: flex;
   flex-shrink: 0;
   width: 100%;
+
+  &.ng-invalid.ng-touched {
+    .custom-control__field:not(.custom-control__field--active) {
+      border-color: var(--error-color);
+    }
+
+    .calendar-button__icon:not(.calendar-button__icon--active) path {
+      fill: var(--error-color);
+    }
+  }
 }
 
 .date-range-input {
@@ -26,10 +36,25 @@
   overflow: hidden;
 }
 
+.calendar-button__icon {
+  width: 15px;
+  height: 16.7px;
+
+  & path {
+    // TODO: Move transition speed to a variable
+    transition: 0.25s fill ease-in-out;
+  }
+}
+
 @media (min-width: $smallMobileScreenWidth) {
   .calendar-button {
     bottom: 6px;
     width: 36px;
     height: 36px;
+  }
+
+  .calendar-button__icon {
+    width: 18px;
+    height: 20px;
   }
 }
