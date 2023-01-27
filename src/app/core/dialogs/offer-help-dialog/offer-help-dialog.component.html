@@ -45,6 +45,7 @@
 
   <button
     class="app-custom-dialog-action-button app-primary-button"
+    [disabled]="offerHelpForm.invalid"
     (click)="handleSendButtonClick()"
   >
     <span>{{ "dialogs.offerHelp.sendButtonLabel" | translate }}</span>
