@@ -1,10 +1,24 @@
 <div
   class="input-control custom-control"
-  [class.custom-control--with-trailing-icon]="trailingIcon.children.length !== 0"
+  [class.input-control--required]="controlRequired"
 >
-  <label class="custom-control__label" *ngIf="controlLabel" [for]="controlId">
-    <span>{{ controlLabel }}</span>
-  </label>
+  <div class="top-panel">
+    <label class="label" *ngIf="controlLabel" [for]="controlId">
+      <span>{{ controlLabel }}</span>
+    </label>
+
+    <div class="characters-counter">
+      <div
+        class="characters-counter"
+        [class.characters-counter--primary-colored]="controlFocused"
+        *ngIf="controlMaxCharacters"
+      >
+        <span>{{ inputRef.value.length }}</span>
+        <span>/</span>
+        <span>{{ controlMaxCharacters }}</span>
+      </div>
+    </div>
+  </div>
 
   <input
     #inputRef
@@ -13,11 +27,9 @@
     [id]="controlId"
     [disabled]="controlDisabled"
     [value]="controlValue"
-    (input)="handleControlValueChange(inputRef.value)"
-    (blur)="handleControlBlur()"
+    [maxLength]="controlMaxCharacters"
+    (input)="handleInputValueChange(inputRef.value)"
+    (focus)="handleInputFocus()"
+    (blur)="handleInputBlur()"
   />
-
-  <div #trailingIcon class="custom-control__trailing-icon">
-    <ng-content select="[trailingIcon]"></ng-content>
-  </div>
 </div>

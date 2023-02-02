@@ -32,9 +32,13 @@ export class TextareaFieldControlComponent extends CustomControl<string> {
     this.controlLabel = value;
   }
 
+  @Input()
+  public set required(value: boolean) {
+    this.controlRequired = value;
+  }
+
   protected controlValue = '';
   protected controlMaxCharacters = DEFAULT_MAX_CHARACTERS;
-  protected isFocused = false;
 
   constructor(
     uniqueIdGeneratorService: UniqueIdGeneratorService,
@@ -52,19 +56,18 @@ export class TextareaFieldControlComponent extends CustomControl<string> {
     this.cdRef.markForCheck();
   }
 
-  public handleControlValueChange(newValue: string): void {
+  public handleTextareaValueChange(newValue: string): void {
     this.controlValue = newValue;
     this.onChange(this.controlValue);
   }
 
-  public handleControlFocus(): void {
-    this.isFocused = true;
+  public handleTextareaFocus(): void {
+    this.markControlAsFocused();
   }
 
-  public override handleControlBlur(): void {
-    super.handleControlBlur();
-
-    this.isFocused = false;
+  public handleTextareaBlur(): void {
+    this.handleControlBlur();
+    this.markControlAsUnfocused();
   }
 
   // TODO: Move to a shared place

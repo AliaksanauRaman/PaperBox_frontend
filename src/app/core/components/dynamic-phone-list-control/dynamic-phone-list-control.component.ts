@@ -4,6 +4,7 @@ import {
   Component,
   forwardRef,
   OnInit,
+  Input,
 } from '@angular/core';
 import { FormBuilder, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { takeUntil, tap } from 'rxjs';
@@ -36,6 +37,11 @@ export class DynamicPhoneListControlComponent
   extends CustomControl<ReadonlyArray<PhoneType>>
   implements OnInit
 {
+  @Input()
+  public set required(value: boolean) {
+    this.controlRequired = value;
+  }
+
   protected readonly maxPhonesAmount = MAX_PHONES_AMOUNT;
   protected readonly phoneControlsFormArray = this.formBuilder.array([
     this.createPhoneControl(),

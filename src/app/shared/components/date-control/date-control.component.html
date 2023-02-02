@@ -1,4 +1,7 @@
-<div class="date-control custom-control">
+<div
+  class="date-control custom-control"
+  [class.custom-control--required]="controlRequired"
+>
   <label class="custom-control__label" *ngIf="controlLabel" [for]="controlId">
     <span>{{ controlLabel }}</span>
   </label>
@@ -13,8 +16,8 @@
     type="text"
     readonly
     (click)="toggleDateRangePicker(matDateRangePickerRef)"
-    (focus)="handleControlFocus(matDateRangePickerRef)"
-    (blur)="handleControlBlur()"
+    (focus)="handleInputFocus(matDateRangePickerRef)"
+    (blur)="handleInputBlur()"
   />
 
   <mat-date-range-input
@@ -24,8 +27,8 @@
     [min]="minDate"
     [max]="maxDate"
   >
-    <input matStartDate formControlName="start" />
-    <input matEndDate formControlName="end" />
+    <input matStartDate formControlName="start" tabindex="-1" />
+    <input matEndDate formControlName="end" tabindex="-1" />
   </mat-date-range-input>
 
   <mat-date-range-picker #matDateRangePickerRef></mat-date-range-picker>
@@ -33,6 +36,7 @@
   <button
     class="calendar-button"
     matRipple
+    tabindex="-1"
     (click)="toggleDateRangePicker(matDateRangePickerRef)"
   >
     <ng-container *ngTemplateOutlet="calendarIconSvg"></ng-container>
@@ -43,7 +47,7 @@
   <svg
     class="calendar-button__icon"
     [class.calendar-button__icon--active]="matDateRangePickerRef.opened"
-    [class.calendar-button__icon--primary-colored]="isFocused"
+    [class.calendar-button__icon--primary-colored]="controlFocused"
     width="15"
     height="16.7"
     viewBox="0 0 18 20"

@@ -57,6 +57,11 @@ export class DateControlComponent
     this.controlLabel = value;
   }
 
+  @Input()
+  public set required(value: boolean) {
+    this.controlRequired = value;
+  }
+
   protected readonly minDate = new Date();
   protected readonly maxDate = new Date(
     new Date().setMonth(this.minDate.getMonth() + 3)
@@ -86,8 +91,6 @@ export class DateControlComponent
       return `${formattedStartDate} - ${formattedEndDate}`;
     })
   );
-
-  protected isFocused = false;
 
   constructor(
     uniqueIdGeneratorService: UniqueIdGeneratorService,
@@ -145,16 +148,14 @@ export class DateControlComponent
     this.onValidatorChange = fn;
   }
 
-  public handleControlFocus(dateRangePicker: MatDateRangePicker<Date>): void {
-    this.isFocused = true;
-
+  public handleInputFocus(dateRangePicker: MatDateRangePicker<Date>): void {
+    this.markControlAsFocused();
     this.toggleDateRangePicker(dateRangePicker);
   }
 
-  public override handleControlBlur(): void {
-    super.handleControlBlur();
-
-    this.isFocused = false;
+  public handleInputBlur(): void {
+    this.handleControlBlur();
+    this.markControlAsUnfocused();
   }
 
   public toggleDateRangePicker(

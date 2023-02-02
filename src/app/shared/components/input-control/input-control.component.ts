@@ -11,6 +11,8 @@ import { UniqueIdGeneratorService } from './../../../services/unique-id-generato
 
 import { CustomControl } from '../../abstracts/custom-control.class';
 
+const DEFAULT_MAX_CHARACTERS = 35;
+
 @Component({
   selector: 'app-input-control',
   templateUrl: './input-control.component.html',
@@ -30,7 +32,13 @@ export class InputControlComponent extends CustomControl<string> {
     this.controlLabel = value;
   }
 
+  @Input()
+  public set required(value: boolean) {
+    this.controlRequired = value;
+  }
+
   protected controlValue = '';
+  protected controlMaxCharacters = DEFAULT_MAX_CHARACTERS;
 
   constructor(
     uniqueIdGeneratorService: UniqueIdGeneratorService,
@@ -48,9 +56,18 @@ export class InputControlComponent extends CustomControl<string> {
     this.cdRef.markForCheck();
   }
 
-  public handleControlValueChange(newValue: string): void {
+  public handleInputValueChange(newValue: string): void {
     this.controlValue = newValue;
     this.onChange(this.controlValue);
+  }
+
+  public handleInputFocus(): void {
+    this.markControlAsFocused();
+  }
+
+  public handleInputBlur(): void {
+    this.handleControlBlur();
+    this.markControlAsUnfocused();
   }
 
   // TODO: Move to a shared place

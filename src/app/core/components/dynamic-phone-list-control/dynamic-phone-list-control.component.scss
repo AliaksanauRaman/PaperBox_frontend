@@ -6,6 +6,11 @@
 .dynamic-phone-list-control {
   display: flex;
   flex-direction: column;
+
+  &.dynamic-phone-list-control--required .label::after {
+    content: '*';
+    color: var(--error-color);
+  }
 }
 
 .label {

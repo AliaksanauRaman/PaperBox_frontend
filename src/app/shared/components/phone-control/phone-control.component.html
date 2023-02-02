@@ -1,4 +1,7 @@
-<div class="phone-control custom-control">
+<div
+  class="phone-control custom-control"
+  [class.custom-control--required]="controlRequired"
+>
   <label class="custom-control__label" *ngIf="controlLabel" [for]="controlId">
     <span>{{ controlLabel }}</span>
   </label>
@@ -18,7 +21,7 @@
     <input
       #inputRef
       class="custom-control__field"
-      [class.custom-control__field--focused]="isFocused"
+      [class.custom-control__field--focused]="controlFocused"
       [id]="controlId"
       type="text"
       autocomplete="chrome-off"
@@ -28,15 +31,25 @@
     />
   </form>
 
-  <div class="trailing-button-container" *ngIf="showPlus || showMinus">
-    <div class="plus-button" *ngIf="showPlus" (click)="handlePlusClick()">
+  <ng-container *ngIf="showPlus || showMinus">
+    <button
+      class="trailing-button"
+      *ngIf="showPlus"
+      matRipple
+      (click)="handlePlusClick()"
+    >
       <ng-container *ngTemplateOutlet="plusIconSvg"></ng-container>
-    </div>
+    </button>
 
-    <div class="minus-button" *ngIf="showMinus" (click)="handleMinusClick()">
+    <button
+      class="trailing-button"
+      *ngIf="showMinus"
+      matRipple
+      (click)="handleMinusClick()"
+    >
       <ng-container *ngTemplateOutlet="minusIconSvg"></ng-container>
-    </div>
-  </div>
+    </button>
+  </ng-container>
 </div>
 
 <ng-template #plusIconSvg>

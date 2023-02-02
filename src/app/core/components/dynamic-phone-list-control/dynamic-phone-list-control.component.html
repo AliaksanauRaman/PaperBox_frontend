@@ -1,4 +1,7 @@
-<div class="dynamic-phone-list-control">
+<div
+  class="dynamic-phone-list-control"
+  [class.dynamic-phone-list-control--required]="controlRequired"
+>
   <div class="label">
     <span>
       {{ "components.dynamicListPhoneControl.phoneNumbersLabel" | translate }}
@@ -11,11 +14,13 @@
       *ngFor="
         let phone of phones;
         let phoneIndex = index;
+        let isFirstPhone = first;
         let isLastPhone = last
       "
     >
       <app-phone-control
         [formControl]="phone"
+        [required]="isFirstPhone"
         [showPlus]="isLastPhone && phones.length < maxPhonesAmount"
         [showMinus]="!isLastPhone"
         (plusClick)="appendEmptyPhoneControl()"

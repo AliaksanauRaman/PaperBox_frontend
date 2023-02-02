@@ -4,6 +4,8 @@ import {
   Component,
   Input,
   forwardRef,
+  Output,
+  EventEmitter,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
@@ -38,6 +40,11 @@ export class DropdownControlComponent extends CustomControl<string> {
     this.controlPlaceholder = value;
   }
 
+  @Input()
+  public set required(value: boolean) {
+    this.controlRequired = value;
+  }
+
   public get isOpen(): boolean {
     return this._isOpen;
   }
@@ -45,6 +52,15 @@ export class DropdownControlComponent extends CustomControl<string> {
   public get controlValue(): string {
     return this._controlValue;
   }
+
+  @Output()
+  public readonly optionClick = new EventEmitter<void>();
+
+  @Output()
+  public readonly focus = new EventEmitter<void>();
+
+  @Output()
+  public readonly blur = new EventEmitter<void>();
 
   protected controlDataSource = DataSource.createEmpty<string>();
   protected controlPlaceholder = '';
@@ -76,8 +92,43 @@ export class DropdownControlComponent extends CustomControl<string> {
     this._controlValue = value;
   }
 
+  public handleFieldClick(): void {
+    this.focus.emit();
+    this.openPanel();
+  }
+
+  public handleFieldFocus(): void {
+    this.focus.emit();
+    this.openPanel();
+  }
+
+  public handleFieldBlur(): void {
+    setTimeout(() => {
+      this.closePanel();
+      this.cdRef.markForCheck();
+    }, 0);
+  }
+
+  public handleBackdropClick(): void {
+    this.closePanel();
+    this.blur.emit();
+    this.handleControlBlur();
+  }
+
   protected toggleIsOpenState(): void {
-    this._isOpen = !this._isOpen;
+    if (this._isOpen) {
+      this.closePanel();
+    } else {
+      this.openPanel();
+    }
+  }
+
+  protected openPanel(): void {
+    this._isOpen = true;
+  }
+
+  protected closePanel(): void {
+    this._isOpen = false;
   }
 
   protected handleOptionClick(option: DataSourceOption<string>): void {
@@ -86,6 +137,9 @@ export class DropdownControlComponent extends CustomControl<string> {
       this.onChange(this._controlValue);
     }
 
-    this._isOpen = false;
+    this.closePanel();
+    this.optionClick.emit();
+    this.blur.emit();
+    this.handleControlBlur();
   }
 }

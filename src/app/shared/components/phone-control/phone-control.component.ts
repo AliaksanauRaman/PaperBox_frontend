@@ -45,6 +45,11 @@ export class PhoneControlComponent
   }
 
   @Input()
+  public set required(value: boolean) {
+    this.controlRequired = value;
+  }
+
+  @Input()
   public set showPlus(value: boolean) {
     this._showPlus = value;
   }
@@ -80,8 +85,6 @@ export class PhoneControlComponent
       number: number || '',
     }))
   );
-
-  protected isFocused = false;
 
   private _showPlus = false;
   private _showMinus = false;
@@ -139,13 +142,5 @@ export class PhoneControlComponent
 
   public handleMinusClick(): void {
     this.minusClick.emit();
-  }
-
-  private markControlAsFocused(): void {
-    this.isFocused = true;
-  }
-
-  private markControlAsUnfocused(): void {
-    this.isFocused = false;
   }
 }

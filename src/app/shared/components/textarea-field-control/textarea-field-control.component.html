@@ -6,7 +6,7 @@
 
     <div
       class="characters-counter"
-      [class.characters-counter--primary-colored]="isFocused"
+      [class.characters-counter--primary-colored]="controlFocused"
       *ngIf="controlMaxCharacters"
     >
       <span>{{ textareaRef.value.length }}</span>
@@ -22,9 +22,9 @@
     [disabled]="controlDisabled"
     [value]="controlValue"
     [maxLength]="controlMaxCharacters"
-    (input)="handleControlValueChange(textareaRef.value)"
-    (focus)="handleControlFocus()"
-    (blur)="handleControlBlur()"
+    (input)="handleTextareaValueChange(textareaRef.value)"
+    (focus)="handleTextareaFocus()"
+    (blur)="handleTextareaBlur()"
   >
   </textarea>
 </div>

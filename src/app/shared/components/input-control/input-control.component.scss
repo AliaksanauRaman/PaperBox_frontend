@@ -2,4 +2,45 @@
   display: flex;
   flex-shrink: 0;
   width: 100%;
+
+  &.ng-invalid.ng-dirty {
+    .characters-counter {
+      color: var(--error-color);
+    }
+
+    .custom-control__field {
+      border-color: var(--error-color);
+    }
+  }
+}
+
+.input-control.input-control--required .label::after {
+  content: '*';
+  color: var(--error-color);
+}
+
+.top-panel {
+  display: flex;
+  padding: 0 12px;
+  margin-bottom: 3px;
+}
+
+.label {
+  flex-grow: 1;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--grey-color);
+}
+
+.characters-counter {
+  flex-shrink: 0;
+  margin-left: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--grey-color);
+  transition: 0.25s color ease-in-out;
+
+  &.characters-counter--primary-colored {
+    color: var(--primary-color);
+  }
 }

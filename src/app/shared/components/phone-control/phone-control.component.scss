@@ -1,4 +1,4 @@
-// TODO: Adaptive layout
+@import '../../../styles/scss-variables';
 
 :host {
   display: flex;
@@ -28,7 +28,6 @@
 }
 
 .trailing-button-container {
-  position: absolute;
   right: 12px;
   bottom: 0;
   display: flex;
@@ -36,12 +35,23 @@
   height: var(--field-height);
 }
 
-.plus-button,
-.minus-button {
+.trailing-button {
   cursor: pointer;
+  position: absolute;
+  right: 6px;
+  bottom: 5px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 16px;
-  height: 16px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+@media (min-width: $smallMobileScreenWidth) {
+  .trailing-button {
+    bottom: 6px;
+    width: 36px;
+    height: 36px;
+  }
 }

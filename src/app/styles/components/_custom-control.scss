@@ -8,6 +8,11 @@ $padding: 12px;
   flex-direction: column;
   flex-grow: 1;
   min-width: 220px;
+
+  &.custom-control--required .custom-control__label::after {
+    content: '*';
+    color: var(--error-color);
+  }
 }
 
 .custom-control__label {
@@ -36,21 +41,6 @@ $padding: 12px;
 
   &:read-only {
     color: var(--grey-color);
-  }
-}
-
-.custom-control__trailing-icon {
-  pointer-events: none;
-  position: absolute;
-  right: $padding;
-  bottom: 14px; // TODO
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 22px;
-
-  &:empty {
-    display: none;
   }
 }
 

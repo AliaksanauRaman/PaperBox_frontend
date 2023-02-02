@@ -6,10 +6,17 @@ import { UniqueIdGeneratorService } from '../../services/unique-id-generator.ser
 import { DestroyEmitter } from './destroy-emitter.class';
 
 export abstract class CustomControl<T = unknown> extends DestroyEmitter implements ControlValueAccessor {
+  public get controlFocused(): boolean {
+    return this.isFocused;
+  }
+
   protected controlLabel = '';
   protected controlDisabled = false;
+  protected controlRequired = false;
 
   protected readonly controlId = this.uniqueIdGeneratorService.generate();
+
+  private isFocused = false;
 
   constructor(
     private readonly uniqueIdGeneratorService: UniqueIdGeneratorService,
@@ -35,6 +42,14 @@ export abstract class CustomControl<T = unknown> extends DestroyEmitter implemen
 
   public handleControlBlur(): void {
     this.onTouch();
+  }
+
+  protected markControlAsFocused(): void {
+    this.isFocused = true;
+  }
+
+  protected markControlAsUnfocused(): void {
+    this.isFocused = false;
   }
 
   protected onChange = (value: T) => {};

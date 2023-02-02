@@ -2,9 +2,11 @@
   <div
     #trigger="cdkOverlayOrigin"
     class="field"
-    type="button"
     cdkOverlayOrigin
-    (click)="toggleIsOpenState()"
+    tabindex="0"
+    (click)="handleFieldClick()"
+    (focus)="handleFieldFocus()"
+    (blur)="handleFieldBlur()"
   >
     <div class="field__value" *ngIf="controlValue; else placeholderBlock">
       <span>{{ controlValue }}</span>
@@ -23,20 +25,20 @@
 </div>
 
 <ng-template
-  #dropdownOptionsPanel
   cdkConnectedOverlay
   cdkConnectedOverlayPanelClass="dropdown-control-pane"
   cdkConnectedOverlayBackdropClass="dropdown-control-backdrop"
   [cdkConnectedOverlayHasBackdrop]="true"
   [cdkConnectedOverlayOrigin]="trigger"
   [cdkConnectedOverlayOpen]="isOpen"
-  (backdropClick)="toggleIsOpenState()"
+  (backdropClick)="handleBackdropClick()"
 >
   <div class="dropdown-options-panel">
     <div
       class="option-item"
       *ngFor="let option of controlDataSource.options"
       [class.option-item--selected]="controlValue === option.value"
+      matRipple
       (click)="handleOptionClick(option)"
     >
       <div class="option-item__label">

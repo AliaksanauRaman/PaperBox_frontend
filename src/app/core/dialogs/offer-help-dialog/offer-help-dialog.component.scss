@@ -35,6 +35,25 @@
   margin-bottom: 30px;
 }
 
-.full-name-control {
-  margin-bottom: 8px;
+.error-container {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  height: 16px;
+  padding: 0 12px;
+}
+
+.error-text {
+  font-size: 0.8rem;
+  color: var(--error-color);
+  opacity: 0;
+  transition: 0.25s opacity ease-in-out;
+
+  &.error-text--visible {
+    opacity: 1;
+  }
+}
+
+.phones-control {
+  margin-top: 8px;
 }
