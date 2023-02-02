@@ -81,6 +81,8 @@ export class PhoneControlComponent
     }))
   );
 
+  protected isFocused = false;
+
   private _showPlus = false;
   private _showMinus = false;
 
@@ -109,11 +111,41 @@ export class PhoneControlComponent
     this.phoneForm.setValue(value);
   }
 
+  public handleDropdownOptionClick(inputRef: HTMLInputElement): void {
+    inputRef.focus();
+  }
+
+  public handleDropdownFocus(): void {
+    this.markControlAsFocused();
+  }
+
+  public handleDropdownBlur(): void {
+    this.handleControlBlur();
+    this.markControlAsUnfocused();
+  }
+
+  public handleInputFocus(): void {
+    this.markControlAsFocused();
+  }
+
+  public handleInputBlur(): void {
+    this.handleControlBlur();
+    this.markControlAsUnfocused();
+  }
+
   public handlePlusClick(): void {
     this.plusClick.emit();
   }
 
   public handleMinusClick(): void {
     this.minusClick.emit();
+  }
+
+  private markControlAsFocused(): void {
+    this.isFocused = true;
+  }
+
+  private markControlAsUnfocused(): void {
+    this.isFocused = false;
   }
 }

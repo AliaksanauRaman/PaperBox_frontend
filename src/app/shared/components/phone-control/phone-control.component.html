@@ -9,17 +9,22 @@
       [dataSource]="phoneDiallingCodesDataSource"
       [placeholder]="'components.phoneControl.codePlaceholder' | translate"
       formControlName="diallingCode"
+      (optionClick)="handleDropdownOptionClick(inputRef)"
+      (focus)="handleDropdownFocus()"
+      (blur)="handleDropdownBlur()"
     >
     </app-dropdown-control>
 
     <input
       #inputRef
       class="custom-control__field"
+      [class.custom-control__field--focused]="isFocused"
       [id]="controlId"
       type="text"
       autocomplete="chrome-off"
       formControlName="number"
-      (blur)="handleControlBlur()"
+      (focus)="handleInputFocus()"
+      (blur)="handleInputBlur()"
     />
   </form>
 

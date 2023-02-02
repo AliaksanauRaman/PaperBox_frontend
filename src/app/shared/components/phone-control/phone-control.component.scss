@@ -21,6 +21,10 @@
 .custom-control__field {
   padding-left: 73px;
   padding-right: 40px;
+
+  &.custom-control__field--focused {
+    border-color: var(--primary-color);
+  }
 }
 
 .trailing-button-container {
