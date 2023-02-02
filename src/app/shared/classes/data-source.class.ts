@@ -38,4 +38,25 @@ export class DataSource<T = unknown> {
   public getOptionsValues(): ReadonlyArray<T> {
     return this.options.map(({ value }) => value);
   }
+
+  public getOptionByValue(optionValue: T): DataSourceOption<T> {
+    const foundOption = this.options.find(({ value }) => value === optionValue);
+
+    if (foundOption === undefined) {
+      throw new Error(`Option with value '${optionValue}' was not found!`);
+    }
+
+    return foundOption;
+  }
+
+  // TODO: Probably is not needed
+  public getOptionByLabel(optionLabel: string): DataSourceOption<T> {
+    const foundOption = this.options.find(({ label }) => label === optionLabel);
+
+    if (foundOption === undefined) {
+      throw new Error(`Option with label '${optionLabel}' was not found!`);
+    }
+
+    return foundOption;
+  }
 }
