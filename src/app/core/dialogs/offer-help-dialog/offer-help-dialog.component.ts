@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { DialogRef } from '@angular/cdk/dialog';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 
 import { DialogComponent } from '../../../shared/abstracts/dialog-component.class';
 
@@ -25,7 +25,7 @@ export class OfferHelpDialogComponent extends DialogComponent {
       },
     ],
     comment: [''],
-    fullName: [''],
+    fullName: ['', [Validators.required]],
     phones: [
       [
         {
