@@ -8,12 +8,6 @@ $padding: 12px;
   flex-direction: column;
   flex-grow: 1;
   min-width: 220px;
-
-  &.custom-control--with-trailing-icon {
-    .custom-control__field {
-      padding-right: 46px;
-    }
-  }
 }
 
 .custom-control__label {
