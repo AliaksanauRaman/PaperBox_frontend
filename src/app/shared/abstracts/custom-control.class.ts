@@ -11,6 +11,7 @@ export abstract class CustomControl<T = unknown> extends DestroyEmitter implemen
   }
 
   protected controlLabel = '';
+  protected controlPlaceholder = '';
   protected controlDisabled = false;
   protected controlRequired = false;
 

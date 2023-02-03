@@ -37,6 +37,11 @@ export class TextareaFieldControlComponent extends CustomControl<string> {
     this.controlRequired = value;
   }
 
+  @Input()
+  public set placeholder(value: string) {
+    this.controlPlaceholder = value;
+  }
+
   protected controlValue = '';
   protected controlMaxCharacters = DEFAULT_MAX_CHARACTERS;
 

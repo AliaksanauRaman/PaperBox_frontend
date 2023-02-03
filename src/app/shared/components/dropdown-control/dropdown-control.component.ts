@@ -63,7 +63,6 @@ export class DropdownControlComponent extends CustomControl<string> {
   public readonly blur = new EventEmitter<void>();
 
   protected controlDataSource = DataSource.createEmpty<string>();
-  protected controlPlaceholder = '';
 
   private _isOpen = false;
   private _controlValue = '';

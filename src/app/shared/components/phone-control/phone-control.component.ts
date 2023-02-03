@@ -50,6 +50,11 @@ export class PhoneControlComponent
   }
 
   @Input()
+  public set placeholder(value: string) {
+    this.controlPlaceholder = value;
+  }
+
+  @Input()
   public set showPlus(value: boolean) {
     this._showPlus = value;
   }

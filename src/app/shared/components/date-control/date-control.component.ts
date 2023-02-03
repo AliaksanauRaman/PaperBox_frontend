@@ -62,6 +62,11 @@ export class DateControlComponent
     this.controlRequired = value;
   }
 
+  @Input()
+  public set placeholder(value: string) {
+    this.controlPlaceholder = value;
+  }
+
   protected readonly minDate = new Date();
   protected readonly maxDate = new Date(
     new Date().setMonth(this.minDate.getMonth() + 3)
@@ -99,6 +104,8 @@ export class DateControlComponent
     private readonly localeService: AppLocaleService
   ) {
     super(uniqueIdGeneratorService, cdRef);
+
+    this.controlPlaceholder = this.generateDefaultPlaceholder();
   }
 
   public ngOnInit(): void {
@@ -177,4 +184,11 @@ export class DateControlComponent
   }
 
   private onValidatorChange = () => {};
+
+  private generateDefaultPlaceholder(): string {
+    const now = new Date();
+    return `${this.formatDate(now)} - ${this.formatDate(
+      new Date(new Date().setDate(now.getDate() + 3))
+    )}`;
+  }
 }

@@ -50,6 +50,11 @@ export class AutocompleteControlComponent
     this.controlRequired = value;
   }
 
+  @Input()
+  public set placeholder(value: string) {
+    this.controlPlaceholder = value;
+  }
+
   public get isPanelOpen(): boolean {
     return this._isPanelOpen;
   }
