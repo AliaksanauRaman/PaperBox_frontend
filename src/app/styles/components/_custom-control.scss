@@ -1,4 +1,4 @@
-@import '../scss-variables';
+@import "../scss-variables";
 
 $padding: 12px;
 
@@ -10,7 +10,7 @@ $padding: 12px;
   min-width: 220px;
 
   &.custom-control--required .custom-control__label::after {
-    content: '*';
+    content: "*";
     color: var(--error-color);
   }
 }
@@ -32,7 +32,7 @@ $padding: 12px;
   font-weight: 500;
   border-radius: var(--border-radius);
   border: 1px solid var(--grey-color);
-  transition: .25s border-color ease-in-out;
+  transition: 0.25s border-color ease-in-out;
 
   &.custom-control__field--active,
   &:focus {
@@ -40,7 +40,7 @@ $padding: 12px;
   }
 
   &:read-only {
-    color: var(--grey-color);
+    border-style: dashed;
   }
 }
 
