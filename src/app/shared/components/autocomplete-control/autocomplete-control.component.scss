@@ -1,3 +1,81 @@
 :host {
   display: block;
 }
+
+.autocomplete-control-pane__option {
+  cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  flex-shrink: 0;
+  height: 48px;
+  padding: 0 16px;
+  background-color: transparent;
+  user-select: none;
+  transition: 0.25s background-color ease-in-out;
+
+  &.autocomplete-control-pane__option--selected {
+    background-color: rgba(0, 0, 0, 0.04); // TODO: Move to a variable?
+
+    .autocomplete-control-pane__option-city,
+    .autocomplete-control-pane__option-country {
+      color: var(--primary-color);
+    }
+
+    .autocomplete-control-pane__option-icon svg path {
+      stroke: var(--primary-color);
+    }
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 6px;
+  }
+}
+
+.autocomplete-control-pane__option-text {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  height: 100%;
+  transition: 0.25s color ease-in-out;
+}
+
+.autocomplete-control-pane__option-city {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  height: 50%;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--black-color);
+  transition: 0.25s color ease-in-out;
+}
+
+.autocomplete-control-pane__option-country {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  height: 50%;
+  font-size: 0.85rem;
+  color: var(--black-color);
+  transition: 0.25s color ease-in-out;
+}
+
+.autocomplete-control-pane__option-icon {
+  flex-shrink: 0;
+  margin-top: 6.5px;
+  margin-left: 10px;
+
+  svg path {
+    transition: 0.25s stroke ease-in-out;
+  }
+}
+
+.autocomplete-control-pane__option-no-matches {
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  height: 100%;
+  color: var(--grey-color);
+  font-weight: 500;
+}

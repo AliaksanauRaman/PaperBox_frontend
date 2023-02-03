@@ -1,3 +1,86 @@
-<div class="autocomplete-control">
+<div
+  #rootElementRef
+  #overlayOrigin="cdkOverlayOrigin"
+  class="autocomplete-control custom-control"
+  cdkOverlayOrigin
+  [class.custom-control--required]="controlRequired"
+>
+  <label class="custom-control__label" *ngIf="controlLabel" [for]="controlId">
+    <span>{{ controlLabel }}</span>
+  </label>
 
+  <input
+    #inputRef
+    class="custom-control__field"
+    [id]="controlId"
+    [value]="inputValue$ | async"
+    type="text"
+    (input)="handleInputValueChange(inputRef.value)"
+    (click)="handleInputClick()"
+    (focus)="handleInputFocus()"
+    (blur)="handleInputBlur()"
+  />
 </div>
+
+<ng-template
+  cdkConnectedOverlay
+  cdkConnectedOverlayPanelClass="autocomplete-control-pane"
+  [cdkConnectedOverlayOrigin]="overlayOrigin"
+  [cdkConnectedOverlayWidth]="rootElementRef.scrollWidth"
+  [cdkConnectedOverlayOpen]="isPanelOpen"
+  (overlayOutsideClick)="handleOverlayOutsideClick($event)"
+>
+  <ng-container *ngIf="filteredOptions$ | async as filteredOptions">
+    <ng-container *ngIf="filteredOptions.length > 0; else noMatchesView">
+      <ng-container *ngFor="let option of filteredOptions">
+        <div
+          class="autocomplete-control-pane__option"
+          [class.autocomplete-control-pane__option--selected]="
+            option.value === controlValue
+          "
+          matRipple
+          (click)="handleOptionSelect(option)"
+        >
+          <div
+            class="autocomplete-control-pane__option-text"
+            *ngIf="option.label | destructureLocationLabel as location"
+          >
+            <div class="autocomplete-control-pane__option-city">
+              <span>{{ location.cityName }}</span>
+            </div>
+
+            <div class="autocomplete-control-pane__option-country">
+              <span>{{ location.countryName }}</span>
+            </div>
+          </div>
+
+          <div class="autocomplete-control-pane__option-icon">
+            <ng-container *ngTemplateOutlet="arrowRightIconSvg"></ng-container>
+          </div>
+        </div>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+</ng-template>
+
+<ng-template #noMatchesView>
+  <div class="autocomplete-control-pane__option">
+    <div class="autocomplete-control-pane__option-no-matches">
+      <span>{{
+        "components.autocompleteControl.noMatchesMessage" | translate
+      }}</span>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #arrowRightIconSvg>
+  <svg
+    width="6"
+    height="11"
+    viewBox="0 0 6 11"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M1 10.5L5 5.37179L1 0.5" stroke="#000000" stroke-linecap="round" />
+  </svg>
+</ng-template>
