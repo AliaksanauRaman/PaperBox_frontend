@@ -11,21 +11,21 @@ type DestructuredLocationLabel = Readonly<{
 })
 export class DestructureLocationLabelPipe implements PipeTransform {
   public transform(locationLabel: string): DestructuredLocationLabel {
-    const [countryName, cityName] = locationLabel
+    const [cityName, countryName] = locationLabel
       .split(',')
       .map((part) => part.trim());
-
-    if (!countryName) {
-      throw new Error(`No country name for '${locationLabel}' location label!`);
-    }
 
     if (!cityName) {
       throw new Error(`No city name for '${locationLabel}' location label!`);
     }
 
+    if (!countryName) {
+      throw new Error(`No country name for '${locationLabel}' location label!`);
+    }
+
     return {
-      countryName,
       cityName,
+      countryName,
     };
   }
 }
