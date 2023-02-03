@@ -4,11 +4,13 @@ import {
   Component,
   ElementRef,
   forwardRef,
+  HostListener,
   Input,
+  OnInit,
   ViewChild,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
-import { map, BehaviorSubject } from 'rxjs';
+import { map, BehaviorSubject, takeUntil, tap } from 'rxjs';
 
 import { UniqueIdGeneratorService } from '../../../services/unique-id-generator.service';
 
@@ -29,7 +31,10 @@ import { DataSource } from '../../classes/data-source.class';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AutocompleteControlComponent extends CustomControl<string> {
+export class AutocompleteControlComponent
+  extends CustomControl<string>
+  implements OnInit
+{
   @Input()
   public set label(value: string) {
     this.controlLabel = value;
@@ -49,9 +54,13 @@ export class AutocompleteControlComponent extends CustomControl<string> {
     return this._isPanelOpen;
   }
 
-  protected controlValue = '';
-  protected readonly inputValue$ = new BehaviorSubject<string>('');
-  protected readonly filteredOptions$ = this.inputValue$.asObservable().pipe(
+  public get isClearButtonShown(): boolean {
+    return this._isClearButtonShown;
+  }
+
+  private readonly _inputValue$ = new BehaviorSubject<string>('');
+  public readonly inputValue$ = this._inputValue$.asObservable();
+  public readonly filteredOptions$ = this.inputValue$.pipe(
     map((inputValue) => {
       if (inputValue === '' || inputValue === null) {
         return this._dataSource.options;
@@ -63,18 +72,56 @@ export class AutocompleteControlComponent extends CustomControl<string> {
     })
   );
 
+  protected controlValue = '';
+
   @ViewChild('inputRef')
   private readonly inputElementRef!: ElementRef<HTMLInputElement>;
 
   private isInitialFocus = true;
   private _dataSource = new DataSource<string>([]);
   private _isPanelOpen = false;
+  private _isClearButtonShown = false;
 
   constructor(
     uniqueIdGeneratorService: UniqueIdGeneratorService,
     cdRef: ChangeDetectorRef
   ) {
     super(uniqueIdGeneratorService, cdRef);
+  }
+
+  @HostListener('document:mousedown', ['$event'])
+  private handleDocumentMousedown(event: MouseEvent): void {
+    const target = event.target;
+
+    if (!(target instanceof Element)) {
+      throw new Error('Wrong target!');
+    }
+
+    if (
+      this.isInitialFocus ||
+      target.closest('div.autocomplete-control') ||
+      target.closest('div.autocomplete-control-pane')
+    ) {
+      return;
+    }
+
+    this.hideClearButton();
+    this.closePanel();
+  }
+
+  public ngOnInit(): void {
+    this.inputValue$
+      .pipe(
+        tap((inputValue) => {
+          if (inputValue === '') {
+            this.hideClearButton();
+          } else if (!this.isClearButtonShown) {
+            this.showClearButton();
+          }
+        }),
+        takeUntil(this.destroy$)
+      )
+      .subscribe();
   }
 
   public writeValue(value: unknown): void {
@@ -107,7 +154,7 @@ export class AutocompleteControlComponent extends CustomControl<string> {
     this.updateInputValue(option.label);
     this.closePanel();
     this.cdRef.markForCheck();
-    this.inputElementRef.nativeElement.focus();
+    this.focusInputElement();
   }
 
   public handleInputClick(): void {
@@ -127,6 +174,10 @@ export class AutocompleteControlComponent extends CustomControl<string> {
     if (!this.controlFocused) {
       this.markControlAsFocused();
     }
+
+    if (this._inputValue$.getValue() !== '' && !this.isClearButtonShown) {
+      this.showClearButton();
+    }
   }
 
   public handleInputBlur(): void {
@@ -134,13 +185,18 @@ export class AutocompleteControlComponent extends CustomControl<string> {
     this.handleControlBlur();
   }
 
-  public handleOverlayOutsideClick(event: MouseEvent): void {
-    if (event.target === this.inputElementRef.nativeElement) {
-      event.stopImmediatePropagation();
-      return;
+  public handleClearButtonClick(): void {
+    const nextControlValue = '';
+
+    if (this.isNewControlValue(nextControlValue)) {
+      this.emitControlValueChange(nextControlValue);
+      this.updateControlValue(nextControlValue);
     }
 
-    this.closePanel();
+    this.updateInputValue('');
+    this.focusInputElement();
+    this.openPanel();
+    this.hideClearButton();
   }
 
   protected openPanel(): void {
@@ -151,8 +207,12 @@ export class AutocompleteControlComponent extends CustomControl<string> {
     this._isPanelOpen = false;
   }
 
+  private focusInputElement(): void {
+    this.inputElementRef.nativeElement.focus();
+  }
+
   private updateInputValue(newValue: string): void {
-    this.inputValue$.next(newValue);
+    this._inputValue$.next(newValue);
   }
 
   private isNewControlValue(nextValue: string): boolean {
@@ -165,5 +225,13 @@ export class AutocompleteControlComponent extends CustomControl<string> {
 
   private updateControlValue(newValue: string): void {
     this.controlValue = newValue;
+  }
+
+  private showClearButton(): void {
+    this._isClearButtonShown = true;
+  }
+
+  private hideClearButton(): void {
+    this._isClearButtonShown = false;
   }
 }
