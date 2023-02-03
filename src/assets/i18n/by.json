@@ -139,5 +139,12 @@
       "batumi": "Батумі"
     },
     "other": "Іншы горад"
+  },
+  "placeholders": {
+    "whereFromField": "Мінск, Беларусь",
+    "whereToField": "Варшава, Польшча",
+    "fullNameField": "Іван Іваноў",
+    "phoneNumberField": "333444555",
+    "commentField": "Тэкст вашага каментару..."
   }
 }

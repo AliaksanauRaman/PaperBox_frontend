@@ -139,5 +139,12 @@
       "batumi": "Batumi"
     },
     "other": "Other city"
+  },
+  "placeholders": {
+    "whereFromField": "Minsk, Belarus",
+    "whereToField": "Warsaw, Poland",
+    "fullNameField": "Ivan Ivanov",
+    "phoneNumberField": "333444555",
+    "commentField": "Your comment text..."
   }
 }
