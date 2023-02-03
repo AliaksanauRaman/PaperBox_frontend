@@ -11,9 +11,10 @@
 
   <input
     #inputRef
-    class="custom-control__field"
+    class="custom-control__field app-custom-placeholder"
     [id]="controlId"
     [value]="inputValue$ | async"
+    [placeholder]="controlPlaceholder"
     type="text"
     (input)="handleInputValueChange(inputRef.value)"
     (click)="handleInputClick()"

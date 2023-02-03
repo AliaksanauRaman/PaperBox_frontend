@@ -22,11 +22,12 @@
 
   <input
     #inputRef
-    class="custom-control__field"
+    class="custom-control__field app-custom-placeholder"
     type="text"
     [id]="controlId"
     [disabled]="controlDisabled"
     [value]="controlValue"
+    [placeholder]="controlPlaceholder"
     [maxLength]="controlMaxCharacters"
     (input)="handleInputValueChange(inputRef.value)"
     (focus)="handleInputFocus()"

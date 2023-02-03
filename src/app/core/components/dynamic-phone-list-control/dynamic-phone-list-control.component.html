@@ -23,6 +23,7 @@
         [required]="isFirstPhone"
         [showPlus]="isLastPhone && phones.length < maxPhonesAmount"
         [showMinus]="!isLastPhone"
+        [placeholder]="'placeholders.phoneNumberField' | translate"
         (plusClick)="appendEmptyPhoneControl()"
         (minusClick)="removePhoneControlByIndex(phoneIndex)"
       >

@@ -26,11 +26,14 @@
   flex-grow: 1;
 }
 
+// ALIGN WITH GLOBAL PLACEHOLDER STYLES
 .field__placeholder {
   pointer-events: none;
   flex-grow: 1;
-  font-size: 0.9rem;
-  color: var(--grey-color);
+  font-size: 0.95rem;
+  font-style: italic;
+  color: rgba(0, 0, 0, 0.3);
+  opacity: 1;
 }
 
 .field__icon-container {

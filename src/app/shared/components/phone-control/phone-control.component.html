@@ -20,9 +20,10 @@
 
     <input
       #inputRef
-      class="custom-control__field"
+      class="custom-control__field app-custom-placeholder"
       [class.custom-control__field--focused]="controlFocused"
       [id]="controlId"
+      [placeholder]="controlPlaceholder"
       type="text"
       autocomplete="chrome-off"
       formControlName="number"

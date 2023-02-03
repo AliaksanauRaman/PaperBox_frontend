@@ -17,10 +17,11 @@
 
   <textarea
     #textareaRef
-    class="control"
+    class="control app-custom-placeholder"
     [id]="controlId"
     [disabled]="controlDisabled"
     [value]="controlValue"
+    [placeholder]="controlPlaceholder"
     [maxLength]="controlMaxCharacters"
     (input)="handleTextareaValueChange(textareaRef.value)"
     (focus)="handleTextareaFocus()"

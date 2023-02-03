@@ -8,11 +8,12 @@
 
   <input
     #inputRef
-    class="custom-control__field"
+    class="custom-control__field app-custom-placeholder"
     [id]="controlId"
     [class.custom-control__field--active]="matDateRangePickerRef.opened"
     [disabled]="controlDisabled"
     [value]="viewValue$ | async"
+    [placeholder]="controlPlaceholder"
     type="text"
     readonly
     (click)="toggleDateRangePicker(matDateRangePickerRef)"
