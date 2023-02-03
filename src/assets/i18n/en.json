@@ -101,6 +101,9 @@
       "whereToFieldLabel": "Where to",
       "whereFromRequiredErrorMessage": "Select an option from the list",
       "whereToRequiredErrorMessage": "Select an option from the list"
+    },
+    "autocompleteControl": {
+      "noMatchesMessage": "No matches."
     }
   },
   "helpOfferStatus": {
