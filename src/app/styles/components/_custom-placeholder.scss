@@ -1,0 +1,23 @@
+$color: rgba(0, 0, 0, 0.3);
+$fontStyle: italic;
+
+.app-custom-placeholder {
+  &::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: $color;
+    font-style: $fontStyle;
+    opacity: 1; /* For Firefox */
+  }
+
+  &:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: $color;
+    font-style: $fontStyle;
+  }
+
+  &::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: $color;
+    font-style: $fontStyle;
+  }
+}
