@@ -36,6 +36,8 @@
       class="trailing-button"
       *ngIf="showPlus"
       matRipple
+      type="button"
+      tabindex="-1"
       (click)="handlePlusClick()"
     >
       <ng-container *ngTemplateOutlet="plusIconSvg"></ng-container>
@@ -45,6 +47,8 @@
       class="trailing-button"
       *ngIf="showMinus"
       matRipple
+      type="button"
+      tabindex="-1"
       (click)="handleMinusClick()"
     >
       <ng-container *ngTemplateOutlet="minusIconSvg"></ng-container>
