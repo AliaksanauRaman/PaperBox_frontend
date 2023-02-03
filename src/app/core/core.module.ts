@@ -14,7 +14,7 @@ import { InputControlModule } from '../shared/components/input-control/input-con
 import { PhoneControlModule } from '../shared/components/phone-control/phone-control.module';
 import { DateControlModule } from '../shared/components/date-control/date-control.module';
 import { TextareaFieldControlModule } from '../shared/components/textarea-field-control/textarea-field-control.module';
-import { AutocompleteTextFieldControlModule } from '../shared/components/autocomplete-text-field-control/autocomplete-text-field-control.module';
+import { AutocompleteControlModule } from '../shared/components/autocomplete-control/autocomplete-control.module';
 
 import { IndexPageLayoutComponent } from './layouts/index-page-layout/index-page-layout.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -94,7 +94,7 @@ const CORE_MODULE_DECLARATIONS = [
     PhoneControlModule,
     DateControlModule,
     TextareaFieldControlModule,
-    AutocompleteTextFieldControlModule,
+    AutocompleteControlModule,
   ],
   declarations: CORE_MODULE_DECLARATIONS,
   providers: [
