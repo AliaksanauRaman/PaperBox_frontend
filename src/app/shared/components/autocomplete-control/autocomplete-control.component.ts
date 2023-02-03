@@ -78,13 +78,15 @@ export class AutocompleteControlComponent
   private readonly inputElementRef!: ElementRef<HTMLInputElement>;
 
   private isInitialFocus = true;
+  private isProgrammaticFocus = false;
   private _dataSource = new DataSource<string>([]);
   private _isPanelOpen = false;
   private _isClearButtonShown = false;
 
   constructor(
     uniqueIdGeneratorService: UniqueIdGeneratorService,
-    cdRef: ChangeDetectorRef
+    cdRef: ChangeDetectorRef,
+    private readonly elementRef: ElementRef
   ) {
     super(uniqueIdGeneratorService, cdRef);
   }
@@ -98,9 +100,8 @@ export class AutocompleteControlComponent
     }
 
     if (
-      this.isInitialFocus ||
-      target.closest('div.autocomplete-control') ||
-      target.closest('div.autocomplete-control-pane')
+      this.elementRef.nativeElement.contains(target) ||
+      target.closest('div.autocomplete-control-pane') !== null
     ) {
       return;
     }
@@ -115,7 +116,7 @@ export class AutocompleteControlComponent
         tap((inputValue) => {
           if (inputValue === '') {
             this.hideClearButton();
-          } else if (!this.isClearButtonShown) {
+          } else if (!this.isClearButtonShown && this.controlFocused) {
             this.showClearButton();
           }
         }),
@@ -125,7 +126,25 @@ export class AutocompleteControlComponent
   }
 
   public writeValue(value: unknown): void {
-    // TODO
+    if (typeof value !== 'string' && value !== null) {
+      throw new Error('Wrong value!');
+    }
+
+    if (value === '' || value === null) {
+      const nextControlValue = '';
+
+      if (this.isNewControlValue(nextControlValue)) {
+        this.updateControlValue(nextControlValue);
+      }
+
+      this.updateInputValue('');
+    } else {
+      if (this.isNewControlValue(value)) {
+        this.updateControlValue(value);
+      }
+
+      this.updateInputValue(this._dataSource.getOptionByValue(value).label);
+    }
   }
 
   public handleInputValueChange(value: string): void {
@@ -169,7 +188,11 @@ export class AutocompleteControlComponent
     if (this.isInitialFocus) {
       this.isInitialFocus = false;
       this.openPanel();
+    } else if (!this.isProgrammaticFocus) {
+      this.openPanel();
     }
+
+    this.isProgrammaticFocus = false;
 
     if (!this.controlFocused) {
       this.markControlAsFocused();
@@ -180,7 +203,18 @@ export class AutocompleteControlComponent
     }
   }
 
-  public handleInputBlur(): void {
+  public handleInputBlur(event: FocusEvent): void {
+    const { relatedTarget } = event;
+
+    if (
+      relatedTarget !== null &&
+      // An edge case
+      !(relatedTarget as HTMLElement).classList.contains('cdk-dialog-container')
+    ) {
+      this.hideClearButton();
+      this.closePanel();
+    }
+
     this.markControlAsUnfocused();
     this.handleControlBlur();
   }
@@ -208,6 +242,7 @@ export class AutocompleteControlComponent
   }
 
   private focusInputElement(): void {
+    this.isProgrammaticFocus = true;
     this.inputElementRef.nativeElement.focus();
   }
 
