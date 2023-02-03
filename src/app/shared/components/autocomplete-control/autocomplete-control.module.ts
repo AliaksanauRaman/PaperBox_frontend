@@ -5,7 +5,7 @@ import { MatRippleModule } from '@angular/material/core';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { AutocompleteControlComponent } from './autocomplete-control.component';
-import { DestructureLocationLabelPipe } from '../autocomplete-text-field-control/destructure-location-label.pipe';
+import { DestructureLocationLabelPipe } from './destructure-location-label.pipe';
 
 @NgModule({
   imports: [CommonModule, OverlayModule, MatRippleModule, TranslateModule],
