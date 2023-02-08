@@ -3,7 +3,7 @@
   flex-shrink: 0;
   width: 100%;
 
-  &.ng-invalid.ng-dirty {
+  &.ng-invalid.ng-touched {
     .characters-counter {
       color: var(--error-color);
     }
