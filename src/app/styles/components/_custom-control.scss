@@ -16,11 +16,15 @@ $padding: 12px;
 }
 
 .custom-control__label {
+  display: flex;
+  align-items: center;
   flex-shrink: 0;
+  min-height: 17px;
   margin-bottom: 3px;
   padding: 0 $padding;
   font-size: 1rem;
   font-weight: 600;
+  line-height: 17px;
   color: var(--grey-color);
 }
 
