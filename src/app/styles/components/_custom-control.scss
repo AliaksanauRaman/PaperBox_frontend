@@ -38,12 +38,26 @@ $padding: 12px;
   border: 1px solid var(--grey-color);
   transition: 0.25s border-color ease-in-out;
 
+  &.custom-control__field--warning-colored:not(:focus):not(
+      .custom-control__field--active
+    ) {
+    border-color: var(--warning-color);
+  }
+
   &.custom-control__field--active,
   &:focus {
     border-color: var(--primary-color);
   }
 
+  &.custom-control__field--with-trailing-icon {
+    padding-top: 0;
+    padding-right: 40px;
+    padding-bottom: 0;
+    padding-left: $padding;
+  }
+
   &:read-only {
+    border-width: 1.5px;
     border-style: dashed;
   }
 }
@@ -51,6 +65,10 @@ $padding: 12px;
 @media (min-width: $smallMobileScreenWidth) {
   .custom-control {
     min-width: 240px;
+  }
+
+  .custom-control__field.custom-control__field--with-trailing-icon {
+    padding-right: 48px;
   }
 }
 
