@@ -31,6 +31,10 @@ $padding: 12px;
   &.characters-counter--primary-colored {
     color: var(--primary-color);
   }
+
+  &.characters-counter--warning-colored:not(.characters-counter--primary-colored) {
+    color: var(--warning-color);
+  }
 }
 
 .control {
@@ -47,5 +51,9 @@ $padding: 12px;
 
   &:focus {
     border-color: var(--primary-color);
+  }
+
+  &.control--warning-colored:not(:focus) {
+    border-color: var(--warning-color);
   }
 }

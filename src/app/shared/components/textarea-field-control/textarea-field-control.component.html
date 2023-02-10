@@ -7,6 +7,7 @@
     <div
       class="characters-counter"
       [class.characters-counter--primary-colored]="controlFocused"
+      [class.characters-counter--warning-colored]="controlWarningColored"
       *ngIf="controlMaxCharacters"
     >
       <span>{{ textareaRef.value.length }}</span>
@@ -18,6 +19,7 @@
   <textarea
     #textareaRef
     class="control app-custom-placeholder"
+    [class.control--warning-colored]="controlWarningColored"
     [id]="controlId"
     [disabled]="controlDisabled"
     [value]="controlValue"

@@ -42,7 +42,13 @@ export class TextareaFieldControlComponent extends CustomControl<string> {
     this.controlPlaceholder = value;
   }
 
+  @Input()
+  public set warningColored(value: boolean) {
+    this.controlWarningColored = value;
+  }
+
   protected controlValue = '';
+  protected controlWarningColored = false;
   protected controlMaxCharacters = DEFAULT_MAX_CHARACTERS;
 
   constructor(
