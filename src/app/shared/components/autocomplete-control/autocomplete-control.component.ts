@@ -55,6 +55,11 @@ export class AutocompleteControlComponent
     this.controlPlaceholder = value;
   }
 
+  @Input()
+  public set warningColored(value: boolean) {
+    this.controlWarningColored = value;
+  }
+
   public get isPanelOpen(): boolean {
     return this._isPanelOpen;
   }
@@ -78,6 +83,7 @@ export class AutocompleteControlComponent
   );
 
   protected controlValue = '';
+  protected controlWarningColored = false;
 
   @ViewChild('inputRef')
   private readonly inputElementRef!: ElementRef<HTMLInputElement>;

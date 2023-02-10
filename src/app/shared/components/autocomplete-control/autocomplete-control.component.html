@@ -11,11 +11,16 @@
 
   <input
     #inputRef
-    class="custom-control__field app-custom-placeholder"
+    class="custom-control__field custom-control__field--with-trailing-icon app-custom-placeholder"
+    [class.custom-control__field--warning-colored]="controlWarningColored"
     [id]="controlId"
     [value]="inputValue$ | async"
     [placeholder]="controlPlaceholder"
     type="text"
+    aria-autocomplete="none"
+    autocomplete="off"
+    autocorrect="off"
+    spellcheck="false"
     (input)="handleInputValueChange(inputRef.value)"
     (click)="handleInputClick()"
     (focus)="handleInputFocus()"
@@ -104,6 +109,7 @@
   <svg
     class="location-icon"
     [class.location-icon--primary-colored]="controlFocused"
+    [class.location-icon--warning-colored]="controlWarningColored"
     width="11"
     height="15.7"
     viewBox="0 0 14 20"

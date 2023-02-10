@@ -1,7 +1,21 @@
-@import '../../../styles/scss-variables';
+@import "../../../styles/scss-variables";
 
 :host {
   display: block;
+
+  &.ng-invalid.ng-touched {
+    .custom-control__field {
+      border-color: var(--error-color);
+    }
+
+    .location-icon path {
+      fill: var(--error-color);
+    }
+
+    .cross-icon path {
+      stroke: var(--error-color);
+    }
+  }
 }
 
 .clear-button {
@@ -15,6 +29,10 @@
   width: 30px;
   height: 30px;
   border-radius: 50%;
+
+  .cross-icon path {
+    transition: 0.25s stroke ease-in-out;
+  }
 }
 
 .location-icon {
@@ -30,6 +48,10 @@
 
   &.location-icon--primary-colored path {
     fill: var(--primary-color);
+  }
+
+  &.location-icon--warning-colored:not(.location-icon--primary-colored) path {
+    fill: var(--warning-color);
   }
 }
 
@@ -111,7 +133,7 @@
   font-weight: 500;
 }
 
-@media (min-height: $smallMobileScreenWidth) {
+@media (min-width: $smallMobileScreenWidth) {
   .location-icon {
     right: 17px;
     bottom: 14px;
