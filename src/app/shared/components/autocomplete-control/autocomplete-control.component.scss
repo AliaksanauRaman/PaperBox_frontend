@@ -114,6 +114,7 @@
 }
 
 .autocomplete-control-pane__option-icon {
+  pointer-events: none;
   flex-shrink: 0;
   margin-top: 6.5px;
   margin-left: 10px;
