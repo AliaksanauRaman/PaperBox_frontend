@@ -90,9 +90,6 @@
       "messageFieldLabel": "Message",
       "detailsFieldLabel": "Details"
     },
-    "phoneControl": {
-      "codePlaceholder": "Code"
-    },
     "dynamicListPhoneControl": {
       "phoneNumbersLabel": "Phone numbers"
     },
@@ -144,7 +141,14 @@
     "whereFromField": "Minsk, Belarus",
     "whereToField": "Warsaw, Poland",
     "fullNameField": "Ivan Ivanov",
-    "phoneNumberField": "333444555",
     "commentField": "Your comment text..."
+  },
+  "warnings": {
+    "sameCountries": "Same countries.",
+    "sameCities": "Same cities.",
+    "itIsBetterToLeaveAComment": "It is better to leave a comment."
+  },
+  "errors": {
+    "fulLNameIsRequired": "Full name is required."
   }
 }

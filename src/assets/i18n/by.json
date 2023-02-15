@@ -90,9 +90,6 @@
       "messageFieldLabel": "Паведамленне",
       "detailsFieldLabel": "Дэталі"
     },
-    "phoneControl": {
-      "codePlaceholder": "Код"
-    },
     "dynamicListPhoneControl": {
       "phoneNumbersLabel": "Нумары тэлефонаў"
     },
@@ -144,7 +141,14 @@
     "whereFromField": "Мінск, Беларусь",
     "whereToField": "Варшава, Польшча",
     "fullNameField": "Іван Іваноў",
-    "phoneNumberField": "333444555",
     "commentField": "Тэкст вашага каментару..."
+  },
+  "warnings": {
+    "sameCountries": "Аднолькавыя краіны.",
+    "sameCities": "Аднолькавыя гарады.",
+    "itIsBetterToLeaveAComment": "Лепш пакінуць каментар."
+  },
+  "errors": {
+    "fulLNameIsRequired": "Поўнае імя абавязкова."
   }
 }
