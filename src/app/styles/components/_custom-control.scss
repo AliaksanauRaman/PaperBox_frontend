@@ -34,9 +34,10 @@ $padding: 12px;
   padding: 0 $padding;
   font-size: 1rem;
   font-weight: 500;
+  color: var(--black-color);
   border-radius: var(--border-radius);
   border: 1px solid var(--grey-color);
-  transition: 0.25s border-color ease-in-out;
+  transition: 0.25s all ease-in-out;
 
   &.custom-control__field--warning-colored:not(:focus):not(
       .custom-control__field--active
