@@ -1,7 +1,9 @@
 @import "./scss-variables";
 
 :root {
-  --bordering-padding: 13px;
+  --vertical-bordering-padding: 13px;
+  --horizontal-bordering-padding: 13px;
+  --key-blocks-indent-size: 26px;
   --field-height: 40px;
 
   --border-radius: 12px;
@@ -28,7 +30,16 @@
 
 @media (min-width: $smallMobileScreenWidth) {
   :root {
-    --bordering-padding: 20px;
+    --vertical-bordering-padding: 20px;
+    --horizontal-bordering-padding: 20px;
     --field-height: 48px;
+  }
+}
+
+@media (min-width: $minLaptopScreenWidth) {
+  :root {
+    --vertical-bordering-padding: 26px;
+    --horizontal-bordering-padding: 60px;
+    --key-blocks-indent-size: 32px;
   }
 }

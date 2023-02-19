@@ -30,7 +30,21 @@
 .control-list__item {
   flex-shrink: 0;
 
-  &:not(:last-child) {
-    margin-bottom: 6px; // TODO: Align with the design
+  &:not(:first-child) {
+    margin-top: 6px; // TODO: Align with the design
   }
+}
+
+.error-container {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  height: 26px;
+  padding: 0 12px;
+}
+
+.error-text {
+  font-size: 0.9rem;
+  color: var(--error-color);
+  white-space: pre;
 }

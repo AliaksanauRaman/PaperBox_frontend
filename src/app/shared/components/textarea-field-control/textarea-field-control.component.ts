@@ -11,7 +11,7 @@ import { UniqueIdGeneratorService } from '../../../services/unique-id-generator.
 
 import { CustomControl } from '../../abstracts/custom-control.class';
 
-const DEFAULT_MAX_CHARACTERS = 255;
+const DEFAULT_MAX_CHARACTERS_AMOUNT = 255;
 
 @Component({
   selector: 'app-textarea-field-control',
@@ -49,7 +49,7 @@ export class TextareaFieldControlComponent extends CustomControl<string> {
 
   protected controlValue = '';
   protected controlWarningColored = false;
-  protected controlMaxCharacters = DEFAULT_MAX_CHARACTERS;
+  protected controlMaxCharactersAmount = DEFAULT_MAX_CHARACTERS_AMOUNT;
 
   constructor(
     uniqueIdGeneratorService: UniqueIdGeneratorService,

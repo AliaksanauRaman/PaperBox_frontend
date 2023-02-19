@@ -1,30 +1,41 @@
-<div class="textarea-field-control custom-control">
-  <div class="top-panel">
-    <label class="label" *ngIf="controlLabel" [for]="controlId">
+<div
+  class="textarea-field-control custom-control"
+  [class.custom-control--required]="controlRequired"
+>
+  <div class="custom-control__top-panel">
+    <label
+      class="custom-control__top-panel-label"
+      *ngIf="controlLabel"
+      [for]="controlId"
+    >
       <span>{{ controlLabel }}</span>
     </label>
 
     <div
-      class="characters-counter"
-      [class.characters-counter--primary-colored]="controlFocused"
-      [class.characters-counter--warning-colored]="controlWarningColored"
-      *ngIf="controlMaxCharacters"
+      class="custom-control__top-panel-characters-counter"
+      [class.custom-control__top-panel-characters-counter--primary-colored]="
+        controlFocused
+      "
+      [class.custom-control__top-panel-characters-counter--warning-colored]="
+        controlWarningColored
+      "
+      *ngIf="controlMaxCharactersAmount"
     >
       <span>{{ textareaRef.value.length }}</span>
       <span>/</span>
-      <span>{{ controlMaxCharacters }}</span>
+      <span>{{ controlMaxCharactersAmount }}</span>
     </div>
   </div>
 
   <textarea
     #textareaRef
-    class="control app-custom-placeholder"
-    [class.control--warning-colored]="controlWarningColored"
+    class="custom-control__field app-custom-placeholder"
+    [class.custom-control__field--warning-colored]="controlWarningColored"
     [id]="controlId"
     [disabled]="controlDisabled"
     [value]="controlValue"
     [placeholder]="controlPlaceholder"
-    [maxLength]="controlMaxCharacters"
+    [maxLength]="controlMaxCharactersAmount"
     (input)="handleTextareaValueChange(textareaRef.value)"
     (focus)="handleTextareaFocus()"
     (blur)="handleTextareaBlur()"

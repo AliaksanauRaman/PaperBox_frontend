@@ -7,12 +7,13 @@ import {
   Input,
 } from '@angular/core';
 import { FormBuilder, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { takeUntil, tap } from 'rxjs';
+import { map, startWith, takeUntil, tap } from 'rxjs';
 
 import { UniqueIdGeneratorService } from '../../../services/unique-id-generator.service';
 
 import { CustomControl } from '../../../shared/abstracts/custom-control.class';
 import { PhoneType } from '../../../shared/types/phone.type';
+import { isPhoneFilledIn } from '../../../shared/utils/is-phone-filled-in.util';
 
 const MAX_PHONES_AMOUNT = 3;
 const EMPTY_PHONE: PhoneType = {
@@ -46,6 +47,11 @@ export class DynamicPhoneListControlComponent
   protected readonly phoneControlsFormArray = this.formBuilder.array([
     this.createPhoneControl(),
   ]);
+  protected readonly nonePhoneIsFilledIn$ =
+    this.phoneControlsFormArray.valueChanges.pipe(
+      startWith([EMPTY_PHONE]),
+      map((phones) => phones.every((phone) => !isPhoneFilledIn(phone)))
+    );
 
   constructor(
     uniqueIdGeneratorService: UniqueIdGeneratorService,
@@ -53,6 +59,12 @@ export class DynamicPhoneListControlComponent
     private readonly formBuilder: FormBuilder
   ) {
     super(uniqueIdGeneratorService, cdRef);
+  }
+
+  public atLeastOnePhoneIsTouched(
+    phones: ReadonlyArray<FormControl<PhoneType>>
+  ): boolean {
+    return phones.some((phone) => phone.touched);
   }
 
   public ngOnInit(): void {
@@ -75,7 +87,9 @@ export class DynamicPhoneListControlComponent
   }
 
   public appendEmptyPhoneControl(): void {
-    this.phoneControlsFormArray.push(this.createPhoneControl());
+    const newPhoneControl = this.createPhoneControl();
+    newPhoneControl.markAsTouched();
+    this.phoneControlsFormArray.push(newPhoneControl);
   }
 
   public removePhoneControlByIndex(controlIndex: number): void {

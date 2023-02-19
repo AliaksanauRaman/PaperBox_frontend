@@ -8,19 +8,26 @@ import {
   Input,
   OnInit,
   Output,
+  ViewChild,
+  ElementRef,
 } from '@angular/core';
-import { NG_VALUE_ACCESSOR, FormBuilder } from '@angular/forms';
+import { NG_VALUE_ACCESSOR, FormBuilder, Validators } from '@angular/forms';
 import { map, tap, takeUntil } from 'rxjs';
+
+import { DropdownControlComponent } from '../dropdown-control/dropdown-control.component';
 
 import { UniqueIdGeneratorService } from '../../../services/unique-id-generator.service';
 import {
   PHONE_DIALLING_CODES,
   PhoneDiallingCodesType,
-} from './../../../core/dependencies/phone-dialling-codes';
+} from '../../../core/dependencies/phone-dialling-codes';
 
 import { CustomControl } from '../../abstracts/custom-control.class';
 import { DataSource } from '../../classes/data-source.class';
 import { PhoneType } from '../../types/phone.type';
+
+// TODO: Refactor
+const phoneNumberRegExp = /^[0-9]{7,12}$/;
 
 @Component({
   selector: 'app-phone-control',
@@ -82,7 +89,7 @@ export class PhoneControlComponent
     DataSource.createFromPhoneDiallingCodes(this.phoneDiallingCodes);
   protected readonly phoneForm = this.formBuilder.group({
     diallingCode: [''],
-    number: [''],
+    number: ['', [Validators.pattern(phoneNumberRegExp)]],
   });
   protected readonly controlValue$ = this.phoneForm.valueChanges.pipe(
     map(({ diallingCode, number }) => ({
@@ -90,6 +97,12 @@ export class PhoneControlComponent
       number: number || '',
     }))
   );
+
+  @ViewChild('inputRef')
+  private readonly inputElementRef!: ElementRef<HTMLInputElement>;
+
+  @ViewChild(DropdownControlComponent)
+  private readonly dropdownElementRef!: DropdownControlComponent;
 
   private _showPlus = false;
   private _showMinus = false;
@@ -127,18 +140,27 @@ export class PhoneControlComponent
     this.markControlAsFocused();
   }
 
-  public handleDropdownBlur(): void {
-    this.handleControlBlur();
-    this.markControlAsUnfocused();
+  public handleDropdownBlur(event: FocusEvent): void {
+    const { relatedTarget } = event;
+
+    if (
+      relatedTarget !== null &&
+      relatedTarget !== this.inputElementRef.nativeElement
+    ) {
+      this.handleControlBlur();
+      this.markControlAsUnfocused();
+    }
   }
 
   public handleInputFocus(): void {
     this.markControlAsFocused();
   }
 
-  public handleInputBlur(): void {
-    this.handleControlBlur();
-    this.markControlAsUnfocused();
+  public handleInputBlur(event: FocusEvent): void {
+    if (event.relatedTarget !== this.dropdownElementRef.focusableElement) {
+      this.handleControlBlur();
+      this.markControlAsUnfocused();
+    }
   }
 
   public handlePlusClick(): void {

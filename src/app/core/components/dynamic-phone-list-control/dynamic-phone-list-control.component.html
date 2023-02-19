@@ -14,20 +14,30 @@
       *ngFor="
         let phone of phones;
         let phoneIndex = index;
-        let isFirstPhone = first;
-        let isLastPhone = last
+        let isFirstPhone = first
       "
     >
       <app-phone-control
+        [class.ng-invalid]="nonePhoneIsFilledIn$ | async"
         [formControl]="phone"
         [required]="isFirstPhone"
-        [showPlus]="isLastPhone && phones.length < maxPhonesAmount"
-        [showMinus]="!isLastPhone"
-        [placeholder]="'placeholders.phoneNumberField' | translate"
+        [showPlus]="isFirstPhone && phones.length < maxPhonesAmount"
+        [showMinus]="!isFirstPhone"
+        placeholder="333444555"
         (plusClick)="appendEmptyPhoneControl()"
         (minusClick)="removePhoneControlByIndex(phoneIndex)"
       >
       </app-phone-control>
     </form>
+
+    <div class="error-container">
+      <span
+        class="error-text"
+        *ngIf="
+          (nonePhoneIsFilledIn$ | async) && atLeastOnePhoneIsTouched(phones)
+        "
+        >{{ "errors.atLeastOnePhoneNumberIsRequired" | translate }}</span
+      >
+    </div>
   </div>
 </div>

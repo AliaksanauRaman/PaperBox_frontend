@@ -9,6 +9,7 @@ $xsLogoHeight: 30px;
 }
 
 .toolbar {
+  position: relative;
   display: flex;
   align-items: center;
   flex-grow: 1;
@@ -58,5 +59,14 @@ $xsLogoHeight: 30px;
 
   .tools {
     height: 40px;
+  }
+}
+
+@media (min-width: $minLaptopScreenWidth) {
+  .logo {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }

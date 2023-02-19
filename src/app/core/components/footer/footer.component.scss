@@ -1,13 +1,23 @@
+@import "../../../styles/scss-variables";
+
 :host {
   display: flex;
 }
 
 .footer {
   display: flex;
-  align-items: center;
+  justify-content: center;
   flex-grow: 1;
-  padding: 16px var(--bordering-padding);
+  height: 48px;
   background-color: var(--primary-color);
+  padding: 0 var(--horizontal-bordering-padding);
+}
+
+.content-container {
+  display: flex;
+  align-items: center;
+  max-width: $maxContentWidth;
+  width: 100%;
 }
 
 .copyright {
@@ -17,7 +27,8 @@
   color: var(--white-color);
 }
 
-.leave-feedback-button {
-  flex-shrink: 0;
-  margin-left: 10px;
+@media (min-width: $minLaptopScreenWidth) {
+  .footer {
+    height: 56px;
+  }
 }

@@ -1,3 +1,5 @@
+@import "../../../styles/scss-variables";
+
 :host {
   display: block;
   width: 70px;
@@ -15,6 +17,7 @@
 }
 
 .field {
+  cursor: pointer;
   display: flex;
   align-items: center;
   width: inherit;
@@ -24,6 +27,7 @@
 
 .field__value {
   flex-grow: 1;
+  font-weight: 500;
 }
 
 // ALIGN WITH GLOBAL PLACEHOLDER STYLES
@@ -31,6 +35,7 @@
   pointer-events: none;
   flex-grow: 1;
   font-size: 0.95rem;
+  font-weight: 600;
   font-style: italic;
   color: rgba(0, 0, 0, 0.3);
   opacity: 1;
@@ -93,5 +98,11 @@
 
   svg path {
     stroke: var(--black-color);
+  }
+}
+
+@media (min-width: $minLaptopScreenWidth) {
+  :host {
+    width: 75px;
   }
 }

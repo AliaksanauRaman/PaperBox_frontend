@@ -2,6 +2,7 @@
   <ng-container *ngIf="activeView$ | async as activeView">
     <button
       class="item"
+      matRipple
       [class.item--inactive]="activeView !== viewName.HELP_OFFERS"
       (click)="handleOfferHelpButtonClick()"
     >
@@ -16,6 +17,7 @@
 
     <button
       class="item"
+      matRipple
       [class.item--inactive]="activeView !== viewName.HELP_REQUESTS"
       (click)="handleFindHelpButtonClick()"
     >

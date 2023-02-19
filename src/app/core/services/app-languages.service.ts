@@ -7,13 +7,9 @@ import { AppLocaleService } from './app-locale.service';
 
 import { AppLanguageValue } from '../../shared/enums/app-language-value.enum';
 import { LocalStorageKey } from '../../shared/enums/local-storage-key.enum';
+import { AppLanguage } from '../../shared/types/app-language.type';
 
 const DEFAULT_APP_LANGUAGE = AppLanguageValue.BELARUSIAN;
-type AppLanguage = Readonly<{
-  label: string;
-  value: AppLanguageValue;
-  selected: boolean;
-}>;
 // TODO: Inject?
 const APP_LANGUAGES: ReadonlyArray<AppLanguage> = [
   {

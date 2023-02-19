@@ -149,6 +149,7 @@
     "itIsBetterToLeaveAComment": "Лепш пакінуць каментар."
   },
   "errors": {
-    "fulLNameIsRequired": "Поўнае імя абавязкова."
+    "fullNameIsRequired": "Поўнае імя абавязкова.",
+    "atLeastOnePhoneNumberIsRequired": "Патрэбен як мінімум 1 нумар тэлефону."
   }
 }

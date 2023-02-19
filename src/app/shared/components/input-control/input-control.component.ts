@@ -11,7 +11,7 @@ import { UniqueIdGeneratorService } from './../../../services/unique-id-generato
 
 import { CustomControl } from '../../abstracts/custom-control.class';
 
-const DEFAULT_MAX_CHARACTERS = 35;
+const DEFAULT_MAX_CHARACTERS_AMOUNT = 35;
 
 @Component({
   selector: 'app-input-control',
@@ -42,8 +42,13 @@ export class InputControlComponent extends CustomControl<string> {
     this.controlPlaceholder = value;
   }
 
+  @Input()
+  public set maxCharactersAmount(value: number) {
+    this.controlMaxCharactersAmount = value;
+  }
+
   protected controlValue = '';
-  protected controlMaxCharacters = DEFAULT_MAX_CHARACTERS;
+  protected controlMaxCharactersAmount = DEFAULT_MAX_CHARACTERS_AMOUNT;
 
   constructor(
     uniqueIdGeneratorService: UniqueIdGeneratorService,

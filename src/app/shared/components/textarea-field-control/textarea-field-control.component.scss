@@ -1,59 +1,11 @@
-// TODO: Think about common styles
-$padding: 12px;
-
 :host {
   display: flex;
   flex-shrink: 0;
-  width: 100%;
 }
 
-.top-panel {
-  display: flex;
-  padding: 0 $padding;
-  margin-bottom: 3px;
-}
-
-.label {
-  flex-grow: 1;
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--grey-color);
-}
-
-.characters-counter {
-  flex-shrink: 0;
-  margin-left: 10px;
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--grey-color);
-  transition: 0.25s color ease-in-out;
-
-  &.characters-counter--primary-colored {
-    color: var(--primary-color);
-  }
-
-  &.characters-counter--warning-colored:not(.characters-counter--primary-colored) {
-    color: var(--warning-color);
-  }
-}
-
-.control {
-  flex-shrink: 0;
+.custom-control__field {
   min-height: 112px;
-  padding: 10px $padding;
-  font-size: 1rem;
-  font-weight: 500;
+  padding: 10px 12px;
   line-height: 20px;
-  border-radius: var(--border-radius);
-  border: 1px solid var(--grey-color);
   resize: none;
-  transition: 0.25s border-color ease-in-out;
-
-  &:focus {
-    border-color: var(--primary-color);
-  }
-
-  &.control--warning-colored:not(:focus) {
-    border-color: var(--warning-color);
-  }
 }

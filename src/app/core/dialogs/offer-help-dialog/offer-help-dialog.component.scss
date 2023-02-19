@@ -24,36 +24,43 @@
 }
 
 .locations-control {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .date-control {
-  margin-bottom: 8px;
-}
-
-.comment-control {
-  margin-bottom: 30px;
+  margin-bottom: 12px;
 }
 
 .error-container {
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  height: 16px;
+  height: 20px;
   padding: 0 12px;
 }
 
 .error-text {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   color: var(--error-color);
-  opacity: 0;
-  transition: 0.25s opacity ease-in-out;
+}
 
-  &.error-text--visible {
-    opacity: 1;
-  }
+.warning-container {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  height: 20px;
+  padding: 0 12px;
+}
+
+.warning-text {
+  font-size: 0.9rem;
+  color: var(--warning-color);
+}
+
+.full-name-control {
+  margin-top: 14px;
 }
 
 .phones-control {
-  margin-top: 8px;
+  margin-top: 10px;
 }

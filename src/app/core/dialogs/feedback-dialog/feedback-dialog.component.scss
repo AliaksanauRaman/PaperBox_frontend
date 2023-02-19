@@ -9,6 +9,12 @@
   min-height: 0;
 }
 
+.feedback-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .full-name-control {
   margin-bottom: 8px;
 }

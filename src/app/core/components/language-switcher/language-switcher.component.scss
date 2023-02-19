@@ -7,18 +7,21 @@
 .language-switcher {
   display: flex;
   justify-content: center;
-  align-items: center;
   width: 57.75px;
   height: 35px;
   background-color: var(--white-color);
   border-radius: var(--border-radius);
+  overflow: hidden;
 }
 
 .language {
   cursor: pointer;
+  display: flex;
+  align-items: center;
   font-weight: 600;
   color: var(--grey-color);
   text-transform: capitalize;
+  transition: 0.25s color ease-in-out;
 
   &.language--selected {
     pointer-events: none;

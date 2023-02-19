@@ -3,6 +3,7 @@ import { DialogRef } from '@angular/cdk/dialog';
 import { FormBuilder, Validators } from '@angular/forms';
 
 import { DialogComponent } from '../../../shared/abstracts/dialog-component.class';
+import { phoneNumbersRequired } from '../../../shared/validators/phone-numbers-required.validator';
 
 @Component({
   selector: 'app-offer-help-dialog',
@@ -33,6 +34,7 @@ export class OfferHelpDialogComponent extends DialogComponent {
           number: '',
         },
       ],
+      [phoneNumbersRequired(1)],
     ],
   });
 
@@ -45,6 +47,20 @@ export class OfferHelpDialogComponent extends DialogComponent {
 
   public handleSendButtonClick(): void {
     // TODO: Temp
-    console.log(JSON.stringify(this.offerHelpForm.getRawValue(), null, 2));
+    const result = this.offerHelpForm.getRawValue();
+    console.log(JSON.stringify(result, null, 2));
+    console.log(result);
+
+    const mappedResult = {
+      locationFrom: result.locations?.from,
+      locationTo: result.locations?.to,
+      startDate: result.date?.start,
+      endDate: result.date?.end,
+      comment: result.comment,
+      fullName: result.fullName,
+      phones: result.phones,
+    };
+
+    console.log({ MAPPED: mappedResult });
   }
 }

@@ -16,7 +16,7 @@ import {
   AbstractControl,
   ValidationErrors,
 } from '@angular/forms';
-import { tap, takeUntil, merge } from 'rxjs';
+import { tap, takeUntil, merge, map, combineLatest, startWith } from 'rxjs';
 
 import { UniqueIdGeneratorService } from '../../../services/unique-id-generator.service';
 import { AppLanguagesService } from '../../services/app-languages.service';
@@ -29,6 +29,7 @@ import {
 
 import { CustomControl } from '../../../shared/abstracts/custom-control.class';
 import { DataSource } from '../../../shared/classes/data-source.class';
+import { destructureLocationValue } from '../../../shared/utils/destructure-location-value.util';
 
 type LocationsControlValue = Readonly<{
   from: string;
@@ -69,6 +70,34 @@ export class LocationsControlComponent
   protected readonly locationsDataSource = DataSource.createFromLocations(
     this.allLocationsWithTranslatedLabels
   );
+  protected readonly sameCountry$ = this.locationsForm.valueChanges.pipe(
+    map(({ from, to }) => {
+      if (!from || !to) {
+        return false;
+      }
+
+      const { countryValue: fromCountry } = destructureLocationValue(from);
+      const { countryValue: toCountry } = destructureLocationValue(to);
+
+      return fromCountry === toCountry;
+    })
+  );
+  protected readonly sameCity$ = this.locationsForm.valueChanges.pipe(
+    map(({ from, to }) => {
+      if (!from || !to) {
+        return false;
+      }
+
+      const { cityValue: fromCity } = destructureLocationValue(from);
+      const { cityValue: toCity } = destructureLocationValue(to);
+
+      return fromCity === toCity;
+    })
+  );
+  protected readonly warnings$ = combineLatest([
+    this.sameCountry$,
+    this.sameCity$,
+  ]).pipe(startWith([false, false]), map(([sameCountry, sameCity]) => ({ sameCountry, sameCity })));
 
   constructor(
     uniqueIdGeneratorService: UniqueIdGeneratorService,

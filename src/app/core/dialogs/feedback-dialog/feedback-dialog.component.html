@@ -3,31 +3,43 @@
     {{ "dialogs.feedback.title" | translate }}
   </h2>
 
-  <div class="app-custom-dialog-close-button" (click)="closeDialog()">
+  <div class="app-custom-dialog-close-button" matRipple [matRippleUnbounded]="true" (click)="closeDialog()">
     <app-plus-icon class="app-custom-dialog-close-button-icon"></app-plus-icon>
   </div>
 
-  <form>
+  <form class="feedback-form" [formGroup]="feedbackForm">
     <app-input-control
       class="full-name-control"
       [label]="'dialogs.feedback.fullNameFieldLabel' | translate"
+      [required]="true"
+      formControlName="fullName"
     >
     </app-input-control>
 
     <app-input-control
       class="email-control"
       [label]="'dialogs.feedback.emailFieldLabel' | translate"
+      [required]="true"
+      [maxCharactersAmount]="50"
+      formControlName="email"
     >
     </app-input-control>
 
     <app-textarea-field-control
       class="comment-control"
       [label]="'dialogs.feedback.commentFieldLabel' | translate"
+      [required]="true"
+      formControlName="comment"
     >
     </app-textarea-field-control>
   </form>
 
-  <button class="app-custom-dialog-action-button app-primary-button">
-    <span>{{ "dialogs.feedback.sendButtonLabel" | translate }}</span>
-  </button>
+  <div class="app-custom-dialog-actions">
+    <button
+      class="app-custom-dialog-actions__item app-primary-button"
+      [disabled]="feedbackForm.invalid"
+    >
+      <span>{{ "dialogs.feedback.sendButtonLabel" | translate }}</span>
+    </button>
+  </div>
 </div>

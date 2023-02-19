@@ -1,4 +1,4 @@
-@import '../scss-variables';
+@import "../scss-variables";
 
 div.app-custom-dialog {
   position: relative !important;
@@ -22,6 +22,7 @@ h2.app-custom-dialog-title {
 }
 
 div.app-custom-dialog-close-button {
+  cursor: pointer;
   position: absolute;
   top: 12px;
   right: 12px;
@@ -36,8 +37,15 @@ div.app-custom-dialog-close-button {
   }
 }
 
-button.app-custom-dialog-action-button {
+div.app-custom-dialog-actions {
+  display: flex;
+  flex-shrink: 0;
   margin-top: 10px;
+}
+
+button.app-custom-dialog-actions__item {
+  flex-shrink: 0;
+  width: 100%;
 }
 
 @media (min-width: $smallMobileScreenWidth) {
@@ -61,7 +69,18 @@ button.app-custom-dialog-action-button {
     }
   }
 
-  button.app-custom-dialog-action-button {
+  div.app-custom-dialog-actions {
     margin-top: 40px;
+  }
+}
+
+@media (min-width: $minLaptopScreenWidth) {
+  div.app-custom-dialog {
+    width: 100%;
+    max-width: 700px;
+  }
+
+  div.app-custom-dialog-actions {
+    justify-content: center;
   }
 }

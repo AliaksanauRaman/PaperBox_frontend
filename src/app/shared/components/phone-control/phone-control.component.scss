@@ -1,7 +1,25 @@
-@import '../../../styles/scss-variables';
+@import "../../../styles/scss-variables";
 
 :host {
   display: flex;
+
+  &.ng-invalid.ng-touched {
+    .custom-control__field:not(.custom-control__field--focused) {
+      border-color: var(--error-color);
+    }
+
+    .plus-icon:not(.plus-icon--primary-colored) path {
+      stroke: var(--error-color);
+    }
+
+    .minus-icon:not(.minus-icon--primary-colored) path {
+      stroke: var(--error-color);
+    }
+  }
+}
+
+.phone-control {
+  position: relative;
 }
 
 .phone-control-form {
@@ -20,19 +38,31 @@
 
 .custom-control__field {
   padding-left: 73px;
-  padding-right: 40px;
 
   &.custom-control__field--focused {
     border-color: var(--primary-color);
   }
+
+  &.custom-control__field--invalid-value {
+    color: var(--error-color);
+  }
 }
 
-.trailing-button-container {
-  right: 12px;
-  bottom: 0;
+.pattern-error-tooltip {
+  position: absolute;
+  bottom: -45px;
+  left: 62px;
+  z-index: 1;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  height: var(--field-height);
+  justify-content: center;
+  padding: 5px 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  background-color: var(--white-color);
+  border: 1px solid var(--error-color);
+  border-radius: 6px;
 }
 
 .trailing-button {
@@ -48,10 +78,36 @@
   border-radius: 50%;
 }
 
+.plus-icon {
+  & path {
+    transition: 0.25s stroke ease-in-out;
+  }
+
+  &.plus-icon--primary-colored path {
+    stroke: var(--primary-color);
+  }
+}
+
+.minus-icon {
+  & path {
+    transition: 0.25s stroke ease-in-out;
+  }
+
+  &.minus-icon--primary-colored path {
+    stroke: var(--primary-color);
+  }
+}
+
 @media (min-width: $smallMobileScreenWidth) {
   .trailing-button {
     bottom: 6px;
     width: 36px;
     height: 36px;
+  }
+}
+
+@media (min-width: $minLaptopScreenWidth) {
+  .custom-control__field {
+    padding-left: 78px;
   }
 }

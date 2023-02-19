@@ -18,36 +18,66 @@
     <app-date-control
       class="date-control"
       [label]="'dialogs.offerHelp.whenFieldLabel' | translate"
+      [required]="true"
       formControlName="date"
     >
     </app-date-control>
 
-    <app-textarea-field-control
-      class="comment-control"
-      [label]="'dialogs.offerHelp.commentFieldLabel' | translate"
-      formControlName="comment"
-    >
-    </app-textarea-field-control>
+    <ng-container *ngIf="offerHelpForm.controls.comment as commentControl">
+      <app-textarea-field-control
+        class="comment-control"
+        [label]="'dialogs.offerHelp.commentFieldLabel' | translate"
+        [placeholder]="'placeholders.commentField' | translate"
+        [warningColored]="commentControl.value === '' && commentControl.touched"
+        formControlName="comment"
+      >
+      </app-textarea-field-control>
+
+      <div class="warning-container">
+        <div
+          class="warning-text"
+          *ngIf="commentControl.value === '' && commentControl.touched"
+        >
+          <span>{{ "warnings.itIsBetterToLeaveAComment" | translate }}</span>
+        </div>
+      </div>
+    </ng-container>
 
     <app-input-control
       class="full-name-control"
       [label]="'dialogs.offerHelp.fullNameFieldLabel' | translate"
+      [required]="true"
+      [placeholder]="'placeholders.fullNameField' | translate"
       formControlName="fullName"
     >
     </app-input-control>
 
+    <div
+      class="error-container"
+      *ngIf="offerHelpForm.controls.fullName as fullNameControl"
+    >
+      <ng-container *ngIf="fullNameControl.touched">
+        <div class="error-text" *ngIf="fullNameControl.errors?.['required']">
+          <span>{{ "errors.fullNameIsRequired" | translate }}</span>
+        </div>
+      </ng-container>
+    </div>
+
     <app-dynamic-phone-list-control
       class="phones-control"
       formControlName="phones"
+      [required]="true"
     >
     </app-dynamic-phone-list-control>
   </form>
 
-  <button
-    class="app-custom-dialog-action-button app-primary-button"
-    [disabled]="offerHelpForm.invalid"
-    (click)="handleSendButtonClick()"
-  >
-    <span>{{ "dialogs.offerHelp.sendButtonLabel" | translate }}</span>
-  </button>
+  <div class="app-custom-dialog-actions">
+    <button
+      class="app-custom-dialog-actions__item app-primary-button"
+      [disabled]="offerHelpForm.invalid"
+      (click)="handleSendButtonClick()"
+    >
+      <span>{{ "dialogs.offerHelp.sendButtonLabel" | translate }}</span>
+    </button>
+  </div>
 </div>

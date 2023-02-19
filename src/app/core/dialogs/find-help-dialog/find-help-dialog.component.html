@@ -42,10 +42,12 @@
     </app-dynamic-phone-list-control>
   </form>
 
-  <button
-    class="app-custom-dialog-action-button app-primary-button"
-    (click)="handleSendButtonClick()"
-  >
-    <span>{{ "dialogs.findHelp.sendButtonLabel" | translate }}</span>
-  </button>
+  <div class="app-custom-dialog-actions">
+    <button
+      class="app-custom-dialog-actions__item app-primary-button"
+      (click)="handleSendButtonClick()"
+    >
+      <span>{{ "dialogs.findHelp.sendButtonLabel" | translate }}</span>
+    </button>
+  </div>
 </div>

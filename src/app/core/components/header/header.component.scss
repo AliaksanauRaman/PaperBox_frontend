@@ -1,6 +1,4 @@
-@import '../../../styles/scss-variables';
-
-$borderingPadding: var(--bordering-padding);
+@import "../../../styles/scss-variables";
 
 :host {
   display: flex;
@@ -10,8 +8,18 @@ $borderingPadding: var(--bordering-padding);
 .header {
   position: relative;
   display: flex;
+  justify-content: center;
+  padding: var(--vertical-bordering-padding) var(--horizontal-bordering-padding)
+    var(--key-blocks-indent-size) var(--horizontal-bordering-padding);
+}
+
+.content-container {
+  position: relative;
+  display: flex;
   flex-direction: column;
-  padding: $borderingPadding $borderingPadding 30px $borderingPadding;
+  align-items: center;
+  flex-grow: 1;
+  max-width: $maxContentWidth;
 }
 
 .toolbar {
@@ -28,12 +36,32 @@ $borderingPadding: var(--bordering-padding);
 .man-with-globe-image {
   position: absolute;
   bottom: 0;
-  right: $borderingPadding;
+  right: var(--horizontal-bordering-padding);
   z-index: 0;
+}
+
+.big-man-with-globe-image {
+  position: absolute;
+  top: 45px;
+  left: 25px;
+  z-index: -1;
+  display: none;
+  width: 252px;
+  height: 410px;
 }
 
 @media (min-width: $smallMobileScreenWidth) {
   .actions {
     margin-top: 100px;
+  }
+}
+
+@media (min-width: $minLaptopScreenWidth) {
+  .man-with-globe-image {
+    display: none;
+  }
+
+  .big-man-with-globe-image {
+    display: block;
   }
 }

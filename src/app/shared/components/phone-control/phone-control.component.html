@@ -10,27 +10,37 @@
     <app-dropdown-control
       class="phone-code-dropdown"
       [dataSource]="phoneDiallingCodesDataSource"
-      [placeholder]="'components.phoneControl.codePlaceholder' | translate"
+      placeholder="+375"
       formControlName="diallingCode"
       (optionClick)="handleDropdownOptionClick(inputRef)"
       (focus)="handleDropdownFocus()"
-      (blur)="handleDropdownBlur()"
+      (blur)="handleDropdownBlur($event)"
     >
     </app-dropdown-control>
 
     <input
       #inputRef
-      class="custom-control__field app-custom-placeholder"
+      class="custom-control__field custom-control__field--with-trailing-icon app-custom-placeholder"
       [class.custom-control__field--focused]="controlFocused"
+      [class.custom-control__field--invalid-value]="!!phoneForm.controls.number.errors?.['pattern']"
       [id]="controlId"
       [placeholder]="controlPlaceholder"
       type="text"
       autocomplete="chrome-off"
       formControlName="number"
       (focus)="handleInputFocus()"
-      (blur)="handleInputBlur()"
+      (blur)="handleInputBlur($event)"
     />
   </form>
+
+  <!-- TODO: Refactor -->
+  <div
+    class="pattern-error-tooltip"
+    *ngIf="!!phoneForm.controls.number.errors?.['pattern']"
+  >
+    <div>Пакіньце толькі лічбы</div>
+    <div>даўжынёй ад 7 да 12 знакаў</div>
+  </div>
 
   <ng-container *ngIf="showPlus || showMinus">
     <button
@@ -59,6 +69,8 @@
 
 <ng-template #plusIconSvg>
   <svg
+    class="plus-icon"
+    [class.plus-icon--primary-colored]="controlFocused"
     width="16"
     height="16"
     viewBox="0 0 20 20"
@@ -76,6 +88,8 @@
 
 <ng-template #minusIconSvg>
   <svg
+    class="minus-icon"
+    [class.minus-icon--primary-colored]="controlFocused"
     width="16"
     height="2"
     viewBox="0 0 20 2"

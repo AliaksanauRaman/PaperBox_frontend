@@ -149,6 +149,7 @@
     "itIsBetterToLeaveAComment": "It is better to leave a comment."
   },
   "errors": {
-    "fulLNameIsRequired": "Full name is required."
+    "fullNameIsRequired": "Full name is required.",
+    "atLeastOnePhoneNumberIsRequired": "At least one phone number is required."
   }
 }

@@ -6,6 +6,8 @@ import {
   forwardRef,
   Output,
   EventEmitter,
+  ViewChild,
+  ElementRef,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
@@ -53,6 +55,10 @@ export class DropdownControlComponent extends CustomControl<string> {
     return this._controlValue;
   }
 
+  public get focusableElement(): HTMLDivElement {
+    return this.focusableElementRef.nativeElement;
+  }
+
   @Output()
   public readonly optionClick = new EventEmitter<void>();
 
@@ -60,12 +66,17 @@ export class DropdownControlComponent extends CustomControl<string> {
   public readonly focus = new EventEmitter<void>();
 
   @Output()
-  public readonly blur = new EventEmitter<void>();
+  public readonly blur = new EventEmitter<FocusEvent>();
+
+  @ViewChild('focusableElementRef')
+  private readonly focusableElementRef!: ElementRef<HTMLDivElement>;
 
   protected controlDataSource = DataSource.createEmpty<string>();
 
   private _isOpen = false;
   private _controlValue = '';
+  private _optionClickInProgress = false;
+  private _lastBlurEvent: FocusEvent | null = null;
 
   constructor(
     uniqueIdGeneratorService: UniqueIdGeneratorService,
@@ -91,35 +102,36 @@ export class DropdownControlComponent extends CustomControl<string> {
     this._controlValue = value;
   }
 
-  public handleFieldClick(): void {
-    this.focus.emit();
-    this.openPanel();
-  }
+  public handleFieldMouseDown(): void {
+    if (!this.controlFocused) {
+      return;
+    }
 
-  public handleFieldFocus(): void {
-    this.focus.emit();
-    this.openPanel();
-  }
-
-  public handleFieldBlur(): void {
-    setTimeout(() => {
-      this.closePanel();
-      this.cdRef.markForCheck();
-    }, 0);
-  }
-
-  public handleBackdropClick(): void {
-    this.closePanel();
-    this.blur.emit();
-    this.handleControlBlur();
-  }
-
-  protected toggleIsOpenState(): void {
     if (this._isOpen) {
       this.closePanel();
     } else {
       this.openPanel();
     }
+  }
+
+  public handleFieldFocus(): void {
+    this.focus.emit();
+    this.markControlAsFocused();
+    this.openPanel();
+  }
+
+  public handleFieldBlur(event: FocusEvent): void {
+    this._lastBlurEvent = event;
+
+    if (this._optionClickInProgress) {
+      return;
+    }
+
+    this.closePanel();
+    this.blur.emit(event);
+    this.handleControlBlur();
+    this.markControlAsUnfocused();
+    this.cdRef.markForCheck();
   }
 
   protected openPanel(): void {
@@ -130,15 +142,21 @@ export class DropdownControlComponent extends CustomControl<string> {
     this._isOpen = false;
   }
 
-  protected handleOptionClick(option: DataSourceOption<string>): void {
+  protected handleOptionMouseDown(): void {
+    this._optionClickInProgress = true;
+  }
+
+  protected handleOptionMouseUp(option: DataSourceOption<string>): void {
     if (this._controlValue !== option.value) {
       this._controlValue = option.value;
       this.onChange(this._controlValue);
     }
 
-    this.closePanel();
+    this._optionClickInProgress = false;
     this.optionClick.emit();
-    this.blur.emit();
-    this.handleControlBlur();
+
+    if (this._lastBlurEvent !== null) {
+      this.handleFieldBlur(this._lastBlurEvent);
+    }
   }
 }

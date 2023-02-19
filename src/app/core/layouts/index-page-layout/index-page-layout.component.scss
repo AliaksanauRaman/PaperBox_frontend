@@ -21,7 +21,7 @@
   flex-direction: column;
   flex-grow: 1;
   min-height: 0;
-  margin-bottom: 30px;
+  margin-bottom: var(--key-blocks-indent-size);
 }
 
 .footer {

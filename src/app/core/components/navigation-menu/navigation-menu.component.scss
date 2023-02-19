@@ -1,3 +1,5 @@
+@import "../../../styles/scss-variables";
+
 :host {
   display: block;
 }
@@ -8,7 +10,7 @@
   align-items: center;
   min-height: 18px;
   max-height: 29px;
-  padding: 0 var(--bordering-padding);
+  padding: 0 var(--horizontal-bordering-padding);
 }
 
 .item {
@@ -22,9 +24,10 @@
 .item__link {
   font-size: 0.9rem;
   text-align: center;
+  transition: 0.25s color ease-in-out;
 
   &.item__link--active {
-    color: var(--primary-color)
+    color: var(--primary-color);
   }
 }
 
@@ -37,4 +40,26 @@
   background-color: var(--primary-color);
   border-radius: 1px;
   transform: translateX(-50%);
+}
+
+@media (min-width: $minLaptopScreenWidth) {
+  .navigation-menu {
+    min-height: 22px;
+  }
+
+  .item {
+    padding: 0 20px;
+
+    &:first-child {
+      justify-content: flex-end;
+    }
+
+    &:last-child {
+      justify-content: flex-start;
+    }
+  }
+
+  .divider {
+    width: 2px;
+  }
 }

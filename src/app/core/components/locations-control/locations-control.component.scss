@@ -16,15 +16,43 @@
   flex-direction: column;
 }
 
-.from-control {
-  margin-bottom: 30px;
+.error-container {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  height: 20px;
+  padding: 0 12px;
+}
+
+.error-text {
+  flex-shrink: 0;
+  font-size: 0.9rem;
+  color: var(--error-color);
+}
+
+.warning-container {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  height: 20px;
+  padding: 0 12px;
+}
+
+.warning-text {
+  flex-shrink: 0;
+  font-size: 0.9rem;
+  color: var(--warning-color);
+}
+
+.to-control {
+  margin-top: 14px;
 }
 
 .switch-locations-button {
   position: absolute;
   z-index: 1;
   right: 6px;
-  bottom: 49px;
+  bottom: 52px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -48,6 +76,6 @@
 
 @media (min-width: $smallMobileScreenWidth) {
   .switch-locations-button {
-    bottom: 57px;
+    bottom: 60px;
   }
 }

@@ -1,31 +1,84 @@
 <div class="locations-control">
-  <form class="locations-control-form" [formGroup]="locationsForm">
-    <app-autocomplete-text-field-control
-      class="from-control"
-      [dataSource]="locationsDataSource"
-      [label]="'components.locationsControl.whereFromFieldLabel' | translate"
-      formControlName="from"
-    >
-    </app-autocomplete-text-field-control>
+  <ng-container *ngIf="warnings$ | async as warnings">
+    <form class="locations-control-form" [formGroup]="locationsForm">
+      <app-autocomplete-control
+        class="from-control"
+        [dataSource]="locationsDataSource"
+        [label]="'components.locationsControl.whereFromFieldLabel' | translate"
+        [placeholder]="'placeholders.whereFromField' | translate"
+        [required]="true"
+        [warningColored]="warnings.sameCity || warnings.sameCountry"
+        formControlName="from"
+      >
+      </app-autocomplete-control>
 
-    <button
-      class="switch-locations-button"
-      [disabled]="
-        !locationsForm.controls.from.value || !locationsForm.controls.to.value
-      "
-      (click)="switchLocations()"
-    >
-      <ng-container *ngTemplateOutlet="directionIconSvg"></ng-container>
-    </button>
+      <!-- TODO: A separate component? Refactor? -->
+      <div
+        class="error-container"
+        *ngIf="locationsForm.controls.from as fromControl"
+      >
+        <ng-container *ngIf="fromControl.touched">
+          <div class="error-text" *ngIf="fromControl.errors?.['required']">
+            <span>{{
+              "components.locationsControl.whereFromRequiredErrorMessage"
+                | translate
+            }}</span>
+          </div>
+        </ng-container>
+      </div>
 
-    <app-autocomplete-text-field-control
-      class="to-control"
-      [dataSource]="locationsDataSource"
-      [label]="'components.locationsControl.whereToFieldLabel' | translate"
-      formControlName="to"
-    >
-    </app-autocomplete-text-field-control>
-  </form>
+      <button
+        class="switch-locations-button"
+        [disabled]="
+          !locationsForm.controls.from.value || !locationsForm.controls.to.value
+        "
+        tabindex="-1"
+        (click)="switchLocations()"
+      >
+        <ng-container *ngTemplateOutlet="directionIconSvg"></ng-container>
+      </button>
+
+      <app-autocomplete-control
+        class="to-control"
+        [dataSource]="locationsDataSource"
+        [label]="'components.locationsControl.whereToFieldLabel' | translate"
+        [placeholder]="'placeholders.whereToField' | translate"
+        [required]="true"
+        [warningColored]="warnings.sameCity || warnings.sameCountry"
+        formControlName="to"
+      >
+      </app-autocomplete-control>
+    </form>
+
+    <ng-container *ngIf="locationsForm.invalid">
+      <div
+        class="error-container"
+        *ngIf="locationsForm.controls.to as toControl"
+      >
+        <ng-container *ngIf="toControl.touched">
+          <div class="error-text" *ngIf="toControl.errors?.['required']">
+            <span>{{
+              "components.locationsControl.whereToRequiredErrorMessage"
+                | translate
+            }}</span>
+          </div>
+        </ng-container>
+      </div>
+    </ng-container>
+
+    <div class="warning-container" *ngIf="locationsForm.valid">
+      <div class="warning-text" *ngIf="warnings.sameCity">
+        <span>{{ 'warnings.sameCities' | translate }}</span>
+      </div>
+
+      <div
+        class="warning-text"
+        *ngIf="warnings.sameCountry && !warnings.sameCity"
+      >
+        <span>{{ 'warnings.sameCountries' | translate }}</span>
+      </div>
+    </div>
+  </ng-container>
 </div>
 
 <ng-template #directionIconSvg>

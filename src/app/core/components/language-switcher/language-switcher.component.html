@@ -1,10 +1,13 @@
 <div class="language-switcher">
   <div
     class="language"
-    *ngFor="let language of languages$ | async"
+    *ngFor="let language of languages$ | async; trackBy: trackLanguageByValue"
+    matRipple
+    [matRippleUnbounded]="true"
     [class.language--selected]="language.selected"
+    (click)="handleLanguageSelection(language.value)"
   >
-    <span (click)="handleLanguageSelection(language.value)">
+    <span>
       {{ language.label }}
     </span>
   </div>
