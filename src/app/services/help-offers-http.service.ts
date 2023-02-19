@@ -10,6 +10,7 @@ import { HelpOfferPublicPreviewType } from "../shared/types/help-offer-public-pr
 @Injectable({
   providedIn: 'root',
 })
+// TODO: Unused
 export class HelpOffersHttpService {
   private readonly helpOffersApiUrl = `${this.apiUrl}/help-offers`;
 
