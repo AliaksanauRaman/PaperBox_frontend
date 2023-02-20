@@ -1,14 +1,15 @@
-@import './app/styles/libs/normalize.scss';
+@import "./app/styles/libs/normalize.scss";
 
-@import './app/styles/global-variables';
-@import './app/styles/base';
+@import "./app/styles/global-variables";
+@import "./app/styles/base";
 
-@import './app/styles/adaptive/font-size';
+@import "./app/styles/adaptive/font-size";
 
-@import './app/styles/components/material-customizations';
-@import './app/styles/components/primary-button';
-@import './app/styles/components/custom-placeholder';
-@import './app/styles/components/custom-dialog';
-@import './app/styles/components/custom-control';
-@import './app/styles/components/dropdown-control';
-@import './app/styles/components/autocomplete-control';
+@import "./app/styles/components/material-customizations";
+@import "./app/styles/components/primary-button";
+@import "./app/styles/components/scrollbar";
+@import "./app/styles/components/custom-placeholder";
+@import "./app/styles/components/custom-dialog";
+@import "./app/styles/components/custom-control";
+@import "./app/styles/components/dropdown-control";
+@import "./app/styles/components/autocomplete-control";

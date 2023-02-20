@@ -1,4 +1,5 @@
 @import "../scss-variables";
+@import "./scrollbar";
 
 div.app-custom-dialog {
   position: relative !important;
@@ -76,6 +77,8 @@ button.app-custom-dialog-actions__item {
 
 @media (min-width: $minLaptopScreenWidth) {
   div.app-custom-dialog {
+    @include scrollbar();
+
     width: 100%;
     max-width: 700px;
   }
