@@ -146,7 +146,7 @@
   "warnings": {
     "sameCountries": "Аднолькавыя краіны.",
     "sameCities": "Аднолькавыя гарады.",
-    "itIsBetterToLeaveAComment": "Лепш пакінуць каментар."
+    "itIsBetterToLeaveAComment": "Пажадана пакінуць каментар."
   },
   "errors": {
     "fullNameIsRequired": "Поўнае імя абавязкова.",
