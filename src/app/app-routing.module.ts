@@ -10,20 +10,30 @@ const routes: Routes = [
     children: [
       {
         path: '',
+        title: 'Pushka',
         pathMatch: 'full',
         redirectTo: '/help-offers',
       },
       {
         path: 'help-offers',
-        loadChildren: () => import('./help-offers/help-offers.module').then(m => m.HelpOffersModule),
+        title: 'Pushka | Offering help',
+        loadChildren: () =>
+          import('./help-offers/help-offers.module').then(
+            (m) => m.HelpOffersModule
+          ),
       },
       {
         path: 'help-requests',
-        loadChildren: () => import('./help-requests/help-requests.module').then(m => m.HelpRequestsModule),
+        title: 'Pushka | Finding help',
+        loadChildren: () =>
+          import('./help-requests/help-requests.module').then(
+            (m) => m.HelpRequestsModule
+          ),
       },
       {
         path: 'admin',
-        loadChildren: () => import('./admin/admin.module').then(m => m.AdminModule),
+        loadChildren: () =>
+          import('./admin/admin.module').then((m) => m.AdminModule),
       },
       {
         path: '**',
@@ -39,6 +49,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
