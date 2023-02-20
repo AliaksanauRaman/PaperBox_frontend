@@ -6,7 +6,15 @@ import {
   OnInit,
   Input,
 } from '@angular/core';
-import { FormBuilder, FormControl, NG_VALUE_ACCESSOR } from '@angular/forms';
+import {
+  AbstractControl,
+  FormBuilder,
+  FormControl,
+  NG_VALIDATORS,
+  NG_VALUE_ACCESSOR,
+  ValidationErrors,
+  Validator,
+} from '@angular/forms';
 import { map, startWith, takeUntil, tap } from 'rxjs';
 
 import { UniqueIdGeneratorService } from '../../../services/unique-id-generator.service';
@@ -14,6 +22,7 @@ import { UniqueIdGeneratorService } from '../../../services/unique-id-generator.
 import { CustomControl } from '../../../shared/abstracts/custom-control.class';
 import { PhoneType } from '../../../shared/types/phone.type';
 import { isPhoneFilledIn } from '../../../shared/utils/is-phone-filled-in.util';
+import { phoneNumberRegExp } from '../../../shared/regexps/phone-number.regexp';
 
 const MAX_PHONES_AMOUNT = 3;
 const EMPTY_PHONE: PhoneType = {
@@ -31,12 +40,17 @@ const EMPTY_PHONE: PhoneType = {
       useExisting: forwardRef(() => DynamicPhoneListControlComponent),
       multi: true,
     },
+    {
+      provide: NG_VALIDATORS,
+      useExisting: forwardRef(() => DynamicPhoneListControlComponent),
+      multi: true,
+    },
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DynamicPhoneListControlComponent
   extends CustomControl<ReadonlyArray<PhoneType>>
-  implements OnInit
+  implements OnInit, Validator
 {
   @Input()
   public set required(value: boolean) {
@@ -74,6 +88,24 @@ export class DynamicPhoneListControlComponent
         takeUntil(this.destroy$)
       )
       .subscribe();
+  }
+
+  public validate(thisControl: AbstractControl): ValidationErrors | null {
+    const currentControlValue: ReadonlyArray<PhoneType> =
+      thisControl.getRawValue();
+    const filledInPhones = currentControlValue.filter(isPhoneFilledIn);
+
+    if (filledInPhones.length === 0) {
+      return { required: true };
+    }
+
+    if (
+      filledInPhones.every((phone) => !phone.number.match(phoneNumberRegExp))
+    ) {
+      return { wrongFormat: true };
+    }
+
+    return null;
   }
 
   public writeValue(value: ReadonlyArray<PhoneType>): void {
