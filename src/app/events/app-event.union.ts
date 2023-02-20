@@ -1,4 +1,10 @@
 import {
+  MakeGetPublishedHelpOffersRequest,
+  SuccessGetPublishedHelpOffers,
+  FailedGetPublishedHelpOffers,
+} from './../help-offers/events';
+
+import {
   MakeGetFullPreviewsOfAllHelpOffersRequest,
   SuccessGetFullPreviewsOfAllHelpOffers,
   FailedGetFullPreviewsOfAllHelpOffers,
@@ -14,6 +20,9 @@ import {
 } from './entries';
 
 export type AppEventUnion =
+  | MakeGetPublishedHelpOffersRequest
+  | SuccessGetPublishedHelpOffers
+  | FailedGetPublishedHelpOffers
   | MakeGetFullPreviewsOfAllHelpOffersRequest
   | SuccessGetFullPreviewsOfAllHelpOffers
   | FailedGetFullPreviewsOfAllHelpOffers
