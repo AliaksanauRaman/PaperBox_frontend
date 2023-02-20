@@ -1,4 +1,8 @@
 export enum AppEventName {
+  MAKE_GET_PUBLISHED_HELP_OFFERS_REQUEST = 'make-get-published-help-offers-request',
+  SUCCESS_GET_PUBLISHED_HELP_OFFERS = 'success-get-published-help-offers',
+  FAILED_GET_PUBLISHED_HELP_OFFERS = 'failed-get-published-help-offers',
+
   MAKE_GET_FULL_PREVIEWS_OF_ALL_HELP_OFFERS_REQUEST = 'make-get-full-previews-of-all-help-offers-request',
   SUCCESS_GET_FULL_PREVIEWS_OF_ALL_HELP_OFFERS = 'success-get-full-previews-of-all-help-offers',
   FAILED_GET_FULL_PREVIEWS_OF_ALL_HELP_OFFERS = 'failed-get-full-previews-of-all-help-offers',
