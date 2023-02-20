@@ -1,5 +1,6 @@
 :host {
   display: block;
+  width: inherit;
 
   &.ng-invalid.ng-touched {
     .custom-control__top-panel-characters-counter {

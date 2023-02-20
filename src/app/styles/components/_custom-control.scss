@@ -15,7 +15,7 @@ $padding: 12px;
     & .custom-control__label::after,
     & .custom-control__top-panel-label::after {
       content: "*";
-      margin-left: 3px;
+      margin-left: 1px;
       color: var(--error-color);
     }
   }

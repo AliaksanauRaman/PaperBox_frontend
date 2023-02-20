@@ -11,7 +11,7 @@
   // TODO: Think about aligning with common styles
   &.dynamic-phone-list-control--required .label::after {
     content: '*';
-    margin-left: 3px;
+    margin-left: 1px;
     color: var(--error-color);
   }
 }
