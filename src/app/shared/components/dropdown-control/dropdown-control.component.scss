@@ -3,6 +3,16 @@
 :host {
   display: block;
   width: 70px;
+
+  &.ng-invalid.ng-touched {
+    .field__placeholder {
+      color: var(--error-color);
+    }
+
+    .field__icon path {
+      stroke: var(--error-color);
+    }
+  }
 }
 
 .dropdown-control {
@@ -37,8 +47,9 @@
   font-size: 0.95rem;
   font-weight: 600;
   font-style: italic;
-  color: rgba(0, 0, 0, 0.3);
-  opacity: 1;
+  color: rgba(0, 0, 0, 0.4);
+  transition: 0.25s color ease-in-out;
+  opacity: 0.65;
 }
 
 .field__icon-container {
@@ -52,7 +63,7 @@
   width: 12px;
   height: 6px;
   transform: translateY(1px);
-  transition: 0.15s transform ease-in-out;
+  transition: 0.15s all ease-in-out;
 }
 
 .dropdown-options-panel {
