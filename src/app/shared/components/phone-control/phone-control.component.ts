@@ -25,9 +25,7 @@ import {
 import { CustomControl } from '../../abstracts/custom-control.class';
 import { DataSource } from '../../classes/data-source.class';
 import { PhoneType } from '../../types/phone.type';
-
-// TODO: Refactor
-const phoneNumberRegExp = /^[0-9]{7,12}$/;
+import { phoneNumberRegExp } from '../../regexps/phone-number.regexp';
 
 @Component({
   selector: 'app-phone-control',
@@ -88,7 +86,7 @@ export class PhoneControlComponent
   protected readonly phoneDiallingCodesDataSource =
     DataSource.createFromPhoneDiallingCodes(this.phoneDiallingCodes);
   protected readonly phoneForm = this.formBuilder.group({
-    diallingCode: [''],
+    diallingCode: ['', [Validators.required]],
     number: ['', [Validators.pattern(phoneNumberRegExp)]],
   });
   protected readonly controlValue$ = this.phoneForm.valueChanges.pipe(
@@ -154,6 +152,8 @@ export class PhoneControlComponent
 
   public handleInputFocus(): void {
     this.markControlAsFocused();
+    // TODO: Think
+    this.phoneForm.controls.diallingCode.markAsTouched();
   }
 
   public handleInputBlur(event: FocusEvent): void {
