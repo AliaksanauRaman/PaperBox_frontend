@@ -38,8 +38,7 @@
     class="pattern-error-tooltip"
     *ngIf="!!phoneForm.controls.number.errors?.['pattern']"
   >
-    <div>Пакіньце толькі лічбы</div>
-    <div>даўжынёй ад 7 да 12 знакаў</div>
+    <span>{{ "errors.phonePatternIsNotMet" | translate }}</span>
   </div>
 
   <ng-container *ngIf="showPlus || showMinus">
