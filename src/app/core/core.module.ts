@@ -10,6 +10,7 @@ import { PlusIconModule } from '../shared/icons/plus-icon/plus-icon.module';
 import { CalendarIconModule } from '../shared/icons/calendar-icon/calendar-icon.module';
 import { LocationIconModule } from '../shared/icons/location-icon/location-icon.module';
 import { ManWithGlobeImageModule } from '../shared/images/man-with-globe-image/man-with-globe-image.module';
+import { ManWithMailImageModule } from '../shared/images/man-with-mail-image/man-with-mail-image.module';
 import { FeedbackImageModule } from '../shared/images/feedback-image/feedback-image.module';
 import { InputControlModule } from '../shared/components/input-control/input-control.module';
 import { PhoneControlModule } from '../shared/components/phone-control/phone-control.module';
@@ -91,6 +92,7 @@ const CORE_MODULE_DECLARATIONS = [
     CalendarIconModule,
     LocationIconModule,
     ManWithGlobeImageModule,
+    ManWithMailImageModule,
     FeedbackImageModule,
     InputControlModule,
     PhoneControlModule,
