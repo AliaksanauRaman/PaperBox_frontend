@@ -140,7 +140,7 @@
   "placeholders": {
     "whereFromField": "Minsk, Belarus",
     "whereToField": "Warsaw, Poland",
-    "fullNameField": "Ivan Ivanov",
+    "fullNameField": "John Smith",
     "commentField": "Your comment text..."
   },
   "warnings": {
