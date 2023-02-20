@@ -1,0 +1,102 @@
+@import '../../styles/scss-variables';
+
+$systemMessageContainerHeight: 26px;
+
+.title {
+  flex-shrink: 0;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-height: 0;
+}
+
+.locations-control {
+  flex-shrink: 0;
+  margin-bottom: 10px;
+}
+
+.date-control {
+  flex-shrink: 0;
+  margin-bottom: 12px;
+}
+
+.control-errors {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  height: $systemMessageContainerHeight;
+  padding: 0 12px;
+}
+
+.error-text {
+  font-size: 0.9rem;
+  color: var(--error-color);
+}
+
+.warnings {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  height: $systemMessageContainerHeight;
+  padding: 0 12px;
+}
+
+.warning-text {
+  font-size: 0.9rem;
+  color: var(--warning-color);
+}
+
+.controls-and-image {
+  display: flex;
+}
+
+.full-name-and-phone-numbers {
+  display: flex;
+  flex-direction: column;
+}
+
+.image {
+  display: none;
+}
+
+.full-name-control {
+  flex-shrink: 0;
+  margin-top: 14px;
+}
+
+.phones-control {
+  flex-shrink: 0;
+  margin-top: 10px;
+}
+
+@media (min-width: $minLaptopScreenWidth) {
+  $contentWidth: 520px;
+
+  .form {
+    width: $contentWidth;
+  }
+
+  .controls-and-image {
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .full-name-and-phone-numbers {
+    width: 320px;
+  }
+
+  .image {
+    position: relative;
+    top: 26px;
+    display: block;
+    width: 176px;
+    height: 166px;
+  }
+
+  .app-custom-dialog-actions {
+    width: $contentWidth;
+  }
+}
