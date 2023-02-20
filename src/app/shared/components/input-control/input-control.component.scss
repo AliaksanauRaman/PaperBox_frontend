@@ -1,9 +1,8 @@
 :host {
-  display: flex;
-  flex-shrink: 0;
+  display: block;
 
   &.ng-invalid.ng-touched {
-    .characters-counter {
+    .custom-control__top-panel-characters-counter {
       color: var(--error-color);
     }
 

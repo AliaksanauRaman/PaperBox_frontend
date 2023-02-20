@@ -1,3 +1,7 @@
+@import '../../../styles/scss-variables';
+
+$systemMessageContainerHeight: 26px;
+
 :host {
   display: flex;
   flex-direction: column;
@@ -24,18 +28,20 @@
 }
 
 .locations-control {
+  flex-shrink: 0;
   margin-bottom: 10px;
 }
 
 .date-control {
+  flex-shrink: 0;
   margin-bottom: 12px;
 }
 
-.error-container {
+.control-errors {
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  height: 20px;
+  height: $systemMessageContainerHeight;
   padding: 0 12px;
 }
 
@@ -44,11 +50,11 @@
   color: var(--error-color);
 }
 
-.warning-container {
+.warnings {
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  height: 20px;
+  height: $systemMessageContainerHeight;
   padding: 0 12px;
 }
 
@@ -57,10 +63,58 @@
   color: var(--warning-color);
 }
 
+.controls-and-image {
+  display: flex;
+}
+
+.full-name-and-phone-numbers {
+  display: flex;
+  flex-direction: column;
+}
+
+.image {
+  display: none;
+}
+
 .full-name-control {
+  flex-shrink: 0;
   margin-top: 14px;
 }
 
 .phones-control {
+  flex-shrink: 0;
   margin-top: 10px;
+}
+
+@media (min-width: $minLaptopScreenWidth) {
+  $contentWidth: 520px;
+
+  .offer-help-dialog {
+    align-items: center;
+  }
+
+  .form {
+    width: $contentWidth;
+  }
+
+  .controls-and-image {
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .full-name-and-phone-numbers {
+    width: 320px;
+  }
+
+  .image {
+    position: relative;
+    top: 26px;
+    display: block;
+    width: 176px;
+    height: 166px;
+  }
+
+  .app-custom-dialog-actions {
+    width: $contentWidth;
+  }
 }

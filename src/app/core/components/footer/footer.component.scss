@@ -16,7 +16,7 @@
 .content-container {
   display: flex;
   align-items: center;
-  max-width: $maxContentWidth;
+  max-width: var(--max-content-width);
   width: 100%;
 }
 

@@ -1,7 +1,8 @@
 @import "../../../styles/scss-variables";
 
 :host {
-  display: flex;
+  display: block;
+  width: inherit;
 
   &.ng-invalid.ng-touched {
     .custom-control__field:not(.custom-control__field--focused) {
@@ -20,12 +21,14 @@
 
 .phone-control {
   position: relative;
+  width: inherit;
 }
 
 .phone-control-form {
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
+  width: inherit;
 }
 
 .phone-code-dropdown {

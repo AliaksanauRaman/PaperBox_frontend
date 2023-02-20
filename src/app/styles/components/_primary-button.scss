@@ -36,10 +36,3 @@ button.app-primary-button {
     height: 52px;
   }
 }
-
-@media (min-width: $minLaptopScreenWidth) {
-  button.app-primary-button {
-    width: 100%;
-    max-width: 395px;
-  }
-}

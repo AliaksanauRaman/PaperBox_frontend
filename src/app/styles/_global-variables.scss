@@ -26,6 +26,8 @@
   --light-red-color: rgba(244, 67, 54, 0.12);
   --amber-color: #ffc107;
   --light-amber-color: rgba(255, 193, 7, 0.12);
+
+  --max-content-width: 1280px;
 }
 
 @media (min-width: $smallMobileScreenWidth) {

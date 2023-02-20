@@ -9,11 +9,13 @@ $padding: 12px;
   flex-grow: 1;
   align-items: center;
   min-width: 220px;
+  width: inherit;
 
   &.custom-control--required {
     & .custom-control__label::after,
     & .custom-control__top-panel-label::after {
       content: "*";
+      margin-left: 3px;
       color: var(--error-color);
     }
   }
@@ -103,28 +105,7 @@ $padding: 12px;
 }
 
 @media (min-width: $smallMobileScreenWidth) {
-  .custom-control {
-    min-width: 240px;
-  }
-
   .custom-control__field.custom-control__field--with-trailing-icon {
     padding-right: 48px;
   }
-}
-
-@media (min-width: $mediumMobileScreenWidth) {
-  .custom-control {
-    min-width: 260px;
-  }
-}
-
-@media (min-width: $minLaptopScreenWidth) {
-  .custom-control {
-    width: 395px;
-  }
-
-  // .custom-control__field {
-  //   width: 100%;
-  //   max-width: 395px;
-  // }
 }

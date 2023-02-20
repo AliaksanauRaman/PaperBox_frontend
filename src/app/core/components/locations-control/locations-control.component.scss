@@ -1,26 +1,43 @@
 @import "../../../styles/scss-variables";
 
+$systemMessageContainerHeight: 26px;
+
 :host {
-  display: flex;
-  flex-shrink: 0;
-  width: 100%;
+  display: block;
 }
 
 .locations-control {
-  width: inherit;
+  display: flex;
+  flex-direction: column;
 }
 
 .locations-control-form {
   position: relative;
   display: flex;
   flex-direction: column;
+  flex-shrink: 0;
 }
 
-.error-container {
+.control-container {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: 100%;
+
+  &.control-container--to {
+    margin-top: 14px;
+  }
+}
+
+.control {
+  flex-shrink: 0;
+}
+
+.control-errors {
   display: flex;
   align-items: center;
   flex-shrink: 0;
-  height: 20px;
+  height: $systemMessageContainerHeight;
   padding: 0 12px;
 }
 
@@ -30,29 +47,18 @@
   color: var(--error-color);
 }
 
-.warning-container {
+.switch-locations-button-container {
+  position: absolute;
+  right: 6px;
+  top: 80px;
+  z-index: 1;
   display: flex;
+  justify-content: center;
   align-items: center;
-  flex-shrink: 0;
-  height: 20px;
-  padding: 0 12px;
-}
-
-.warning-text {
-  flex-shrink: 0;
-  font-size: 0.9rem;
-  color: var(--warning-color);
-}
-
-.to-control {
-  margin-top: 14px;
 }
 
 .switch-locations-button {
-  position: absolute;
-  z-index: 1;
-  right: 6px;
-  bottom: 52px;
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -74,8 +80,59 @@
   }
 }
 
-@media (min-width: $smallMobileScreenWidth) {
+.warnings {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  height: $systemMessageContainerHeight;
+  padding: 0 12px;
+}
+
+.warning-text {
+  flex-shrink: 0;
+  font-size: 0.9rem;
+  color: var(--warning-color);
+}
+
+@media (min-width: $minLaptopScreenWidth) {
+  .locations-control {
+    &.locations-control--warning {
+      .control-errors {
+        display: none;
+      }
+    }
+
+    &:not(.locations-control--warning) {
+      .warnings {
+        display: none;
+      }
+    }
+  }
+
+  .locations-control-form {
+    flex-direction: row;
+  }
+
+  .control-container {
+    width: 230px;
+
+    &.control-container--to {
+      margin-top: 0;
+    }
+  }
+
+  .switch-locations-button-container {
+    position: relative;
+    right: 0;
+    top: 0;
+    align-items: flex-end;
+    flex-shrink: 0;
+    width: 60px;
+    height: 68px;
+  }
+
   .switch-locations-button {
-    bottom: 60px;
+    position: relative;
+    bottom: 7px;
   }
 }

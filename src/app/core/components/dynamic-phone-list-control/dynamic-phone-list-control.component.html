@@ -3,9 +3,9 @@
   [class.dynamic-phone-list-control--required]="controlRequired"
 >
   <div class="label">
-    <span>
-      {{ "components.dynamicListPhoneControl.phoneNumbersLabel" | translate }}
-    </span>
+    <span>{{
+      "components.dynamicListPhoneControl.phoneNumbersLabel" | translate
+    }}</span>
   </div>
 
   <div class="control-list" *ngIf="phoneControlsFormArray.controls as phones">

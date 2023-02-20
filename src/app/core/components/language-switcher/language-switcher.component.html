@@ -3,6 +3,7 @@
     class="language"
     *ngFor="let language of languages$ | async; trackBy: trackLanguageByValue"
     matRipple
+    [matRippleCentered]="true"
     [matRippleUnbounded]="true"
     [class.language--selected]="language.selected"
     (click)="handleLanguageSelection(language.value)"

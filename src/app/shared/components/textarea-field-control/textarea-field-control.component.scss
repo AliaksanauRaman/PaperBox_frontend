@@ -1,6 +1,15 @@
 :host {
-  display: flex;
-  flex-shrink: 0;
+  display: block;
+
+  &.ng-invalid.ng-touched {
+    .custom-control__top-panel-characters-counter {
+      color: var(--error-color);
+    }
+
+    .custom-control__field {
+      border-color: var(--error-color);
+    }
+  }
 }
 
 .custom-control__field {
