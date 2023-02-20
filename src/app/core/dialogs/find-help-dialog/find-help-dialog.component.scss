@@ -1,3 +1,5 @@
+@import "../../../styles/scss-variables";
+
 :host {
   display: flex;
   flex-direction: column;
@@ -12,29 +14,13 @@
   min-height: 0;
 }
 
-.title {
-  flex-shrink: 0;
+.image {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
 }
 
-.form {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  min-height: 0;
-}
-
-.locations-control {
-  margin-bottom: 8px;
-}
-
-.date-control {
-  margin-bottom: 8px;
-}
-
-.comment-control {
-  margin-bottom: 30px;
-}
-
-.full-name-control {
-  margin-bottom: 8px;
+@media (min-width: $minLaptopScreenWidth) {
+  .find-help-dialog {
+    align-items: center;
+  }
 }

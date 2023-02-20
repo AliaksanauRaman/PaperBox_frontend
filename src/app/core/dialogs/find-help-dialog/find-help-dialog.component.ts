@@ -1,4 +1,4 @@
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { DialogRef } from '@angular/cdk/dialog';
 
@@ -7,11 +7,14 @@ import { DialogComponent } from '../../../shared/abstracts/dialog-component.clas
 @Component({
   selector: 'app-find-help-dialog',
   templateUrl: './find-help-dialog.component.html',
-  styleUrls: ['./find-help-dialog.component.scss'],
+  styleUrls: [
+    './find-help-dialog.component.scss',
+    '../find-and-offer-help-dialogs-common-styles.scss',
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FindHelpDialogComponent extends DialogComponent {
-  protected readonly offerHelpForm = this.formBuilder.group({
+  protected readonly findHelpForm = this.formBuilder.group({
     locations: [
       {
         from: '',
@@ -25,7 +28,7 @@ export class FindHelpDialogComponent extends DialogComponent {
       },
     ],
     comment: [''],
-    fullName: [''],
+    fullName: ['', [Validators.required]],
     phones: [
       [
         {
@@ -45,6 +48,6 @@ export class FindHelpDialogComponent extends DialogComponent {
 
   public handleSendButtonClick(): void {
     // TODO: Temp
-    console.log(JSON.stringify(this.offerHelpForm.getRawValue(), null, 2));
+    console.log(JSON.stringify(this.findHelpForm.getRawValue(), null, 2));
   }
 }

@@ -7,7 +7,10 @@ import { DialogComponent } from '../../../shared/abstracts/dialog-component.clas
 @Component({
   selector: 'app-offer-help-dialog',
   templateUrl: './offer-help-dialog.component.html',
-  styleUrls: ['./offer-help-dialog.component.scss'],
+  styleUrls: [
+    './offer-help-dialog.component.scss',
+    '../find-and-offer-help-dialogs-common-styles.scss',
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OfferHelpDialogComponent extends DialogComponent {
