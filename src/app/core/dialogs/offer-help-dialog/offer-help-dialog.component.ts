@@ -3,7 +3,6 @@ import { DialogRef } from '@angular/cdk/dialog';
 import { FormBuilder, Validators } from '@angular/forms';
 
 import { DialogComponent } from '../../../shared/abstracts/dialog-component.class';
-import { phoneNumbersRequired } from '../../../shared/validators/phone-numbers-required.validator';
 
 @Component({
   selector: 'app-offer-help-dialog',
@@ -34,7 +33,6 @@ export class OfferHelpDialogComponent extends DialogComponent {
           number: '',
         },
       ],
-      [phoneNumbersRequired(1)],
     ],
   });
 
