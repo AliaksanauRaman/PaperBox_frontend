@@ -150,6 +150,7 @@
   },
   "errors": {
     "fullNameIsRequired": "Full name is required.",
-    "atLeastOnePhoneNumberIsRequired": "At least one phone number is required."
+    "atLeastOnePhoneNumberIsRequired": "At least one phone number is required.",
+    "phonePatternIsNotMet": "Only numbers are allowed. From 7 to 12 characters long."
   }
 }

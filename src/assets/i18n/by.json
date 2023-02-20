@@ -150,6 +150,7 @@
   },
   "errors": {
     "fullNameIsRequired": "Поўнае імя абавязкова.",
-    "atLeastOnePhoneNumberIsRequired": "Патрэбен як мінімум 1 нумар тэлефону."
+    "atLeastOnePhoneNumberIsRequired": "Патрэбен як мінімум 1 нумар тэлефону.",
+    "phonePatternIsNotMet": "Дазволены толькі лічбы. Даўжыня ад 7 да 12 знакаў."
   }
 }
