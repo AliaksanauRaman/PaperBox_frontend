@@ -1,21 +1,24 @@
 type DestructuredLocationValue = Readonly<{
-  countryValue: string;
-  cityValue: string;
+  countryValueAsString: string;
+  cityValueAsString: string;
 }>;
 
 export const destructureLocationValue = (
   locationValue: string
 ): DestructuredLocationValue => {
-  const [countryValue, cityValue, ...otherParts] = locationValue.split(' ');
+  const [countryValueAsString, cityValueAsString, ...otherParts] =
+    locationValue.split(' ');
 
-  if (isMissed(countryValue)) {
+  if (isMissed(countryValueAsString)) {
     throw new Error(
-      `countryValue is missed in '${locationValue}' locationValue!`
+      `Country value is missed in '${locationValue}' locationValue!`
     );
   }
 
-  if (isMissed(cityValue)) {
-    throw new Error(`cityValue is missed in '${locationValue}' locationValue!`);
+  if (isMissed(cityValueAsString)) {
+    throw new Error(
+      `City value is missed in '${locationValue}' locationValue!`
+    );
   }
 
   if (otherParts.length !== 0) {
@@ -25,8 +28,8 @@ export const destructureLocationValue = (
   }
 
   return {
-    countryValue,
-    cityValue,
+    countryValueAsString,
+    cityValueAsString,
   };
 };
 

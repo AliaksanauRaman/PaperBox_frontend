@@ -76,8 +76,8 @@ export class LocationsControlComponent
         return false;
       }
 
-      const { countryValue: fromCountry } = destructureLocationValue(from);
-      const { countryValue: toCountry } = destructureLocationValue(to);
+      const { countryValueAsString: fromCountry } = destructureLocationValue(from);
+      const { countryValueAsString: toCountry } = destructureLocationValue(to);
 
       return fromCountry === toCountry;
     })
@@ -88,8 +88,8 @@ export class LocationsControlComponent
         return false;
       }
 
-      const { cityValue: fromCity } = destructureLocationValue(from);
-      const { cityValue: toCity } = destructureLocationValue(to);
+      const { cityValueAsString: fromCity } = destructureLocationValue(from);
+      const { cityValueAsString: toCity } = destructureLocationValue(to);
 
       return fromCity === toCity;
     })
