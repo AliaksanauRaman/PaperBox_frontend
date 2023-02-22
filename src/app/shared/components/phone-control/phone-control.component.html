@@ -36,7 +36,7 @@
   <!-- TODO: Refactor -->
   <div
     class="pattern-error-tooltip"
-    *ngIf="!!phoneForm.controls.number.errors?.['pattern']"
+    *ngIf="!!phoneForm.controls.number.errors?.['pattern'] && controlFocused"
   >
     <span>{{ "errors.phonePatternIsNotMet" | translate }}</span>
   </div>
