@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
+import { MatRippleModule } from '@angular/material/core';
 
 import { ArrowDownIconModule } from '../shared/icons/arrow-down-icon/arrow-down-icon.module';
 import { SpinnerModule } from '../shared/components/spinner/spinner.module';
 import { LaconicPlaceLabelFromLocationValuePipeModule } from '../shared/pipes/departure-from-location/laconic-place-label-from-location-value-pipe.module';
 import { BuildPhoneHrefPipeModule } from '../shared/pipes/build-phone-href/build-phone-href-pipe.module';
 import { ViewPhonePipeModule } from '../shared/pipes/view-phone/view-phone-pipe.module';
+import { FoldableComponentModule } from '../shared/components/foldable/foldable-component.module';
 import { HelpOffersRoutingModule } from './help-offers-routing.module';
 
 import { HelpOffersMainViewComponent } from './views/help-offers-main-view/help-offers-main-view.component';
@@ -20,11 +22,13 @@ import { HelpOffersEventsProcessorService } from './services/help-offers-events-
   imports: [
     CommonModule,
     TranslateModule,
+    MatRippleModule,
     ArrowDownIconModule,
     SpinnerModule,
     LaconicPlaceLabelFromLocationValuePipeModule,
     BuildPhoneHrefPipeModule,
     ViewPhonePipeModule,
+    FoldableComponentModule,
     HelpOffersRoutingModule,
   ],
   declarations: [
