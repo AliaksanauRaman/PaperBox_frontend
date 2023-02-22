@@ -7,8 +7,8 @@
 }
 
 svg {
-  width: 18px;
-  height: 8px;
+  width: inherit;
+  height: inherit;
 }
 
 path {
@@ -25,11 +25,6 @@ path {
 
 @media (min-width: $smallMobileScreenWidth) {
   :host {
-    width: 22px;
-    height: 10px;
-  }
-
-  svg {
     width: 22px;
     height: 10px;
   }
