@@ -1,0 +1,17 @@
+.app-list-card {
+  cursor: pointer;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 16px;
+  background-color: var(--white-color);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  transition: 0.25s all ease-in-out;
+
+  &.app-list-card--hovered,
+  &.app-list-card--unfolded {
+    z-index: 1;
+    box-shadow: 5px 5px 18px 3px rgba($color: #4e91f7, $alpha: 0.23); // PRIMARY COLOR
+  }
+}
