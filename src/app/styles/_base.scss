@@ -16,8 +16,6 @@ body {
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 100vw;
-  height: 100vh;
   font-family: "Manrope", sans-serif;
   background-color: var(--primary-background-color);
 }
@@ -38,13 +36,6 @@ button {
   background-color: transparent;
   border: none;
   outline: none;
-
-  // TODO: Check
-  &[disabled="true"] {
-    pointer-events: none !important;
-    color: gray !important;
-    background-color: lightgray !important;
-  }
 }
 
 a {
