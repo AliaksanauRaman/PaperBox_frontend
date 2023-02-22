@@ -4,7 +4,9 @@ import { TranslateModule } from '@ngx-translate/core';
 
 import { ArrowDownIconModule } from '../shared/icons/arrow-down-icon/arrow-down-icon.module';
 import { SpinnerModule } from '../shared/components/spinner/spinner.module';
-import { DepartureFromLocationModule } from '../shared/pipes/departure-from-location/departure-from-location.module';
+import { LaconicPlaceLabelFromLocationValuePipeModule } from '../shared/pipes/departure-from-location/laconic-place-label-from-location-value-pipe.module';
+import { BuildPhoneHrefPipeModule } from '../shared/pipes/build-phone-href/build-phone-href-pipe.module';
+import { ViewPhonePipeModule } from '../shared/pipes/view-phone/view-phone-pipe.module';
 import { HelpOffersRoutingModule } from './help-offers-routing.module';
 
 import { HelpOffersMainViewComponent } from './views/help-offers-main-view/help-offers-main-view.component';
@@ -20,7 +22,9 @@ import { HelpOffersEventsProcessorService } from './services/help-offers-events-
     TranslateModule,
     ArrowDownIconModule,
     SpinnerModule,
-    DepartureFromLocationModule,
+    LaconicPlaceLabelFromLocationValuePipeModule,
+    BuildPhoneHrefPipeModule,
+    ViewPhonePipeModule,
     HelpOffersRoutingModule,
   ],
   declarations: [
