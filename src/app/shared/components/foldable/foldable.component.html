@@ -1,3 +1,9 @@
 <div class="foldable">
+  <div #staticPart class="static-part">
+    <ng-content select="[staticPart]"></ng-content>
+  </div>
 
+  <div #foldablePart class="foldable-part" [class.unfolded]="isUnfolded">
+    <ng-content select="[foldablePart]"></ng-content>
+  </div>
 </div>

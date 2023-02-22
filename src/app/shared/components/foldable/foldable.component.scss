@@ -1,3 +1,25 @@
 :host {
   display: block;
 }
+
+.foldable {
+  display: flex;
+  flex-direction: column;
+}
+
+.static-part {
+  flex-shrink: 0;
+  margin-bottom: 22px;
+}
+
+.foldable-part {
+  pointer-events: none;
+  flex-shrink: 0;
+  opacity: 0;
+  transition: 0.15s opacity ease-in-out;
+
+  &.unfolded {
+    pointer-events: all;
+    opacity: 1;
+  }
+}
