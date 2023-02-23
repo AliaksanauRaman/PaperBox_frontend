@@ -101,6 +101,9 @@
     },
     "autocompleteControl": {
       "noMatchesMessage": "Супадзенняў няма."
+    },
+    "listCardComment": {
+      "emptyText": "(пуста)"
     }
   },
   "helpOfferStatus": {

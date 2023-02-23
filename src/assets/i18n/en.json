@@ -101,6 +101,9 @@
     },
     "autocompleteControl": {
       "noMatchesMessage": "No matches."
+    },
+    "listCardComment": {
+      "emptyText": "(empty)"
     }
   },
   "helpOfferStatus": {
