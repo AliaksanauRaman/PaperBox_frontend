@@ -62,6 +62,7 @@ import {
   PHONE_DIALLING_CODES,
   PHONE_DIALLING_CODES_VALUE,
 } from './dependencies/phone-dialling-codes';
+import { CoreEventsProcessorService } from './services/core-events-processor.service';
 
 const CORE_MODULE_DECLARATIONS = [
   IndexPageLayoutComponent,
@@ -136,7 +137,14 @@ const CORE_MODULE_DECLARATIONS = [
       provide: PHONE_DIALLING_CODES,
       useValue: PHONE_DIALLING_CODES_VALUE,
     },
+    CoreEventsProcessorService,
   ],
   exports: CORE_MODULE_DECLARATIONS,
 })
-export class CoreModule {}
+export class CoreModule {
+  constructor(
+    private readonly coreEventsProcessorService: CoreEventsProcessorService
+  ) {
+    this.coreEventsProcessorService.setUpProcessors();
+  }
+}
