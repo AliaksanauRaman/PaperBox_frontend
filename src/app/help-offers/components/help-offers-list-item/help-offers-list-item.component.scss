@@ -1,62 +1,42 @@
+@import "../../../styles/scss-variables";
+
+// TODO: Think about common styles
 :host {
-  display: flex;
-  width: 100%;
-  transition: 0.25s height ease-in-out;
-
-  &.hovered,
-  &.expanded {
-    .help-offers-list-item {
-      z-index: 1;
-      box-shadow: 5px 5px 15px 3px rgba($color: #4e91f7, $alpha: 0.2); // PRIMARY COLOR
-
-      .info-area__direction {
-        color: var(--primary-color);
-      }
-    }
-  }
-
-  &.expanded {
-    .toggle-icon-area__icon {
-      transform: rotate(180deg);
-    }
-
-    .collapsible-part {
-      pointer-events: all;
-    }
-
-    .comment {
-      color: var(--grey-color);
-    }
-
-    .phones__item {
-      color: var(--primary-color);
-    }
-  }
+  display: block;
 }
 
 .help-offers-list-item {
-  cursor: pointer;
-  z-index: 0;
-  display: flex;
-  flex-direction: column;
-  width: inherit;
-  padding: 20px 16px;
-  background-color: var(--white-color);
-  border-radius: 12px;
-  transition: 0.25s all ease-in-out;
+  width: 100%;
+
+  &.app-list-card--hovered,
+  &.app-list-card--unfolded {
+    .direction {
+      color: var(--primary-color);
+    }
+  }
+
+  &.app-list-card--unfolded {
+    .toggle-icon {
+      transform: rotate(180deg);
+    }
+  }
 }
 
-.static-part {
+.main-part {
   display: flex;
-  flex-shrink: 0;
-  margin-bottom: 22px;
 }
 
-.info-area {
+.main-part__left {
   flex-grow: 1;
 }
 
-.info-area__direction {
+.direction-and-full-name {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+
+.direction {
   margin-bottom: 5px;
   font-size: 1rem;
   font-weight: 700;
@@ -64,55 +44,95 @@
   transition: 0.25s color ease-in-out;
 }
 
-.info-area__full-name {
-  margin-bottom: 12px;
+.full-name {
   font-size: 0.9rem;
   font-weight: 500;
   color: var(--grey-color);
 }
 
-.info-area__date {
+.dates {
   font-size: 1rem;
   font-weight: 700;
   color: var(--grey-color);
-  opacity: 0.5;
+  opacity: 0.7;
 }
 
-.toggle-icon-area {
+.main-part__right {
   flex-shrink: 0;
   margin-left: 10px;
 }
 
-.toggle-icon-area__icon {
+.toggle-icon {
   margin-top: 3px;
   transition: 0.25s transform ease-in-out;
 }
 
-.collapsible-part {
-  pointer-events: none;
-  flex-shrink: 0;
-}
-
 .comment {
+  margin-bottom: 10px;
   font-size: 0.9rem;
   font-weight: 500;
-  color: transparent;
-  transition: 0.15s color ease-in-out;
+  color: var(--grey-color);
 }
 
 .phones {
   display: flex;
   flex-direction: column;
-  margin-top: 10px;
 }
 
 .phones__item {
   font-size: 0.9rem;
   font-weight: 500;
-  color: transparent;
-  transition: 0.15s color ease-in-out;
+  color: var(--primary-color);
 
   &:not(:last-child) {
     margin-bottom: 6px;
+  }
+}
+
+@media (min-width: $minLaptopScreenWidth) {
+  .main-part {
+    align-items: center;
+    min-height: 70px;
+  }
+
+  .main-part__left {
+    display: flex;
+  }
+
+  .direction-and-full-name {
+    flex-shrink: 0;
+    width: 55%;
+    margin-bottom: 0;
+  }
+
+  .direction {
+    font-size: 1.2rem;
+  }
+
+  .full-name {
+    font-size: 1.1rem;
+  }
+
+  .dates {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+    width: 45%;
+    font-size: 1.1rem;
+  }
+
+  .toggle-icon {
+    width: 30px;
+    height: 13px;
+  }
+
+  .comment {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+  }
+
+  .phones__item {
+    font-size: 1rem;
   }
 }

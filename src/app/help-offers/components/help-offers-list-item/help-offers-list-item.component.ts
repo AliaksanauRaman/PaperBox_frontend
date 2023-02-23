@@ -1,17 +1,15 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  AfterViewInit,
   HostBinding,
   HostListener,
   ViewChild,
-  ElementRef,
-  Renderer2,
+  Input,
 } from '@angular/core';
 
-// TODO: Constants
-const PADDING = 20;
-const MARGIN = 22;
+import { FoldableComponent } from '../../../shared/components/foldable/foldable.component';
+
+import { PublishedHelpOfferType } from './../../../shared/types/published-help-offer.type';
 
 @Component({
   selector: 'app-help-offers-list-item',
@@ -19,7 +17,12 @@ const MARGIN = 22;
   styleUrls: ['./help-offers-list-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HelpOffersListItemComponent implements AfterViewInit {
+export class HelpOffersListItemComponent {
+  @Input()
+  public set publishedHelpOffer(value: PublishedHelpOfferType) {
+    this._publishedHelpOffer = value;
+  }
+
   @HostBinding('class.hovered')
   public get isHovered(): boolean {
     return this._isHovered;
@@ -27,12 +30,23 @@ export class HelpOffersListItemComponent implements AfterViewInit {
 
   @HostBinding('class.expanded')
   public get isExpanded(): boolean {
-    return this._isExpanded;
+    if (this.foldableComponentRef === undefined) {
+      return false;
+    }
+
+    return this.foldableComponentRef.isUnfolded;
   }
 
   @HostListener('mouseenter')
   public handleHostMouseenter(): void {
     this._isHovered = true;
+  }
+
+  @HostListener('mouseover')
+  public handleHostMouseover(): void {
+    if (!this._isHovered) {
+      this._isHovered = true;
+    }
   }
 
   @HostListener('mouseleave')
@@ -42,73 +56,29 @@ export class HelpOffersListItemComponent implements AfterViewInit {
 
   @HostListener('click')
   public handleHostClick(): void {
-    if (this._isExpanded) {
-      // TODO: Think
-      this.collapse();
+    if (this.foldableComponentRef === undefined) {
+      throw new Error(`Foldable component ref is not defined!`);
+    }
+
+    if (this.foldableComponentRef.isUnfolded) {
+      this.foldableComponentRef.fold();
       this._isHovered = false;
     } else {
-      this.expand();
+      this.foldableComponentRef.unfold();
     }
   }
 
-  @ViewChild('staticPart')
-  private readonly staticPartElementRef?: ElementRef<HTMLDivElement>;
+  @ViewChild(FoldableComponent)
+  private readonly foldableComponentRef?: FoldableComponent;
 
-  @ViewChild('collapsiblePart')
-  private readonly collapsiblePartElementRef?: ElementRef<HTMLDivElement>;
-
-  protected _isHovered = false;
-  protected _isExpanded = false;
-
-  constructor(
-    private readonly elementRef: ElementRef,
-    private readonly renderer2: Renderer2
-  ) {}
-
-  public ngAfterViewInit(): void {
-    this.collapse();
-  }
-
-  public getStaticPartElement(): HTMLDivElement {
-    if (!this.staticPartElementRef) {
-      throw new Error('Impossible!');
+  public get isUnfolded(): boolean {
+    if (this.foldableComponentRef === undefined) {
+      return false;
     }
 
-    return this.staticPartElementRef.nativeElement;
+    return this.foldableComponentRef.isUnfolded;
   }
 
-  public getCollapsiblePartElement(): HTMLDivElement {
-    if (!this.collapsiblePartElementRef) {
-      throw new Error('Impossible!');
-    }
-
-    return this.collapsiblePartElementRef.nativeElement;
-  }
-
-  // TODO: Refactor
-  private expand(): void {
-    this._isExpanded = true;
-    const newHeight =
-      PADDING +
-      this.getStaticPartElement().scrollHeight +
-      MARGIN +
-      this.getCollapsiblePartElement().scrollHeight +
-      PADDING;
-    this.renderer2.setStyle(
-      this.elementRef.nativeElement,
-      'height',
-      `${newHeight}px`
-    );
-  }
-
-  private collapse(): void {
-    this._isExpanded = false;
-    const newHeight =
-      PADDING + this.getStaticPartElement().scrollHeight + PADDING;
-    this.renderer2.setStyle(
-      this.elementRef.nativeElement,
-      'height',
-      `${newHeight}px`
-    );
-  }
+  public _publishedHelpOffer?: PublishedHelpOfferType;
+  private _isHovered = false;
 }

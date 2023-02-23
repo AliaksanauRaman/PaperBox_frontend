@@ -1,65 +1,71 @@
-<!-- TODO: Fill in with real data -->
-<div class="help-offers-list-item">
-  <div #staticPart class="static-part">
-    <div class="info-area">
-      <div class="info-area__direction">
-        <span class="from">Минск</span>
-        <span class="dash"> - </span>
-        <span class="to">Вильнюс</span>
+<ng-container *ngIf="_publishedHelpOffer">
+  <app-foldable
+    class="help-offers-list-item app-list-card"
+    [class.app-list-card--hovered]="isHovered"
+    [class.app-list-card--unfolded]="isUnfolded"
+    matRipple
+    [matRippleAnimation]="{ enterDuration: 450 }"
+  >
+    <ng-container staticPart>
+      <div class="main-part">
+        <div class="main-part__left">
+          <div class="direction-and-full-name">
+            <div class="direction">
+              <span>{{
+                _publishedHelpOffer.locationFrom
+                  | laconicPlaceLabelFromLocationValue
+                  | translate
+              }}</span>
+              <span> - </span>
+              <span>{{
+                _publishedHelpOffer.locationTo
+                  | laconicPlaceLabelFromLocationValue
+                  | translate
+              }}</span>
+            </div>
+
+            <div class="full-name">
+              <span>{{ _publishedHelpOffer.fullName }}</span>
+            </div>
+          </div>
+
+          <div class="dates">
+            <span>{{ _publishedHelpOffer.startDate }}</span>
+
+            <ng-container *ngIf="_publishedHelpOffer.endDate as endDate">
+              <span> - </span>
+              <span>{{ endDate }}</span>
+            </ng-container>
+          </div>
+        </div>
+
+        <div class="main-part__right">
+          <app-arrow-down-icon
+            class="toggle-icon"
+            [color]="isHovered || isUnfolded ? 'primary' : 'grey'"
+          >
+          </app-arrow-down-icon>
+        </div>
       </div>
+    </ng-container>
 
-      <div class="info-area__full-name">
-        <span>Шик Дмитрий</span>
+    <ng-container foldablePart>
+      <div class="details-part">
+        <div class="comment">
+          <span>{{ _publishedHelpOffer.comment }}</span>
+        </div>
+
+        <div class="phones">
+          <a
+            class="phones__item"
+            *ngFor="let phone of _publishedHelpOffer.phones"
+            [href]="phone | buildPhoneHref"
+            (click)="$event.stopImmediatePropagation()"
+          >
+            <span>{{ phone | viewPhone }}</span>
+          </a>
+        </div>
       </div>
-
-      <div class="info-area__date">
-        <!-- TODO: Depends on type of date (range or specific) -->
-        <span>09.01.2023</span>
-      </div>
-    </div>
-
-    <div class="toggle-icon-area">
-      <app-arrow-down-icon
-        class="toggle-icon-area__icon"
-        [color]="_isHovered || _isExpanded ? 'primary' : 'grey'"
-      >
-      </app-arrow-down-icon>
-    </div>
-  </div>
-
-  <div #collapsiblePart class="collapsible-part">
-    <div class="comment">
-      <span
-        >Передать нужно небольшой пакетик. Размеры 40*60. Желательно в руки
-        утром до 09.00. Дополнительно доплачу за это. Чем быстрее, тем
-        лучше.</span
-      >
-    </div>
-
-    <div class="phones">
-      <a
-        class="phones__item"
-        href="tel:+48696726764"
-        (click)="$event.stopImmediatePropagation()"
-      >
-        <span>+48 696726764</span>
-      </a>
-
-      <a
-        class="phones__item"
-        href="tel:+48696726764"
-        (click)="$event.stopImmediatePropagation()"
-      >
-        <span>+48 696726764</span>
-      </a>
-
-      <a
-        class="phones__item"
-        href="tel:+48696726764"
-        (click)="$event.stopImmediatePropagation()"
-      >
-        <span>+48 696726764</span>
-      </a>
-    </div>
-  </div>
-</div>
+    </ng-container>
+  </app-foldable>
+</ng-container>
