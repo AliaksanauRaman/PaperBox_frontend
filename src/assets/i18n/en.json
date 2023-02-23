@@ -154,6 +154,10 @@
   },
   "errors": {
     "fullNameIsRequired": "Full name is required.",
+    "emailIsRequired": "Email is required.",
+    "incorrectEmailFormat": "Incorrect email format.",
+    "commentIsRequired": "Comment is required.",
+    "minCharacters": "Minimum characters amount is: {{ amount }}.",
     "atLeastOnePhoneNumberIsRequired": "At least one phone number is required.",
     "phonePatternIsNotMet": "Only numbers are allowed. From 7 to 12 characters long."
   }

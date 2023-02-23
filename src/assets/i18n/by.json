@@ -154,6 +154,10 @@
   },
   "errors": {
     "fullNameIsRequired": "Поўнае імя абавязкова.",
+    "emailIsRequired": "Электронная пошта абавязкова.",
+    "incorrectEmailFormat": "Няправільны фармат электроннай пошты.",
+    "commentIsRequired": "Каментар абавязковы.",
+    "minCharacters": "Мінімальная колькасць знакаў: {{ amount }}.",
     "atLeastOnePhoneNumberIsRequired": "Патрэбен як мінімум 1 нумар тэлефону.",
     "phonePatternIsNotMet": "Дазволены толькі лічбы. Даўжыня ад 7 да 12 знакаў."
   }
