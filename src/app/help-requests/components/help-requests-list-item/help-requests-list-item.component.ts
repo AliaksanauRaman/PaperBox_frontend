@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+
+import { PublishedHelpRequestType } from '../../../shared/types/published-help-request.type';
 
 @Component({
   selector: 'app-help-requests-list-item',
@@ -7,5 +9,10 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HelpRequestsListItemComponent {
+  @Input()
+  public set publishedHelpRequest(value: PublishedHelpRequestType) {
+    this._publishedHelpRequest = value;
+  }
 
+  public _publishedHelpRequest?: PublishedHelpRequestType;
 }

@@ -1,3 +1,71 @@
-<div class="help-requests-list-item">
+<ng-container *ngIf="_publishedHelpRequest">
+  <app-foldable
+    class="help-requests-list-item app-list-card"
+    [class.app-list-card--hovered]="false"
+    [class.app-list-card--unfolded]="false"
+    matRipple
+    [matRippleAnimation]="{ enterDuration: 450 }"
+  >
+    <ng-container staticPart>
+      <div class="main-part">
+        <div class="main-part__left">
+          <div class="direction-and-full-name">
+            <div class="direction">
+              <span>{{
+                _publishedHelpRequest.locationFrom
+                  | laconicPlaceLabelFromLocationValue
+                  | translate
+              }}</span>
+              <span> - </span>
+              <span>{{
+                _publishedHelpRequest.locationTo
+                  | laconicPlaceLabelFromLocationValue
+                  | translate
+              }}</span>
+            </div>
 
-</div>
+            <div class="full-name">
+              <span>{{ _publishedHelpRequest.fullName }}</span>
+            </div>
+          </div>
+
+          <div class="dates">
+            <span>{{ _publishedHelpRequest.startDate }}</span>
+
+            <ng-container *ngIf="_publishedHelpRequest.endDate as endDate">
+              <span> - </span>
+              <span>{{ endDate }}</span>
+            </ng-container>
+          </div>
+        </div>
+
+        <div class="main-part__right">
+          <app-arrow-down-icon
+            class="toggle-icon"
+            [color]="false || false ? 'primary' : 'grey'"
+          >
+          </app-arrow-down-icon>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container foldablePart>
+      <div class="details-part">
+        <div class="comment">
+          <span>{{ _publishedHelpRequest.comment }}</span>
+        </div>
+
+        <div class="phones">
+          <a
+            class="phones__item"
+            *ngFor="let phone of _publishedHelpRequest.phones"
+            [href]="phone | buildPhoneHref"
+            (click)="$event.stopImmediatePropagation()"
+          >
+            <span>{{ phone | viewPhone }}</span>
+          </a>
+        </div>
+      </div>
+    </ng-container></app-foldable
+  >
+</ng-container>
