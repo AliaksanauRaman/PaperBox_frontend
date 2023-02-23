@@ -128,6 +128,16 @@ export class DynamicPhoneListControlComponent
     this.phoneControlsFormArray.removeAt(controlIndex);
   }
 
+  public override setDisabledState(isDisabled: boolean): void {
+    if (isDisabled) {
+      this.phoneControlsFormArray.disable();
+    } else {
+      this.phoneControlsFormArray.enable();
+    }
+
+    super.setDisabledState(isDisabled);
+  }
+
   private createPhoneControl(
     controlValue = EMPTY_PHONE
   ): FormControl<PhoneType> {
