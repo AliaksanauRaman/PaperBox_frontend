@@ -18,6 +18,6 @@ export class HelpOffersListComponent implements OnInit {
   ) {}
 
   public ngOnInit(): void {
-    this.publishedHelpOffersService.makeGetHttpRequest();
+    this.publishedHelpOffersService.makeRequest();
   }
 }
