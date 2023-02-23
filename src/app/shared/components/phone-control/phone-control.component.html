@@ -48,6 +48,7 @@
       matRipple
       type="button"
       tabindex="-1"
+      [disabled]="controlDisabled"
       (click)="handlePlusClick()"
     >
       <ng-container *ngTemplateOutlet="plusIconSvg"></ng-container>
@@ -59,6 +60,7 @@
       matRipple
       type="button"
       tabindex="-1"
+      [disabled]="controlDisabled"
       (click)="handleMinusClick()"
     >
       <ng-container *ngTemplateOutlet="minusIconSvg"></ng-container>
