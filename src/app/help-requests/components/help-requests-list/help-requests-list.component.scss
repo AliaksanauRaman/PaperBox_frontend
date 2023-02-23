@@ -1,3 +1,41 @@
+@import '../../../styles/scss-variables';
+
 :host {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-height: 0;
+}
+
+.help-requests-list {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-height: 0;
+  padding: 10px var(--horizontal-bordering-padding) 20px
+    var(--horizontal-bordering-padding);
+  overflow-y: auto;
+}
+
+.loading-view {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-grow: 1;
+  padding-top: 50px;
+}
+
+.list-item {
+  flex-shrink: 0;
+  width: 100%;
+
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+}
+
+@media (min-width: $minLaptopScreenWidth) {
+  .loading-view {
+    padding-top: 100px;
+  }
 }
