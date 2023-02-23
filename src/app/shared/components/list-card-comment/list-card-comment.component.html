@@ -1,0 +1,6 @@
+<div class="list-card-comment">
+  <span *ngIf="text !== ''">{{ text }}</span>
+  <span class="empty" *ngIf="text === ''">{{
+    "components.listCardComment.emptyComment" | translate
+  }}</span>
+</div>
