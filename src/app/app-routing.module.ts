@@ -16,7 +16,7 @@ const routes: Routes = [
       },
       {
         path: 'help-offers',
-        title: 'Pushka | Offering help',
+        title: 'Pushka | Help Offers',
         loadChildren: () =>
           import('./help-offers/help-offers.module').then(
             (m) => m.HelpOffersModule
@@ -24,7 +24,7 @@ const routes: Routes = [
       },
       {
         path: 'help-requests',
-        title: 'Pushka | Finding help',
+        title: 'Pushka | Looking for help',
         loadChildren: () =>
           import('./help-requests/help-requests.module').then(
             (m) => m.HelpRequestsModule

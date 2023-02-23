@@ -6,8 +6,8 @@
         "findHelpButtonLabel": "Find help"
       },
       "navigationMenu": {
-        "offerHelpLinkLabel": "Offer help",
-        "findHelpLinkLabel": "Find help"
+        "offerHelpLinkLabel": "Help offers",
+        "findHelpLinkLabel": "Looking for help"
       }
     },
     "helpOffers": {
