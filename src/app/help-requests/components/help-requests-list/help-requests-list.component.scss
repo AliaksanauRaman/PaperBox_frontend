@@ -34,8 +34,23 @@
   }
 }
 
+.empty-list-view {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  padding-top: 50px;
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--grey-color);
+  opacity: 0.7;
+}
+
 @media (min-width: $minLaptopScreenWidth) {
   .loading-view {
+    padding-top: 100px;
+  }
+
+  .empty-list-view {
     padding-top: 100px;
   }
 }
