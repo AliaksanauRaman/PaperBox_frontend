@@ -1,4 +1,8 @@
 export enum AppEventName {
+  MAKE_CREATE_HELP_OFFER_REQUEST = 'make-create-help-offer-request',
+  SUCCESS_CREATE_HELP_OFFER = 'success-create-help-offer',
+  FAILED_CREATE_HELP_OFFER = 'failed-create-help-offer',
+
   MAKE_GET_PUBLISHED_HELP_OFFERS_REQUEST = 'make-get-published-help-offers-request',
   SUCCESS_GET_PUBLISHED_HELP_OFFERS = 'success-get-published-help-offers',
   FAILED_GET_PUBLISHED_HELP_OFFERS = 'failed-get-published-help-offers',
