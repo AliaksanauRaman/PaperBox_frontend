@@ -9,6 +9,7 @@ import { LaconicPlaceLabelFromLocationValuePipeModule } from '../shared/pipes/la
 import { BuildPhoneHrefPipeModule } from '../shared/pipes/build-phone-href/build-phone-href-pipe.module';
 import { ViewPhonePipeModule } from '../shared/pipes/view-phone/view-phone-pipe.module';
 import { FoldableComponentModule } from '../shared/components/foldable/foldable-component.module';
+import { HoverableDirectiveModule } from '../shared/directives/hoverable/hoverable-directive.module';
 import { HelpOffersRoutingModule } from './help-offers-routing.module';
 
 import { HelpOffersMainViewComponent } from './views/help-offers-main-view/help-offers-main-view.component';
@@ -29,6 +30,7 @@ import { HelpOffersEventsProcessorService } from './services/help-offers-events-
     BuildPhoneHrefPipeModule,
     ViewPhonePipeModule,
     FoldableComponentModule,
+    HoverableDirectiveModule,
     HelpOffersRoutingModule,
   ],
   declarations: [
