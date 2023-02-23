@@ -41,7 +41,8 @@
           class="switch-locations-button"
           [disabled]="
             !locationsForm.controls.from.value ||
-            !locationsForm.controls.to.value
+            !locationsForm.controls.to.value ||
+            controlDisabled
           "
           tabindex="-1"
           matRipple
