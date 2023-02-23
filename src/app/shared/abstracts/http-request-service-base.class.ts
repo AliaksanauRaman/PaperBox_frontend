@@ -1,3 +1,4 @@
+import { Injectable } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { tap, takeUntil } from 'rxjs';
 
@@ -5,8 +6,12 @@ import { AppEventBusService, AppEventName } from '../../events';
 import { HttpRequestStateMachine } from './../classes/http-request-state-machine.class';
 import { DestroyEmitter } from './destroy-emitter.class';
 
-export abstract class HttpRequestServiceBase<T> extends DestroyEmitter {
-  protected readonly httpRequestStateMachine = new HttpRequestStateMachine<T>();
+@Injectable()
+export abstract class HttpRequestServiceBase<
+  SuccessResponseDataType
+> extends DestroyEmitter {
+  protected readonly httpRequestStateMachine =
+    new HttpRequestStateMachine<SuccessResponseDataType>();
 
   public readonly state$ = this.httpRequestStateMachine.currentState$;
 
@@ -22,7 +27,7 @@ export abstract class HttpRequestServiceBase<T> extends DestroyEmitter {
 
   private subToSuccessResponse(): void {
     this.eventBusService
-      .on<T>(this.successResponseEventName)
+      .on<SuccessResponseDataType>(this.successResponseEventName)
       .pipe(
         tap((publishedHelpRequests) => {
           this.httpRequestStateMachine.handleSuccessResponse(
