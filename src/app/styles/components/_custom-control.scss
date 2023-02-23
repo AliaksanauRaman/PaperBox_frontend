@@ -98,9 +98,16 @@ $padding: 12px;
     padding-left: $padding;
   }
 
-  &:read-only {
+  &:read-only:not(:disabled) {
     border-width: 1.5px;
     border-style: dashed;
+  }
+
+  &:disabled {
+    pointer-events: none;
+    color: var(--grey-color);
+    background-color: transparent;
+    border-color: var(--grey-color);
   }
 }
 
