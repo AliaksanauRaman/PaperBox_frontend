@@ -86,7 +86,7 @@ export class DateControlComponent
       if (
         end === null ||
         end === undefined ||
-        start.getTime() === end.getTime()
+        this.areDatesEqual(start, end)
       ) {
         return formattedStartDate;
       }
@@ -134,7 +134,7 @@ export class DateControlComponent
 
   public writeValue(value: DateControlValue): void {
     // TODO: Assert value type
-
+    // TODO: !IMPORTANT Fix the issue with initial value set!
     this.dateForm.setValue(value);
   }
 
@@ -181,6 +181,14 @@ export class DateControlComponent
       month: '2-digit',
       day: '2-digit',
     }).format(date);
+  }
+
+  private areDatesEqual(date1: Date, date2: Date): boolean {
+    return (
+      date1.getFullYear() === date2.getFullYear() &&
+      date1.getMonth() === date2.getMonth() &&
+      date1.getDate() === date2.getDate()
+    );
   }
 
   private onValidatorChange = () => {};
