@@ -1,13 +1,12 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  HostBinding,
-  HostListener,
   ViewChild,
   Input,
 } from '@angular/core';
 
 import { FoldableComponent } from '../../../shared/components/foldable/foldable.component';
+import { HoverableDirective } from '../../../shared/directives/hoverable/hoverable.directive';
 
 import { PublishedHelpOfferType } from './../../../shared/types/published-help-offer.type';
 
@@ -23,53 +22,11 @@ export class HelpOffersListItemComponent {
     this._publishedHelpOffer = value;
   }
 
-  @HostBinding('class.hovered')
-  public get isHovered(): boolean {
-    return this._isHovered;
-  }
-
-  @HostBinding('class.expanded')
-  public get isExpanded(): boolean {
-    if (this.foldableComponentRef === undefined) {
-      return false;
-    }
-
-    return this.foldableComponentRef.isUnfolded;
-  }
-
-  @HostListener('mouseenter')
-  public handleHostMouseenter(): void {
-    this._isHovered = true;
-  }
-
-  @HostListener('mouseover')
-  public handleHostMouseover(): void {
-    if (!this._isHovered) {
-      this._isHovered = true;
-    }
-  }
-
-  @HostListener('mouseleave')
-  public handleHostMouseleave(): void {
-    this._isHovered = false;
-  }
-
-  @HostListener('click')
-  public handleHostClick(): void {
-    if (this.foldableComponentRef === undefined) {
-      throw new Error(`Foldable component ref is not defined!`);
-    }
-
-    if (this.foldableComponentRef.isUnfolded) {
-      this.foldableComponentRef.fold();
-      this._isHovered = false;
-    } else {
-      this.foldableComponentRef.unfold();
-    }
-  }
-
   @ViewChild(FoldableComponent)
   private readonly foldableComponentRef?: FoldableComponent;
+
+  @ViewChild(HoverableDirective)
+  private readonly hoverableDirectiveRef?: HoverableDirective;
 
   public get isUnfolded(): boolean {
     if (this.foldableComponentRef === undefined) {
@@ -79,6 +36,30 @@ export class HelpOffersListItemComponent {
     return this.foldableComponentRef.isUnfolded;
   }
 
+  public get isHovered(): boolean {
+    if (this.hoverableDirectiveRef === undefined) {
+      return false;
+    }
+
+    return this.hoverableDirectiveRef.isHovered;
+  }
+
   public _publishedHelpOffer?: PublishedHelpOfferType;
-  private _isHovered = false;
+
+  public handleCardClick(): void {
+    if (this.foldableComponentRef === undefined) {
+      throw new Error(`Foldable component ref is not defined!`);
+    }
+
+    if (this.hoverableDirectiveRef === undefined) {
+      throw new Error(`Hoverable directive ref is not defined!`);
+    }
+
+    if (this.isUnfolded) {
+      this.foldableComponentRef.fold();
+      this.hoverableDirectiveRef.unhover();
+    } else {
+      this.foldableComponentRef.unfold();
+    }
+  }
 }

@@ -5,6 +5,8 @@
     [class.app-list-card--unfolded]="isUnfolded"
     matRipple
     [matRippleAnimation]="{ enterDuration: 450 }"
+    appHoverable
+    (click)="handleCardClick()"
   >
     <ng-container staticPart>
       <div class="main-part">
