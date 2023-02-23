@@ -19,16 +19,16 @@ export class PublishedHelpOffersService extends DestroyEmitter {
   constructor(private readonly eventBusService: AppEventBusService) {
     super();
 
-    this.subToSuccessGet();
-    this.subToFailedGet();
+    this.subToSuccessResponse();
+    this.subToFailedResponse();
   }
 
-  public makeGetHttpRequest(): void {
+  public makeRequest(): void {
     this.httpRequestStateMachine.handleMakeRequest();
     this.eventBusService.emit(new MakeGetPublishedHelpOffersRequest());
   }
 
-  private subToSuccessGet(): void {
+  private subToSuccessResponse(): void {
     this.eventBusService
       .on<PublishedHelpOfferListType>(
         AppEventName.SUCCESS_GET_PUBLISHED_HELP_OFFERS
@@ -44,7 +44,7 @@ export class PublishedHelpOffersService extends DestroyEmitter {
       .subscribe();
   }
 
-  private subToFailedGet(): void {
+  private subToFailedResponse(): void {
     this.eventBusService
       .on<HttpErrorResponse>(AppEventName.FAILED_GET_PUBLISHED_HELP_OFFERS)
       .pipe(
