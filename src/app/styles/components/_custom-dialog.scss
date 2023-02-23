@@ -3,7 +3,7 @@
 
 div.app-custom-dialog {
   position: relative !important;
-  max-height: 96vh;
+  max-height: 96%;
   margin: 0 15px;
   padding: 30px 15px;
   background-color: var(--primary-background-color);
@@ -82,7 +82,7 @@ button.app-custom-dialog-actions__item {
 
     width: 100%;
     max-width: 700px;
-    max-height: 92vh;
+    max-height: 92%;
   }
 
   div.app-custom-dialog-actions {
