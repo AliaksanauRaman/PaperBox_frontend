@@ -170,4 +170,14 @@ export class PhoneControlComponent
   public handleMinusClick(): void {
     this.minusClick.emit();
   }
+
+  public override setDisabledState(isDisabled: boolean): void {
+    if (isDisabled) {
+      this.phoneForm.disable();
+    } else {
+      this.phoneForm.enable();
+    }
+
+    super.setDisabledState(isDisabled);
+  }
 }
