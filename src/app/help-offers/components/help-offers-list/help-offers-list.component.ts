@@ -1,11 +1,23 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+
+import { PublishedHelpOffersService } from '../../services/published-help-offers.service';
 
 @Component({
   selector: 'app-help-offers-list',
   templateUrl: './help-offers-list.component.html',
   styleUrls: ['./help-offers-list.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  providers: [PublishedHelpOffersService],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HelpOffersListComponent {
+export class HelpOffersListComponent implements OnInit {
+  public readonly publishedHelpOffersState$ =
+    this.publishedHelpOffersService.state$;
 
+  constructor(
+    private readonly publishedHelpOffersService: PublishedHelpOffersService
+  ) {}
+
+  public ngOnInit(): void {
+    this.publishedHelpOffersService.makeGetHttpRequest();
+  }
 }

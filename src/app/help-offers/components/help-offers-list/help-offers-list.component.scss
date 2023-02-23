@@ -1,3 +1,6 @@
+@import '../../../styles/scss-variables';
+
+// TODO: Think about common styles
 :host {
   display: flex;
   flex-direction: column;
@@ -15,6 +18,25 @@
   overflow-y: auto;
 }
 
+.loading-view {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-grow: 1;
+  padding-top: 50px;
+}
+
 .list-item {
   flex-shrink: 0;
+  width: 100%;
+
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+}
+
+@media (min-width: $minLaptopScreenWidth) {
+  .loading-view {
+    padding-top: 100px;
+  }
 }
