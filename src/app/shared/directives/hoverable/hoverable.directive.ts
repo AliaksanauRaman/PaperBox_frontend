@@ -27,7 +27,7 @@ export class HoverableDirective {
 
   private _isHovered = false;
 
-  public markAsHovered(): void {
-    this._isHovered = true;
+  public unhover(): void {
+    this._isHovered = false;
   }
 }
