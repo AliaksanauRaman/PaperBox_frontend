@@ -47,6 +47,11 @@ export class TextareaFieldControlComponent extends CustomControl<string> {
     this.controlWarningColored = value;
   }
 
+  @Input()
+  public set maxCharactersAmount(value: number) {
+    this.controlMaxCharactersAmount = value;
+  }
+
   protected controlValue = '';
   protected controlWarningColored = false;
   protected controlMaxCharactersAmount = DEFAULT_MAX_CHARACTERS_AMOUNT;
