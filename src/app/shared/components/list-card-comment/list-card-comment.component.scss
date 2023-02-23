@@ -3,7 +3,13 @@
 }
 
 .list-card-comment {
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
 }
 
 .empty {
+  font-style: italic;
+  font-weight: 400;
+  opacity: 0.7;
 }
