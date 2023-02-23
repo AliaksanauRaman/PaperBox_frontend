@@ -23,6 +23,9 @@ import {
   MakeDeleteHelpOfferRequest,
   SuccessDeleteHelpOffer,
   FailedDeleteHelpOffer,
+  MakeCreateHelpOfferRequest,
+  SuccessCreateHelpOffer,
+  FailedCreateHelpOffer,
 } from './entries';
 
 export type AppEventUnion =
@@ -43,4 +46,7 @@ export type AppEventUnion =
   | FailedHelpOfferStatusUpdate
   | MakeDeleteHelpOfferRequest
   | SuccessDeleteHelpOffer
-  | FailedDeleteHelpOffer;
+  | FailedDeleteHelpOffer
+  | MakeCreateHelpOfferRequest
+  | SuccessCreateHelpOffer
+  | FailedCreateHelpOffer;
