@@ -33,11 +33,25 @@
   width: inherit;
   height: inherit;
   padding: 0 9px 0 12px;
+
+  &.field--disabled {
+    pointer-events: none;
+
+    .field__value {
+      color: var(--grey-color);
+    }
+
+    .field__icon {
+      opacity: 0.7;
+    }
+  }
 }
 
 .field__value {
   flex-grow: 1;
   font-weight: 500;
+  color: var(--black-color);
+  transition: 0.25s color ease-in-out;
 }
 
 // ALIGN WITH GLOBAL PLACEHOLDER STYLES
