@@ -53,9 +53,11 @@
 
     <ng-container foldablePart>
       <div class="details-part">
-        <div class="comment">
-          <span>{{ _publishedHelpRequest.comment }}</span>
-        </div>
+        <app-list-card-comment
+          class="comment"
+          [text]="_publishedHelpRequest.comment"
+        >
+        </app-list-card-comment>
 
         <div class="phones">
           <a
