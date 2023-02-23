@@ -2,7 +2,13 @@ import {
   MakeGetPublishedHelpOffersRequest,
   SuccessGetPublishedHelpOffers,
   FailedGetPublishedHelpOffers,
-} from './../help-offers/events';
+} from '../help-offers/events';
+
+import {
+  MakeGetPublishedHelpRequestsRequest,
+  SuccessGetPublishedHelpRequests,
+  FailedGetPublishedHelpRequests,
+} from '../help-requests/events';
 
 import {
   MakeGetFullPreviewsOfAllHelpOffersRequest,
@@ -23,6 +29,9 @@ export type AppEventUnion =
   | MakeGetPublishedHelpOffersRequest
   | SuccessGetPublishedHelpOffers
   | FailedGetPublishedHelpOffers
+  | MakeGetPublishedHelpRequestsRequest
+  | SuccessGetPublishedHelpRequests
+  | FailedGetPublishedHelpRequests
   | MakeGetFullPreviewsOfAllHelpOffersRequest
   | SuccessGetFullPreviewsOfAllHelpOffers
   | FailedGetFullPreviewsOfAllHelpOffers
