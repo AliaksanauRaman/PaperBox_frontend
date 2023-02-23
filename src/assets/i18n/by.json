@@ -144,7 +144,8 @@
     "whereFromField": "Мінск, Беларусь",
     "whereToField": "Варшава, Польшча",
     "fullNameField": "Іван Іваноў",
-    "commentField": "Тэкст вашага каментару..."
+    "commentField": "Тэкст вашага каментару...",
+    "emptyList": "Спіс пусты."
   },
   "warnings": {
     "sameCountries": "Аднолькавыя краіны.",

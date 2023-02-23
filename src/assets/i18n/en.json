@@ -144,7 +144,8 @@
     "whereFromField": "Minsk, Belarus",
     "whereToField": "Warsaw, Poland",
     "fullNameField": "John Smith",
-    "commentField": "Your comment text..."
+    "commentField": "Your comment text...",
+    "emptyList": "The list is empty."
   },
   "warnings": {
     "sameCountries": "Same countries.",
