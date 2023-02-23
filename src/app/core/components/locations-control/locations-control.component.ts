@@ -76,7 +76,8 @@ export class LocationsControlComponent
         return false;
       }
 
-      const { countryValueAsString: fromCountry } = destructureLocationValue(from);
+      const { countryValueAsString: fromCountry } =
+        destructureLocationValue(from);
       const { countryValueAsString: toCountry } = destructureLocationValue(to);
 
       return fromCountry === toCountry;
@@ -97,7 +98,10 @@ export class LocationsControlComponent
   protected readonly warnings$ = combineLatest([
     this.sameCountry$,
     this.sameCity$,
-  ]).pipe(startWith([false, false]), map(([sameCountry, sameCity]) => ({ sameCountry, sameCity })));
+  ]).pipe(
+    startWith([false, false]),
+    map(([sameCountry, sameCity]) => ({ sameCountry, sameCity }))
+  );
 
   constructor(
     uniqueIdGeneratorService: UniqueIdGeneratorService,
@@ -156,6 +160,16 @@ export class LocationsControlComponent
       { emitEvent: false, onlySelf: true }
     );
     this.emitChangeEvent();
+  }
+
+  public override setDisabledState(isDisabled: boolean): void {
+    if (isDisabled) {
+      this.locationsForm.disable();
+    } else {
+      this.locationsForm.enable();
+    }
+
+    super.setDisabledState(isDisabled);
   }
 
   private emitChangeEvent(): void {
