@@ -1,10 +1,12 @@
 <ng-container *ngIf="_publishedHelpRequest">
   <app-foldable
     class="help-requests-list-item app-list-card"
-    [class.app-list-card--hovered]="false"
-    [class.app-list-card--unfolded]="false"
+    [class.app-list-card--hovered]="isHovered"
+    [class.app-list-card--unfolded]="isUnfolded"
     matRipple
     [matRippleAnimation]="{ enterDuration: 450 }"
+    appHoverable
+    (click)="handleCardClick()"
   >
     <ng-container staticPart>
       <div class="main-part">
@@ -42,7 +44,7 @@
         <div class="main-part__right">
           <app-arrow-down-icon
             class="toggle-icon"
-            [color]="false || false ? 'primary' : 'grey'"
+            [color]="isHovered || isUnfolded ? 'primary' : 'grey'"
           >
           </app-arrow-down-icon>
         </div>
