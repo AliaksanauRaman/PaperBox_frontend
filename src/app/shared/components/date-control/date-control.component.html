@@ -38,6 +38,7 @@
     class="calendar-button"
     matRipple
     tabindex="-1"
+    [disabled]="controlDisabled"
     (click)="toggleDateRangePicker(matDateRangePickerRef)"
   >
     <ng-container *ngTemplateOutlet="calendarIconSvg"></ng-container>
