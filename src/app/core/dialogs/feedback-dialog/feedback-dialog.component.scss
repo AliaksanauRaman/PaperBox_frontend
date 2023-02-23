@@ -18,12 +18,32 @@
   width: 280px;
 }
 
-.full-name-control {
-  margin-bottom: 8px;
+.control-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  &.control-container--full-name {
+    margin-bottom: 8px;
+  }
+
+  &.control-container--email {
+    margin-bottom: 16px;
+  }
 }
 
-.email-control {
-  margin-bottom: 30px;
+.control-errors {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  height: 26px;
+  padding: 0 12px;
+}
+
+.error-text {
+  flex-shrink: 0;
+  font-size: 0.9rem;
+  color: var(--error-color);
 }
 
 @media (min-width: $minLaptopScreenWidth) {
