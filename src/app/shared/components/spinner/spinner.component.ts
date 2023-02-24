@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+
+type SpinnerColor = 'primary' | 'white';
 
 @Component({
   selector: 'app-spinner',
@@ -6,4 +8,11 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrls: ['./spinner.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SpinnerComponent {}
+export class SpinnerComponent {
+  @Input()
+  public set color(value: SpinnerColor) {
+    this._color = value;
+  }
+
+  public _color: SpinnerColor = 'primary';
+}
