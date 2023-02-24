@@ -61,6 +61,10 @@
 }
 // MAT-AUTOCOMPLETE END
 
+.cdk-overlay-container {
+  cursor: default;
+}
+
 // TODO: Check if colors still needed
 .mat-custom-green {
   color: var(--green-color) !important;
