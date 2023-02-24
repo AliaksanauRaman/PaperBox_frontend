@@ -105,9 +105,10 @@ $padding: 12px;
 
   &:disabled {
     pointer-events: none;
-    color: var(--grey-color);
+    color: var(--disabled-text-color);
     background-color: transparent;
     border-color: var(--grey-color);
+    opacity: 1; // Is needed for IOS
   }
 }
 
