@@ -84,7 +84,7 @@
       </div>
     </form>
 
-    <div class="warnings" *ngIf="locationsForm.valid">
+    <div class="warnings" *ngIf="locationsForm.valid || locationsForm.disabled">
       <div class="warning-text" *ngIf="warnings.sameCity">
         <span>{{ "warnings.sameCities" | translate }}</span>
       </div>
