@@ -43,7 +43,7 @@
   display: block;
 
   & path {
-    transition: 0.25s fill ease-in-out;
+    transition: 0.25s all ease-in-out;
   }
 
   &.location-icon--primary-colored path {
@@ -52,6 +52,10 @@
 
   &.location-icon--warning-colored:not(.location-icon--primary-colored) path {
     fill: var(--warning-color);
+  }
+
+  &.location-icon--disabled-view path {
+    opacity: 0.7;
   }
 }
 
