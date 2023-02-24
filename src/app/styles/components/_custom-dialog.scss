@@ -3,6 +3,8 @@
 
 div.app-custom-dialog {
   position: relative !important;
+  width: 100%;
+  max-width: 340px;
   max-height: 96%;
   margin: 0 15px;
   padding: 30px 15px;
