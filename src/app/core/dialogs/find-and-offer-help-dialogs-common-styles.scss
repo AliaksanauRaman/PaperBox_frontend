@@ -1,4 +1,4 @@
-@import '../../styles/scss-variables';
+@import "../../styles/scss-variables";
 
 $systemMessageContainerHeight: 26px;
 
@@ -11,6 +11,7 @@ $systemMessageContainerHeight: 26px;
   flex-direction: column;
   flex-grow: 1;
   min-height: 0;
+  width: 100%;
 }
 
 .locations-control {
@@ -51,11 +52,13 @@ $systemMessageContainerHeight: 26px;
 
 .controls-and-image {
   display: flex;
+  width: inherit;
 }
 
 .full-name-and-phone-numbers {
   display: flex;
   flex-direction: column;
+  width: inherit;
 }
 
 .image {
