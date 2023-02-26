@@ -1,23 +1,32 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  OnDestroy,
+} from '@angular/core';
 
-import { PublishedHelpRequestsService } from '../../services/published-help-requests.service';
+import { GetPublishedHelpRequestsService } from '../../services/get-published-help-requests.service';
 
 @Component({
   selector: 'app-help-requests-list',
   templateUrl: './help-requests-list.component.html',
   styleUrls: ['./help-requests-list.component.scss'],
-  providers: [PublishedHelpRequestsService],
+  providers: [GetPublishedHelpRequestsService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HelpRequestsListComponent implements OnInit {
+export class HelpRequestsListComponent implements OnInit, OnDestroy {
   public readonly publishedHelpRequestsState$ =
-    this.publishedHelpRequestsService.state$;
+    this.getPublishedHelpRequestsService.state$;
 
   constructor(
-    private readonly publishedHelpRequestsService: PublishedHelpRequestsService
+    private readonly getPublishedHelpRequestsService: GetPublishedHelpRequestsService
   ) {}
 
   public ngOnInit(): void {
-    this.publishedHelpRequestsService.makeRequest();
+    this.getPublishedHelpRequestsService.makeRequest();
+  }
+
+  public ngOnDestroy(): void {
+    this.getPublishedHelpRequestsService.destroyRequest();
   }
 }
