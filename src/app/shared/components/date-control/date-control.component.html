@@ -36,9 +36,10 @@
 
   <button
     class="calendar-button"
+    [disabled]="controlDisabled"
+    [title]="'helpTitles.selectDates' | translate"
     matRipple
     tabindex="-1"
-    [disabled]="controlDisabled"
     (click)="toggleDateRangePicker(matDateRangePickerRef)"
   >
     <ng-container *ngTemplateOutlet="calendarIconSvg"></ng-container>
