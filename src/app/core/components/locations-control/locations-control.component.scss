@@ -47,7 +47,7 @@ $systemMessageContainerHeight: 26px;
   color: var(--error-color);
 }
 
-.switch-locations-button-container {
+.swap-locations-button-container {
   position: absolute;
   right: 6px;
   top: 80px;
@@ -57,7 +57,7 @@ $systemMessageContainerHeight: 26px;
   align-items: center;
 }
 
-.switch-locations-button {
+.swap-locations-button {
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -121,7 +121,7 @@ $systemMessageContainerHeight: 26px;
     }
   }
 
-  .switch-locations-button-container {
+  .swap-locations-button-container {
     position: relative;
     right: 0;
     top: 0;
@@ -131,7 +131,7 @@ $systemMessageContainerHeight: 26px;
     height: 68px;
   }
 
-  .switch-locations-button {
+  .swap-locations-button {
     position: relative;
     bottom: 7px;
   }

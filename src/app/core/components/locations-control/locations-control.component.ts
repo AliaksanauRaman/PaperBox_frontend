@@ -149,7 +149,7 @@ export class LocationsControlComponent
     this.onValidatorChange = fn;
   }
 
-  public switchLocations(): void {
+  public swapLocations(): void {
     const fromValue = this.locationsForm.controls.from.getRawValue() || '';
     const toValue = this.locationsForm.controls.to.getRawValue() || '';
     this.locationsForm.setValue(

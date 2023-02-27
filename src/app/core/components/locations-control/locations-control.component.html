@@ -36,9 +36,9 @@
         </div>
       </div>
 
-      <div class="switch-locations-button-container">
+      <div class="swap-locations-button-container">
         <button
-          class="switch-locations-button"
+          class="swap-locations-button"
           [disabled]="
             !locationsForm.controls.from.value ||
             !locationsForm.controls.to.value ||
@@ -49,9 +49,9 @@
           matRipple
           [matRippleUnbounded]="true"
           [matRippleCentered]="true"
-          (click)="switchLocations()"
+          (click)="swapLocations()"
         >
-          <ng-container *ngTemplateOutlet="directionIconSvg"></ng-container>
+          <ng-container *ngTemplateOutlet="swapIconSvg"></ng-container>
         </button>
       </div>
 
@@ -100,7 +100,7 @@
   </div>
 </ng-container>
 
-<ng-template #directionIconSvg>
+<ng-template #swapIconSvg>
   <svg
     width="23"
     height="24"
