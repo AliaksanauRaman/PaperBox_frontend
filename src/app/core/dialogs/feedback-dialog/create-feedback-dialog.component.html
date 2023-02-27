@@ -1,0 +1,113 @@
+<div class="create-feedback-dialog">
+  <ng-container *ngIf="createFeedbackState$ | async as state">
+    <h2 class="app-custom-dialog-title">
+      {{ "dialogs.feedback.title" | translate }}
+    </h2>
+
+    <div
+      class="app-custom-dialog-close-button"
+      [title]="'helpTitles.closeDialog' | translate"
+      (click)="closeDialog()"
+    >
+      <app-plus-icon
+        class="app-custom-dialog-close-button-icon"
+      ></app-plus-icon>
+    </div>
+
+    <form
+      class="form"
+      *ngIf="state.data === null"
+      [formGroup]="createFeedbackForm"
+    >
+      <!-- TODO: Make reusable components: control-container, control-errors, etc. -->
+      <div class="control-container control-container--full-name">
+        <app-input-control
+          class="control"
+          [label]="'dialogs.feedback.fullNameFieldLabel' | translate"
+          [required]="true"
+          formControlName="fullName"
+        >
+        </app-input-control>
+
+        <div class="control-errors">
+          <ng-container *ngIf="createFeedbackForm.controls.fullName.touched">
+            <span
+              class="error-text"
+              *ngIf="createFeedbackForm.controls.fullName.errors?.['required']"
+            >
+              {{ "errors.fullNameIsRequired" | translate }}
+            </span>
+          </ng-container>
+        </div>
+      </div>
+
+      <div class="control-container control-container--email">
+        <app-input-control
+          class="control"
+          [label]="'dialogs.feedback.emailFieldLabel' | translate"
+          [required]="true"
+          [maxCharactersAmount]="50"
+          formControlName="email"
+        >
+        </app-input-control>
+
+        <div class="control-errors">
+          <ng-container *ngIf="createFeedbackForm.controls.email.touched">
+            <span
+              class="error-text"
+              *ngIf="createFeedbackForm.controls.email.errors?.['required']"
+            >
+              {{ "errors.emailIsRequired" | translate }}
+            </span>
+
+            <span
+              class="error-text"
+              *ngIf="createFeedbackForm.controls.email.errors?.['email']"
+            >
+              {{ "errors.incorrectEmailFormat" | translate }}
+            </span>
+          </ng-container>
+        </div>
+      </div>
+
+      <div class="control-container control-container--comment">
+        <app-textarea-field-control
+          class="control"
+          [label]="'dialogs.feedback.commentFieldLabel' | translate"
+          [required]="true"
+          [maxCharactersAmount]="299"
+          formControlName="comment"
+        >
+        </app-textarea-field-control>
+
+        <div class="control-errors">
+          <ng-container *ngIf="createFeedbackForm.controls.comment.touched">
+            <span
+              class="error-text"
+              *ngIf="createFeedbackForm.controls.comment.errors?.['required']"
+            >
+              {{ "errors.commentIsRequired" | translate }}
+            </span>
+
+            <span
+              class="error-text"
+              *ngIf="createFeedbackForm.controls.comment.errors?.['minlength']"
+            >
+              {{ "errors.minCharacters" | translate : { amount: 10 } }}
+            </span>
+          </ng-container>
+        </div>
+      </div>
+    </form>
+
+    <div class="app-custom-dialog-actions">
+      <button
+        class="app-custom-dialog-actions__item app-primary-button"
+        [disabled]="createFeedbackForm.invalid"
+        (click)="handleSendButtonClick($event)"
+      >
+        <span>{{ "dialogs.feedback.sendButtonLabel" | translate }}</span>
+      </button>
+    </div>
+  </ng-container>
+</div>

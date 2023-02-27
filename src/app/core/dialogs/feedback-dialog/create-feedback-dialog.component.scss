@@ -4,14 +4,14 @@
   display: flex;
 }
 
-.feedback-dialog {
+.create-feedback-dialog {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   min-height: 0;
 }
 
-.feedback-form {
+.form {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -48,11 +48,11 @@
 @media (min-width: $minLaptopScreenWidth) {
   $contentWidth: 460px;
 
-  .feedback-dialog {
+  .create-feedback-dialog {
     align-items: center;
   }
 
-  .feedback-form {
+  .form {
     width: $contentWidth;
   }
 

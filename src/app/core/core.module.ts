@@ -31,7 +31,7 @@ import { LeaveFeedbackButtonComponent } from './components/leave-feedback-button
 import { DynamicPhoneListControlComponent } from './components/dynamic-phone-list-control/dynamic-phone-list-control.component';
 import { LocationsControlComponent } from './components/locations-control/locations-control.component';
 import { SuccessCreateFeedbackViewComponent } from './components/success-create-feedback-view/success-create-feedback-view.component';
-import { FeedbackDialogComponent } from './dialogs/feedback-dialog/feedback-dialog.component';
+import { CreateFeedbackDialogComponent } from './dialogs/feedback-dialog/create-feedback-dialog.component';
 import { OfferHelpDialogComponent } from './dialogs/offer-help-dialog/offer-help-dialog.component';
 import { FindHelpDialogComponent } from './dialogs/find-help-dialog/find-help-dialog.component';
 
@@ -79,7 +79,7 @@ const CORE_MODULE_DECLARATIONS = [
   DynamicPhoneListControlComponent,
   LocationsControlComponent,
   SuccessCreateFeedbackViewComponent,
-  FeedbackDialogComponent,
+  CreateFeedbackDialogComponent,
   OfferHelpDialogComponent,
   FindHelpDialogComponent,
 ];
