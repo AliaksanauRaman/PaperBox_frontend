@@ -46,6 +46,8 @@
     },
     "createFeedback": {
       "title": "Feedback",
+      "loading": "Loading...",
+      "success": "Success!",
       "fullNameFieldLabel": "Full name",
       "emailFieldLabel": "Email",
       "commentFieldLabel": "How to improve our service?",

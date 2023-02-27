@@ -46,6 +46,8 @@
     },
     "createFeedback": {
       "title": "Зваротная сувязь",
+      "loading": "Загрузка...",
+      "success": "Поспех!",
       "fullNameFieldLabel": "Поўнае імя",
       "emailFieldLabel": "Электронная пошта",
       "commentFieldLabel": "Як палепшыць наш сэрвіс?",
