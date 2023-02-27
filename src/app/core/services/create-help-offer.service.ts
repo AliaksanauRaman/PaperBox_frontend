@@ -1,25 +1,24 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
-import { HttpPostRequestServiceBase } from '../../shared/abstracts/http-post-request-service-base.class';
+import { HelpOffersHttpService } from '../../help-offers/services/help-offers-http.service';
+
+import { HttpRequestWithParamsBaseService } from '../../shared/abstracts/http-request-with-params-base-service.class';
+import { SuccessCreateHelpOfferResponseDataType } from '../../shared/types/success-create-help-offer-response-data.type';
 import { CreateHelpOfferDto } from '../../shared/dtos/create-help-offer.dto';
-import { MakeCreateHelpOfferRequest, AppEventName } from '../../events';
 
 @Injectable()
-export class CreateHelpOfferRequestService extends HttpPostRequestServiceBase<
-  MakeCreateHelpOfferRequest,
+export class CreateHelpOfferService extends HttpRequestWithParamsBaseService<
+  SuccessCreateHelpOfferResponseDataType,
   CreateHelpOfferDto
 > {
-  public get successResponseEventName(): AppEventName {
-    return AppEventName.SUCCESS_CREATE_HELP_OFFER;
+  constructor(private readonly helpOffersHttpService: HelpOffersHttpService) {
+    super();
   }
 
-  public get failedResponseEventName(): AppEventName {
-    return AppEventName.FAILED_CREATE_HELP_OFFER;
-  }
-
-  protected buildMakeRequestEvent(
+  protected doRequest(
     createHelpOfferDto: CreateHelpOfferDto
-  ): MakeCreateHelpOfferRequest {
-    return new MakeCreateHelpOfferRequest(createHelpOfferDto);
+  ): Observable<SuccessCreateHelpOfferResponseDataType> {
+    return this.helpOffersHttpService.createOne(createHelpOfferDto);
   }
 }
