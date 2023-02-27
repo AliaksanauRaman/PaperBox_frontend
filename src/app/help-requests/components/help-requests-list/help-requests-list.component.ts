@@ -23,7 +23,7 @@ export class HelpRequestsListComponent implements OnInit, OnDestroy {
   ) {}
 
   public ngOnInit(): void {
-    this.getPublishedHelpRequestsService.makeRequest();
+    this.getPublishedHelpRequestsService.performRequest();
   }
 
   public ngOnDestroy(): void {
