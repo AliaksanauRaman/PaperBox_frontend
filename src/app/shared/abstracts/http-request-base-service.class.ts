@@ -8,12 +8,8 @@ export abstract class HttpRequestBaseService<T> {
   public readonly state$ = this.httpRequestStateMachine.currentState$;
   private readonly destroy$ = new Subject<void>();
 
-  protected abstract doRequest(): Observable<T>;
-
-  public makeRequest(): void {
-    this.httpRequestStateMachine.handleMakeRequest();
-
-    this.doRequest()
+  protected handleRequest(request: Observable<T>): void {
+    request
       .pipe(
         tap((responseData) => {
           this.httpRequestStateMachine.handleSuccessResponse(responseData);
