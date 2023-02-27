@@ -18,8 +18,6 @@ import { HelpRequestsMainViewComponent } from './views/help-requests-main-view/h
 import { HelpRequestsListComponent } from './components/help-requests-list/help-requests-list.component';
 import { HelpRequestsListItemComponent } from './components/help-requests-list-item/help-requests-list-item.component';
 
-import { HelpRequestsEventsProcessorService } from './services/help-requests-events-processor.service';
-
 @NgModule({
   imports: [
     CommonModule,
@@ -40,13 +38,7 @@ import { HelpRequestsEventsProcessorService } from './services/help-requests-eve
     HelpRequestsListComponent,
     HelpRequestsListItemComponent,
   ],
-  providers: [HelpRequestsEventsProcessorService],
+  providers: [],
   exports: [],
 })
-export class HelpRequestsModule {
-  constructor(
-    private readonly helpRequestsEventsProcessorService: HelpRequestsEventsProcessorService
-  ) {
-    this.helpRequestsEventsProcessorService.setUpProcessors();
-  }
-}
+export class HelpRequestsModule {}

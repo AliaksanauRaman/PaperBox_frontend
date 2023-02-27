@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
-import { tap, catchError, of, takeUntil } from 'rxjs';
+import { tap, catchError, of, takeUntil, merge } from 'rxjs';
 
 import { HelpRequestsHttpService } from '../../core/services/help-requests-http.service';
 
@@ -12,6 +12,7 @@ import {
 } from '../events';
 
 @Injectable()
+// TODO: Unused
 export class HelpRequestsEventsProcessorService extends DestroyEmitter {
   constructor(
     private readonly eventBusService: AppEventBusService,
@@ -43,9 +44,16 @@ export class HelpRequestsEventsProcessorService extends DestroyEmitter {
                 );
                 return of(null);
               }),
-              takeUntil(this.destroy$)
+              takeUntil(
+                merge(
+                  this.destroy$,
+                  this.eventBusService.getDestroyStream(
+                    AppEventName.MAKE_GET_PUBLISHED_HELP_REQUESTS_REQUEST
+                  )
+                )
+              )
             )
-            .subscribe();
+            .subscribe({ complete: () => console.log('completed') });
         }),
         takeUntil(this.destroy$)
       )
