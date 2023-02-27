@@ -103,7 +103,7 @@
       "noMatchesMessage": "No matches."
     },
     "listCardComment": {
-      "emptyText": "(empty)"
+      "emptyText": "-"
     }
   },
   "helpOfferStatus": {
