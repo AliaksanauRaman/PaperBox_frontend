@@ -6,7 +6,7 @@ import { FeedbackDialogComponent } from '../dialogs/feedback-dialog/feedback-dia
 @Injectable({
   providedIn: 'root',
 })
-export class FeedbackDialogService {
+export class CreateFeedbackDialogService {
   constructor(private readonly dialog: Dialog) {}
 
   public openDialog(): void {

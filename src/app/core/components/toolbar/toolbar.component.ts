@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { FeedbackDialogService } from '../../services/feedback-dialog.service';
+import { CreateFeedbackDialogService } from '../../services/create-feedback-dialog.service';
 
 @Component({
   selector: 'app-toolbar',
@@ -9,7 +9,7 @@ import { FeedbackDialogService } from '../../services/feedback-dialog.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ToolbarComponent {
-  constructor(private readonly feedbackDialogService: FeedbackDialogService) {}
+  constructor(private readonly feedbackDialogService: CreateFeedbackDialogService) {}
 
   public handleLeaveFeedbackButtonClick(): void {
     this.feedbackDialogService.openDialog();
