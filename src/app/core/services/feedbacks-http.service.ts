@@ -6,7 +6,9 @@ import { API_URL } from '../../shared/dependencies/api-url/injection-token';
 import { CreateFeedbackDto } from '../../shared/dtos/create-feedback.dto';
 import { SuccessCreateFeedbackResponseDataType } from '../../shared/types/success-create-feedback-response-data.type';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class FeedbacksHttpService {
   private readonly feedbacksApiUrl = `${this.apiUrl}/api/feedbacks`;
 
