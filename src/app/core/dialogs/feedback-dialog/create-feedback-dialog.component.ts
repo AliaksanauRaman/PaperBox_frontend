@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { DialogRef } from '@angular/cdk/dialog';
 import { tap, BehaviorSubject } from 'rxjs';
@@ -22,7 +22,7 @@ const SUCCESS_TITLE = 'dialogs.createFeedback.success';
   providers: [CreateFeedbackService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CreateFeedbackDialogComponent {
+export class CreateFeedbackDialogComponent implements OnDestroy {
   private readonly _dialogTitle$ = new BehaviorSubject<string>(NORMAL_TITLE);
   public readonly dialogTitle$ = this._dialogTitle$.asObservable();
 
@@ -51,6 +51,10 @@ export class CreateFeedbackDialogComponent {
     private readonly formBuilder: FormBuilder,
     private readonly createFeedbackService: CreateFeedbackService
   ) {}
+
+  public ngOnDestroy(): void {
+    this.createFeedbackService.destroyRequest();
+  }
 
   public closeDialog(): void {
     this.dialogRef.close();
