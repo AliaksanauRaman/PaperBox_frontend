@@ -92,6 +92,7 @@
 <ng-template #crossIconSvg>
   <svg
     class="cross-icon"
+    [class.cross-icon--disabled-view]="controlDisabled"
     width="13"
     height="13.5"
     viewBox="0 0 18 19"

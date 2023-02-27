@@ -30,8 +30,15 @@
   height: 30px;
   border-radius: 50%;
 
-  .cross-icon path {
-    transition: 0.25s stroke ease-in-out;
+  .cross-icon {
+    & path {
+      transition: 0.25s all ease-in-out;
+    }
+
+    &.cross-icon--disabled-view path {
+      stroke: var(--grey-color);
+      opacity: 0.7;
+    }
   }
 }
 
