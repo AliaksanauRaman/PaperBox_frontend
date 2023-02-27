@@ -13,6 +13,11 @@ button.app-primary-button {
   border-radius: var(--border-radius);
   transition: 0.15s all ease-in-out;
 
+  .app-primary-button__spinner {
+    width: 30px;
+    height: 30px;
+  }
+
   &:focus {
     border-color: var(--primary-click-color);
   }
