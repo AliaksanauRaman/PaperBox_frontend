@@ -1,96 +1,132 @@
-<!-- TODO: Refactor -->
 <div class="offer-help-dialog app-scrollbar">
-  <h2 class="title app-custom-dialog-title">
-    {{ "dialogs.offerHelp.title" | translate }}
-  </h2>
-
-  <div class="app-custom-dialog-close-button" (click)="closeDialog()">
-    <app-plus-icon class="app-custom-dialog-close-button-icon"></app-plus-icon>
-  </div>
-
-  <form class="form" [formGroup]="offerHelpForm">
-    <app-locations-control
-      class="locations-control"
-      formControlName="locations"
+  <ng-container *ngIf="createHelpOfferRequestState$ | async as state">
+    <h2
+      class="title app-custom-dialog-title"
+      *ngIf="dialogTitle$ | async as dialogTitle"
     >
-    </app-locations-control>
+      {{ dialogTitle | translate }}
+    </h2>
 
-    <app-date-control
-      class="date-control"
-      [label]="'dialogs.offerHelp.whenFieldLabel' | translate"
-      [required]="true"
-      formControlName="date"
+    <div
+      class="app-custom-dialog-close-button"
+      [title]="'helpTitles.closeDialog' | translate"
+      (click)="closeDialog()"
     >
-    </app-date-control>
+      <app-plus-icon
+        class="app-custom-dialog-close-button-icon"
+      ></app-plus-icon>
+    </div>
 
-    <ng-container *ngIf="offerHelpForm.controls.comment as commentControl">
-      <app-textarea-field-control
-        class="comment-control"
-        [label]="'dialogs.offerHelp.commentFieldLabel' | translate"
-        [placeholder]="'placeholders.commentField' | translate"
-        [warningColored]="commentControl.value === '' && commentControl.touched"
-        formControlName="comment"
+    <form class="form" *ngIf="state.data === null" [formGroup]="offerHelpForm">
+      <app-locations-control
+        class="locations-control"
+        formControlName="locations"
       >
-      </app-textarea-field-control>
+      </app-locations-control>
 
-      <div class="warnings">
-        <div
-          class="warning-text"
-          *ngIf="commentControl.value === '' && commentControl.touched"
+      <app-date-control
+        class="date-control"
+        [label]="'dialogs.offerHelp.whenFieldLabel' | translate"
+        [required]="true"
+        formControlName="date"
+      >
+      </app-date-control>
+
+      <ng-container *ngIf="offerHelpForm.controls.comment as commentControl">
+        <app-textarea-field-control
+          class="comment-control"
+          [label]="'dialogs.offerHelp.commentFieldLabel' | translate"
+          [placeholder]="'placeholders.commentField' | translate"
+          [warningColored]="
+            commentControl.value === '' && commentControl.touched
+          "
+          formControlName="comment"
         >
-          <span>{{ "warnings.itIsBetterToLeaveAComment" | translate }}</span>
-        </div>
-      </div>
-    </ng-container>
+        </app-textarea-field-control>
 
-    <div class="controls-and-image">
-      <div class="full-name-and-phone-numbers">
-        <div class="control-container">
-          <app-input-control
-            class="full-name-control"
-            [label]="'dialogs.offerHelp.fullNameFieldLabel' | translate"
-            [required]="true"
-            [placeholder]="'placeholders.fullNameField' | translate"
-            formControlName="fullName"
-          >
-          </app-input-control>
-
+        <div class="warnings">
           <div
-            class="control-errors"
-            *ngIf="offerHelpForm.controls.fullName as fullNameControl"
+            class="warning-text"
+            *ngIf="commentControl.value === '' && commentControl.touched"
           >
-            <ng-container *ngIf="fullNameControl.touched">
-              <div
-                class="error-text"
-                *ngIf="fullNameControl.errors?.['required']"
-              >
-                <span>{{ "errors.fullNameIsRequired" | translate }}</span>
-              </div>
-            </ng-container>
+            <span>{{ "warnings.itIsBetterToLeaveAComment" | translate }}</span>
           </div>
         </div>
+      </ng-container>
 
-        <app-dynamic-phone-list-control
-          class="phones-control"
-          [required]="true"
-          formControlName="phones"
-        >
-        </app-dynamic-phone-list-control>
-      </div>
+      <div class="controls-and-image">
+        <div class="full-name-and-phone-numbers">
+          <div class="control-container">
+            <app-input-control
+              class="full-name-control"
+              [label]="'dialogs.offerHelp.fullNameFieldLabel' | translate"
+              [required]="true"
+              [placeholder]="'placeholders.fullNameField' | translate"
+              formControlName="fullName"
+            >
+            </app-input-control>
 
-      <div class="image">
-        <app-man-with-mail-image></app-man-with-mail-image>
+            <div
+              class="control-errors"
+              *ngIf="offerHelpForm.controls.fullName as fullNameControl"
+            >
+              <ng-container *ngIf="fullNameControl.touched">
+                <div
+                  class="error-text"
+                  *ngIf="fullNameControl.errors?.['required']"
+                >
+                  <span>{{ "errors.fullNameIsRequired" | translate }}</span>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+
+          <app-dynamic-phone-list-control
+            class="phones-control"
+            [required]="true"
+            formControlName="phones"
+          >
+          </app-dynamic-phone-list-control>
+        </div>
+
+        <div class="image">
+          <app-man-with-mail-image></app-man-with-mail-image>
+        </div>
       </div>
+    </form>
+
+    <app-success-create-help-offer-section
+      *ngIf="state.data !== null"
+    ></app-success-create-help-offer-section>
+
+    <div class="app-custom-dialog-actions" *ngIf="state.data === null">
+      <button
+        class="app-custom-dialog-actions__item app-primary-button"
+        *ngIf="!state.inProgress && state.data === null"
+        [disabled]="offerHelpForm.invalid"
+        (click)="handleSendButtonClick($event)"
+      >
+        <span>{{ "dialogs.offerHelp.sendButtonLabel" | translate }}</span>
+      </button>
+
+      <button
+        class="app-custom-dialog-actions__item app-primary-button"
+        *ngIf="state.inProgress"
+        [disabled]="true"
+      >
+        <app-spinner
+          class="app-primary-button__spinner"
+          color="white"
+        ></app-spinner>
+      </button>
     </div>
-  </form>
 
-  <div class="app-custom-dialog-actions">
-    <button
-      class="app-custom-dialog-actions__item app-primary-button"
-      [disabled]="offerHelpForm.invalid"
-      (click)="handleSendButtonClick()"
-    >
-      <span>{{ "dialogs.offerHelp.sendButtonLabel" | translate }}</span>
-    </button>
-  </div>
+    <!-- TODO: !IMPORTANT Finish this -->
+    <div class="app-custom-dialog-server-error" *ngIf="state.error !== null">
+      <span
+        >Server error. Please, try again a bit later. <br />
+        If error occurs again contact us via mail or via feedback.</span
+      >
+    </div>
+  </ng-container>
 </div>
