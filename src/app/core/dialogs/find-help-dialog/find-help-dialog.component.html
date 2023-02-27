@@ -3,7 +3,11 @@
     {{ "dialogs.findHelp.title" | translate }}
   </h2>
 
-  <div class="app-custom-dialog-close-button" (click)="closeDialog()">
+  <div
+    class="app-custom-dialog-close-button"
+    [title]="'helpTitles.closeDialog' | translate"
+    (click)="closeDialog()"
+  >
     <app-plus-icon class="app-custom-dialog-close-button-icon"></app-plus-icon>
   </div>
 
