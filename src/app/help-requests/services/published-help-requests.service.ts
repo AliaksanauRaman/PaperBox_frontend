@@ -10,7 +10,8 @@ import { HttpRequestStateMachine } from '../../shared/classes/http-request-state
 import { MakeGetPublishedHelpRequestsRequest } from '../events';
 
 @Injectable()
-// TODO: Think about some base class
+// TODO: Extend from the base class
+// TODO: Unused
 export class PublishedHelpRequestsService extends DestroyEmitter {
   private readonly httpRequestStateMachine =
     new HttpRequestStateMachine<PublishedHelpRequestListType>();
@@ -27,6 +28,12 @@ export class PublishedHelpRequestsService extends DestroyEmitter {
   public makeRequest(): void {
     this.httpRequestStateMachine.handleMakeRequest();
     this.eventBusService.emit(new MakeGetPublishedHelpRequestsRequest());
+  }
+
+  public destroyRequest(): void {
+    this.eventBusService.destroy(
+      AppEventName.MAKE_GET_PUBLISHED_HELP_REQUESTS_REQUEST
+    );
   }
 
   private subToSuccessResponse(): void {
