@@ -160,5 +160,14 @@
     "minCharacters": "Minimum characters amount is: {{ amount }}.",
     "atLeastOnePhoneNumberIsRequired": "At least one phone number is required.",
     "phonePatternIsNotMet": "Only numbers are allowed. From 7 to 12 characters long."
+  },
+  "helpTitles": {
+    "clear": "Clear",
+    "selectDates": "Select dates",
+    "leaveFeedback": "Leave feedback",
+    "swapLocations": "Swap locations",
+    "closeDialog": "Close dialog",
+    "addPhoneNumber": "Add phone number",
+    "removePhoneNumber": "Remove phone number"
   }
 }

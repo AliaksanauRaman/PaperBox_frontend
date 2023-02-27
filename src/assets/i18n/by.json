@@ -160,5 +160,14 @@
     "minCharacters": "Мінімальная колькасць знакаў: {{ amount }}.",
     "atLeastOnePhoneNumberIsRequired": "Патрэбен як мінімум 1 нумар тэлефону.",
     "phonePatternIsNotMet": "Дазволены толькі лічбы. Даўжыня ад 7 да 12 знакаў."
+  },
+  "helpTitles": {
+    "clear": "Ачыцсціць",
+    "selectDates": "Абраць даты",
+    "leaveFeedback": "Пакінуць зваротную сувязь",
+    "swapLocations": "Памяняць размяшчэнні месцамі",
+    "closeDialog": "Закрыць дыялог",
+    "addPhoneNumber": "Дадаць нумар тэлефону",
+    "removePhoneNumber": "Выдаліць нумар тэлефону"
   }
 }
