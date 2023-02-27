@@ -158,6 +158,14 @@ export class AutocompleteControlComponent
     }
   }
 
+  public override setDisabledState(isDisabled: boolean): void {
+    if (this.isPanelOpen) {
+      this.closePanel();
+    }
+
+    super.setDisabledState(isDisabled);
+  }
+
   public handleInputValueChange(value: string): void {
     if (!this.isPanelOpen) {
       this.openPanel();
