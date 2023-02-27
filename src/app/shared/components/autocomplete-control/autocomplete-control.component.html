@@ -32,6 +32,7 @@
     class="clear-button"
     *ngIf="isClearButtonShown; else locationIconSvg"
     matRipple
+    [title]="'helpTitles.clear' | translate"
     (click)="handleClearButtonClick()"
   >
     <ng-container *ngTemplateOutlet="crossIconSvg"></ng-container>
