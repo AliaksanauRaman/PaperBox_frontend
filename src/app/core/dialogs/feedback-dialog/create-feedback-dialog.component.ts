@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { DialogRef } from '@angular/cdk/dialog';
-import { tap } from 'rxjs';
+import { tap, BehaviorSubject } from 'rxjs';
 
 import { CreateFeedbackService } from '../../services/create-feedback.service';
 
@@ -11,6 +11,10 @@ type SendEventType = Readonly<{
   isTrusted: boolean;
 }>;
 
+const NORMAL_TITLE = 'dialogs.createFeedback.title';
+const LOADING_TITLE = 'dialogs.createFeedback.loading';
+const SUCCESS_TITLE = 'dialogs.createFeedback.success';
+
 @Component({
   selector: 'app-create-feedback-dialog',
   templateUrl: './create-feedback-dialog.component.html',
@@ -19,12 +23,19 @@ type SendEventType = Readonly<{
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreateFeedbackDialogComponent {
+  private readonly _dialogTitle$ = new BehaviorSubject<string>(NORMAL_TITLE);
+  public readonly dialogTitle$ = this._dialogTitle$.asObservable();
+
   public readonly createFeedbackState$ = this.createFeedbackService.state$.pipe(
     tap((state) => {
       if (state.inProgress) {
+        this._dialogTitle$.next(LOADING_TITLE);
         this.createFeedbackForm.disable();
-      } else {
+      } else if (state.error !== null) {
+        this._dialogTitle$.next(NORMAL_TITLE);
         this.createFeedbackForm.enable();
+      } else if (state.data !== null) {
+        this._dialogTitle$.next(SUCCESS_TITLE);
       }
     })
   );

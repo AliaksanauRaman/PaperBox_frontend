@@ -1,7 +1,11 @@
+<!-- TODO: !IMPORTANT Error state -->
 <div class="create-feedback-dialog">
   <ng-container *ngIf="createFeedbackState$ | async as state">
-    <h2 class="app-custom-dialog-title">
-      {{ "dialogs.createFeedback.title" | translate }}
+    <h2
+      class="app-custom-dialog-title"
+      *ngIf="dialogTitle$ | async as dialogTitle"
+    >
+      {{ dialogTitle | translate }}
     </h2>
 
     <div
@@ -100,13 +104,29 @@
       </div>
     </form>
 
-    <div class="app-custom-dialog-actions">
+    <app-success-create-feedback-view *ngIf="state.data !== null">
+    </app-success-create-feedback-view>
+
+    <div class="app-custom-dialog-actions" *ngIf="state.data === null">
+      <!-- TODO: Make primary button component -->
       <button
         class="app-custom-dialog-actions__item app-primary-button"
+        *ngIf="!state.inProgress"
         [disabled]="createFeedbackForm.invalid"
         (click)="handleSendButtonClick($event)"
       >
         <span>{{ "dialogs.createFeedback.sendButtonLabel" | translate }}</span>
+      </button>
+
+      <button
+        class="app-custom-dialog-actions__item app-primary-button"
+        *ngIf="state.inProgress"
+        [disabled]="true"
+      >
+        <app-spinner
+          class="app-primary-button__spinner"
+          color="white"
+        ></app-spinner>
       </button>
     </div>
   </ng-container>
