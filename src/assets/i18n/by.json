@@ -44,7 +44,7 @@
       "fullNameFieldLabel": "Поўнае імя",
       "sendButtonLabel": "Адправіць"
     },
-    "feedback": {
+    "createFeedback": {
       "title": "Зваротная сувязь",
       "fullNameFieldLabel": "Поўнае імя",
       "emailFieldLabel": "Электронная пошта",

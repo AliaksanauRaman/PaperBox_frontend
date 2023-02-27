@@ -1,7 +1,7 @@
 <div class="create-feedback-dialog">
   <ng-container *ngIf="createFeedbackState$ | async as state">
     <h2 class="app-custom-dialog-title">
-      {{ "dialogs.feedback.title" | translate }}
+      {{ "dialogs.createFeedback.title" | translate }}
     </h2>
 
     <div
@@ -23,7 +23,7 @@
       <div class="control-container control-container--full-name">
         <app-input-control
           class="control"
-          [label]="'dialogs.feedback.fullNameFieldLabel' | translate"
+          [label]="'dialogs.createFeedback.fullNameFieldLabel' | translate"
           [required]="true"
           formControlName="fullName"
         >
@@ -44,7 +44,7 @@
       <div class="control-container control-container--email">
         <app-input-control
           class="control"
-          [label]="'dialogs.feedback.emailFieldLabel' | translate"
+          [label]="'dialogs.createFeedback.emailFieldLabel' | translate"
           [required]="true"
           [maxCharactersAmount]="50"
           formControlName="email"
@@ -73,7 +73,7 @@
       <div class="control-container control-container--comment">
         <app-textarea-field-control
           class="control"
-          [label]="'dialogs.feedback.commentFieldLabel' | translate"
+          [label]="'dialogs.createFeedback.commentFieldLabel' | translate"
           [required]="true"
           [maxCharactersAmount]="299"
           formControlName="comment"
@@ -106,7 +106,7 @@
         [disabled]="createFeedbackForm.invalid"
         (click)="handleSendButtonClick($event)"
       >
-        <span>{{ "dialogs.feedback.sendButtonLabel" | translate }}</span>
+        <span>{{ "dialogs.createFeedback.sendButtonLabel" | translate }}</span>
       </button>
     </div>
   </ng-container>

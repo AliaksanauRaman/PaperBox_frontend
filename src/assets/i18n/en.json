@@ -44,7 +44,7 @@
       "fullNameFieldLabel": "Full name",
       "sendButtonLabel": "Send"
     },
-    "feedback": {
+    "createFeedback": {
       "title": "Feedback",
       "fullNameFieldLabel": "Full name",
       "emailFieldLabel": "Email",
