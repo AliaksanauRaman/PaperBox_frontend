@@ -14,6 +14,7 @@ import {
 } from '../../events';
 
 @Injectable()
+// TODO: Unused
 export class CoreEventsProcessorService extends DestroyEmitter {
   constructor(
     private readonly eventBusService: AppEventBusService,
