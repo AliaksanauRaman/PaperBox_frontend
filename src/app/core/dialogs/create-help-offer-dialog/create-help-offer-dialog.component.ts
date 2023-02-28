@@ -37,7 +37,7 @@ export class CreateHelpOfferDialogComponent extends DialogComponent {
       return;
     }
 
-    if (this.offerHelpForm.invalid) {
+    if (this.createHelpOfferForm.invalid) {
       return;
     }
 
@@ -52,17 +52,17 @@ export class CreateHelpOfferDialogComponent extends DialogComponent {
       tap((state) => {
         if (state.inProgress) {
           this._dialogTitle$.next(LOADING_TITLE);
-          this.offerHelpForm.disable();
+          this.createHelpOfferForm.disable();
         } else if (state.error !== null) {
           this._dialogTitle$.next(NORMAL_TITLE);
-          this.offerHelpForm.enable();
+          this.createHelpOfferForm.enable();
         } else if (state.data !== null) {
           this._dialogTitle$.next(SUCCESS_TITLE);
         }
       })
     );
 
-  protected readonly offerHelpForm = this.formBuilder.group({
+  protected readonly createHelpOfferForm = this.formBuilder.group({
     locations: [
       {
         from: '',
@@ -106,7 +106,7 @@ export class CreateHelpOfferDialogComponent extends DialogComponent {
 
   private createHelpOffer(): void {
     const { locations, date, comment, fullName, phones } =
-      this.offerHelpForm.getRawValue();
+      this.createHelpOfferForm.getRawValue();
 
     this.createHelpOfferRequestService.performRequest(
       new CreateHelpOfferDto(

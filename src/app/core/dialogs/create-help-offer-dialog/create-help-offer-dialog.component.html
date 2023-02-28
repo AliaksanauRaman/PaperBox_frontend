@@ -17,7 +17,11 @@
       ></app-plus-icon>
     </div>
 
-    <form class="form" *ngIf="state.data === null" [formGroup]="offerHelpForm">
+    <form
+      class="form"
+      *ngIf="state.data === null"
+      [formGroup]="createHelpOfferForm"
+    >
       <app-locations-control
         class="locations-control"
         formControlName="locations"
@@ -32,7 +36,9 @@
       >
       </app-date-control>
 
-      <ng-container *ngIf="offerHelpForm.controls.comment as commentControl">
+      <ng-container
+        *ngIf="createHelpOfferForm.controls.comment as commentControl"
+      >
         <app-textarea-field-control
           class="comment-control"
           [label]="'dialogs.offerHelp.commentFieldLabel' | translate"
@@ -68,7 +74,7 @@
 
             <div
               class="control-errors"
-              *ngIf="offerHelpForm.controls.fullName as fullNameControl"
+              *ngIf="createHelpOfferForm.controls.fullName as fullNameControl"
             >
               <ng-container *ngIf="fullNameControl.touched">
                 <div
@@ -103,7 +109,7 @@
       <button
         class="app-custom-dialog-actions__item app-primary-button"
         *ngIf="!state.inProgress && state.data === null"
-        [disabled]="offerHelpForm.invalid"
+        [disabled]="createHelpOfferForm.invalid"
         (click)="handleSendButtonClick($event)"
       >
         <span>{{ "dialogs.offerHelp.sendButtonLabel" | translate }}</span>
