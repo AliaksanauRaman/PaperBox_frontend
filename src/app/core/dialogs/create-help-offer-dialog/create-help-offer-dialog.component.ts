@@ -22,7 +22,7 @@ const SUCCESS_TITLE = 'dialogs.offerHelp.success';
   templateUrl: './create-help-offer-dialog.component.html',
   styleUrls: [
     './create-help-offer-dialog.component.scss',
-    '../find-and-offer-help-dialogs-common-styles.scss',
+    '../../../styles/shared/_create-help-offer-and-request-dialogs-styles.scss',
   ],
   providers: [CreateHelpOfferService],
   changeDetection: ChangeDetectionStrategy.OnPush,

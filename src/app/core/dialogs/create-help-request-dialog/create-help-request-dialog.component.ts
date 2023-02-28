@@ -9,7 +9,7 @@ import { DialogComponent } from '../../../shared/abstracts/dialog-component.clas
   templateUrl: './create-help-request-dialog.component.html',
   styleUrls: [
     './create-help-request-dialog.component.scss',
-    '../find-and-offer-help-dialogs-common-styles.scss',
+    '../../../styles/shared/_create-help-offer-and-request-dialogs-styles.scss',
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
@@ -48,6 +48,8 @@ export class CreateHelpRequestDialogComponent extends DialogComponent {
 
   public handleSendButtonClick(): void {
     // TODO: Temp
-    console.log(JSON.stringify(this.createHelpRequestForm.getRawValue(), null, 2));
+    console.log(
+      JSON.stringify(this.createHelpRequestForm.getRawValue(), null, 2)
+    );
   }
 }
