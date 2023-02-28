@@ -1,4 +1,4 @@
-<div class="find-help-dialog app-scrollbar">
+<div class="create-help-request-dialog app-scrollbar">
   <h2 class="title app-custom-dialog-title">
     {{ "dialogs.findHelp.title" | translate }}
   </h2>
@@ -11,7 +11,7 @@
     <app-plus-icon class="app-custom-dialog-close-button-icon"></app-plus-icon>
   </div>
 
-  <form class="form" [formGroup]="findHelpForm">
+  <form class="form" [formGroup]="createHelpRequestForm">
     <app-locations-control
       class="locations-control"
       formControlName="locations"
@@ -26,7 +26,9 @@
     >
     </app-date-control>
 
-    <ng-container *ngIf="findHelpForm.controls.comment as commentControl">
+    <ng-container
+      *ngIf="createHelpRequestForm.controls.comment as commentControl"
+    >
       <app-textarea-field-control
         class="comment-control"
         [label]="'dialogs.findHelp.commentFieldLabel' | translate"
@@ -64,7 +66,7 @@
 
           <div
             class="control-errors"
-            *ngIf="findHelpForm.controls.fullName as fullNameControl"
+            *ngIf="createHelpRequestForm.controls.fullName as fullNameControl"
           >
             <ng-container *ngIf="fullNameControl.touched">
               <div
@@ -90,7 +92,7 @@
   <div class="app-custom-dialog-actions">
     <button
       class="app-custom-dialog-actions__item app-primary-button"
-      [disabled]="findHelpForm.invalid"
+      [disabled]="createHelpRequestForm.invalid"
       (click)="handleSendButtonClick()"
     >
       <span>{{ "dialogs.findHelp.sendButtonLabel" | translate }}</span>

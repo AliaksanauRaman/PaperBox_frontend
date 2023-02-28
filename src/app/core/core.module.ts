@@ -34,7 +34,7 @@ import { SuccessCreateFeedbackViewComponent } from './components/success-create-
 import { SuccessCreateHelpOfferSectionComponent } from './sections/success-create-help-offer-section/success-create-help-offer-section.component';
 import { CreateFeedbackDialogComponent } from './dialogs/create-feedback-dialog/create-feedback-dialog.component';
 import { CreateHelpOfferDialogComponent } from './dialogs/create-help-offer-dialog/create-help-offer-dialog.component';
-import { FindHelpDialogComponent } from './dialogs/find-help-dialog/find-help-dialog.component';
+import { CreateHelpRequestDialogComponent } from './dialogs/create-help-request-dialog/create-help-request-dialog.component';
 
 import {
   LOCAL_STORAGE,
@@ -83,7 +83,7 @@ const CORE_MODULE_DECLARATIONS = [
   SuccessCreateHelpOfferSectionComponent,
   CreateFeedbackDialogComponent,
   CreateHelpOfferDialogComponent,
-  FindHelpDialogComponent,
+  CreateHelpRequestDialogComponent,
 ];
 
 @NgModule({

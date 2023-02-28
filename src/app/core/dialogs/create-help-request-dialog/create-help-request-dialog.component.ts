@@ -5,16 +5,16 @@ import { DialogRef } from '@angular/cdk/dialog';
 import { DialogComponent } from '../../../shared/abstracts/dialog-component.class';
 
 @Component({
-  selector: 'app-find-help-dialog',
-  templateUrl: './find-help-dialog.component.html',
+  selector: 'app-create-help-request-dialog',
+  templateUrl: './create-help-request-dialog.component.html',
   styleUrls: [
-    './find-help-dialog.component.scss',
+    './create-help-request-dialog.component.scss',
     '../find-and-offer-help-dialogs-common-styles.scss',
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FindHelpDialogComponent extends DialogComponent {
-  protected readonly findHelpForm = this.formBuilder.group({
+export class CreateHelpRequestDialogComponent extends DialogComponent {
+  protected readonly createHelpRequestForm = this.formBuilder.group({
     locations: [
       {
         from: '',
@@ -48,6 +48,6 @@ export class FindHelpDialogComponent extends DialogComponent {
 
   public handleSendButtonClick(): void {
     // TODO: Temp
-    console.log(JSON.stringify(this.findHelpForm.getRawValue(), null, 2));
+    console.log(JSON.stringify(this.createHelpRequestForm.getRawValue(), null, 2));
   }
 }
