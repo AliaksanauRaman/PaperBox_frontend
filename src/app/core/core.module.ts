@@ -33,7 +33,7 @@ import { LocationsControlComponent } from './components/locations-control/locati
 import { SuccessCreateFeedbackViewComponent } from './components/success-create-feedback-view/success-create-feedback-view.component';
 import { SuccessCreateHelpOfferSectionComponent } from './sections/success-create-help-offer-section/success-create-help-offer-section.component';
 import { CreateFeedbackDialogComponent } from './dialogs/feedback-dialog/create-feedback-dialog.component';
-import { OfferHelpDialogComponent } from './dialogs/offer-help-dialog/offer-help-dialog.component';
+import { CreateHelpOfferDialogComponent } from './dialogs/create-help-offer-dialog/create-help-offer-dialog.component';
 import { FindHelpDialogComponent } from './dialogs/find-help-dialog/find-help-dialog.component';
 
 import {
@@ -82,7 +82,7 @@ const CORE_MODULE_DECLARATIONS = [
   SuccessCreateFeedbackViewComponent,
   SuccessCreateHelpOfferSectionComponent,
   CreateFeedbackDialogComponent,
-  OfferHelpDialogComponent,
+  CreateHelpOfferDialogComponent,
   FindHelpDialogComponent,
 ];
 

@@ -18,16 +18,16 @@ const LOADING_TITLE = 'dialogs.offerHelp.loading';
 const SUCCESS_TITLE = 'dialogs.offerHelp.success';
 
 @Component({
-  selector: 'app-offer-help-dialog',
-  templateUrl: './offer-help-dialog.component.html',
+  selector: 'app-create-help-offer-dialog',
+  templateUrl: './create-help-offer-dialog.component.html',
   styleUrls: [
-    './offer-help-dialog.component.scss',
+    './create-help-offer-dialog.component.scss',
     '../find-and-offer-help-dialogs-common-styles.scss',
   ],
   providers: [CreateHelpOfferService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class OfferHelpDialogComponent extends DialogComponent {
+export class CreateHelpOfferDialogComponent extends DialogComponent {
   @HostListener('document:keydown.enter', ['$event'])
   private handleEnterPress(event: KeyboardEvent): void {
     event.stopImmediatePropagation();
@@ -37,7 +37,7 @@ export class OfferHelpDialogComponent extends DialogComponent {
       return;
     }
 
-    if (!this.offerHelpForm.valid) {
+    if (this.offerHelpForm.invalid) {
       return;
     }
 

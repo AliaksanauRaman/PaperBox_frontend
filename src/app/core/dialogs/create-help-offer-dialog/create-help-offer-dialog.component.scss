@@ -7,7 +7,7 @@
   min-height: 0;
 }
 
-.offer-help-dialog {
+.create-help-offer-dialog {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -15,7 +15,7 @@
 }
 
 @media (min-width: $minLaptopScreenWidth) {
-  .offer-help-dialog {
+  .create-help-offer-dialog {
     align-items: center;
   }
 }
