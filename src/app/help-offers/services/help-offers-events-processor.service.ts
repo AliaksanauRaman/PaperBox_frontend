@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { tap, catchError, of, takeUntil, merge } from 'rxjs';
 
-import { HelpOffersHttpService } from './help-offers-http.service';
+import { HelpOffersHttpService } from '../../core/services/help-offers-http.service';
 
 import { DestroyEmitter } from '../../shared/abstracts/destroy-emitter.class';
 import { AppEventBusService, AppEventName } from '../../events';

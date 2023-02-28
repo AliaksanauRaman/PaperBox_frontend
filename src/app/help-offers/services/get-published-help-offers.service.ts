@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { HelpOffersHttpService } from './help-offers-http.service';
+import { HelpOffersHttpService } from '../../core/services/help-offers-http.service';
 
 import { HttpRequestWithoutParamsBaseService } from '../../shared/abstracts/http-request-without-params-base-service.class';
 import { PublishedHelpOfferListType } from '../../shared/types/published-help-offer-list.type';
