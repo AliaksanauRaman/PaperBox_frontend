@@ -32,7 +32,7 @@ import { DynamicPhoneListControlComponent } from './components/dynamic-phone-lis
 import { LocationsControlComponent } from './components/locations-control/locations-control.component';
 import { SuccessCreateFeedbackViewComponent } from './components/success-create-feedback-view/success-create-feedback-view.component';
 import { SuccessCreateHelpOfferSectionComponent } from './sections/success-create-help-offer-section/success-create-help-offer-section.component';
-import { CreateFeedbackDialogComponent } from './dialogs/feedback-dialog/create-feedback-dialog.component';
+import { CreateFeedbackDialogComponent } from './dialogs/create-feedback-dialog/create-feedback-dialog.component';
 import { CreateHelpOfferDialogComponent } from './dialogs/create-help-offer-dialog/create-help-offer-dialog.component';
 import { FindHelpDialogComponent } from './dialogs/find-help-dialog/find-help-dialog.component';
 

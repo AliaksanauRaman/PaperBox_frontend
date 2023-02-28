@@ -4,7 +4,7 @@ import { Dialog } from '@angular/cdk/dialog';
 import { TypeAssertionService } from './type-assertion.service';
 import { ValueAssertionService } from './value-assertion.service';
 
-import { CreateFeedbackDialogComponent } from '../dialogs/feedback-dialog/create-feedback-dialog.component';
+import { CreateFeedbackDialogComponent } from '../dialogs/create-feedback-dialog/create-feedback-dialog.component';
 import {
   CreateFeedbackFormValueType,
   ValidCreateFeedbackFormValueType,
