@@ -6,7 +6,7 @@ import { CreateHelpRequestDialogComponent } from '../dialogs/create-help-request
 @Injectable({
   providedIn: 'root',
 })
-export class FindHelpDialogService {
+export class CreateHelpRequestDialogService {
   constructor(private readonly dialog: Dialog) {}
 
   public openDialog(): void {

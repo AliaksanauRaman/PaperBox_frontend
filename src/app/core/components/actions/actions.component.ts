@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { ActiveViewService } from '../../services/active-view.service';
 import { CreateHelpOfferDialogService } from '../../services/create-help-offer-dialog.service';
-import { FindHelpDialogService } from '../../services/find-help-dialog.service';
+import { CreateHelpRequestDialogService } from '../../services/create-help-request-dialog.service';
 
 import { ViewName } from '../../../shared/enums/view-name.enum';
 
@@ -19,7 +19,7 @@ export class ActionsComponent {
   constructor(
     private readonly activeViewService: ActiveViewService,
     private readonly createHelpOfferDialogService: CreateHelpOfferDialogService,
-    private readonly findHelpDialogService: FindHelpDialogService
+    private readonly createHelpRequestDialogService: CreateHelpRequestDialogService
   ) {}
 
   public handleOfferHelpButtonClick(): void {
@@ -27,6 +27,6 @@ export class ActionsComponent {
   }
 
   public handleFindHelpButtonClick(): void {
-    this.findHelpDialogService.openDialog();
+    this.createHelpRequestDialogService.openDialog();
   }
 }
