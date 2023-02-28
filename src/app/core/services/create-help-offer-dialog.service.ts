@@ -6,7 +6,7 @@ import { OfferHelpDialogComponent } from '../dialogs/offer-help-dialog/offer-hel
 @Injectable({
   providedIn: 'root',
 })
-export class OfferHelpDialogService {
+export class CreateHelpOfferDialogService {
   constructor(private readonly dialog: Dialog) {}
 
   public openDialog(): void {
