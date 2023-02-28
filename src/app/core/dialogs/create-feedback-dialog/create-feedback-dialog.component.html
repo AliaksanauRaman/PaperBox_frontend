@@ -22,6 +22,7 @@
       class="form"
       *ngIf="state.data === null"
       [formGroup]="createFeedbackForm"
+      (ngSubmit)="handleCreateFeedbackSubmit($event)"
     >
       <!-- TODO: Make reusable components: control-container, control-errors, etc. -->
       <div class="control-container control-container--full-name">
@@ -102,32 +103,35 @@
           </ng-container>
         </div>
       </div>
+
+      <div class="app-custom-dialog-actions">
+        <!-- TODO: Make primary button component -->
+        <button
+          class="app-custom-dialog-actions__item app-primary-button"
+          *ngIf="!state.inProgress"
+          [disabled]="createFeedbackForm.invalid"
+          type="submit"
+        >
+          <span>{{
+            "dialogs.createFeedback.sendButtonLabel" | translate
+          }}</span>
+        </button>
+
+        <button
+          class="app-custom-dialog-actions__item app-primary-button"
+          *ngIf="state.inProgress"
+          [disabled]="true"
+          type="button"
+        >
+          <app-spinner
+            class="app-primary-button__spinner"
+            color="white"
+          ></app-spinner>
+        </button>
+      </div>
     </form>
 
     <app-success-create-feedback-view *ngIf="state.data !== null">
     </app-success-create-feedback-view>
-
-    <div class="app-custom-dialog-actions" *ngIf="state.data === null">
-      <!-- TODO: Make primary button component -->
-      <button
-        class="app-custom-dialog-actions__item app-primary-button"
-        *ngIf="!state.inProgress"
-        [disabled]="createFeedbackForm.invalid"
-        (click)="handleSendButtonClick($event)"
-      >
-        <span>{{ "dialogs.createFeedback.sendButtonLabel" | translate }}</span>
-      </button>
-
-      <button
-        class="app-custom-dialog-actions__item app-primary-button"
-        *ngIf="state.inProgress"
-        [disabled]="true"
-      >
-        <app-spinner
-          class="app-primary-button__spinner"
-          color="white"
-        ></app-spinner>
-      </button>
-    </div>
   </ng-container>
 </div>

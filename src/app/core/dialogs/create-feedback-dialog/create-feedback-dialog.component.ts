@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  OnDestroy,
-  HostListener,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { DialogRef } from '@angular/cdk/dialog';
 import { tap, BehaviorSubject } from 'rxjs';
@@ -26,22 +21,6 @@ const SUCCESS_TITLE = 'dialogs.createFeedback.success';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreateFeedbackDialogComponent implements OnDestroy {
-  @HostListener('document:keydown.enter', ['$event'])
-  private handleEnterPress(event: KeyboardEvent): void {
-    event.stopImmediatePropagation();
-
-    if (!event.isTrusted) {
-      console.log('Nice try');
-      return;
-    }
-
-    if (this.createFeedbackForm.invalid) {
-      return;
-    }
-
-    this.createFeedback();
-  }
-
   private readonly _dialogTitle$ = new BehaviorSubject<string>(NORMAL_TITLE);
   public readonly dialogTitle$ = this._dialogTitle$.asObservable();
 
@@ -80,9 +59,13 @@ export class CreateFeedbackDialogComponent implements OnDestroy {
     this.dialogRef.close();
   }
 
-  public handleSendButtonClick(event: MouseEvent): void {
+  public handleCreateFeedbackSubmit(event: SubmitEvent): void {
     if (!event.isTrusted) {
       console.log('Nice try');
+      return;
+    }
+
+    if (this.createFeedbackForm.invalid) {
       return;
     }
 
