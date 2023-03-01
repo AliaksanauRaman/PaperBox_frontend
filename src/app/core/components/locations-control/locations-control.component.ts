@@ -30,11 +30,7 @@ import {
 import { CustomControl } from '../../../shared/abstracts/custom-control.class';
 import { DataSource } from '../../../shared/classes/data-source.class';
 import { destructureLocationValue } from '../../../shared/utils/destructure-location-value.util';
-
-type LocationsControlValue = Readonly<{
-  from: string;
-  to: string;
-}>;
+import { LocationsControlValueType } from '../../../shared/types/locations-control-value.type';
 
 @Component({
   selector: 'app-locations-control',
@@ -60,7 +56,7 @@ type LocationsControlValue = Readonly<{
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LocationsControlComponent
-  extends CustomControl<LocationsControlValue>
+  extends CustomControl<LocationsControlValueType>
   implements OnInit, Validator
 {
   protected readonly locationsForm = new FormGroup({
@@ -124,14 +120,14 @@ export class LocationsControlComponent
       .subscribe();
   }
 
-  public writeValue(value: LocationsControlValue): void {
+  public writeValue(value: LocationsControlValueType): void {
     // TODO: Assert value type
 
     this.locationsForm.setValue(value);
   }
 
   public validate(thisControl: AbstractControl): ValidationErrors | null {
-    const thisControlValue: LocationsControlValue | null =
+    const thisControlValue: LocationsControlValueType | null =
       thisControl.getRawValue();
 
     if (
