@@ -29,6 +29,7 @@
         <app-input-control
           class="control"
           [label]="'dialogs.createFeedback.fullNameFieldLabel' | translate"
+          [placeholder]="'placeholders.fullNameField' | translate"
           [required]="true"
           formControlName="fullName"
         >
@@ -50,6 +51,7 @@
         <app-input-control
           class="control"
           [label]="'dialogs.createFeedback.emailFieldLabel' | translate"
+          [placeholder]="'placeholders.emailField' | translate"
           [required]="true"
           [maxCharactersAmount]="50"
           formControlName="email"
@@ -79,6 +81,7 @@
         <app-textarea-field-control
           class="control"
           [label]="'dialogs.createFeedback.commentFieldLabel' | translate"
+          [placeholder]="'placeholders.commentField' | translate"
           [required]="true"
           [maxCharactersAmount]="299"
           formControlName="comment"
