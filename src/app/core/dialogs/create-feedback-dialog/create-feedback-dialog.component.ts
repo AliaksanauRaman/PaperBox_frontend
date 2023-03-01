@@ -1,13 +1,13 @@
 import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { DialogRef } from '@angular/cdk/dialog';
 import { tap, BehaviorSubject } from 'rxjs';
 
 import { CreateFeedbackService } from '../../services/create-feedback.service';
-import { CreateFeedbackDialogService } from '../../services/create-feedback-dialog.service';
 
 import { CustomValidators } from '../../../shared/classes/custom-validators.class';
 import { CreateFeedbackDto } from '../../../shared/dtos/create-feedback.dto';
+import { ValidCreateFeedbackFormValueType } from '../../../shared/types/create-feedback-form-value.type';
 
 const NORMAL_TITLE = 'dialogs.createFeedback.title';
 const LOADING_TITLE = 'dialogs.createFeedback.loading';
@@ -46,9 +46,8 @@ export class CreateFeedbackDialogComponent implements OnDestroy {
 
   constructor(
     private readonly dialogRef: DialogRef<void>,
-    private readonly formBuilder: FormBuilder,
-    private readonly createFeedbackService: CreateFeedbackService,
-    private readonly createFeedbackDialogService: CreateFeedbackDialogService
+    private readonly formBuilder: NonNullableFormBuilder,
+    private readonly createFeedbackService: CreateFeedbackService
   ) {}
 
   public ngOnDestroy(): void {
@@ -69,22 +68,16 @@ export class CreateFeedbackDialogComponent implements OnDestroy {
       return;
     }
 
-    this.createFeedback();
+    this.createFeedback(this.createFeedbackForm.getRawValue());
   }
 
-  private createFeedback(): void {
-    const formValue = this.createFeedbackForm.getRawValue();
-
-    if (!this.createFeedbackDialogService.isFormValueValid(formValue)) {
-      throw new Error('Create feedback form value is invalid!');
-    }
+  private createFeedback(
+    validFormValue: ValidCreateFeedbackFormValueType
+  ): void {
+    const { fullName, email, comment } = validFormValue;
 
     this.createFeedbackService.performRequest(
-      new CreateFeedbackDto(
-        formValue.fullName,
-        formValue.email,
-        formValue.comment
-      )
+      new CreateFeedbackDto(fullName, email, comment)
     );
   }
 }
