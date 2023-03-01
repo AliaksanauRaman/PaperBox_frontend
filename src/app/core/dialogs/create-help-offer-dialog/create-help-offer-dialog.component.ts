@@ -1,8 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  HostListener,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { DialogRef } from '@angular/cdk/dialog';
 import { BehaviorSubject, tap } from 'rxjs';
@@ -10,8 +6,9 @@ import { BehaviorSubject, tap } from 'rxjs';
 import { CreateHelpOfferService } from '../../services/create-help-offer.service';
 
 import { DialogComponent } from '../../../shared/abstracts/dialog-component.class';
-
 import { CreateHelpOfferDto } from '../../../shared/dtos/create-help-offer.dto';
+import { DateControlValueType } from '../../../shared/types/date-control-value.type';
+import { ValidCreateHelpOfferFormValueType } from '../../../shared/types/create-help-offer-form-value.type';
 
 const NORMAL_TITLE = 'dialogs.offerHelp.title';
 const LOADING_TITLE = 'dialogs.offerHelp.loading';
@@ -28,27 +25,11 @@ const SUCCESS_TITLE = 'dialogs.offerHelp.success';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreateHelpOfferDialogComponent extends DialogComponent {
-  @HostListener('document:keydown.enter', ['$event'])
-  private handleEnterPress(event: KeyboardEvent): void {
-    event.stopImmediatePropagation();
-
-    if (!event.isTrusted) {
-      console.log('Nice try');
-      return;
-    }
-
-    if (this.createHelpOfferForm.invalid) {
-      return;
-    }
-
-    this.createHelpOffer();
-  }
-
   private readonly _dialogTitle$ = new BehaviorSubject<string>(NORMAL_TITLE);
   public readonly dialogTitle$ = this._dialogTitle$.asObservable();
 
-  public readonly createHelpOfferRequestState$ =
-    this.createHelpOfferRequestService.state$.pipe(
+  public readonly createHelpOfferState$ =
+    this.createHelpOfferService.state$.pipe(
       tap((state) => {
         if (state.inProgress) {
           this._dialogTitle$.next(LOADING_TITLE);
@@ -73,7 +54,7 @@ export class CreateHelpOfferDialogComponent extends DialogComponent {
       {
         start: null,
         end: null,
-      },
+      } as DateControlValueType,
     ],
     comment: [''],
     fullName: ['', [Validators.required]],
@@ -90,30 +71,38 @@ export class CreateHelpOfferDialogComponent extends DialogComponent {
   constructor(
     dialogRef: DialogRef<void>,
     private readonly formBuilder: FormBuilder,
-    private readonly createHelpOfferRequestService: CreateHelpOfferService
+    private readonly createHelpOfferService: CreateHelpOfferService
   ) {
     super(dialogRef);
   }
 
-  public handleSendButtonClick(event: MouseEvent): void {
+  public handleCreateHelpOfferSubmit(event: SubmitEvent): void {
     if (!event.isTrusted) {
       console.log('Nice try');
       return;
     }
 
-    this.createHelpOffer();
+    if (this.createHelpOfferForm.invalid) {
+      return;
+    }
+
+    this.createHelpOffer(
+      // We can type cas here ONLY because the form is valid
+      this.createHelpOfferForm.getRawValue() as ValidCreateHelpOfferFormValueType
+    );
   }
 
-  private createHelpOffer(): void {
-    const { locations, date, comment, fullName, phones } =
-      this.createHelpOfferForm.getRawValue();
+  private createHelpOffer(
+    validFormValue: ValidCreateHelpOfferFormValueType
+  ): void {
+    const { locations, date, comment, fullName, phones } = validFormValue;
 
-    this.createHelpOfferRequestService.performRequest(
+    this.createHelpOfferService.performRequest(
       new CreateHelpOfferDto(
-        locations!.from,
-        locations!.to,
-        date!.start,
-        date!.end,
+        locations.from,
+        locations.to,
+        date.start,
+        date.end,
         comment,
         fullName,
         phones

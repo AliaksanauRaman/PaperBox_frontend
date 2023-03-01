@@ -1,5 +1,5 @@
 <div class="create-help-offer-dialog app-scrollbar">
-  <ng-container *ngIf="createHelpOfferRequestState$ | async as state">
+  <ng-container *ngIf="createHelpOfferState$ | async as state">
     <h2
       class="title app-custom-dialog-title"
       *ngIf="dialogTitle$ | async as dialogTitle"
@@ -21,6 +21,7 @@
       class="form"
       *ngIf="state.data === null"
       [formGroup]="createHelpOfferForm"
+      (ngSubmit)="handleCreateHelpOfferSubmit($event)"
     >
       <app-locations-control
         class="locations-control"
@@ -99,33 +100,34 @@
           <app-man-with-mail-image></app-man-with-mail-image>
         </div>
       </div>
+
+      <div class="app-custom-dialog-actions">
+        <button
+          class="app-custom-dialog-actions__item app-primary-button"
+          *ngIf="!state.inProgress && state.data === null"
+          [disabled]="createHelpOfferForm.invalid"
+          type="submit"
+        >
+          <span>{{ "dialogs.offerHelp.sendButtonLabel" | translate }}</span>
+        </button>
+
+        <button
+          class="app-custom-dialog-actions__item app-primary-button"
+          *ngIf="state.inProgress"
+          [disabled]="true"
+          type="button"
+        >
+          <app-spinner
+            class="app-primary-button__spinner"
+            color="white"
+          ></app-spinner>
+        </button>
+      </div>
     </form>
 
     <app-success-create-help-offer-section
       *ngIf="state.data !== null"
     ></app-success-create-help-offer-section>
-
-    <div class="app-custom-dialog-actions" *ngIf="state.data === null">
-      <button
-        class="app-custom-dialog-actions__item app-primary-button"
-        *ngIf="!state.inProgress && state.data === null"
-        [disabled]="createHelpOfferForm.invalid"
-        (click)="handleSendButtonClick($event)"
-      >
-        <span>{{ "dialogs.offerHelp.sendButtonLabel" | translate }}</span>
-      </button>
-
-      <button
-        class="app-custom-dialog-actions__item app-primary-button"
-        *ngIf="state.inProgress"
-        [disabled]="true"
-      >
-        <app-spinner
-          class="app-primary-button__spinner"
-          color="white"
-        ></app-spinner>
-      </button>
-    </div>
 
     <!-- TODO: !IMPORTANT Finish this -->
     <div class="app-custom-dialog-server-error" *ngIf="state.error !== null">
