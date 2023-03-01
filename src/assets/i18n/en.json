@@ -149,6 +149,7 @@
     "whereToField": "Warsaw, Poland",
     "fullNameField": "John Smith",
     "commentField": "Your comment text...",
+    "emailField": "john.smith@gmail.com",
     "emptyList": "The list is empty."
   },
   "warnings": {
