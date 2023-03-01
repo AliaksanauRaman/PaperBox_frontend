@@ -5,9 +5,11 @@ import { tap, BehaviorSubject } from 'rxjs';
 
 import { CreateFeedbackService } from '../../services/create-feedback.service';
 
+import { DialogComponent } from '../../../shared/abstracts/dialog-component.class';
 import { CustomValidators } from '../../../shared/classes/custom-validators.class';
 import { CreateFeedbackDto } from '../../../shared/dtos/create-feedback.dto';
 import { ValidCreateFeedbackFormValueType } from '../../../shared/types/create-feedback-form-value.type';
+import { ShortSubmitEventType } from '../../../shared/types/short-submit-event.type';
 
 const NORMAL_TITLE = 'dialogs.createFeedback.title';
 const LOADING_TITLE = 'dialogs.createFeedback.loading';
@@ -20,7 +22,10 @@ const SUCCESS_TITLE = 'dialogs.createFeedback.success';
   providers: [CreateFeedbackService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CreateFeedbackDialogComponent implements OnDestroy {
+export class CreateFeedbackDialogComponent
+  extends DialogComponent
+  implements OnDestroy
+{
   private readonly _dialogTitle$ = new BehaviorSubject<string>(NORMAL_TITLE);
   public readonly dialogTitle$ = this._dialogTitle$.asObservable();
 
@@ -45,20 +50,18 @@ export class CreateFeedbackDialogComponent implements OnDestroy {
   });
 
   constructor(
-    private readonly dialogRef: DialogRef<void>,
     private readonly formBuilder: NonNullableFormBuilder,
-    private readonly createFeedbackService: CreateFeedbackService
-  ) {}
+    private readonly createFeedbackService: CreateFeedbackService,
+    dialogRef: DialogRef<void>
+  ) {
+    super(dialogRef);
+  }
 
   public ngOnDestroy(): void {
     this.createFeedbackService.destroyRequest();
   }
 
-  public closeDialog(): void {
-    this.dialogRef.close();
-  }
-
-  public handleCreateFeedbackSubmit(event: SubmitEvent): void {
+  public handleCreateFeedbackSubmit(event: ShortSubmitEventType): void {
     if (!event.isTrusted) {
       console.log('Nice try');
       return;
