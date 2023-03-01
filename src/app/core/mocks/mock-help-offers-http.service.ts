@@ -1,9 +1,9 @@
 import { Observable, of, delay } from 'rxjs';
 
+import { HelpOffersHttpServiceInterface } from '../interfaces/help-offers-http-service.interface';
 import { SuccessCreateHelpOfferResponseDataType } from '../../shared/types/success-create-help-offer-response-data.type';
 import { CreateHelpOfferDto } from '../../shared/dtos/create-help-offer.dto';
 import { PublishedHelpOfferListType } from '../../shared/types/published-help-offer-list.type';
-import { HelpOffersHttpServiceInterface } from '../interfaces/help-offers-http-service.interface';
 
 const DELAY_IN_MS = 1000;
 

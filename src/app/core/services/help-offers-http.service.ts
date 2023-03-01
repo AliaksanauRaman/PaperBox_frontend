@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { MockHelpOffersHttpService } from '../mocks/mock-help-offers-http.service';
-import { HelpOffersHttpServiceInterface } from '../interfaces/help-offers-http-service.interface';
 
+import { HelpOffersHttpServiceInterface } from '../interfaces/help-offers-http-service.interface';
 import { API_URL } from '../../shared/dependencies/api-url/injection-token';
 import { PublishedHelpOfferListType } from '../../shared/types/published-help-offer-list.type';
 import { SuccessCreateHelpOfferResponseDataType } from '../../shared/types/success-create-help-offer-response-data.type';
