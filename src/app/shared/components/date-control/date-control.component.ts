@@ -23,11 +23,7 @@ import { UniqueIdGeneratorService } from '../../../services/unique-id-generator.
 import { AppLocaleService } from '../../../core/services/app-locale.service';
 
 import { CustomControl } from '../../abstracts/custom-control.class';
-
-type DateControlValue = Readonly<{
-  start: Date | null;
-  end: Date | null;
-}>;
+import { DateControlValueType } from '../../types/date-control-value.type';
 
 @Component({
   selector: 'app-date-control',
@@ -49,7 +45,7 @@ type DateControlValue = Readonly<{
 })
 // TODO: Refactor this all!
 export class DateControlComponent
-  extends CustomControl<DateControlValue>
+  extends CustomControl<DateControlValueType>
   implements OnInit, Validator
 {
   @Input()
@@ -83,11 +79,7 @@ export class DateControlComponent
 
       const formattedStartDate = this.formatDate(start);
 
-      if (
-        end === null ||
-        end === undefined ||
-        this.areDatesEqual(start, end)
-      ) {
+      if (end === null || end === undefined || this.areDatesEqual(start, end)) {
         return formattedStartDate;
       }
 
@@ -132,14 +124,15 @@ export class DateControlComponent
       .subscribe();
   }
 
-  public writeValue(value: DateControlValue): void {
+  public writeValue(value: DateControlValueType): void {
     // TODO: Assert value type
     // TODO: !IMPORTANT Fix the issue with initial value set!
     this.dateForm.setValue(value);
   }
 
   public validate(thisControl: AbstractControl): ValidationErrors | null {
-    const thisControlValue: DateControlValue | null = thisControl.getRawValue();
+    const thisControlValue: DateControlValueType | null =
+      thisControl.getRawValue();
 
     if (
       thisControlValue === null ||
