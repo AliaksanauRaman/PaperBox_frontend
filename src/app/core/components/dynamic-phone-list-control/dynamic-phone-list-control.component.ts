@@ -99,6 +99,7 @@ export class DynamicPhoneListControlComponent
       return { required: true };
     }
 
+    // TODO: Use RegExp.test instead
     if (
       filledInPhones.every((phone) => !phone.number.match(phoneNumberRegExp))
     ) {
