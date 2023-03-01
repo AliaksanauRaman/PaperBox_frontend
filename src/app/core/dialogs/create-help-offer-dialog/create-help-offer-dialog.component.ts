@@ -9,10 +9,12 @@ import { DialogComponent } from '../../../shared/abstracts/dialog-component.clas
 import { CreateHelpOfferDto } from '../../../shared/dtos/create-help-offer.dto';
 import { DateControlValueType } from '../../../shared/types/date-control-value.type';
 import { ValidCreateHelpOfferFormValueType } from '../../../shared/types/create-help-offer-form-value.type';
-
-const NORMAL_TITLE = 'dialogs.offerHelp.title';
-const LOADING_TITLE = 'dialogs.offerHelp.loading';
-const SUCCESS_TITLE = 'dialogs.offerHelp.success';
+import { ShortSubmitEventType } from '../../../shared/types/short-submit-event.type';
+import {
+  NORMAL_TITLE,
+  LOADING_TITLE,
+  SUCCESS_TITLE,
+} from './create-help-offer-dialog.config';
 
 @Component({
   selector: 'app-create-help-offer-dialog',
@@ -69,14 +71,14 @@ export class CreateHelpOfferDialogComponent extends DialogComponent {
   });
 
   constructor(
-    dialogRef: DialogRef<void>,
     private readonly formBuilder: FormBuilder,
-    private readonly createHelpOfferService: CreateHelpOfferService
+    private readonly createHelpOfferService: CreateHelpOfferService,
+    dialogRef: DialogRef<void>
   ) {
     super(dialogRef);
   }
 
-  public handleCreateHelpOfferSubmit(event: SubmitEvent): void {
+  public handleCreateHelpOfferSubmit(event: ShortSubmitEventType): void {
     if (!event.isTrusted) {
       console.log('Nice try');
       return;
