@@ -1,6 +1,9 @@
-import { Inject, Injectable } from '@angular/core';
+import { Inject, Injectable, isDevMode } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+
+import { MockHelpOffersHttpService } from '../mocks/mock-help-offers-http.service';
+import { HelpOffersHttpServiceInterface } from '../interfaces/help-offers-http-service.interface';
 
 import { API_URL } from '../../shared/dependencies/api-url/injection-token';
 import { PublishedHelpOfferListType } from '../../shared/types/published-help-offer-list.type';
@@ -9,8 +12,10 @@ import { CreateHelpOfferDto } from '../../shared/dtos/create-help-offer.dto';
 
 @Injectable({
   providedIn: 'root',
+  useFactory: helpOffersHttpServiceFactory,
+  deps: [API_URL, HttpClient],
 })
-export class HelpOffersHttpService {
+export class HelpOffersHttpService implements HelpOffersHttpServiceInterface {
   private readonly helpOffersApiUrl = `${this.apiUrl}/api/help-offers`;
 
   constructor(
@@ -33,4 +38,15 @@ export class HelpOffersHttpService {
       createHelpOfferDto.toRequestBody()
     );
   }
+}
+
+function helpOffersHttpServiceFactory(
+  apiUrl: string,
+  httpClient: HttpClient
+): HelpOffersHttpServiceInterface {
+  if (isDevMode()) {
+    return new MockHelpOffersHttpService();
+  }
+
+  return new HelpOffersHttpService(apiUrl, httpClient);
 }
