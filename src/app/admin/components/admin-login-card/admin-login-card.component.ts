@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { RoutingService } from '../../../services/routing.service';
+import { RoutingService } from '../../../core/services/routing.service';
 
 @Component({
   selector: 'app-admin-login-card',
