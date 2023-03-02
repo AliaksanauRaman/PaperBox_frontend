@@ -11,8 +11,10 @@ import { UniqueIdGeneratorService } from '../../../core/services/unique-id-gener
 
 import { CustomControl } from '../../abstracts/custom-control.class';
 
+type InputType = 'text' | 'email';
 type InputMode = 'text' | 'email';
 
+const DEFAULT_INPUT_TYPE: InputType = 'text';
 const DEFAULT_INPUT_MODE: InputMode = 'text';
 const DEFAULT_MAX_CHARACTERS_AMOUNT = 35;
 
@@ -36,6 +38,11 @@ export class InputControlComponent extends CustomControl<string> {
   }
 
   @Input()
+  public set type(value: InputType) {
+    this._inputType = value;
+  }
+
+  @Input()
   public set mode(value: InputMode) {
     this._inputMode = value;
   }
@@ -55,6 +62,7 @@ export class InputControlComponent extends CustomControl<string> {
     this.controlMaxCharactersAmount = value;
   }
 
+  public _inputType: InputType = DEFAULT_INPUT_TYPE;
   public _inputMode: InputMode = DEFAULT_INPUT_MODE;
   protected controlValue = '';
   protected controlMaxCharactersAmount = DEFAULT_MAX_CHARACTERS_AMOUNT;
