@@ -1,101 +1,128 @@
 <div class="create-help-request-dialog app-scrollbar">
-  <h2 class="title app-custom-dialog-title">
-    {{ "dialogs.findHelp.title" | translate }}
-  </h2>
-
-  <div
-    class="app-custom-dialog-close-button"
-    [title]="'helpTitles.closeDialog' | translate"
-    (click)="closeDialog()"
-  >
-    <app-plus-icon class="app-custom-dialog-close-button-icon"></app-plus-icon>
-  </div>
-
-  <form class="form" [formGroup]="createHelpRequestForm">
-    <app-locations-control
-      class="locations-control"
-      formControlName="locations"
+  <ng-container *ngIf="createHelpRequestState$ | async as state">
+    <h2
+      class="title app-custom-dialog-title"
+      *ngIf="dialogTitle$ | async as dialogTitle"
     >
-    </app-locations-control>
+      {{ dialogTitle | translate }}
+    </h2>
 
-    <app-date-control
-      class="date-control"
-      [label]="'dialogs.findHelp.whenFieldLabel' | translate"
-      [required]="true"
-      formControlName="date"
+    <div
+      class="app-custom-dialog-close-button"
+      [title]="'helpTitles.closeDialog' | translate"
+      (click)="closeDialog()"
     >
-    </app-date-control>
+      <app-plus-icon
+        class="app-custom-dialog-close-button-icon"
+      ></app-plus-icon>
+    </div>
 
-    <ng-container
-      *ngIf="createHelpRequestForm.controls.comment as commentControl"
+    <form
+      class="form"
+      *ngIf="state.data === null"
+      [formGroup]="createHelpRequestForm"
+      (ngSubmit)="handleCreateHelpRequestSubmit($event)"
     >
-      <app-textarea-field-control
-        class="comment-control"
-        [label]="'dialogs.findHelp.commentFieldLabel' | translate"
-        [placeholder]="'placeholders.commentField' | translate"
-        [warningColored]="commentControl.value === '' && commentControl.touched"
-        formControlName="comment"
+      <app-locations-control
+        class="locations-control"
+        formControlName="locations"
       >
-      </app-textarea-field-control>
+      </app-locations-control>
 
-      <div class="warnings">
-        <div
-          class="warning-text"
-          *ngIf="commentControl.value === '' && commentControl.touched"
+      <app-date-control
+        class="date-control"
+        [label]="'dialogs.findHelp.whenFieldLabel' | translate"
+        [required]="true"
+        formControlName="date"
+      >
+      </app-date-control>
+
+      <ng-container
+        *ngIf="createHelpRequestForm.controls.comment as commentControl"
+      >
+        <app-textarea-field-control
+          class="comment-control"
+          [label]="'dialogs.findHelp.commentFieldLabel' | translate"
+          [placeholder]="'placeholders.commentField' | translate"
+          [warningColored]="
+            commentControl.value === '' && commentControl.touched
+          "
+          formControlName="comment"
         >
-          <span>{{ "warnings.itIsBetterToLeaveAComment" | translate }}</span>
-        </div>
-      </div>
-    </ng-container>
+        </app-textarea-field-control>
 
-    <div class="controls-and-image">
-      <div class="image">
-        <app-man-with-mail-image></app-man-with-mail-image>
-      </div>
-
-      <div class="full-name-and-phone-numbers">
-        <div class="control-container">
-          <app-input-control
-            class="full-name-control"
-            [label]="'dialogs.findHelp.fullNameFieldLabel' | translate"
-            [placeholder]="'placeholders.fullNameField' | translate"
-            [required]="true"
-            formControlName="fullName"
-          >
-          </app-input-control>
-
+        <div class="warnings">
           <div
-            class="control-errors"
-            *ngIf="createHelpRequestForm.controls.fullName as fullNameControl"
+            class="warning-text"
+            *ngIf="commentControl.value === '' && commentControl.touched"
           >
-            <ng-container *ngIf="fullNameControl.touched">
-              <div
-                class="error-text"
-                *ngIf="fullNameControl.errors?.['required']"
-              >
-                <span>{{ "errors.fullNameIsRequired" | translate }}</span>
-              </div>
-            </ng-container>
+            <span>{{ "warnings.itIsBetterToLeaveAComment" | translate }}</span>
           </div>
         </div>
+      </ng-container>
 
-        <app-dynamic-phone-list-control
-          class="phones-control"
-          [required]="true"
-          formControlName="phones"
-        >
-        </app-dynamic-phone-list-control>
+      <div class="controls-and-image">
+        <div class="image">
+          <app-man-with-mail-image></app-man-with-mail-image>
+        </div>
+
+        <div class="full-name-and-phone-numbers">
+          <div class="control-container">
+            <app-input-control
+              class="full-name-control"
+              [label]="'dialogs.findHelp.fullNameFieldLabel' | translate"
+              [placeholder]="'placeholders.fullNameField' | translate"
+              [required]="true"
+              formControlName="fullName"
+            >
+            </app-input-control>
+
+            <div
+              class="control-errors"
+              *ngIf="createHelpRequestForm.controls.fullName as fullNameControl"
+            >
+              <ng-container *ngIf="fullNameControl.touched">
+                <div
+                  class="error-text"
+                  *ngIf="fullNameControl.errors?.['required']"
+                >
+                  <span>{{ "errors.fullNameIsRequired" | translate }}</span>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+
+          <app-dynamic-phone-list-control
+            class="phones-control"
+            [required]="true"
+            formControlName="phones"
+          >
+          </app-dynamic-phone-list-control>
+        </div>
       </div>
-    </div>
-  </form>
 
-  <div class="app-custom-dialog-actions">
-    <button
-      class="app-custom-dialog-actions__item app-primary-button"
-      [disabled]="createHelpRequestForm.invalid"
-      (click)="handleSendButtonClick()"
-    >
-      <span>{{ "dialogs.findHelp.sendButtonLabel" | translate }}</span>
-    </button>
-  </div>
+      <div class="app-custom-dialog-actions">
+        <button
+          class="app-custom-dialog-actions__item app-primary-button"
+          *ngIf="!state.inProgress"
+          [disabled]="createHelpRequestForm.invalid"
+          type="submit"
+        >
+          <span>{{ "dialogs.findHelp.sendButtonLabel" | translate }}</span>
+        </button>
+
+        <button
+          class="app-custom-dialog-actions__item app-primary-button"
+          *ngIf="state.inProgress"
+          [disabled]="true"
+          type="button"
+        >
+          <app-spinner
+            class="app-primary-button__spinner"
+            color="white"
+          ></app-spinner>
+        </button>
+      </div>
+    </form>
+  </ng-container>
 </div>
