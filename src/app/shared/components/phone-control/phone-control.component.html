@@ -26,6 +26,8 @@
       [id]="controlId"
       [placeholder]="controlPlaceholder"
       type="text"
+      inputmode="numeric"
+      pattern="[0-9]*"
       autocomplete="chrome-off"
       formControlName="number"
       (focus)="handleInputFocus()"
