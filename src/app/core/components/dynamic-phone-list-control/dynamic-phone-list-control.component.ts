@@ -111,6 +111,7 @@ export class DynamicPhoneListControlComponent
 
   public writeValue(value: ReadonlyArray<PhoneType>): void {
     // TODO: Assert value type
+    // TODO: Fix issues with initial value set and validations
 
     this.phoneControlsFormArray.clear();
 
