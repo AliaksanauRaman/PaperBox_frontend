@@ -35,7 +35,7 @@ export class HelpOffersHttpService implements HelpOffersHttpServiceInterface {
   ): Observable<SuccessCreateHelpOfferResponseDataType> {
     return this.httpClient.post<SuccessCreateHelpOfferResponseDataType>(
       this.helpOffersApiUrl,
-      createHelpOfferDto.toRequestBody()
+      createHelpOfferDto
     );
   }
 }
