@@ -1,7 +1,8 @@
 import { Inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of, delay } from 'rxjs';
+import { Observable } from 'rxjs';
 
+import { FeedbacksHttpServiceInterface } from '../interfaces/feedbacks-http-service.interface';
 import { API_URL } from '../../shared/dependencies/api-url/injection-token';
 import { CreateFeedbackDto } from '../../shared/dtos/create-feedback.dto';
 import { SuccessCreateFeedbackResponseDataType } from '../../shared/types/success-create-feedback-response-data.type';
@@ -9,7 +10,7 @@ import { SuccessCreateFeedbackResponseDataType } from '../../shared/types/succes
 @Injectable({
   providedIn: 'root',
 })
-export class FeedbacksHttpService {
+export class FeedbacksHttpService implements FeedbacksHttpServiceInterface {
   private readonly feedbacksApiUrl = `${this.apiUrl}/api/feedbacks`;
 
   constructor(
@@ -21,14 +22,9 @@ export class FeedbacksHttpService {
   public createOne(
     createFeedbackDto: CreateFeedbackDto
   ): Observable<SuccessCreateFeedbackResponseDataType> {
-    const { fullName, email, comment } = createFeedbackDto;
-
-    // TODO: Temp data
-    return of({
-      id: '123123123',
-      fullName,
-      email,
-      comment,
-    }).pipe(delay(800));
+    return this.httpClient.post<SuccessCreateFeedbackResponseDataType>(
+      this.feedbacksApiUrl,
+      createFeedbackDto
+    );
   }
 }
