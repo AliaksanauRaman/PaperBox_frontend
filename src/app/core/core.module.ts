@@ -32,6 +32,7 @@ import { DynamicPhoneListControlComponent } from './components/dynamic-phone-lis
 import { LocationsControlComponent } from './components/locations-control/locations-control.component';
 import { SuccessCreateFeedbackViewComponent } from './components/success-create-feedback-view/success-create-feedback-view.component';
 import { SuccessCreateHelpOfferSectionComponent } from './sections/success-create-help-offer-section/success-create-help-offer-section.component';
+import { SuccessCreateHelpRequestSectionComponent } from './sections/success-create-help-request-section/success-create-help-request-section.component';
 import { CreateFeedbackDialogComponent } from './dialogs/create-feedback-dialog/create-feedback-dialog.component';
 import { CreateHelpOfferDialogComponent } from './dialogs/create-help-offer-dialog/create-help-offer-dialog.component';
 import { CreateHelpRequestDialogComponent } from './dialogs/create-help-request-dialog/create-help-request-dialog.component';
@@ -80,6 +81,7 @@ const CORE_MODULE_DECLARATIONS = [
   LocationsControlComponent,
   SuccessCreateFeedbackViewComponent,
   SuccessCreateHelpOfferSectionComponent,
+  SuccessCreateHelpRequestSectionComponent,
   CreateFeedbackDialogComponent,
   CreateHelpOfferDialogComponent,
   CreateHelpRequestDialogComponent,
