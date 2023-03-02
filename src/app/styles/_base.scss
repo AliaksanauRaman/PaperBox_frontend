@@ -61,3 +61,13 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 // Remove controls from number inputs END
+
+@media (min-height: 1018px) {
+  html {
+    height: 100%;
+  }
+
+  body {
+    height: inherit;
+  }
+}
