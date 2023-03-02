@@ -39,7 +39,7 @@
       "fullNameFieldLabel": "Поўнае імя",
       "sendButtonLabel": "Адправіць"
     },
-    "findHelp": {
+    "createHelpRequest": {
       "title": "Знайсці дапамогу",
       "loading": "Загрузка...",
       "success": "Поспех!",

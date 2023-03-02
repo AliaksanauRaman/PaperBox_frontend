@@ -31,7 +31,7 @@
 
       <app-date-control
         class="date-control"
-        [label]="'dialogs.findHelp.whenFieldLabel' | translate"
+        [label]="'dialogs.createHelpRequest.whenFieldLabel' | translate"
         [required]="true"
         formControlName="date"
       >
@@ -42,7 +42,7 @@
       >
         <app-textarea-field-control
           class="comment-control"
-          [label]="'dialogs.findHelp.commentFieldLabel' | translate"
+          [label]="'dialogs.createHelpRequest.commentFieldLabel' | translate"
           [placeholder]="'placeholders.commentField' | translate"
           [warningColored]="
             commentControl.value === '' && commentControl.touched
@@ -70,7 +70,7 @@
           <div class="control-container">
             <app-input-control
               class="full-name-control"
-              [label]="'dialogs.findHelp.fullNameFieldLabel' | translate"
+              [label]="'dialogs.createHelpRequest.fullNameFieldLabel' | translate"
               [placeholder]="'placeholders.fullNameField' | translate"
               [required]="true"
               formControlName="fullName"
@@ -108,7 +108,7 @@
           [disabled]="createHelpRequestForm.invalid"
           type="submit"
         >
-          <span>{{ "dialogs.findHelp.sendButtonLabel" | translate }}</span>
+          <span>{{ "dialogs.createHelpRequest.sendButtonLabel" | translate }}</span>
         </button>
 
         <button

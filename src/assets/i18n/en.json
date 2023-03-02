@@ -39,7 +39,7 @@
       "fullNameFieldLabel": "Full name",
       "sendButtonLabel": "Send"
     },
-    "findHelp": {
+    "createHelpRequest": {
       "title": "Find help",
       "loading": "Loading...",
       "success": "Success!",
