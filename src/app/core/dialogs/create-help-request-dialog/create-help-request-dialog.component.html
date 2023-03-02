@@ -70,7 +70,9 @@
           <div class="control-container">
             <app-input-control
               class="full-name-control"
-              [label]="'dialogs.createHelpRequest.fullNameFieldLabel' | translate"
+              [label]="
+                'dialogs.createHelpRequest.fullNameFieldLabel' | translate
+              "
               [placeholder]="'placeholders.fullNameField' | translate"
               [required]="true"
               formControlName="fullName"
@@ -108,7 +110,9 @@
           [disabled]="createHelpRequestForm.invalid"
           type="submit"
         >
-          <span>{{ "dialogs.createHelpRequest.sendButtonLabel" | translate }}</span>
+          <span>{{
+            "dialogs.createHelpRequest.sendButtonLabel" | translate
+          }}</span>
         </button>
 
         <button
@@ -124,5 +128,9 @@
         </button>
       </div>
     </form>
+
+    <app-success-create-help-request-section
+      *ngIf="state.data !== null"
+    ></app-success-create-help-request-section>
   </ng-container>
 </div>
