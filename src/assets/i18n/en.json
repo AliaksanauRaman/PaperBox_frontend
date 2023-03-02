@@ -41,6 +41,8 @@
     },
     "findHelp": {
       "title": "Find help",
+      "loading": "Loading...",
+      "success": "Success!",
       "whenFieldLabel": "When (DD/MM/YYYY)",
       "commentFieldLabel": "Comment",
       "fullNameFieldLabel": "Full name",

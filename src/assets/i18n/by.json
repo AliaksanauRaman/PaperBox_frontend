@@ -41,6 +41,8 @@
     },
     "findHelp": {
       "title": "Знайсці дапамогу",
+      "loading": "Загрузка...",
+      "success": "Поспех!",
       "whenFieldLabel": "Калі (ДД.ММ.ГГГГ)",
       "commentFieldLabel": "Каментар",
       "fullNameFieldLabel": "Поўнае імя",
