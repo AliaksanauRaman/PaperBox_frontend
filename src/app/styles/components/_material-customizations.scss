@@ -1,9 +1,4 @@
 // MAT-CALENDAR START
-.mat-datepicker-content .mat-calendar {
-  max-width: 220px;
-  max-height: 279px;
-}
-
 .mat-calendar-body-selected {
   background-color: var(--primary-color);
 }
@@ -79,18 +74,4 @@
 .mat-custom-red {
   color: var(--red-color) !important;
   background-color: var(--light-red-color) !important;
-}
-
-@media (min-width: $smallMobileScreenWidth) {
-  .mat-datepicker-content .mat-calendar {
-    max-width: 240px;
-    max-height: 298px;
-  }
-}
-
-@media (min-width: $mediumMobileScreenWidth) {
-  .mat-datepicker-content .mat-calendar {
-    max-width: 260px;
-    max-height: 318px;
-  }
 }

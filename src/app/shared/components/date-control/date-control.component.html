@@ -32,7 +32,12 @@
     <input matEndDate formControlName="end" tabindex="-1" />
   </mat-date-range-input>
 
-  <mat-date-range-picker #matDateRangePickerRef></mat-date-range-picker>
+  <mat-date-range-picker
+    #matDateRangePickerRef
+    [touchUi]="isMobileOrTablet$ | async"
+    xPosition="end"
+    yPosition="below"
+  ></mat-date-range-picker>
 
   <button
     class="calendar-button"
