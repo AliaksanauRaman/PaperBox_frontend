@@ -30,7 +30,7 @@
     }
   },
   "dialogs": {
-    "offerHelp": {
+    "createHelpOffer": {
       "title": "Прапанаваць дапамогу",
       "loading": "Загрузка...",
       "success": "Поспех!",

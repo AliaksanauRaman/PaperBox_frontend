@@ -31,7 +31,7 @@
 
       <app-date-control
         class="date-control"
-        [label]="'dialogs.offerHelp.whenFieldLabel' | translate"
+        [label]="'dialogs.createHelpOffer.whenFieldLabel' | translate"
         [required]="true"
         formControlName="date"
       >
@@ -42,7 +42,7 @@
       >
         <app-textarea-field-control
           class="comment-control"
-          [label]="'dialogs.offerHelp.commentFieldLabel' | translate"
+          [label]="'dialogs.createHelpOffer.commentFieldLabel' | translate"
           [placeholder]="'placeholders.commentField' | translate"
           [warningColored]="
             commentControl.value === '' && commentControl.touched
@@ -66,7 +66,7 @@
           <div class="control-container">
             <app-input-control
               class="full-name-control"
-              [label]="'dialogs.offerHelp.fullNameFieldLabel' | translate"
+              [label]="'dialogs.createHelpOffer.fullNameFieldLabel' | translate"
               [required]="true"
               [placeholder]="'placeholders.fullNameField' | translate"
               formControlName="fullName"
@@ -108,7 +108,7 @@
           [disabled]="createHelpOfferForm.invalid"
           type="submit"
         >
-          <span>{{ "dialogs.offerHelp.sendButtonLabel" | translate }}</span>
+          <span>{{ "dialogs.createHelpOffer.sendButtonLabel" | translate }}</span>
         </button>
 
         <button

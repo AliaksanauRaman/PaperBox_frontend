@@ -30,7 +30,7 @@
     }
   },
   "dialogs": {
-    "offerHelp": {
+    "createHelpOffer": {
       "title": "Offer help",
       "loading": "Loading...",
       "success": "Success!",
