@@ -13,7 +13,7 @@
   flex-grow: 1;
   align-items: center;
   min-height: 0;
-  height: 528px; // navigation panel + 4 list items
+  height: 548px; // navigation panel + 4 list items
 }
 
 .container {
@@ -50,7 +50,7 @@
 
 @media (min-width: $minLaptopScreenWidth) {
   .main {
-    height: 646px;
+    height: 682px; // navigation panel + 5 list items
     padding: 0 var(--horizontal-bordering-padding);
   }
 }
