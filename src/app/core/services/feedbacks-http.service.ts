@@ -21,7 +21,7 @@ export class FeedbacksHttpService {
   public createOne(
     createFeedbackDto: CreateFeedbackDto
   ): Observable<SuccessCreateFeedbackResponseDataType> {
-    const { fullName, email, comment } = createFeedbackDto.toRequestBody();
+    const { fullName, email, comment } = createFeedbackDto;
 
     // TODO: Temp data
     return of({
