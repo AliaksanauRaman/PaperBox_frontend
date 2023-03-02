@@ -11,7 +11,7 @@ import {
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 
-import { UniqueIdGeneratorService } from '../../../services/unique-id-generator.service';
+import { UniqueIdGeneratorService } from '../../../core/services/unique-id-generator.service';
 
 import { CustomControl } from '../../abstracts/custom-control.class';
 import { DataSource } from '../../classes/data-source.class';

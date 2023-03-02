@@ -17,7 +17,7 @@ import {
 } from '@angular/forms';
 import { map, startWith, takeUntil, tap } from 'rxjs';
 
-import { UniqueIdGeneratorService } from '../../../services/unique-id-generator.service';
+import { UniqueIdGeneratorService } from '../../services/unique-id-generator.service';
 
 import { CustomControl } from '../../../shared/abstracts/custom-control.class';
 import { PhoneType } from '../../../shared/types/phone.type';

@@ -16,7 +16,7 @@ import { map, tap, takeUntil } from 'rxjs';
 
 import { DropdownControlComponent } from '../dropdown-control/dropdown-control.component';
 
-import { UniqueIdGeneratorService } from '../../../services/unique-id-generator.service';
+import { UniqueIdGeneratorService } from '../../../core/services/unique-id-generator.service';
 import {
   PHONE_DIALLING_CODES,
   PhoneDiallingCodesType,

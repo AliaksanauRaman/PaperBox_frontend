@@ -1,7 +1,7 @@
 import { ChangeDetectorRef } from '@angular/core';
 import { ControlValueAccessor } from '@angular/forms';
 
-import { UniqueIdGeneratorService } from '../../services/unique-id-generator.service';
+import { UniqueIdGeneratorService } from '../../core/services/unique-id-generator.service';
 
 import { DestroyEmitter } from './destroy-emitter.class';
 

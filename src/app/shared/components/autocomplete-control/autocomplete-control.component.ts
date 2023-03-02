@@ -12,7 +12,7 @@ import {
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { map, BehaviorSubject, takeUntil, tap } from 'rxjs';
 
-import { UniqueIdGeneratorService } from '../../../services/unique-id-generator.service';
+import { UniqueIdGeneratorService } from '../../../core/services/unique-id-generator.service';
 
 import { CustomControl } from '../../abstracts/custom-control.class';
 import { DataSourceOption } from '../../classes/data-source-option.class';
