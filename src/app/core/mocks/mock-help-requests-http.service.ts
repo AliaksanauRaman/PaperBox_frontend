@@ -2,6 +2,8 @@ import { Observable, of, delay } from 'rxjs';
 
 import { HelpRequestsHttpServiceInterface } from '../interfaces/help-requests-http-service.interface';
 import { PublishedHelpRequestListType } from '../../shared/types/published-help-request-list.type';
+import { CreateHelpRequestDto } from '../../shared/dtos/create-help-request.dto';
+import { SuccessCreateHelpRequestResponseDataType } from '../../shared/types/success-create-help-request-response-data.type';
 
 const DELAY_IN_MS = 1000;
 
@@ -10,6 +12,12 @@ export class MockHelpRequestsHttpService
 {
   public getPublished(): Observable<PublishedHelpRequestListType> {
     return of(MOCK_PUBLISHED_HELP_REQUESTS).pipe(delay(DELAY_IN_MS));
+  }
+
+  public createOne(
+    _createHelpRequestDto: CreateHelpRequestDto
+  ): Observable<SuccessCreateHelpRequestResponseDataType> {
+    return of({ publicId: '555-666-777' }).pipe(delay(DELAY_IN_MS));
   }
 }
 

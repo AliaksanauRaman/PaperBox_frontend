@@ -1,11 +1,13 @@
 import { Inject, Injectable, isDevMode } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, of, delay } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import { MockHelpRequestsHttpService } from '../mocks/mock-help-requests-http.service';
 import { API_URL } from '../../shared/dependencies/api-url/injection-token';
 import { HelpRequestsHttpServiceInterface } from '../interfaces/help-requests-http-service.interface';
 import { PublishedHelpRequestListType } from '../../shared/types/published-help-request-list.type';
+import { CreateHelpRequestDto } from '../../shared/dtos/create-help-request.dto';
+import { SuccessCreateHelpRequestResponseDataType } from '../../shared/types/success-create-help-request-response-data.type';
 
 @Injectable({
   providedIn: 'root',
@@ -26,6 +28,15 @@ export class HelpRequestsHttpService
   public getPublished(): Observable<PublishedHelpRequestListType> {
     return this.httpClient.get<PublishedHelpRequestListType>(
       `${this.helpRequestsApiUrl}/published`
+    );
+  }
+
+  public createOne(
+    createHelpRequestDto: CreateHelpRequestDto
+  ): Observable<SuccessCreateHelpRequestResponseDataType> {
+    return this.httpClient.post<SuccessCreateHelpRequestResponseDataType>(
+      this.helpRequestsApiUrl,
+      createHelpRequestDto
     );
   }
 }
