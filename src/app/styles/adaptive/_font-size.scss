@@ -16,7 +16,7 @@ html {
   }
 }
 
-@media (min-width: $mediumDesktopScreenWidth) {
+@media (min-height: $mediumDesktopScreenHeight) {
   html {
     font-size: 18px;
   }
