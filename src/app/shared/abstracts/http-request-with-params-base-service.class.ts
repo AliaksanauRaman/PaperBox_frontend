@@ -3,10 +3,12 @@ import { Observable } from 'rxjs';
 import { HttpRequestBaseService } from './http-request-base-service.class';
 
 export abstract class HttpRequestWithParamsBaseService<
-  T,
+  SuccessResponseDataType,
   ParamsType
-> extends HttpRequestBaseService<T> {
-  protected abstract doRequest(params: ParamsType): Observable<T>;
+> extends HttpRequestBaseService<SuccessResponseDataType> {
+  protected abstract doRequest(
+    params: ParamsType
+  ): Observable<SuccessResponseDataType>;
 
   public performRequest(params: ParamsType): void {
     this.httpRequestStateMachine.handleMakeRequest();
