@@ -1,6 +1,7 @@
-import { CommonModule } from '@angular/common';
-import { TranslateModule } from '@ngx-translate/core';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -30,6 +31,7 @@ import { AdminEventsProcessorService } from './services/admin-events-processor.s
 @NgModule({
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     TranslateModule,
     MatCardModule,
     MatButtonModule,
