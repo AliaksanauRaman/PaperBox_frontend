@@ -24,6 +24,38 @@
   width: 220px;
 }
 
+.toolbar-left {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-right: 16px;
+}
+
+.toolbar-right {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.toolbar-title {
+  display: flex;
+  margin-bottom: 4px;
+  font-size: 20px;
+  line-height: 20px;
+}
+
+.toolbar-subtitle {
+  display: flex;
+  font-size: 14px;
+  line-height: 14px;
+}
+
+.logo-icon {
+  width: 36px;
+  height: 36px;
+  font-size: 36px;
+}
+
 .link {
   cursor: pointer !important;
   background-color: var(--white-color);
