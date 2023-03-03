@@ -12,6 +12,7 @@ const adminRoutes: Routes = [
   {
     path: 'login',
     component: AdminLoginPageComponent,
+    title: 'Admin | Login',
   },
   {
     path: '',
@@ -25,18 +26,22 @@ const adminRoutes: Routes = [
       {
         path: 'help-offers',
         component: AdminHelpOffersPageComponent,
+        title: 'Admin | Help offers',
       },
       {
         path: 'help-requests',
         component: AdminHelpRequestsPageComponent,
+        title: 'Admin | Help requests',
       },
       {
         path: 'users',
         component: AdminUsersPageComponent,
+        title: 'Admin | Users',
       },
       {
         path: 'settings',
         component: AdminSettingsPageComponent,
+        title: 'Admin | Settings',
       },
     ],
   },
