@@ -1,13 +1,48 @@
-<mat-card class="login-card">
-  <span>login-card</span>
+<mat-card class="admin-login-card">
+  <mat-card-header class="header">
+    <mat-card-title>Admin login</mat-card-title>
+  </mat-card-header>
 
-  <mat-card-actions>
-    <button mat-flat-button color="primary" routerLink="/">
-      <span>Home</span>
-    </button>
+  <mat-card-content>
+    <form
+      class="form"
+      [formGroup]="loginForm"
+      (ngSubmit)="handleAdminLoginSubmit($event)"
+    >
+      <mat-form-field class="form__field" appearance="outline">
+        <mat-label>Username</mat-label>
+        <input
+          matInput
+          type="text"
+          placeholder="Enter username"
+          formControlName="username"
+        />
+        <mat-error *ngIf="loginForm.controls.username.errors?.['required']">
+          <span>Username is required</span>
+        </mat-error>
+      </mat-form-field>
 
-    <button mat-flat-button color="primary" (click)="handleLoginButtonClick()">
-      <span>Login</span>
-    </button>
-  </mat-card-actions>
+      <mat-form-field class="form__field" appearance="outline">
+        <mat-label>Password</mat-label>
+        <input
+          matInput
+          type="password"
+          placeholder="Enter password"
+          formControlName="password"
+        />
+        <mat-error *ngIf="loginForm.controls.password.errors?.['required']">
+          <span>Password is required</span>
+        </mat-error>
+      </mat-form-field>
+
+      <button
+        [disabled]="loginForm.invalid"
+        mat-raised-button
+        color="primary"
+        type="submit"
+      >
+        <span>Submit</span>
+      </button>
+    </form>
+  </mat-card-content>
 </mat-card>

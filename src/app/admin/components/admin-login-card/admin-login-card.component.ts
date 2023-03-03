@@ -1,19 +1,22 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
-
-import { RoutingService } from '../../../core/services/routing.service';
+import { NonNullableFormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-admin-login-card',
   templateUrl: './admin-login-card.component.html',
   styleUrls: ['./admin-login-card.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AdminLoginCardComponent {
-  constructor(
-    private readonly routingService: RoutingService,
-  ) {}
+  public readonly loginForm = this.formBuilder.group({
+    username: ['', [Validators.required]],
+    password: ['', [Validators.required]],
+  });
 
-  public handleLoginButtonClick(): void {
-    this.routingService.navigateToAdmin();
+  constructor(private readonly formBuilder: NonNullableFormBuilder) {}
+
+  public handleAdminLoginSubmit(event: SubmitEvent): void {
+    // TODO
+    console.log(this.loginForm.getRawValue());
   }
 }
