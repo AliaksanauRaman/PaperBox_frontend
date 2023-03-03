@@ -1,0 +1,14 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  height: inherit;
+}
+
+.toolbar {
+  flex-shrink: 0;
+}
+
+.content {
+  flex-grow: 1;
+  padding: 16px;
+}

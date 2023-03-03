@@ -1,26 +1,7 @@
-<div class="admin-help-offers-page">
-  <ng-container *ngIf="viewContext$ | async as viewContext">
-    <ng-container *ngIf="viewContext.inProgress">
-      <div class="loading-view">
-        <mat-spinner diameter="50"></mat-spinner>
-      </div>
-    </ng-container>
+<div class="admin-help-offers-page page">
+  <mat-toolbar class="toolbar" color="primary">
+    <span>Help offers</span>
+  </mat-toolbar>
 
-    <ng-container *ngIf="!viewContext.inProgress && !viewContext.error">
-      <div class="content-view">
-        <app-admin-help-offers-grid
-          [fullPreviewsOfAllHelpOffers]="viewContext.items"
-        >
-        </app-admin-help-offers-grid>
-      </div>
-    </ng-container>
-
-    <ng-container *ngIf="viewContext.error">
-      <div class="error-view">
-        <app-http-error-response-card
-          [httpErrorResponse]="viewContext.error"
-        ></app-http-error-response-card>
-      </div>
-    </ng-container>
-  </ng-container>
+  <div class="content"></div>
 </div>

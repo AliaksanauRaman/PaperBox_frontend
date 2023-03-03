@@ -1,40 +1,4 @@
 :host {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  min-height: 0;
-}
-
-.admin-help-offers-page {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  min-height: 0;
-}
-
-.loading-view {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-  min-height: 0;
-}
-
-.content-view {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  min-height: 0;
-  padding: var(--vertical-bordering-padding) var(--horizontal-bordering-padding);
-  overflow-y: auto;
-}
-
-.error-view {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-  min-height: 0;
+  display: block;
+  height: 100%;
 }
