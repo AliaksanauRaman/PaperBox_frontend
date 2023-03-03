@@ -12,6 +12,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { HttpErrorResponseCardModule } from '../shared/components/http-error-response-card/http-error-response-card.module';
 import { HttpErrorMessagePipeModule } from '../shared/pipes/http-error-message/http-error-message-pipe.module';
@@ -50,6 +51,7 @@ import { AdminEventsProcessorService } from './services/admin-events-processor.s
     MatDialogModule,
     MatIconModule,
     MatListModule,
+    MatToolbarModule,
     HttpErrorResponseCardModule,
     HttpErrorMessagePipeModule,
     AdminRoutingModule,
