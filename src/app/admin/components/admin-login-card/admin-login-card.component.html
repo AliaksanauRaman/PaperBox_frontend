@@ -1,48 +1,63 @@
 <mat-card class="admin-login-card">
-  <mat-card-header class="header">
-    <mat-card-title>Admin login</mat-card-title>
-  </mat-card-header>
+  <ng-container *ngIf="loginState$ | async as state">
+    <mat-card-header class="header">
+      <mat-card-title>
+        <span *ngIf="!state.inProgress">Pushka Admin</span>
+        <span *ngIf="state.inProgress">Loading...</span>
+      </mat-card-title>
+    </mat-card-header>
 
-  <mat-card-content>
-    <form
-      class="form"
-      [formGroup]="loginForm"
-      (ngSubmit)="handleAdminLoginSubmit($event)"
-    >
-      <mat-form-field class="form__field" appearance="outline">
-        <mat-label>Username</mat-label>
-        <input
-          matInput
-          type="text"
-          placeholder="Enter username"
-          formControlName="username"
-        />
-        <mat-error *ngIf="loginForm.controls.username.errors?.['required']">
-          <span>Username is required</span>
-        </mat-error>
-      </mat-form-field>
-
-      <mat-form-field class="form__field" appearance="outline">
-        <mat-label>Password</mat-label>
-        <input
-          matInput
-          type="password"
-          placeholder="Enter password"
-          formControlName="password"
-        />
-        <mat-error *ngIf="loginForm.controls.password.errors?.['required']">
-          <span>Password is required</span>
-        </mat-error>
-      </mat-form-field>
-
-      <button
-        [disabled]="loginForm.invalid"
-        mat-raised-button
-        color="primary"
-        type="submit"
+    <mat-card-content>
+      <form
+        class="form"
+        [formGroup]="loginForm"
+        (ngSubmit)="handleAdminLoginSubmit()"
       >
-        <span>Submit</span>
-      </button>
-    </form>
-  </mat-card-content>
+        <mat-form-field class="form__field" appearance="outline">
+          <mat-label>Number</mat-label>
+          <input
+            matInput
+            type="text"
+            placeholder="Enter number"
+            formControlName="number"
+          />
+          <mat-error *ngIf="loginForm.controls.number.errors?.['required']">
+            <span>Number is required</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="form__field" appearance="outline">
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            type="password"
+            placeholder="Enter password"
+            formControlName="password"
+          />
+          <mat-error *ngIf="loginForm.controls.password.errors?.['required']">
+            <span>Password is required</span>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-error class="errors-block" *ngIf="state.error !== null">
+          <span>Server error. For more details check the dev tools.</span>
+        </mat-error>
+
+        <button
+          [disabled]="loginForm.invalid || state.inProgress"
+          mat-raised-button
+          color="primary"
+          type="submit"
+        >
+          <span>Submit</span>
+        </button>
+      </form>
+    </mat-card-content>
+
+    <mat-card-footer class="footer">
+      <mat-progress-bar
+        [mode]="state.inProgress ? 'indeterminate' : 'determinate'"
+      ></mat-progress-bar>
+    </mat-card-footer>
+  </ng-container>
 </mat-card>
