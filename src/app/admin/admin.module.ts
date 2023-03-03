@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -34,6 +35,7 @@ import { AdminEventsProcessorService } from './services/admin-events-processor.s
     ReactiveFormsModule,
     TranslateModule,
     MatCardModule,
+    MatFormFieldModule,
     MatButtonModule,
     MatProgressSpinnerModule,
     MatDialogModule,
