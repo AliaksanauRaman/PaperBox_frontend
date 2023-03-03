@@ -5,6 +5,16 @@ import { IndexPageLayoutComponent } from './core/layouts/index-page-layout/index
 
 const routes: Routes = [
   {
+    path: 'login',
+    loadChildren: () =>
+      import('./login/login.module').then((m) => m.LoginModule),
+  },
+  {
+    path: 'admin',
+    loadChildren: () =>
+      import('./admin/admin.module').then((m) => m.AdminModule),
+  },
+  {
     path: '',
     component: IndexPageLayoutComponent,
     children: [
@@ -29,15 +39,6 @@ const routes: Routes = [
           import('./help-requests/help-requests.module').then(
             (m) => m.HelpRequestsModule
           ),
-      },
-      {
-        path: 'admin',
-        loadChildren: () =>
-          import('./admin/admin.module').then((m) => m.AdminModule),
-      },
-      {
-        path: '**',
-        redirectTo: '/help-offers',
       },
     ],
   },
