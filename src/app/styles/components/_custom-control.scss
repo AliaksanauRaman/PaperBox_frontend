@@ -80,6 +80,10 @@ $padding: 12px;
   border: 1px solid var(--grey-color);
   transition: 0.25s all ease-in-out;
 
+  &:hover {
+    border-color: var(--primary-hover-color);
+  }
+
   &.custom-control__field--warning-colored:not(:focus):not(
       .custom-control__field--active
     ) {
