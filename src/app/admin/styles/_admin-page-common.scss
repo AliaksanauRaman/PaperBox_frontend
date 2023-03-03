@@ -9,6 +9,10 @@
 }
 
 .content {
+  display: flex;
+  flex-direction: column;
   flex-grow: 1;
+  min-height: 0;
   padding: 16px;
+  overflow-y: scroll;
 }
