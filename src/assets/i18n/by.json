@@ -15,18 +15,6 @@
         "title": "Я магу дапамагчы!",
         "callToAction": "Дапамагчы!"
       }
-    },
-    "adminHelpOffers": {
-      "toolbar": {
-        "linkToHelpOffersLabel": "Прапановы аб дапамозе",
-        "linkToHelpRequestsLabel": "Запыты аб дапамозе"
-      },
-      "helpOffersGrid": {
-        "emptyList": "Спіс пусты."
-      },
-      "helpOfferCard": {
-        "manageButtonLabel": "Кіраваць"
-      }
     }
   },
   "dialogs": {

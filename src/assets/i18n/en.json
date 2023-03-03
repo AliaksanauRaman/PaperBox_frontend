@@ -15,18 +15,6 @@
         "title": "I can help!",
         "callToAction": "Help!"
       }
-    },
-    "adminHelpOffers": {
-      "toolbar": {
-        "linkToHelpOffersLabel": "Help offers",
-        "linkToHelpRequestsLabel": "Help requests"
-      },
-      "helpOffersGrid": {
-        "emptyList": "The list is empty."
-      },
-      "helpOfferCard": {
-        "manageButtonLabel": "Manage"
-      }
     }
   },
   "dialogs": {
