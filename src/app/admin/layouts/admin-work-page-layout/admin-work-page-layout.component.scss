@@ -1,9 +1,11 @@
-@import '../../../styles/scss-variables';
+@import "../../../styles/scss-variables";
 
 :host {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  width: 100vw;
+  height: 100vh;
   min-height: 0;
 }
 
@@ -14,20 +16,32 @@
   min-height: 0;
 }
 
-.toolbar {
-  flex-shrink: 0;
-  margin: var(--vertical-bordering-padding) 0;
-}
-
-.content {
-  display: flex;
-  flex-direction: column;
+.sidenav-container {
   flex-grow: 1;
-  min-height: 0;
 }
 
-@media (min-width: $minDesktopScreenWidth) {
-  .admin-work-page-layout {
-    flex-direction: column-reverse;
+.sidenav {
+  width: 220px;
+}
+
+.link {
+  cursor: pointer !important;
+  background-color: var(--white-color);
+  transition: 0.25s background-color ease-in-out;
+
+  &.active {
+    background-color: var(--mat-primary-color);
+
+    & .link__text {
+      color: var(--white-color);
+    }
   }
+
+  &:hover:not(.active) {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+}
+
+.sidenav-content {
+  background-color: var(--primary-background-color);
 }

@@ -1,10 +1,22 @@
 <div class="admin-work-page-layout">
-  <div class="content">
-    <router-outlet></router-outlet>
-  </div>
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav class="sidenav" mode="side" [opened]="true">
+      <mat-list>
+        <a
+          class="link"
+          *ngFor="let link of navLinks"
+          mat-list-item
+          [routerLink]="link.path"
+          routerLinkActive="active"
+          [disabled]="link.disabled"
+        >
+          <span class="link__text">{{ link.label }}</span>
+        </a>
+      </mat-list>
+    </mat-sidenav>
 
-  <app-admin-work-page-toolbar
-    class="toolbar"
-  >
-  </app-admin-work-page-toolbar>
+    <mat-sidenav-content class="sidenav-content">
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
 </div>
