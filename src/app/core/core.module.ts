@@ -37,6 +37,7 @@ import { CreateFeedbackDialogComponent } from './dialogs/create-feedback-dialog/
 import { CreateHelpOfferDialogComponent } from './dialogs/create-help-offer-dialog/create-help-offer-dialog.component';
 import { CreateHelpRequestDialogComponent } from './dialogs/create-help-request-dialog/create-help-request-dialog.component';
 
+import { WINDOW, WINDOW_VALUE } from './dependencies/window';
 import {
   LOCAL_STORAGE,
   LOCAL_STORAGE_VALUE,
@@ -110,6 +111,10 @@ const CORE_MODULE_DECLARATIONS = [
   ],
   declarations: CORE_MODULE_DECLARATIONS,
   providers: [
+    {
+      provide: WINDOW,
+      useValue: WINDOW_VALUE,
+    },
     {
       provide: LOCAL_STORAGE,
       useValue: LOCAL_STORAGE_VALUE,
