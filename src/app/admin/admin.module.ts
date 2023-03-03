@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -36,6 +37,7 @@ import { AdminEventsProcessorService } from './services/admin-events-processor.s
     TranslateModule,
     MatCardModule,
     MatFormFieldModule,
+    MatInputModule,
     MatButtonModule,
     MatProgressSpinnerModule,
     MatDialogModule,
