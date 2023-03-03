@@ -6,6 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialogModule } from '@angular/material/dialog';
@@ -40,6 +41,7 @@ import { AdminEventsProcessorService } from './services/admin-events-processor.s
     MatFormFieldModule,
     MatInputModule,
     MatProgressBarModule,
+    MatSidenavModule,
     MatButtonModule,
     MatProgressSpinnerModule,
     MatDialogModule,
