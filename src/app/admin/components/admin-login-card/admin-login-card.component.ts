@@ -14,6 +14,6 @@ export class AdminLoginCardComponent {
   ) {}
 
   public handleLoginButtonClick(): void {
-    this.routingService.navigateToAdminMainPage();
+    this.routingService.navigateToAdmin();
   }
 }
