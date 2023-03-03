@@ -136,7 +136,10 @@
       </div>
     </form>
 
-    <app-success-create-feedback-section *ngIf="state.data !== null">
+    <app-success-create-feedback-section
+      *ngIf="state.data !== null"
+      (enterPress)="closeDialog()"
+    >
     </app-success-create-feedback-section>
   </ng-container>
 </div>

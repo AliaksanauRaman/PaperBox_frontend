@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  HostListener,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 
 @Component({
   selector: 'app-success-create-feedback-section',
@@ -6,4 +12,13 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrls: ['./success-create-feedback-section.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SuccessCreateFeedbackSectionComponent {}
+export class SuccessCreateFeedbackSectionComponent {
+  @HostListener('document:keyup.enter', ['$event'])
+  private handleEnterPress(event: KeyboardEvent): void {
+    event.preventDefault();
+    this.enterPress.emit();
+  }
+
+  @Output()
+  public readonly enterPress = new EventEmitter<void>();
+}
