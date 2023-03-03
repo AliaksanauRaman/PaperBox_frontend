@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnDestroy,
+  AfterViewInit,
+  ViewChild,
+  ElementRef,
+} from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { tap } from 'rxjs';
 
@@ -13,7 +20,10 @@ import { LoginDto } from '../../../shared/dtos/login.dto';
   providers: [LoginService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AdminLoginCardComponent implements OnDestroy {
+export class AdminLoginCardComponent implements AfterViewInit, OnDestroy {
+  @ViewChild('firstInputRef')
+  private readonly firstInputElementRef!: ElementRef<HTMLInputElement>;
+
   public readonly loginState$ = this.loginService.state$.pipe(
     tap((state) => {
       if (state.inProgress) {
@@ -32,6 +42,13 @@ export class AdminLoginCardComponent implements OnDestroy {
     private readonly formBuilder: NonNullableFormBuilder,
     private readonly loginService: LoginService
   ) {}
+
+  public ngAfterViewInit(): void {
+    // It is needed to not trigger validation error
+    setTimeout(() => {
+      this.firstInputElementRef.nativeElement.focus();
+    }, 100);
+  }
 
   public ngOnDestroy(): void {
     this.loginService.destroyRequest();

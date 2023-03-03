@@ -16,6 +16,7 @@
         <mat-form-field class="form__field" appearance="outline">
           <mat-label>Number</mat-label>
           <input
+            #firstInputRef
             matInput
             type="text"
             placeholder="Enter number"
@@ -40,7 +41,7 @@
         </mat-form-field>
 
         <mat-error class="errors-block" *ngIf="state.error !== null">
-          <span>Server error. For more details check the dev tools.</span>
+          <span>Server error. For more details check the console.</span>
         </mat-error>
 
         <button
