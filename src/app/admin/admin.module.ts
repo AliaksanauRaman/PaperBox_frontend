@@ -31,6 +31,7 @@ import { AdminHelpOfferCardComponent } from './components/admin-help-offer-card/
 import { AdminHelpOfferStatusComponent } from './components/admin-help-offer-status/admin-help-offer-status.component';
 import { AdminHelpOfferDetailsComponent } from './components/admin-help-offer-details/admin-help-offer-details.component';
 import { AdminDeletedHelpOfferDialogViewComponent } from './components/admin-deleted-help-offer-dialog-view/admin-deleted-help-offer-dialog-view.component';
+import { AdminFullHelpRequestsListComponent } from './components/admin-full-help-requests-list/admin-full-help-requests-list.component';
 import { AdminManageHelpOfferDialogComponent } from './dialogs/admin-manage-help-offer-dialog/admin-manage-help-offer-dialog.component';
 
 import { AdminHelpOffersHttpService } from './services/admin-help-offers-http.service';
@@ -71,6 +72,7 @@ import { AdminEventsProcessorService } from './services/admin-events-processor.s
     AdminHelpOfferStatusComponent,
     AdminHelpOfferDetailsComponent,
     AdminDeletedHelpOfferDialogViewComponent,
+    AdminFullHelpRequestsListComponent,
     AdminManageHelpOfferDialogComponent,
   ],
   providers: [
