@@ -12,10 +12,17 @@
   }
 }
 
+html {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
 body {
   position: relative;
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
   font-family: "Manrope", sans-serif;
   background-color: var(--primary-background-color);
 }
@@ -63,10 +70,6 @@ input[type="number"] {
 // Remove controls from number inputs END
 
 @media (min-height: 1018px) {
-  html {
-    height: 100%;
-  }
-
   body {
     height: inherit;
   }
