@@ -98,6 +98,10 @@
     },
     "listCardComment": {
       "emptyText": "-"
+    },
+    "listLoadErrorView": {
+      "title": "Упс, памылка!",
+      "reloadButtonLabel": "Перазагрузіць"
     }
   },
   "helpOfferStatus": {

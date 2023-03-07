@@ -98,6 +98,10 @@
     },
     "listCardComment": {
       "emptyText": "-"
+    },
+    "listLoadErrorView": {
+      "title": "Oops, error!",
+      "reloadButtonLabel": "Reload"
     }
   },
   "helpOfferStatus": {
