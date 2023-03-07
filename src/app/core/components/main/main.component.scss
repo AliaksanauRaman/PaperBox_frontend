@@ -13,13 +13,11 @@
   flex-grow: 1;
   align-items: center;
   min-height: 0;
-  height: 548px; // navigation panel + 4 list items
 }
 
 .container {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
   max-width: var(--max-content-width);
   min-height: 0;
   width: 100%;
@@ -50,7 +48,6 @@
 
 @media (min-width: $minLaptopScreenWidth) {
   .main {
-    height: 682px; // navigation panel + 5 list items
     padding: 0 var(--horizontal-bordering-padding);
   }
 }
