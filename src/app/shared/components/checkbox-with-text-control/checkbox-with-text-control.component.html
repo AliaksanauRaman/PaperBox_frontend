@@ -1,0 +1,19 @@
+<div
+  class="checkbox-with-text-control"
+  [class.checkbox-with-text-control--disabled]="controlDisabled"
+>
+  <app-checkbox-control
+    class="checkbox"
+    [formControl]="checkboxControl"
+    [hovered]="_textHovered"
+  ></app-checkbox-control>
+
+  <p
+    class="text"
+    (click)="handleTextClick()"
+    (mouseenter)="handleTextMouseenter()"
+    (mouseleave)="handleTextMouseleave()"
+  >
+    {{ _text }}
+  </p>
+</div>

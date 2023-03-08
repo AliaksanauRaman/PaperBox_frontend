@@ -1,0 +1,35 @@
+:host {
+  display: block;
+}
+
+.checkbox-with-text-control {
+  display: flex;
+
+  &.checkbox-with-text-control--disabled {
+    .text {
+      color: var(--grey-color);
+    }
+  }
+}
+
+.checkbox {
+  flex-shrink: 0;
+  margin-right: 8px;
+}
+
+.text {
+  cursor: pointer;
+  flex-grow: 1;
+  margin: 0;
+  padding: 0;
+  color: var(--black-color);
+  font-weight: 500;
+  text-align: justify;
+  transition: 0.25s color ease-in-out;
+
+  &::before {
+    content: "*";
+    margin-right: 1px;
+    color: var(--error-color);
+  }
+}
