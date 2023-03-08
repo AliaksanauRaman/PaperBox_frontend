@@ -71,6 +71,8 @@ export class CreateHelpRequestDialogComponent
         },
       ],
     ],
+    allowedItemsConfirmation: [false, Validators.requiredTrue],
+    noServiceResponsibilityConfirmation: [false, Validators.requiredTrue],
   });
 
   constructor(

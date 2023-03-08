@@ -103,6 +103,18 @@
         </div>
       </div>
 
+      <app-checkbox-with-text-control
+        class="confirmation-checkbox"
+        [text]="'allowedItemsConfirmationText' | translate"
+        formControlName="allowedItemsConfirmation"
+      ></app-checkbox-with-text-control>
+
+      <app-checkbox-with-text-control
+        class="confirmation-checkbox"
+        [text]="'noServiceResponsibilityConfirmationText' | translate"
+        formControlName="noServiceResponsibilityConfirmation"
+      ></app-checkbox-with-text-control>
+
       <div class="app-custom-dialog-actions">
         <button
           class="app-custom-dialog-actions__item app-primary-button"
