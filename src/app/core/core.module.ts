@@ -18,6 +18,7 @@ import { DateControlModule } from '../shared/components/date-control/date-contro
 import { TextareaFieldControlModule } from '../shared/components/textarea-field-control/textarea-field-control.module';
 import { AutocompleteControlModule } from '../shared/components/autocomplete-control/autocomplete-control.module';
 import { SpinnerModule } from '../shared/components/spinner/spinner.module';
+import { CheckboxWithTextControlComponent } from '../shared/components/checkbox-with-text-control/checkbox-with-text-control.component';
 
 import { IndexPageLayoutComponent } from './layouts/index-page-layout/index-page-layout.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -108,6 +109,7 @@ const CORE_MODULE_DECLARATIONS = [
     TextareaFieldControlModule,
     AutocompleteControlModule,
     SpinnerModule,
+    CheckboxWithTextControlComponent,
   ],
   declarations: CORE_MODULE_DECLARATIONS,
   providers: [
