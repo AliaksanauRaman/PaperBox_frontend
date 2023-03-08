@@ -1,0 +1,44 @@
+<div
+  class="checkbox-control"
+  [class.checkbox-control--disabled]="controlDisabled"
+  (click)="handleCheckboxClick()"
+>
+  <ng-container *ngTemplateOutlet="squareIconSvg"></ng-container>
+  <ng-container *ngTemplateOutlet="tickIconSvg"></ng-container>
+</div>
+
+<ng-template #squareIconSvg>
+  <svg
+    class="square-icon"
+    [class.square-icon--active]="_checked"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M22 1H2C1.44772 1 1 1.44772 1 2V22C1 22.5523 1.44772 23 2 23H22C22.5523 23 23 22.5523 23 22V2C23 1.44772 22.5523 1 22 1Z"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+</ng-template>
+
+<ng-template #tickIconSvg>
+  <svg
+    class="tick-icon"
+    [class.tick-icon--active]="_checked"
+    width="14"
+    height="9"
+    viewBox="0 0 14 9"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M12.5 1L5.1625 8L1.5 4.5"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+</ng-template>

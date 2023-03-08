@@ -1,0 +1,65 @@
+:host {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+.checkbox-control {
+  cursor: pointer;
+  position: relative;
+  width: inherit;
+  height: inherit;
+
+  &.checkbox-control--disabled {
+    pointer-events: none;
+
+    .square-icon path {
+      stroke: var(--grey-color);
+    }
+
+    .tick-icon.tick-icon--active path {
+      stroke: var(--grey-color);
+    }
+  }
+
+  &:hover {
+    .square-icon:not(.square-icon--active) path {
+      stroke: var(--primary-hover-color);
+    }
+  }
+}
+
+.square-icon {
+  width: inherit;
+  height: inherit;
+
+  path {
+    stroke: var(--grey-color);
+    transition: 0.25s stroke ease-in-out;
+  }
+
+  &.square-icon--active {
+    path {
+      stroke: var(--primary-color);
+    }
+  }
+}
+
+.tick-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+
+  path {
+    stroke: transparent;
+    transition: 0.25s stroke ease-in-out;
+  }
+
+  &.tick-icon--active {
+    path {
+      stroke: var(--primary-color);
+    }
+  }
+}
