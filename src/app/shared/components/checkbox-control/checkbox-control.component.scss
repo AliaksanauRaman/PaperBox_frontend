@@ -22,7 +22,7 @@
     }
   }
 
-  &:hover {
+  &.checkbox-control--hovered {
     .square-icon:not(.square-icon--active) path {
       stroke: var(--primary-hover-color);
     }

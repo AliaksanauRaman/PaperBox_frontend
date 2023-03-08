@@ -3,6 +3,7 @@ import {
   ChangeDetectorRef,
   Component,
   forwardRef,
+  Input,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -27,7 +28,13 @@ import { CustomControl } from '../../abstracts/custom-control.class';
   imports: [CommonModule],
 })
 export class CheckboxControlComponent extends CustomControl<boolean> {
+  @Input()
+  public set hovered(value: boolean) {
+    this._hovered = value;
+  }
+
   public _checked = false;
+  public _hovered = false;
   private _touched = false;
 
   constructor(
@@ -43,6 +50,7 @@ export class CheckboxControlComponent extends CustomControl<boolean> {
     }
 
     this._checked = value ?? false;
+    this.cdRef.markForCheck();
   }
 
   public handleCheckboxClick(): void {
@@ -53,6 +61,14 @@ export class CheckboxControlComponent extends CustomControl<boolean> {
       this.onTouch();
       this._touched = true;
     }
+  }
+
+  public handleCheckboxMouseenter(): void {
+    this._hovered = true;
+  }
+
+  public handleCheckboxMouseleave(): void {
+    this._hovered = false;
   }
 
   private toggleCheckedState(): void {
