@@ -168,5 +168,8 @@
     "closeDialog": "Close dialog",
     "addPhoneNumber": "Add phone number",
     "removePhoneNumber": "Remove phone number"
-  }
+  },
+  "personalDataAgreementText": "I agree to the processing and storage of my personal data",
+  "allowedItemsConfirmationText": "I confirm that the items being transported are not prohibited and that they do not violate the laws of the participating countries",
+  "noServiceResponsibilityConfirmationText": "I confirm that the service is not responsible for the quality of the deal"
 }
