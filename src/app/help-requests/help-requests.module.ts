@@ -6,6 +6,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { SpinnerModule } from '../shared/components/spinner/spinner.module';
 import { FoldableComponentModule } from '../shared/components/foldable/foldable-component.module';
 import { ListCardCommentComponentModule } from '../shared/components/list-card-comment/list-card-comment-component.module';
+import { ListLoadErrorViewComponentModule } from '../shared/components/list-load-error-view/list-load-error-view-component.module';
 import { ArrowDownIconModule } from '../shared/icons/arrow-down-icon/arrow-down-icon.module';
 import { LaconicPlaceLabelFromLocationValuePipeModule } from '../shared/pipes/laconic-place-label-from-location-value/laconic-place-label-from-location-value-pipe.module';
 import { BuildPhoneHrefPipeModule } from '../shared/pipes/build-phone-href/build-phone-href-pipe.module';
@@ -26,6 +27,7 @@ import { HelpRequestsListItemComponent } from './components/help-requests-list-i
     SpinnerModule,
     FoldableComponentModule,
     ListCardCommentComponentModule,
+    ListLoadErrorViewComponentModule,
     ArrowDownIconModule,
     LaconicPlaceLabelFromLocationValuePipeModule,
     BuildPhoneHrefPipeModule,
