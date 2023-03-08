@@ -10,6 +10,7 @@ import { BuildPhoneHrefPipeModule } from '../shared/pipes/build-phone-href/build
 import { ViewPhonePipeModule } from '../shared/pipes/view-phone/view-phone-pipe.module';
 import { FoldableComponentModule } from '../shared/components/foldable/foldable-component.module';
 import { ListCardCommentComponentModule } from '../shared/components/list-card-comment/list-card-comment-component.module';
+import { ListLoadErrorViewComponentModule } from '../shared/components/list-load-error-view/list-load-error-view-component.module';
 import { HoverableDirectiveModule } from '../shared/directives/hoverable/hoverable-directive.module';
 import { HelpOffersRoutingModule } from './help-offers-routing.module';
 
@@ -30,6 +31,7 @@ import { HelpOffersListItemComponent } from './components/help-offers-list-item/
     ViewPhonePipeModule,
     FoldableComponentModule,
     ListCardCommentComponentModule,
+    ListLoadErrorViewComponentModule,
     HoverableDirectiveModule,
     HelpOffersRoutingModule,
   ],
