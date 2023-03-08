@@ -68,6 +68,8 @@ export class CreateHelpOfferDialogComponent extends DialogComponent {
         },
       ],
     ],
+    allowedItemsConfirmation: [false, Validators.requiredTrue],
+    noServiceResponsibilityConfirmation: [false, Validators.requiredTrue],
   });
 
   constructor(
