@@ -1,4 +1,4 @@
-<div class="help-requests-list app-scrollbar">
+<div class="help-requests-list">
   <ng-container *ngIf="publishedHelpRequestsState$ | async as state">
     <ng-container *ngIf="state.inProgress">
       <div class="loading-view">
@@ -8,24 +8,23 @@
 
     <ng-container *ngIf="state.data as data">
       <ng-container *ngIf="data.length !== 0; else emptyListView">
-        <app-help-requests-list-item
-          class="list-item"
-          *ngFor="let item of data"
-          [publishedHelpRequest]="item"
-        >
-        </app-help-requests-list-item>
+        <div class="content-view app-scrollbar">
+          <app-help-requests-list-item
+            class="list-item"
+            *ngFor="let item of data"
+            [publishedHelpRequest]="item"
+          >
+          </app-help-requests-list-item>
+        </div>
       </ng-container>
     </ng-container>
 
     <ng-container *ngIf="state.error as error">
-      <!-- TODO: Error view -->
-      <div class="error-view">
-        <div>Status: {{ error.status }}</div>
-        <div>Status text: {{ error.statusText }}</div>
-        <div>Message: {{ error.message }}</div>
-      </div>
-    </ng-container></ng-container
-  >
+      <app-list-load-error-view
+        class="error-view"
+        (reloadClick)="handleReloadClick()"
+      ></app-list-load-error-view> </ng-container
+  ></ng-container>
 </div>
 
 <ng-template #emptyListView>

@@ -29,4 +29,8 @@ export class HelpRequestsListComponent implements OnInit, OnDestroy {
   public ngOnDestroy(): void {
     this.getPublishedHelpRequestsService.destroyRequest();
   }
+
+  public handleReloadClick(): void {
+    this.getPublishedHelpRequestsService.performRequest();
+  }
 }
