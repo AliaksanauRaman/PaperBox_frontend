@@ -1,15 +1,39 @@
+@import "../../../styles/scss-variables";
+
 :host {
   display: block;
 }
 
 .list-card-comment {
-  font-size: inherit;
-  font-weight: inherit;
-  color: inherit;
+  display: block;
+}
+
+.label {
+  display: inline;
+  margin-right: 5px;
+  font-size: 0.9rem;
+  color: var(--grey-color);
+}
+
+.text {
+  display: inline;
+  font-size: 0.9rem;
+  color: var(--grey-color);
 }
 
 .empty {
   font-style: italic;
   font-weight: 400;
   opacity: 0.7;
+}
+
+@media (min-width: $minLaptopScreenWidth) {
+  .label {
+    font-size: 1.1rem;
+  }
+
+  .text {
+    font-size: 1rem;
+    line-height: 20px;
+  }
 }
