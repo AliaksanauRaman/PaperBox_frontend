@@ -97,6 +97,7 @@
       "noMatchesMessage": "Супадзенняў няма."
     },
     "listCardComment": {
+      "label": "Каментар:",
       "emptyText": "-"
     },
     "listLoadErrorView": {

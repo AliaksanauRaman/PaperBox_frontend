@@ -97,6 +97,7 @@
       "noMatchesMessage": "No matches."
     },
     "listCardComment": {
+      "label": "Comment:",
       "emptyText": "-"
     },
     "listLoadErrorView": {
