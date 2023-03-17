@@ -10,7 +10,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { PlusIconModule } from '../shared/icons/plus-icon/plus-icon.module';
 import { CalendarIconModule } from '../shared/icons/calendar-icon/calendar-icon.module';
 import { LocationIconModule } from '../shared/icons/location-icon/location-icon.module';
-import { ManWithGlobeImageModule } from '../shared/images/man-with-globe-image/man-with-globe-image.module';
 import { FeedbackImageModule } from '../shared/images/feedback-image/feedback-image.module';
 import { InputControlModule } from '../shared/components/input-control/input-control.module';
 import { PhoneControlModule } from '../shared/components/phone-control/phone-control.module';
@@ -21,6 +20,7 @@ import { SpinnerModule } from '../shared/components/spinner/spinner.module';
 import { CheckboxWithTextControlComponent } from '../shared/components/checkbox-with-text-control/checkbox-with-text-control.component';
 import { WhiteSquareButtonComponent } from '../shared/components/white-square-button/white-square-button.component';
 import { ManWithMailImageComponent } from '../shared/images/man-with-mail-image/man-with-mail-image.component';
+import { ManWithGlobeImageComponent } from '../shared/images/man-with-globe-image/man-with-globe-image.component';
 
 import { IndexPageLayoutComponent } from './layouts/index-page-layout/index-page-layout.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -105,7 +105,6 @@ const CORE_MODULE_DECLARATIONS = [
     PlusIconModule,
     CalendarIconModule,
     LocationIconModule,
-    ManWithGlobeImageModule,
     FeedbackImageModule,
     InputControlModule,
     PhoneControlModule,
@@ -116,6 +115,7 @@ const CORE_MODULE_DECLARATIONS = [
     CheckboxWithTextControlComponent,
     WhiteSquareButtonComponent,
     ManWithMailImageComponent,
+    ManWithGlobeImageComponent,
   ],
   declarations: CORE_MODULE_DECLARATIONS,
   providers: [

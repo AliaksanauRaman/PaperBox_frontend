@@ -4,8 +4,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'app-man-with-globe-image',
   templateUrl: './man-with-globe-image.component.html',
   styleUrls: ['./man-with-globe-image.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
 })
-export class ManWithGlobeImageComponent {
-
-}
+export class ManWithGlobeImageComponent {}
