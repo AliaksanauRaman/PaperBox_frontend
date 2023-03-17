@@ -1,0 +1,35 @@
+<app-white-square-button class="account-button" [title]="'Account'">
+  <ng-container *ngTemplateOutlet="accountSvgIcon"></ng-container>
+</app-white-square-button>
+
+<ng-template #accountSvgIcon>
+  <svg
+    width="26"
+    height="26"
+    viewBox="0 0 26 26"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M13 25C19.6274 25 25 19.6274 25 13C25 6.37258 19.6274 1 13 1C6.37258 1 1 6.37258 1 13C1 19.6274 6.37258 25 13 25Z"
+      stroke="#4E91F7"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M13 17C15.7614 17 18 14.7614 18 12C18 9.23858 15.7614 7 13 7C10.2386 7 8 9.23858 8 12C8 14.7614 10.2386 17 13 17Z"
+      stroke="#4E91F7"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M4.97501 21.9248C5.72739 20.4428 6.87546 19.1981 8.29193 18.3287C9.70841 17.4592 11.338 16.999 13 16.999C14.662 16.999 16.2916 17.4592 17.7081 18.3287C19.1246 19.1981 20.2726 20.4428 21.025 21.9248"
+      stroke="#4E91F7"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+</ng-template>

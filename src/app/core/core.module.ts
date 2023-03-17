@@ -34,6 +34,7 @@ import { LeaveFeedbackButtonComponent } from './components/leave-feedback-button
 import { DynamicPhoneListControlComponent } from './components/dynamic-phone-list-control/dynamic-phone-list-control.component';
 import { LocationsControlComponent } from './components/locations-control/locations-control.component';
 import { ToolsComponent } from './components/tools/tools.component';
+import { AccountButtonComponent } from './components/account-button/account-button.component';
 import { SuccessCreateHelpOfferSectionComponent } from './sections/success-create-help-offer-section/success-create-help-offer-section.component';
 import { SuccessCreateHelpRequestSectionComponent } from './sections/success-create-help-request-section/success-create-help-request-section.component';
 import { SuccessCreateFeedbackSectionComponent } from './sections/success-create-feedback-section/success-create-feedback-section.component';
@@ -85,6 +86,7 @@ const CORE_MODULE_DECLARATIONS = [
   DynamicPhoneListControlComponent,
   LocationsControlComponent,
   ToolsComponent,
+  AccountButtonComponent,
   SuccessCreateHelpOfferSectionComponent,
   SuccessCreateHelpRequestSectionComponent,
   SuccessCreateFeedbackSectionComponent,
