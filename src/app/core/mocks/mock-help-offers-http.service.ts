@@ -27,9 +27,14 @@ const MOCK_PUBLISHED_HELP_OFFERS: PublishedHelpOfferListType = [
     publicId: '123',
     locationFrom: '1 10002',
     locationTo: '2 20003',
-    comment: 'Looking for a ride',
+    comment:
+      'Looking for a rideLooking for a rideLooking for a rideLooking for a rideLooking for a rideLooking for a rideLooking for a rideLooking for a rideLooking for a ride',
     fullName: 'John Smith',
-    phones: [{ diallingCode: '+48', number: '555555555' }],
+    phones: [
+      { diallingCode: '+48', number: '555555555' },
+      { diallingCode: '+48', number: '555555555' },
+      { diallingCode: '+48', number: '555555555' },
+    ],
     startDate: '2022-01-01',
     endDate: null,
   },
