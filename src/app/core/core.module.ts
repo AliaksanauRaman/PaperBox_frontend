@@ -73,28 +73,6 @@ import {
   PHONE_DIALLING_CODES_VALUE,
 } from './dependencies/phone-dialling-codes';
 
-const CORE_MODULE_DECLARATIONS = [
-  IndexPageLayoutComponent,
-  HeaderComponent,
-  ToolbarComponent,
-  LanguageSwitcherComponent,
-  ActionsComponent,
-  MainComponent,
-  NavigationMenuComponent,
-  FooterComponent,
-  LeaveFeedbackButtonComponent,
-  DynamicPhoneListControlComponent,
-  LocationsControlComponent,
-  ToolsComponent,
-  AccountButtonComponent,
-  SuccessCreateHelpOfferSectionComponent,
-  SuccessCreateHelpRequestSectionComponent,
-  SuccessCreateFeedbackSectionComponent,
-  CreateFeedbackDialogComponent,
-  CreateHelpOfferDialogComponent,
-  CreateHelpRequestDialogComponent,
-];
-
 @NgModule({
   imports: [
     CommonModule,
@@ -119,7 +97,27 @@ const CORE_MODULE_DECLARATIONS = [
     ManWithGlobeImageComponent,
     FeedbackImageComponent,
   ],
-  declarations: CORE_MODULE_DECLARATIONS,
+  declarations: [
+    IndexPageLayoutComponent,
+    HeaderComponent,
+    ToolbarComponent,
+    LanguageSwitcherComponent,
+    ActionsComponent,
+    MainComponent,
+    NavigationMenuComponent,
+    FooterComponent,
+    LeaveFeedbackButtonComponent,
+    DynamicPhoneListControlComponent,
+    LocationsControlComponent,
+    ToolsComponent,
+    AccountButtonComponent,
+    SuccessCreateHelpOfferSectionComponent,
+    SuccessCreateHelpRequestSectionComponent,
+    SuccessCreateFeedbackSectionComponent,
+    CreateFeedbackDialogComponent,
+    CreateHelpOfferDialogComponent,
+    CreateHelpRequestDialogComponent,
+  ],
   providers: [
     {
       provide: WINDOW,
@@ -160,6 +158,5 @@ const CORE_MODULE_DECLARATIONS = [
       useValue: PHONE_DIALLING_CODES_VALUE,
     },
   ],
-  exports: CORE_MODULE_DECLARATIONS,
 })
 export class CoreModule {}
