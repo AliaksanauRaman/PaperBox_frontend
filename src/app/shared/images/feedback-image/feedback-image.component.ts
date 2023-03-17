@@ -4,8 +4,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'app-feedback-image',
   templateUrl: './feedback-image.component.html',
   styleUrls: ['./feedback-image.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
 })
-export class FeedbackImageComponent {
-
-}
+export class FeedbackImageComponent {}
