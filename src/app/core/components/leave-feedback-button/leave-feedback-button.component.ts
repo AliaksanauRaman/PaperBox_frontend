@@ -4,8 +4,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   selector: 'app-leave-feedback-button',
   templateUrl: './leave-feedback-button.component.html',
   styleUrls: ['./leave-feedback-button.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LeaveFeedbackButtonComponent {
-
-}
+export class LeaveFeedbackButtonComponent {}
