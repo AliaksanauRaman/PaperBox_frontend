@@ -19,6 +19,7 @@ import { TextareaFieldControlModule } from '../shared/components/textarea-field-
 import { AutocompleteControlModule } from '../shared/components/autocomplete-control/autocomplete-control.module';
 import { SpinnerModule } from '../shared/components/spinner/spinner.module';
 import { CheckboxWithTextControlComponent } from '../shared/components/checkbox-with-text-control/checkbox-with-text-control.component';
+import { WhiteSquareButtonComponent } from '../shared/components/white-square-button/white-square-button.component';
 
 import { IndexPageLayoutComponent } from './layouts/index-page-layout/index-page-layout.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -110,6 +111,7 @@ const CORE_MODULE_DECLARATIONS = [
     AutocompleteControlModule,
     SpinnerModule,
     CheckboxWithTextControlComponent,
+    WhiteSquareButtonComponent,
   ],
   declarations: CORE_MODULE_DECLARATIONS,
   providers: [
