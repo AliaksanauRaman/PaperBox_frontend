@@ -5,5 +5,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   templateUrl: './man-with-mail-image.component.html',
   styleUrls: ['./man-with-mail-image.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
 })
 export class ManWithMailImageComponent {}

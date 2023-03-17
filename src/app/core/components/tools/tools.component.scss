@@ -1,0 +1,15 @@
+:host {
+  display: block;
+}
+
+.tools {
+  display: flex;
+}
+
+.item {
+  flex-shrink: 0;
+
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
+}

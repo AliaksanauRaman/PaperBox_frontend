@@ -11,7 +11,6 @@ import { PlusIconModule } from '../shared/icons/plus-icon/plus-icon.module';
 import { CalendarIconModule } from '../shared/icons/calendar-icon/calendar-icon.module';
 import { LocationIconModule } from '../shared/icons/location-icon/location-icon.module';
 import { ManWithGlobeImageModule } from '../shared/images/man-with-globe-image/man-with-globe-image.module';
-import { ManWithMailImageModule } from '../shared/images/man-with-mail-image/man-with-mail-image.module';
 import { FeedbackImageModule } from '../shared/images/feedback-image/feedback-image.module';
 import { InputControlModule } from '../shared/components/input-control/input-control.module';
 import { PhoneControlModule } from '../shared/components/phone-control/phone-control.module';
@@ -21,6 +20,7 @@ import { AutocompleteControlModule } from '../shared/components/autocomplete-con
 import { SpinnerModule } from '../shared/components/spinner/spinner.module';
 import { CheckboxWithTextControlComponent } from '../shared/components/checkbox-with-text-control/checkbox-with-text-control.component';
 import { WhiteSquareButtonComponent } from '../shared/components/white-square-button/white-square-button.component';
+import { ManWithMailImageComponent } from '../shared/images/man-with-mail-image/man-with-mail-image.component';
 
 import { IndexPageLayoutComponent } from './layouts/index-page-layout/index-page-layout.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -33,6 +33,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { LeaveFeedbackButtonComponent } from './components/leave-feedback-button/leave-feedback-button.component';
 import { DynamicPhoneListControlComponent } from './components/dynamic-phone-list-control/dynamic-phone-list-control.component';
 import { LocationsControlComponent } from './components/locations-control/locations-control.component';
+import { ToolsComponent } from './components/tools/tools.component';
 import { SuccessCreateHelpOfferSectionComponent } from './sections/success-create-help-offer-section/success-create-help-offer-section.component';
 import { SuccessCreateHelpRequestSectionComponent } from './sections/success-create-help-request-section/success-create-help-request-section.component';
 import { SuccessCreateFeedbackSectionComponent } from './sections/success-create-feedback-section/success-create-feedback-section.component';
@@ -83,6 +84,7 @@ const CORE_MODULE_DECLARATIONS = [
   LeaveFeedbackButtonComponent,
   DynamicPhoneListControlComponent,
   LocationsControlComponent,
+  ToolsComponent,
   SuccessCreateHelpOfferSectionComponent,
   SuccessCreateHelpRequestSectionComponent,
   SuccessCreateFeedbackSectionComponent,
@@ -104,7 +106,6 @@ const CORE_MODULE_DECLARATIONS = [
     CalendarIconModule,
     LocationIconModule,
     ManWithGlobeImageModule,
-    ManWithMailImageModule,
     FeedbackImageModule,
     InputControlModule,
     PhoneControlModule,
@@ -114,6 +115,7 @@ const CORE_MODULE_DECLARATIONS = [
     SpinnerModule,
     CheckboxWithTextControlComponent,
     WhiteSquareButtonComponent,
+    ManWithMailImageComponent,
   ],
   declarations: CORE_MODULE_DECLARATIONS,
   providers: [
