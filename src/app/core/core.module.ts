@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { DialogModule } from '@angular/cdk/dialog';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatRippleModule } from '@angular/material/core';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { PlusIconModule } from '../shared/icons/plus-icon/plus-icon.module';
 import { CalendarIconModule } from '../shared/icons/calendar-icon/calendar-icon.module';
@@ -98,6 +99,7 @@ const CORE_MODULE_DECLARATIONS = [
     DialogModule,
     TranslateModule,
     MatRippleModule,
+    MatMenuModule,
     PlusIconModule,
     CalendarIconModule,
     LocationIconModule,
