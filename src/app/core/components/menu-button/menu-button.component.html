@@ -1,0 +1,57 @@
+<app-white-square-button class="menu-button">
+  <ng-container *ngIf="_isMenuOpened; else menuSvgIcon">
+    <ng-container *ngTemplateOutlet="crossSvgIcon"></ng-container>
+  </ng-container>
+</app-white-square-button>
+
+<ng-template #menuSvgIcon>
+  <svg
+    width="20"
+    height="12"
+    viewBox="0 0 20 12"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M1 1H19"
+      stroke="#4E91F7"
+      stroke-width="2"
+      stroke-linecap="round"
+    />
+    <path
+      d="M1 6H19"
+      stroke="#4E91F7"
+      stroke-width="2"
+      stroke-linecap="round"
+    />
+    <path
+      d="M1 11H19"
+      stroke="#4E91F7"
+      stroke-width="2"
+      stroke-linecap="round"
+    />
+  </svg>
+</ng-template>
+
+<ng-template #crossSvgIcon>
+  <svg
+    width="20"
+    height="12"
+    viewBox="0 0 20 12"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M1 1L19 11"
+      stroke="#4E91F7"
+      stroke-width="2"
+      stroke-linecap="round"
+    />
+    <path
+      d="M1 11L19 1"
+      stroke="#4E91F7"
+      stroke-width="2"
+      stroke-linecap="round"
+    />
+  </svg>
+</ng-template>
