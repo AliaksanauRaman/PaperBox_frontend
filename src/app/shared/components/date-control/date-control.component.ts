@@ -17,11 +17,11 @@ import {
 } from '@angular/forms';
 import { MatDateRangePicker } from '@angular/material/datepicker';
 import { DateAdapter } from '@angular/material/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { map, takeUntil, tap } from 'rxjs';
 
 import { UniqueIdGeneratorService } from '../../../core/services/unique-id-generator.service';
 import { AppLocaleService } from '../../../core/services/app-locale.service';
+import { ScreenSizeObserverService } from '../../../core/services/screen-size-observer.service';
 
 import { CustomControl } from '../../abstracts/custom-control.class';
 import { DateControlValueType } from '../../types/date-control-value.type';
@@ -64,9 +64,8 @@ export class DateControlComponent
     this.controlPlaceholder = value;
   }
 
-  public readonly isMobileOrTablet$ = this.breakpointObserver
-    .observe([Breakpoints.XSmall, Breakpoints.Small])
-    .pipe(map(({ matches }) => matches));
+  public readonly isMobileOrTablet$ =
+    this.screenSizeObserverService.isMobileOrTablet$;
   protected readonly minDate = new Date();
   protected readonly maxDate = new Date(
     new Date().setMonth(this.minDate.getMonth() + 3)
@@ -98,7 +97,7 @@ export class DateControlComponent
     cdRef: ChangeDetectorRef,
     private readonly dateAdapter: DateAdapter<Date>,
     private readonly localeService: AppLocaleService,
-    private readonly breakpointObserver: BreakpointObserver
+    private readonly screenSizeObserverService: ScreenSizeObserverService
   ) {
     super(uniqueIdGeneratorService, cdRef);
 
