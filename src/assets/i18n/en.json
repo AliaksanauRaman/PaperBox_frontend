@@ -103,6 +103,9 @@
     "listLoadErrorView": {
       "title": "Oops, error!",
       "reloadButtonLabel": "Reload"
+    },
+    "accountMenu": {
+      "logOut": "Log out"
     }
   },
   "helpOfferStatus": {

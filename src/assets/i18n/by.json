@@ -103,6 +103,9 @@
     "listLoadErrorView": {
       "title": "Упс, памылка!",
       "reloadButtonLabel": "Перазагрузіць"
+    },
+    "accountMenu": {
+      "logOut": "Выйсці"
     }
   },
   "helpOfferStatus": {
