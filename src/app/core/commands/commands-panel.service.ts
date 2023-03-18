@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { RoutingService } from '../services/routing.service';
 
 import { CommandInterface } from './command.interface';
-import { RedirectToAdminCommand } from './entries/redirect-to-admin.command';
+import { RedirectToAdminHomeCommand } from './entries/redirect-to-admin-home.command';
 import { RedirectToHomeCommand } from './entries/redirect-to-home.command';
 
 @Injectable({
@@ -12,8 +12,8 @@ import { RedirectToHomeCommand } from './entries/redirect-to-home.command';
 export class CommandsPanelService {
   private readonly COMMAND_MAP = new Map<string, CommandInterface>([
     [
-      RedirectToAdminCommand.Label,
-      new RedirectToAdminCommand(this.routingService),
+      RedirectToAdminHomeCommand.Label,
+      new RedirectToAdminHomeCommand(this.routingService),
     ],
     [
       RedirectToHomeCommand.Label,
