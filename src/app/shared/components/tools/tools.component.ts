@@ -39,8 +39,14 @@ export class ToolsComponent {
     this._isUserLoggedIn = value;
   }
 
+  @Input()
+  public set hideLoginButton(value: boolean) {
+    this._hideLoginButton = value;
+  }
+
   protected _isCompact = false;
   protected _isUserLoggedIn = false;
+  protected _hideLoginButton = false;
 
   constructor(
     private readonly createFeedbackDialogService: CreateFeedbackDialogService
