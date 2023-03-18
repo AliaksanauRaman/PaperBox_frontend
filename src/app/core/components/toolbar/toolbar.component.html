@@ -1,17 +1,27 @@
 <div class="toolbar">
-  <div class="logo">
-    <img class="logo__image" src="assets/images/logo_big.png" alt="Pushka" />
-  </div>
+  <ng-container *ngIf="_isMobileOrTablet$ | async; else bigDeviceView">
+    <div class="logo" [class.logo--small]="_isMenuOpened"></div>
 
-  <div class="tools">
-    <app-language-switcher
-      class="tools__item language-switcher"
-    ></app-language-switcher>
+    <div class="actions">
+      <app-tools
+        class="actions__tools"
+        *ngIf="_isMenuOpened"
+        [isCompact]="true"
+      ></app-tools>
 
-    <app-leave-feedback-button
-      class="tools__item"
-      (click)="handleLeaveFeedbackButtonClick()"
-    >
-    </app-leave-feedback-button>
-  </div>
+      <app-menu-button
+        class="actions__menu-button"
+        [isMenuOpened]="_isMenuOpened"
+        (click)="handleMenuButtonClick()"
+      ></app-menu-button>
+    </div>
+  </ng-container>
 </div>
+
+<ng-template #bigDeviceView>
+  <div class="logo"></div>
+
+  <div class="actions">
+    <app-tools class="actions__tools"></app-tools>
+  </div>
+</ng-template>

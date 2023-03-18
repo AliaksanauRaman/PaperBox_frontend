@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { ScreenSizeObserverService } from '../../services/screen-size-observer.service';
 import { CreateFeedbackDialogService } from '../../services/create-feedback-dialog.service';
 
 @Component({
@@ -9,9 +10,20 @@ import { CreateFeedbackDialogService } from '../../services/create-feedback-dial
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ToolbarComponent {
-  constructor(private readonly feedbackDialogService: CreateFeedbackDialogService) {}
+  protected _isMenuOpened = false;
+  protected readonly _isMobileOrTablet$ =
+    this.screenSizeObserverService.isMobileOrTablet$;
 
-  public handleLeaveFeedbackButtonClick(): void {
-    this.feedbackDialogService.openDialog();
+  constructor(
+    private readonly screenSizeObserverService: ScreenSizeObserverService,
+    private readonly createFeedbackDialogService: CreateFeedbackDialogService
+  ) {}
+
+  protected handleLeaveFeedbackButtonClick(): void {
+    this.createFeedbackDialogService.openDialog();
+  }
+
+  protected handleMenuButtonClick(): void {
+    this._isMenuOpened = !this._isMenuOpened;
   }
 }
