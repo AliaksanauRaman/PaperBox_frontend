@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { NgIf, AsyncPipe } from '@angular/common';
 
 import { ToolsComponent } from '../tools/tools.component';
@@ -16,6 +16,12 @@ import { CreateFeedbackDialogService } from '../../../core/services/create-feedb
   imports: [NgIf, AsyncPipe, ToolsComponent, MenuButtonComponent],
 })
 export class ToolbarComponent {
+  @Input()
+  public set isLoginFlow(value: boolean) {
+    this._isLoginFlow = value;
+  }
+
+  protected _isLoginFlow = false;
   protected _isMenuOpened = false;
   protected readonly _isMobileOrTablet$ =
     this.screenSizeObserverService.isMobileOrTablet$;
