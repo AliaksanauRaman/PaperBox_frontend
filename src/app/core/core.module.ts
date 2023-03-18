@@ -21,6 +21,7 @@ import { WhiteSquareButtonComponent } from '../shared/components/white-square-bu
 import { ManWithMailImageComponent } from '../shared/images/man-with-mail-image/man-with-mail-image.component';
 import { ManWithGlobeImageComponent } from '../shared/images/man-with-globe-image/man-with-globe-image.component';
 import { FeedbackImageComponent } from '../shared/images/feedback-image/feedback-image.component';
+import { FooterComponent } from '../shared/components/footer/footer.component';
 
 import { IndexPageLayoutComponent } from './layouts/index-page-layout/index-page-layout.component';
 import { HeaderComponent } from './components/header/header.component';
@@ -29,7 +30,6 @@ import { LanguageSwitcherComponent } from './components/language-switcher/langua
 import { ActionsComponent } from './components/actions/actions.component';
 import { MainComponent } from './components/main/main.component';
 import { NavigationMenuComponent } from './components/navigation-menu/navigation-menu.component';
-import { FooterComponent } from './components/footer/footer.component';
 import { LeaveFeedbackButtonComponent } from './components/leave-feedback-button/leave-feedback-button.component';
 import { DynamicPhoneListControlComponent } from './components/dynamic-phone-list-control/dynamic-phone-list-control.component';
 import { LocationsControlComponent } from './components/locations-control/locations-control.component';
@@ -99,6 +99,7 @@ import {
     ManWithMailImageComponent,
     ManWithGlobeImageComponent,
     FeedbackImageComponent,
+    FooterComponent,
   ],
   declarations: [
     IndexPageLayoutComponent,
@@ -108,7 +109,6 @@ import {
     ActionsComponent,
     MainComponent,
     NavigationMenuComponent,
-    FooterComponent,
     LeaveFeedbackButtonComponent,
     DynamicPhoneListControlComponent,
     LocationsControlComponent,
