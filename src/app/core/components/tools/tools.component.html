@@ -1,9 +1,25 @@
 <div class="tools">
-  <app-language-switcher class="item"></app-language-switcher>
+  <app-language-switcher
+    class="item"
+    [isCompact]="_isCompact"
+  ></app-language-switcher>
 
-  <app-leave-feedback-button class="item"></app-leave-feedback-button>
+  <app-leave-feedback-button
+    class="item"
+    (click)="handleLeaveFeedbackButtonClick()"
+  ></app-leave-feedback-button>
 
-  <app-white-square-button class="item"></app-white-square-button>
+  <app-account-button
+    class="item"
+    *ngIf="_isUserLoggedIn"
+    [matMenuTriggerFor]="accountMenu.menuRef"
+  ></app-account-button>
 
-  <app-white-square-button class="item"></app-white-square-button>
+  <app-login-button
+    class="item"
+    *ngIf="!_isUserLoggedIn"
+    routerLink="/login"
+  ></app-login-button>
 </div>
+
+<app-account-menu #accountMenu="accountMenu"></app-account-menu>
