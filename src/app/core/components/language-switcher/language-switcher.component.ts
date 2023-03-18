@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 import { AppLanguagesService } from '../../services/app-languages.service';
 
@@ -11,13 +11,23 @@ import { AppLanguageValue } from '../../../shared/enums/app-language-value.enum'
   styleUrls: ['./language-switcher.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
+// TODO: Refactor this
 export class LanguageSwitcherComponent {
-  public readonly languages$ = this.languagesService.languages$;
+  @Input()
+  public set isCompact(value: boolean) {
+    this._isCompact = value;
+  }
 
-  constructor(private readonly languagesService: AppLanguagesService) {}
+  public _isCompact = false;
 
-  public handleLanguageSelection(selectedLanguageValue: string): void {
-    this.languagesService.selectLanguage(selectedLanguageValue);
+  constructor(public readonly languagesService: AppLanguagesService) {}
+
+  public handleSingleLanguageClick(): void {
+    this.languagesService.selectNextLanguage();
+  }
+
+  public handleLanguageOptionClick(clickedLanguageValue: string): void {
+    this.languagesService.selectLanguage(clickedLanguageValue);
   }
 
   public trackLanguageByValue(

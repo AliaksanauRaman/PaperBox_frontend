@@ -5,19 +5,30 @@
 }
 
 .language-switcher {
-  display: flex;
-  justify-content: center;
-  width: 57.75px;
-  height: 35px;
+  width: 40px;
+  height: 40px;
   background-color: var(--white-color);
   border-radius: var(--border-radius);
-  overflow: hidden;
+
+  &.language-switcher--big {
+    display: flex;
+    justify-content: center;
+    width: 66px;
+  }
+}
+
+.current-language {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  text-transform: capitalize;
 }
 
 .language {
   cursor: pointer;
   display: flex;
   align-items: center;
+  font-size: 1rem;
   font-weight: 600;
   color: var(--grey-color);
   text-transform: capitalize;
@@ -33,9 +44,8 @@
   }
 }
 
-@media (min-width: $smallMobileScreenWidth) {
-  .language-switcher {
-    width: 66px;
-    height: 40px;
+@media (min-width: $minLaptopScreenWidth) {
+  .current-language {
+    font-weight: 600;
   }
 }
