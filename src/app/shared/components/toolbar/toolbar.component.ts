@@ -1,13 +1,19 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { NgIf, AsyncPipe } from '@angular/common';
 
-import { ScreenSizeObserverService } from '../../services/screen-size-observer.service';
-import { CreateFeedbackDialogService } from '../../services/create-feedback-dialog.service';
+import { ToolsComponent } from '../tools/tools.component';
+import { MenuButtonComponent } from '../menu-button/menu-button.component';
+
+import { ScreenSizeObserverService } from '../../../core/services/screen-size-observer.service';
+import { CreateFeedbackDialogService } from '../../../core/services/create-feedback-dialog.service';
 
 @Component({
   selector: 'app-toolbar',
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [NgIf, AsyncPipe, ToolsComponent, MenuButtonComponent],
 })
 export class ToolbarComponent {
   protected _isMenuOpened = false;

@@ -1,15 +1,27 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { NgIf, AsyncPipe, NgFor } from '@angular/common';
+import { MatRippleModule } from '@angular/material/core';
 
-import { AppLanguagesService } from '../../services/app-languages.service';
+import { WhiteSquareButtonComponent } from '../white-square-button/white-square-button.component';
 
-import { AppLanguage } from '../../../shared/types/app-language.type';
-import { AppLanguageValue } from '../../../shared/enums/app-language-value.enum';
+import { AppLanguagesService } from '../../../core/services/app-languages.service';
+
+import { AppLanguage } from '../../types/app-language.type';
+import { AppLanguageValue } from '../../enums/app-language-value.enum';
 
 @Component({
   selector: 'app-language-switcher',
   templateUrl: './language-switcher.component.html',
   styleUrls: ['./language-switcher.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [
+    NgIf,
+    AsyncPipe,
+    NgFor,
+    MatRippleModule,
+    WhiteSquareButtonComponent,
+  ],
 })
 // TODO: Refactor this
 export class LanguageSwitcherComponent {

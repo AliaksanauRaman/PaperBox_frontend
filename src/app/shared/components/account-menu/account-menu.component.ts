@@ -4,9 +4,10 @@ import {
   ViewEncapsulation,
   ViewChild,
 } from '@angular/core';
-import { MatMenu } from '@angular/material/menu';
+import { MatMenuModule, MatMenu } from '@angular/material/menu';
+import { TranslateModule } from '@ngx-translate/core';
 
-import { LogoutService } from '../../services/logout.service';
+import { LogoutService } from '../../../core/services/logout.service';
 
 @Component({
   exportAs: 'accountMenu',
@@ -14,6 +15,8 @@ import { LogoutService } from '../../services/logout.service';
   templateUrl: './account-menu.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
+  standalone: true,
+  imports: [MatMenuModule, TranslateModule],
 })
 export class AccountMenuComponent {
   @ViewChild(MatMenu)

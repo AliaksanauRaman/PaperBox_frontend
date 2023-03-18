@@ -21,23 +21,16 @@ import { WhiteSquareButtonComponent } from '../shared/components/white-square-bu
 import { ManWithMailImageComponent } from '../shared/images/man-with-mail-image/man-with-mail-image.component';
 import { ManWithGlobeImageComponent } from '../shared/images/man-with-globe-image/man-with-globe-image.component';
 import { FeedbackImageComponent } from '../shared/images/feedback-image/feedback-image.component';
+import { ToolbarComponent } from '../shared/components/toolbar/toolbar.component';
 import { FooterComponent } from '../shared/components/footer/footer.component';
 
 import { IndexPageLayoutComponent } from './layouts/index-page-layout/index-page-layout.component';
 import { HeaderComponent } from './components/header/header.component';
-import { ToolbarComponent } from './components/toolbar/toolbar.component';
-import { LanguageSwitcherComponent } from './components/language-switcher/language-switcher.component';
 import { ActionsComponent } from './components/actions/actions.component';
 import { MainComponent } from './components/main/main.component';
 import { NavigationMenuComponent } from './components/navigation-menu/navigation-menu.component';
-import { LeaveFeedbackButtonComponent } from './components/leave-feedback-button/leave-feedback-button.component';
 import { DynamicPhoneListControlComponent } from './components/dynamic-phone-list-control/dynamic-phone-list-control.component';
 import { LocationsControlComponent } from './components/locations-control/locations-control.component';
-import { ToolsComponent } from './components/tools/tools.component';
-import { AccountButtonComponent } from './components/account-button/account-button.component';
-import { LoginButtonComponent } from './components/login-button/login-button.component';
-import { MenuButtonComponent } from './components/menu-button/menu-button.component';
-import { AccountMenuComponent } from './components/account-menu/account-menu.component';
 import { SuccessCreateHelpOfferSectionComponent } from './sections/success-create-help-offer-section/success-create-help-offer-section.component';
 import { SuccessCreateHelpRequestSectionComponent } from './sections/success-create-help-request-section/success-create-help-request-section.component';
 import { SuccessCreateFeedbackSectionComponent } from './sections/success-create-feedback-section/success-create-feedback-section.component';
@@ -99,24 +92,17 @@ import {
     ManWithMailImageComponent,
     ManWithGlobeImageComponent,
     FeedbackImageComponent,
+    ToolbarComponent,
     FooterComponent,
   ],
   declarations: [
     IndexPageLayoutComponent,
     HeaderComponent,
-    ToolbarComponent,
-    LanguageSwitcherComponent,
     ActionsComponent,
     MainComponent,
     NavigationMenuComponent,
-    LeaveFeedbackButtonComponent,
     DynamicPhoneListControlComponent,
     LocationsControlComponent,
-    ToolsComponent,
-    AccountButtonComponent,
-    LoginButtonComponent,
-    MenuButtonComponent,
-    AccountMenuComponent,
     SuccessCreateHelpOfferSectionComponent,
     SuccessCreateHelpRequestSectionComponent,
     SuccessCreateFeedbackSectionComponent,
