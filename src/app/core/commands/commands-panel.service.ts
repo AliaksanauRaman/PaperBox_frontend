@@ -4,6 +4,7 @@ import { RoutingService } from '../services/routing.service';
 
 import { CommandInterface } from './command.interface';
 import { RedirectToAdminHomeCommand } from './entries/redirect-to-admin-home.command';
+import { RedirectToAdminLoginCommand } from './entries/redirect-to-admin-login.command';
 import { RedirectToHomeCommand } from './entries/redirect-to-home.command';
 
 @Injectable({
@@ -14,6 +15,10 @@ export class CommandsPanelService {
     [
       RedirectToAdminHomeCommand.Label,
       new RedirectToAdminHomeCommand(this.routingService),
+    ],
+    [
+      RedirectToAdminLoginCommand.Label,
+      new RedirectToAdminLoginCommand(this.routingService),
     ],
     [
       RedirectToHomeCommand.Label,
