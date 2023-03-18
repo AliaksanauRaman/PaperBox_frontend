@@ -37,6 +37,7 @@ import { ToolsComponent } from './components/tools/tools.component';
 import { AccountButtonComponent } from './components/account-button/account-button.component';
 import { LoginButtonComponent } from './components/login-button/login-button.component';
 import { MenuButtonComponent } from './components/menu-button/menu-button.component';
+import { AccountMenuComponent } from './components/account-menu/account-menu.component';
 import { SuccessCreateHelpOfferSectionComponent } from './sections/success-create-help-offer-section/success-create-help-offer-section.component';
 import { SuccessCreateHelpRequestSectionComponent } from './sections/success-create-help-request-section/success-create-help-request-section.component';
 import { SuccessCreateFeedbackSectionComponent } from './sections/success-create-feedback-section/success-create-feedback-section.component';
@@ -115,6 +116,7 @@ import {
     AccountButtonComponent,
     LoginButtonComponent,
     MenuButtonComponent,
+    AccountMenuComponent,
     SuccessCreateHelpOfferSectionComponent,
     SuccessCreateHelpRequestSectionComponent,
     SuccessCreateFeedbackSectionComponent,
