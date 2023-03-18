@@ -11,7 +11,11 @@ export class RoutingService {
     return this.router.navigate(['/']);
   }
 
-  public async navigateToAdmin(): Promise<boolean> {
+  public async navigateToAdminLogin(): Promise<boolean> {
+    return this.router.navigate(['/admin/login']);
+  }
+
+  public async navigateToAdminHome(): Promise<boolean> {
     return this.router.navigate(['/admin']);
   }
 }
