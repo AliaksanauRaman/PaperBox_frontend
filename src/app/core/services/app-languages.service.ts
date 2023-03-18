@@ -1,6 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, map } from 'rxjs';
 
 import { LocalStorageType, LOCAL_STORAGE } from '../dependencies/local-storage';
 import { AppLocaleService } from './app-locale.service';
@@ -24,10 +24,10 @@ const APP_LANGUAGES: ReadonlyArray<AppLanguage> = [
   },
 ];
 
-// TODO: Refactor it please
+// TODO: !IMPORTANT Refactor it please
 const getInitialStateOfAppLanguages = (
   initiallySelectedLanguageValue: string
-): ReadonlyArray<typeof APP_LANGUAGES[number]> => {
+): ReadonlyArray<AppLanguage> => {
   return APP_LANGUAGES.map((language) => ({
     ...language,
     selected: language.value === initiallySelectedLanguageValue,
@@ -59,10 +59,17 @@ export class AppLanguagesService {
   );
 
   public readonly languages$ = this._languages$.asObservable();
+  public readonly currentLanguage$ = this._languages$.asObservable().pipe(
+    map((languages) => {
+      const currentLanguage = languages.find(({ selected }) => selected);
 
-  public get currentLanguage(): string {
-    return this.translateService.currentLang;
-  }
+      if (currentLanguage === undefined) {
+        throw new Error('None language is selected!');
+      }
+
+      return currentLanguage;
+    })
+  );
 
   constructor(
     @Inject(LOCAL_STORAGE)
@@ -103,7 +110,53 @@ export class AppLanguagesService {
     );
   }
 
+  public selectNextLanguage(): void {
+    const currentLanguages = this._languages$.getValue();
+    const nextLanguage = this.getLanguageNextToSelected(currentLanguages);
+    const nextLanguageValue = nextLanguage.value;
+
+    this.translateService.use(nextLanguageValue);
+    this.localStorage.setItem(
+      LocalStorageKey.APP_CURRENT_LANGUAGE,
+      nextLanguageValue
+    );
+    this.localeService.setCurrentLocale(
+      getLocaleByLanguageValue(nextLanguageValue)
+    );
+
+    this._languages$.next(
+      currentLanguages.map((language) => {
+        return {
+          ...language,
+          selected: language.value === nextLanguageValue,
+        };
+      })
+    );
+  }
+
   public translateByKey(key: string): string {
     return this.translateService.instant(key);
+  }
+
+  private getLanguageNextToSelected(
+    languageList: ReadonlyArray<AppLanguage>
+  ): AppLanguage {
+    const selectedLanguageIndex = languageList.findIndex(
+      ({ selected }) => selected
+    );
+
+    if (selectedLanguageIndex === -1) {
+      throw new Error('None language is selected!');
+    }
+
+    const languageNextToSelected: AppLanguage | undefined =
+      languageList[selectedLanguageIndex + 1];
+    const firstLanguage = languageList[0];
+
+    if (languageNextToSelected !== undefined) {
+      return languageNextToSelected;
+    }
+
+    return firstLanguage;
   }
 }
