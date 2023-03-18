@@ -1,0 +1,40 @@
+:host {
+  display: flex;
+  flex-grow: 1;
+}
+
+.login-flow-page-layout {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.header {
+  flex-shrink: 0;
+  padding: var(--vertical-bordering-padding) var(--horizontal-bordering-padding)
+    var(--key-blocks-indent-size) var(--horizontal-bordering-padding);
+}
+
+.header__container {
+  flex-grow: 1;
+  max-width: var(--max-content-width);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.content__container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: 100%;
+  max-width: var(--max-content-width);
+}
+
+.footer {
+  flex-shrink: 0;
+}

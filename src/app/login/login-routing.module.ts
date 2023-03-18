@@ -1,12 +1,27 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { LoginMainPageComponent } from './pages/login-main-page/login-main-page.component';
+import { LoginFlowPageLayoutComponent } from './layouts/login-flow-page-layout/login-flow-page-layout.component';
+import { LoginPageComponent } from './pages/login-page/login-page.component';
+import { RegistrationPageComponent } from './pages/registration-page/registration-page.component';
 
 const loginRoutes: Routes = [
   {
     path: '',
-    component: LoginMainPageComponent,
+    title: 'Pushka',
+    component: LoginFlowPageLayoutComponent,
+    children: [
+      {
+        path: '',
+        title: 'Pushka | Login',
+        component: LoginPageComponent,
+      },
+      {
+        path: 'registration',
+        title: 'Pushka | Registration',
+        component: RegistrationPageComponent,
+      },
+    ],
   },
 ];
 
