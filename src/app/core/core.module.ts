@@ -21,6 +21,7 @@ import { WhiteSquareButtonComponent } from '../shared/components/white-square-bu
 import { ManWithMailImageComponent } from '../shared/images/man-with-mail-image/man-with-mail-image.component';
 import { ManWithGlobeImageComponent } from '../shared/images/man-with-globe-image/man-with-globe-image.component';
 import { FeedbackImageComponent } from '../shared/images/feedback-image/feedback-image.component';
+import { GirlInCardImageComponent } from '../shared/images/girl-in-card-image/girl-in-card-image.component';
 import { ToolbarComponent } from '../shared/components/toolbar/toolbar.component';
 import { FooterComponent } from '../shared/components/footer/footer.component';
 
@@ -92,6 +93,7 @@ import {
     ManWithMailImageComponent,
     ManWithGlobeImageComponent,
     FeedbackImageComponent,
+    GirlInCardImageComponent,
     ToolbarComponent,
     FooterComponent,
   ],
