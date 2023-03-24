@@ -4,6 +4,7 @@ import { DialogRef } from '@angular/cdk/dialog';
 import { BehaviorSubject, tap } from 'rxjs';
 
 import { CreateHelpOfferService } from '../../services/create-help-offer.service';
+import { ErrorNotificationService } from '../../services/error-notification.service';
 
 import { DialogComponent } from '../../../shared/abstracts/dialog-component.class';
 import { CreateHelpOfferDto } from '../../../shared/dtos/create-help-offer.dto';
@@ -39,6 +40,7 @@ export class CreateHelpOfferDialogComponent extends DialogComponent {
         } else if (state.error !== null) {
           this._dialogTitle$.next(NORMAL_TITLE);
           this.createHelpOfferForm.enable();
+          this._errorNotificationService.showMessage('errors.createHelpOffer');
         } else if (state.data !== null) {
           this._dialogTitle$.next(SUCCESS_TITLE);
         }
@@ -75,6 +77,7 @@ export class CreateHelpOfferDialogComponent extends DialogComponent {
   constructor(
     private readonly formBuilder: FormBuilder,
     private readonly createHelpOfferService: CreateHelpOfferService,
+    private readonly _errorNotificationService: ErrorNotificationService,
     dialogRef: DialogRef<void>
   ) {
     super(dialogRef);

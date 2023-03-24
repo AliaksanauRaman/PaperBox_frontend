@@ -141,14 +141,8 @@
 
     <app-success-create-help-offer-section
       *ngIf="state.data !== null"
+      [helpOfferPublicId]="state.data.publicId"
+      (ok)="closeDialog()"
     ></app-success-create-help-offer-section>
-
-    <!-- TODO: !IMPORTANT Finish this -->
-    <div class="app-custom-dialog-server-error" *ngIf="state.error !== null">
-      <span
-        >Server error. Please, try again a bit later. <br />
-        If error occurs again contact us via mail or via feedback.</span
-      >
-    </div>
   </ng-container>
 </div>
