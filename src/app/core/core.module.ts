@@ -6,6 +6,8 @@ import { DialogModule } from '@angular/cdk/dialog';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatRippleModule } from '@angular/material/core';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ClipboardModule } from '@angular/cdk/clipboard';
 
 import { PlusIconModule } from '../shared/icons/plus-icon/plus-icon.module';
 import { CalendarIconModule } from '../shared/icons/calendar-icon/calendar-icon.module';
@@ -32,7 +34,10 @@ import { MainComponent } from './components/main/main.component';
 import { NavigationMenuComponent } from './components/navigation-menu/navigation-menu.component';
 import { DynamicPhoneListControlComponent } from './components/dynamic-phone-list-control/dynamic-phone-list-control.component';
 import { LocationsControlComponent } from './components/locations-control/locations-control.component';
+import { ErrorSnackBarComponent } from './components/error-snack-bar/error-snack-bar.component';
+import { InfoSnackBarComponent } from './components/info-snack-bar/info-snack-bar.component';
 import { SuccessCreateHelpOfferSectionComponent } from './sections/success-create-help-offer-section/success-create-help-offer-section.component';
+import { SuccessCreateHelpItemSectionComponent } from './sections/success-create-help-item-section/success-create-help-item-section.component';
 import { SuccessCreateHelpRequestSectionComponent } from './sections/success-create-help-request-section/success-create-help-request-section.component';
 import { SuccessCreateFeedbackSectionComponent } from './sections/success-create-feedback-section/success-create-feedback-section.component';
 import { CreateFeedbackDialogComponent } from './dialogs/create-feedback-dialog/create-feedback-dialog.component';
@@ -79,6 +84,8 @@ import {
     TranslateModule,
     MatRippleModule,
     MatMenuModule,
+    MatSnackBarModule,
+    ClipboardModule,
     PlusIconModule,
     CalendarIconModule,
     LocationIconModule,
@@ -105,7 +112,10 @@ import {
     NavigationMenuComponent,
     DynamicPhoneListControlComponent,
     LocationsControlComponent,
+    ErrorSnackBarComponent,
+    InfoSnackBarComponent,
     SuccessCreateHelpOfferSectionComponent,
+    SuccessCreateHelpItemSectionComponent,
     SuccessCreateHelpRequestSectionComponent,
     SuccessCreateFeedbackSectionComponent,
     CreateFeedbackDialogComponent,
