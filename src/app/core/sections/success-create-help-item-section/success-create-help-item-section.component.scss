@@ -1,0 +1,66 @@
+:host {
+  display: block;
+}
+
+.success-create-help-item-section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.text-block {
+  flex-shrink: 0;
+  margin-top: 0;
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 22px;
+}
+
+.thank-you-text {
+  margin-bottom: 16px;
+  text-align: center;
+  color: var(--primary-color);
+}
+
+.description-text {
+  margin-bottom: 40px;
+  text-align: center;
+  color: var(--grey-color);
+}
+
+.public-id {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 45px;
+}
+
+.public-id__label {
+  position: relative;
+  right: 30px;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--grey-color);
+}
+
+.public-id__value {
+  cursor: pointer;
+  position: relative;
+  right: 30px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--success-color);
+  text-decoration: underline;
+}
+
+.girl-in-card-image {
+  position: absolute;
+  bottom: 20px;
+  right: 0;
+}
+
+.app-primary-button {
+  position: relative;
+  z-index: 1;
+}
