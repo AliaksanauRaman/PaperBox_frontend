@@ -106,6 +106,12 @@
     },
     "accountMenu": {
       "logOut": "Log out"
+    },
+    "successCreateHelpItemSection": {
+      "thankYouText": "Thank you for using our service!",
+      "descriptionText": "Your application has been successfully created and submitted for moderation.",
+      "publicIdLabel": "Application ID:",
+      "thankYouButtonLabel": "Thank you!"
     }
   },
   "helpOfferStatus": {
@@ -150,6 +156,9 @@
     "emailField": "john.smith@gmail.com",
     "emptyList": "The list is empty."
   },
+  "infos": {
+    "applicationIdIsSuccessfullyCopied": "Application ID is successfully copied to the clipboard!"
+  },
   "warnings": {
     "sameCountries": "Same countries.",
     "sameCities": "Same cities.",
@@ -163,7 +172,8 @@
     "minCharacters": "Minimum characters amount is: {{ amount }}.",
     "atLeastOnePhoneNumberIsRequired": "At least one phone number is required.",
     "phonePatternIsNotMet": "Only numbers are allowed. From 7 to 12 characters long.",
-    "createHelpOffer": "Server error. Please, try again a bit later. If error continues to occur contact us via email or via feedback."
+    "createHelpOffer": "Server error. Please, try again a bit later. If error continues to occur contact us via email or via feedback.",
+    "applicationIdCopyError": "Unknown error occurred during copying application ID to the clipboard."
   },
   "helpTitles": {
     "clear": "Clear",
