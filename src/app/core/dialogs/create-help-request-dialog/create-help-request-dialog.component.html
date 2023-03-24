@@ -143,6 +143,8 @@
 
     <app-success-create-help-request-section
       *ngIf="state.data !== null"
+      [helpRequestPublicId]="state.data.publicId"
+      (ok)="closeDialog()"
     ></app-success-create-help-request-section>
   </ng-container>
 </div>

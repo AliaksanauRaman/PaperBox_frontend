@@ -3,7 +3,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { DialogRef } from '@angular/cdk/dialog';
 import { BehaviorSubject, tap } from 'rxjs';
 
-import { CreateHelpRequestService } from '../../services/create-help-reqeust.service';
+import { CreateHelpRequestService } from '../../services/create-help-request.service';
+import { ErrorNotificationService } from '../../services/error-notification.service';
 
 import { DialogComponent } from '../../../shared/abstracts/dialog-component.class';
 import { DateControlValueType } from '../../../shared/types/date-control-value.type';
@@ -43,6 +44,9 @@ export class CreateHelpRequestDialogComponent
         } else if (state.error !== null) {
           this._dialogTitle$.next(NORMAL_TITLE);
           this.createHelpRequestForm.enable();
+          this._errorNotificationService.showMessage(
+            'errors.createHelpRequest'
+          );
         } else if (state.data !== null) {
           this._dialogTitle$.next(SUCCESS_TITLE);
         }
@@ -78,6 +82,7 @@ export class CreateHelpRequestDialogComponent
   constructor(
     private readonly formBuilder: FormBuilder,
     private readonly createHelpRequestService: CreateHelpRequestService,
+    private readonly _errorNotificationService: ErrorNotificationService,
     dialogRef: DialogRef<void>
   ) {
     super(dialogRef);
