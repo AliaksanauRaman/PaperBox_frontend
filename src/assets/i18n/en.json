@@ -173,6 +173,7 @@
     "atLeastOnePhoneNumberIsRequired": "At least one phone number is required.",
     "phonePatternIsNotMet": "Only numbers are allowed. From 7 to 12 characters long.",
     "createHelpOffer": "Server error. Please, try again a bit later. If error continues to occur contact us via email or via feedback.",
+    "createHelpRequest": "Server error. Please, try again a bit later. If error continues to occur contact us via email or via feedback.",
     "applicationIdCopyError": "Unknown error occurred during copying application ID to the clipboard."
   },
   "helpTitles": {
