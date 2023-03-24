@@ -1,0 +1,7 @@
+.app-info-snack-bar.mat-mdc-snack-bar-container {
+  .mdc-snackbar__surface {
+    max-width: 400px;
+    background-color: var(--primary-background-color);
+    border-radius: var(--border-radius);
+  }
+}
