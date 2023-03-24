@@ -162,7 +162,8 @@
     "commentIsRequired": "Comment is required.",
     "minCharacters": "Minimum characters amount is: {{ amount }}.",
     "atLeastOnePhoneNumberIsRequired": "At least one phone number is required.",
-    "phonePatternIsNotMet": "Only numbers are allowed. From 7 to 12 characters long."
+    "phonePatternIsNotMet": "Only numbers are allowed. From 7 to 12 characters long.",
+    "createHelpOffer": "Server error. Please, try again a bit later. If error continues to occur contact us via email or via feedback."
   },
   "helpTitles": {
     "clear": "Clear",
