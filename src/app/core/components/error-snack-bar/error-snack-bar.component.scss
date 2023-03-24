@@ -1,0 +1,31 @@
+:host {
+  display: block;
+}
+
+.error-snack-bar {
+  display: flex;
+}
+
+.message {
+  flex-grow: 1;
+  font-size: 1rem;
+  font-weight: 400;
+  text-align: center;
+}
+
+.close-button {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  margin-left: 10px;
+  border-radius: 50%;
+}
+
+.cross-icon {
+  path {
+    stroke: var(--black-color);
+  }
+}
