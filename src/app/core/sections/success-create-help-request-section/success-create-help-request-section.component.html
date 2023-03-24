@@ -1,3 +1,6 @@
 <div class="success-create-help-request-section">
-  <span>success-create-help-request-section</span>
+  <app-success-create-help-item-section
+    [helpItemPublicId]="_helpRequestPublicId"
+    (ok)="handleOk()"
+  ></app-success-create-help-item-section>
 </div>

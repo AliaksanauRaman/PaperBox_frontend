@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 
 @Component({
   selector: 'app-success-create-help-request-section',
@@ -6,4 +12,18 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrls: ['./success-create-help-request-section.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SuccessCreateHelpRequestSectionComponent {}
+export class SuccessCreateHelpRequestSectionComponent {
+  @Input()
+  public set helpRequestPublicId(value: string) {
+    this._helpRequestPublicId = value;
+  }
+
+  @Output()
+  public readonly ok = new EventEmitter<void>();
+
+  protected _helpRequestPublicId = '';
+
+  protected handleOk(): void {
+    this.ok.emit();
+  }
+}
