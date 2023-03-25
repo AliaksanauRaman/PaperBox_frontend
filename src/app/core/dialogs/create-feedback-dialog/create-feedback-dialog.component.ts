@@ -4,6 +4,7 @@ import { DialogRef } from '@angular/cdk/dialog';
 import { tap, BehaviorSubject } from 'rxjs';
 
 import { CreateFeedbackService } from '../../services/create-feedback.service';
+import { ErrorNotificationService } from '../../services/error-notification.service';
 
 import { DialogComponent } from '../../../shared/abstracts/dialog-component.class';
 import { CustomValidators } from '../../../shared/classes/custom-validators.class';
@@ -38,6 +39,7 @@ export class CreateFeedbackDialogComponent
       } else if (state.error !== null) {
         this._dialogTitle$.next(NORMAL_TITLE);
         this.createFeedbackForm.enable();
+        this._errorNotificationService.showMessage('errors.createFeedback');
       } else if (state.data !== null) {
         this._dialogTitle$.next(SUCCESS_TITLE);
       }
@@ -53,6 +55,7 @@ export class CreateFeedbackDialogComponent
   constructor(
     private readonly formBuilder: NonNullableFormBuilder,
     private readonly createFeedbackService: CreateFeedbackService,
+    private readonly _errorNotificationService: ErrorNotificationService,
     dialogRef: DialogRef<void>
   ) {
     super(dialogRef);
