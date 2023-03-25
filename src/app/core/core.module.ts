@@ -24,6 +24,7 @@ import { ManWithMailImageComponent } from '../shared/images/man-with-mail-image/
 import { ManWithGlobeImageComponent } from '../shared/images/man-with-globe-image/man-with-globe-image.component';
 import { FeedbackImageComponent } from '../shared/images/feedback-image/feedback-image.component';
 import { GirlInCardMobileImageComponent } from '../shared/images/girl-in-card-mobile-image/girl-in-card-mobile-image.component';
+import { GirlInCardDesktopImageComponent } from '../shared/images/girl-in-card-desktop-image/girl-in-card-desktop-image.component';
 import { ToolbarComponent } from '../shared/components/toolbar/toolbar.component';
 import { FooterComponent } from '../shared/components/footer/footer.component';
 
@@ -101,6 +102,7 @@ import {
     ManWithGlobeImageComponent,
     FeedbackImageComponent,
     GirlInCardMobileImageComponent,
+    GirlInCardDesktopImageComponent,
     ToolbarComponent,
     FooterComponent,
   ],
