@@ -1,9 +1,24 @@
+@import "../../../styles/scss-variables";
+
 :host {
   display: block;
 }
 
 .success-create-help-item-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.content-with-image {
   position: relative;
+  display: block;
+}
+
+.content {
+  display: flex;
+}
+
+.content__inner {
   display: flex;
   flex-direction: column;
 }
@@ -32,6 +47,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex-shrink: 0;
   margin-bottom: 45px;
 }
 
@@ -54,13 +70,84 @@
   text-decoration: underline;
 }
 
-.girl-in-card-image {
+.image {
   position: absolute;
-  bottom: 20px;
+  bottom: -32px;
   right: 0;
+}
+
+.girl-in-card-desktop-image {
+  display: none;
 }
 
 .app-primary-button {
   position: relative;
   z-index: 1;
+}
+
+@media (min-width: $minLaptopScreenWidth) {
+  .content-with-image {
+    display: flex;
+    width: 540px;
+  }
+
+  .content {
+    justify-content: flex-end;
+    flex-grow: 1;
+  }
+
+  .content__inner {
+    justify-content: center;
+    align-items: center;
+    max-width: 365px;
+    padding-bottom: 30px;
+  }
+
+  .text-block {
+    font-size: 1.2rem;
+    line-height: 26px;
+  }
+
+  .thank-you-text {
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+
+  .description-text {
+    margin-bottom: 24px;
+  }
+
+  .public-id {
+    flex-direction: row;
+    margin-bottom: 0;
+  }
+
+  .public-id__label {
+    right: 0;
+    margin-bottom: 0;
+    font-size: 1.2rem;
+    margin-right: 12px;
+  }
+
+  .public-id__value {
+    right: 0;
+  }
+
+  .image {
+    position: relative;
+    bottom: 0;
+    right: 0;
+    flex-shrink: 0;
+    margin-left: 20px;
+  }
+
+  .girl-in-card-mobile-image {
+    display: none;
+  }
+
+  .girl-in-card-desktop-image {
+    display: block;
+    width: 125px;
+    height: 230px;
+  }
 }

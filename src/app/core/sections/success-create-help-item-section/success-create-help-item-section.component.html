@@ -1,24 +1,46 @@
 <div class="success-create-help-item-section">
-  <p class="thank-you-text text-block">
-    {{ "components.successCreateHelpItemSection.thankYouText" | translate }}
-  </p>
+  <div class="content-with-image">
+    <div class="content">
+      <div class="content__inner">
+        <p class="thank-you-text text-block">
+          {{
+            "components.successCreateHelpItemSection.thankYouText" | translate
+          }}
+        </p>
 
-  <p class="description-text text-block">
-    {{ "components.successCreateHelpItemSection.descriptionText" | translate }}
-  </p>
+        <p class="description-text text-block">
+          {{
+            "components.successCreateHelpItemSection.descriptionText"
+              | translate
+          }}
+        </p>
 
-  <div class="public-id">
-    <div class="public-id__label">
-      {{ "components.successCreateHelpItemSection.publicIdLabel" | translate }}
+        <div class="public-id">
+          <div class="public-id__label">
+            {{
+              "components.successCreateHelpItemSection.publicIdLabel"
+                | translate
+            }}
+          </div>
+          <a
+            class="public-id__value"
+            (click)="handlePublicIdValueClick(_helpItemPublicId)"
+            >{{ _helpItemPublicId }}</a
+          >
+        </div>
+      </div>
     </div>
-    <a
-      class="public-id__value"
-      (click)="handlePublicIdValueClick(_helpItemPublicId)"
-      >{{ _helpItemPublicId }}</a
-    >
-  </div>
 
-  <app-girl-in-card-mobile-image class="girl-in-card-image"></app-girl-in-card-mobile-image>
+    <div class="image">
+      <app-girl-in-card-mobile-image
+        class="girl-in-card-mobile-image"
+      ></app-girl-in-card-mobile-image>
+
+      <app-girl-in-card-desktop-image
+        class="girl-in-card-desktop-image"
+      ></app-girl-in-card-desktop-image>
+    </div>
+  </div>
 
   <button
     type="button"
