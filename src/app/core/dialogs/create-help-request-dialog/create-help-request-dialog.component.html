@@ -2,6 +2,7 @@
   <ng-container *ngIf="createHelpRequestState$ | async as state">
     <h2
       class="title app-custom-dialog-title"
+      [class.title--success]="state.data !== null"
       *ngIf="dialogTitle$ | async as dialogTitle"
     >
       {{ dialogTitle | translate }}

@@ -4,6 +4,10 @@ $systemMessageContainerHeight: 26px;
 
 .title {
   flex-shrink: 0;
+
+  &.title--success {
+    margin-bottom: 20px;
+  }
 }
 
 .form {
