@@ -11,7 +11,7 @@ import { UniqueIdGeneratorService } from '../../../core/services/unique-id-gener
 
 import { CustomControl } from '../../abstracts/custom-control.class';
 
-type InputType = 'text' | 'email';
+type InputType = 'text' | 'email' | 'password';
 type InputMode = 'text' | 'email';
 
 const DEFAULT_INPUT_TYPE: InputType = 'text';
