@@ -1,0 +1,21 @@
+.app-control-container {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: 100%;
+
+  .app-control-errors {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    height: 26px;
+    padding: 0 12px;
+
+    .app-control-errors__item {
+      flex-shrink: 0;
+      font-size: 0.9rem;
+      color: var(--error-color);
+      white-space: pre;
+    }
+  }
+}
