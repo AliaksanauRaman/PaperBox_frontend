@@ -80,11 +80,6 @@
   display: none;
 }
 
-.app-primary-button {
-  position: relative;
-  z-index: 1;
-}
-
 @media (min-width: $minLaptopScreenWidth) {
   .content-with-image {
     display: flex;

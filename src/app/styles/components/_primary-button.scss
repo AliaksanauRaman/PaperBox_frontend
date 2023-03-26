@@ -1,6 +1,8 @@
 @import "../scss-variables";
 
 button.app-primary-button {
+  position: relative;
+  z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
