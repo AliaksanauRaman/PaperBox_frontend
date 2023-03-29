@@ -1,0 +1,44 @@
+:host {
+  display: block;
+}
+
+.login-form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.not-registered-call-to-action {
+  display: flex;
+  flex-shrink: 0;
+  margin-bottom: 130px;
+  padding: 0 12px;
+  text-align: end;
+}
+
+.not-registered-label {
+  flex-shrink: 0;
+  color: var(--black-color);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.register-call-to-action {
+  flex-shrink: 0;
+  margin-left: 5px;
+  color: var(--primary-color);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.girl-with-heart-mobile-image {
+  position: absolute;
+  bottom: 2px;
+  left: 13px;
+}
+
+.man-with-hearts-mobile-image {
+  position: absolute;
+  right: 20px;
+  bottom: 2px;
+}
