@@ -15,58 +15,35 @@
         "title": "I can help!",
         "callToAction": "Help!"
       }
+    },
+    "login": {
+      "title": "Login"
     }
   },
   "dialogs": {
     "createHelpOffer": {
       "title": "Offer help",
       "loading": "Loading...",
-      "success": "Success!",
-      "whenFieldLabel": "When (DD/MM/YYYY)",
-      "commentFieldLabel": "Comment",
-      "fullNameFieldLabel": "Full name",
-      "sendButtonLabel": "Send"
+      "success": "Success!"
     },
     "createHelpRequest": {
       "title": "Find help",
       "loading": "Loading...",
-      "success": "Success!",
-      "whenFieldLabel": "When (DD/MM/YYYY)",
-      "commentFieldLabel": "Comment",
-      "fullNameFieldLabel": "Full name",
-      "sendButtonLabel": "Send"
+      "success": "Success!"
     },
     "createFeedback": {
       "title": "Feedback",
       "loading": "Loading...",
       "success": "Success!",
-      "fullNameFieldLabel": "Full name",
-      "emailFieldLabel": "Email",
-      "commentFieldLabel": "How to improve our service?",
-      "sendButtonLabel": "Send"
-    },
-    "newHelpOffer": {
-      "title": "New help offer",
-      "fullNameFieldLabel": "Full name",
-      "countryFromFieldLabel": "Country (from)",
-      "cityFromFieldLabel": "City (from)",
-      "countryToFieldLabel": "Country (to)",
-      "cityToFieldLabel": "City (to)",
-      "diallingCodeFieldLabel": "Phone code",
-      "phoneNumberFieldLabel": "Phone number",
-      "commentFieldLabel": "Comment",
-      "cancelButtonLabel": "Cancel",
-      "createButtonLabel": "Create"
+      "commentFieldLabel": "How to improve our service?"
     },
     "adminManageHelpOffer": {
       "title": "Manage help offer",
       "statusFieldLabel": "Status",
-      "fullNameFieldLabel": "Full name",
       "whereFromFieldLabel": "Where from",
       "whereToFieldLabel": "Where to",
       "dateFieldLabel": "Date",
       "phonesFieldLabel": "Phones",
-      "commentFieldLabel": "Comment",
       "createdDateTimeFieldLabel": "Created",
       "publishButtonLabel": "Publish",
       "unpublishButtonLabel": "Unpublish",
@@ -112,6 +89,10 @@
       "descriptionText": "Your application has been successfully created and submitted for moderation.",
       "publicIdLabel": "Application ID:",
       "thankYouButtonLabel": "Thank you!"
+    },
+    "loginForm": {
+      "notWithUsYet": "Not with us yet?",
+      "registration": "Registration"
     }
   },
   "helpOfferStatus": {
@@ -154,6 +135,7 @@
     "fullNameField": "John Smith",
     "commentField": "Your comment text...",
     "emailField": "john.smith@gmail.com",
+    "passwordControl": "1234abcd",
     "emptyList": "The list is empty."
   },
   "infos": {
@@ -164,9 +146,10 @@
     "sameCities": "Same cities.",
     "itIsBetterToLeaveAComment": "It is better to leave a comment."
   },
-  "errors": {
+  "error": {
     "fullNameIsRequired": "Full name is required.",
     "emailIsRequired": "Email is required.",
+    "passwordIsRequired": "Password is required.",
     "incorrectEmailFormat": "Incorrect email format.",
     "commentIsRequired": "Comment is required.",
     "minCharacters": "Minimum characters amount is: {{ amount }}.",
@@ -185,6 +168,16 @@
     "closeDialog": "Close dialog",
     "addPhoneNumber": "Add phone number",
     "removePhoneNumber": "Remove phone number"
+  },
+  "controlLabel": {
+    "email": "Email",
+    "password": "Password",
+    "fullName": "Full name",
+    "comment": "Comment",
+    "when": "When (DD/MM/YYYY)"
+  },
+  "button": {
+    "send": "Send"
   },
   "personalDataAgreementText": "I agree to the processing and storage of my personal data",
   "allowedItemsConfirmationText": "I confirm that the items being transported are not prohibited and that they do not violate the laws of the participating countries",

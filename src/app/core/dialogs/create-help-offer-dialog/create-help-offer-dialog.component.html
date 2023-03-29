@@ -32,7 +32,7 @@
 
       <app-date-control
         class="date-control"
-        [label]="'dialogs.createHelpOffer.whenFieldLabel' | translate"
+        [label]="'controlLabel.when' | translate"
         [required]="true"
         formControlName="date"
       >
@@ -43,7 +43,7 @@
       >
         <app-textarea-field-control
           class="comment-control"
-          [label]="'dialogs.createHelpOffer.commentFieldLabel' | translate"
+          [label]="'controlLabel.comment' | translate"
           [placeholder]="'placeholders.commentField' | translate"
           [warningColored]="
             commentControl.value === '' && commentControl.touched
@@ -67,7 +67,7 @@
           <div class="control-container">
             <app-input-control
               class="full-name-control"
-              [label]="'dialogs.createHelpOffer.fullNameFieldLabel' | translate"
+              [label]="'controlLabel.fullName' | translate"
               [required]="true"
               [placeholder]="'placeholders.fullNameField' | translate"
               formControlName="fullName"
@@ -83,7 +83,7 @@
                   class="error-text"
                   *ngIf="fullNameControl.errors?.['required']"
                 >
-                  <span>{{ "errors.fullNameIsRequired" | translate }}</span>
+                  <span>{{ "error.fullNameIsRequired" | translate }}</span>
                 </div>
               </ng-container>
             </div>
@@ -121,9 +121,7 @@
           [disabled]="createHelpOfferForm.invalid"
           type="submit"
         >
-          <span>{{
-            "dialogs.createHelpOffer.sendButtonLabel" | translate
-          }}</span>
+          <span>{{ "button.send" | translate }}</span>
         </button>
 
         <button

@@ -40,7 +40,7 @@ export class CreateHelpOfferDialogComponent extends DialogComponent {
         } else if (state.error !== null) {
           this._dialogTitle$.next(NORMAL_TITLE);
           this.createHelpOfferForm.enable();
-          this._errorNotificationService.showMessage('errors.createHelpOffer');
+          this._errorNotificationService.showMessage('error.createHelpOffer');
         } else if (state.data !== null) {
           this._dialogTitle$.next(SUCCESS_TITLE);
         }

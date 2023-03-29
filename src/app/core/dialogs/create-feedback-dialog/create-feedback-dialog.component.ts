@@ -39,7 +39,7 @@ export class CreateFeedbackDialogComponent
       } else if (state.error !== null) {
         this._dialogTitle$.next(NORMAL_TITLE);
         this.createFeedbackForm.enable();
-        this._errorNotificationService.showMessage('errors.createFeedback');
+        this._errorNotificationService.showMessage('error.createFeedback');
       } else if (state.data !== null) {
         this._dialogTitle$.next(SUCCESS_TITLE);
       }

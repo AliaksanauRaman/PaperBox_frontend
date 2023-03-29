@@ -15,58 +15,35 @@
         "title": "Я магу дапамагчы!",
         "callToAction": "Дапамагчы!"
       }
+    },
+    "login": {
+      "title": "Уваход"
     }
   },
   "dialogs": {
     "createHelpOffer": {
       "title": "Прапанаваць дапамогу",
       "loading": "Загрузка...",
-      "success": "Поспех!",
-      "whenFieldLabel": "Калі (ДД.ММ.ГГГГ)",
-      "commentFieldLabel": "Каментар",
-      "fullNameFieldLabel": "Поўнае імя",
-      "sendButtonLabel": "Адправіць"
+      "success": "Поспех!"
     },
     "createHelpRequest": {
       "title": "Знайсці дапамогу",
       "loading": "Загрузка...",
-      "success": "Поспех!",
-      "whenFieldLabel": "Калі (ДД.ММ.ГГГГ)",
-      "commentFieldLabel": "Каментар",
-      "fullNameFieldLabel": "Поўнае імя",
-      "sendButtonLabel": "Адправіць"
+      "success": "Поспех!"
     },
     "createFeedback": {
       "title": "Зваротная сувязь",
       "loading": "Загрузка...",
       "success": "Поспех!",
-      "fullNameFieldLabel": "Поўнае імя",
-      "emailFieldLabel": "Электронная пошта",
-      "commentFieldLabel": "Як палепшыць наш сэрвіс?",
-      "sendButtonLabel": "Адправіць"
-    },
-    "newHelpOffer": {
-      "title": "Новая прапанова аб дапамозе",
-      "fullNameFieldLabel": "Поўнае імя",
-      "countryFromFieldLabel": "Краіна (адкуль)",
-      "cityFromFieldLabel": "Горад (адкуль)",
-      "countryToFieldLabel": "Краіна (куды)",
-      "cityToFieldLabel": "Горад (куды)",
-      "diallingCodeFieldLabel": "Код тэлефону",
-      "phoneNumberFieldLabel": "Нумар тэлефону",
-      "commentFieldLabel": "Каментар",
-      "cancelButtonLabel": "Адмена",
-      "createButtonLabel": "Стварыць"
+      "commentFieldLabel": "Як палепшыць наш сэрвіс?"
     },
     "adminManageHelpOffer": {
       "title": "Кіраванне прапановай аб дапамозе",
       "statusFieldLabel": "Статус",
-      "fullNameFieldLabel": "Поўнае імя",
       "whereFromFieldLabel": "Адкуль",
       "whereToFieldLabel": "Куды",
       "dateFieldLabel": "Дата",
       "phonesFieldLabel": "Тэлефоны",
-      "commentFieldLabel": "Каментар",
       "createdDateTimeFieldLabel": "Створаны",
       "publishButtonLabel": "Апублікаваць",
       "unpublishButtonLabel": "Схаваць",
@@ -112,6 +89,10 @@
       "descriptionText": "Ваша заяўка была паспяхова створана і адпраўлена на мадэрацыю.",
       "publicIdLabel": "Ідэнтыфікатар заяўкі:",
       "thankYouButtonLabel": "Дзякуй!"
+    },
+    "loginForm": {
+      "notWithUsYet": "Яшчэ не з намі?",
+      "registration": "Рэгістрацыя"
     }
   },
   "helpOfferStatus": {
@@ -153,7 +134,8 @@
     "whereToField": "Варшава, Польшча",
     "fullNameField": "Іван Іваноў",
     "commentField": "Тэкст вашага каментара...",
-    "emailField": "ivan.ivanou@gmail.com",
+    "emailField": "ivan.ivanov@gmail.com",
+    "passwordControl": "1234abcd",
     "emptyList": "Спіс пусты."
   },
   "infos": {
@@ -164,9 +146,10 @@
     "sameCities": "Аднолькавыя гарады.",
     "itIsBetterToLeaveAComment": "Пажадана пакінуць каментар."
   },
-  "errors": {
+  "error": {
     "fullNameIsRequired": "Поўнае імя абавязкова.",
     "emailIsRequired": "Электронная пошта абавязкова.",
+    "passwordIsRequired": "Пароль абавязковы.",
     "incorrectEmailFormat": "Няправільны фармат электроннай пошты.",
     "commentIsRequired": "Каментар абавязковы.",
     "minCharacters": "Мінімальная колькасць знакаў: {{ amount }}.",
@@ -185,6 +168,16 @@
     "closeDialog": "Закрыць дыялог",
     "addPhoneNumber": "Дадаць нумар тэлефону",
     "removePhoneNumber": "Выдаліць нумар тэлефону"
+  },
+  "controlLabel": {
+    "email": "Электронная пошта",
+    "password": "Пароль",
+    "fullName": "Поўнае імя",
+    "comment": "Каментар",
+    "when": "Калі (ДД.ММ.ГГГГ)"
+  },
+  "button": {
+    "send": "Адправіць"
   },
   "personalDataAgreementText": "Я згодзен(-на) на апрацоўку і захоўванне маіх асабістых дадзеных",
   "allowedItemsConfirmationText": "Я пацвярджаю, што рэчы, якія перавозяцца, не з'яўляюцца забароненымі і іх транспартаванне не парушае законаў краін-удзельніц",

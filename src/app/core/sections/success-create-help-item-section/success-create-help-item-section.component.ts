@@ -42,7 +42,7 @@ export class SuccessCreateHelpItemSectionComponent {
       );
     } else {
       this._errorNotificationService.showMessage(
-        'errors.applicationIdCopyError'
+        'error.applicationIdCopyError'
       );
     }
   }

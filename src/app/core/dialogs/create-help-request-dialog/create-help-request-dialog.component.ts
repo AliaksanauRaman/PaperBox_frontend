@@ -44,9 +44,7 @@ export class CreateHelpRequestDialogComponent
         } else if (state.error !== null) {
           this._dialogTitle$.next(NORMAL_TITLE);
           this.createHelpRequestForm.enable();
-          this._errorNotificationService.showMessage(
-            'errors.createHelpRequest'
-          );
+          this._errorNotificationService.showMessage('error.createHelpRequest');
         } else if (state.data !== null) {
           this._dialogTitle$.next(SUCCESS_TITLE);
         }

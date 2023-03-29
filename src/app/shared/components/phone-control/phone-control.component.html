@@ -41,7 +41,7 @@
     class="pattern-error-tooltip"
     *ngIf="!!phoneForm.controls.number.errors?.['pattern'] && controlFocused"
   >
-    <span>{{ "errors.phonePatternIsNotMet" | translate }}</span>
+    <span>{{ "error.phonePatternIsNotMet" | translate }}</span>
   </div>
 
   <ng-container *ngIf="showPlus || showMinus">
