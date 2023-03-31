@@ -18,4 +18,12 @@ export class RoutingService {
   public async navigateToAdminHome(): Promise<boolean> {
     return this.router.navigate(['/admin']);
   }
+
+  public async navigateToLogin(): Promise<boolean> {
+    return this.router.navigate(['/login']);
+  }
+
+  public async navigateToRegistration(): Promise<boolean> {
+    return this.router.navigate(['/login/registration']);
+  }
 }
