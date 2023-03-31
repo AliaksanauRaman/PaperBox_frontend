@@ -18,13 +18,13 @@
   flex-shrink: 0;
   width: 127px;
   height: 38px;
-  background-image: url("/assets/images/logo_big.png");
+  background-image: url("/assets/images/logo_big_beta.png");
   background-size: 127px 38px;
   background-repeat: no-repeat;
 
   &.logo--small {
     width: 29px;
-    background-image: url("/assets/images/logo_small.png");
+    background-image: url("/assets/images/logo_small_beta.png");
     background-size: 29px 38px;
   }
 }
@@ -46,6 +46,10 @@
     position: absolute;
     top: 0;
     left: 50%;
+    width: 145px;
+    height: 43px;
+    background-image: url("/assets/images/logo_desktop_beta.png");
+    background-size: 145px 43px;
     transform: translateX(-50%);
   }
 }
