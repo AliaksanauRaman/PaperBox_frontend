@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { NgIf, AsyncPipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 import { ToolsComponent } from '../tools/tools.component';
 import { MenuButtonComponent } from '../menu-button/menu-button.component';
@@ -13,7 +14,7 @@ import { CreateFeedbackDialogService } from '../../../core/services/create-feedb
   styleUrls: ['./toolbar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [NgIf, AsyncPipe, ToolsComponent, MenuButtonComponent],
+  imports: [NgIf, AsyncPipe, RouterLink, ToolsComponent, MenuButtonComponent],
 })
 export class ToolbarComponent {
   @Input()

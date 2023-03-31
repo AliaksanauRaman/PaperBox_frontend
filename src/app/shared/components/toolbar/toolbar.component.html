@@ -1,6 +1,6 @@
 <div class="toolbar">
   <ng-container *ngIf="_isMobileOrTablet$ | async; else bigDeviceView">
-    <div class="logo" [class.logo--small]="_isMenuOpened"></div>
+    <a class="logo" [class.logo--small]="_isMenuOpened" routerLink="/"></a>
 
     <div class="actions">
       <app-tools
@@ -20,7 +20,7 @@
 </div>
 
 <ng-template #bigDeviceView>
-  <div class="logo"></div>
+  <a class="logo" routerLink="/"></a>
 
   <div class="actions">
     <app-tools
