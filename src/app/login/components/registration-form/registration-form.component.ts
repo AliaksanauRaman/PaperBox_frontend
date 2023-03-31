@@ -10,12 +10,15 @@ import { CustomValidators } from '../../../shared/classes/custom-validators.clas
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class RegistrationFormComponent {
-  protected readonly _registrationForm = this._formBuilder.group({
-    email: ['', [Validators.required, CustomValidators.email]],
-    password: ['', [Validators.required]],
-    confirmPassword: ['', [Validators.required]],
-    personalDataAgreementConfirmation: [false, [Validators.requiredTrue]],
-  });
+  protected readonly _registrationForm = this._formBuilder.group(
+    {
+      email: ['', [Validators.required, CustomValidators.email]],
+      password: ['', [Validators.required]],
+      confirmPassword: ['', [Validators.required]],
+      personalDataAgreementConfirmation: [false, [Validators.requiredTrue]],
+    },
+    { validators: [CustomValidators.passwordsMatch] }
+  );
 
   constructor(private readonly _formBuilder: NonNullableFormBuilder) {}
 }
