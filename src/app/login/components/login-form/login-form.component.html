@@ -1,11 +1,11 @@
 <form
   class="login-form"
-  [formGroup]="loginForm"
+  [formGroup]="_loginForm"
   (ngSubmit)="handleLoginSubmit($event)"
 >
   <div
     class="app-control-container"
-    *ngIf="loginForm.controls.email as emailControl"
+    *ngIf="_loginForm.controls.email as emailControl"
   >
     <app-input-control
       [label]="'controlLabel.email' | translate"
@@ -38,12 +38,12 @@
 
   <div
     class="app-control-container"
-    *ngIf="loginForm.controls.password as passwordControl"
+    *ngIf="_loginForm.controls.password as passwordControl"
   >
     <app-input-control
       [label]="'controlLabel.password' | translate"
       [required]="true"
-      [maxCharactersAmount]="50"
+      [showCharactersAmount]="false"
       [placeholder]="'placeholders.passwordControl' | translate"
       formControlName="password"
       type="password"
@@ -79,8 +79,8 @@
 
   <button
     class="app-primary-button"
+    [disabled]="_loginForm.invalid"
     type="submit"
-    [disabled]="loginForm.invalid"
   >
     {{ "button.send" | translate }}
   </button>

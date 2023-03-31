@@ -10,7 +10,7 @@ import { CustomValidators } from '../../../shared/classes/custom-validators.clas
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginFormComponent {
-  protected readonly loginForm = this._formBuilder.group({
+  protected readonly _loginForm = this._formBuilder.group({
     email: ['', [Validators.required, CustomValidators.email]],
     password: ['', [Validators.required]],
   });
@@ -23,7 +23,7 @@ export class LoginFormComponent {
       return;
     }
 
-    if (this.loginForm.invalid) {
+    if (this._loginForm.invalid) {
       throw new Error('Login form is invalid!');
     }
 
