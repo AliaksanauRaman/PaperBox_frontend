@@ -1,0 +1,49 @@
+:host {
+  display: block;
+}
+
+.registration-form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.already-registered-call-to-action {
+  display: flex;
+  flex-shrink: 0;
+  margin-bottom: 30px;
+  padding: 0 12px;
+  text-align: end;
+}
+
+.already-registered-label {
+  flex-shrink: 0;
+  color: var(--black-color);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.login-call-to-action {
+  flex-shrink: 0;
+  margin-left: 5px;
+  color: var(--primary-color);
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.confirmation-checkbox {
+  margin-bottom: 130px;
+  padding: 0 12px;
+}
+
+.girl-with-heart-mobile-image {
+  position: absolute;
+  bottom: 2px;
+  left: 13px;
+}
+
+.man-with-hearts-mobile-image {
+  position: absolute;
+  right: 20px;
+  bottom: 2px;
+}

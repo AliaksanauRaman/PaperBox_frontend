@@ -1,0 +1,115 @@
+<form class="registration-form" [formGroup]="_registrationForm">
+  <div
+    class="app-control-container"
+    *ngIf="_registrationForm.controls.email as emailControl"
+  >
+    <app-input-control
+      [label]="'controlLabel.email' | translate"
+      [placeholder]="'placeholders.emailField' | translate"
+      [required]="true"
+      [maxCharactersAmount]="50"
+      formControlName="email"
+      type="email"
+      mode="email"
+    ></app-input-control>
+
+    <div class="app-control-errors">
+      <ng-container *ngIf="emailControl.touched">
+        <div
+          class="app-control-errors__item"
+          *ngIf="emailControl.errors?.['required']"
+        >
+          <span>{{ "error.emailIsRequired" | translate }}</span>
+        </div>
+
+        <div
+          class="app-control-errors__item"
+          *ngIf="emailControl.errors?.['email']"
+        >
+          <span>{{ "error.incorrectEmailFormat" | translate }}</span>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <div
+    class="app-control-container"
+    *ngIf="_registrationForm.controls.password as passwordControl"
+  >
+    <app-input-control
+      [label]="'controlLabel.password' | translate"
+      [required]="true"
+      [showCharactersAmount]="false"
+      [placeholder]="'placeholders.passwordControl' | translate"
+      formControlName="password"
+      type="password"
+    ></app-input-control>
+
+    <div class="app-control-errors">
+      <ng-container *ngIf="passwordControl.touched">
+        <div
+          class="app-control-errors__item"
+          *ngIf="passwordControl.errors?.['required']"
+        >
+          <span>{{ "error.passwordIsRequired" | translate }}</span>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <div
+    class="app-control-container"
+    *ngIf="_registrationForm.controls.confirmPassword as passwordControl"
+  >
+    <app-input-control
+      [label]="'controlLabel.confirmPassword' | translate"
+      [required]="true"
+      [showCharactersAmount]="false"
+      [placeholder]="'placeholders.passwordControl' | translate"
+      formControlName="confirmPassword"
+      type="password"
+    ></app-input-control>
+
+    <div class="app-control-errors">
+      <ng-container *ngIf="passwordControl.touched">
+        <div
+          class="app-control-errors__item"
+          *ngIf="passwordControl.errors?.['required']"
+        >
+          <span>{{ "error.passwordIsRequired" | translate }}</span>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <div class="already-registered-call-to-action">
+    <span class="already-registered-label">{{
+      "components.registrationForm.alreadyRegistered" | translate
+    }}</span>
+    <a class="login-call-to-action" routerLink="/login">{{
+      "components.registrationForm.login" | translate
+    }}</a>
+  </div>
+
+  <app-checkbox-with-text-control
+    class="confirmation-checkbox"
+    [text]="'personalDataAgreementText' | translate"
+    [required]="true"
+    formControlName="personalDataAgreementConfirmation"
+  ></app-checkbox-with-text-control>
+
+  <app-girl-with-heart-mobile-image
+    class="girl-with-heart-mobile-image"
+  ></app-girl-with-heart-mobile-image>
+
+  <app-man-with-hearts-mobile-image class="man-with-hearts-mobile-image">
+  </app-man-with-hearts-mobile-image>
+
+  <button
+    class="app-primary-button"
+    [disabled]="_registrationForm.invalid"
+    type="submit"
+  >
+    {{ "button.send" | translate }}
+  </button>
+</form>
