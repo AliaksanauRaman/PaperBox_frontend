@@ -8,6 +8,14 @@
   &.checkbox-with-text-control--disabled {
     // empty for now
   }
+
+  &.checkbox-with-text-control--required {
+    .text::before {
+      content: "*";
+      margin-right: 1px;
+      color: var(--error-color);
+    }
+  }
 }
 
 .checkbox {
@@ -23,10 +31,4 @@
   color: var(--grey-color);
   font-weight: 600;
   text-align: justify;
-
-  &::before {
-    content: "*";
-    margin-right: 1px;
-    color: var(--error-color);
-  }
 }
