@@ -16,7 +16,7 @@
       [class.custom-control__top-panel-characters-counter--primary-colored]="
         controlFocused
       "
-      *ngIf="controlMaxCharactersAmount"
+      *ngIf="_showCharactersAmount"
     >
       <span>{{ inputRef.value.length }}</span>
       <span>/</span>

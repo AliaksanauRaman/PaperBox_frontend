@@ -58,6 +58,11 @@ export class InputControlComponent extends CustomControl<string> {
   }
 
   @Input()
+  public set showCharactersAmount(value: boolean) {
+    this._showCharactersAmount = value;
+  }
+
+  @Input()
   public set maxCharactersAmount(value: number) {
     this.controlMaxCharactersAmount = value;
   }
@@ -66,6 +71,7 @@ export class InputControlComponent extends CustomControl<string> {
   public _inputMode: InputMode = DEFAULT_INPUT_MODE;
   protected controlValue = '';
   protected controlMaxCharactersAmount = DEFAULT_MAX_CHARACTERS_AMOUNT;
+  protected _showCharactersAmount = true;
 
   constructor(
     uniqueIdGeneratorService: UniqueIdGeneratorService,
