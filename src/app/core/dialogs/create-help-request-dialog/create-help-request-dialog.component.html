@@ -105,12 +105,14 @@
       <app-checkbox-with-text-control
         class="confirmation-checkbox"
         [text]="'allowedItemsConfirmationText' | translate"
+        [required]="true"
         formControlName="allowedItemsConfirmation"
       ></app-checkbox-with-text-control>
 
       <app-checkbox-with-text-control
         class="confirmation-checkbox"
         [text]="'noServiceResponsibilityConfirmationText' | translate"
+        [required]="true"
         formControlName="noServiceResponsibilityConfirmation"
       ></app-checkbox-with-text-control>
 
