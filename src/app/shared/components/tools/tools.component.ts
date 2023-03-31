@@ -4,12 +4,10 @@ import { RouterLink } from '@angular/router';
 import { MatMenuModule } from '@angular/material/menu';
 
 import { LanguageSwitcherComponent } from '../language-switcher/language-switcher.component';
-import { LeaveFeedbackButtonComponent } from '../leave-feedback-button/leave-feedback-button.component';
+import { AboutButtonComponent } from '../about-button/about-button.component';
 import { AccountButtonComponent } from '../account-button/account-button.component';
 import { LoginButtonComponent } from '../login-button/login-button.component';
 import { AccountMenuComponent } from '../account-menu/account-menu.component';
-
-import { CreateFeedbackDialogService } from '../../../core/services/create-feedback-dialog.service';
 
 @Component({
   selector: 'app-tools',
@@ -22,7 +20,7 @@ import { CreateFeedbackDialogService } from '../../../core/services/create-feedb
     RouterLink,
     MatMenuModule,
     LanguageSwitcherComponent,
-    LeaveFeedbackButtonComponent,
+    AboutButtonComponent,
     AccountButtonComponent,
     LoginButtonComponent,
     AccountMenuComponent,
@@ -48,11 +46,7 @@ export class ToolsComponent {
   protected _isUserLoggedIn = false;
   protected _hideLoginButton = false;
 
-  constructor(
-    private readonly createFeedbackDialogService: CreateFeedbackDialogService
-  ) {}
-
-  public handleLeaveFeedbackButtonClick(): void {
-    this.createFeedbackDialogService.openDialog();
+  public handleAboutButtonClick(): void {
+    // TODO: !IMPORTANT
   }
 }
