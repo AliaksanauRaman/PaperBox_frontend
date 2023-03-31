@@ -25,6 +25,7 @@ import { ManWithGlobeImageComponent } from '../shared/images/man-with-globe-imag
 import { FeedbackImageComponent } from '../shared/images/feedback-image/feedback-image.component';
 import { GirlInCardMobileImageComponent } from '../shared/images/girl-in-card-mobile-image/girl-in-card-mobile-image.component';
 import { GirlInCardDesktopImageComponent } from '../shared/images/girl-in-card-desktop-image/girl-in-card-desktop-image.component';
+import { GirlWithLaptopImageComponent } from '../shared/images/girl-with-laptop-image/girl-with-laptop-image.component';
 import { ToolbarComponent } from '../shared/components/toolbar/toolbar.component';
 import { FooterComponent } from '../shared/components/footer/footer.component';
 
@@ -44,6 +45,7 @@ import { SuccessCreateFeedbackSectionComponent } from './sections/success-create
 import { CreateFeedbackDialogComponent } from './dialogs/create-feedback-dialog/create-feedback-dialog.component';
 import { CreateHelpOfferDialogComponent } from './dialogs/create-help-offer-dialog/create-help-offer-dialog.component';
 import { CreateHelpRequestDialogComponent } from './dialogs/create-help-request-dialog/create-help-request-dialog.component';
+import { LoginOrRegisterDialogComponent } from './dialogs/login-or-register-dialog/login-or-register-dialog.component';
 
 import { WINDOW, WINDOW_VALUE } from './dependencies/window';
 import {
@@ -103,6 +105,7 @@ import {
     FeedbackImageComponent,
     GirlInCardMobileImageComponent,
     GirlInCardDesktopImageComponent,
+    GirlWithLaptopImageComponent,
     ToolbarComponent,
     FooterComponent,
   ],
@@ -123,6 +126,7 @@ import {
     CreateFeedbackDialogComponent,
     CreateHelpOfferDialogComponent,
     CreateHelpRequestDialogComponent,
+    LoginOrRegisterDialogComponent,
   ],
   providers: [
     {
