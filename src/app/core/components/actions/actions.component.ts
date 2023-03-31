@@ -3,6 +3,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActiveViewService } from '../../services/active-view.service';
 import { CreateHelpOfferDialogService } from '../../services/create-help-offer-dialog.service';
 import { CreateHelpRequestDialogService } from '../../services/create-help-request-dialog.service';
+import { AuthenticationService } from '../../services/authentication.service';
+import { LoginOrRegisterDialogService } from '../../services/login-or-register-dialog.service';
 
 import { ViewName } from '../../../shared/enums/view-name.enum';
 
@@ -19,14 +21,24 @@ export class ActionsComponent {
   constructor(
     private readonly activeViewService: ActiveViewService,
     private readonly createHelpOfferDialogService: CreateHelpOfferDialogService,
-    private readonly createHelpRequestDialogService: CreateHelpRequestDialogService
+    private readonly createHelpRequestDialogService: CreateHelpRequestDialogService,
+    private readonly authenticationService: AuthenticationService,
+    private readonly loginOrRegisterDialogService: LoginOrRegisterDialogService
   ) {}
 
   public handleOfferHelpButtonClick(): void {
-    this.createHelpOfferDialogService.openDialog();
+    if (this.authenticationService.isUserLoggedIn()) {
+      this.createHelpOfferDialogService.openDialog();
+    } else {
+      this.loginOrRegisterDialogService.openDialog();
+    }
   }
 
   public handleFindHelpButtonClick(): void {
-    this.createHelpRequestDialogService.openDialog();
+    if (this.authenticationService.isUserLoggedIn()) {
+      this.createHelpRequestDialogService.openDialog();
+    } else {
+      this.loginOrRegisterDialogService.openDialog();
+    }
   }
 }
