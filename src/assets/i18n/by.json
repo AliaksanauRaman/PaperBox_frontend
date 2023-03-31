@@ -18,6 +18,9 @@
     },
     "login": {
       "title": "Уваход"
+    },
+    "registration": {
+      "title": "Рэгістрацыя"
     }
   },
   "dialogs": {
@@ -36,6 +39,9 @@
       "loading": "Загрузка...",
       "success": "Поспех!",
       "commentFieldLabel": "Як палепшыць наш сэрвіс?"
+    },
+    "loginOrRegister": {
+      "title": "Каб пакінуць заяўку ўвайдзіце ў сістэму ці зарэгіструйцеся"
     },
     "adminManageHelpOffer": {
       "title": "Кіраванне прапановай аб дапамозе",
@@ -93,6 +99,10 @@
     "loginForm": {
       "notWithUsYet": "Яшчэ не з намі?",
       "registration": "Рэгістрацыя"
+    },
+    "registrationForm": {
+      "alreadyRegistered": "Ужо зарэгістраваны?",
+      "login": "Уваход"
     }
   },
   "helpOfferStatus": {
@@ -172,12 +182,15 @@
   "controlLabel": {
     "email": "Электронная пошта",
     "password": "Пароль",
+    "confirmPassword": "Пацвердзіць пароль",
     "fullName": "Поўнае імя",
     "comment": "Каментар",
     "when": "Калі (ДД.ММ.ГГГГ)"
   },
   "button": {
-    "send": "Адправіць"
+    "send": "Адправіць",
+    "login": "Уваход",
+    "registration": "Рэгістрацыя"
   },
   "personalDataAgreementText": "Я згодзен(-на) на апрацоўку і захоўванне маіх асабістых дадзеных",
   "allowedItemsConfirmationText": "Я пацвярджаю, што рэчы, якія перавозяцца, не з'яўляюцца забароненымі і іх транспартаванне не парушае законаў краін-удзельніц",
