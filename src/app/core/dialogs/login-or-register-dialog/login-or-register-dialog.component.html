@@ -1,0 +1,35 @@
+<div class="login-or-register-dialog">
+  <h2 class="title app-custom-dialog-title">
+    {{ "dialogs.loginOrRegister.title" | translate }}
+  </h2>
+
+  <div
+    class="app-custom-dialog-close-button"
+    [title]="'helpTitles.closeDialog' | translate"
+    (click)="closeDialog()"
+  >
+    <app-plus-icon class="app-custom-dialog-close-button-icon"></app-plus-icon>
+  </div>
+
+  <app-girl-with-laptop-image
+    class="girl-with-laptop-image"
+  ></app-girl-with-laptop-image>
+
+  <div class="actions">
+    <button
+      class="actions__item app-primary-button"
+      type="button"
+      (click)="handleLoginButtonClick()"
+    >
+      <span>{{ "button.login" | translate }}</span>
+    </button>
+
+    <button
+      class="actions__item app-primary-button"
+      type="button"
+      (click)="handleRegistrationButtonClick()"
+    >
+      <span>{{ "button.registration" | translate }}</span>
+    </button>
+  </div>
+</div>
