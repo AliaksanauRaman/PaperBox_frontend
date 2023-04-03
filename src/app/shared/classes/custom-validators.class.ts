@@ -1,13 +1,20 @@
-import { AbstractControl, FormGroup, ValidationErrors } from '@angular/forms';
+import { AbstractControl, ValidationErrors } from '@angular/forms';
 
-import { emailValidator } from '../validators/email.validator';
+import { emailFormatValidator } from '../validators/email-format.validator';
+import { passwordFormatValidator } from '../validators/password-format.validator';
 import { passwordsMatchValidator } from '../validators/passwords-match.validator';
 
 export class CustomValidators {
-  public static email(
+  public static emailFormat(
     control: AbstractControl<string>
   ): ValidationErrors | null {
-    return emailValidator(control);
+    return emailFormatValidator(control);
+  }
+
+  public static passwordFormat(
+    control: AbstractControl<string>
+  ): ValidationErrors | null {
+    return passwordFormatValidator(control);
   }
 
   public static passwordsMatch(
