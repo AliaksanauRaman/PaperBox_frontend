@@ -26,10 +26,7 @@
   margin-bottom: 30px;
 }
 
-.girl-with-heart-desktop-image {
-  display: none;
-}
-
+.girl-with-heart-desktop-image,
 .man-with-hearts-desktop-image {
   display: none;
 }
@@ -38,13 +35,8 @@
   .login-page {
     display: flex;
     justify-content: center;
-    margin-top: 70px;
+    margin-top: 50px;
     overflow-x: hidden;
-  }
-
-  .title {
-    margin-top: 30px;
-    color: var(--primary-color);
   }
 
   .content {
@@ -56,6 +48,11 @@
     margin-bottom: 220px;
     background-color: var(--white-color);
     border-radius: var(--border-radius);
+  }
+
+  .title {
+    margin-top: 30px;
+    color: var(--primary-color);
   }
 
   .login-form {
