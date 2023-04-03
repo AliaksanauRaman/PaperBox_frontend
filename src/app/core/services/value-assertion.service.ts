@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { emailRegExp } from '../../shared/regexps/email.regexp';
+import { EMAIL_FORMAT_REGEXP } from '../../shared/regexps/email-format.regexp';
 
 @Injectable({
   providedIn: 'root',
@@ -19,6 +19,6 @@ export class ValueAssertionService {
   }
 
   public isEmailString(value: string): boolean {
-    return emailRegExp.test(value);
+    return EMAIL_FORMAT_REGEXP.test(value);
   }
 }

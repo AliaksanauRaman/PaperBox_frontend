@@ -48,7 +48,7 @@ export class CreateFeedbackDialogComponent
 
   public readonly createFeedbackForm = this.formBuilder.group({
     fullName: ['', [Validators.required]],
-    email: ['', [Validators.required, CustomValidators.email]],
+    email: ['', [Validators.required, CustomValidators.emailFormat]],
     comment: ['', [Validators.required, Validators.minLength(10)]],
   });
 

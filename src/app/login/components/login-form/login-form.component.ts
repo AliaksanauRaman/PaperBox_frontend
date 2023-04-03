@@ -11,7 +11,7 @@ import { CustomValidators } from '../../../shared/classes/custom-validators.clas
 })
 export class LoginFormComponent {
   protected readonly _loginForm = this._formBuilder.group({
-    email: ['', [Validators.required, CustomValidators.email]],
+    email: ['', [Validators.required, CustomValidators.emailFormat]],
     password: ['', [Validators.required]],
   });
 
