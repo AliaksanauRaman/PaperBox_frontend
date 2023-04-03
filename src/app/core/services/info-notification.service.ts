@@ -3,7 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { InfoSnackBarComponent } from '../components/info-snack-bar/info-snack-bar.component';
 
-const INFO_NOTIFICATION_DURATION = 7000; // In milliseconds
+const INFO_NOTIFICATION_DURATION = 9000; // In milliseconds
 
 @Injectable({
   providedIn: 'root',

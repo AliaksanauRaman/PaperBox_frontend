@@ -3,7 +3,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { ErrorSnackBarComponent } from '../components/error-snack-bar/error-snack-bar.component';
 
-const ERROR_NOTIFICATION_DURATION = 7000; // In milliseconds
+const ERROR_NOTIFICATION_DURATION = 9000; // In milliseconds
 
 @Injectable({
   providedIn: 'root',
