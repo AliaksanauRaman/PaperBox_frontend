@@ -1,11 +1,17 @@
+@import "../../../styles/scss-variables";
+
 :host {
   display: block;
 }
 
 .registration-page {
+  display: block;
+  padding: 0 20px;
+}
+
+.content {
   display: flex;
   flex-direction: column;
-  padding: 0 20px;
 }
 
 .title {
@@ -18,4 +24,52 @@
 .registration-form {
   flex-shrink: 0;
   margin-bottom: 30px;
+}
+
+.girl-with-heart-desktop-image,
+.man-with-hearts-desktop-image {
+  display: none;
+}
+
+@media (min-width: $minLaptopScreenWidth) {
+  .registration-page {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    overflow-x: hidden;
+  }
+
+  .content {
+    position: relative;
+    align-items: center;
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 1020px;
+    margin-bottom: 180px;
+    background-color: var(--white-color);
+    border-radius: var(--border-radius);
+  }
+
+  .title {
+    margin-top: 30px;
+    color: var(--primary-color);
+  }
+
+  .registration-form {
+    width: 460px;
+  }
+
+  .girl-with-heart-desktop-image {
+    position: absolute;
+    bottom: -14%;
+    right: 68%;
+    display: block;
+  }
+
+  .man-with-hearts-desktop-image {
+    position: absolute;
+    bottom: -14%;
+    left: 68%;
+    display: block;
+  }
 }
