@@ -70,7 +70,7 @@
 
             <span
               class="error-text"
-              *ngIf="createFeedbackForm.controls.email.errors?.['email']"
+              *ngIf="createFeedbackForm.controls.email.errors?.['emailFormat']"
             >
               {{ "error.incorrectEmailFormat" | translate }}
             </span>

@@ -28,7 +28,7 @@
 
         <div
           class="app-control-errors__item"
-          *ngIf="emailControl.errors?.['email']"
+          *ngIf="emailControl.errors?.['emailFormat']"
         >
           <span>{{ "error.incorrectEmailFormat" | translate }}</span>
         </div>
