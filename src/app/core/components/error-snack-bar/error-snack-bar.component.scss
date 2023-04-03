@@ -9,19 +9,22 @@
 .message {
   flex-grow: 1;
   font-size: 1rem;
-  font-weight: 400;
+  font-weight: 500;
   color: var(--error-color);
   text-align: center;
+  line-height: 20px;
 }
 
 .close-button {
-  flex-shrink: 0;
+  position: absolute;
+  top: 13px;
+  right: 13px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 32px;
-  height: 32px;
-  margin-left: 10px;
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
 }
 
