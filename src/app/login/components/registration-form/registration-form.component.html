@@ -24,7 +24,7 @@
 
         <div
           class="app-control-errors__item"
-          *ngIf="emailControl.errors?.['email']"
+          *ngIf="emailControl.errors?.['emailFormat']"
         >
           <span>{{ "error.incorrectEmailFormat" | translate }}</span>
         </div>
@@ -53,13 +53,20 @@
         >
           <span>{{ "error.passwordIsRequired" | translate }}</span>
         </div>
+
+        <div
+          class="app-control-errors__item"
+          *ngIf="passwordControl.errors?.['passwordFormat']"
+        >
+          <span>{{ "error.incorrectPasswordFormat" | translate }}</span>
+        </div>
       </ng-container>
     </div>
   </div>
 
   <div
     class="app-control-container"
-    *ngIf="_registrationForm.controls.confirmPassword as passwordControl"
+    *ngIf="_registrationForm.controls.confirmPassword as confirmPasswordControl"
   >
     <app-input-control
       [label]="'controlLabel.confirmPassword' | translate"
@@ -71,12 +78,19 @@
     ></app-input-control>
 
     <div class="app-control-errors">
-      <ng-container *ngIf="passwordControl.touched">
+      <ng-container *ngIf="confirmPasswordControl.touched">
         <div
           class="app-control-errors__item"
-          *ngIf="passwordControl.errors?.['required']"
+          *ngIf="confirmPasswordControl.errors?.['required']"
         >
-          <span>{{ "error.passwordIsRequired" | translate }}</span>
+          <span>{{ "error.passwordConfirmationIsRequired" | translate }}</span>
+        </div>
+
+        <div
+          class="app-control-errors__item"
+          *ngIf="confirmPasswordControl.errors?.['passwordsMatch']"
+        >
+          <span>{{ "error.passwordsDoNotMatch" | translate }}</span>
         </div>
       </ng-container>
     </div>
