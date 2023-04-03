@@ -160,6 +160,7 @@
     "fullNameIsRequired": "Full name is required.",
     "emailIsRequired": "Email is required.",
     "passwordIsRequired": "Password is required.",
+    "passwordConfirmationIsRequired": "Password confirmation is required.",
     "incorrectEmailFormat": "Incorrect email format.",
     "commentIsRequired": "Comment is required.",
     "minCharacters": "Minimum characters amount is: {{ amount }}.",
@@ -168,7 +169,9 @@
     "createHelpOffer": "Server error. Please, try again a bit later. If error continues to occur contact us via email or via feedback.",
     "createHelpRequest": "Server error. Please, try again a bit later. If error continues to occur contact us via email or via feedback.",
     "createFeedback": "Server error. Please, try again a bit later. If error continues to occur contact us via email.",
-    "applicationIdCopyError": "Unknown error occurred during copying application ID to the clipboard."
+    "applicationIdCopyError": "Unknown error occurred during copying application ID to the clipboard.",
+    "passwordsDoNotMatch": "Passwords do not match.",
+    "incorrectPasswordFormat": "Minimum 8 characters, no spaces."
   },
   "helpTitles": {
     "clear": "Clear",
