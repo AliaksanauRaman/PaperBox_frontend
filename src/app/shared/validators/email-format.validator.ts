@@ -1,17 +1,17 @@
 import { AbstractControl, ValidationErrors } from '@angular/forms';
 
-import { emailRegExp } from '../regexps/email.regexp';
+import { EMAIL_FORMAT_REGEXP } from '../regexps/email-format.regexp';
 
-export const emailValidator = (
+export const emailFormatValidator = (
   control: AbstractControl<string>
 ): ValidationErrors | null => {
   if (control.value === '') {
     return null;
   }
 
-  if (emailRegExp.test(control.value)) {
+  if (EMAIL_FORMAT_REGEXP.test(control.value)) {
     return null;
   }
 
-  return { email: true };
+  return { emailFormat: true };
 };
