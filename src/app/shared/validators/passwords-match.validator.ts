@@ -1,5 +1,6 @@
 import { AbstractControl, ValidationErrors } from '@angular/forms';
 
+// TODO: Probably better to make it more reusable
 export const passwordsMatchValidator = (
   control: AbstractControl
 ): ValidationErrors | null => {
@@ -10,13 +11,18 @@ export const passwordsMatchValidator = (
     throw new Error('The validator is not applicable!');
   }
 
-  if (passwordControl.invalid || confirmPasswordControl.invalid) {
+  if (
+    confirmPasswordControl.errors &&
+    !confirmPasswordControl.errors['passwordsMatch']
+  ) {
     return null;
   }
 
-  if (passwordControl.value === confirmPasswordControl.value) {
-    return null;
+  if (passwordControl.value !== confirmPasswordControl.value) {
+    confirmPasswordControl.setErrors({ passwordsMatch: true });
+  } else {
+    confirmPasswordControl.setErrors(null);
   }
 
-  return { passwordsMatch: true };
+  return null;
 };
