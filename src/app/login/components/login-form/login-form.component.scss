@@ -1,3 +1,5 @@
+@import "../../../styles/scss-variables";
+
 :host {
   display: block;
 }
@@ -35,10 +37,23 @@
   position: absolute;
   bottom: 2px;
   left: 13px;
+  display: block;
 }
 
 .man-with-hearts-mobile-image {
   position: absolute;
   right: 20px;
   bottom: 2px;
+  display: block;
+}
+
+@media (min-width: $minLaptopScreenWidth) {
+  .not-registered-call-to-action {
+    margin-bottom: 40px;
+  }
+
+  .girl-with-heart-mobile-image,
+  .man-with-hearts-mobile-image {
+    display: none;
+  }
 }
