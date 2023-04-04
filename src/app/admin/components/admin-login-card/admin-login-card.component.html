@@ -1,5 +1,5 @@
 <mat-card class="admin-login-card">
-  <ng-container *ngIf="loginState$ | async as state">
+  <ng-container *ngIf="_logInState$ | async as state">
     <mat-card-header class="header">
       <mat-card-title>
         <span *ngIf="!state.inProgress">Pushka Admin</span>
@@ -10,20 +10,20 @@
     <mat-card-content>
       <form
         class="form"
-        [formGroup]="loginForm"
+        [formGroup]="_logInForm"
         (ngSubmit)="handleAdminLoginSubmit()"
       >
         <mat-form-field class="form__field" appearance="outline">
-          <mat-label>Number</mat-label>
+          <mat-label>Email</mat-label>
           <input
             #firstInputRef
             matInput
-            type="text"
-            placeholder="Enter number"
-            formControlName="number"
+            type="email"
+            placeholder="Enter email"
+            formControlName="email"
           />
-          <mat-error *ngIf="loginForm.controls.number.errors?.['required']">
-            <span>Number is required</span>
+          <mat-error *ngIf="_logInForm.controls.email.errors?.['required']">
+            <span>Email is required</span>
           </mat-error>
         </mat-form-field>
 
@@ -35,7 +35,7 @@
             placeholder="Enter password"
             formControlName="password"
           />
-          <mat-error *ngIf="loginForm.controls.password.errors?.['required']">
+          <mat-error *ngIf="_logInForm.controls.password.errors?.['required']">
             <span>Password is required</span>
           </mat-error>
         </mat-form-field>
@@ -45,7 +45,7 @@
         </mat-error>
 
         <button
-          [disabled]="loginForm.invalid || state.inProgress"
+          [disabled]="_logInForm.invalid || state.inProgress"
           mat-raised-button
           color="primary"
           type="submit"

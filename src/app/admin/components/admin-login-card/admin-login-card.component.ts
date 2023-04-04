@@ -9,62 +9,59 @@ import {
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { tap } from 'rxjs';
 
-import { LoginService } from '../../../shared/services/login.service';
+import { LogInService } from '../../../shared/services/log-in.service';
 
-import { LoginDto } from '../../../shared/dtos/login.dto';
+import { LogInDto } from '../../../shared/dtos/log-in.dto';
 
 @Component({
   selector: 'app-admin-login-card',
   templateUrl: './admin-login-card.component.html',
   styleUrls: ['./admin-login-card.component.scss'],
-  providers: [LoginService],
+  providers: [LogInService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AdminLoginCardComponent implements AfterViewInit, OnDestroy {
   @ViewChild('firstInputRef')
-  private readonly firstInputElementRef!: ElementRef<HTMLInputElement>;
+  private readonly _firstInputElementRef!: ElementRef<HTMLInputElement>;
 
-  public readonly loginState$ = this.loginService.state$.pipe(
+  protected readonly _logInState$ = this._logInService.state$.pipe(
     tap((state) => {
       if (state.inProgress) {
-        this.loginForm.disable();
+        this._logInForm.disable();
       } else {
-        this.loginForm.enable();
+        this._logInForm.enable();
       }
     })
   );
-  public readonly loginForm = this.formBuilder.group({
-    number: ['', [Validators.required]],
+  protected readonly _logInForm = this._formBuilder.group({
+    email: ['', [Validators.required]],
     password: ['', [Validators.required]],
   });
 
   constructor(
-    private readonly formBuilder: NonNullableFormBuilder,
-    private readonly loginService: LoginService
+    private readonly _formBuilder: NonNullableFormBuilder,
+    private readonly _logInService: LogInService
   ) {}
 
   public ngAfterViewInit(): void {
     // It is needed to not trigger validation error
     setTimeout(() => {
-      this.firstInputElementRef.nativeElement.focus();
+      this._firstInputElementRef.nativeElement.focus();
     }, 100);
   }
 
   public ngOnDestroy(): void {
-    this.loginService.destroyRequest();
+    this._logInService.destroyRequest();
   }
 
-  public handleAdminLoginSubmit(): void {
-    if (this.loginForm.invalid) {
+  protected handleAdminLoginSubmit(): void {
+    if (this._logInForm.invalid) {
       return;
     }
 
-    const formValue = this.loginForm.getRawValue();
-    this.loginService.performRequest(
-      new LoginDto(
-        { diallingCode: '', number: formValue.number },
-        formValue.password
-      )
+    const formValue = this._logInForm.getRawValue();
+    this._logInService.performRequest(
+      new LogInDto(formValue.email, formValue.password)
     );
   }
 }
