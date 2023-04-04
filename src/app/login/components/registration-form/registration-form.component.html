@@ -1,4 +1,8 @@
-<form class="registration-form" [formGroup]="_registrationForm">
+<form
+  class="registration-form"
+  [formGroup]="_registrationForm"
+  (ngSubmit)="handleRegistrationSubmit($event)"
+>
   <div
     class="app-control-container"
     *ngIf="_registrationForm.controls.email as emailControl"

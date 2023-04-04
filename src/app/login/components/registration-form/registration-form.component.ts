@@ -21,4 +21,17 @@ export class RegistrationFormComponent {
   );
 
   constructor(private readonly _formBuilder: NonNullableFormBuilder) {}
+
+  protected handleRegistrationSubmit(event: SubmitEvent): void {
+    if (!event.isTrusted) {
+      console.log('Nice try');
+      return;
+    }
+
+    if (this._registrationForm.invalid) {
+      throw new Error('Registration form is invalid!');
+    }
+
+    // TODO: !IMPORTANT Make http request
+  }
 }
