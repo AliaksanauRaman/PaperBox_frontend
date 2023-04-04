@@ -71,6 +71,18 @@ export class AppLanguagesService {
     })
   );
 
+  public get currentLanguage(): AppLanguage {
+    const currentLanguage = this._languages$
+      .getValue()
+      .find(({ selected }) => selected);
+
+    if (currentLanguage === undefined) {
+      throw new Error('Current language cannot be undefined!');
+    }
+
+    return currentLanguage;
+  }
+
   constructor(
     @Inject(LOCAL_STORAGE)
     private readonly localStorage: LocalStorageType,
