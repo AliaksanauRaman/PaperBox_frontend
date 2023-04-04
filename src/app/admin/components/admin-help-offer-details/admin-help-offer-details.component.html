@@ -1,7 +1,4 @@
-<div
-  class="admin-help-offer-details"
-  *ngIf="_helpOffer; else errorView"
->
+<div class="admin-help-offer-details" *ngIf="_helpOffer; else errorView">
   <p class="paragraph">
     <strong class="paragraph__label">
       {{ "dialogs.adminManageHelpOffer.statusFieldLabel" | translate }}
@@ -17,7 +14,7 @@
 
   <p class="paragraph">
     <strong class="paragraph__label">
-      {{ "dialogs.adminManageHelpOffer.fullNameFieldLabel" | translate }}
+      {{ "controlLabel.fullName" | translate }}
     </strong>
 
     <span class="paragraph__text">{{ _helpOffer.authorFullName }}</span>
@@ -80,7 +77,7 @@
 
   <p class="paragraph">
     <strong class="paragraph__label">
-      {{ "dialogs.adminManageHelpOffer.commentFieldLabel" | translate }}
+      {{ "controlLabel.comment" | translate }}
     </strong>
 
     <span class="paragraph__text">{{ _helpOffer.comment }}</span>
@@ -91,7 +88,9 @@
       {{ "dialogs.adminManageHelpOffer.createdDateTimeFieldLabel" | translate }}
     </strong>
 
-    <span class="paragraph__text">{{ _helpOffer.createdAt | date:'MM/dd/YYYY HH:mm:ss' }}</span>
+    <span class="paragraph__text">{{
+      _helpOffer.createdAt | date : "MM/dd/YYYY HH:mm:ss"
+    }}</span>
   </p>
 </div>
 
