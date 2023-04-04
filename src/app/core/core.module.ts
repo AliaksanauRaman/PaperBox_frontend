@@ -29,7 +29,7 @@ import { GirlWithLaptopImageComponent } from '../shared/images/girl-with-laptop-
 import { ToolbarComponent } from '../shared/components/toolbar/toolbar.component';
 import { FooterComponent } from '../shared/components/footer/footer.component';
 
-import { IndexPageLayoutComponent } from './layouts/index-page-layout/index-page-layout.component';
+import { AppPageLayoutComponent } from './layouts/app-page-layout/app-page-layout.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ActionsComponent } from './components/actions/actions.component';
 import { MainComponent } from './components/main/main.component';
@@ -110,7 +110,7 @@ import {
     FooterComponent,
   ],
   declarations: [
-    IndexPageLayoutComponent,
+    AppPageLayoutComponent,
     HeaderComponent,
     ActionsComponent,
     MainComponent,

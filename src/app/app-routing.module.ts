@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { IndexPageLayoutComponent } from './core/layouts/index-page-layout/index-page-layout.component';
+import { AppPageLayoutComponent } from './core/layouts/app-page-layout/app-page-layout.component';
 
 const routes: Routes = [
   {
@@ -16,7 +16,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    component: IndexPageLayoutComponent,
+    component: AppPageLayoutComponent,
     children: [
       {
         path: '',
