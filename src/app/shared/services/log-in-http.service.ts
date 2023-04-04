@@ -4,26 +4,23 @@ import { Observable } from 'rxjs';
 
 import { API_URL } from '../dependencies/api-url';
 
-import { PhoneType } from '../types/phone.type';
-import { SuccessLoginResponseDataType } from '../types/success-login-response-data.type';
+import { LogInDto } from '../dtos/log-in.dto';
+import { SuccessLogInResponseDataType } from '../types/success-log-in-response-data.type';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthenticationHttpService {
+export class LogInHttpService {
   constructor(
     @Inject(API_URL)
     private readonly apiUrl: string,
     private readonly httpClient: HttpClient
   ) {}
 
-  public authenticate(
-    phone: PhoneType,
-    password: string
-  ): Observable<SuccessLoginResponseDataType> {
-    return this.httpClient.post<SuccessLoginResponseDataType>(
+  public logIn(loginDto: LogInDto): Observable<SuccessLogInResponseDataType> {
+    return this.httpClient.post<SuccessLogInResponseDataType>(
       `${this.apiUrl}/api/login`,
-      { phone, password }
+      loginDto
     );
   }
 }
