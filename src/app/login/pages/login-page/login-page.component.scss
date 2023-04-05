@@ -1,12 +1,19 @@
 @import "../../../styles/scss-variables";
 
 :host {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-height: 0;
 }
 
 .login-page {
-  display: block;
-  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-height: 0;
+  padding: 30px var(--horizontal-bordering-padding) 0
+    var(--horizontal-bordering-padding);
 }
 
 .content {
@@ -33,8 +40,7 @@
 
 @media (min-width: $minLaptopScreenWidth) {
   .login-page {
-    display: flex;
-    justify-content: center;
+    align-items: center;
     margin-top: 50px;
     overflow-x: hidden;
   }
