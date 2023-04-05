@@ -19,11 +19,11 @@ export class RoutingService {
     return this.router.navigate(['/admin']);
   }
 
-  public async navigateToLogin(): Promise<boolean> {
-    return this.router.navigate(['/login']);
+  public async navigateToLogIn(): Promise<boolean> {
+    return this.router.navigate(['/users-entry/log-in']);
   }
 
-  public async navigateToRegistration(): Promise<boolean> {
-    return this.router.navigate(['/login/registration']);
+  public async navigateToSignUp(): Promise<boolean> {
+    return this.router.navigate(['/users-entry/sign-up']);
   }
 }

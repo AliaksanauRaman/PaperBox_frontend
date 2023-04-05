@@ -19,13 +19,13 @@ export class LoginOrRegisterDialogComponent extends DialogComponent {
     super(dialogRef);
   }
 
-  protected handleLoginButtonClick(): void {
+  protected async handleLoginButtonClick(): Promise<void> {
     this.closeDialog();
-    this.routingService.navigateToLogin();
+    await this.routingService.navigateToLogIn();
   }
 
-  protected handleRegistrationButtonClick(): void {
+  protected async handleRegistrationButtonClick(): Promise<void> {
     this.closeDialog();
-    this.routingService.navigateToRegistration();
+    await this.routingService.navigateToSignUp();
   }
 }
