@@ -2,13 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppPageLayoutComponent } from './core/layouts/app-page-layout/app-page-layout.component';
+import { MainSectionLayoutComponent } from './core/layouts/main-section-layout/main-section-layout.component';
 
 const routes: Routes = [
-  {
-    path: 'login',
-    loadChildren: () =>
-      import('./login/login.module').then((m) => m.LoginModule),
-  },
   {
     path: 'admin',
     loadChildren: () =>
@@ -16,29 +12,40 @@ const routes: Routes = [
   },
   {
     path: '',
+    title: 'Pushka',
     component: AppPageLayoutComponent,
     children: [
       {
         path: '',
-        title: 'Pushka',
-        pathMatch: 'full',
-        redirectTo: '/help-offers',
+        component: MainSectionLayoutComponent,
+        children: [
+          {
+            path: '',
+            pathMatch: 'full',
+            redirectTo: '/help-offers',
+          },
+          {
+            path: 'help-offers',
+            title: 'Pushka | Help Offers',
+            loadChildren: () =>
+              import('./help-offers/help-offers.module').then(
+                (m) => m.HelpOffersModule
+              ),
+          },
+          {
+            path: 'help-requests',
+            title: 'Pushka | Looking for help',
+            loadChildren: () =>
+              import('./help-requests/help-requests.module').then(
+                (m) => m.HelpRequestsModule
+              ),
+          },
+        ],
       },
       {
-        path: 'help-offers',
-        title: 'Pushka | Help Offers',
+        path: 'users-entry',
         loadChildren: () =>
-          import('./help-offers/help-offers.module').then(
-            (m) => m.HelpOffersModule
-          ),
-      },
-      {
-        path: 'help-requests',
-        title: 'Pushka | Looking for help',
-        loadChildren: () =>
-          import('./help-requests/help-requests.module').then(
-            (m) => m.HelpRequestsModule
-          ),
+          import('./login/login.module').then((m) => m.LoginModule),
       },
     ],
   },
