@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { NgIf } from '@angular/common';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 import { MatMenuModule } from '@angular/material/menu';
 
 import { LanguageSwitcherComponent } from '../language-switcher/language-switcher.component';
@@ -18,6 +18,7 @@ import { AccountMenuComponent } from '../account-menu/account-menu.component';
   imports: [
     NgIf,
     RouterLink,
+    RouterLinkActive,
     MatMenuModule,
     LanguageSwitcherComponent,
     AboutButtonComponent,
@@ -37,14 +38,8 @@ export class ToolsComponent {
     this._isUserLoggedIn = value;
   }
 
-  @Input()
-  public set hideLoginButton(value: boolean) {
-    this._hideLoginButton = value;
-  }
-
   protected _isCompact = false;
   protected _isUserLoggedIn = false;
-  protected _hideLoginButton = false;
 
   public handleAboutButtonClick(): void {
     // TODO: !IMPORTANT

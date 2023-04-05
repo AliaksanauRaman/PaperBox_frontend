@@ -17,16 +17,9 @@
 
   <app-login-button
     class="item"
-    *ngIf="!_isUserLoggedIn && !_hideLoginButton"
-    routerLink="/login"
-  ></app-login-button>
-
-  <!-- TODO: !IMPORTANT Replace it with back button or something -->
-  <!-- Temporary solution -->
-  <app-login-button
-    class="item"
-    *ngIf="_hideLoginButton"
-    routerLink="/"
+    *ngIf="!_isUserLoggedIn"
+    routerLink="/users-entry/log-in"
+    routerLinkActive="item--hidden"
   ></app-login-button>
 </div>
 
