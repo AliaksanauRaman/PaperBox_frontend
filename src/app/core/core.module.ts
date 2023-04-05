@@ -21,15 +21,17 @@ import { SpinnerModule } from '../shared/components/spinner/spinner.module';
 import { CheckboxWithTextControlComponent } from '../shared/components/checkbox-with-text-control/checkbox-with-text-control.component';
 import { WhiteSquareButtonComponent } from '../shared/components/white-square-button/white-square-button.component';
 import { ManWithMailImageComponent } from '../shared/images/man-with-mail-image/man-with-mail-image.component';
-import { ManWithGlobeImageComponent } from '../shared/images/man-with-globe-image/man-with-globe-image.component';
+import { ManWithGlobeMobileImageComponent } from '../shared/images/man-with-globe-mobile-image/man-with-globe-mobile-image.component';
 import { FeedbackImageComponent } from '../shared/images/feedback-image/feedback-image.component';
 import { GirlInCardMobileImageComponent } from '../shared/images/girl-in-card-mobile-image/girl-in-card-mobile-image.component';
 import { GirlInCardDesktopImageComponent } from '../shared/images/girl-in-card-desktop-image/girl-in-card-desktop-image.component';
 import { GirlWithLaptopImageComponent } from '../shared/images/girl-with-laptop-image/girl-with-laptop-image.component';
+import { ManWithGlobeDesktopImageComponent } from '../shared/images/man-with-globe-desktop-image/man-with-globe-desktop-image.component';
 import { ToolbarComponent } from '../shared/components/toolbar/toolbar.component';
 import { FooterComponent } from '../shared/components/footer/footer.component';
 
 import { AppPageLayoutComponent } from './layouts/app-page-layout/app-page-layout.component';
+import { MainSectionLayoutComponent } from './layouts/main-section-layout/main-section-layout.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ActionsComponent } from './components/actions/actions.component';
 import { MainComponent } from './components/main/main.component';
@@ -101,16 +103,18 @@ import {
     CheckboxWithTextControlComponent,
     WhiteSquareButtonComponent,
     ManWithMailImageComponent,
-    ManWithGlobeImageComponent,
+    ManWithGlobeMobileImageComponent,
     FeedbackImageComponent,
     GirlInCardMobileImageComponent,
     GirlInCardDesktopImageComponent,
     GirlWithLaptopImageComponent,
+    ManWithGlobeDesktopImageComponent,
     ToolbarComponent,
     FooterComponent,
   ],
   declarations: [
     AppPageLayoutComponent,
+    MainSectionLayoutComponent,
     HeaderComponent,
     ActionsComponent,
     MainComponent,
