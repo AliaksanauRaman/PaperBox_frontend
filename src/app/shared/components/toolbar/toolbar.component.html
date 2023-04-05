@@ -7,7 +7,6 @@
         class="actions__tools"
         *ngIf="_isMenuOpened"
         [isCompact]="true"
-        [hideLoginButton]="_isLoginFlow"
       ></app-tools>
 
       <app-menu-button
@@ -23,9 +22,6 @@
   <a class="logo" routerLink="/"></a>
 
   <div class="actions">
-    <app-tools
-      class="actions__tools"
-      [hideLoginButton]="_isLoginFlow"
-    ></app-tools>
+    <app-tools class="actions__tools"></app-tools>
   </div>
 </ng-template>
