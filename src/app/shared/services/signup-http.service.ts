@@ -1,17 +1,17 @@
-import { AppLanguagesService } from './../../core/services/app-languages.service';
+import { AppLanguagesService } from '../../core/services/app-languages.service';
 import { Inject, Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { API_URL } from '../dependencies/api-url';
 
-import { SignUpDto } from '../dtos/sign-up.dto';
-import { SuccessLogInResponseDataType } from '../types/success-log-in-response-data.type';
+import { SignupDto } from '../dtos/signup.dto';
+import { SuccessSignupResponseDataType } from '../types/success-signup-response-data.type';
 
 @Injectable({
   providedIn: 'root',
 })
-export class SignUpHttpService {
+export class SignupHttpService {
   constructor(
     @Inject(API_URL)
     private readonly apiUrl: string,
@@ -19,12 +19,12 @@ export class SignUpHttpService {
     private readonly languagesService: AppLanguagesService
   ) {}
 
-  public signUp(
-    signUpDto: SignUpDto
-  ): Observable<SuccessLogInResponseDataType> {
+  public signup(
+    signUpDto: SignupDto
+  ): Observable<SuccessSignupResponseDataType> {
     const params = new HttpParams();
     params.append('lang', this.languagesService.currentLanguage.value);
-    return this.httpClient.post<SuccessLogInResponseDataType>(
+    return this.httpClient.post<SuccessSignupResponseDataType>(
       `${this.apiUrl}/api/registration`,
       signUpDto,
       { params }

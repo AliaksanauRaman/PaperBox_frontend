@@ -47,7 +47,7 @@ import { SuccessCreateFeedbackSectionComponent } from './sections/success-create
 import { CreateFeedbackDialogComponent } from './dialogs/create-feedback-dialog/create-feedback-dialog.component';
 import { CreateHelpOfferDialogComponent } from './dialogs/create-help-offer-dialog/create-help-offer-dialog.component';
 import { CreateHelpRequestDialogComponent } from './dialogs/create-help-request-dialog/create-help-request-dialog.component';
-import { LoginOrRegisterDialogComponent } from './dialogs/login-or-register-dialog/login-or-register-dialog.component';
+import { LoginOrSignupDialogComponent } from './dialogs/login-or-signup-dialog/login-or-signup-dialog.component';
 
 import { WINDOW, WINDOW_VALUE } from './dependencies/window';
 import {
@@ -130,7 +130,7 @@ import {
     CreateFeedbackDialogComponent,
     CreateHelpOfferDialogComponent,
     CreateHelpRequestDialogComponent,
-    LoginOrRegisterDialogComponent,
+    LoginOrSignupDialogComponent,
   ],
   providers: [
     {

@@ -4,13 +4,13 @@
   display: block;
 }
 
-.registration-form {
+.signup-form {
   position: relative;
   display: flex;
   flex-direction: column;
 }
 
-.already-registered-call-to-action {
+.already-signed-up-call-to-action {
   display: flex;
   flex-shrink: 0;
   margin-bottom: 30px;
@@ -18,7 +18,7 @@
   text-align: end;
 }
 
-.already-registered-label {
+.already-signed-up-label {
   flex-shrink: 0;
   color: var(--black-color);
   font-size: 1.1rem;

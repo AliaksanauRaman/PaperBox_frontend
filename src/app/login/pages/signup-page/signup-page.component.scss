@@ -7,7 +7,7 @@
   min-height: 0;
 }
 
-.registration-page {
+.signup-page {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -28,7 +28,7 @@
   text-align: center;
 }
 
-.registration-form {
+.signup-form {
   flex-shrink: 0;
   margin-bottom: 30px;
 }
@@ -39,7 +39,7 @@
 }
 
 @media (min-width: $minLaptopScreenWidth) {
-  .registration-page {
+  .signup-page {
     align-items: center;
     margin-top: 50px;
     overflow-x: hidden;
@@ -61,7 +61,7 @@
     color: var(--primary-color);
   }
 
-  .registration-form {
+  .signup-form {
     width: 460px;
   }
 

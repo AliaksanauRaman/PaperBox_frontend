@@ -17,10 +17,10 @@
       }
     },
     "login": {
-      "title": "Login"
+      "title": "Log In"
     },
-    "registration": {
-      "title": "Registration"
+    "signup": {
+      "title": "Sign Up"
     }
   },
   "dialogs": {
@@ -40,8 +40,8 @@
       "success": "Success!",
       "commentFieldLabel": "How to improve our service?"
     },
-    "loginOrRegister": {
-      "title": "Log in or register to be able to submit an application"
+    "loginOrSignup": {
+      "title": "Log in or sign up to be able to submit an application"
     },
     "adminManageHelpOffer": {
       "title": "Manage help offer",
@@ -98,11 +98,11 @@
     },
     "loginForm": {
       "notWithUsYet": "Not with us yet?",
-      "registration": "Registration"
+      "signup": "Sign up"
     },
-    "registrationForm": {
-      "alreadyRegistered": "Already registered?",
-      "login": "Login"
+    "signupForm": {
+      "alreadySignedUp": "Already signed up?",
+      "login": "Log in"
     }
   },
   "helpOfferStatus": {
@@ -193,7 +193,7 @@
   "button": {
     "send": "Send",
     "login": "Login",
-    "registration": "Registration"
+    "signup": "Sign up"
   },
   "personalDataAgreementText": "I agree to the processing and storage of my personal data",
   "allowedItemsConfirmationText": "I confirm that the items being transported are not prohibited and that they do not violate the laws of the participating countries",

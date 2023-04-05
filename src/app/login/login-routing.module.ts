@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { LoginPageComponent } from './pages/login-page/login-page.component';
-import { RegistrationPageComponent } from './pages/registration-page/registration-page.component';
+import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 
 const loginRoutes: Routes = [
   {
@@ -16,9 +16,9 @@ const loginRoutes: Routes = [
     component: LoginPageComponent,
   },
   {
-    path: 'sign-up',
+    path: 'signup',
     title: 'Pushka | Sign Up',
-    component: RegistrationPageComponent,
+    component: SignupPageComponent,
   },
 ];
 

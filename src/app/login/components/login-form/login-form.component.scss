@@ -10,7 +10,7 @@
   flex-direction: column;
 }
 
-.not-registered-call-to-action {
+.not-signed-up-call-to-action {
   display: flex;
   flex-shrink: 0;
   margin-bottom: 130px;
@@ -18,14 +18,14 @@
   text-align: end;
 }
 
-.not-registered-label {
+.not-signed-up-label {
   flex-shrink: 0;
   color: var(--black-color);
   font-size: 1.1rem;
   font-weight: 600;
 }
 
-.register-call-to-action {
+.signup-call-to-action {
   flex-shrink: 0;
   margin-left: 5px;
   color: var(--primary-color);
@@ -48,7 +48,7 @@
 }
 
 @media (min-width: $minLaptopScreenWidth) {
-  .not-registered-call-to-action {
+  .not-signed-up-call-to-action {
     margin-bottom: 40px;
   }
 

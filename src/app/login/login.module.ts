@@ -15,9 +15,9 @@ import { LoginRoutingModule } from './login-routing.module';
 
 import { LoginFlowPageLayoutComponent } from './layouts/login-flow-page-layout/login-flow-page-layout.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
-import { RegistrationPageComponent } from './pages/registration-page/registration-page.component';
+import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
-import { RegistrationFormComponent } from './components/registration-form/registration-form.component';
+import { SignupFormComponent } from './components/signup-form/signup-form.component';
 
 @NgModule({
   imports: [
@@ -37,9 +37,9 @@ import { RegistrationFormComponent } from './components/registration-form/regist
   declarations: [
     LoginFlowPageLayoutComponent,
     LoginPageComponent,
-    RegistrationPageComponent,
+    SignupPageComponent,
     LoginFormComponent,
-    RegistrationFormComponent,
+    SignupFormComponent,
   ],
   providers: [],
   exports: [],

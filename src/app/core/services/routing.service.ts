@@ -23,7 +23,7 @@ export class RoutingService {
     return this.router.navigate(['/users-entry/log-in']);
   }
 
-  public async navigateToSignUp(): Promise<boolean> {
-    return this.router.navigate(['/users-entry/sign-up']);
+  public async navigateToSignup(): Promise<boolean> {
+    return this.router.navigate(['/users-entry/signup']);
   }
 }

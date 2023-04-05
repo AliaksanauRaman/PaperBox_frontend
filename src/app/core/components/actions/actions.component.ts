@@ -4,7 +4,7 @@ import { ActiveViewService } from '../../services/active-view.service';
 import { CreateHelpOfferDialogService } from '../../services/create-help-offer-dialog.service';
 import { CreateHelpRequestDialogService } from '../../services/create-help-request-dialog.service';
 import { AuthenticationService } from '../../services/authentication.service';
-import { LoginOrRegisterDialogService } from '../../services/login-or-register-dialog.service';
+import { LoginOrSignupDialogService } from '../../services/login-or-signup-dialog.service';
 
 import { ViewName } from '../../../shared/enums/view-name.enum';
 
@@ -23,14 +23,14 @@ export class ActionsComponent {
     private readonly createHelpOfferDialogService: CreateHelpOfferDialogService,
     private readonly createHelpRequestDialogService: CreateHelpRequestDialogService,
     private readonly authenticationService: AuthenticationService,
-    private readonly loginOrRegisterDialogService: LoginOrRegisterDialogService
+    private readonly loginOrSignupDialogService: LoginOrSignupDialogService
   ) {}
 
   public handleOfferHelpButtonClick(): void {
     if (this.authenticationService.isUserLoggedIn()) {
       this.createHelpOfferDialogService.openDialog();
     } else {
-      this.loginOrRegisterDialogService.openDialog();
+      this.loginOrSignupDialogService.openDialog();
     }
   }
 
@@ -38,7 +38,7 @@ export class ActionsComponent {
     if (this.authenticationService.isUserLoggedIn()) {
       this.createHelpRequestDialogService.openDialog();
     } else {
-      this.loginOrRegisterDialogService.openDialog();
+      this.loginOrSignupDialogService.openDialog();
     }
   }
 }

@@ -1,11 +1,11 @@
 <form
-  class="registration-form"
-  [formGroup]="_registrationForm"
-  (ngSubmit)="handleRegistrationSubmit($event)"
+  class="signup-form"
+  [formGroup]="_signupForm"
+  (ngSubmit)="handleSignupSubmit($event)"
 >
   <div
     class="app-control-container"
-    *ngIf="_registrationForm.controls.email as emailControl"
+    *ngIf="_signupForm.controls.email as emailControl"
   >
     <app-input-control
       [label]="'controlLabel.email' | translate"
@@ -38,7 +38,7 @@
 
   <div
     class="app-control-container"
-    *ngIf="_registrationForm.controls.password as passwordControl"
+    *ngIf="_signupForm.controls.password as passwordControl"
   >
     <app-input-control
       [label]="'controlLabel.password' | translate"
@@ -70,7 +70,7 @@
 
   <div
     class="app-control-container"
-    *ngIf="_registrationForm.controls.confirmPassword as confirmPasswordControl"
+    *ngIf="_signupForm.controls.confirmPassword as confirmPasswordControl"
   >
     <app-input-control
       [label]="'controlLabel.confirmPassword' | translate"
@@ -100,12 +100,12 @@
     </div>
   </div>
 
-  <div class="already-registered-call-to-action">
-    <span class="already-registered-label">{{
-      "components.registrationForm.alreadyRegistered" | translate
+  <div class="already-signed-up-call-to-action">
+    <span class="already-signed-up-label">{{
+      "components.signupForm.alreadySignedUp" | translate
     }}</span>
     <a class="login-call-to-action" routerLink="/users-entry/log-in">{{
-      "components.registrationForm.login" | translate
+      "components.signupForm.login" | translate
     }}</a>
   </div>
 
@@ -125,7 +125,7 @@
 
   <button
     class="app-primary-button"
-    [disabled]="_registrationForm.invalid"
+    [disabled]="_signupForm.invalid"
     type="submit"
   >
     {{ "button.send" | translate }}

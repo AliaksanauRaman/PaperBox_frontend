@@ -4,13 +4,13 @@ import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { CustomValidators } from '../../../shared/classes/custom-validators.class';
 
 @Component({
-  selector: 'app-registration-form',
-  templateUrl: './registration-form.component.html',
-  styleUrls: ['./registration-form.component.scss'],
+  selector: 'app-signup-form',
+  templateUrl: './signup-form.component.html',
+  styleUrls: ['./signup-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RegistrationFormComponent {
-  protected readonly _registrationForm = this._formBuilder.group(
+export class SignupFormComponent {
+  protected readonly _signupForm = this._formBuilder.group(
     {
       email: ['', [Validators.required, CustomValidators.emailFormat]],
       password: ['', [Validators.required, CustomValidators.passwordFormat]],
@@ -22,14 +22,14 @@ export class RegistrationFormComponent {
 
   constructor(private readonly _formBuilder: NonNullableFormBuilder) {}
 
-  protected handleRegistrationSubmit(event: SubmitEvent): void {
+  protected handleSignupSubmit(event: SubmitEvent): void {
     if (!event.isTrusted) {
       console.log('Nice try');
       return;
     }
 
-    if (this._registrationForm.invalid) {
-      throw new Error('Registration form is invalid!');
+    if (this._signupForm.invalid) {
+      throw new Error('Signup form is invalid!');
     }
 
     // TODO: !IMPORTANT Make http request

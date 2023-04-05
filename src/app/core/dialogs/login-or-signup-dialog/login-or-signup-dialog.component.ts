@@ -6,12 +6,12 @@ import { RoutingService } from '../../services/routing.service';
 import { DialogComponent } from '../../../shared/abstracts/dialog-component.class';
 
 @Component({
-  selector: 'app-login-or-register-dialog',
-  templateUrl: './login-or-register-dialog.component.html',
-  styleUrls: ['./login-or-register-dialog.component.scss'],
+  selector: 'app-login-or-signup-dialog',
+  templateUrl: './login-or-signup-dialog.component.html',
+  styleUrls: ['./login-or-signup-dialog.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LoginOrRegisterDialogComponent extends DialogComponent {
+export class LoginOrSignupDialogComponent extends DialogComponent {
   constructor(
     private readonly routingService: RoutingService,
     dialogRef: DialogRef<void>
@@ -24,8 +24,8 @@ export class LoginOrRegisterDialogComponent extends DialogComponent {
     await this.routingService.navigateToLogIn();
   }
 
-  protected async handleRegistrationButtonClick(): Promise<void> {
+  protected async handleSignupButtonClick(): Promise<void> {
     this.closeDialog();
-    await this.routingService.navigateToSignUp();
+    await this.routingService.navigateToSignup();
   }
 }
