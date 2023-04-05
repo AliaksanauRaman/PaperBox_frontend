@@ -1,33 +1,47 @@
 <div class="actions">
-  <ng-container *ngIf="activeView$ | async as activeView">
-    <button
-      class="item"
-      matRipple
-      [class.item--inactive]="activeView !== viewName.HELP_OFFERS"
-      (click)="handleOfferHelpButtonClick()"
-    >
-      <app-plus-icon
-        class="item__icon"
-        [color]="activeView !== viewName.HELP_OFFERS ? 'grey' : 'black'"
+  <div class="container">
+    <ng-container *ngIf="activeView$ | async as activeView">
+      <button
+        class="item"
+        matRipple
+        [class.item--inactive]="activeView !== viewName.HELP_OFFERS"
+        (click)="handleOfferHelpButtonClick()"
       >
-      </app-plus-icon>
+        <app-plus-icon
+          class="item__icon"
+          [color]="activeView !== viewName.HELP_OFFERS ? 'grey' : 'black'"
+        >
+        </app-plus-icon>
 
-      <span class="item__text">{{ 'pages.index.actions.offerHelpButtonLabel' | translate }}</span>
-    </button>
+        <span class="item__text">{{
+          "pages.index.actions.offerHelpButtonLabel" | translate
+        }}</span>
+      </button>
 
-    <button
-      class="item"
-      matRipple
-      [class.item--inactive]="activeView !== viewName.HELP_REQUESTS"
-      (click)="handleFindHelpButtonClick()"
-    >
-      <app-plus-icon
-        class="item__icon"
-        [color]="activeView !== viewName.HELP_REQUESTS ? 'grey' : 'black'"
+      <button
+        class="item"
+        matRipple
+        [class.item--inactive]="activeView !== viewName.HELP_REQUESTS"
+        (click)="handleFindHelpButtonClick()"
       >
-      </app-plus-icon>
+        <app-plus-icon
+          class="item__icon"
+          [color]="activeView !== viewName.HELP_REQUESTS ? 'grey' : 'black'"
+        >
+        </app-plus-icon>
 
-      <span class="item__text">{{ 'pages.index.actions.findHelpButtonLabel' | translate }}</span>
-    </button>
-  </ng-container>
+        <span class="item__text">{{
+          "pages.index.actions.findHelpButtonLabel" | translate
+        }}</span>
+      </button>
+    </ng-container>
+
+    <app-man-with-globe-mobile-image
+      class="man-with-globe-mobile-image"
+    ></app-man-with-globe-mobile-image>
+
+    <app-man-with-globe-desktop-image
+      class="man-with-globe-desktop-image"
+    ></app-man-with-globe-desktop-image>
+  </div>
 </div>
