@@ -8,10 +8,10 @@ const loginRoutes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'log-in',
+    redirectTo: 'login',
   },
   {
-    path: 'log-in',
+    path: 'login',
     title: 'Pushka | Log In',
     component: LoginPageComponent,
   },

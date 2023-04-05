@@ -9,15 +9,15 @@ import {
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { tap } from 'rxjs';
 
-import { LogInService } from '../../../shared/services/log-in.service';
+import { LoginService } from '../../../shared/services/login.service';
 
-import { LogInDto } from '../../../shared/dtos/log-in.dto';
+import { LoginDto } from '../../../shared/dtos/login.dto';
 
 @Component({
   selector: 'app-admin-login-card',
   templateUrl: './admin-login-card.component.html',
   styleUrls: ['./admin-login-card.component.scss'],
-  providers: [LogInService],
+  providers: [LoginService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AdminLoginCardComponent implements AfterViewInit, OnDestroy {
@@ -40,7 +40,7 @@ export class AdminLoginCardComponent implements AfterViewInit, OnDestroy {
 
   constructor(
     private readonly _formBuilder: NonNullableFormBuilder,
-    private readonly _logInService: LogInService
+    private readonly _logInService: LoginService
   ) {}
 
   public ngAfterViewInit(): void {
@@ -61,7 +61,7 @@ export class AdminLoginCardComponent implements AfterViewInit, OnDestroy {
 
     const formValue = this._logInForm.getRawValue();
     this._logInService.performRequest(
-      new LogInDto(formValue.email, formValue.password)
+      new LoginDto(formValue.email, formValue.password)
     );
   }
 }

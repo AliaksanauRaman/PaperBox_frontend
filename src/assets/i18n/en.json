@@ -192,7 +192,7 @@
   },
   "button": {
     "send": "Send",
-    "login": "Login",
+    "login": "Log in",
     "signup": "Sign up"
   },
   "personalDataAgreementText": "I agree to the processing and storage of my personal data",

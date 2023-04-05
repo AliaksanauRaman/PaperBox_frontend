@@ -21,7 +21,7 @@ export class LoginOrSignupDialogComponent extends DialogComponent {
 
   protected async handleLoginButtonClick(): Promise<void> {
     this.closeDialog();
-    await this.routingService.navigateToLogIn();
+    await this.routingService.navigateToLogin();
   }
 
   protected async handleSignupButtonClick(): Promise<void> {

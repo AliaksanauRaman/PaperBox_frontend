@@ -19,8 +19,8 @@ export class RoutingService {
     return this.router.navigate(['/admin']);
   }
 
-  public async navigateToLogIn(): Promise<boolean> {
-    return this.router.navigate(['/users-entry/log-in']);
+  public async navigateToLogin(): Promise<boolean> {
+    return this.router.navigate(['/users-entry/login']);
   }
 
   public async navigateToSignup(): Promise<boolean> {
