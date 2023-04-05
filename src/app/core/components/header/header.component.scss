@@ -1,67 +1,20 @@
-@import "../../../styles/scss-variables";
-
 :host {
-  display: flex;
-  flex-direction: column;
+  display: block;
 }
 
 .header {
-  position: relative;
   display: flex;
   justify-content: center;
   padding: var(--vertical-bordering-padding) var(--horizontal-bordering-padding)
-    var(--key-blocks-indent-size) var(--horizontal-bordering-padding);
+    0 var(--horizontal-bordering-padding);
 }
 
-.content-container {
-  position: relative;
+.container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   flex-grow: 1;
   max-width: var(--max-content-width);
 }
 
 .toolbar {
-  z-index: 1;
-  flex-shrink: 0;
-}
-
-.actions {
-  z-index: 1;
   flex-grow: 1;
-  margin-top: 80px;
-}
-
-.man-with-globe-image {
-  position: absolute;
-  bottom: 0;
-  right: var(--horizontal-bordering-padding);
-  z-index: 0;
-}
-
-.big-man-with-globe-image {
-  position: absolute;
-  top: 45px;
-  left: 25px;
-  z-index: -1;
-  display: none;
-  width: 252px;
-  height: 410px;
-}
-
-@media (min-width: $smallMobileScreenWidth) {
-  .actions {
-    margin-top: 100px;
-  }
-}
-
-@media (min-width: $minLaptopScreenWidth) {
-  .man-with-globe-image {
-    display: none;
-  }
-
-  .big-man-with-globe-image {
-    display: block;
-  }
 }
