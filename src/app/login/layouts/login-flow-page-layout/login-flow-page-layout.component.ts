@@ -6,4 +6,5 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   styleUrls: ['./login-flow-page-layout.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
+// TODO: Not used
 export class LoginFlowPageLayoutComponent {}
