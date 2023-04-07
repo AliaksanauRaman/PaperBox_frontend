@@ -1,12 +1,10 @@
-@import "../scss-variables";
-
 button.app-primary-button {
   position: relative;
   z-index: 1;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 46px;
+  height: 52px;
   font-size: 1.2rem;
   font-weight: 600;
   color: var(--white-color);
@@ -35,11 +33,5 @@ button.app-primary-button {
   &:disabled {
     pointer-events: none;
     background-color: var(--grey-color);
-  }
-}
-
-@media (min-width: $smallMobileScreenWidth) {
-  button.app-primary-button {
-    height: 52px;
   }
 }
