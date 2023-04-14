@@ -17,11 +17,11 @@ import { ScreenSizeObserverService } from '../../../core/services/screen-size-ob
 })
 export class ToolbarComponent {
   @Input()
-  public set isUserLoggedIn(value: boolean) {
-    this._isUserLoggedIn = value;
+  public set userIsLoggedIn(value: boolean) {
+    this._userIsLoggedIn = value;
   }
 
-  protected _isUserLoggedIn = false;
+  protected _userIsLoggedIn = false;
   protected _isMenuOpened = false;
   protected readonly _isMobileOrTablet$ =
     this._screenSizeObserverService.isMobileOrTablet$;

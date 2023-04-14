@@ -34,12 +34,12 @@ export class ToolsComponent {
   }
 
   @Input()
-  public set isUserLoggedIn(value: boolean) {
-    this._isUserLoggedIn = value;
+  public set userIsLoggedIn(value: boolean) {
+    this._userIsLoggedIn = value;
   }
 
   protected _isCompact = false;
-  protected _isUserLoggedIn = false;
+  protected _userIsLoggedIn = false;
 
   public handleAboutButtonClick(): void {
     // TODO: !IMPORTANT

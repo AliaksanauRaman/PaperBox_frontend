@@ -11,13 +11,13 @@
 
   <app-account-button
     class="item"
-    *ngIf="_isUserLoggedIn"
+    *ngIf="_userIsLoggedIn"
     [matMenuTriggerFor]="accountMenu.menuRef"
   ></app-account-button>
 
   <app-login-button
     class="item"
-    *ngIf="!_isUserLoggedIn"
+    *ngIf="!_userIsLoggedIn"
     routerLink="/users-entry/login"
     routerLinkActive="item--hidden"
   ></app-login-button>
