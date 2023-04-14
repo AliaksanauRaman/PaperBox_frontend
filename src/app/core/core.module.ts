@@ -39,6 +39,7 @@ import { NavigationMenuComponent } from './components/navigation-menu/navigation
 import { DynamicPhoneListControlComponent } from './components/dynamic-phone-list-control/dynamic-phone-list-control.component';
 import { LocationsControlComponent } from './components/locations-control/locations-control.component';
 import { ErrorSnackBarComponent } from './components/error-snack-bar/error-snack-bar.component';
+import { WarningSnackBarComponent } from './components/warning-snack-bar/warning-snack-bar.component';
 import { InfoSnackBarComponent } from './components/info-snack-bar/info-snack-bar.component';
 import { SuccessCreateHelpOfferSectionComponent } from './sections/success-create-help-offer-section/success-create-help-offer-section.component';
 import { SuccessCreateHelpItemSectionComponent } from './sections/success-create-help-item-section/success-create-help-item-section.component';
@@ -122,6 +123,7 @@ import {
     DynamicPhoneListControlComponent,
     LocationsControlComponent,
     ErrorSnackBarComponent,
+    WarningSnackBarComponent,
     InfoSnackBarComponent,
     SuccessCreateHelpOfferSectionComponent,
     SuccessCreateHelpItemSectionComponent,
