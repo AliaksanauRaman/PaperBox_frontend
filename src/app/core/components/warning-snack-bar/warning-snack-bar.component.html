@@ -1,0 +1,29 @@
+<div class="warning-snack-bar">
+  <span class="message">{{ warningMessageTranslateKey | translate }}</span>
+
+  <button
+    class="close-button"
+    matRipple
+    type="button"
+    (click)="handleCloseButtonClick()"
+  >
+    <ng-container *ngTemplateOutlet="crossIconSvg"></ng-container>
+  </button>
+</div>
+
+<ng-template #crossIconSvg>
+  <svg
+    class="cross-icon"
+    width="17"
+    height="17"
+    viewBox="0 0 18 19"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M16.7782 17.3345L1.22183 1.77817M1.22183 17.3345L16.7782 1.77818"
+      stroke-width="2"
+      stroke-linecap="round"
+    />
+  </svg>
+</ng-template>
