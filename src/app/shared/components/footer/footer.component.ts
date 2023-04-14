@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { LeaveFeedbackButtonComponent } from '../leave-feedback-button/leave-feedback-button.component';
 
 import { CreateFeedbackDialogService } from '../../../core/services/create-feedback-dialog.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-footer',
@@ -14,10 +15,12 @@ import { CreateFeedbackDialogService } from '../../../core/services/create-feedb
 })
 export class FooterComponent {
   constructor(
-    private readonly createFeedbackDialogService: CreateFeedbackDialogService
+    private readonly _createFeedbackDialogService: CreateFeedbackDialogService,
+    private readonly _userService: UserService
   ) {}
 
   protected handleLeaveFeedbackButtonClick(): void {
-    this.createFeedbackDialogService.openDialog();
+    const userEmail = this._userService.user?.email;
+    this._createFeedbackDialogService.openDialog(userEmail);
   }
 }
