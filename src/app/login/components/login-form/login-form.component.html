@@ -77,11 +77,12 @@
   <app-man-with-hearts-mobile-image class="man-with-hearts-mobile-image">
   </app-man-with-hearts-mobile-image>
 
-  <button
-    class="app-primary-button"
-    [disabled]="_loginForm.invalid"
-    type="submit"
-  >
-    {{ "button.send" | translate }}
-  </button>
+  <ng-container *ngIf="_loginRequestState$ | async as state">
+    <app-primary-button
+      [disabled]="_loginForm.invalid"
+      [isLoadingState]="state.inProgress"
+    >
+      <span>{{ "button.send" | translate }}</span>
+    </app-primary-button>
+  </ng-container>
 </form>
