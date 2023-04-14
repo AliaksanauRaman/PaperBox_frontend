@@ -1,0 +1,13 @@
+<button
+  class="primary-button"
+  [type]="_type"
+  [disabled]="_disabled || _isLoadingState"
+>
+  <ng-content *ngIf="!_isLoadingState"></ng-content>
+
+  <app-spinner
+    class="primary-button__spinner"
+    *ngIf="_isLoadingState"
+    color="white"
+  ></app-spinner>
+</button>
