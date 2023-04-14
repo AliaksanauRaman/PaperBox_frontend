@@ -16,9 +16,9 @@ export class LoginService extends HttpRequestWithParamsBaseService<
     super();
   }
 
-  public doRequest(
-    logInDto: LoginDto
+  protected doRequest(
+    loginDto: LoginDto
   ): Observable<SuccessLoginResponseDataType> {
-    return this.loginHttpService.login(logInDto);
+    return this.loginHttpService.login(loginDto);
   }
 }
