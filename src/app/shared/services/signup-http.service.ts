@@ -1,9 +1,9 @@
-import { AppLanguagesService } from '../../core/services/app-languages.service';
 import { Inject, Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { API_URL } from '../dependencies/api-url';
+import { AppLanguagesService } from '../../core/services/app-languages.service';
 
 import { SignupDto } from '../dtos/signup.dto';
 import { SuccessSignupResponseDataType } from '../types/success-signup-response-data.type';
