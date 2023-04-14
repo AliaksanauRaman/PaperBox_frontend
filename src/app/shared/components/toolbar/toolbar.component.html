@@ -7,6 +7,7 @@
         class="actions__tools"
         *ngIf="_isMenuOpened"
         [isCompact]="true"
+        [isUserLoggedIn]="_isUserLoggedIn"
       ></app-tools>
 
       <app-menu-button
@@ -22,6 +23,9 @@
   <a class="logo" routerLink="/"></a>
 
   <div class="actions">
-    <app-tools class="actions__tools"></app-tools>
+    <app-tools
+      class="actions__tools"
+      [isUserLoggedIn]="_isUserLoggedIn"
+    ></app-tools>
   </div>
 </ng-template>
