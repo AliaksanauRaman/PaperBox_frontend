@@ -1,0 +1,14 @@
+.app-warning-snack-bar.mat-mdc-snack-bar-container {
+  .mdc-snackbar__surface {
+    position: relative;
+    max-width: 400px;
+    padding: 0;
+    background-color: var(--white-color);
+    border-radius: var(--border-radius);
+    box-shadow: 2px 2px 5px 2px rgba($color: #eca81e, $alpha: 0.2) !important; // WARNING COLOR
+
+    .mdc-snackbar__label {
+      padding: 20px 40px;
+    }
+  }
+}
