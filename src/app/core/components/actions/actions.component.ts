@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActiveViewService } from '../../services/active-view.service';
 import { CreateHelpOfferDialogService } from '../../services/create-help-offer-dialog.service';
 import { CreateHelpRequestDialogService } from '../../services/create-help-request-dialog.service';
-import { AuthenticationService } from '../../services/authentication.service';
+import { UserService } from '../../../shared/services/user.service';
 import { LoginOrSignupDialogService } from '../../services/login-or-signup-dialog.service';
 
 import { ViewName } from '../../../shared/enums/view-name.enum';
@@ -22,12 +22,12 @@ export class ActionsComponent {
     private readonly activeViewService: ActiveViewService,
     private readonly createHelpOfferDialogService: CreateHelpOfferDialogService,
     private readonly createHelpRequestDialogService: CreateHelpRequestDialogService,
-    private readonly authenticationService: AuthenticationService,
+    private readonly _userService: UserService,
     private readonly loginOrSignupDialogService: LoginOrSignupDialogService
   ) {}
 
   public handleOfferHelpButtonClick(): void {
-    if (this.authenticationService.isUserLoggedIn()) {
+    if (this._userService.userIsLoggedIn) {
       this.createHelpOfferDialogService.openDialog();
     } else {
       this.loginOrSignupDialogService.openDialog();
@@ -35,7 +35,7 @@ export class ActionsComponent {
   }
 
   public handleFindHelpButtonClick(): void {
-    if (this.authenticationService.isUserLoggedIn()) {
+    if (this._userService.userIsLoggedIn) {
       this.createHelpRequestDialogService.openDialog();
     } else {
       this.loginOrSignupDialogService.openDialog();
