@@ -38,7 +38,7 @@ export class SuccessCreateHelpItemSectionComponent {
 
     if (isSuccessfullyCopied) {
       this._infoNotificationService.showMessage(
-        'infos.applicationIdIsSuccessfullyCopied'
+        'info.applicationIdIsSuccessfullyCopied'
       );
     } else {
       this._errorNotificationService.showMessage(
