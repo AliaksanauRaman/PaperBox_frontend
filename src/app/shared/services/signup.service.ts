@@ -16,7 +16,7 @@ export class SignupService extends HttpRequestWithParamsBaseService<
     super();
   }
 
-  public doRequest(
+  protected doRequest(
     signUpDto: SignupDto
   ): Observable<SuccessSignupResponseDataType> {
     return this.signUpHttpService.signup(signUpDto);
