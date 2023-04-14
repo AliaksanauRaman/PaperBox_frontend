@@ -20,7 +20,7 @@
     <form
       class="form"
       *ngIf="state.data === null"
-      [formGroup]="createFeedbackForm"
+      [formGroup]="_createFeedbackForm"
       (ngSubmit)="handleCreateFeedbackSubmit($event)"
     >
       <!-- TODO: Make reusable components: control-container, control-errors, etc. -->
@@ -35,10 +35,10 @@
         </app-input-control>
 
         <div class="control-errors">
-          <ng-container *ngIf="createFeedbackForm.controls.fullName.touched">
+          <ng-container *ngIf="_createFeedbackForm.controls.fullName.touched">
             <span
               class="error-text"
-              *ngIf="createFeedbackForm.controls.fullName.errors?.['required']"
+              *ngIf="_createFeedbackForm.controls.fullName.errors?.['required']"
             >
               {{ "error.fullNameIsRequired" | translate }}
             </span>
@@ -60,17 +60,17 @@
         </app-input-control>
 
         <div class="control-errors">
-          <ng-container *ngIf="createFeedbackForm.controls.email.touched">
+          <ng-container *ngIf="_createFeedbackForm.controls.email.touched">
             <span
               class="error-text"
-              *ngIf="createFeedbackForm.controls.email.errors?.['required']"
+              *ngIf="_createFeedbackForm.controls.email.errors?.['required']"
             >
               {{ "error.emailIsRequired" | translate }}
             </span>
 
             <span
               class="error-text"
-              *ngIf="createFeedbackForm.controls.email.errors?.['emailFormat']"
+              *ngIf="_createFeedbackForm.controls.email.errors?.['emailFormat']"
             >
               {{ "error.incorrectEmailFormat" | translate }}
             </span>
@@ -90,17 +90,17 @@
         </app-textarea-field-control>
 
         <div class="control-errors">
-          <ng-container *ngIf="createFeedbackForm.controls.comment.touched">
+          <ng-container *ngIf="_createFeedbackForm.controls.comment.touched">
             <span
               class="error-text"
-              *ngIf="createFeedbackForm.controls.comment.errors?.['required']"
+              *ngIf="_createFeedbackForm.controls.comment.errors?.['required']"
             >
               {{ "error.commentIsRequired" | translate }}
             </span>
 
             <span
               class="error-text"
-              *ngIf="createFeedbackForm.controls.comment.errors?.['minlength']"
+              *ngIf="_createFeedbackForm.controls.comment.errors?.['minlength']"
             >
               {{ "error.minCharacters" | translate : { amount: 10 } }}
             </span>
@@ -109,11 +109,11 @@
       </div>
 
       <div class="app-custom-dialog-actions">
-        <!-- TODO: Make primary button component -->
+        <!-- TODO: Use primary button component -->
         <button
           class="app-custom-dialog-actions__item app-primary-button"
           *ngIf="!state.inProgress"
-          [disabled]="createFeedbackForm.invalid"
+          [disabled]="_createFeedbackForm.invalid"
           type="submit"
         >
           <span>{{ "button.send" | translate }}</span>

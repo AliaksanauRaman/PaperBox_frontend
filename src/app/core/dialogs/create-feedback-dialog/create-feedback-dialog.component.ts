@@ -1,6 +1,12 @@
-import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Inject,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
-import { DialogRef } from '@angular/cdk/dialog';
+import { DIALOG_DATA, DialogRef } from '@angular/cdk/dialog';
 import { tap, BehaviorSubject } from 'rxjs';
 
 import { CreateFeedbackService } from '../../services/create-feedback.service';
@@ -17,6 +23,10 @@ import {
   SUCCESS_TITLE,
 } from './create-feedback-dialog.config';
 
+type CreateFeedbackDialogDataType = Readonly<{
+  userEmail?: string;
+}>;
+
 @Component({
   selector: 'app-create-feedback-dialog',
   templateUrl: './create-feedback-dialog.component.html',
@@ -26,56 +36,73 @@ import {
 })
 export class CreateFeedbackDialogComponent
   extends DialogComponent
-  implements OnDestroy
+  implements OnInit, OnDestroy
 {
   private readonly _dialogTitle$ = new BehaviorSubject<string>(NORMAL_TITLE);
-  public readonly dialogTitle$ = this._dialogTitle$.asObservable();
+  protected readonly dialogTitle$ = this._dialogTitle$.asObservable();
 
-  public readonly createFeedbackState$ = this.createFeedbackService.state$.pipe(
-    tap((state) => {
-      if (state.inProgress) {
-        this._dialogTitle$.next(LOADING_TITLE);
-        this.createFeedbackForm.disable();
-      } else if (state.error !== null) {
-        this._dialogTitle$.next(NORMAL_TITLE);
-        this.createFeedbackForm.enable();
-        this._errorNotificationService.showMessage('error.createFeedback');
-      } else if (state.data !== null) {
-        this._dialogTitle$.next(SUCCESS_TITLE);
-      }
-    })
-  );
+  protected readonly createFeedbackState$ =
+    this._createFeedbackService.state$.pipe(
+      tap((state) => {
+        if (state.inProgress) {
+          this._dialogTitle$.next(LOADING_TITLE);
+          this._createFeedbackForm.disable();
+        } else if (state.error !== null) {
+          this._dialogTitle$.next(NORMAL_TITLE);
+          this._createFeedbackForm.enable();
+          this._errorNotificationService.showMessage('error.createFeedback');
+        } else if (state.data !== null) {
+          this._dialogTitle$.next(SUCCESS_TITLE);
+        }
+      })
+    );
 
-  public readonly createFeedbackForm = this.formBuilder.group({
+  protected readonly _createFeedbackForm = this._formBuilder.group({
     fullName: ['', [Validators.required]],
     email: ['', [Validators.required, CustomValidators.emailFormat]],
     comment: ['', [Validators.required, Validators.minLength(10)]],
   });
 
   constructor(
-    private readonly formBuilder: NonNullableFormBuilder,
-    private readonly createFeedbackService: CreateFeedbackService,
+    private readonly _formBuilder: NonNullableFormBuilder,
+    private readonly _createFeedbackService: CreateFeedbackService,
     private readonly _errorNotificationService: ErrorNotificationService,
+    @Inject(DIALOG_DATA)
+    private readonly _dialogData: CreateFeedbackDialogDataType,
     dialogRef: DialogRef<void>
   ) {
     super(dialogRef);
   }
 
-  public ngOnDestroy(): void {
-    this.createFeedbackService.destroyRequest();
+  public ngOnInit(): void {
+    this.setFormInitialValues();
   }
 
-  public handleCreateFeedbackSubmit(event: ShortSubmitEventType): void {
+  public ngOnDestroy(): void {
+    this._createFeedbackService.destroyRequest();
+  }
+
+  protected handleCreateFeedbackSubmit(event: ShortSubmitEventType): void {
     if (!event.isTrusted) {
       console.log('Nice try');
       return;
     }
 
-    if (this.createFeedbackForm.invalid) {
+    if (this._createFeedbackForm.invalid) {
       return;
     }
 
-    this.createFeedback(this.createFeedbackForm.getRawValue());
+    this.createFeedback(this._createFeedbackForm.getRawValue());
+  }
+
+  private setFormInitialValues(): void {
+    const userEmail = this._dialogData.userEmail;
+
+    if (userEmail !== undefined) {
+      this._createFeedbackForm.patchValue({
+        email: userEmail,
+      });
+    }
   }
 
   private createFeedback(
@@ -83,7 +110,7 @@ export class CreateFeedbackDialogComponent
   ): void {
     const { fullName, email, comment } = validFormValue;
 
-    this.createFeedbackService.performRequest(
+    this._createFeedbackService.performRequest(
       new CreateFeedbackDto(fullName, email, comment)
     );
   }
