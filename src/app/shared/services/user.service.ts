@@ -14,9 +14,16 @@ export class UserService {
     map((userTokenEntity) => this._userMapperService.toUser(userTokenEntity)),
     tap((user) => (this._user = user))
   );
+  public readonly userIsLoggedIn$ = this.user$.pipe(
+    map((user) => this.isUserLoggedIn(user))
+  );
 
   public get user(): NullableUserType {
     return this._user;
+  }
+
+  public get userIsLoggedIn(): boolean {
+    return this.isUserLoggedIn(this.user);
   }
 
   private _user: NullableUserType = null;
@@ -25,4 +32,8 @@ export class UserService {
     private readonly _userTokenEntityService: UserTokenEntityService,
     private readonly _userMapperService: UserMapperService
   ) {}
+
+  private isUserLoggedIn(user: NullableUserType): boolean {
+    return user !== null && user.valid;
+  }
 }
