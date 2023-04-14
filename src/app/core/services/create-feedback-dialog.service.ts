@@ -9,10 +9,11 @@ import { CreateFeedbackDialogComponent } from '../dialogs/create-feedback-dialog
 export class CreateFeedbackDialogService {
   constructor(private readonly dialog: Dialog) {}
 
-  public openDialog(): void {
+  public openDialog(userEmail?: string): void {
     this.dialog.open(CreateFeedbackDialogComponent, {
       // TODO: Move to constants
       panelClass: 'app-custom-dialog',
+      data: !!userEmail ? { userEmail } : {},
     });
   }
 }
