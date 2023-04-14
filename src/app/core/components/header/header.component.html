@@ -1,5 +1,8 @@
 <header class="header">
   <div class="container">
-    <app-toolbar class="toolbar"></app-toolbar>
+    <app-toolbar
+      class="toolbar"
+      [userIsLoggedIn]="(_userService.userIsLoggedIn$ | async) === true"
+    ></app-toolbar>
   </div>
 </header>
