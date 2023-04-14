@@ -29,10 +29,6 @@
 }
 // MAT-CALENDAR END
 
-.cdk-overlay-container {
-  cursor: default;
-}
-
 // MAT-MENU START
 .app-custom-menu {
   margin: 4px 0 !important;
@@ -50,6 +46,14 @@
   }
 }
 // MAT-MENU END
+
+.cdk-overlay-container {
+  cursor: default;
+}
+
+.cdk-overlay-backdrop {
+  z-index: 999;
+}
 
 // TODO: Check if colors still needed
 .mat-custom-green {
