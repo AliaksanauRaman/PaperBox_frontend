@@ -1,5 +1,10 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
+import { tap } from 'rxjs';
+
+import { SignupService } from '../../../shared/services/signup.service';
+import { ErrorNotificationService } from '../../../core/services/error-notification.service';
+import { SignupErrorFactory } from '../../factories/signup-error.factory';
 
 import { CustomValidators } from '../../../shared/classes/custom-validators.class';
 
@@ -7,9 +12,23 @@ import { CustomValidators } from '../../../shared/classes/custom-validators.clas
   selector: 'app-signup-form',
   templateUrl: './signup-form.component.html',
   styleUrls: ['./signup-form.component.scss'],
+  providers: [SignupService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignupFormComponent {
+  protected readonly _signupRequestState$ = this._signupService.state$.pipe(
+    tap((state) => {
+      if (state.inProgress) {
+        this._signupForm.disable();
+      } else if (state.data !== null) {
+        this._signupForm.enable();
+      } else if (state.error !== null) {
+        this._signupForm.enable();
+        const signUpError = this._signupErrorFactory.build(state.error);
+        this._errorNotificationService.showMessage(signUpError.message);
+      }
+    })
+  );
   protected readonly _signupForm = this._formBuilder.group(
     {
       email: ['', [Validators.required, CustomValidators.emailFormat]],
@@ -20,7 +39,12 @@ export class SignupFormComponent {
     { validators: [CustomValidators.passwordsMatch] }
   );
 
-  constructor(private readonly _formBuilder: NonNullableFormBuilder) {}
+  constructor(
+    private readonly _formBuilder: NonNullableFormBuilder,
+    private readonly _signupService: SignupService,
+    private readonly _errorNotificationService: ErrorNotificationService,
+    private readonly _signupErrorFactory: SignupErrorFactory
+  ) {}
 
   protected handleSignupSubmit(event: SubmitEvent): void {
     if (!event.isTrusted) {
@@ -32,6 +56,8 @@ export class SignupFormComponent {
       throw new Error('Signup form is invalid!');
     }
 
-    // TODO: !IMPORTANT Make http request
+    const { email, password } = this._signupForm.getRawValue();
+    const signupDto = { email, password };
+    this._signupService.performRequest(signupDto);
   }
 }
