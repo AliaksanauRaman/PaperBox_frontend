@@ -177,7 +177,9 @@
     "passwordsDoNotMatch": "Passwords do not match.",
     "incorrectPasswordFormat": "Minimum 8 characters, no spaces.",
     "invalidCredentials": "Invalid email or password. Please, try again.",
-    "unknownLoginRequestError": "Unknown error occurred during login. Please, try again later."
+    "unknownLoginRequestError": "Unknown error occurred during log in. Please, try again later.",
+    "userWithSuchEmailAlreadyExists": "User with such email already exists.",
+    "unknownSignupRequestError": "Unknown error occurred during sign up. Please, try again later."
   },
   "helpTitles": {
     "clear": "Clear",
