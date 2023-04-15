@@ -148,13 +148,17 @@
     "passwordControl": "1234abcd",
     "emptyList": "The list is empty."
   },
-  "infos": {
-    "applicationIdIsSuccessfullyCopied": "Application ID is successfully copied to the clipboard!"
+  "info": {
+    "applicationIdIsSuccessfullyCopied": "Application ID is successfully copied to the clipboard!",
+    "loggedInSuccessfully": "Logged in successfully!",
+    "loggedOutSuccessfully": "Logged out successfully!"
   },
   "warnings": {
     "sameCountries": "Same countries.",
     "sameCities": "Same cities.",
-    "itIsBetterToLeaveAComment": "It is better to leave a comment."
+    "itIsBetterToLeaveAComment": "It is better to leave a comment.",
+    "sessionIsExpired": "Session is expired. Please, login again.",
+    "tokenIsBroken": "Login data is broken. Please, try to login again."
   },
   "error": {
     "fullNameIsRequired": "Full name is required.",
@@ -171,7 +175,9 @@
     "createFeedback": "Server error. Please, try again a bit later. If error continues to occur contact us via email.",
     "applicationIdCopyError": "Unknown error occurred during copying application ID to the clipboard.",
     "passwordsDoNotMatch": "Passwords do not match.",
-    "incorrectPasswordFormat": "Minimum 8 characters, no spaces."
+    "incorrectPasswordFormat": "Minimum 8 characters, no spaces.",
+    "invalidCredentials": "Invalid email or password. Please, try again.",
+    "unknownLoginRequestError": "Unknown error occurred during login. Please, try again later."
   },
   "helpTitles": {
     "clear": "Clear",

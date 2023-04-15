@@ -148,13 +148,17 @@
     "passwordControl": "1234abcd",
     "emptyList": "Спіс пусты."
   },
-  "infos": {
-    "applicationIdIsSuccessfullyCopied": "Ідэнтыфікатар заяўкі паспяхова скапіраваны ў буфер абмену!"
+  "info": {
+    "applicationIdIsSuccessfullyCopied": "Ідэнтыфікатар заяўкі паспяхова скапіраваны ў буфер абмену!",
+    "loggedInSuccessfully": "Уваход у сістэму прайшоў паспяхова!",
+    "loggedOutSuccessfully": "Выхад з сістэмы прайшоў паспяхова!"
   },
   "warnings": {
     "sameCountries": "Аднолькавыя краіны.",
     "sameCities": "Аднолькавыя гарады.",
-    "itIsBetterToLeaveAComment": "Пажадана пакінуць каментар."
+    "itIsBetterToLeaveAComment": "Пажадана пакінуць каментар.",
+    "sessionIsExpired": "Сеанс скончыўся. Калі ласка, увайдзіце ў сістэму зноў.",
+    "tokenIsBroken": "Памылка ў дадзеных увахода. Калі ласка, паспрабуйце ўвайсці ў сістэму зноў."
   },
   "error": {
     "fullNameIsRequired": "Поўнае імя абавязкова.",
@@ -171,7 +175,9 @@
     "createFeedback": "Памылка сервера. Калі ласка, паўтарыце спробу пазней. Калі памылка працягвае ўзнікаць, звяжыцеся з намі па электроннай пошце.",
     "applicationIdCopyError": "Невядомая памылка капіравання iдэнтыфікатара заяўкі ў буфер абмена.",
     "passwordsDoNotMatch": "Паролі не супадаюць.",
-    "incorrectPasswordFormat": "Мінімум 8 знакаў, без прабелаў."
+    "incorrectPasswordFormat": "Мінімум 8 знакаў, без прабелаў.",
+    "invalidCredentials": "Няправільны адрас электроннай пошты або пароль. Калі ласка, паспрабуйце яшчэ раз.",
+    "unknownLoginRequestError": "Невадомая памылка ўвахода ў сістэму. Калі ласка, паспрабуйце зноў пазней."
   },
   "helpTitles": {
     "clear": "Ачыцсціць",
