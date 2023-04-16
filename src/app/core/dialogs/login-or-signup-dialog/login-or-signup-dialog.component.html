@@ -11,25 +11,27 @@
     <app-plus-icon class="app-custom-dialog-close-button-icon"></app-plus-icon>
   </div>
 
-  <app-girl-with-laptop-image
-    class="girl-with-laptop-image"
-  ></app-girl-with-laptop-image>
+  <div class="content-container">
+    <app-girl-with-laptop-image
+      class="girl-with-laptop-image"
+    ></app-girl-with-laptop-image>
 
-  <div class="actions">
-    <button
-      class="actions__item app-primary-button"
-      type="button"
-      (click)="handleLoginButtonClick()"
-    >
-      <span>{{ "button.login" | translate }}</span>
-    </button>
+    <div class="actions">
+      <button
+        class="actions__item app-primary-button"
+        type="button"
+        (click)="handleLoginButtonClick()"
+      >
+        <span>{{ "button.login" | translate }}</span>
+      </button>
 
-    <button
-      class="actions__item app-primary-button"
-      type="button"
-      (click)="handleSignupButtonClick()"
-    >
-      <span>{{ "button.signup" | translate }}</span>
-    </button>
+      <button
+        class="actions__item app-primary-button"
+        type="button"
+        (click)="handleSignupButtonClick()"
+      >
+        <span>{{ "button.signup" | translate }}</span>
+      </button>
+    </div>
   </div>
 </div>
