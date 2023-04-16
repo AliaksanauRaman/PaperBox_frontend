@@ -12,3 +12,14 @@
     }
   }
 }
+
+.input-control--trailing-icon .custom-control__field {
+  padding-right: 48px;
+}
+
+.visibility-toggle {
+  position: absolute;
+  right: 14px;
+  bottom: 15px;
+  z-index: 1;
+}

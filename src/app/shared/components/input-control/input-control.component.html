@@ -1,5 +1,6 @@
 <div
   class="input-control custom-control"
+  [class.input-control--trailing-icon]="_showVisibilityToggle"
   [class.custom-control--required]="controlRequired"
 >
   <div class="custom-control__top-panel">
@@ -27,7 +28,7 @@
   <input
     #inputRef
     class="custom-control__field app-custom-placeholder"
-    [type]="_inputType"
+    [type]="inputType$ | async"
     [inputMode]="_inputMode"
     [id]="controlId"
     [disabled]="controlDisabled"
@@ -38,4 +39,11 @@
     (focus)="handleInputFocus()"
     (blur)="handleInputBlur()"
   />
+
+  <app-visibility-toggle
+    class="visibility-toggle"
+    *ngIf="_showVisibilityToggle"
+    [visibilityState]="_passwordVisibility"
+    (nextVisibilityState)="handleNextVisibilityState($event)"
+  ></app-visibility-toggle>
 </div>

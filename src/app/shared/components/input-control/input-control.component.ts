@@ -4,12 +4,16 @@ import {
   Input,
   forwardRef,
   ChangeDetectorRef,
+  ViewChild,
+  ElementRef,
 } from '@angular/core';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
+import { BehaviorSubject } from 'rxjs';
 
 import { UniqueIdGeneratorService } from '../../../core/services/unique-id-generator.service';
 
 import { CustomControl } from '../../abstracts/custom-control.class';
+import { VisibilityStateType } from '../../types/visibility-state.type';
 
 type InputType = 'text' | 'email' | 'password';
 type InputMode = 'text' | 'email';
@@ -39,7 +43,7 @@ export class InputControlComponent extends CustomControl<string> {
 
   @Input()
   public set type(value: InputType) {
-    this._inputType = value;
+    this._inputType$.next(value);
   }
 
   @Input()
@@ -67,11 +71,24 @@ export class InputControlComponent extends CustomControl<string> {
     this.controlMaxCharactersAmount = value;
   }
 
-  public _inputType: InputType = DEFAULT_INPUT_TYPE;
+  @Input()
+  public set showVisibilityToggle(value: boolean) {
+    this._showVisibilityToggle = value;
+  }
+
+  @ViewChild('inputRef')
+  private readonly inputElementRef!: ElementRef<HTMLInputElement>;
+
   public _inputMode: InputMode = DEFAULT_INPUT_MODE;
   protected controlValue = '';
   protected controlMaxCharactersAmount = DEFAULT_MAX_CHARACTERS_AMOUNT;
   protected _showCharactersAmount = true;
+  protected _showVisibilityToggle = false;
+  protected _passwordVisibility: VisibilityStateType = 'hidden';
+  private readonly _inputType$ = new BehaviorSubject<InputType>(
+    DEFAULT_INPUT_TYPE
+  );
+  public readonly inputType$ = this._inputType$.asObservable();
 
   constructor(
     uniqueIdGeneratorService: UniqueIdGeneratorService,
@@ -101,6 +118,12 @@ export class InputControlComponent extends CustomControl<string> {
   public handleInputBlur(): void {
     this.handleControlBlur();
     this.markControlAsUnfocused();
+  }
+
+  protected handleNextVisibilityState(event: VisibilityStateType): void {
+    this._passwordVisibility = event;
+    this._inputType$.next(event === 'hidden' ? 'password' : 'text');
+    this.inputElementRef.nativeElement.focus();
   }
 
   // TODO: Move to a shared place
