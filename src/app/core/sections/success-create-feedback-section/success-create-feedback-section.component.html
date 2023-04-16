@@ -1,3 +1,28 @@
 <div class="success-create-feedback-section">
-  <span>success-create-feedback-section</span>
+  <app-girl-with-like-desktop-image
+    class="girl-with-like-desktop-image"
+  ></app-girl-with-like-desktop-image>
+
+  <div class="content-container">
+    <h2 class="title">
+      {{ "components.successCreateFeedbackSection.title" | translate }}
+    </h2>
+
+    <div class="text">
+      <span>{{
+        "components.successCreateFeedbackSection.text" | translate
+      }}</span>
+    </div>
+
+    <app-girl-with-like-mobile-image
+      class="girl-with-like-mobile-image"
+    ></app-girl-with-like-mobile-image>
+
+    <app-primary-button
+      class="glad-to-help-button"
+      (click)="handleGladToHelpButtonClick()"
+    >
+      <span>{{ "button.gladToHelp" | translate }}</span>
+    </app-primary-button>
+  </div>
 </div>

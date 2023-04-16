@@ -13,12 +13,16 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SuccessCreateFeedbackSectionComponent {
+  @Output()
+  public readonly ok = new EventEmitter<void>();
+
   @HostListener('document:keyup.enter', ['$event'])
-  private handleEnterPress(event: KeyboardEvent): void {
+  protected handleEnterPress(event: KeyboardEvent): void {
     event.preventDefault();
-    this.enterPress.emit();
+    this.ok.emit();
   }
 
-  @Output()
-  public readonly enterPress = new EventEmitter<void>();
+  protected handleGladToHelpButtonClick(): void {
+    this.ok.emit();
+  }
 }
