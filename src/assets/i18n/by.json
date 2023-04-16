@@ -37,7 +37,6 @@
     "createFeedback": {
       "title": "Зваротная сувязь",
       "loading": "Загрузка...",
-      "success": "Поспех!",
       "commentFieldLabel": "Як палепшыць наш сэрвіс?"
     },
     "loginOrSignup": {
@@ -103,6 +102,10 @@
     "signupForm": {
       "alreadySignedUp": "Ужо зарэгістраваны?",
       "login": "Уваход"
+    },
+    "successCreateFeedbackSection": {
+      "title": "Дзякуй за зваротную сувязь!",
+      "text": "Ваш водгук дапаможа сэрвісу выйсці на новы ўзровень!"
     }
   },
   "helpOfferStatus": {
@@ -201,7 +204,8 @@
   "button": {
     "send": "Адправіць",
     "login": "Увайсці",
-    "signup": "Зарэгістравацца"
+    "signup": "Зарэгістравацца",
+    "gladToHelp": "Рады дапамагчы!"
   },
   "personalDataAgreementText": "Я згодзен(-на) на апрацоўку і захоўванне маіх асабістых дадзеных",
   "allowedItemsConfirmationText": "Я пацвярджаю, што рэчы, якія перавозяцца, не з'яўляюцца забароненымі і іх транспартаванне не парушае законаў краін-удзельніц",

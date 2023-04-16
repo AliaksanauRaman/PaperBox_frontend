@@ -37,7 +37,6 @@
     "createFeedback": {
       "title": "Feedback",
       "loading": "Loading...",
-      "success": "Success!",
       "commentFieldLabel": "How to improve our service?"
     },
     "loginOrSignup": {
@@ -103,6 +102,10 @@
     "signupForm": {
       "alreadySignedUp": "Already signed up?",
       "login": "Log in"
+    },
+    "successCreateFeedbackSection": {
+      "title": "Thank you for the feedback!",
+      "text": "Your comment will help our service to become better!"
     }
   },
   "helpOfferStatus": {
@@ -201,7 +204,8 @@
   "button": {
     "send": "Send",
     "login": "Log in",
-    "signup": "Sign up"
+    "signup": "Sign up",
+    "gladToHelp": "Glad to help!"
   },
   "personalDataAgreementText": "I agree to the processing and storage of my personal data",
   "allowedItemsConfirmationText": "I confirm that the items being transported are not prohibited and that they do not violate the laws of the participating countries",
