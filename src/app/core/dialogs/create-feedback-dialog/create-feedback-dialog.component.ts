@@ -17,11 +17,7 @@ import { CustomValidators } from '../../../shared/classes/custom-validators.clas
 import { CreateFeedbackDto } from '../../../shared/dtos/create-feedback.dto';
 import { ValidCreateFeedbackFormValueType } from '../../../shared/types/create-feedback-form-value.type';
 import { ShortSubmitEventType } from '../../../shared/types/short-submit-event.type';
-import {
-  NORMAL_TITLE,
-  LOADING_TITLE,
-  SUCCESS_TITLE,
-} from './create-feedback-dialog.config';
+import { NORMAL_TITLE, LOADING_TITLE } from './create-feedback-dialog.config';
 
 type CreateFeedbackDialogDataType = Readonly<{
   userEmail?: string;
@@ -52,7 +48,7 @@ export class CreateFeedbackDialogComponent
           this._createFeedbackForm.enable();
           this._errorNotificationService.showMessage('error.createFeedback');
         } else if (state.data !== null) {
-          this._dialogTitle$.next(SUCCESS_TITLE);
+          // Do something on success..
         }
       })
     );

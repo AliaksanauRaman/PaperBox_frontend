@@ -1,11 +1,13 @@
 <div class="create-feedback-dialog">
   <ng-container *ngIf="createFeedbackState$ | async as state">
-    <h2
-      class="app-custom-dialog-title"
-      *ngIf="dialogTitle$ | async as dialogTitle"
-    >
-      {{ dialogTitle | translate }}
-    </h2>
+    <ng-container *ngIf="state.data === null">
+      <h2
+        class="app-custom-dialog-title"
+        *ngIf="dialogTitle$ | async as dialogTitle"
+      >
+        {{ dialogTitle | translate }}
+      </h2>
+    </ng-container>
 
     <div
       class="app-custom-dialog-close-button"
@@ -135,7 +137,7 @@
 
     <app-success-create-feedback-section
       *ngIf="state.data !== null"
-      (enterPress)="closeDialog()"
+      (ok)="closeDialog()"
     >
     </app-success-create-feedback-section>
   </ng-container>
