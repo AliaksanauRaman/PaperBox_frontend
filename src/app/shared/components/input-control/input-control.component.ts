@@ -123,6 +123,7 @@ export class InputControlComponent extends CustomControl<string> {
   protected handleNextVisibilityState(event: VisibilityStateType): void {
     this._passwordVisibility = event;
     this._inputType$.next(event === 'hidden' ? 'password' : 'text');
+    // TODO: Probably it is needed for mobile devices only
     this.inputElementRef.nativeElement.focus();
   }
 
