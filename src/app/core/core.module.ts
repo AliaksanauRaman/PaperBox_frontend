@@ -35,6 +35,7 @@ import { PrimaryButtonComponent } from '../shared/components/primary-button/prim
 
 import { AppPageLayoutComponent } from './layouts/app-page-layout/app-page-layout.component';
 import { MainSectionLayoutComponent } from './layouts/main-section-layout/main-section-layout.component';
+import { NotFoundPageComponent } from './pages/not-found-page/not-found-page.component';
 import { HeaderComponent } from './components/header/header.component';
 import { ActionsComponent } from './components/actions/actions.component';
 import { MainComponent } from './components/main/main.component';
@@ -122,6 +123,7 @@ import {
   declarations: [
     AppPageLayoutComponent,
     MainSectionLayoutComponent,
+    NotFoundPageComponent,
     HeaderComponent,
     ActionsComponent,
     MainComponent,
