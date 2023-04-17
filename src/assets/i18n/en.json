@@ -21,6 +21,9 @@
     },
     "signup": {
       "title": "Sign Up"
+    },
+    "notFound": {
+      "text": "Page not found"
     }
   },
   "dialogs": {
@@ -205,7 +208,8 @@
     "send": "Send",
     "login": "Log in",
     "signup": "Sign up",
-    "gladToHelp": "Glad to help!"
+    "gladToHelp": "Glad to help!",
+    "mainPage": "Main page"
   },
   "personalDataAgreementText": "I agree to the processing and storage of my personal data",
   "allowedItemsConfirmationText": "I confirm that the items being transported are not prohibited and that they do not violate the laws of the participating countries",
