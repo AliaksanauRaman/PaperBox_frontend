@@ -12,12 +12,15 @@
   align-items: center;
   flex-grow: 1;
   min-height: 0;
+  padding: 40px var(--horizontal-bordering-padding);
 }
 
 .text {
   font-size: 1.5rem;
+  text-align: center;
 }
 
 .main-page-button {
-  min-width: 220px;
+  width: 100%;
+  max-width: 280px;
 }
