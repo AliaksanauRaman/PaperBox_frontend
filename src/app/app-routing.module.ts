@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppPageLayoutComponent } from './core/layouts/app-page-layout/app-page-layout.component';
 import { MainSectionLayoutComponent } from './core/layouts/main-section-layout/main-section-layout.component';
+import { NotFoundPageComponent } from './core/pages/not-found-page/not-found-page.component';
 
 const routes: Routes = [
   {
@@ -47,11 +48,15 @@ const routes: Routes = [
         loadChildren: () =>
           import('./login/login.module').then((m) => m.LoginModule),
       },
+      {
+        path: 'not-found',
+        component: NotFoundPageComponent,
+      },
     ],
   },
   {
     path: '**',
-    redirectTo: '',
+    redirectTo: '/not-found',
   },
 ];
 
