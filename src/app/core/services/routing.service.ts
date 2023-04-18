@@ -26,4 +26,8 @@ export class RoutingService {
   public async navigateToSignup(): Promise<boolean> {
     return this.router.navigate(['/users-entry/signup']);
   }
+
+  public async navigateToNotFound(): Promise<boolean> {
+    return this.router.navigate(['/not-found']);
+  }
 }
