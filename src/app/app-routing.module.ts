@@ -50,6 +50,7 @@ const routes: Routes = [
       },
       {
         path: 'not-found',
+        title: 'Pushka | 404',
         component: NotFoundPageComponent,
       },
     ],
