@@ -109,6 +109,13 @@
     "successCreateFeedbackSection": {
       "title": "Дзякуй за зваротную сувязь!",
       "text": "Ваш водгук дапаможа сэрвісу выйсці на новы ўзровень!"
+    },
+    "successConfirmUserView": {
+      "title": "Вітаем, рэгістрацыя прайшла паспяхова!"
+    },
+    "failedConfirmUserView": {
+      "title": "Памылка пры актывацыі акаўнта!",
+      "text": "Магчыма акаўнт ужо быў актываваны."
     }
   },
   "helpOfferStatus": {

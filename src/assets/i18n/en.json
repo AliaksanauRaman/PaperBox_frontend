@@ -109,6 +109,13 @@
     "successCreateFeedbackSection": {
       "title": "Thank you for the feedback!",
       "text": "Your comment will help our service to become better!"
+    },
+    "successConfirmUserView": {
+      "title": "Congratulations, the registration was successful!"
+    },
+    "failedConfirmUserView": {
+      "title": "Account activation error!",
+      "text": "The account may have already been activated."
     }
   },
   "helpOfferStatus": {
