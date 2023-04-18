@@ -1,0 +1,23 @@
+<div class="success-confirm-user-view">
+  <div class="content">
+    <h2 class="title">
+      {{ "components.successConfirmUserView.title" | translate }}
+    </h2>
+
+    <app-welcome-girl-mobile-image
+      class="welcome-girl-mobile-image"
+    ></app-welcome-girl-mobile-image>
+
+    <!-- TODO: Prefill user email after redirect -->
+    <app-primary-button
+      class="thank-you-button"
+      routerLink="/users-entry/login"
+    >
+      <span>{{ "button.login" | translate }}</span>
+    </app-primary-button>
+  </div>
+
+  <app-welcome-girl-desktop-image
+    class="welcome-girl-desktop-image"
+  ></app-welcome-girl-desktop-image>
+</div>

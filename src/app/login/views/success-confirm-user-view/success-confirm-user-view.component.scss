@@ -1,0 +1,55 @@
+@import "../../../styles/scss-variables";
+
+:host {
+  display: block;
+}
+
+.success-confirm-user-view {
+  display: flex;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  flex-shrink: 0;
+  margin-bottom: 30px;
+  color: var(--primary-color);
+}
+
+.welcome-girl-mobile-image {
+  flex-shrink: 0;
+  margin-bottom: 30px;
+}
+
+.thank-you-button {
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 280px;
+}
+
+.welcome-girl-desktop-image {
+  display: none;
+}
+
+@media (min-width: $minLaptopScreenWidth) {
+  .success-confirm-user-view {
+    align-items: center;
+  }
+
+  .content {
+    max-width: 370px;
+  }
+
+  .welcome-girl-mobile-image {
+    display: none;
+  }
+
+  .welcome-girl-desktop-image {
+    display: block;
+    margin-left: 30px;
+  }
+}
