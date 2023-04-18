@@ -1,0 +1,13 @@
+<div class="confirm-user-page">
+  <ng-container
+    *ngIf="_userConfirmationState$ | async as userConfirmationState"
+  >
+    <app-success-confirm-user-view
+      *ngIf="userConfirmationState.ok; else failedConfirmUserView"
+    ></app-success-confirm-user-view>
+
+    <ng-template #failedConfirmUserView>
+      <app-failed-confirm-user-view></app-failed-confirm-user-view>
+    </ng-template>
+  </ng-container>
+</div>
