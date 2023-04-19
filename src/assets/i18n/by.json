@@ -59,6 +59,10 @@
       "successfulHelpOfferDeletionMessage": "Выдаленне прайшло паспяхова!",
       "accidentalHelpOfferDeletionWarningMessage": "Калі выдаленне было выпадковым звярніцеся, калі ласка, да галоўнага распрацоўніка.",
       "okButtonLabel": "Добра"
+    },
+    "info": {
+      "title": "Паведамленне",
+      "itIsClear": "Зразумела"
     }
   },
   "components": {
@@ -164,7 +168,8 @@
   "info": {
     "applicationIdIsSuccessfullyCopied": "Ідэнтыфікатар заяўкі паспяхова скапіраваны ў буфер абмену!",
     "loggedInSuccessfully": "Уваход у сістэму прайшоў паспяхова!",
-    "loggedOutSuccessfully": "Выхад з сістэмы прайшоў паспяхова!"
+    "loggedOutSuccessfully": "Выхад з сістэмы прайшоў паспяхова!",
+    "accountIsCreatedButNotActivated": "Ваш акаўнт быў паспяхова створаны, але яшчэ не актываваны. Каб актываваць акаўнт перайдзіце па спасылцы ў электронным лісце."
   },
   "warnings": {
     "sameCountries": "Аднолькавыя краіны.",
@@ -212,6 +217,7 @@
     "when": "Калі (ДД.ММ.ГГГГ)"
   },
   "button": {
+    "ok": "Добра",
     "send": "Адправіць",
     "login": "Увайсці",
     "signup": "Зарэгістравацца",

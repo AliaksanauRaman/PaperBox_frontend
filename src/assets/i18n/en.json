@@ -59,6 +59,10 @@
       "successfulHelpOfferDeletionMessage": "The deletion was successful!",
       "accidentalHelpOfferDeletionWarningMessage": "If the deletion was accidental, please contact the main developer.",
       "okButtonLabel": "Ok"
+    },
+    "info": {
+      "title": "Message",
+      "itIsClear": "It is clear"
     }
   },
   "components": {
@@ -164,7 +168,8 @@
   "info": {
     "applicationIdIsSuccessfullyCopied": "Application ID is successfully copied to the clipboard!",
     "loggedInSuccessfully": "Logged in successfully!",
-    "loggedOutSuccessfully": "Logged out successfully!"
+    "loggedOutSuccessfully": "Logged out successfully!",
+    "accountIsCreatedButNotActivated": "Your account has been successfully created but not activated. In order to activate your account, follow the link in the email."
   },
   "warnings": {
     "sameCountries": "Same countries.",
@@ -212,6 +217,7 @@
     "when": "When (DD/MM/YYYY)"
   },
   "button": {
+    "ok": "Ok",
     "send": "Send",
     "login": "Log in",
     "signup": "Sign up",
