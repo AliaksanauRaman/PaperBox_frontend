@@ -53,6 +53,7 @@ import { CreateFeedbackDialogComponent } from './dialogs/create-feedback-dialog/
 import { CreateHelpOfferDialogComponent } from './dialogs/create-help-offer-dialog/create-help-offer-dialog.component';
 import { CreateHelpRequestDialogComponent } from './dialogs/create-help-request-dialog/create-help-request-dialog.component';
 import { LoginOrSignupDialogComponent } from './dialogs/login-or-signup-dialog/login-or-signup-dialog.component';
+import { InfoDialogComponent } from './dialogs/info-dialog/info-dialog.component';
 
 import { WINDOW, WINDOW_VALUE } from './dependencies/window';
 import {
@@ -141,6 +142,7 @@ import {
     CreateHelpOfferDialogComponent,
     CreateHelpRequestDialogComponent,
     LoginOrSignupDialogComponent,
+    InfoDialogComponent,
   ],
   providers: [
     {
