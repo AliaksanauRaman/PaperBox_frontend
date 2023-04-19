@@ -16,6 +16,10 @@
       color: var(--error-color);
     }
   }
+
+  &.checkbox-with-text-control--centered {
+    align-items: center;
+  }
 }
 
 .checkbox {
@@ -28,7 +32,6 @@
   flex-grow: 1;
   margin: 0;
   padding: 0;
-  color: var(--grey-color);
   font-weight: 600;
   text-align: justify;
 }

@@ -48,10 +48,16 @@ export class CheckboxWithTextControlComponent
     this.controlRequired = value;
   }
 
+  @Input()
+  public set centeredText(value: boolean) {
+    this._centeredText = value;
+  }
+
   public readonly checkboxControl = this.formBuilder.control(false);
 
   public _text = '';
   public _textHovered = false;
+  protected _centeredText = false;
   private _touched = false;
 
   constructor(
