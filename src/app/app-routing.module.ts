@@ -5,6 +5,8 @@ import { AppPageLayoutComponent } from './core/layouts/app-page-layout/app-page-
 import { MainSectionLayoutComponent } from './core/layouts/main-section-layout/main-section-layout.component';
 import { NotFoundPageComponent } from './core/pages/not-found-page/not-found-page.component';
 
+import { LoggedOutUserGuard } from './core/guards/logged-out-user.guard';
+
 const routes: Routes = [
   {
     path: 'admin',
@@ -45,6 +47,7 @@ const routes: Routes = [
       },
       {
         path: 'users-entry',
+        canActivate: [LoggedOutUserGuard],
         loadChildren: () =>
           import('./login/login.module').then((m) => m.LoginModule),
       },
