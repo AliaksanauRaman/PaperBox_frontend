@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+} from '@angular/core';
 import { NgIf } from '@angular/common';
 import { SpinnerModule } from '../spinner/spinner.module';
 
@@ -27,6 +33,9 @@ export class PrimaryButtonComponent {
   public set isLoadingState(value: boolean) {
     this._isLoadingState = value;
   }
+
+  @Output()
+  public readonly innerClick = new EventEmitter<MouseEvent>();
 
   protected _type: PrimaryButtonType = 'submit';
   protected _disabled = false;

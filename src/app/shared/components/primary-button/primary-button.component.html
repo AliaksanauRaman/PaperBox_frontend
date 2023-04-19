@@ -2,6 +2,7 @@
   class="primary-button"
   [type]="_type"
   [disabled]="_disabled || _isLoadingState"
+  (click)="innerClick.emit($event)"
 >
   <ng-content *ngIf="!_isLoadingState"></ng-content>
 
