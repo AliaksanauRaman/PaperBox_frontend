@@ -20,7 +20,9 @@ export class FooterComponent {
   ) {}
 
   protected handleLeaveFeedbackButtonClick(): void {
-    const userEmail = this._userService.user?.email;
+    const userEmail = this._userService.userIsLoggedIn
+      ? this._userService.user?.email
+      : undefined;
     this._createFeedbackDialogService.openDialog(userEmail);
   }
 }
