@@ -1,0 +1,48 @@
+@import "../../../styles/scss-variables";
+
+:host {
+  display: block;
+}
+
+.info-dialog {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  color: var(--primary-color);
+}
+
+.message {
+  flex-shrink: 0;
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: center;
+}
+
+.clear-checkbox {
+  flex-shrink: 0;
+  margin-bottom: 20px;
+}
+
+.ok-button {
+  flex-shrink: 0;
+}
+
+@media (min-width: $minLaptopScreenWidth) {
+  .info-dialog {
+    padding: 0 20px;
+  }
+
+  .message {
+    line-height: 26px;
+    text-align: justify;
+  }
+
+  .clear-checkbox {
+    margin-bottom: 26px;
+  }
+}

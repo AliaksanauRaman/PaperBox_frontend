@@ -1,0 +1,22 @@
+<div class="info-dialog">
+  <h2 class="title app-custom-dialog-title">
+    {{ "dialogs.info.title" | translate }}
+  </h2>
+
+  <p class="message">{{ _infoMessageTranslateKey | translate }}</p>
+
+  <app-checkbox-with-text-control
+    class="clear-checkbox"
+    [text]="'dialogs.info.itIsClear' | translate"
+    [centeredText]="true"
+    [formControl]="_clearCheckbox"
+  ></app-checkbox-with-text-control>
+
+  <app-primary-button
+    class="ok-button"
+    [disabled]="_clearCheckbox.invalid"
+    (innerClick)="closeDialog()"
+  >
+    <span>{{ "button.ok" | translate }}</span>
+  </app-primary-button>
+</div>
