@@ -1,2 +1,3 @@
-// TODO
-export type SuccessSignupResponseDataType = Readonly<{}>;
+export type SuccessSignupResponseDataType = Readonly<{
+  ok: true;
+}>;
