@@ -1,6 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpBackend, HttpClient } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
-export const translateLoaderFactory = (httpClient: HttpClient) => {
-  return new TranslateHttpLoader(httpClient);
+export const translateLoaderFactory = (httpBackend: HttpBackend) => {
+  return new TranslateHttpLoader(new HttpClient(httpBackend));
 };
