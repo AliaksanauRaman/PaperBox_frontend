@@ -1,0 +1,27 @@
+<!-- TODO -->
+<div class="confirm-dialog">
+  <app-close-dialog-button (click)="closeDialog()"></app-close-dialog-button>
+
+  <h2 class="title">
+    <span>Confirm</span>
+  </h2>
+
+  <div
+    class="content"
+    *ngIf="_dialogData.content as content; else defaultContentView"
+  >
+    <ng-container *ngTemplateOutlet="content"></ng-container>
+  </div>
+
+  <ng-template #defaultContentView>
+    <div class="content">
+      <span>Confirm action.</span>
+    </div>
+  </ng-template>
+
+  <div class="actions">
+    <app-primary-button>
+      <span>Yes</span>
+    </app-primary-button>
+  </div>
+</div>

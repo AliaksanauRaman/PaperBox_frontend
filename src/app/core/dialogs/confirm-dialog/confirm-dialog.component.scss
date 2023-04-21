@@ -1,0 +1,23 @@
+:host {
+  display: block;
+}
+
+.confirm-dialog {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  flex-shrink: 0;
+  margin-bottom: 22px;
+}
+
+.content {
+  flex-shrink: 0;
+  margin-bottom: 22px;
+}
+
+.actions {
+  display: flex;
+  flex-shrink: 0;
+}
