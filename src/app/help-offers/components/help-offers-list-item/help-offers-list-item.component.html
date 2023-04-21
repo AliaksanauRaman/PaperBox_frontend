@@ -31,13 +31,11 @@
             </div>
           </div>
 
-          <div class="dates">
-            <span>{{ _publishedHelpOffer.startDate }}</span>
-
-            <ng-container *ngIf="_publishedHelpOffer.endDate as endDate">
-              <span> - </span>
-              <span>{{ endDate }}</span>
-            </ng-container>
+          <div
+            class="dates"
+            *ngIf="_localeService.currentLocale$ | async as currentLocale"
+          >
+            <span>{{ _publishedHelpOffer | dates : currentLocale }}</span>
           </div>
         </div>
 
@@ -59,14 +57,30 @@
         ></app-list-card-comment>
 
         <div class="phones">
-          <a
-            class="phones__item"
-            *ngFor="let phone of _publishedHelpOffer.phones"
-            [href]="phone | buildPhoneHref"
-            (click)="$event.stopImmediatePropagation()"
-          >
-            <span>{{ phone | viewPhone }}</span>
-          </a>
+          <div class="phones__label">
+            <span>{{ "components.listCard.phones" | translate }}</span>
+          </div>
+
+          <div class="phones__list">
+            <a
+              class="phones__list-item"
+              *ngFor="let phone of _publishedHelpOffer.phones"
+              [href]="phone | buildPhoneHref"
+              (click)="$event.stopImmediatePropagation()"
+            >
+              <span>{{ phone | viewPhone }}</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="public-id">
+          <div class="public-id__label">
+            <span>{{ "components.listCard.applicationId" | translate }}</span>
+          </div>
+
+          <div class="public-id__value">
+            <span>{{ _publishedHelpOffer.publicId }}</span>
+          </div>
         </div>
       </div>
     </ng-container>
