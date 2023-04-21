@@ -20,6 +20,7 @@ import { AutocompleteControlModule } from '../shared/components/autocomplete-con
 import { SpinnerModule } from '../shared/components/spinner/spinner.module';
 import { CheckboxWithTextControlComponent } from '../shared/components/checkbox-with-text-control/checkbox-with-text-control.component';
 import { WhiteSquareButtonComponent } from '../shared/components/white-square-button/white-square-button.component';
+import { CloseDialogButtonComponent } from '../shared/components/close-dialog-button/close-dialog-button.component';
 import { ManWithMailImageComponent } from '../shared/images/man-with-mail-image/man-with-mail-image.component';
 import { ManWithGlobeMobileImageComponent } from '../shared/images/man-with-globe-mobile-image/man-with-globe-mobile-image.component';
 import { FeedbackImageComponent } from '../shared/images/feedback-image/feedback-image.component';
@@ -108,6 +109,7 @@ import {
     SpinnerModule,
     CheckboxWithTextControlComponent,
     WhiteSquareButtonComponent,
+    CloseDialogButtonComponent,
     ManWithMailImageComponent,
     ManWithGlobeMobileImageComponent,
     FeedbackImageComponent,
