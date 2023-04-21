@@ -1,18 +1,16 @@
-@import '../../../styles/scss-variables';
-
 :host {
   display: block;
-  width: 15px;
-  height: 15px;
+  width: 18px;
+  height: 18px;
 }
 
 svg {
-  width: 15px;
-  height: 15px;
+  width: inherit;
+  height: inherit;
 }
 
 path {
-  transition: .25s stroke ease-in-out;
+  transition: 0.25s stroke ease-in-out;
 
   &.black {
     stroke: var(--black-color);
@@ -20,17 +18,5 @@ path {
 
   &.grey {
     stroke: var(--grey-color);
-  }
-}
-
-@media (min-width: $smallMobileScreenWidth) {
-  :host {
-    width: 18px;
-    height: 18px;
-  }
-
-  svg {
-    width: 18px;
-    height: 18px;
   }
 }
