@@ -4,6 +4,7 @@ import { tap } from 'rxjs';
 
 import { SignupService } from '../../../shared/services/signup.service';
 import { ErrorNotificationService } from '../../../core/services/error-notification.service';
+import { InfoNotificationService } from '../../../core/services/info-notification.service';
 import { SignupErrorFactory } from '../../factories/signup-error.factory';
 
 import { CustomValidators } from '../../../shared/classes/custom-validators.class';
@@ -21,6 +22,10 @@ export class SignupFormComponent {
       if (state.inProgress) {
         this._signupForm.disable();
       } else if (state.data !== null) {
+        this._infoNotificationService.showImportantMessage(
+          'info.accountIsCreatedButNotActivated'
+        );
+        this._signupForm.reset();
         this._signupForm.enable();
       } else if (state.error !== null) {
         this._signupForm.enable();
@@ -43,6 +48,7 @@ export class SignupFormComponent {
     private readonly _formBuilder: NonNullableFormBuilder,
     private readonly _signupService: SignupService,
     private readonly _errorNotificationService: ErrorNotificationService,
+    private readonly _infoNotificationService: InfoNotificationService,
     private readonly _signupErrorFactory: SignupErrorFactory
   ) {}
 
