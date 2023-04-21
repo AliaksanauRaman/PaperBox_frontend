@@ -66,9 +66,12 @@
     <span class="not-signed-up-label">{{
       "components.loginForm.notWithUsYet" | translate
     }}</span>
-    <a class="signup-call-to-action" routerLink="/users-entry/signup">{{
-      "components.loginForm.signup" | translate
-    }}</a>
+    <a
+      class="signup-call-to-action"
+      tabindex="-1"
+      routerLink="/users-entry/signup"
+      >{{ "components.loginForm.signup" | translate }}</a
+    >
   </div>
 
   <app-girl-with-heart-mobile-image

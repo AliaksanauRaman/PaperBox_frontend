@@ -106,9 +106,12 @@
     <span class="already-signed-up-label">{{
       "components.signupForm.alreadySignedUp" | translate
     }}</span>
-    <a class="login-call-to-action" routerLink="/users-entry/login">{{
-      "components.signupForm.login" | translate
-    }}</a>
+    <a
+      class="login-call-to-action"
+      tabindex="-1"
+      routerLink="/users-entry/login"
+      >{{ "components.signupForm.login" | translate }}</a
+    >
   </div>
 
   <app-checkbox-with-text-control
