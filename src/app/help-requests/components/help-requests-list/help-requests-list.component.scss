@@ -1,6 +1,6 @@
 @import "../../../styles/scss-variables";
 
-$xsNonContentViewsHeight: 280px;
+$xsContentViewsHeight: 480px; // 4 list items
 
 // TODO: Think about common styles/components
 :host {
@@ -21,7 +21,7 @@ $xsNonContentViewsHeight: 280px;
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
-  height: 480px; // 4 list items
+  height: $xsContentViewsHeight;
   padding: 10px var(--horizontal-bordering-padding) 20px
     var(--horizontal-bordering-padding);
   overflow-y: auto;
@@ -32,7 +32,7 @@ $xsNonContentViewsHeight: 280px;
   justify-content: center;
   align-items: flex-start;
   flex-grow: 1;
-  height: $xsNonContentViewsHeight;
+  height: $xsContentViewsHeight;
   padding-top: 50px;
 }
 
@@ -46,14 +46,14 @@ $xsNonContentViewsHeight: 280px;
 }
 
 .error-view {
-  height: $xsNonContentViewsHeight;
+  height: $xsContentViewsHeight;
 }
 
 .empty-list-view {
   display: flex;
   justify-content: center;
   flex-grow: 1;
-  height: $xsNonContentViewsHeight;
+  height: $xsContentViewsHeight;
   padding-top: 50px;
   font-size: 1.1rem;
   font-style: italic;
@@ -62,23 +62,23 @@ $xsNonContentViewsHeight: 280px;
 }
 
 @media (min-width: $minLaptopScreenWidth) {
-  $mdNonContentViewsHeight: 330px;
+  $mdContentViewsHeight: 620px; // 5 list items
 
   .content-view {
-    height: 620px; // 5 list items
+    height: $mdContentViewsHeight;
   }
 
   .loading-view {
-    height: $mdNonContentViewsHeight;
+    height: $mdContentViewsHeight;
     padding-top: 100px;
   }
 
   .error-view {
-    height: $mdNonContentViewsHeight;
+    height: $mdContentViewsHeight;
   }
 
   .empty-list-view {
-    height: $mdNonContentViewsHeight;
+    height: $mdContentViewsHeight;
     padding-top: 100px;
   }
 }
