@@ -8,6 +8,8 @@ import {
 import { FoldableComponent } from '../../../shared/components/foldable/foldable.component';
 import { HoverableDirective } from '../../../shared/directives/hoverable/hoverable.directive';
 
+import { AppLocaleService } from '../../../core/services/app-locale.service';
+
 import { PublishedHelpRequestType } from '../../../shared/types/published-help-request.type';
 
 @Component({
@@ -45,6 +47,8 @@ export class HelpRequestsListItemComponent {
   }
 
   public _publishedHelpRequest?: PublishedHelpRequestType;
+
+  constructor(protected readonly _localeService: AppLocaleService) {}
 
   public handleCardClick(): void {
     if (this.foldableComponentRef === undefined) {
