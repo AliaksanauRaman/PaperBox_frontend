@@ -1,13 +1,7 @@
-@import '../scss-variables';
+@import "../scss-variables";
 
 html {
-  font-size: 12px;
-}
-
-@media (min-width: $smallMobileScreenWidth) {
-  html {
-    font-size: 14px;
-  }
+  font-size: 14px;
 }
 
 @media (min-width: $minLaptopScreenWidth) {
