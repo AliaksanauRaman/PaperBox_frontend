@@ -4,6 +4,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { WhiteSquareButtonComponent } from '../white-square-button/white-square-button.component';
 
@@ -13,6 +14,6 @@ import { WhiteSquareButtonComponent } from '../white-square-button/white-square-
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
   standalone: true,
-  imports: [TranslateModule, WhiteSquareButtonComponent],
+  imports: [TranslateModule, MatTooltipModule, WhiteSquareButtonComponent],
 })
 export class AboutButtonComponent {}
