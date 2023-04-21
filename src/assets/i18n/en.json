@@ -227,7 +227,8 @@
     "login": "Log in",
     "signup": "Sign up",
     "gladToHelp": "Glad to help!",
-    "mainPage": "Main page"
+    "mainPage": "Main page",
+    "aboutUs": "About us"
   },
   "personalDataAgreementText": "I agree to the processing and storage of my personal data",
   "allowedItemsConfirmationText": "I confirm that the items being transported are not prohibited and that they do not violate the laws of the participating countries",
