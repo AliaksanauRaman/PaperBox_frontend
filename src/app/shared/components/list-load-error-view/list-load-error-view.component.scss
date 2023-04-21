@@ -9,18 +9,19 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 100%;
   padding-top: 10px;
   padding-bottom: 20px;
 }
 
 .title {
   color: var(--error-color);
+  margin-bottom: 30px;
 }
 
 .image-container {
   width: 121px;
   height: 110px;
+  margin-bottom: 30px;
 
   & svg {
     width: inherit;
