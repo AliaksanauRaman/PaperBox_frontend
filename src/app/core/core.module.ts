@@ -55,6 +55,7 @@ import { CreateHelpOfferDialogComponent } from './dialogs/create-help-offer-dial
 import { CreateHelpRequestDialogComponent } from './dialogs/create-help-request-dialog/create-help-request-dialog.component';
 import { LoginOrSignupDialogComponent } from './dialogs/login-or-signup-dialog/login-or-signup-dialog.component';
 import { InfoDialogComponent } from './dialogs/info-dialog/info-dialog.component';
+import { ConfirmDialogComponent } from './dialogs/confirm-dialog/confirm-dialog.component';
 
 import { WINDOW, WINDOW_VALUE } from './dependencies/window';
 import {
@@ -145,6 +146,7 @@ import {
     CreateHelpRequestDialogComponent,
     LoginOrSignupDialogComponent,
     InfoDialogComponent,
+    ConfirmDialogComponent,
   ],
   providers: [
     {
