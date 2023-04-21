@@ -2,6 +2,7 @@ import { HelpOfferStatus } from "../enums/help-offer-status.enum";
 import { DateRangeType } from "./date-range.type";
 import { SpecificDateType } from "./specific-date.type";
 
+// Is used in admin
 export type HelpOfferFullPreviewType = Readonly<{
   id: string;
   authorFullName: string;
