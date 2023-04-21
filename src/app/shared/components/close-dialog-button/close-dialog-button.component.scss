@@ -1,0 +1,21 @@
+:host {
+  cursor: pointer;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+.close-dialog-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: inherit;
+  height: inherit;
+}
+
+.close-dialog-button__icon {
+  transform: rotate(45deg) scale(1.1);
+}
