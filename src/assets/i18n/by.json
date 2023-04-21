@@ -120,6 +120,10 @@
     "failedConfirmUserView": {
       "title": "Памылка пры актывацыі акаўнта!",
       "text": "Магчыма акаўнт ужо быў актываваны."
+    },
+    "listCard": {
+      "phones": "Тэлефоны:",
+      "applicationId": "Код заяўкі:"
     }
   },
   "helpOfferStatus": {

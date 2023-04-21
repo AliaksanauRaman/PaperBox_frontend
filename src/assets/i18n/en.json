@@ -120,6 +120,10 @@
     "failedConfirmUserView": {
       "title": "Account activation error!",
       "text": "The account may have already been activated."
+    },
+    "listCard": {
+      "phones": "Phones:",
+      "applicationId": "Application ID:"
     }
   },
   "helpOfferStatus": {
