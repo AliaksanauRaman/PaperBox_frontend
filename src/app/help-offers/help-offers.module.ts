@@ -12,6 +12,7 @@ import { FoldableComponentModule } from '../shared/components/foldable/foldable-
 import { ListCardCommentComponentModule } from '../shared/components/list-card-comment/list-card-comment-component.module';
 import { ListLoadErrorViewComponentModule } from '../shared/components/list-load-error-view/list-load-error-view-component.module';
 import { HoverableDirectiveModule } from '../shared/directives/hoverable/hoverable-directive.module';
+import { DatesPipe } from '../shared/pipes/dates.pipe';
 import { HelpOffersRoutingModule } from './help-offers-routing.module';
 
 import { HelpOffersMainViewComponent } from './views/help-offers-main-view/help-offers-main-view.component';
@@ -33,6 +34,7 @@ import { HelpOffersListItemComponent } from './components/help-offers-list-item/
     ListCardCommentComponentModule,
     ListLoadErrorViewComponentModule,
     HoverableDirectiveModule,
+    DatesPipe,
     HelpOffersRoutingModule,
   ],
   declarations: [
