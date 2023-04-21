@@ -16,6 +16,7 @@ export class AppLocaleService {
     this.localStorage.getItem(LocalStorageKey.APP_CURRENT_LOCALE) ||
       DEFAULT_APP_LOCALE
   );
+  public readonly currentLocale$ = this._currentLocale$.asObservable();
 
   public get currentLocale(): string {
     return this._currentLocale$.getValue();
