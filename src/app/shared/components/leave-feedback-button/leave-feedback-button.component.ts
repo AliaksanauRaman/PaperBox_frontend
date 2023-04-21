@@ -4,6 +4,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { WhiteSquareButtonComponent } from '../white-square-button/white-square-button.component';
 import { FeedbackImageComponent } from '../../images/feedback-image/feedback-image.component';
@@ -16,6 +17,7 @@ import { FeedbackImageComponent } from '../../images/feedback-image/feedback-ima
   standalone: true,
   imports: [
     TranslateModule,
+    MatTooltipModule,
     WhiteSquareButtonComponent,
     FeedbackImageComponent,
   ],
