@@ -1,0 +1,82 @@
+@import "../../../styles/scss-variables";
+
+:host {
+  display: flex;
+}
+
+.about-us-dialog {
+  display: flex;
+  flex-direction: column;
+  padding: 5px 20px 40px 20px;
+}
+
+.section {
+  flex-shrink: 0;
+
+  &:not(:last-child) {
+    margin-bottom: 20px;
+  }
+}
+
+@media (min-width: $minLaptopScreenWidth) {
+  :host {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .about-us-dialog {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-areas:
+      "first third"
+      "first third"
+      "first third"
+      "first third"
+      "first third"
+      "first third"
+      "first third"
+      "first third"
+      "first third"
+      "first third"
+      "first third"
+      "first third"
+      "second third"
+      "second third"
+      "second third"
+      "second third"
+      "second third"
+      "second fourth"
+      "second fourth"
+      "second fourth"
+      "second fourth"
+      "second fourth"
+      "second fourth"
+      "second fourth"
+      "second fourth";
+    padding: 0;
+  }
+
+  .section {
+    padding: 10px;
+
+    &:not(:last-child) {
+      margin-bottom: 0;
+    }
+  }
+
+  .first {
+    grid-area: first;
+  }
+
+  .second {
+    grid-area: second;
+  }
+
+  .third {
+    grid-area: third;
+  }
+
+  .fourth {
+    grid-area: fourth;
+  }
+}
