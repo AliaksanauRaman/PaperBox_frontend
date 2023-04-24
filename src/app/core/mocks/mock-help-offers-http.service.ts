@@ -24,7 +24,7 @@ export class MockHelpOffersHttpService
 const MOCK_PUBLISHED_HELP_OFFERS: PublishedHelpOfferListType = [
   {
     id: 1,
-    userId: 1,
+    userId: 2,
     publicId: '123',
     locationFrom: '1 10002',
     locationTo: '2 20003',
