@@ -7,6 +7,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MatRippleModule } from '@angular/material/core';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { ClipboardModule } from '@angular/cdk/clipboard';
 
 import { PlusIconModule } from '../shared/icons/plus-icon/plus-icon.module';
@@ -50,12 +51,17 @@ import { SuccessCreateHelpOfferSectionComponent } from './sections/success-creat
 import { SuccessCreateHelpItemSectionComponent } from './sections/success-create-help-item-section/success-create-help-item-section.component';
 import { SuccessCreateHelpRequestSectionComponent } from './sections/success-create-help-request-section/success-create-help-request-section.component';
 import { SuccessCreateFeedbackSectionComponent } from './sections/success-create-feedback-section/success-create-feedback-section.component';
+import { AboutUsFirstSectionComponent } from './sections/about-us-first-section/about-us-first-section.component';
+import { AboutUsSecondSectionComponent } from './sections/about-us-second-section/about-us-second-section.component';
+import { AboutUsThirdSectionComponent } from './sections/about-us-third-section/about-us-third-section.component';
+import { AboutUsFourthSectionComponent } from './sections/about-us-fourth-section/about-us-fourth-section.component';
 import { CreateFeedbackDialogComponent } from './dialogs/create-feedback-dialog/create-feedback-dialog.component';
 import { CreateHelpOfferDialogComponent } from './dialogs/create-help-offer-dialog/create-help-offer-dialog.component';
 import { CreateHelpRequestDialogComponent } from './dialogs/create-help-request-dialog/create-help-request-dialog.component';
 import { LoginOrSignupDialogComponent } from './dialogs/login-or-signup-dialog/login-or-signup-dialog.component';
 import { InfoDialogComponent } from './dialogs/info-dialog/info-dialog.component';
 import { ConfirmDialogComponent } from './dialogs/confirm-dialog/confirm-dialog.component';
+import { AboutUsDialogComponent } from './dialogs/about-us-dialog/about-us-dialog.component';
 
 import { WINDOW, WINDOW_VALUE } from './dependencies/window';
 import {
@@ -98,6 +104,7 @@ import {
     MatRippleModule,
     MatMenuModule,
     MatSnackBarModule,
+    MatTooltipModule,
     ClipboardModule,
     PlusIconModule,
     CalendarIconModule,
@@ -141,12 +148,17 @@ import {
     SuccessCreateHelpItemSectionComponent,
     SuccessCreateHelpRequestSectionComponent,
     SuccessCreateFeedbackSectionComponent,
+    AboutUsFirstSectionComponent,
+    AboutUsSecondSectionComponent,
+    AboutUsThirdSectionComponent,
+    AboutUsFourthSectionComponent,
     CreateFeedbackDialogComponent,
     CreateHelpOfferDialogComponent,
     CreateHelpRequestDialogComponent,
     LoginOrSignupDialogComponent,
     InfoDialogComponent,
     ConfirmDialogComponent,
+    AboutUsDialogComponent,
   ],
   providers: [
     {
