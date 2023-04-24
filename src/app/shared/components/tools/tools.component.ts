@@ -9,6 +9,8 @@ import { AccountButtonComponent } from '../account-button/account-button.compone
 import { LoginButtonComponent } from '../login-button/login-button.component';
 import { AccountMenuComponent } from '../account-menu/account-menu.component';
 
+import { AboutUsDialogService } from '../../../core/services/about-us-dialog.service';
+
 @Component({
   selector: 'app-tools',
   templateUrl: './tools.component.html',
@@ -41,7 +43,9 @@ export class ToolsComponent {
   protected _isCompact = false;
   protected _userIsLoggedIn = false;
 
-  public handleAboutButtonClick(): void {
-    // TODO: !IMPORTANT
+  constructor(private readonly _aboutUsDialogService: AboutUsDialogService) {}
+
+  protected handleAboutButtonClick(): void {
+    this._aboutUsDialogService.openDialog();
   }
 }
