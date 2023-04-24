@@ -1,7 +1,8 @@
+@import "../../styles/scss-variables";
+
 :host {
   display: block;
   position: relative;
-  z-index: -1;
 
   & ::ng-deep {
     .highlight {
@@ -16,7 +17,7 @@
   justify-content: center;
   align-items: center;
   height: 100%;
-  padding: 30px;
+  padding: 20px 15px;
   background-color: var(--white-color);
   border-radius: var(--border-radius);
   box-shadow: 2px 2px 5px 2px rgba($color: #4e91f7, $alpha: 0.2) !important; // PRIMARY COLOR
@@ -24,7 +25,23 @@
 
 .text {
   margin: 0;
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   font-weight: 600;
-  line-height: 21px;
+  line-height: 19px;
+  text-align: justify;
+}
+
+.image {
+  max-width: 100%;
+}
+
+@media (min-width: $minLaptopScreenWidth) {
+  .section-root {
+    padding: 30px;
+  }
+
+  .text {
+    font-size: 0.9rem;
+    line-height: 21px;
+  }
 }

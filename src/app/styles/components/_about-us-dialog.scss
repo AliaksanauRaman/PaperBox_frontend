@@ -1,3 +1,14 @@
+@import "../scss-variables";
+
+.cdk-global-overlay-wrapper:has(> div.about-us-dialog) {
+  padding-top: 60px;
+}
+
+.about-us-dialog {
+  display: block;
+  overflow-y: auto;
+}
+
 .about-us-dialog-backdrop {
   background-color: var(--primary-background-color);
   transition: none;
@@ -8,5 +19,18 @@
     position: absolute;
     top: 15px;
     right: 15px;
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media (min-width: $minLaptopScreenWidth) {
+  .cdk-global-overlay-wrapper:has(> div.about-us-dialog) {
+    padding-top: 0;
+  }
+
+  .about-us-dialog {
+    width: 1000px;
+    overflow-y: hidden;
   }
 }
