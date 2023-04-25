@@ -4,6 +4,7 @@ import { HelpOffersHttpServiceInterface } from '../interfaces/help-offers-http-s
 import { SuccessCreateHelpOfferResponseDataType } from '../../shared/types/success-create-help-offer-response-data.type';
 import { CreateHelpOfferDto } from '../../shared/dtos/create-help-offer.dto';
 import { PublishedHelpOfferListType } from '../../shared/types/published-help-offer-list.type';
+import { DeleteHelpOfferResponseDataType } from '../../shared/types/delete-help-offer-response-data.type';
 
 const DELAY_IN_MS = 1000;
 
@@ -18,6 +19,12 @@ export class MockHelpOffersHttpService
     _createHelpOfferDto: CreateHelpOfferDto
   ): Observable<SuccessCreateHelpOfferResponseDataType> {
     return of({ publicId: '111-222-333' }).pipe(delay(DELAY_IN_MS));
+  }
+
+  public deleteOne(
+    helpOfferId: number
+  ): Observable<DeleteHelpOfferResponseDataType> {
+    return of({ id: helpOfferId, deleted: true }).pipe(delay(DELAY_IN_MS));
   }
 }
 

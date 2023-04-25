@@ -1,6 +1,6 @@
 import { Inject, Injectable, isDevMode } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpStatusCode } from '@angular/common/http';
+import { Observable, map } from 'rxjs';
 
 import { MockHelpOffersHttpService } from '../mocks/mock-help-offers-http.service';
 
@@ -9,6 +9,7 @@ import { API_URL } from '../../shared/dependencies/api-url/injection-token';
 import { PublishedHelpOfferListType } from '../../shared/types/published-help-offer-list.type';
 import { SuccessCreateHelpOfferResponseDataType } from '../../shared/types/success-create-help-offer-response-data.type';
 import { CreateHelpOfferDto } from '../../shared/dtos/create-help-offer.dto';
+import { DeleteHelpOfferResponseDataType } from '../../shared/types/delete-help-offer-response-data.type';
 
 @Injectable({
   providedIn: 'root',
@@ -37,6 +38,33 @@ export class HelpOffersHttpService implements HelpOffersHttpServiceInterface {
       this.helpOffersApiUrl,
       createHelpOfferDto
     );
+  }
+
+  public deleteOne(
+    helpOfferId: number
+  ): Observable<DeleteHelpOfferResponseDataType> {
+    return this.httpClient
+      .patch<null>(
+        `${this.helpOffersApiUrl}/${helpOfferId}`,
+        {
+          status: 'DELETED',
+        },
+        {
+          observe: 'response',
+        }
+      )
+      .pipe(
+        map((response) => {
+          if (response.status === HttpStatusCode.Ok) {
+            return {
+              id: helpOfferId,
+              deleted: true,
+            };
+          }
+
+          throw new Error('Unknown error of help offer deletion!');
+        })
+      );
   }
 }
 
