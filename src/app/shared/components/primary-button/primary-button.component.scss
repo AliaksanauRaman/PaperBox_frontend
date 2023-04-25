@@ -23,15 +23,25 @@
     height: 30px;
   }
 
-  &:focus {
+  &.primary-button--danger {
+    background-color: var(--error-color);
+
+    &:focus,
+    &:hover,
+    &:active {
+      opacity: 0.85;
+    }
+  }
+
+  &:focus:not(.primary-button--danger) {
     border-color: var(--primary-click-color);
   }
 
-  &:hover {
+  &:hover:not(.primary-button--danger) {
     background-color: var(--primary-hover-color);
   }
 
-  &:active {
+  &:active:not(.primary-button--danger) {
     background-color: var(--primary-click-color);
   }
 

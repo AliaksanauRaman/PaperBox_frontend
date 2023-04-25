@@ -34,10 +34,16 @@ export class PrimaryButtonComponent {
     this._isLoadingState = value;
   }
 
+  @Input()
+  public set isDanger(value: boolean) {
+    this._isDanger = value;
+  }
+
   @Output()
   public readonly innerClick = new EventEmitter<MouseEvent>();
 
   protected _type: PrimaryButtonType = 'submit';
   protected _disabled = false;
   protected _isLoadingState = false;
+  protected _isDanger = false;
 }

@@ -1,5 +1,6 @@
 <button
   class="primary-button"
+  [class.primary-button--danger]="_isDanger"
   [type]="_type"
   [disabled]="_disabled || _isLoadingState"
   (click)="innerClick.emit($event)"
