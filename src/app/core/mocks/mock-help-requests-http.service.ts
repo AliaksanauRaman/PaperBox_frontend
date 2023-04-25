@@ -4,6 +4,7 @@ import { HelpRequestsHttpServiceInterface } from '../interfaces/help-requests-ht
 import { PublishedHelpRequestListType } from '../../shared/types/published-help-request-list.type';
 import { CreateHelpRequestDto } from '../../shared/dtos/create-help-request.dto';
 import { SuccessCreateHelpRequestResponseDataType } from '../../shared/types/success-create-help-request-response-data.type';
+import { DeleteHelpRequestResponseDataType } from '../../shared/types/delete-help-request-response-data.type';
 
 const DELAY_IN_MS = 1000;
 
@@ -18,6 +19,12 @@ export class MockHelpRequestsHttpService
     _createHelpRequestDto: CreateHelpRequestDto
   ): Observable<SuccessCreateHelpRequestResponseDataType> {
     return of({ publicId: '555-666-777' }).pipe(delay(DELAY_IN_MS));
+  }
+
+  public deleteOne(
+    helpRequestId: number
+  ): Observable<DeleteHelpRequestResponseDataType> {
+    return of({ id: helpRequestId, deleted: true }).pipe(delay(DELAY_IN_MS));
   }
 }
 
