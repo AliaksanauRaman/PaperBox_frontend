@@ -1,16 +1,8 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  Inject,
-  TemplateRef,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { DIALOG_DATA, DialogRef } from '@angular/cdk/dialog';
 
 import { DialogComponent } from '../../../shared/abstracts/dialog-component.class';
-
-type ConfirmDialogDataType = Readonly<{
-  content?: TemplateRef<unknown>;
-}>;
+import { ConfirmDialogDataType } from '../../../shared/types/confirm-dialog-data.type';
 
 @Component({
   selector: 'app-confirm-dialog',
@@ -18,11 +10,11 @@ type ConfirmDialogDataType = Readonly<{
   styleUrls: ['./confirm-dialog.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class ConfirmDialogComponent extends DialogComponent {
+export class ConfirmDialogComponent extends DialogComponent<boolean> {
   constructor(
     @Inject(DIALOG_DATA)
     protected readonly _dialogData: ConfirmDialogDataType,
-    dialogRef: DialogRef<void>
+    dialogRef: DialogRef<boolean>
   ) {
     super(dialogRef);
   }

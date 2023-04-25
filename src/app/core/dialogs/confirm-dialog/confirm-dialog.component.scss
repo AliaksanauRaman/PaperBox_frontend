@@ -1,3 +1,5 @@
+@import "../../../styles/scss-variables";
+
 :host {
   display: block;
 }
@@ -19,5 +21,21 @@
 
 .actions {
   display: flex;
+  justify-content: center;
   flex-shrink: 0;
+}
+
+.actions__item {
+  flex-shrink: 0;
+  min-width: 105px;
+
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
+}
+
+@media (min-width: $minLaptopScreenWidth) {
+  .actions__item {
+    min-width: 125px;
+  }
 }

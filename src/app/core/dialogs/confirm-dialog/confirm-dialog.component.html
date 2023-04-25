@@ -1,6 +1,8 @@
-<!-- TODO -->
+<!-- TODO: Translations -->
 <div class="confirm-dialog">
-  <app-close-dialog-button (click)="closeDialog()"></app-close-dialog-button>
+  <app-close-dialog-button
+    (click)="closeDialog(false)"
+  ></app-close-dialog-button>
 
   <h2 class="title">
     <span>Confirm</span>
@@ -20,8 +22,16 @@
   </ng-template>
 
   <div class="actions">
-    <app-primary-button>
+    <app-primary-button
+      class="actions__item"
+      [isDanger]="_dialogData.isDanger === true"
+      (click)="closeDialog(true)"
+    >
       <span>Yes</span>
     </app-primary-button>
+
+    <app-secondary-button class="actions__item" (click)="closeDialog(false)">
+      <span>Cancel</span>
+    </app-secondary-button>
   </div>
 </div>
