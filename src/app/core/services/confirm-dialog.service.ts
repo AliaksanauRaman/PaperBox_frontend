@@ -1,8 +1,10 @@
-import { Injectable, TemplateRef } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Dialog } from '@angular/cdk/dialog';
+import { Observable, map } from 'rxjs';
 
 import { ConfirmDialogComponent } from '../dialogs/confirm-dialog/confirm-dialog.component';
 
+import { ConfirmDialogDataType } from '../../shared/types/confirm-dialog-data.type';
 import { CUSTOM_DIALOG_PANEL_CLASS } from '../../shared/constants/custom-dialog-panel-class';
 
 @Injectable({
@@ -11,11 +13,21 @@ import { CUSTOM_DIALOG_PANEL_CLASS } from '../../shared/constants/custom-dialog-
 export class ConfirmDialogService {
   constructor(private readonly _dialog: Dialog) {}
 
-  public openDialog(content?: TemplateRef<unknown>): void {
-    this._dialog.open(ConfirmDialogComponent, {
-      panelClass: CUSTOM_DIALOG_PANEL_CLASS,
-      disableClose: true,
-      data: content !== undefined ? { content } : {},
-    });
+  public openDialog(data: ConfirmDialogDataType = {}): Observable<boolean> {
+    return this._dialog
+      .open<boolean>(ConfirmDialogComponent, {
+        panelClass: CUSTOM_DIALOG_PANEL_CLASS,
+        disableClose: true,
+        data,
+      })
+      .closed.pipe(
+        map((dialogResult) => {
+          if (dialogResult === undefined) {
+            throw new Error('Dialog result cannot be undefined!');
+          }
+
+          return dialogResult;
+        })
+      );
   }
 }
