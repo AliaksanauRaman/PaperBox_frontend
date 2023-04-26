@@ -32,8 +32,6 @@ export class AuthorizationInterceptor implements HttpInterceptor {
     req: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    console.log('triggered', req.url);
-
     if (!this.isRequestToAuthorize(req)) {
       return next.handle(req);
     }
