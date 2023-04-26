@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import {
@@ -14,9 +14,15 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 
+import { UserTokenStorageService } from './core/services/user-token-storage.service';
+import { UserTokenEntityService } from './shared/services/user-token-entity.service';
+import { UserService } from './shared/services/user.service';
+
 import { API_URL, API_URL_VALUE } from './shared/dependencies/api-url';
 import { translateLoaderFactory } from './core/factories/translate-loader.factory';
 import { AuthorizationInterceptor } from './core/interceptors/authorization.interceptor';
+
+import { initAppFactory } from './init-app.factory';
 
 @NgModule({
   declarations: [AppComponent],
@@ -36,6 +42,12 @@ import { AuthorizationInterceptor } from './core/interceptors/authorization.inte
     }),
   ],
   providers: [
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initAppFactory,
+      deps: [UserTokenStorageService, UserTokenEntityService, UserService],
+      multi: true,
+    },
     {
       provide: API_URL,
       useValue: API_URL_VALUE,
