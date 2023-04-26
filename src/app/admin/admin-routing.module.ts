@@ -8,6 +8,8 @@ import { AdminHelpRequestsPageComponent } from './pages/admin-help-requests-page
 import { AdminUsersPageComponent } from './pages/admin-users-page/admin-users-page.component';
 import { AdminSettingsPageComponent } from './pages/admin-settings-page/admin-settings-page.component';
 
+import { AdminIsLoggedInGuard } from './guards/admin-is-logged-in.guard';
+
 const adminRoutes: Routes = [
   {
     path: 'login',
@@ -17,6 +19,7 @@ const adminRoutes: Routes = [
   {
     path: '',
     component: AdminWorkPageLayoutComponent,
+    canActivateChild: [AdminIsLoggedInGuard],
     children: [
       {
         path: '',
@@ -43,11 +46,11 @@ const adminRoutes: Routes = [
         component: AdminSettingsPageComponent,
         title: 'Admin | Settings',
       },
-      {
-        path: '**',
-        redirectTo: '/admin/help-offers',
-      },
     ],
+  },
+  {
+    path: '**',
+    redirectTo: '/admin/help-offers',
   },
 ];
 
