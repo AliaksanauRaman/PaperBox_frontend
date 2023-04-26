@@ -18,6 +18,14 @@ const REQUESTS_TO_AUTHORIZE = [
     method: 'POST',
     endpoint: '/api/help-requests',
   },
+  {
+    method: 'PATCH',
+    endpoint: '/api/help-offers',
+  },
+  {
+    method: 'PATCH',
+    endpoint: '/api/help-requests',
+  },
 ];
 
 @Injectable({
@@ -36,7 +44,7 @@ export class AuthorizationInterceptor implements HttpInterceptor {
       return next.handle(req);
     }
 
-    const userTokenEntity = this._userTokenEntityService.value;
+    const userTokenEntity = this._userTokenEntityService.getValueOrNull();
 
     if (userTokenEntity === null || userTokenEntity.expired) {
       return next.handle(req);
