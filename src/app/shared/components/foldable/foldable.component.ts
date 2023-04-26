@@ -6,6 +6,7 @@ import {
   ViewChild,
   ElementRef,
   Renderer2,
+  Input,
 } from '@angular/core';
 
 // TODO: Constants/Inputs
@@ -19,6 +20,11 @@ const MARGIN = 22;
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FoldableComponent implements AfterViewInit {
+  @Input()
+  public set disabled(value: boolean) {
+    this._disabled = value;
+  }
+
   @ViewChild('staticPart')
   private readonly staticPartElementRef!: ElementRef<HTMLElement>;
 
@@ -30,6 +36,7 @@ export class FoldableComponent implements AfterViewInit {
   }
 
   private _isUnfolded = false;
+  protected _disabled = false;
 
   constructor(
     private readonly elementRef: ElementRef<HTMLElement>,

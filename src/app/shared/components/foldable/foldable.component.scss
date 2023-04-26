@@ -5,6 +5,18 @@
 .foldable {
   display: flex;
   flex-direction: column;
+
+  &.foldable--disabled {
+    pointer-events: none;
+    user-select: none;
+
+    .static-part,
+    .foldable-part,
+    .foldable-part.unfolded {
+      pointer-events: none;
+      user-select: none;
+    }
+  }
 }
 
 .static-part {
