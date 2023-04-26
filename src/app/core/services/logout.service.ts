@@ -13,7 +13,7 @@ export class LogoutService {
   ) {}
 
   public doLogout(): void {
-    this._userTokenService.removeUserToken();
+    this._userTokenService.remove();
     this._infoNotificationService.showMessage('info.loggedOutSuccessfully');
   }
 }
