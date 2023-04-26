@@ -17,7 +17,7 @@ export class SuccessLoginHandlerService {
   ) {}
 
   public handle(data: SuccessLoginResponseDataType): void {
-    this._userTokenService.setUserToken(data.token);
+    this._userTokenService.set(data.token);
     this._infoNotificationService.showMessage('info.loggedInSuccessfully');
     this._routingService.navigateToHome();
   }
