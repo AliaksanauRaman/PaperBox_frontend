@@ -1,6 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { BehaviorSubject } from 'rxjs';
 
+import { SuccessResponseState } from './success-response-state.class';
+
 class InitialState {
   constructor(
     public readonly inProgress = false,
@@ -13,14 +15,6 @@ class LoadingState {
   constructor(
     public readonly inProgress = true,
     public readonly data = null,
-    public readonly error = null
-  ) {}
-}
-
-class SuccessResponseState<T> {
-  constructor(
-    public readonly data: T,
-    public readonly inProgress = false,
     public readonly error = null
   ) {}
 }
