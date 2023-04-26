@@ -27,7 +27,7 @@ export class ActionsComponent {
   ) {}
 
   public handleOfferHelpButtonClick(): void {
-    if (this._userService.userIsLoggedIn) {
+    if (this._userService.isLoggedIn()) {
       this.createHelpOfferDialogService.openDialog();
     } else {
       this.loginOrSignupDialogService.openDialog();
@@ -35,7 +35,7 @@ export class ActionsComponent {
   }
 
   public handleFindHelpButtonClick(): void {
-    if (this._userService.userIsLoggedIn) {
+    if (this._userService.isLoggedIn()) {
       this.createHelpRequestDialogService.openDialog();
     } else {
       this.loginOrSignupDialogService.openDialog();
