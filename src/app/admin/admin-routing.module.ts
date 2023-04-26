@@ -43,11 +43,11 @@ const adminRoutes: Routes = [
         component: AdminSettingsPageComponent,
         title: 'Admin | Settings',
       },
+      {
+        path: '**',
+        redirectTo: '/admin/help-offers',
+      },
     ],
-  },
-  {
-    path: '**',
-    redirectTo: '',
   },
 ];
 
