@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { CanActivate } from '@angular/router';
-import { Observable, map, take, tap } from 'rxjs';
 
 import { UserService } from '../../shared/services/user.service';
 import { RoutingService } from '../services/routing.service';
@@ -14,15 +13,11 @@ export class LoggedOutUserGuard implements CanActivate {
     private readonly _routingService: RoutingService
   ) {}
 
-  public canActivate(): Observable<boolean> {
-    return this._userService.userIsLoggedIn$.pipe(
-      map((userIsLoggedIn) => !userIsLoggedIn),
-      tap(async (userIsLoggedOut) => {
-        if (!userIsLoggedOut) {
-          await this._routingService.navigateToHome();
-        }
-      }),
-      take(1)
-    );
+  public async canActivate(): Promise<boolean> {
+    if (!this._userService.isLoggedIn()) {
+      return true;
+    }
+
+    return this._routingService.navigateToHome().then(() => false);
   }
 }
