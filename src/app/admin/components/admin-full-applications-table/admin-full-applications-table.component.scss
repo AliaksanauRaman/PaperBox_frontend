@@ -1,0 +1,126 @@
+:host {
+  display: block;
+}
+
+.admin-full-applications-table {
+  width: 100%;
+}
+
+tr.detail-row {
+  height: 0;
+}
+
+.element-row {
+  &:not(.element-row--expanded):hover {
+    background: whitesmoke;
+  }
+
+  &:not(.element-row--expanded):active {
+    background: #efefef;
+  }
+
+  & td {
+    border-bottom-width: 0;
+  }
+}
+
+.element-detail {
+  display: flex;
+  overflow: hidden;
+}
+
+.expandable-content {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 16px;
+}
+
+.expandable-content__comment {
+  flex-shrink: 0;
+}
+
+.expandable-content__phones {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  margin-top: 8px;
+}
+
+.expandable-content__phones-item {
+  flex-shrink: 0;
+
+  &:not(:last-child) {
+    margin-bottom: 4px;
+  }
+}
+
+.status {
+  font-weight: 600;
+  font-size: 1.1rem;
+
+  &.status--published {
+    color: rgb(0, 188, 34);
+  }
+
+  &.status--unpublished {
+    color: rgb(255, 191, 0);
+  }
+
+  &.status--rejected {
+    color: rgb(207, 33, 41);
+  }
+}
+
+.menu-item {
+  transition: 0.25s ease-in-out background-color;
+
+  &.menu-item--green:not(:disabled) {
+    background-color: rgba(0, 188, 34, 0.2) !important;
+
+    .icon {
+      color: rgb(0, 188, 34);
+    }
+
+    &:hover {
+      background-color: rgba(0, 188, 34, 0.3) !important;
+    }
+  }
+
+  &.menu-item--yellow:not(:disabled) {
+    background-color: rgba(255, 191, 0, 0.2) !important;
+
+    .icon {
+      color: rgb(255, 191, 0);
+    }
+
+    &:hover {
+      background-color: rgba(255, 191, 0, 0.3) !important;
+    }
+  }
+
+  &.menu-item--red:not(:disabled) {
+    background-color: rgba(207, 33, 41, 0.2) !important;
+    transition: 0.25s ease-in-out background-color;
+
+    .icon {
+      color: rgb(207, 33, 41);
+    }
+
+    &:hover {
+      background-color: rgba(207, 33, 41, 0.3) !important;
+    }
+  }
+
+  &.menu-item--black:not(:disabled) {
+    background-color: rgba(155, 155, 155, 0.2) !important;
+    transition: 0.25s ease-in-out background-color;
+
+    .icon {
+      color: rgb(155, 155, 155);
+    }
+
+    &:hover {
+      background-color: rgba(155, 155, 155, 0.3) !important;
+    }
+  }
+}

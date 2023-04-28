@@ -1,0 +1,184 @@
+<table
+  mat-table
+  [dataSource]="_fullApplicationList"
+  multiTemplateDataRows
+  class="admin-full-applications-table mat-elevation-z8"
+>
+  <ng-container [matColumnDef]="Column.NUMBER">
+    <th mat-header-cell *matHeaderCellDef>#</th>
+    <td mat-cell *matCellDef="let i = dataIndex">
+      {{ i + 1 }}
+    </td>
+  </ng-container>
+
+  <ng-container [matColumnDef]="Column.LOCATION_FROM">
+    <th mat-header-cell *matHeaderCellDef>Location from</th>
+    <td mat-cell *matCellDef="let element">
+      {{
+        element.locationFrom | laconicPlaceLabelFromLocationValue | translate
+      }}
+    </td>
+  </ng-container>
+
+  <ng-container [matColumnDef]="Column.LOCATION_TO">
+    <th mat-header-cell *matHeaderCellDef>Location to</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element.locationTo | laconicPlaceLabelFromLocationValue | translate }}
+    </td>
+  </ng-container>
+
+  <ng-container [matColumnDef]="Column.DATES">
+    <th mat-header-cell *matHeaderCellDef>Dates</th>
+    <td mat-cell *matCellDef="let element">
+      {{ element | dates : "be-BY" }}
+    </td>
+  </ng-container>
+
+  <ng-container [matColumnDef]="Column.FULL_NAME">
+    <th mat-header-cell *matHeaderCellDef>Full name</th>
+    <td mat-cell *matCellDef="let element">{{ element.fullName }}</td>
+  </ng-container>
+
+  <ng-container [matColumnDef]="Column.STATUS">
+    <th mat-header-cell *matHeaderCellDef>Status</th>
+    <td mat-cell *matCellDef="let element">
+      <ng-container *ngIf="element.status as status">
+        <div
+          class="status"
+          [class.status--published]="status === Status.PUBLISHED"
+          [class.status--unpublished]="status === Status.UNPUBLISHED"
+          [class.status--rejected]="status === Status.REJECTED"
+          [class.status--deleted]="status === Status.DELETED"
+        >
+          {{ status }}
+        </div>
+      </ng-container>
+    </td>
+  </ng-container>
+
+  <ng-container [matColumnDef]="Column.ACTIONS">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let element">
+      <button
+        [matMenuTriggerFor]="menu"
+        mat-icon-button
+        type="button"
+        (click)="handleApplicationMenuClick($event)"
+      >
+        <mat-icon>more_vert</mat-icon>
+      </button>
+
+      <mat-menu #menu="matMenu">
+        <button
+          mat-menu-item
+          class="menu-item menu-item--green"
+          [disabled]="element.status === Status.PUBLISHED"
+          (click)="handlePublishButtonClick(element)"
+        >
+          <mat-icon class="icon">check_circle</mat-icon>
+          <span>Publish</span>
+        </button>
+
+        <button
+          mat-menu-item
+          class="menu-item menu-item--yellow"
+          [disabled]="element.status === Status.UNPUBLISHED"
+          (click)="handleUnpublishButtonClick(element)"
+        >
+          <mat-icon class="icon">unpublished</mat-icon>
+          <span>Unpublish</span>
+        </button>
+
+        <button
+          mat-menu-item
+          class="menu-item menu-item--red"
+          [disabled]="element.status === Status.REJECTED"
+          (click)="handleRejectButtonClick(element)"
+        >
+          <mat-icon class="icon">cancel</mat-icon>
+          <span>Reject</span>
+        </button>
+
+        <button
+          mat-menu-item
+          class="menu-item menu-item--black"
+          [disabled]="element.status === Status.DELETED"
+          (click)="handleDeleteButtonClick(element)"
+        >
+          <mat-icon class="icon">block</mat-icon>
+          <span>Delete</span>
+        </button>
+      </mat-menu>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="expand">
+    <th mat-header-cell *matHeaderCellDef>&nbsp;</th>
+    <td mat-cell *matCellDef="let element">
+      <button
+        mat-icon-button
+        (click)="
+          _expandedElement = _expandedElement === element ? null : element;
+          $event.stopPropagation()
+        "
+      >
+        <mat-icon *ngIf="_expandedElement !== element"
+          >keyboard_arrow_down</mat-icon
+        >
+        <mat-icon *ngIf="_expandedElement === element"
+          >keyboard_arrow_up</mat-icon
+        >
+      </button>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="expandedDetail">
+    <td
+      mat-cell
+      *matCellDef="let element"
+      [attr.colspan]="_columnsToDisplayWithExpand.length"
+    >
+      <div
+        class="element-detail"
+        [@detailExpand]="
+          element === _expandedElement ? 'expanded' : 'collapsed'
+        "
+      >
+        <div class="expandable-content">
+          <div class="expandable-content__comment">
+            {{ element.comment }}
+          </div>
+
+          <div
+            class="expandable-content__phones"
+            *ngIf="element.phones.length > 0"
+          >
+            <div
+              class="expandable-content__phones-item"
+              *ngFor="let phone of element.phones"
+            >
+              <span>{{ phone.diallingCode }}</span>
+              <span>{{ phone.number }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="_columnsToDisplayWithExpand"></tr>
+
+  <tr
+    mat-row
+    *matRowDef="let element; columns: _columnsToDisplayWithExpand"
+    class="element-row"
+    [class.element-row--expanded]="_expandedElement === element"
+    (click)="_expandedElement = _expandedElement === element ? null : element"
+  ></tr>
+
+  <tr
+    mat-row
+    *matRowDef="let row; columns: ['expandedDetail']"
+    class="detail-row"
+  ></tr>
+</table>
