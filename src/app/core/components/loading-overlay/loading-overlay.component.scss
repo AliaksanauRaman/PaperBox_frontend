@@ -1,0 +1,17 @@
+:host {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 5000;
+  display: flex;
+  background-color: rgba($color: #ffffff, $alpha: 0.6);
+}
+
+.loading-overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
