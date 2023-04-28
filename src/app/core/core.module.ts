@@ -48,6 +48,7 @@ import { LocationsControlComponent } from './components/locations-control/locati
 import { ErrorSnackBarComponent } from './components/error-snack-bar/error-snack-bar.component';
 import { WarningSnackBarComponent } from './components/warning-snack-bar/warning-snack-bar.component';
 import { InfoSnackBarComponent } from './components/info-snack-bar/info-snack-bar.component';
+import { LoadingOverlayComponent } from './components/loading-overlay/loading-overlay.component';
 import { SuccessCreateHelpOfferSectionComponent } from './sections/success-create-help-offer-section/success-create-help-offer-section.component';
 import { SuccessCreateHelpItemSectionComponent } from './sections/success-create-help-item-section/success-create-help-item-section.component';
 import { SuccessCreateHelpRequestSectionComponent } from './sections/success-create-help-request-section/success-create-help-request-section.component';
@@ -146,6 +147,7 @@ import {
     ErrorSnackBarComponent,
     WarningSnackBarComponent,
     InfoSnackBarComponent,
+    LoadingOverlayComponent,
     SuccessCreateHelpOfferSectionComponent,
     SuccessCreateHelpItemSectionComponent,
     SuccessCreateHelpRequestSectionComponent,
