@@ -1,0 +1,6 @@
+export enum FullApplicationStatus {
+  PUBLISHED = 'PUBLISHED',
+  UNPUBLISHED = 'UNPUBLISHED',
+  REJECTED = 'REJECTED',
+  DELETED = 'DELETED',
+}
