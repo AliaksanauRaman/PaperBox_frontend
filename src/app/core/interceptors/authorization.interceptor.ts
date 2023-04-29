@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 
 import { UserTokenEntityService } from '../../shared/services/user-token-entity.service';
 
+// TODO: !IMPORTANT It must be enhanced
 const REQUESTS_TO_AUTHORIZE = [
   {
     method: 'POST',
@@ -25,6 +26,14 @@ const REQUESTS_TO_AUTHORIZE = [
   {
     method: 'PATCH',
     endpoint: '/api/help-requests',
+  },
+  {
+    method: 'GET',
+    endpoint: '/admin/help-offers',
+  },
+  {
+    method: 'GET',
+    endpoint: '/admin/help-requests',
   },
 ];
 
