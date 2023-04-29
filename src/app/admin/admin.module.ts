@@ -14,9 +14,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
+import { MatMenuModule } from '@angular/material/menu';
 
 import { HttpErrorResponseCardModule } from '../shared/components/http-error-response-card/http-error-response-card.module';
 import { HttpErrorMessagePipeModule } from '../shared/pipes/http-error-message/http-error-message-pipe.module';
+import { LaconicPlaceLabelFromLocationValuePipeModule } from '../shared/pipes/laconic-place-label-from-location-value/laconic-place-label-from-location-value-pipe.module';
+import { DatesPipe } from './../shared/pipes/dates.pipe';
 import { AdminRoutingModule } from './admin-routing.module';
 
 import { AdminLoginPageComponent } from './pages/admin-login-page/admin-login-page.component';
@@ -32,6 +35,7 @@ import { AdminHelpOfferStatusComponent } from './components/admin-help-offer-sta
 import { AdminHelpOfferDetailsComponent } from './components/admin-help-offer-details/admin-help-offer-details.component';
 import { AdminDeletedHelpOfferDialogViewComponent } from './components/admin-deleted-help-offer-dialog-view/admin-deleted-help-offer-dialog-view.component';
 import { AdminFullHelpRequestsListComponent } from './components/admin-full-help-requests-list/admin-full-help-requests-list.component';
+import { AdminFullApplicationsTableComponent } from './components/admin-full-applications-table/admin-full-applications-table.component';
 import { AdminManageHelpOfferDialogComponent } from './dialogs/admin-manage-help-offer-dialog/admin-manage-help-offer-dialog.component';
 
 import { AdminHelpOffersHttpService } from './services/admin-help-offers-http.service';
@@ -55,8 +59,11 @@ import { AdminEventsProcessorService } from './services/admin-events-processor.s
     MatListModule,
     MatToolbarModule,
     MatTableModule,
+    MatMenuModule,
     HttpErrorResponseCardModule,
     HttpErrorMessagePipeModule,
+    LaconicPlaceLabelFromLocationValuePipeModule,
+    DatesPipe,
     AdminRoutingModule,
   ],
   declarations: [
@@ -73,6 +80,7 @@ import { AdminEventsProcessorService } from './services/admin-events-processor.s
     AdminHelpOfferDetailsComponent,
     AdminDeletedHelpOfferDialogViewComponent,
     AdminFullHelpRequestsListComponent,
+    AdminFullApplicationsTableComponent,
     AdminManageHelpOfferDialogComponent,
   ],
   providers: [
@@ -83,6 +91,7 @@ import { AdminEventsProcessorService } from './services/admin-events-processor.s
   exports: [],
 })
 export class AdminModule {
+  // TODO: Probably it must be deleted
   constructor(
     private readonly adminEventsProcessorService: AdminEventsProcessorService
   ) {
