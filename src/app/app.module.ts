@@ -21,6 +21,7 @@ import { UserService } from './shared/services/user.service';
 import { API_URL, API_URL_VALUE } from './shared/dependencies/api-url';
 import { translateLoaderFactory } from './core/factories/translate-loader.factory';
 import { AuthorizationInterceptor } from './core/interceptors/authorization.interceptor';
+import { LoadingOverlayInterceptor } from './core/interceptors/loading-overlay.interceptor';
 
 import { initAppFactory } from './init-app.factory';
 
@@ -55,6 +56,11 @@ import { initAppFactory } from './init-app.factory';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthorizationInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingOverlayInterceptor,
       multi: true,
     },
     DatePipe,
