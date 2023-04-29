@@ -10,6 +10,8 @@ import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { tap } from 'rxjs';
 
 import { LoginService } from '../../../shared/services/login.service';
+import { UserTokenService } from '../../../shared/services/user-token.service';
+import { RoutingService } from '../../../core/services/routing.service';
 
 import { LoginDto } from '../../../shared/dtos/login.dto';
 
@@ -28,8 +30,11 @@ export class AdminLoginCardComponent implements AfterViewInit, OnDestroy {
     tap((state) => {
       if (state.inProgress) {
         this._logInForm.disable();
-      } else {
+      } else if (state.error !== null) {
         this._logInForm.enable();
+      } else if (state.data !== null) {
+        this._userTokenService.set(state.data.token);
+        this._routingService.navigateToAdminHome();
       }
     })
   );
@@ -40,7 +45,9 @@ export class AdminLoginCardComponent implements AfterViewInit, OnDestroy {
 
   constructor(
     private readonly _formBuilder: NonNullableFormBuilder,
-    private readonly _logInService: LoginService
+    private readonly _logInService: LoginService,
+    private readonly _userTokenService: UserTokenService,
+    private readonly _routingService: RoutingService
   ) {}
 
   public ngAfterViewInit(): void {
