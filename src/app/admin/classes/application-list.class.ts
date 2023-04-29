@@ -40,16 +40,21 @@ export class FullApplicationList {
     status: FullApplicationStatus
   ): void {
     this._fullApplicationsList$.next(
-      this._fullApplicationsList$.getValue().map((application) => {
-        if (application.id === applicationId) {
-          return {
-            ...application,
-            status,
-          };
-        }
+      this._fullApplicationsList$
+        .getValue()
+        .map((application) => {
+          if (application.id === applicationId) {
+            return {
+              ...application,
+              status,
+            };
+          }
 
-        return application;
-      })
+          return application;
+        })
+        .filter(
+          (application) => application.status !== FullApplicationStatus.DELETED
+        )
     );
   }
 }
