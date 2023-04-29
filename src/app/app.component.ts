@@ -1,6 +1,12 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  ViewContainerRef,
+} from '@angular/core';
 import { tap } from 'rxjs';
 
+import { LoadingOverlayService } from './core/services/loading-overlay.service';
 import { AppLanguagesService } from './core/services/app-languages.service';
 import { KeyboardService } from './core/services/keyboard.service';
 import { CommandsPanelService } from './core/commands/commands-panel.service';
@@ -14,6 +20,8 @@ import { UserTokenIssuesNotifierService } from './shared/services/user-token-iss
 })
 export class AppComponent implements OnInit {
   constructor(
+    private readonly _loadingOverlayService: LoadingOverlayService,
+    private readonly _viewContainerRef: ViewContainerRef,
     private readonly _languagesService: AppLanguagesService,
     private readonly _keyboardService: KeyboardService,
     private readonly _commandsPanelService: CommandsPanelService,
@@ -21,6 +29,7 @@ export class AppComponent implements OnInit {
   ) {}
 
   public ngOnInit(): void {
+    this._loadingOverlayService.setViewContainerRef(this._viewContainerRef);
     this._userTokenIssuesNotifierService.startWatching();
     this.setUpListenerForCommandsPanel();
     this._languagesService.setUp();
