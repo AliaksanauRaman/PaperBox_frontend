@@ -10,14 +10,10 @@
   height: inherit;
   border-width: 3px;
   border-style: solid;
+  border-color: var(--primary-color);
   border-bottom-color: transparent;
   border-radius: 50%;
   animation: rotation 1s linear infinite;
-
-  &.app-spinner--primary-colored {
-    border-color: var(--primary-color);
-    border-bottom-color: transparent;
-  }
 
   &.app-spinner--white-colored {
     border-color: var(--white-color);
