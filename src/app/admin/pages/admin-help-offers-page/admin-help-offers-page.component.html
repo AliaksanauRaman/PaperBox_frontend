@@ -3,5 +3,32 @@
     <span>Help offers</span>
   </mat-toolbar>
 
-  <div class="content"></div>
+  <div class="content app-scrollbar">
+    <div *ngIf="_loading; else content">Loading...</div>
+
+    <ng-template #content>
+      <div *ngIf="_getAllHelpOffersError; else helpOffersBlock">
+        <span>Error occurred. For more details check dev tools.</span>
+      </div>
+
+      <ng-template #helpOffersBlock>
+        <ng-container
+          *ngIf="(_allHelpOffers?.value$ | async) || [] as allHelpOffers"
+        >
+          <app-admin-full-applications-table
+            *ngIf="allHelpOffers.length > 0"
+            [fullApplicationList]="allHelpOffers"
+            (publishApplication)="handlePublishApplication($event)"
+            (unpublishApplication)="handleUnpublishApplication($event)"
+            (rejectApplication)="handleRejectApplication($event)"
+            (deleteApplication)="handleDeleteApplication($event)"
+          ></app-admin-full-applications-table>
+
+          <div *ngIf="allHelpOffers.length === 0">
+            <span>No help offers.</span>
+          </div>
+        </ng-container>
+      </ng-template>
+    </ng-template>
+  </div>
 </div>
