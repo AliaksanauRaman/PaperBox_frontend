@@ -4,18 +4,31 @@
   </mat-toolbar>
 
   <div class="content app-scrollbar">
-    <ng-container *ngIf="_getAllHelpRequestsError; else contentBlock">
-      <div>Error occurred. For more details check dev tools.</div>
-    </ng-container>
+    <div *ngIf="_loading; else content">Loading...</div>
 
-    <ng-template #contentBlock>
-      <app-admin-full-applications-table
-        [fullApplicationList]="(_allHelpRequests?.value$ | async) || []"
-        (publishApplication)="handlePublishApplication($event)"
-        (unpublishApplication)="handleUnpublishApplication($event)"
-        (rejectApplication)="handleRejectApplication($event)"
-        (deleteApplication)="handleDeleteApplication($event)"
-      ></app-admin-full-applications-table>
+    <ng-template #content>
+      <div *ngIf="_getAllHelpRequestsError; else helpRequestsBlock">
+        <span>Error occurred. For more details check dev tools.</span>
+      </div>
+
+      <ng-template #helpRequestsBlock>
+        <ng-container
+          *ngIf="(_allHelpRequests?.value$ | async) || [] as allHelpRequests"
+        >
+          <app-admin-full-applications-table
+            *ngIf="allHelpRequests.length > 0"
+            [fullApplicationList]="allHelpRequests"
+            (publishApplication)="handlePublishApplication($event)"
+            (unpublishApplication)="handleUnpublishApplication($event)"
+            (rejectApplication)="handleRejectApplication($event)"
+            (deleteApplication)="handleDeleteApplication($event)"
+          ></app-admin-full-applications-table>
+
+          <div *ngIf="allHelpRequests.length === 0">
+            <span>No help requests.</span>
+          </div>
+        </ng-container>
+      </ng-template>
     </ng-template>
   </div>
 </div>

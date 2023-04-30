@@ -4,10 +4,11 @@ import {
   OnInit,
   ChangeDetectorRef,
 } from '@angular/core';
-import { catchError, map, tap } from 'rxjs';
+import { catchError, map, tap, finalize, takeUntil } from 'rxjs';
 
 import { AdminApplicationsHttpService } from '../../services/admin-applications-http.service';
 
+import { DestroyEmitter } from '../../../shared/abstracts/destroy-emitter.class';
 import { FullApplicationType } from '../../types/full-application.type';
 import { FullApplicationStatus } from '../../enums/full-application-status.enum';
 import { FullApplicationList } from '../../classes/application-list.class';
@@ -18,28 +19,40 @@ import { FullApplicationList } from '../../classes/application-list.class';
   styleUrls: ['../../styles/_admin-page-common.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AdminHelpRequestsPageComponent implements OnInit {
+export class AdminHelpRequestsPageComponent
+  extends DestroyEmitter
+  implements OnInit
+{
+  protected _loading = true;
   protected _allHelpRequests?: FullApplicationList;
   protected _getAllHelpRequestsError = false;
 
   constructor(
     private readonly _applicationsHttpService: AdminApplicationsHttpService,
     private readonly _cdRef: ChangeDetectorRef
-  ) {}
+  ) {
+    super();
+  }
 
   public ngOnInit(): void {
-    this._applicationsHttpService.getAllHelpRequests().pipe(
-      map((allHelpRequests) => new FullApplicationList(allHelpRequests)),
-      tap((fullApplicationList) => {
-        this._allHelpRequests = fullApplicationList;
-        this._cdRef.markForCheck();
-      }),
-      catchError((error: unknown) => {
-        this._getAllHelpRequestsError = true;
-        this._cdRef.markForCheck();
-        throw error;
-      })
-    );
+    this._applicationsHttpService
+      .getAllHelpRequests()
+      .pipe(
+        map((allHelpRequests) => new FullApplicationList(allHelpRequests)),
+        tap(
+          (fullApplicationList) => (this._allHelpRequests = fullApplicationList)
+        ),
+        catchError((error: unknown) => {
+          this._getAllHelpRequestsError = true;
+          throw error;
+        }),
+        finalize(() => {
+          this._loading = false;
+          this._cdRef.markForCheck();
+        }),
+        takeUntil(this.destroy$)
+      )
+      .subscribe();
   }
 
   protected handlePublishApplication(application: FullApplicationType): void {
