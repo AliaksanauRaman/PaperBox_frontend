@@ -1,4 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ChangeDetectorRef,
+} from '@angular/core';
 
 @Component({
   selector: 'app-loading-overlay',
@@ -6,4 +10,8 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   styleUrls: ['./loading-overlay.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class LoadingOverlayComponent {}
+export class LoadingOverlayComponent {
+  constructor(private readonly _cdRef: ChangeDetectorRef) {
+    this._cdRef.detach();
+  }
+}
