@@ -31,17 +31,22 @@ export class LoadingOverlayInterceptor implements HttpInterceptor {
       this._loadingOverlayService.show();
     }
 
-    return next.handle(req).pipe(
-      finalize(() => {
-        this._pendingRequestsCount -= 1;
+    return (
+      next
+        // TODO: Enhance the solution
+        .handle(req.clone({ headers: req.headers.delete('showGlobalLoader') }))
+        .pipe(
+          finalize(() => {
+            this._pendingRequestsCount -= 1;
 
-        if (
-          this._loadingOverlayService.isShown() &&
-          this._pendingRequestsCount === 0
-        ) {
-          this._loadingOverlayService.hide();
-        }
-      })
+            if (
+              this._loadingOverlayService.isShown() &&
+              this._pendingRequestsCount === 0
+            ) {
+              this._loadingOverlayService.hide();
+            }
+          })
+        )
     );
   }
 }
