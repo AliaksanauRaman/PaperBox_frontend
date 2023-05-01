@@ -23,7 +23,7 @@ export class DatesPipe implements PipeTransform {
 
     if (endDate !== null) {
       const formattedEndDate = this._datePipe.transform(
-        startDate,
+        endDate,
         dateFormat
       ) as string;
       return `${formattedStartDate} - ${formattedEndDate}`;
