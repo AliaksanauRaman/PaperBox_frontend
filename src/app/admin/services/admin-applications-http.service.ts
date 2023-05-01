@@ -1,5 +1,10 @@
 import { Injectable, Inject } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpStatusCode } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpHeaders,
+  HttpParams,
+  HttpStatusCode,
+} from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 
 import { API_URL } from '../../shared/dependencies/api-url';
@@ -19,16 +24,24 @@ export class AdminApplicationsHttpService {
   ) {}
 
   public getAllHelpOffers(): Observable<FullApplicationListType> {
+    const httpParams = new HttpParams()
+      .set('statuses', FullApplicationStatus.PUBLISHED)
+      .append('statuses', FullApplicationStatus.UNPUBLISHED)
+      .append('statuses', FullApplicationStatus.REJECTED);
     return this._httpClient.get<FullApplicationListType>(
       `${this._apiUrl}/admin/help-offers`,
-      { headers: this.buildDefaultHeaders() }
+      { headers: this.buildDefaultHeaders(), params: httpParams }
     );
   }
 
   public getAllHelpRequests(): Observable<FullApplicationListType> {
+    const httpParams = new HttpParams()
+      .set('statuses', FullApplicationStatus.PUBLISHED)
+      .append('statuses', FullApplicationStatus.UNPUBLISHED)
+      .append('statuses', FullApplicationStatus.REJECTED);
     return this._httpClient.get<FullApplicationListType>(
       `${this._apiUrl}/admin/help-requests`,
-      { headers: this.buildDefaultHeaders() }
+      { headers: this.buildDefaultHeaders(), params: httpParams }
     );
   }
 
