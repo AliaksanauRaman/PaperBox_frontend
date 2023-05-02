@@ -8,6 +8,7 @@ import {
 } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { AngularSvgIconModule } from 'angular-svg-icon';
 
 import { CoreModule } from './core/core.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -41,6 +42,8 @@ import { initAppFactory } from './init-app.factory';
         deps: [HttpBackend],
       },
     }),
+
+    AngularSvgIconModule.forRoot(),
   ],
   providers: [
     {
