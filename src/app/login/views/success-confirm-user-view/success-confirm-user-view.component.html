@@ -4,9 +4,12 @@
       {{ "components.successConfirmUserView.title" | translate }}
     </h2>
 
-    <app-welcome-girl-mobile-image
+    <svg-icon
       class="welcome-girl-mobile-image"
-    ></app-welcome-girl-mobile-image>
+      [style.width.px]="136"
+      [style.height.px]="216"
+      src="/assets/svg/images/welcome-girl-image.svg"
+    ></svg-icon>
 
     <!-- TODO: Prefill user email after redirect -->
     <app-primary-button
@@ -17,7 +20,11 @@
     </app-primary-button>
   </div>
 
-  <app-welcome-girl-desktop-image
+  <svg-icon
     class="welcome-girl-desktop-image"
-  ></app-welcome-girl-desktop-image>
+    [style.width.px]="224"
+    [style.height.px]="359"
+    [svgStyle]="{ 'width.px': 224, 'height.px': 359 }"
+    src="/assets/svg/images/welcome-girl-image.svg"
+  ></svg-icon>
 </div>
