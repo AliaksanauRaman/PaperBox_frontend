@@ -9,6 +9,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { ClipboardModule } from '@angular/cdk/clipboard';
+import { AngularSvgIconModule } from 'angular-svg-icon';
 
 import { PlusIconModule } from '../shared/icons/plus-icon/plus-icon.module';
 import { CalendarIconModule } from '../shared/icons/calendar-icon/calendar-icon.module';
@@ -108,6 +109,7 @@ import {
     MatSnackBarModule,
     MatTooltipModule,
     ClipboardModule,
+    AngularSvgIconModule,
     PlusIconModule,
     CalendarIconModule,
     LocationIconModule,
