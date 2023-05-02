@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
+import { AngularSvgIconModule } from 'angular-svg-icon';
 
 import { ToolbarComponent } from '../shared/components/toolbar/toolbar.component';
 import { FooterComponent } from '../shared/components/footer/footer.component';
@@ -11,8 +12,6 @@ import { GirlWithHeartMobileImageComponent } from '../shared/images/girl-with-he
 import { ManWithHeartsMobileImageComponent } from '../shared/images/man-with-hearts-mobile-image/man-with-hearts-mobile-image.component';
 import { GirlWithHeartDesktopImageComponent } from '../shared/images/girl-with-heart-desktop-image/girl-with-heart-desktop-image.component';
 import { ManWithHeartsDesktopImageComponent } from '../shared/images/man-with-hearts-desktop-image/man-with-hearts-desktop-image.component';
-import { WelcomeGirlMobileImageComponent } from '../shared/images/welcome-girl-mobile-image/welcome-girl-mobile-image.component';
-import { WelcomeGirlDesktopImageComponent } from '../shared/images/welcome-girl-desktop-image/welcome-girl-desktop-image.component';
 import { ManWithPhoneMobileImageComponent } from '../shared/images/man-with-phone-mobile-image/man-with-phone-mobile-image.component';
 import { InputControlModule } from '../shared/components/input-control/input-control.module';
 import { LoginRoutingModule } from './login-routing.module';
@@ -30,6 +29,7 @@ import { FailedConfirmUserViewComponent } from './views/failed-confirm-user-view
     CommonModule,
     ReactiveFormsModule,
     TranslateModule,
+    AngularSvgIconModule,
     ToolbarComponent,
     FooterComponent,
     PrimaryButtonComponent,
@@ -38,8 +38,6 @@ import { FailedConfirmUserViewComponent } from './views/failed-confirm-user-view
     ManWithHeartsMobileImageComponent,
     GirlWithHeartDesktopImageComponent,
     ManWithHeartsDesktopImageComponent,
-    WelcomeGirlMobileImageComponent,
-    WelcomeGirlDesktopImageComponent,
     ManWithPhoneMobileImageComponent,
     InputControlModule,
     LoginRoutingModule,
