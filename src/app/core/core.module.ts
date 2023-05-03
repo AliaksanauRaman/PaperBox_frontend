@@ -83,6 +83,14 @@ import {
   GEORGIAN_CITIES,
   GEORGIAN_CITIES_VALUE,
 } from './dependencies/georgian-cities';
+import {
+  UKRAINIAN_CITIES,
+  UKRAINIAN_CITIES_VALUE,
+} from './dependencies/ukrainian-cities';
+import {
+  LITHUANIAN_CITIES,
+  LITHUANIAN_CITIES_VALUE,
+} from './dependencies/lithuanian-cities';
 import { ALL_CITIES, allCitiesFactory } from './dependencies/all-cities';
 import {
   ALL_LOCATIONS,
@@ -184,9 +192,23 @@ import {
       useValue: GEORGIAN_CITIES_VALUE,
     },
     {
+      provide: UKRAINIAN_CITIES,
+      useValue: UKRAINIAN_CITIES_VALUE,
+    },
+    {
+      provide: LITHUANIAN_CITIES,
+      useValue: LITHUANIAN_CITIES_VALUE,
+    },
+    {
       provide: ALL_CITIES,
       useFactory: allCitiesFactory,
-      deps: [BELARUSIAN_CITIES, POLISH_CITIES, GEORGIAN_CITIES],
+      deps: [
+        BELARUSIAN_CITIES,
+        POLISH_CITIES,
+        GEORGIAN_CITIES,
+        UKRAINIAN_CITIES,
+        LITHUANIAN_CITIES,
+      ],
     },
     {
       provide: ALL_LOCATIONS,
