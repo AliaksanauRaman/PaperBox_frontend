@@ -143,7 +143,9 @@
   "country": {
     "belarus": "Беларусь",
     "poland": "Польшча",
-    "georgia": "Грузія"
+    "georgia": "Грузія",
+    "ukraine": "Украіна",
+    "lithuania": "Літва"
   },
   "city": {
     "belarusian": {
@@ -166,6 +168,16 @@
     "georgian": {
       "tbilisi": "Тбілісі",
       "batumi": "Батумі"
+    },
+    "ukrainian": {
+      "kyiv": "Кіеў",
+      "kharkiv": "Харкаў",
+      "lviv": "Львоў",
+      "odessa": "Адэса"
+    },
+    "lithuanian": {
+      "vilnius": "Вільня",
+      "kaunas": "Коўна"
     },
     "other": "Іншы горад"
   },
