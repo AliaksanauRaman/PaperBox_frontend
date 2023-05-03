@@ -69,6 +69,9 @@
     "info": {
       "title": "Message",
       "itIsClear": "It is clear"
+    },
+    "confirmApplicationDeletionDialog": {
+      "title": "Are you sure you want to delete the application?"
     }
   },
   "components": {
@@ -229,6 +232,8 @@
   },
   "button": {
     "ok": "Ok",
+    "yes": "Yes",
+    "no": "No",
     "send": "Send",
     "login": "Log in",
     "signup": "Sign up",
