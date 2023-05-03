@@ -30,8 +30,6 @@ import { GirlInCardMobileImageComponent } from '../shared/images/girl-in-card-mo
 import { GirlInCardDesktopImageComponent } from '../shared/images/girl-in-card-desktop-image/girl-in-card-desktop-image.component';
 import { GirlWithLaptopImageComponent } from '../shared/images/girl-with-laptop-image/girl-with-laptop-image.component';
 import { ManWithGlobeDesktopImageComponent } from '../shared/images/man-with-globe-desktop-image/man-with-globe-desktop-image.component';
-import { GirlWithLikeMobileImageComponent } from '../shared/images/girl-with-like-mobile-image/girl-with-like-mobile-image.component';
-import { GirlWithLikeDesktopImageComponent } from '../shared/images/girl-with-like-desktop-image/girl-with-like-desktop-image.component';
 import { ToolbarComponent } from '../shared/components/toolbar/toolbar.component';
 import { FooterComponent } from '../shared/components/footer/footer.component';
 import { PrimaryButtonComponent } from '../shared/components/primary-button/primary-button.component';
@@ -129,8 +127,6 @@ import {
     GirlInCardDesktopImageComponent,
     GirlWithLaptopImageComponent,
     ManWithGlobeDesktopImageComponent,
-    GirlWithLikeMobileImageComponent,
-    GirlWithLikeDesktopImageComponent,
     ToolbarComponent,
     FooterComponent,
     PrimaryButtonComponent,
