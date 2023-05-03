@@ -87,7 +87,7 @@
 
       <app-delete-button
         class="app-list-card__delete-button"
-        *ngIf="true"
+        *ngIf="_showActions"
         [disabled]="_actionsDisabled"
         (innerClick)="handleDeleteButtonClick($event)"
       >
