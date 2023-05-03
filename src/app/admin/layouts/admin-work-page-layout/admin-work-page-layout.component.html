@@ -34,4 +34,14 @@
       <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
+
+  <button
+    mat-fab
+    class="logout-button"
+    color="primary"
+    matTooltip="Logout"
+    (click)="handleLogoutButtonClick()"
+  >
+    <mat-icon>logout</mat-icon>
+  </button>
 </div>

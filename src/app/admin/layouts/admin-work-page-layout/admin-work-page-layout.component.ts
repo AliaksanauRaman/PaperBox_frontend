@@ -1,5 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
+import { LogoutService } from '../../../core/services/logout.service';
+import { RoutingService } from '../../../core/services/routing.service';
+
 import { NavigationLinkType } from '../../../shared/types/navigation-link.type';
 
 @Component({
@@ -27,4 +30,14 @@ export class AdminWorkPageLayoutComponent {
       path: '/admin/settings',
     },
   ];
+
+  constructor(
+    private readonly _logoutService: LogoutService,
+    private readonly _routingService: RoutingService
+  ) {}
+
+  protected handleLogoutButtonClick(): void {
+    this._logoutService.doLogout();
+    this._routingService.navigateToAdminLogin();
+  }
 }

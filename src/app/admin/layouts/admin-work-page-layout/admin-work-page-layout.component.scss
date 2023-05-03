@@ -77,3 +77,10 @@
 .sidenav-content {
   background-color: var(--primary-background-color);
 }
+
+.logout-button {
+  position: fixed;
+  right: 38px;
+  bottom: 30px;
+  z-index: 1;
+}
