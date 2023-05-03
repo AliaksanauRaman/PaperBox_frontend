@@ -1,5 +1,5 @@
 <mat-card class="admin-login-card">
-  <ng-container *ngIf="_logInState$ | async as state">
+  <ng-container *ngIf="_loginState$ | async as state">
     <mat-card-header class="header">
       <mat-card-title>
         <span *ngIf="!state.inProgress">Pushka Admin</span>
@@ -10,7 +10,7 @@
     <mat-card-content>
       <form
         class="form"
-        [formGroup]="_logInForm"
+        [formGroup]="_loginForm"
         (ngSubmit)="handleAdminLoginSubmit()"
       >
         <mat-form-field class="form__field" appearance="outline">
@@ -22,7 +22,7 @@
             placeholder="Enter email"
             formControlName="email"
           />
-          <mat-error *ngIf="_logInForm.controls.email.errors?.['required']">
+          <mat-error *ngIf="_loginForm.controls.email.errors?.['required']">
             <span>Email is required</span>
           </mat-error>
         </mat-form-field>
@@ -35,7 +35,7 @@
             placeholder="Enter password"
             formControlName="password"
           />
-          <mat-error *ngIf="_logInForm.controls.password.errors?.['required']">
+          <mat-error *ngIf="_loginForm.controls.password.errors?.['required']">
             <span>Password is required</span>
           </mat-error>
         </mat-form-field>
@@ -44,8 +44,12 @@
           <span>Server error. For more details check the console.</span>
         </mat-error>
 
+        <mat-error class="errors-block" *ngIf="_notAdminError">
+          <span>You have to be an Admin.</span>
+        </mat-error>
+
         <button
-          [disabled]="_logInForm.invalid || state.inProgress"
+          [disabled]="_loginForm.invalid || state.inProgress"
           mat-raised-button
           color="primary"
           type="submit"

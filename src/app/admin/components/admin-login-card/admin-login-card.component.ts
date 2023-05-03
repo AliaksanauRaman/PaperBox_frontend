@@ -13,7 +13,9 @@ import { LoginService } from '../../../shared/services/login.service';
 import { UserTokenService } from '../../../shared/services/user-token.service';
 import { RoutingService } from '../../../core/services/routing.service';
 
+import { UserTokenEntity } from '../../../shared/entities/user-token.entity';
 import { LoginDto } from '../../../shared/dtos/login.dto';
+import { UserRole } from '../../../shared/enums/user-role.enum';
 
 @Component({
   selector: 'app-admin-login-card',
@@ -26,22 +28,34 @@ export class AdminLoginCardComponent implements AfterViewInit, OnDestroy {
   @ViewChild('firstInputRef')
   private readonly _firstInputElementRef!: ElementRef<HTMLInputElement>;
 
-  protected readonly _logInState$ = this._logInService.state$.pipe(
+  protected readonly _loginState$ = this._logInService.state$.pipe(
     tap((state) => {
       if (state.inProgress) {
-        this._logInForm.disable();
+        this._loginForm.disable();
       } else if (state.error !== null) {
-        this._logInForm.enable();
+        this._loginForm.enable();
       } else if (state.data !== null) {
-        this._userTokenService.set(state.data.token);
-        this._routingService.navigateToAdminHome();
+        const userTokenEntity = new UserTokenEntity(state.data.token);
+        userTokenEntity.decode();
+
+        if (
+          userTokenEntity.decodedUserToken.permissions[0].authority !==
+          UserRole.ADMIN
+        ) {
+          this._notAdminError = true;
+          this._loginForm.enable();
+        } else {
+          this._userTokenService.set(state.data.token);
+          this._routingService.navigateToAdminHome();
+        }
       }
     })
   );
-  protected readonly _logInForm = this._formBuilder.group({
+  protected readonly _loginForm = this._formBuilder.group({
     email: ['', [Validators.required]],
     password: ['', [Validators.required]],
   });
+  protected _notAdminError = false;
 
   constructor(
     private readonly _formBuilder: NonNullableFormBuilder,
@@ -62,11 +76,12 @@ export class AdminLoginCardComponent implements AfterViewInit, OnDestroy {
   }
 
   protected handleAdminLoginSubmit(): void {
-    if (this._logInForm.invalid) {
+    if (this._loginForm.invalid) {
       return;
     }
 
-    const formValue = this._logInForm.getRawValue();
+    this._notAdminError = false;
+    const formValue = this._loginForm.getRawValue();
     this._logInService.performRequest(
       new LoginDto(formValue.email, formValue.password)
     );
