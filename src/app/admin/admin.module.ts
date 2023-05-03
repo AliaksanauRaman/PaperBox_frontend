@@ -15,6 +15,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { HttpErrorResponseCardModule } from '../shared/components/http-error-response-card/http-error-response-card.module';
 import { HttpErrorMessagePipeModule } from '../shared/pipes/http-error-message/http-error-message-pipe.module';
@@ -60,6 +61,7 @@ import { AdminEventsProcessorService } from './services/admin-events-processor.s
     MatToolbarModule,
     MatTableModule,
     MatMenuModule,
+    MatTooltipModule,
     HttpErrorResponseCardModule,
     HttpErrorMessagePipeModule,
     LaconicPlaceLabelFromLocationValuePipeModule,
