@@ -1,7 +1,11 @@
 <div class="success-create-feedback-section">
-  <app-girl-with-like-desktop-image
+  <svg-icon
     class="girl-with-like-desktop-image"
-  ></app-girl-with-like-desktop-image>
+    [style.width.px]="196"
+    [style.height.px]="359"
+    [svgStyle]="{ 'width.px': 196, 'height.px': 359 }"
+    src="/assets/svg/images/girl-with-like-image.svg"
+  ></svg-icon>
 
   <div class="content-container">
     <h2 class="title">
@@ -14,9 +18,12 @@
       }}</span>
     </div>
 
-    <app-girl-with-like-mobile-image
+    <svg-icon
       class="girl-with-like-mobile-image"
-    ></app-girl-with-like-mobile-image>
+      [style.width.px]="128"
+      [style.height.px]="216"
+      src="/assets/svg/images/girl-with-like-image.svg"
+    ></svg-icon>
 
     <app-primary-button
       class="glad-to-help-button"
