@@ -11,6 +11,7 @@ import { ViewPhonePipeModule } from '../shared/pipes/view-phone/view-phone-pipe.
 import { FoldableComponentModule } from '../shared/components/foldable/foldable-component.module';
 import { ListCardCommentComponentModule } from '../shared/components/list-card-comment/list-card-comment-component.module';
 import { ListLoadErrorViewComponentModule } from '../shared/components/list-load-error-view/list-load-error-view-component.module';
+import { DeleteButtonComponent } from '../shared/components/delete-button/delete-button.component';
 import { HoverableDirectiveModule } from '../shared/directives/hoverable/hoverable-directive.module';
 import { DatesPipe } from '../shared/pipes/dates.pipe';
 import { HelpOffersRoutingModule } from './help-offers-routing.module';
@@ -33,6 +34,7 @@ import { HelpOffersListItemComponent } from './components/help-offers-list-item/
     FoldableComponentModule,
     ListCardCommentComponentModule,
     ListLoadErrorViewComponentModule,
+    DeleteButtonComponent,
     HoverableDirectiveModule,
     DatesPipe,
     HelpOffersRoutingModule,
