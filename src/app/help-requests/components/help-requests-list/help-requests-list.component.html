@@ -1,25 +1,29 @@
 <div class="help-requests-list">
-  <ng-container *ngIf="publishedHelpRequestsState$ | async as state">
-    <ng-container *ngIf="state.inProgress">
+  <ng-container *ngIf="_templateContext$ | async as context">
+    <ng-container *ngIf="context.getPublishedHelpRequests.inProgress">
       <div class="loading-view">
         <app-spinner></app-spinner>
       </div>
     </ng-container>
 
-    <ng-container *ngIf="state.data as data">
+    <ng-container *ngIf="context.getPublishedHelpRequests.data as data">
       <ng-container *ngIf="data.length !== 0; else emptyListView">
         <div class="content-view app-scrollbar">
           <app-help-requests-list-item
             class="list-item"
             *ngFor="let item of data"
             [publishedHelpRequest]="item"
+            [showActions]="item.userId === context.user?.id"
+            [actionsDisabled]="_deletingHelpRequestId !== null"
+            [deletionInProgress]="item.id === _deletingHelpRequestId"
+            (deleteClick)="handleHelpOfferListItemDeleteClick(item.id)"
           >
           </app-help-requests-list-item>
         </div>
       </ng-container>
     </ng-container>
 
-    <ng-container *ngIf="state.error as error">
+    <ng-container *ngIf="context.getPublishedHelpRequests.error as error">
       <app-list-load-error-view
         class="error-view"
         (reloadClick)="handleReloadClick()"
