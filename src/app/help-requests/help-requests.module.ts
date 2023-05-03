@@ -11,6 +11,7 @@ import { ArrowDownIconModule } from '../shared/icons/arrow-down-icon/arrow-down-
 import { LaconicPlaceLabelFromLocationValuePipeModule } from '../shared/pipes/laconic-place-label-from-location-value/laconic-place-label-from-location-value-pipe.module';
 import { BuildPhoneHrefPipeModule } from '../shared/pipes/build-phone-href/build-phone-href-pipe.module';
 import { ViewPhonePipeModule } from '../shared/pipes/view-phone/view-phone-pipe.module';
+import { DeleteButtonComponent } from '../shared/components/delete-button/delete-button.component';
 import { HoverableDirectiveModule } from '../shared/directives/hoverable/hoverable-directive.module';
 import { DatesPipe } from '../shared/pipes/dates.pipe';
 import { HelpRequestsRoutingModule } from './help-requests-routing.module';
@@ -33,6 +34,7 @@ import { HelpRequestsListItemComponent } from './components/help-requests-list-i
     LaconicPlaceLabelFromLocationValuePipeModule,
     BuildPhoneHrefPipeModule,
     ViewPhonePipeModule,
+    DeleteButtonComponent,
     HoverableDirectiveModule,
     DatesPipe,
     HelpRequestsRoutingModule,
