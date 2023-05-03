@@ -58,6 +58,7 @@
   font-size: 1.1rem;
   font-weight: 500;
   color: var(--grey-color);
+  text-align: center;
 }
 
 .public-id__value {
@@ -68,12 +69,17 @@
   font-weight: 700;
   color: var(--success-color);
   text-decoration: underline;
+  text-align: center;
 }
 
 .image {
   position: absolute;
   bottom: -32px;
   right: 0;
+}
+
+.girl-in-card-mobile-image {
+  display: block;
 }
 
 .girl-in-card-desktop-image {
