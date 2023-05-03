@@ -1,0 +1,9 @@
+<button
+  class="delete-button"
+  [class.delete-button--disabled]="_disabled"
+  [matTooltip]="'helpTitles.delete' | translate"
+  type="button"
+  (click)="innerClick.emit($event)"
+>
+  <svg-icon class="icon" src="/assets/svg/icons/trash-icon.svg"></svg-icon>
+</button>

@@ -1,0 +1,33 @@
+:host {
+  display: block;
+  width: 40px;
+  height: 40px;
+}
+
+.delete-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: inherit;
+  height: inherit;
+  background-color: var(--primary-color);
+  border-radius: var(--border-radius);
+  transition: 0.2s all ease-in-out;
+
+  &.delete-button--disabled {
+    pointer-events: none;
+    background-color: var(--grey-color);
+    opacity: 0.65;
+  }
+
+  &:hover,
+  &:active {
+    background-color: var(--error-color);
+  }
+}
+
+.icon {
+  display: block;
+  width: 26px;
+  height: 26px;
+}
