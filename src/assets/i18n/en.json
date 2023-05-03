@@ -211,7 +211,8 @@
     "accountIsNotActivated": "Account is not activated. Please, check your email.",
     "unknownLoginRequestError": "Unknown error occurred during log in. Please, try again later.",
     "userWithSuchEmailAlreadyExists": "User with such email already exists.",
-    "unknownSignupRequestError": "Unknown error occurred during sign up. Please, try again later."
+    "unknownSignupRequestError": "Unknown error occurred during sign up. Please, try again later.",
+    "unknownApplicationDeleteError": "Unknown error occurred during application delete. Please, try again later."
   },
   "helpTitles": {
     "clear": "Clear",
@@ -220,7 +221,8 @@
     "swapLocations": "Swap locations",
     "closeDialog": "Close dialog",
     "addPhoneNumber": "Add phone number",
-    "removePhoneNumber": "Remove phone number"
+    "removePhoneNumber": "Remove phone number",
+    "delete": "Delete"
   },
   "controlLabel": {
     "email": "Email",

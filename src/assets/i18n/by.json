@@ -211,16 +211,18 @@
     "accountIsNotActivated": "Акаўнт не актываваны. Калі ласка, праверце сваю электронную пошту.",
     "unknownLoginRequestError": "Невадомая памылка ўвахода ў сістэму. Калі ласка, паўтарыце спробу пазней.",
     "userWithSuchEmailAlreadyExists": "Карыстач з такой электроннай поштай ужо існуе.",
-    "unknownSignupRequestError": "Невадомая памылка рэгістрацыі ў сістэме. Калі ласка, паўтарыце спробу пазней."
+    "unknownSignupRequestError": "Невадомая памылка рэгістрацыі ў сістэме. Калі ласка, паўтарыце спробу пазней.",
+    "unknownApplicationDeleteError": "Невядомая памылка выдалення заяўкі. Калі ласка, паўтарыце спробу пазней."
   },
   "helpTitles": {
-    "clear": "Ачыцсціць",
+    "clear": "Ачысціць",
     "selectDates": "Абраць даты",
     "leaveFeedback": "Пакінуць зваротную сувязь",
     "swapLocations": "Памяняць размяшчэнні месцамі",
     "closeDialog": "Закрыць дыялог",
     "addPhoneNumber": "Дадаць нумар тэлефону",
-    "removePhoneNumber": "Выдаліць нумар тэлефону"
+    "removePhoneNumber": "Выдаліць нумар тэлефону",
+    "delete": "Выдаліць"
   },
   "controlLabel": {
     "email": "Электронная пошта",
