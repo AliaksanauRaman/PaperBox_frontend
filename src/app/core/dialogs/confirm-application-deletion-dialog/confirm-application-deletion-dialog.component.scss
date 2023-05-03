@@ -1,0 +1,73 @@
+@import "../../../styles/scss-variables";
+
+:host {
+  display: block;
+}
+
+.confirm-application-deletion-dialog {
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  flex-shrink: 0;
+  margin-bottom: 30px;
+  padding: 0 16px;
+  color: var(--error-color);
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.man-with-phone-mobile-image {
+  display: block;
+  align-self: center;
+  flex-shrink: 0;
+  width: 146px;
+  height: 133px;
+  margin-bottom: 30px;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.actions__item {
+  flex-shrink: 0;
+
+  &:not(:last-child) {
+    margin-bottom: 16px;
+  }
+}
+
+.man-with-phone-desktop-image {
+  display: none;
+}
+
+@media (min-width: $minLaptopScreenWidth) {
+  .content-container {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .man-with-phone-mobile-image {
+    display: none;
+  }
+
+  .actions {
+    width: 200px;
+  }
+
+  .man-with-phone-desktop-image {
+    display: block;
+    flex-shrink: 0;
+    width: 178px;
+    height: 161px;
+    margin-left: 50px;
+  }
+}
