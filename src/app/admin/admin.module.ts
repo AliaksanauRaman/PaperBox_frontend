@@ -30,18 +30,7 @@ import { AdminSettingsPageComponent } from './pages/admin-settings-page/admin-se
 import { AdminLoginCardComponent } from './components/admin-login-card/admin-login-card.component';
 import { AdminHelpOffersPageComponent } from './pages/admin-help-offers-page/admin-help-offers-page.component';
 import { AdminWorkPageLayoutComponent } from './layouts/admin-work-page-layout/admin-work-page-layout.component';
-import { AdminHelpOffersGridComponent } from './components/admin-help-offers-grid/admin-help-offers-grid.component';
-import { AdminHelpOfferCardComponent } from './components/admin-help-offer-card/admin-help-offer-card.component';
-import { AdminHelpOfferStatusComponent } from './components/admin-help-offer-status/admin-help-offer-status.component';
-import { AdminHelpOfferDetailsComponent } from './components/admin-help-offer-details/admin-help-offer-details.component';
-import { AdminDeletedHelpOfferDialogViewComponent } from './components/admin-deleted-help-offer-dialog-view/admin-deleted-help-offer-dialog-view.component';
-import { AdminFullHelpRequestsListComponent } from './components/admin-full-help-requests-list/admin-full-help-requests-list.component';
 import { AdminFullApplicationsTableComponent } from './components/admin-full-applications-table/admin-full-applications-table.component';
-import { AdminManageHelpOfferDialogComponent } from './dialogs/admin-manage-help-offer-dialog/admin-manage-help-offer-dialog.component';
-
-import { AdminHelpOffersHttpService } from './services/admin-help-offers-http.service';
-import { AdminHelpOffersService } from './services/admin-help-offers.service';
-import { AdminEventsProcessorService } from './services/admin-events-processor.service';
 
 @NgModule({
   imports: [
@@ -76,27 +65,9 @@ import { AdminEventsProcessorService } from './services/admin-events-processor.s
     AdminUsersPageComponent,
     AdminSettingsPageComponent,
     AdminWorkPageLayoutComponent,
-    AdminHelpOffersGridComponent,
-    AdminHelpOfferCardComponent,
-    AdminHelpOfferStatusComponent,
-    AdminHelpOfferDetailsComponent,
-    AdminDeletedHelpOfferDialogViewComponent,
-    AdminFullHelpRequestsListComponent,
     AdminFullApplicationsTableComponent,
-    AdminManageHelpOfferDialogComponent,
   ],
-  providers: [
-    AdminHelpOffersHttpService,
-    AdminHelpOffersService,
-    AdminEventsProcessorService,
-  ],
+  providers: [],
   exports: [],
 })
-export class AdminModule {
-  // TODO: Probably it must be deleted
-  constructor(
-    private readonly adminEventsProcessorService: AdminEventsProcessorService
-  ) {
-    this.adminEventsProcessorService.setUpProcessors();
-  }
-}
+export class AdminModule {}
