@@ -3,6 +3,8 @@ import {
   Component,
   ViewChild,
   Input,
+  Output,
+  EventEmitter,
 } from '@angular/core';
 
 import { FoldableComponent } from '../../../shared/components/foldable/foldable.component';
@@ -10,7 +12,7 @@ import { HoverableDirective } from '../../../shared/directives/hoverable/hoverab
 
 import { AppLocaleService } from '../../../core/services/app-locale.service';
 
-import { PublishedHelpOfferType } from './../../../shared/types/published-help-offer.type';
+import { PublishedHelpOfferType } from '../../../shared/types/published-help-offer.type';
 
 @Component({
   selector: 'app-help-offers-list-item',
@@ -23,6 +25,24 @@ export class HelpOffersListItemComponent {
   public set publishedHelpOffer(value: PublishedHelpOfferType) {
     this._publishedHelpOffer = value;
   }
+
+  @Input()
+  public set showActions(value: boolean) {
+    this._showActions = value;
+  }
+
+  @Input()
+  public set actionsDisabled(value: boolean) {
+    this._actionsDisabled = value;
+  }
+
+  @Input()
+  public set deletionInProgress(value: boolean) {
+    this._deletionInProgress = value;
+  }
+
+  @Output()
+  public readonly deleteClick = new EventEmitter<void>();
 
   @ViewChild(FoldableComponent)
   private readonly foldableComponentRef?: FoldableComponent;
@@ -46,11 +66,14 @@ export class HelpOffersListItemComponent {
     return this.hoverableDirectiveRef.isHovered;
   }
 
-  public _publishedHelpOffer?: PublishedHelpOfferType;
+  protected _publishedHelpOffer?: PublishedHelpOfferType;
+  protected _showActions = false;
+  protected _actionsDisabled = false;
+  protected _deletionInProgress = false;
 
   constructor(protected readonly _localeService: AppLocaleService) {}
 
-  public handleCardClick(): void {
+  protected handleCardClick(): void {
     if (this.foldableComponentRef === undefined) {
       throw new Error(`Foldable component ref is not defined!`);
     }
@@ -65,5 +88,11 @@ export class HelpOffersListItemComponent {
     } else {
       this.foldableComponentRef.unfold();
     }
+  }
+
+  protected handleDeleteButtonClick(event: MouseEvent): void {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    this.deleteClick.emit();
   }
 }
