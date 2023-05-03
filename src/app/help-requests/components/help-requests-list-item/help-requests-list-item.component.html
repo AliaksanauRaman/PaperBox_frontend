@@ -3,9 +3,11 @@
     class="help-requests-list-item app-list-card"
     [class.app-list-card--hovered]="isHovered"
     [class.app-list-card--unfolded]="isUnfolded"
+    [class.app-list-card--deletion-in-progress]="_deletionInProgress"
     matRipple
     [matRippleAnimation]="{ enterDuration: 450 }"
     appHoverable
+    [disabled]="_deletionInProgress"
     (click)="handleCardClick()"
   >
     <ng-container staticPart>
@@ -50,40 +52,46 @@
     </ng-container>
 
     <ng-container foldablePart>
-      <div class="details-part">
-        <app-list-card-comment
-          class="comment"
-          [text]="_publishedHelpRequest.comment"
-        >
-        </app-list-card-comment>
+      <app-list-card-comment
+        class="comment"
+        [text]="_publishedHelpRequest.comment"
+      >
+      </app-list-card-comment>
 
-        <div class="phones">
-          <div class="phones__label">
-            <span>{{ "components.listCard.phones" | translate }}</span>
-          </div>
-
-          <div class="phones__list">
-            <a
-              class="phones__list-item"
-              *ngFor="let phone of _publishedHelpRequest.phones"
-              [href]="phone | buildPhoneHref"
-              (click)="$event.stopImmediatePropagation()"
-            >
-              <span>{{ phone | viewPhone }}</span>
-            </a>
-          </div>
+      <div class="phones">
+        <div class="phones__label">
+          <span>{{ "components.listCard.phones" | translate }}</span>
         </div>
 
-        <div class="public-id">
-          <div class="public-id__label">
-            <span>{{ "components.listCard.applicationId" | translate }}</span>
-          </div>
-
-          <div class="public-id__value">
-            <span>{{ _publishedHelpRequest.publicId }}</span>
-          </div>
+        <div class="phones__list">
+          <a
+            class="phones__list-item"
+            *ngFor="let phone of _publishedHelpRequest.phones"
+            [href]="phone | buildPhoneHref"
+            (click)="$event.stopImmediatePropagation()"
+          >
+            <span>{{ phone | viewPhone }}</span>
+          </a>
         </div>
       </div>
-    </ng-container></app-foldable
-  >
+
+      <div class="public-id">
+        <div class="public-id__label">
+          <span>{{ "components.listCard.applicationId" | translate }}</span>
+        </div>
+
+        <div class="public-id__value">
+          <span>{{ _publishedHelpRequest.publicId }}</span>
+        </div>
+      </div>
+
+      <app-delete-button
+        class="app-list-card__delete-button"
+        *ngIf="true"
+        [disabled]="_actionsDisabled"
+        (innerClick)="handleDeleteButtonClick($event)"
+      >
+      </app-delete-button>
+    </ng-container>
+  </app-foldable>
 </ng-container>

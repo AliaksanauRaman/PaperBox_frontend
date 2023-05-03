@@ -3,6 +3,8 @@ import {
   Component,
   Input,
   ViewChild,
+  Output,
+  EventEmitter,
 } from '@angular/core';
 
 import { FoldableComponent } from '../../../shared/components/foldable/foldable.component';
@@ -23,6 +25,24 @@ export class HelpRequestsListItemComponent {
   public set publishedHelpRequest(value: PublishedHelpRequestType) {
     this._publishedHelpRequest = value;
   }
+
+  @Input()
+  public set showActions(value: boolean) {
+    this._showActions = value;
+  }
+
+  @Input()
+  public set actionsDisabled(value: boolean) {
+    this._actionsDisabled = value;
+  }
+
+  @Input()
+  public set deletionInProgress(value: boolean) {
+    this._deletionInProgress = value;
+  }
+
+  @Output()
+  public readonly deleteClick = new EventEmitter<void>();
 
   @ViewChild(FoldableComponent)
   private readonly foldableComponentRef?: FoldableComponent;
@@ -46,11 +66,14 @@ export class HelpRequestsListItemComponent {
     return this.hoverableDirectiveRef.isHovered;
   }
 
-  public _publishedHelpRequest?: PublishedHelpRequestType;
+  protected _publishedHelpRequest?: PublishedHelpRequestType;
+  protected _showActions = false;
+  protected _actionsDisabled = false;
+  protected _deletionInProgress = false;
 
   constructor(protected readonly _localeService: AppLocaleService) {}
 
-  public handleCardClick(): void {
+  protected handleCardClick(): void {
     if (this.foldableComponentRef === undefined) {
       throw new Error(`Foldable component ref is not defined!`);
     }
@@ -65,5 +88,11 @@ export class HelpRequestsListItemComponent {
     } else {
       this.foldableComponentRef.unfold();
     }
+  }
+
+  protected handleDeleteButtonClick(event: MouseEvent): void {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    this.deleteClick.emit();
   }
 }
