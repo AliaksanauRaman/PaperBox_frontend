@@ -1,5 +1,5 @@
 {
-  "aboutUs": {
+  "aboutService": {
     "firstSectionContent": "<span class=\"highlight\">Pushka</span><span class=\"greyed-out\">(i.e. cardboard box)</span> - it's a cardboard or wooden box for packing packages. But we pack \"peradachki\" more often than simple packages. *Peradachki are packages that family members send to each other. They can contain different dishes, sweets, cute things, etc.",
     "secondSectionContent": "Inspired, full of love and desire to do something that will help send and receive \"peradachki\", <span class=\"highlight\">Pushka</span> was created. The service which aids you to connect those who need to transmit something with those who is able to do that.",
     "thirdSectionContent": "<span class=\"highlight\">The main goal</span> wasn't only to make it possible to avoid searching through chats, acquaintances, friends and friends of friends, but also to make the search and offer process as simple as possible. So that it does not take much time and energy.",
@@ -253,7 +253,7 @@
     "signup": "Sign up",
     "gladToHelp": "Glad to help!",
     "mainPage": "Main page",
-    "aboutUs": "About us",
+    "aboutService": "About service",
     "accountMenu": "Account menu"
   },
   "personalDataAgreementText": "I agree to the processing and storage of my personal data",
