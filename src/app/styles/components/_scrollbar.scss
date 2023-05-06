@@ -1,6 +1,9 @@
 @import "../scss-variables";
 
 @mixin scrollbar {
+  scrollbar-color: var(--grey-color) transparent;
+  scrollbar-width: thin;
+
   &::-webkit-scrollbar {
     width: 8px;
   }
