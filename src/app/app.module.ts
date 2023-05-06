@@ -18,6 +18,7 @@ import { AppComponent } from './app.component';
 import { UserTokenStorageService } from './core/services/user-token-storage.service';
 import { UserTokenEntityService } from './shared/services/user-token-entity.service';
 import { UserService } from './shared/services/user.service';
+import { ImagesService } from './shared/services/images.service';
 
 import { API_URL, API_URL_VALUE } from './shared/dependencies/api-url';
 import { translateLoaderFactory } from './core/factories/translate-loader.factory';
@@ -49,7 +50,12 @@ import { initAppFactory } from './init-app.factory';
     {
       provide: APP_INITIALIZER,
       useFactory: initAppFactory,
-      deps: [UserTokenStorageService, UserTokenEntityService, UserService],
+      deps: [
+        UserTokenStorageService,
+        UserTokenEntityService,
+        UserService,
+        ImagesService,
+      ],
       multi: true,
     },
     {
