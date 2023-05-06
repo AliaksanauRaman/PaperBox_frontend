@@ -1,7 +1,7 @@
-<app-white-square-button [matTooltip]="'button.aboutService' | translate">
-  <img
-    [style.width.px]="26"
-    [style.height.px]="26"
-    src="/assets/images/info_button.png"
-  />
-</app-white-square-button>
+<button
+  #aboutButtonRef
+  class="about-button"
+  [matTooltip]="'button.aboutService' | translate"
+  matRipple
+  type="button"
+></button>
