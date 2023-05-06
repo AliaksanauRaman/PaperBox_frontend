@@ -35,6 +35,7 @@ export class PrimaryButtonComponent {
   }
 
   @Input()
+  // TODO: Unused
   public set isDanger(value: boolean) {
     this._isDanger = value;
   }

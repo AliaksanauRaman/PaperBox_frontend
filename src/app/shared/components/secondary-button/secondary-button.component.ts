@@ -7,4 +7,5 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
 })
+// TODO: Unused
 export class SecondaryButtonComponent {}
