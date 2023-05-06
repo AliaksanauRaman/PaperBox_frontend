@@ -58,14 +58,14 @@
       >
       </app-list-card-comment>
 
-      <div class="phones">
-        <div class="phones__label">
+      <div class="app-list-card__phones">
+        <div class="app-list-card__phones-label">
           <span>{{ "components.listCard.phones" | translate }}</span>
         </div>
 
-        <div class="phones__list">
+        <div class="app-list-card__phones-list">
           <a
-            class="phones__list-item"
+            class="app-list-card__phones-list-item"
             *ngFor="let phone of _publishedHelpRequest.phones"
             [href]="phone | buildPhoneHref"
             (click)="$event.stopImmediatePropagation()"

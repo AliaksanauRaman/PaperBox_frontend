@@ -1,4 +1,4 @@
-@import '../scss-variables';
+@import "../scss-variables";
 
 .app-list-card {
   cursor: pointer;
@@ -23,6 +23,36 @@
   }
 }
 
+.app-list-card__phones {
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.app-list-card__phones-label {
+  flex-shrink: 0;
+  width: 50%;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--grey-color);
+}
+
+.app-list-card__phones-list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex-grow: 1;
+}
+
+.app-list-card__phones-list-item {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--primary-color);
+
+  &:not(:last-child) {
+    margin-bottom: 6px;
+  }
+}
+
 .app-list-card__delete-button {
   margin-top: 20px;
 }
@@ -35,6 +65,23 @@
       .app-list-card__delete-button {
         opacity: 1;
       }
+    }
+  }
+
+  .app-list-card__phones-label {
+    width: auto;
+    margin-right: 5px;
+    font-size: 1.1rem;
+  }
+
+  .app-list-card__phones-list {
+    flex-direction: row;
+  }
+
+  .app-list-card__phones-list-item {
+    &:not(:last-child) {
+      margin-bottom: 0;
+      margin-right: 5px;
     }
   }
 

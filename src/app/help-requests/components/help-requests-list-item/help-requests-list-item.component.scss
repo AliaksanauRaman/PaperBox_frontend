@@ -82,36 +82,6 @@
   line-height: 16px;
 }
 
-.phones {
-  display: flex;
-  margin-bottom: 8px;
-}
-
-.phones__label {
-  flex-shrink: 0;
-  width: 50%;
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--grey-color);
-}
-
-.phones__list {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  flex-grow: 1;
-}
-
-.phones__list-item {
-  font-size: 0.9rem;
-  font-weight: 500;
-  color: var(--primary-color);
-
-  &:not(:last-child) {
-    margin-bottom: 6px;
-  }
-}
-
 .public-id {
   display: flex;
 }
@@ -174,25 +144,6 @@
   .comment {
     margin-bottom: 30px;
     font-size: 1.1rem;
-  }
-
-  .phones__label {
-    width: auto;
-    margin-right: 5px;
-    font-size: 1.1rem;
-  }
-
-  .phones__list {
-    flex-direction: row;
-  }
-
-  .phones__list-item {
-    font-size: 1rem;
-
-    &:not(:last-child) {
-      margin-bottom: 0;
-      margin-right: 5px;
-    }
   }
 
   .public-id__label {
