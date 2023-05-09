@@ -4,6 +4,7 @@ import {
   OnDestroy,
   OnInit,
   ChangeDetectorRef,
+  Inject,
 } from '@angular/core';
 import {
   BehaviorSubject,
@@ -14,8 +15,14 @@ import {
   filter,
 } from 'rxjs';
 
-import { GetPublishedHelpOffersService } from '../../services/get-published-help-offers.service';
-import { DeleteHelpOfferHttpService } from '../../services/delete-help-offer-http.service';
+import {
+  GET_PUBLISHED_APPLICATIONS_STATE_SERVICE,
+  GetPublishedApplicationsStateService,
+} from '../../dependencies/get-published-applications-state-service';
+import {
+  DELETE_APPLICATION_STATE_SERVICE,
+  DeleteApplicationStateService,
+} from '../../dependencies/delete-application-state-service';
 import { ConfirmApplicationDeletionDialogService } from '../../../core/services/confirm-application-deletion-dialog.service';
 import { ErrorNotificationService } from '../../../core/services/error-notification.service';
 import { UserService } from '../../../shared/services/user.service';
@@ -27,7 +34,6 @@ import { SuccessResponseState } from '../../../shared/classes/success-response-s
   selector: 'app-applications-list',
   templateUrl: './applications-list.component.html',
   styleUrls: ['./applications-list.component.scss'],
-  providers: [GetPublishedHelpOffersService, DeleteHelpOfferHttpService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ApplicationsListComponent
@@ -39,7 +45,7 @@ export class ApplicationsListComponent
   >([]);
 
   protected readonly _templateContext$ = combineLatest([
-    this._getPublishedHelpOffersService.state$,
+    this._getPublishedApplications.state$,
     this._deletedHelpOffersIds$.asObservable(),
     this._userService.value$,
   ]).pipe(
@@ -65,8 +71,10 @@ export class ApplicationsListComponent
   protected _deletingHelpOfferId: number | null = null;
 
   constructor(
-    private readonly _getPublishedHelpOffersService: GetPublishedHelpOffersService,
-    private readonly _deleteHelpOfferHttpService: DeleteHelpOfferHttpService,
+    @Inject(GET_PUBLISHED_APPLICATIONS_STATE_SERVICE)
+    private readonly _getPublishedApplications: GetPublishedApplicationsStateService,
+    @Inject(DELETE_APPLICATION_STATE_SERVICE)
+    private readonly _deleteApplication: DeleteApplicationStateService,
     private readonly _confirmApplicationDeletionDialogService: ConfirmApplicationDeletionDialogService,
     private readonly _errorNotificationService: ErrorNotificationService,
     private readonly _userService: UserService,
@@ -76,18 +84,18 @@ export class ApplicationsListComponent
   }
 
   public ngOnInit(): void {
-    this._getPublishedHelpOffersService.performRequest();
+    this._getPublishedApplications.performRequest();
     this.subToDeleteHelpOfferStateChanges();
   }
 
   public override ngOnDestroy(): void {
     super.ngOnDestroy();
-    this._getPublishedHelpOffersService.destroyRequest();
-    this._deleteHelpOfferHttpService.destroyRequest();
+    this._getPublishedApplications.destroyRequest();
+    this._deleteApplication.destroyRequest();
   }
 
   protected handleReloadClick(): void {
-    this._getPublishedHelpOffersService.performRequest();
+    this._getPublishedApplications.performRequest();
   }
 
   protected handleHelpOfferListItemDeleteClick(helpOfferId: number): void {
@@ -97,7 +105,7 @@ export class ApplicationsListComponent
         filter((isConfirmed) => isConfirmed),
         tap(() => {
           this._deletingHelpOfferId = helpOfferId;
-          this._deleteHelpOfferHttpService.performRequest(helpOfferId);
+          this._deleteApplication.performRequest(helpOfferId);
         }),
         takeUntil(this.destroy$)
       )
@@ -105,7 +113,7 @@ export class ApplicationsListComponent
   }
 
   private subToDeleteHelpOfferStateChanges(): void {
-    this._deleteHelpOfferHttpService.state$
+    this._deleteApplication.state$
       .pipe(
         tap((state) => {
           if (state.data !== null) {
