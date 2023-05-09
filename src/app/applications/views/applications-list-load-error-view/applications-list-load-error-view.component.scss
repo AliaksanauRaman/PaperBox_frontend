@@ -1,0 +1,62 @@
+@import "../../../styles/scss-variables";
+
+:host {
+  display: block;
+}
+
+.applications-list-load-error-view {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+
+.title {
+  color: var(--error-color);
+  margin-bottom: 30px;
+}
+
+.image {
+  display: block;
+  margin-bottom: 30px;
+
+  &.image--mobile {
+    width: 121px;
+    height: 110px;
+  }
+
+  &.image--desktop {
+    display: none;
+  }
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.actions__item {
+  width: 100%;
+  max-width: 280px;
+}
+
+@media (min-width: $minLaptopScreenWidth) {
+  .image {
+    &.image--mobile {
+      display: none;
+    }
+
+    &.image--desktop {
+      display: block;
+      width: 170px;
+      height: 155px;
+    }
+  }
+
+  .actions__item {
+    max-width: 515px;
+  }
+}
