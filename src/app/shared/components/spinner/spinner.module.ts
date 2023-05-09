@@ -8,4 +8,5 @@ import { SpinnerComponent } from './spinner.component';
   providers: [],
   exports: [SpinnerComponent],
 })
+// TODO: Make a standalone component
 export class SpinnerModule {}

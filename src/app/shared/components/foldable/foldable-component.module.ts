@@ -8,4 +8,5 @@ import { FoldableComponent } from './foldable.component';
   providers: [],
   exports: [FoldableComponent],
 })
+// TODO: Make a standalone component
 export class FoldableComponentModule {}

@@ -8,4 +8,5 @@ import { ArrowDownIconComponent } from './arrow-down-icon.component';
   providers: [],
   exports: [ArrowDownIconComponent],
 })
+// TODO: Make a standalone component
 export class ArrowDownIconModule {}

@@ -10,4 +10,5 @@ import { ListCardCommentComponent } from './list-card-comment.component';
   providers: [],
   exports: [ListCardCommentComponent],
 })
+// TODO: Make a standalone component
 export class ListCardCommentComponentModule {}
