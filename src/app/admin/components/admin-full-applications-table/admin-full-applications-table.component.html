@@ -14,16 +14,14 @@
   <ng-container [matColumnDef]="Column.LOCATION_FROM">
     <th mat-header-cell *matHeaderCellDef>Location from</th>
     <td mat-cell *matCellDef="let element">
-      {{
-        element.locationFrom | laconicPlaceLabelFromLocationValue | translate
-      }}
+      {{ element.locationFrom | locationLabel | translate }}
     </td>
   </ng-container>
 
   <ng-container [matColumnDef]="Column.LOCATION_TO">
     <th mat-header-cell *matHeaderCellDef>Location to</th>
     <td mat-cell *matCellDef="let element">
-      {{ element.locationTo | laconicPlaceLabelFromLocationValue | translate }}
+      {{ element.locationTo | locationLabel | translate }}
     </td>
   </ng-container>
 
