@@ -2,11 +2,11 @@
   display: block;
 }
 
-.foldable {
+.fold {
   display: flex;
   flex-direction: column;
 
-  &.foldable--disabled {
+  &.fold--disabled {
     pointer-events: none;
     user-select: none;
 

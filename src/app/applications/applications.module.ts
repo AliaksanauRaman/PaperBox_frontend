@@ -4,7 +4,7 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatRippleModule } from '@angular/material/core';
 
-import { FoldableComponentModule } from '../shared/components/foldable/foldable-component.module';
+import { FoldComponent } from '../shared/components/fold/fold.component';
 import { ListCardCommentComponentModule } from '../shared/components/list-card-comment/list-card-comment-component.module';
 import { SpinnerModule } from '../shared/components/spinner/spinner.module';
 import { ArrowDownIconModule } from '../shared/icons/arrow-down-icon/arrow-down-icon.module';
@@ -27,7 +27,7 @@ import { ApplicationsListItemComponent } from './components/applications-list-it
     AngularSvgIconModule,
     TranslateModule,
     MatRippleModule,
-    FoldableComponentModule,
+    FoldComponent,
     ListCardCommentComponentModule,
     SpinnerModule,
     ArrowDownIconModule,

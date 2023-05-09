@@ -1,6 +1,6 @@
 <ng-container *ngIf="_publishedApplication">
   <!-- TODO: Remove app-list-card class and related ones -->
-  <app-foldable
+  <app-fold
     class="applications-list-item app-list-card"
     [class.app-list-card--hovered]="isHovered"
     [class.app-list-card--unfolded]="isUnfolded"
@@ -89,5 +89,5 @@
       >
       </app-delete-button>
     </ng-container>
-  </app-foldable>
+  </app-fold>
 </ng-container>

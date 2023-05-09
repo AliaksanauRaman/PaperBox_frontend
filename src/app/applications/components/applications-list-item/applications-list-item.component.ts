@@ -7,7 +7,7 @@ import {
   EventEmitter,
 } from '@angular/core';
 
-import { FoldableComponent } from '../../../shared/components/foldable/foldable.component';
+import { FoldComponent } from '../../../shared/components/fold/fold.component';
 import { HoverDirective } from '../../../shared/directives/hover.directive';
 
 import { AppLocaleService } from '../../../core/services/app-locale.service';
@@ -44,18 +44,18 @@ export class ApplicationsListItemComponent {
   @Output()
   public readonly deleteClick = new EventEmitter<void>();
 
-  @ViewChild(FoldableComponent)
-  private readonly _foldableComponentRef?: FoldableComponent;
+  @ViewChild(FoldComponent)
+  private readonly _foldRef?: FoldComponent;
 
   @ViewChild(HoverDirective)
   private readonly _hover?: HoverDirective;
 
   public get isUnfolded(): boolean {
-    if (this._foldableComponentRef === undefined) {
+    if (this._foldRef === undefined) {
       return false;
     }
 
-    return this._foldableComponentRef.isUnfolded;
+    return this._foldRef.isUnfolded;
   }
 
   public get isHovered(): boolean {
@@ -74,7 +74,7 @@ export class ApplicationsListItemComponent {
   constructor(protected readonly _localeService: AppLocaleService) {}
 
   protected handleCardClick(): void {
-    if (this._foldableComponentRef === undefined) {
+    if (this._foldRef === undefined) {
       throw new Error(`Foldable component ref is not defined!`);
     }
 
@@ -83,10 +83,10 @@ export class ApplicationsListItemComponent {
     }
 
     if (this.isUnfolded) {
-      this._foldableComponentRef.fold();
+      this._foldRef.fold();
       this._hover.unhover();
     } else {
-      this._foldableComponentRef.unfold();
+      this._foldRef.unfold();
     }
   }
 

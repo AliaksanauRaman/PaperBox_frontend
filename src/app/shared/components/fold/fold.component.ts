@@ -14,34 +14,35 @@ const PADDING = 20;
 const MARGIN = 22;
 
 @Component({
-  selector: 'app-foldable',
-  templateUrl: './foldable.component.html',
-  styleUrls: ['./foldable.component.scss'],
+  selector: 'app-fold',
+  templateUrl: './fold.component.html',
+  styleUrls: ['./fold.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
 })
-export class FoldableComponent implements AfterViewInit {
+export class FoldComponent implements AfterViewInit {
   @Input()
   public set disabled(value: boolean) {
     this._disabled = value;
   }
 
   @ViewChild('staticPart')
-  private readonly staticPartElementRef!: ElementRef<HTMLElement>;
+  private readonly _staticPartElementRef!: ElementRef<HTMLElement>;
 
   @ViewChild('foldablePart')
-  private readonly foldablePartElementRef!: ElementRef<HTMLElement>;
+  private readonly _foldablePartElementRef!: ElementRef<HTMLElement>;
 
   public get isUnfolded(): boolean {
     return this._isUnfolded;
   }
 
-  private _isUnfolded = false;
   protected _disabled = false;
+  private _isUnfolded = false;
 
   constructor(
-    private readonly elementRef: ElementRef<HTMLElement>,
-    private readonly renderer2: Renderer2,
-    private readonly cdRef: ChangeDetectorRef
+    private readonly _elementRef: ElementRef<HTMLElement>,
+    private readonly _renderer2: Renderer2,
+    private readonly _cdRef: ChangeDetectorRef
   ) {}
 
   public ngAfterViewInit(): void {
@@ -51,28 +52,28 @@ export class FoldableComponent implements AfterViewInit {
   public fold(): void {
     this._isUnfolded = false;
     this.showOnlyStaticPart();
-    this.cdRef.markForCheck();
+    this._cdRef.markForCheck();
   }
 
   public unfold(): void {
     this._isUnfolded = true;
     this.showStaticAndFoldableParts();
-    this.cdRef.markForCheck();
+    this._cdRef.markForCheck();
   }
 
   private getStaticPartElement(): HTMLElement {
-    return this.staticPartElementRef.nativeElement;
+    return this._staticPartElementRef.nativeElement;
   }
 
   private getFoldablePartElement(): HTMLElement {
-    return this.foldablePartElementRef.nativeElement;
+    return this._foldablePartElementRef.nativeElement;
   }
 
   private showOnlyStaticPart(): void {
     const newHeight =
       PADDING + this.getStaticPartElement().scrollHeight + PADDING;
-    this.renderer2.setStyle(
-      this.elementRef.nativeElement,
+    this._renderer2.setStyle(
+      this._elementRef.nativeElement,
       'height',
       `${newHeight}px`
     );
@@ -85,8 +86,8 @@ export class FoldableComponent implements AfterViewInit {
       MARGIN +
       this.getFoldablePartElement().scrollHeight +
       PADDING;
-    this.renderer2.setStyle(
-      this.elementRef.nativeElement,
+    this._renderer2.setStyle(
+      this._elementRef.nativeElement,
       'height',
       `${newHeight}px`
     );
