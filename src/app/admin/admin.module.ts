@@ -18,7 +18,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { HttpErrorResponseCardModule } from '../shared/components/http-error-response-card/http-error-response-card.module';
-import { HttpErrorMessagePipeModule } from '../shared/pipes/http-error-message/http-error-message-pipe.module';
 import { LaconicPlaceLabelFromLocationValuePipeModule } from '../shared/pipes/laconic-place-label-from-location-value/laconic-place-label-from-location-value-pipe.module';
 import { DatesPipe } from './../shared/pipes/dates.pipe';
 import { AdminRoutingModule } from './admin-routing.module';
@@ -52,7 +51,6 @@ import { AdminFullApplicationsTableComponent } from './components/admin-full-app
     MatMenuModule,
     MatTooltipModule,
     HttpErrorResponseCardModule,
-    HttpErrorMessagePipeModule,
     LaconicPlaceLabelFromLocationValuePipeModule,
     DatesPipe,
     AdminRoutingModule,
