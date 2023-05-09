@@ -9,6 +9,8 @@ import { NotFoundPageComponent } from './core/pages/not-found-page/not-found-pag
 
 import { LoggedOutUserGuard } from './core/guards/logged-out-user.guard';
 
+import { Page } from './shared/enums/page.enum';
+
 const routes: Routes = [
   {
     path: 'admin',
@@ -27,15 +29,15 @@ const routes: Routes = [
           {
             path: '',
             pathMatch: 'full',
-            redirectTo: '/help-offers',
+            redirectTo: `/${Page.HELP_OFFERS}`,
           },
           {
-            path: 'help-offers',
+            path: Page.HELP_OFFERS,
             title: 'Pushka | Help Offers',
             component: HelpOffersPageComponent,
           },
           {
-            path: 'help-requests',
+            path: Page.HELP_REQUESTS,
             title: 'Pushka | Looking for help',
             component: HelpRequestsPageComponent,
           },
@@ -48,7 +50,7 @@ const routes: Routes = [
           import('./login/login.module').then((m) => m.LoginModule),
       },
       {
-        path: 'not-found',
+        path: Page.NOT_FOUND,
         title: 'Pushka | 404',
         component: NotFoundPageComponent,
       },
@@ -56,7 +58,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '/not-found',
+    redirectTo: `/${Page.NOT_FOUND}`,
   },
 ];
 
