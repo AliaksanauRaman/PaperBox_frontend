@@ -1,4 +1,4 @@
-import { PhoneType } from '../../shared/types/phone.type';
+import { PhoneListType } from '../../shared/types/phone.type';
 
 export type PublishedApplicationType = Readonly<{
   id: number;
@@ -8,7 +8,9 @@ export type PublishedApplicationType = Readonly<{
   locationTo: string;
   comment: string;
   fullName: string;
-  phones: ReadonlyArray<PhoneType>;
+  phones: PhoneListType;
   startDate: Date;
   endDate: Date | null;
 }>;
+export type PublishedApplicationListType =
+  ReadonlyArray<PublishedApplicationType>;
