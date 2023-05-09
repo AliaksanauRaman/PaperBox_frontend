@@ -31,7 +31,6 @@ import { ManWithGlobeDesktopImageComponent } from '../shared/images/man-with-glo
 import { ToolbarComponent } from '../shared/components/toolbar/toolbar.component';
 import { FooterComponent } from '../shared/components/footer/footer.component';
 import { PrimaryButtonComponent } from '../shared/components/primary-button/primary-button.component';
-import { SecondaryButtonComponent } from '../shared/components/secondary-button/secondary-button.component';
 
 import { AppPageLayoutComponent } from './layouts/app-page-layout/app-page-layout.component';
 import { MainSectionLayoutComponent } from './layouts/main-section-layout/main-section-layout.component';
@@ -134,7 +133,6 @@ import {
     ToolbarComponent,
     FooterComponent,
     PrimaryButtonComponent,
-    SecondaryButtonComponent,
   ],
   declarations: [
     AppPageLayoutComponent,
