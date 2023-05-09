@@ -8,7 +8,7 @@ import {
 } from '@angular/core';
 
 import { FoldableComponent } from '../../../shared/components/foldable/foldable.component';
-import { HoverableDirective } from '../../../shared/directives/hoverable/hoverable.directive';
+import { HoverDirective } from '../../../shared/directives/hover.directive';
 
 import { AppLocaleService } from '../../../core/services/app-locale.service';
 
@@ -47,8 +47,8 @@ export class ApplicationsListItemComponent {
   @ViewChild(FoldableComponent)
   private readonly _foldableComponentRef?: FoldableComponent;
 
-  @ViewChild(HoverableDirective)
-  private readonly _hoverableDirectiveRef?: HoverableDirective;
+  @ViewChild(HoverDirective)
+  private readonly _hover?: HoverDirective;
 
   public get isUnfolded(): boolean {
     if (this._foldableComponentRef === undefined) {
@@ -59,11 +59,11 @@ export class ApplicationsListItemComponent {
   }
 
   public get isHovered(): boolean {
-    if (this._hoverableDirectiveRef === undefined) {
+    if (this._hover === undefined) {
       return false;
     }
 
-    return this._hoverableDirectiveRef.isHovered;
+    return this._hover.isHovered;
   }
 
   protected _publishedApplication?: PublishedApplicationType;
@@ -78,13 +78,13 @@ export class ApplicationsListItemComponent {
       throw new Error(`Foldable component ref is not defined!`);
     }
 
-    if (this._hoverableDirectiveRef === undefined) {
-      throw new Error(`Hoverable directive ref is not defined!`);
+    if (this._hover === undefined) {
+      throw new Error(`Hover directive ref is not defined!`);
     }
 
     if (this.isUnfolded) {
       this._foldableComponentRef.fold();
-      this._hoverableDirectiveRef.unhover();
+      this._hover.unhover();
     } else {
       this._foldableComponentRef.unfold();
     }
