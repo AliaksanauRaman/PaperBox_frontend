@@ -1,0 +1,39 @@
+<div class="applications-list">
+  <ng-container *ngIf="_templateContext$ | async as context">
+    <ng-container *ngIf="context.getPublishedHelpOffers.inProgress">
+      <div class="loading-view">
+        <app-spinner></app-spinner>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="context.getPublishedHelpOffers.data as data">
+      <ng-container *ngIf="data.length !== 0; else emptyListView">
+        <div class="content-view app-scrollbar">
+          <app-applications-list-item
+            class="list-item"
+            *ngFor="let item of data"
+            [publishedApplication]="item"
+            [showActions]="item.userId === context.user?.id"
+            [actionsDisabled]="_deletingHelpOfferId !== null"
+            [deletionInProgress]="item.id === _deletingHelpOfferId"
+            (deleteClick)="handleHelpOfferListItemDeleteClick(item.id)"
+          >
+          </app-applications-list-item>
+        </div>
+      </ng-container>
+    </ng-container>
+
+    <ng-container *ngIf="context.getPublishedHelpOffers.error as error">
+      <app-applications-list-load-error-view
+        class="error-view"
+        (reloadClick)="handleReloadClick()"
+      ></app-applications-list-load-error-view>
+    </ng-container>
+  </ng-container>
+</div>
+
+<ng-template #emptyListView>
+  <div class="empty-list-view">
+    <span>{{ "placeholders.emptyList" | translate }}</span>
+  </div>
+</ng-template>
