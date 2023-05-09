@@ -4,7 +4,7 @@
   height: 48px;
 }
 
-.app-spinner {
+.spinner {
   display: inline-block;
   width: inherit;
   height: inherit;
@@ -15,7 +15,7 @@
   border-radius: 50%;
   animation: rotation 1s linear infinite;
 
-  &.app-spinner--white-colored {
+  &.spinner--white-colored {
     border-color: var(--white-color);
     border-bottom-color: transparent;
   }
