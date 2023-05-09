@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AppPageLayoutComponent } from './core/layouts/app-page-layout/app-page-layout.component';
 import { MainSectionLayoutComponent } from './core/layouts/main-section-layout/main-section-layout.component';
+import { HelpOffersPageComponent } from './applications/pages/help-offers-page/help-offers-page.component';
+import { HelpRequestsPageComponent } from './applications/pages/help-requests-page/help-requests-page.component';
 import { NotFoundPageComponent } from './core/pages/not-found-page/not-found-page.component';
 
 import { LoggedOutUserGuard } from './core/guards/logged-out-user.guard';
@@ -30,18 +32,12 @@ const routes: Routes = [
           {
             path: 'help-offers',
             title: 'Pushka | Help Offers',
-            loadChildren: () =>
-              import('./help-offers/help-offers.module').then(
-                (m) => m.HelpOffersModule
-              ),
+            component: HelpOffersPageComponent,
           },
           {
             path: 'help-requests',
             title: 'Pushka | Looking for help',
-            loadChildren: () =>
-              import('./help-requests/help-requests.module').then(
-                (m) => m.HelpRequestsModule
-              ),
+            component: HelpRequestsPageComponent,
           },
         ],
       },
