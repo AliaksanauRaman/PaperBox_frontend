@@ -1,12 +1,12 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
-import { ActiveViewService } from '../../services/active-view.service';
+import { ActivePageService } from '../../services/active-page.service';
 import { CreateHelpOfferDialogService } from '../../services/create-help-offer-dialog.service';
 import { CreateHelpRequestDialogService } from '../../services/create-help-request-dialog.service';
 import { UserService } from '../../../shared/services/user.service';
 import { LoginOrSignupDialogService } from '../../services/login-or-signup-dialog.service';
 
-import { ViewName } from '../../../shared/enums/view-name.enum';
+import { Page } from '../../../shared/enums/page.enum';
 
 @Component({
   selector: 'app-actions',
@@ -15,30 +15,30 @@ import { ViewName } from '../../../shared/enums/view-name.enum';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ActionsComponent {
-  public readonly activeView$ = this.activeViewService.activeView$;
-  public readonly viewName = ViewName;
+  protected readonly _activePage$ = this._activePageService.value$;
+  protected readonly _Page = Page;
 
   constructor(
-    private readonly activeViewService: ActiveViewService,
-    private readonly createHelpOfferDialogService: CreateHelpOfferDialogService,
-    private readonly createHelpRequestDialogService: CreateHelpRequestDialogService,
+    private readonly _activePageService: ActivePageService,
+    private readonly _createHelpOfferDialogService: CreateHelpOfferDialogService,
+    private readonly _createHelpRequestDialogService: CreateHelpRequestDialogService,
     private readonly _userService: UserService,
-    private readonly loginOrSignupDialogService: LoginOrSignupDialogService
+    private readonly _loginOrSignupDialogService: LoginOrSignupDialogService
   ) {}
 
-  public handleOfferHelpButtonClick(): void {
+  protected handleOfferHelpButtonClick(): void {
     if (this._userService.isLoggedIn()) {
-      this.createHelpOfferDialogService.openDialog();
+      this._createHelpOfferDialogService.openDialog();
     } else {
-      this.loginOrSignupDialogService.openDialog();
+      this._loginOrSignupDialogService.openDialog();
     }
   }
 
-  public handleFindHelpButtonClick(): void {
+  protected handleFindHelpButtonClick(): void {
     if (this._userService.isLoggedIn()) {
-      this.createHelpRequestDialogService.openDialog();
+      this._createHelpRequestDialogService.openDialog();
     } else {
-      this.loginOrSignupDialogService.openDialog();
+      this._loginOrSignupDialogService.openDialog();
     }
   }
 }
