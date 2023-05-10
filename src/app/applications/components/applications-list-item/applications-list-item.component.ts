@@ -5,6 +5,7 @@ import {
   Input,
   Output,
   EventEmitter,
+  ChangeDetectorRef,
 } from '@angular/core';
 
 import { FoldComponent } from '../../../shared/components/fold/fold.component';
@@ -32,17 +33,13 @@ export class ApplicationsListItemComponent {
   }
 
   @Input()
-  public set actionsDisabled(value: boolean) {
-    this._actionsDisabled = value;
-  }
-
-  @Input()
   public set deletionInProgress(value: boolean) {
     this._deletionInProgress = value;
+    this._cdRef.markForCheck();
   }
 
   @Output()
-  public readonly deleteClick = new EventEmitter<void>();
+  public readonly deleteClick = new EventEmitter<number>();
 
   @ViewChild(FoldComponent)
   private readonly _foldRef?: FoldComponent;
@@ -68,10 +65,12 @@ export class ApplicationsListItemComponent {
 
   protected _publishedApplication?: PublishedApplicationType;
   protected _showActions = false;
-  protected _actionsDisabled = false;
   protected _deletionInProgress = false;
 
-  constructor(protected readonly _localeService: AppLocaleService) {}
+  constructor(
+    protected readonly _localeService: AppLocaleService,
+    private readonly _cdRef: ChangeDetectorRef
+  ) {}
 
   protected handleCardClick(): void {
     if (this._foldRef === undefined) {
@@ -93,6 +92,11 @@ export class ApplicationsListItemComponent {
   protected handleDeleteButtonClick(event: MouseEvent): void {
     event.preventDefault();
     event.stopImmediatePropagation();
-    this.deleteClick.emit();
+
+    if (this._publishedApplication === undefined) {
+      throw new Error('Published application must be defined!');
+    }
+
+    this.deleteClick.emit(this._publishedApplication.id);
   }
 }
