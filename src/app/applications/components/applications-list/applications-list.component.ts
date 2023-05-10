@@ -3,32 +3,19 @@ import {
   Component,
   OnDestroy,
   OnInit,
-  ChangeDetectorRef,
   Inject,
 } from '@angular/core';
-import {
-  BehaviorSubject,
-  map,
-  tap,
-  combineLatest,
-  takeUntil,
-  filter,
-} from 'rxjs';
+import { BehaviorSubject, map, combineLatest } from 'rxjs';
 
 import {
   GET_PUBLISHED_APPLICATIONS_STATE_SERVICE,
   GetPublishedApplicationsStateService,
 } from '../../dependencies/get-published-applications-state-service';
-import {
-  DELETE_APPLICATION_STATE_SERVICE,
-  DeleteApplicationStateService,
-} from '../../dependencies/delete-application-state-service';
-import { ConfirmApplicationDeletionDialogService } from '../../../core/services/confirm-application-deletion-dialog.service';
-import { ErrorNotificationService } from '../../../core/services/error-notification.service';
 import { UserService } from '../../../shared/services/user.service';
 
 import { DestroyEmitter } from '../../../shared/abstracts/destroy-emitter.class';
 import { SuccessResponseState } from '../../../shared/classes/success-response-state.class';
+import { PublishedApplicationType } from '../../types/published-application.type';
 
 @Component({
   selector: 'app-applications-list',
@@ -40,102 +27,68 @@ export class ApplicationsListComponent
   extends DestroyEmitter
   implements OnInit, OnDestroy
 {
-  private readonly _deletedHelpOffersIds$ = new BehaviorSubject<
+  private readonly _deletedApplicationsIds$ = new BehaviorSubject<
     ReadonlyArray<number>
   >([]);
 
   protected readonly _templateContext$ = combineLatest([
     this._getPublishedApplications.state$,
-    this._deletedHelpOffersIds$.asObservable(),
+    this._deletedApplicationsIds$.asObservable(),
     this._userService.value$,
   ]).pipe(
-    map(([state, deletedHelpOffersIds, user]) => {
+    map(([state, deletedApplicationsIds, user]) => {
       if (state.data !== null) {
         return {
-          getPublishedHelpOffers: new SuccessResponseState(
-            state.data.filter((item) => !deletedHelpOffersIds.includes(item.id))
+          getPublishedApplications: new SuccessResponseState(
+            state.data.filter(
+              (item) => !deletedApplicationsIds.includes(item.id)
+            )
           ),
-          deletedHelpOffersIds,
+          deletedApplicationsIds,
           user,
         };
       }
 
       return {
-        getPublishedHelpOffers: state,
-        deletedHelpOffersIds,
+        getPublishedApplications: state,
+        deletedApplicationsIds,
         user,
       };
     })
   );
 
-  protected _deletingHelpOfferId: number | null = null;
-
   constructor(
     @Inject(GET_PUBLISHED_APPLICATIONS_STATE_SERVICE)
     private readonly _getPublishedApplications: GetPublishedApplicationsStateService,
-    @Inject(DELETE_APPLICATION_STATE_SERVICE)
-    private readonly _deleteApplication: DeleteApplicationStateService,
-    private readonly _confirmApplicationDeletionDialogService: ConfirmApplicationDeletionDialogService,
-    private readonly _errorNotificationService: ErrorNotificationService,
-    private readonly _userService: UserService,
-    private readonly _cdRef: ChangeDetectorRef
+    private readonly _userService: UserService
   ) {
     super();
   }
 
   public ngOnInit(): void {
     this._getPublishedApplications.performRequest();
-    this.subToDeleteHelpOfferStateChanges();
   }
 
   public override ngOnDestroy(): void {
     super.ngOnDestroy();
     this._getPublishedApplications.destroyRequest();
-    this._deleteApplication.destroyRequest();
   }
 
   protected handleReloadClick(): void {
     this._getPublishedApplications.performRequest();
   }
 
-  protected handleHelpOfferListItemDeleteClick(helpOfferId: number): void {
-    this._confirmApplicationDeletionDialogService
-      .openDialog()
-      .pipe(
-        filter((isConfirmed) => isConfirmed),
-        tap(() => {
-          this._deletingHelpOfferId = helpOfferId;
-          this._deleteApplication.performRequest(helpOfferId);
-        }),
-        takeUntil(this.destroy$)
-      )
-      .subscribe();
+  protected trackApplicationById(
+    _index: number,
+    application: PublishedApplicationType
+  ): number {
+    return application.id;
   }
 
-  private subToDeleteHelpOfferStateChanges(): void {
-    this._deleteApplication.state$
-      .pipe(
-        tap((state) => {
-          if (state.data !== null) {
-            if (this._deletingHelpOfferId === null) {
-              throw new Error('Deleting help offer id cannot be null!');
-            }
-
-            this._deletedHelpOffersIds$.next([
-              ...this._deletedHelpOffersIds$.getValue(),
-              this._deletingHelpOfferId,
-            ]);
-            this._deletingHelpOfferId = null;
-          } else if (state.error !== null) {
-            this._errorNotificationService.showMessage(
-              'error.unknownApplicationDeleteError'
-            );
-            this._deletingHelpOfferId = null;
-            this._cdRef.markForCheck();
-          }
-        })
-      )
-      .pipe(takeUntil(this.destroy$))
-      .subscribe();
+  protected handleApplicationDelete(applicationId: number): void {
+    this._deletedApplicationsIds$.next([
+      ...this._deletedApplicationsIds$.getValue(),
+      applicationId,
+    ]);
   }
 }
