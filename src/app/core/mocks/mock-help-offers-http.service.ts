@@ -24,14 +24,16 @@ export class MockHelpOffersHttpService
   public deleteOne(
     helpOfferId: number
   ): Observable<DeleteHelpOfferResponseDataType> {
-    return of({ id: helpOfferId, deleted: true }).pipe(delay(DELAY_IN_MS));
+    return of({ id: helpOfferId, deleted: true as const }).pipe(
+      delay(DELAY_IN_MS)
+    );
   }
 }
 
 const MOCK_PUBLISHED_HELP_OFFERS: PublishedHelpOfferListType = [
   {
     id: 1,
-    userId: 2,
+    userId: 6,
     publicId: '123',
     locationFrom: '1 10002',
     locationTo: '2 20003',
@@ -48,7 +50,7 @@ const MOCK_PUBLISHED_HELP_OFFERS: PublishedHelpOfferListType = [
   },
   {
     id: 2,
-    userId: 2,
+    userId: 6,
     publicId: '234',
     locationFrom: '1 10003',
     locationTo: '2 20004',
@@ -60,7 +62,7 @@ const MOCK_PUBLISHED_HELP_OFFERS: PublishedHelpOfferListType = [
   },
   {
     id: 3,
-    userId: 3,
+    userId: 6,
     publicId: '345',
     locationFrom: '1 10004',
     locationTo: '2 20005',

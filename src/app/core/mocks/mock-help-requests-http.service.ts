@@ -24,7 +24,9 @@ export class MockHelpRequestsHttpService
   public deleteOne(
     helpRequestId: number
   ): Observable<DeleteHelpRequestResponseDataType> {
-    return of({ id: helpRequestId, deleted: true }).pipe(delay(DELAY_IN_MS));
+    return of({ id: helpRequestId, deleted: true as const }).pipe(
+      delay(DELAY_IN_MS)
+    );
   }
 }
 
