@@ -20,6 +20,7 @@ import { HelpRequestsPageComponent } from './pages/help-requests-page/help-reque
 import { ApplicationsListLoadErrorViewComponent } from './views/applications-list-load-error-view/applications-list-load-error-view.component';
 import { ApplicationsListComponent } from './components/applications-list/applications-list.component';
 import { ApplicationsListItemComponent } from './components/applications-list-item/applications-list-item.component';
+import { ApplicationsListItemContainerComponent } from './components/applications-list-item-container/applications-list-item-container.component';
 
 @NgModule({
   imports: [
@@ -44,6 +45,7 @@ import { ApplicationsListItemComponent } from './components/applications-list-it
     ApplicationsListLoadErrorViewComponent,
     ApplicationsListComponent,
     ApplicationsListItemComponent,
+    ApplicationsListItemContainerComponent,
   ],
 })
 export class ApplicationsModule {}
