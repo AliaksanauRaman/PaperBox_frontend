@@ -24,7 +24,6 @@ import { CheckboxWithTextControlComponent } from '../shared/components/checkbox-
 import { WhiteSquareButtonComponent } from '../shared/components/white-square-button/white-square-button.component';
 import { CloseDialogButtonComponent } from '../shared/components/close-dialog-button/close-dialog-button.component';
 import { ManWithMailImageComponent } from '../shared/images/man-with-mail-image/man-with-mail-image.component';
-import { ManWithGlobeMobileImageComponent } from '../shared/images/man-with-globe-mobile-image/man-with-globe-mobile-image.component';
 import { FeedbackImageComponent } from '../shared/images/feedback-image/feedback-image.component';
 import { GirlWithLaptopImageComponent } from '../shared/images/girl-with-laptop-image/girl-with-laptop-image.component';
 import { ManWithGlobeDesktopImageComponent } from '../shared/images/man-with-globe-desktop-image/man-with-globe-desktop-image.component';
@@ -126,7 +125,6 @@ import {
     WhiteSquareButtonComponent,
     CloseDialogButtonComponent,
     ManWithMailImageComponent,
-    ManWithGlobeMobileImageComponent,
     FeedbackImageComponent,
     GirlWithLaptopImageComponent,
     ManWithGlobeDesktopImageComponent,
