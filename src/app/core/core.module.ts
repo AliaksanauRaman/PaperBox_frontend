@@ -26,7 +26,6 @@ import { CloseDialogButtonComponent } from '../shared/components/close-dialog-bu
 import { ManWithMailImageComponent } from '../shared/images/man-with-mail-image/man-with-mail-image.component';
 import { FeedbackImageComponent } from '../shared/images/feedback-image/feedback-image.component';
 import { GirlWithLaptopImageComponent } from '../shared/images/girl-with-laptop-image/girl-with-laptop-image.component';
-import { ManWithGlobeDesktopImageComponent } from '../shared/images/man-with-globe-desktop-image/man-with-globe-desktop-image.component';
 import { ToolbarComponent } from '../shared/components/toolbar/toolbar.component';
 import { FooterComponent } from '../shared/components/footer/footer.component';
 import { PrimaryButtonComponent } from '../shared/components/primary-button/primary-button.component';
@@ -127,7 +126,6 @@ import {
     ManWithMailImageComponent,
     FeedbackImageComponent,
     GirlWithLaptopImageComponent,
-    ManWithGlobeDesktopImageComponent,
     ToolbarComponent,
     FooterComponent,
     PrimaryButtonComponent,
