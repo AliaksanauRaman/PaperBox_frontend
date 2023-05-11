@@ -8,16 +8,19 @@
       {{ "components.failedConfirmUserView.text" | translate }}
     </p>
 
-    <app-man-with-phone-mobile-image
+    <svg-icon
       class="man-with-phone-mobile-image"
-    ></app-man-with-phone-mobile-image>
+      src="/assets/svg/images/man-with-phone-image.svg"
+    ></svg-icon>
 
     <app-primary-button class="main-page-button" routerLink="/">
       <span>{{ "button.mainPage" | translate }}</span>
     </app-primary-button>
   </div>
 
-  <app-man-with-phone-mobile-image
+  <svg-icon
     class="man-with-phone-desktop-image"
-  ></app-man-with-phone-mobile-image>
+    [svgStyle]="{ 'width.px': 230, 'height.px': 208 }"
+    src="/assets/svg/images/man-with-phone-image.svg"
+  ></svg-icon>
 </div>
