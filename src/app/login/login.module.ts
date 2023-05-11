@@ -12,7 +12,6 @@ import { GirlWithHeartMobileImageComponent } from '../shared/images/girl-with-he
 import { ManWithHeartsMobileImageComponent } from '../shared/images/man-with-hearts-mobile-image/man-with-hearts-mobile-image.component';
 import { GirlWithHeartDesktopImageComponent } from '../shared/images/girl-with-heart-desktop-image/girl-with-heart-desktop-image.component';
 import { ManWithHeartsDesktopImageComponent } from '../shared/images/man-with-hearts-desktop-image/man-with-hearts-desktop-image.component';
-import { ManWithPhoneMobileImageComponent } from '../shared/images/man-with-phone-mobile-image/man-with-phone-mobile-image.component';
 import { InputControlModule } from '../shared/components/input-control/input-control.module';
 import { LoginRoutingModule } from './login-routing.module';
 
@@ -38,7 +37,6 @@ import { FailedConfirmUserViewComponent } from './views/failed-confirm-user-view
     ManWithHeartsMobileImageComponent,
     GirlWithHeartDesktopImageComponent,
     ManWithHeartsDesktopImageComponent,
-    ManWithPhoneMobileImageComponent,
     InputControlModule,
     LoginRoutingModule,
   ],
