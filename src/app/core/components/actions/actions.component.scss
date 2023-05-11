@@ -66,6 +66,8 @@
   right: 0;
   bottom: 0;
   z-index: -1;
+  width: 101px;
+  height: 166px;
 }
 
 .man-with-globe-desktop-image {
@@ -100,5 +102,8 @@
     left: 0;
     z-index: -1;
     display: block;
+    width: 252px;
+    height: 410px;
+    transform: scale(-1, 1);
   }
 }

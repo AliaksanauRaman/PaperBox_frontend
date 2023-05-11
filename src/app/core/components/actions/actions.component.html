@@ -36,12 +36,15 @@
       </button>
     </ng-container>
 
-    <app-man-with-globe-mobile-image
+    <svg-icon
       class="man-with-globe-mobile-image"
-    ></app-man-with-globe-mobile-image>
+      src="/assets/svg/images/man-with-globe-image.svg"
+    ></svg-icon>
 
-    <app-man-with-globe-desktop-image
+    <svg-icon
       class="man-with-globe-desktop-image"
-    ></app-man-with-globe-desktop-image>
+      [svgStyle]="{ 'width.px': 252, 'height.px': 410 }"
+      src="/assets/svg/images/man-with-globe-image.svg"
+    ></svg-icon>
   </div>
 </div>
