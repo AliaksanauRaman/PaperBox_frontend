@@ -35,35 +35,25 @@
     </mat-sidenav-content>
   </mat-sidenav-container>
 
-  <button
-    class="logout-button"
-    *ngIf="_menuIsOpened"
-    mat-fab
-    color="primary"
-    matTooltip="Logout"
-    (click)="handleLogoutButtonClick()"
-  >
-    <mat-icon>logout</mat-icon>
-  </button>
+  <div class="global-actions">
+    <button
+      class="global-actions__item"
+      mat-mini-fab
+      color="primary"
+      matTooltip="Logout"
+      (click)="handleLogoutButtonClick()"
+    >
+      <mat-icon>logout</mat-icon>
+    </button>
 
-  <button
-    class="home-button"
-    *ngIf="_menuIsOpened"
-    mat-fab
-    color="primary"
-    matTooltip="Home"
-    (click)="handleHomeButtonClick()"
-  >
-    <mat-icon>home</mat-icon>
-  </button>
-
-  <button
-    mat-fab
-    class="menu-button"
-    [color]="_menuIsOpened ? 'white' : 'primary'"
-    [matTooltip]="_menuIsOpened ? 'Close menu' : 'Open menu'"
-    (click)="handleMenuButtonClick()"
-  >
-    <mat-icon>more_vert</mat-icon>
-  </button>
+    <button
+      class="global-actions__item"
+      mat-mini-fab
+      color="primary"
+      matTooltip="Home"
+      (click)="handleHomeButtonClick()"
+    >
+      <mat-icon>home</mat-icon>
+    </button>
+  </div>
 </div>

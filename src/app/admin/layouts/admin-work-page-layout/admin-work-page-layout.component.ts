@@ -34,7 +34,6 @@ export class AdminWorkPageLayoutComponent {
       path: '/admin/settings',
     },
   ];
-  protected _menuIsOpened = false;
 
   constructor(
     private readonly _logoutService: LogoutService,
@@ -48,9 +47,5 @@ export class AdminWorkPageLayoutComponent {
 
   protected handleHomeButtonClick(): void {
     this._routingService.navigateToHome();
-  }
-
-  protected handleMenuButtonClick(): void {
-    this._menuIsOpened = !this._menuIsOpened;
   }
 }
