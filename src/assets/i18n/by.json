@@ -103,6 +103,7 @@
       "reloadButtonLabel": "Перазагрузіць"
     },
     "accountMenu": {
+      "admin": "Адмін",
       "logOut": "Выйсці"
     },
     "successCreateHelpItemSection": {

@@ -103,6 +103,7 @@
       "reloadButtonLabel": "Reload"
     },
     "accountMenu": {
+      "admin": "Admin",
       "logOut": "Log out"
     },
     "successCreateHelpItemSection": {
