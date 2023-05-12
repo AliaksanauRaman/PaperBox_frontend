@@ -22,6 +22,7 @@ import { LocationLabelPipe } from '../shared/pipes/location-label.pipe';
 import { DatesPipe } from './../shared/pipes/dates.pipe';
 import { AdminRoutingModule } from './admin-routing.module';
 
+import { AdminFeedbacksPageComponent } from './pages/admin-feedbacks-page/admin-feedbacks-page.component';
 import { AdminLoginPageComponent } from './pages/admin-login-page/admin-login-page.component';
 import { AdminHelpRequestsPageComponent } from './pages/admin-help-requests-page/admin-help-requests-page.component';
 import { AdminUsersPageComponent } from './pages/admin-users-page/admin-users-page.component';
@@ -56,6 +57,7 @@ import { AdminFullApplicationsTableComponent } from './components/admin-full-app
     AdminRoutingModule,
   ],
   declarations: [
+    AdminFeedbacksPageComponent,
     AdminLoginPageComponent,
     AdminLoginCardComponent,
     AdminHelpOffersPageComponent,

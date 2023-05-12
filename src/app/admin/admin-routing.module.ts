@@ -5,6 +5,7 @@ import { AdminLoginPageComponent } from './pages/admin-login-page/admin-login-pa
 import { AdminWorkPageLayoutComponent } from './layouts/admin-work-page-layout/admin-work-page-layout.component';
 import { AdminHelpOffersPageComponent } from './pages/admin-help-offers-page/admin-help-offers-page.component';
 import { AdminHelpRequestsPageComponent } from './pages/admin-help-requests-page/admin-help-requests-page.component';
+import { AdminFeedbacksPageComponent } from './pages/admin-feedbacks-page/admin-feedbacks-page.component';
 import { AdminUsersPageComponent } from './pages/admin-users-page/admin-users-page.component';
 import { AdminSettingsPageComponent } from './pages/admin-settings-page/admin-settings-page.component';
 
@@ -35,6 +36,11 @@ const adminRoutes: Routes = [
         path: 'help-requests',
         component: AdminHelpRequestsPageComponent,
         title: 'Admin | Help requests',
+      },
+      {
+        path: 'feedbacks',
+        component: AdminFeedbacksPageComponent,
+        title: 'Admin | Feedbacks',
       },
       {
         path: 'users',
