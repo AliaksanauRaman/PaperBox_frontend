@@ -9,31 +9,30 @@ import { Observable } from 'rxjs';
 
 import { UserTokenEntityService } from '../../shared/services/user-token-entity.service';
 
-// TODO: !IMPORTANT It must be enhanced
-const REQUESTS_TO_AUTHORIZE = [
+type RequestType = Readonly<{
+  method: 'POST' | 'GET';
+  endpoint: string;
+}>;
+const REQUESTS_TO_SKIP: ReadonlyArray<RequestType> = [
   {
     method: 'POST',
-    endpoint: '/api/help-offers',
+    endpoint: '/api/login',
   },
   {
     method: 'POST',
-    endpoint: '/api/help-requests',
-  },
-  {
-    method: 'PATCH',
-    endpoint: '/api/help-offers',
-  },
-  {
-    method: 'PATCH',
-    endpoint: '/api/help-requests',
+    endpoint: '/api/registration',
   },
   {
     method: 'GET',
-    endpoint: '/admin/help-offers',
+    endpoint: '/api/help-offers/published',
   },
   {
     method: 'GET',
-    endpoint: '/admin/help-requests',
+    endpoint: '/api/help-requests/published',
+  },
+  {
+    method: 'GET',
+    endpoint: '/assets',
   },
 ];
 
@@ -49,7 +48,7 @@ export class AuthorizationInterceptor implements HttpInterceptor {
     req: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    if (!this.isRequestToAuthorize(req)) {
+    if (this.isRequestToSkip(req)) {
       return next.handle(req);
     }
 
@@ -68,9 +67,9 @@ export class AuthorizationInterceptor implements HttpInterceptor {
     );
   }
 
-  private isRequestToAuthorize(req: HttpRequest<unknown>): boolean {
+  private isRequestToSkip(req: HttpRequest<unknown>): boolean {
     const { url: currentRequestUrl, method: currentRequestMethod } = req;
-    return REQUESTS_TO_AUTHORIZE.some(
+    return REQUESTS_TO_SKIP.some(
       ({ method, endpoint }) =>
         currentRequestMethod === method && currentRequestUrl.includes(endpoint)
     );
