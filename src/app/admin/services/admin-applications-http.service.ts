@@ -1,13 +1,9 @@
 import { Injectable, Inject } from '@angular/core';
-import {
-  HttpClient,
-  HttpHeaders,
-  HttpParams,
-  HttpStatusCode,
-} from '@angular/common/http';
+import { HttpClient, HttpParams, HttpStatusCode } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 
 import { API_URL } from '../../shared/dependencies/api-url';
+import { AdminHeadersService } from './admin-headers.service';
 
 import { FullApplicationStatus } from '../enums/full-application-status.enum';
 import { FullApplicationListType } from '../types/full-application.type';
@@ -20,7 +16,8 @@ export class AdminApplicationsHttpService {
   constructor(
     @Inject(API_URL)
     private readonly _apiUrl: string,
-    private readonly _httpClient: HttpClient
+    private readonly _httpClient: HttpClient,
+    private readonly _headersService: AdminHeadersService
   ) {}
 
   public getAllHelpOffers(): Observable<FullApplicationListType> {
@@ -30,7 +27,7 @@ export class AdminApplicationsHttpService {
       .append('statuses', FullApplicationStatus.REJECTED);
     return this._httpClient.get<FullApplicationListType>(
       `${this._apiUrl}/admin/help-offers`,
-      { headers: this.buildDefaultHeaders(), params: httpParams }
+      { headers: this._headersService.buildDefault(), params: httpParams }
     );
   }
 
@@ -41,7 +38,7 @@ export class AdminApplicationsHttpService {
       .append('statuses', FullApplicationStatus.REJECTED);
     return this._httpClient.get<FullApplicationListType>(
       `${this._apiUrl}/admin/help-requests`,
-      { headers: this.buildDefaultHeaders(), params: httpParams }
+      { headers: this._headersService.buildDefault(), params: httpParams }
     );
   }
 
@@ -55,7 +52,7 @@ export class AdminApplicationsHttpService {
         {
           status: newStatus,
         },
-        { headers: this.buildDefaultHeaders(), observe: 'response' }
+        { headers: this._headersService.buildDefault(), observe: 'response' }
       )
       .pipe(
         map((response) => {
@@ -81,7 +78,7 @@ export class AdminApplicationsHttpService {
         {
           status: newStatus,
         },
-        { headers: this.buildDefaultHeaders(), observe: 'response' }
+        { headers: this._headersService.buildDefault(), observe: 'response' }
       )
       .pipe(
         map((response) => {
@@ -95,9 +92,5 @@ export class AdminApplicationsHttpService {
           throw new Error('Error during help request status update!');
         })
       );
-  }
-
-  private buildDefaultHeaders(): HttpHeaders {
-    return new HttpHeaders().set('showGlobalLoader', 'true');
   }
 }
