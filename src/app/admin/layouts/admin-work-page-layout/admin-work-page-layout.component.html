@@ -20,7 +20,7 @@
       <mat-list>
         <a
           class="link"
-          *ngFor="let link of navLinks"
+          *ngFor="let link of _navLinks"
           mat-list-item
           [routerLink]="link.path"
           routerLinkActive="active"
@@ -36,12 +36,34 @@
   </mat-sidenav-container>
 
   <button
-    mat-fab
     class="logout-button"
+    *ngIf="_menuIsOpened"
+    mat-fab
     color="primary"
     matTooltip="Logout"
     (click)="handleLogoutButtonClick()"
   >
     <mat-icon>logout</mat-icon>
+  </button>
+
+  <button
+    class="home-button"
+    *ngIf="_menuIsOpened"
+    mat-fab
+    color="primary"
+    matTooltip="Home"
+    (click)="handleHomeButtonClick()"
+  >
+    <mat-icon>home</mat-icon>
+  </button>
+
+  <button
+    mat-fab
+    class="menu-button"
+    [color]="_menuIsOpened ? 'white' : 'primary'"
+    [matTooltip]="_menuIsOpened ? 'Close menu' : 'Open menu'"
+    (click)="handleMenuButtonClick()"
+  >
+    <mat-icon>more_vert</mat-icon>
   </button>
 </div>

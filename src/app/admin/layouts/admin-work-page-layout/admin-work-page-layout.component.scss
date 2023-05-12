@@ -81,6 +81,24 @@
 .logout-button {
   position: fixed;
   right: 38px;
+  bottom: 166px;
+  z-index: 1;
+}
+
+.home-button {
+  position: fixed;
+  right: 38px;
+  bottom: 98px;
+  z-index: 1;
+}
+
+.menu-button {
+  position: fixed;
+  right: 38px;
   bottom: 30px;
   z-index: 1;
+}
+
+.mat-white {
+  background-color: var(--white-color);
 }

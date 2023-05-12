@@ -12,7 +12,7 @@ import { NavigationLinkType } from '../../../shared/types/navigation-link.type';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AdminWorkPageLayoutComponent {
-  public readonly navLinks: ReadonlyArray<NavigationLinkType> = [
+  protected readonly _navLinks: ReadonlyArray<NavigationLinkType> = [
     {
       label: 'Help offers',
       path: '/admin/help-offers',
@@ -20,6 +20,10 @@ export class AdminWorkPageLayoutComponent {
     {
       label: 'Help requests',
       path: '/admin/help-requests',
+    },
+    {
+      label: 'Feedbacks',
+      path: '/admin/feedbacks',
     },
     {
       label: 'Users',
@@ -30,6 +34,7 @@ export class AdminWorkPageLayoutComponent {
       path: '/admin/settings',
     },
   ];
+  protected _menuIsOpened = false;
 
   constructor(
     private readonly _logoutService: LogoutService,
@@ -39,5 +44,13 @@ export class AdminWorkPageLayoutComponent {
   protected handleLogoutButtonClick(): void {
     this._logoutService.doLogout();
     this._routingService.navigateToAdminLogin();
+  }
+
+  protected handleHomeButtonClick(): void {
+    this._routingService.navigateToHome();
+  }
+
+  protected handleMenuButtonClick(): void {
+    this._menuIsOpened = !this._menuIsOpened;
   }
 }
