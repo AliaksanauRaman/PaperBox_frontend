@@ -10,7 +10,7 @@ import { AboutUsDialogComponent } from '../dialogs/about-us-dialog/about-us-dial
 export class AboutUsDialogService extends DialogService {
   public openDialog(): void {
     this._dialog.open(AboutUsDialogComponent, {
-      panelClass: 'about-us-dialog',
+      panelClass: ['about-us-dialog', 'app-scrollbar'],
       backdropClass: 'about-us-dialog-backdrop',
     });
   }
