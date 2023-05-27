@@ -74,7 +74,7 @@ tr.detail-row {
 .menu-item {
   transition: 0.25s ease-in-out background-color;
 
-  &.menu-item--green:not(:disabled) {
+  &.menu-item--green {
     background-color: rgba(0, 188, 34, 0.2) !important;
 
     .icon {
@@ -86,7 +86,7 @@ tr.detail-row {
     }
   }
 
-  &.menu-item--yellow:not(:disabled) {
+  &.menu-item--yellow {
     background-color: rgba(255, 191, 0, 0.2) !important;
 
     .icon {
@@ -98,7 +98,7 @@ tr.detail-row {
     }
   }
 
-  &.menu-item--red:not(:disabled) {
+  &.menu-item--red {
     background-color: rgba(207, 33, 41, 0.2) !important;
     transition: 0.25s ease-in-out background-color;
 
@@ -108,19 +108,6 @@ tr.detail-row {
 
     &:hover {
       background-color: rgba(207, 33, 41, 0.3) !important;
-    }
-  }
-
-  &.menu-item--black:not(:disabled) {
-    background-color: rgba(155, 155, 155, 0.2) !important;
-    transition: 0.25s ease-in-out background-color;
-
-    .icon {
-      color: rgb(155, 155, 155);
-    }
-
-    &:hover {
-      background-color: rgba(155, 155, 155, 0.3) !important;
     }
   }
 }

@@ -68,9 +68,9 @@
 
       <mat-menu #menu="matMenu">
         <button
-          mat-menu-item
           class="menu-item menu-item--green"
-          [disabled]="element.status === Status.PUBLISHED"
+          *ngIf="element.status !== Status.PUBLISHED"
+          mat-menu-item
           (click)="handlePublishButtonClick(element)"
         >
           <mat-icon class="icon">check_circle</mat-icon>
@@ -78,9 +78,9 @@
         </button>
 
         <button
-          mat-menu-item
           class="menu-item menu-item--yellow"
-          [disabled]="element.status === Status.UNPUBLISHED"
+          *ngIf="element.status !== Status.UNPUBLISHED"
+          mat-menu-item
           (click)="handleUnpublishButtonClick(element)"
         >
           <mat-icon class="icon">unpublished</mat-icon>
@@ -88,9 +88,9 @@
         </button>
 
         <button
-          mat-menu-item
           class="menu-item menu-item--red"
-          [disabled]="element.status === Status.REJECTED"
+          *ngIf="element.status !== Status.REJECTED"
+          mat-menu-item
           (click)="handleRejectButtonClick(element)"
         >
           <mat-icon class="icon">cancel</mat-icon>
@@ -98,9 +98,9 @@
         </button>
 
         <button
+          class="menu-item"
+          *ngIf="element.status !== Status.DELETED"
           mat-menu-item
-          class="menu-item menu-item--black"
-          [disabled]="element.status === Status.DELETED"
           (click)="handleDeleteButtonClick(element)"
         >
           <mat-icon class="icon">block</mat-icon>
