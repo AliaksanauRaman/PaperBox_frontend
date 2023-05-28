@@ -1,0 +1,137 @@
+<div class="admin-full-users-table mat-elevation-z8">
+  <table class="mat-table" mat-table [dataSource]="_dataSource">
+    <ng-container matColumnDef="number">
+      <th mat-header-cell *matHeaderCellDef>#</th>
+      <td mat-cell *matCellDef="let i = index">{{ i + 1 }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef>Email</th>
+      <td mat-cell *matCellDef="let user">
+        <div class="email-cell">
+          <span>{{ user.email }}</span>
+          <button
+            class="email-cell__copy-button"
+            mat-icon-button
+            matTooltip="Copy"
+            type="button"
+            (click)="copyEmail.emit(user.email)"
+          >
+            <mat-icon class="email-cell__copy-icon">content_copy</mat-icon>
+          </button>
+        </div>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="role">
+      <th mat-header-cell *matHeaderCellDef>Role</th>
+      <td mat-cell *matCellDef="let user">
+        <div class="role-cell">
+          <mat-icon class="role-cell__icon" *ngIf="user.role === _UserRole.USER"
+            >person</mat-icon
+          >
+          <mat-icon
+            class="role-cell__icon"
+            *ngIf="user.role === _UserRole.ADMIN"
+            >admin_panel_settings</mat-icon
+          >
+          <span
+            class="role-cell__text"
+            [class.role-cell__text--admin]="user.role === _UserRole.ADMIN"
+            >{{ user.role }}</span
+          >
+        </div>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef>Status</th>
+      <td mat-cell *matCellDef="let user">
+        <ng-container *ngIf="user.status as userStatus">
+          <span
+            class="status-cell"
+            [class.status-cell--active]="userStatus === _UserStatus.ACTIVE"
+            [class.status-cell--inactive]="userStatus === _UserStatus.INACTIVE"
+            [class.status-cell--blocked]="userStatus === _UserStatus.BLOCKED"
+            >{{ userStatus }}</span
+          >
+        </ng-container>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let user">
+        <button mat-icon-button type="button" [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+
+        <mat-menu #menu="matMenu">
+          <button
+            mat-menu-item
+            class="menu-item"
+            *ngIf="user.role !== _UserRole.ADMIN"
+            (click)="promoteUser.emit(user.id)"
+          >
+            <mat-icon class="icon">keyboard_double_arrow_up</mat-icon>
+            <span>Promote to Admin</span>
+          </button>
+
+          <button
+            class="menu-item"
+            *ngIf="user.role !== _UserRole.USER"
+            mat-menu-item
+            (click)="demoteUser.emit(user.id)"
+          >
+            <mat-icon class="icon">keyboard_double_arrow_down</mat-icon>
+            <span>Demote to User</span>
+          </button>
+
+          <button
+            class="menu-item menu-item--green"
+            *ngIf="user.status !== _UserStatus.ACTIVE"
+            mat-menu-item
+            (click)="activateUser.emit(user.id)"
+          >
+            <mat-icon class="icon">account_circle</mat-icon>
+            <span>Activate</span>
+          </button>
+
+          <button
+            class="menu-item"
+            *ngIf="user.status !== _UserStatus.INACTIVE"
+            mat-menu-item
+            (click)="deactivateUser.emit(user.id)"
+          >
+            <mat-icon class="icon">no_accounts</mat-icon>
+            <span>Deactivate</span>
+          </button>
+
+          <button
+            mat-menu-item
+            class="menu-item menu-item--red"
+            *ngIf="user.status !== _UserStatus.BLOCKED"
+            (click)="blockUser.emit(user.id)"
+          >
+            <mat-icon class="icon">block</mat-icon>
+            <span>Block</span>
+          </button>
+        </mat-menu>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="_DISPLAYED_COLUMNS"></tr>
+    <tr
+      mat-row
+      *matRowDef="let row; columns: _DISPLAYED_COLUMNS; let i = index"
+    ></tr>
+    <tr *matNoDataRow>
+      <td class="no-data-cell" [attr.colspan]="_DISPLAYED_COLUMNS.length">
+        <span>No users matching the filters.</span>
+      </td>
+    </tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[9, 18, 30]" showFirstLastButtons>
+  </mat-paginator>
+</div>

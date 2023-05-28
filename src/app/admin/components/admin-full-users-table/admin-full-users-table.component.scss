@@ -1,0 +1,115 @@
+:host {
+  display: block;
+}
+
+.admin-full-users-table {
+  width: 100%;
+}
+
+.mat-table {
+  width: 100%;
+}
+
+.mat-column-number {
+  width: 5%;
+}
+
+.mat-column-role {
+  width: 15%;
+}
+
+.mat-column-status {
+  width: 15%;
+}
+
+.mat-column-actions {
+  width: 5%;
+}
+
+.email-cell {
+  display: flex;
+  align-items: center;
+}
+
+.email-cell__copy-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  margin-left: 5px;
+  padding: 0;
+}
+
+.email-cell__copy-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+}
+
+.role-cell {
+  display: flex;
+  align-items: center;
+}
+
+.role-cell__icon {
+  margin-right: 5px;
+}
+
+.role-cell__text {
+  &.role-cell__text--admin {
+    font-weight: bold;
+  }
+}
+
+.status-cell {
+  font-size: 18px;
+  font-weight: bold;
+
+  &.status-cell--active {
+    color: rgb(0, 188, 34);
+  }
+
+  &.status-cell--inactive {
+    opacity: 0.6;
+  }
+
+  &.status-cell--blocked {
+    color: rgb(207, 33, 41);
+  }
+}
+
+.menu-item {
+  transition: 0.25s ease-in-out background-color;
+
+  &.menu-item--green {
+    background-color: rgba(0, 188, 34, 0.2) !important;
+
+    .icon {
+      color: rgb(0, 188, 34);
+    }
+
+    &:hover {
+      background-color: rgba(0, 188, 34, 0.3) !important;
+    }
+  }
+
+  &.menu-item--red {
+    background-color: rgba(207, 33, 41, 0.2) !important;
+    transition: 0.25s ease-in-out background-color;
+
+    .icon {
+      color: rgb(207, 33, 41);
+    }
+
+    &:hover {
+      background-color: rgba(207, 33, 41, 0.3) !important;
+    }
+  }
+}
+
+.no-data-cell {
+  height: 52px;
+  padding: 0 16px;
+}
