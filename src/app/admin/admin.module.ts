@@ -16,6 +16,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTableModule } from '@angular/material/table';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSelectModule } from '@angular/material/select';
+import { A11yModule } from '@angular/cdk/a11y';
 
 import { HttpErrorResponseCardModule } from '../shared/components/http-error-response-card/http-error-response-card.module';
 import { LocationLabelPipe } from '../shared/pipes/location-label.pipe';
@@ -31,6 +34,8 @@ import { AdminLoginCardComponent } from './components/admin-login-card/admin-log
 import { AdminHelpOffersPageComponent } from './pages/admin-help-offers-page/admin-help-offers-page.component';
 import { AdminWorkPageLayoutComponent } from './layouts/admin-work-page-layout/admin-work-page-layout.component';
 import { AdminFullApplicationsTableComponent } from './components/admin-full-applications-table/admin-full-applications-table.component';
+import { AdminFullUsersTableComponent } from './components/admin-full-users-table/admin-full-users-table.component';
+import { AdminUsersFilterFormComponent } from './components/admin-users-filter-form/admin-users-filter-form.component';
 
 @NgModule({
   imports: [
@@ -51,6 +56,9 @@ import { AdminFullApplicationsTableComponent } from './components/admin-full-app
     MatTableModule,
     MatMenuModule,
     MatTooltipModule,
+    MatPaginatorModule,
+    MatSelectModule,
+    A11yModule,
     HttpErrorResponseCardModule,
     LocationLabelPipe,
     DatesPipe,
@@ -66,6 +74,8 @@ import { AdminFullApplicationsTableComponent } from './components/admin-full-app
     AdminSettingsPageComponent,
     AdminWorkPageLayoutComponent,
     AdminFullApplicationsTableComponent,
+    AdminFullUsersTableComponent,
+    AdminUsersFilterFormComponent,
   ],
   providers: [],
   exports: [],
