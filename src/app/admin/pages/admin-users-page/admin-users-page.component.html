@@ -3,7 +3,31 @@
     <span>Users</span>
   </mat-toolbar>
 
-  <div class="content">
-    <p>To be implemented...</p>
+  <div class="content app-scrollbar">
+    <div *ngIf="_loading; else content">Loading...</div>
+
+    <ng-template #content>
+      <div *ngIf="_getAllFullUsersError; else fullUsersBlock">
+        <span>Error occurred. For more details check dev tools.</span>
+      </div>
+
+      <ng-template #fullUsersBlock>
+        <app-admin-users-filter-form
+          (valueChange)="_fullUserList.filter($event)"
+        ></app-admin-users-filter-form>
+
+        <ng-container *ngIf="(_fullUserList.value$ | async) || [] as fullUsers">
+          <app-admin-full-users-table
+            [fullUsers]="fullUsers"
+            (copyEmail)="handleCopyEmail($event)"
+            (promoteUser)="handlePromoteUser($event)"
+            (demoteUser)="handleDemoteUser($event)"
+            (activateUser)="handleActivateUser($event)"
+            (deactivateUser)="handleDeactivateUser($event)"
+            (blockUser)="handleBlockUser($event)"
+          ></app-admin-full-users-table>
+        </ng-container>
+      </ng-template>
+    </ng-template>
   </div>
 </div>
