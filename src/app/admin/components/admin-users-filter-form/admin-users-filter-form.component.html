@@ -1,0 +1,37 @@
+<form class="users-filter-form" [formGroup]="_filterForm" autocomplete="off">
+  <mat-form-field class="form-item" appearance="outline" floatLabel="always">
+    <mat-label>Email</mat-label>
+    <input
+      [cdkTrapFocusAutoCapture]="true"
+      [cdkTrapFocus]="true"
+      matInput
+      placeholder="Start typing email"
+      autocomplete="off"
+      formControlName="email"
+    />
+  </mat-form-field>
+
+  <mat-form-field class="form-item" appearance="outline" floatLabel="always">
+    <mat-label>Role</mat-label>
+    <mat-select formControlName="role" placeholder="Select role">
+      <mat-option *ngFor="let userRole of _USER_ROLE_LIST" [value]="userRole">{{
+        userRole
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="form-item" appearance="outline" floatLabel="always">
+    <mat-label>Status</mat-label>
+    <mat-select formControlName="status" placeholder="Select status">
+      <mat-option
+        *ngFor="let userStatus of _FULL_USER_STATUS_LIST"
+        [value]="userStatus"
+        >{{ userStatus }}</mat-option
+      >
+    </mat-select>
+  </mat-form-field>
+
+  <button class="form-item" mat-flat-button color="primary" type="reset">
+    Reset
+  </button>
+</form>

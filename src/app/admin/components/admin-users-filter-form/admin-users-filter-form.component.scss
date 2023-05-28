@@ -1,0 +1,13 @@
+:host {
+  display: block;
+}
+
+.users-filter-form {
+  display: flex;
+}
+
+.form-item {
+  &:not(:last-child) {
+    margin-right: 10px;
+  }
+}
