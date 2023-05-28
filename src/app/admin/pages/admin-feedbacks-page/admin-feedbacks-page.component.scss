@@ -1,0 +1,25 @@
+.feedback-card {
+  &:not(:last-child) {
+    margin-bottom: 12px;
+  }
+}
+
+.feedback-card__content {
+  margin-top: 10px;
+  line-height: 22px;
+  text-align: justify;
+}
+
+.feedback-card__actions-item {
+  &.process {
+    color: rgb(0, 188, 34);
+  }
+
+  &.wait {
+    color: rgb(255, 191, 0);
+  }
+
+  &:not(:last-child) {
+    margin-right: 8px;
+  }
+}

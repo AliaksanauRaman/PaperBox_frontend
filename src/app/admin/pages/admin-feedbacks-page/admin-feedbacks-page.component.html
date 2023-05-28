@@ -3,7 +3,61 @@
     <span>Feedbacks</span>
   </mat-toolbar>
 
-  <div class="content">
-    <p>To be implemented...</p>
+  <div class="content app-scrollbar">
+    <div *ngIf="_loading; else content">Loading...</div>
+
+    <ng-template #content>
+      <div *ngIf="_getAllFeedbacksError; else feedbacksBlock">
+        <span>Error occurred. For more details check dev tools.</span>
+      </div>
+
+      <ng-template #feedbacksBlock>
+        <mat-card
+          class="feedback-card"
+          *ngFor="
+            let feedback of _feedbackList.value$ | async;
+            trackBy: trackFeedbackById
+          "
+        >
+          <mat-card-header>
+            <mat-card-title>{{ feedback.fullName }}</mat-card-title>
+            <mat-card-subtitle>{{ feedback.email }}</mat-card-subtitle>
+          </mat-card-header>
+
+          <mat-card-content class="feedback-card__content">{{
+            feedback.comment
+          }}</mat-card-content>
+
+          <mat-card-actions class="feedback-card__actions" align="end">
+            <button
+              class="feedback-card__actions-item wait"
+              mat-stroked-button
+              (click)="handleWaitFeedbackClick(feedback.id)"
+            >
+              <mat-icon>schedule</mat-icon>
+              <span>Wait</span>
+            </button>
+
+            <button
+              class="feedback-card__actions-item process"
+              mat-stroked-button
+              (click)="handleProcessFeedbackClick(feedback.id)"
+            >
+              <mat-icon>check_circle</mat-icon>
+              <span>Process</span>
+            </button>
+
+            <button
+              class="feedback-card__actions-item"
+              mat-stroked-button
+              (click)="handleDeleteFeedbackClick(feedback.id)"
+            >
+              <mat-icon>block</mat-icon>
+              <span>Delete</span>
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </ng-template>
+    </ng-template>
   </div>
 </div>
