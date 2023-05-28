@@ -9,7 +9,11 @@ export class FeedbackList {
   public readonly value$ = this._feedbackList$.asObservable();
 
   constructor(initialValue: FeedbackListType) {
-    this._feedbackList$.next(initialValue);
+    this.setValue(initialValue);
+  }
+
+  public setValue(value: FeedbackListType): void {
+    this._feedbackList$.next(value);
   }
 
   public waitOne(feedbackId: number): void {
