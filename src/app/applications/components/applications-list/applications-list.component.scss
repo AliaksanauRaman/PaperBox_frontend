@@ -1,4 +1,4 @@
-@import "../../../styles/scss-variables";
+@import "../../../styles/screen-size-mixins";
 
 $xsContentViewsHeight: 480px; // 4 list items
 
@@ -62,7 +62,7 @@ $xsContentViewsHeight: 480px; // 4 list items
   opacity: 0.7;
 }
 
-@media (min-width: $minLaptopScreenWidth) {
+@include for-tablet {
   $mdContentViewsHeight: 620px; // 5 list items
 
   .content-view {

@@ -1,4 +1,4 @@
-@import "../../../styles/scss-variables";
+@import "../../../styles/screen-size-mixins";
 
 // TODO: Think about common styles
 :host {
@@ -103,7 +103,7 @@
   color: var(--success-color);
 }
 
-@media (min-width: $minLaptopScreenWidth) {
+@include for-tablet {
   .main-part {
     align-items: center;
     min-height: 70px;

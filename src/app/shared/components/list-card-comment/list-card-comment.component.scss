@@ -1,4 +1,4 @@
-@import "../../../styles/scss-variables";
+@import "../../../styles/screen-size-mixins";
 
 :host {
   display: block;
@@ -27,7 +27,7 @@
   opacity: 0.7;
 }
 
-@media (min-width: $minLaptopScreenWidth) {
+@include for-tablet {
   .label {
     font-size: 1.1rem;
   }

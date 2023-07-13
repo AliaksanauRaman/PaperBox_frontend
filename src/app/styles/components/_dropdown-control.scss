@@ -1,4 +1,4 @@
-@import '../scss-variables';
+@import "../screen-size-mixins";
 
 .dropdown-control-pane {
   width: 70px;
@@ -8,7 +8,7 @@
   background-color: transparent;
 }
 
-@media (min-width: $minLaptopScreenWidth) {
+@include for-tablet {
   .dropdown-control-pane {
     width: 75px;
   }

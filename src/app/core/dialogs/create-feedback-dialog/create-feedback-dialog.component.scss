@@ -1,4 +1,4 @@
-@import "../../../styles/scss-variables";
+@import "../../../styles/screen-size-mixins";
 
 :host {
   display: flex;
@@ -45,7 +45,7 @@
   color: var(--error-color);
 }
 
-@media (min-width: $minLaptopScreenWidth) {
+@include for-tablet {
   $contentWidth: 460px;
 
   .create-feedback-dialog {

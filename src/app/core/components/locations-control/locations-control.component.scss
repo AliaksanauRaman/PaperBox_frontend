@@ -1,4 +1,4 @@
-@import "../../../styles/scss-variables";
+@import "../../../styles/screen-size-mixins";
 
 $systemMessageContainerHeight: 26px;
 
@@ -94,7 +94,7 @@ $systemMessageContainerHeight: 26px;
   color: var(--warning-color);
 }
 
-@media (min-width: $minLaptopScreenWidth) {
+@include for-tablet {
   .locations-control {
     &.locations-control--warning {
       .control-errors {

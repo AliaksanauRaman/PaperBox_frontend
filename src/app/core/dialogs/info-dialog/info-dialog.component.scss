@@ -1,4 +1,4 @@
-@import "../../../styles/scss-variables";
+@import "../../../styles/screen-size-mixins";
 
 :host {
   display: block;
@@ -32,7 +32,7 @@
   flex-shrink: 0;
 }
 
-@media (min-width: $minLaptopScreenWidth) {
+@include for-tablet {
   .info-dialog {
     padding: 0 20px;
   }

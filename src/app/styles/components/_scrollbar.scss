@@ -1,4 +1,4 @@
-@import "../scss-variables";
+@import "../screen-size-mixins";
 
 @mixin scrollbar {
   scrollbar-color: var(--grey-color) transparent;
@@ -23,7 +23,7 @@
   }
 }
 
-@media (min-width: $minLaptopScreenWidth) {
+@include for-tablet {
   .app-scrollbar {
     @include scrollbar();
   }

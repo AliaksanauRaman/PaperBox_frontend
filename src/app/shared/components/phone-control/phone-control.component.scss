@@ -1,4 +1,4 @@
-@import "../../../styles/scss-variables";
+@import "../../../styles/screen-size-mixins";
 
 :host {
   display: block;
@@ -118,7 +118,7 @@
   }
 }
 
-@media (min-width: $minLaptopScreenWidth) {
+@include for-tablet {
   .custom-control__field {
     padding-left: 78px;
   }

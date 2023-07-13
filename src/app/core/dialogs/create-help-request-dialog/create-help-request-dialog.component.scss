@@ -1,4 +1,4 @@
-@import "../../../styles/scss-variables";
+@import "../../../styles/screen-size-mixins";
 
 :host {
   display: flex;
@@ -19,7 +19,7 @@
   transform: scaleX(-1);
 }
 
-@media (min-width: $minLaptopScreenWidth) {
+@include for-tablet {
   .create-help-request-dialog {
     align-items: center;
   }

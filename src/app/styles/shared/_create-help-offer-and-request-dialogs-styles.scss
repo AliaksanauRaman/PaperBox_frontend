@@ -1,4 +1,4 @@
-@import "../scss-variables";
+@import "../screen-size-mixins";
 
 $systemMessageContainerHeight: 26px;
 
@@ -83,7 +83,7 @@ $systemMessageContainerHeight: 26px;
   margin-top: 10px;
 }
 
-@media (min-width: $minLaptopScreenWidth) {
+@include for-tablet {
   $contentWidth: 520px;
 
   .form {

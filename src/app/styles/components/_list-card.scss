@@ -1,4 +1,4 @@
-@import "../scss-variables";
+@import "../screen-size-mixins";
 
 .app-list-card {
   cursor: pointer;
@@ -57,7 +57,7 @@
   margin-top: 20px;
 }
 
-@media (min-width: $minLaptopScreenWidth) {
+@include for-tablet {
   .app-list-card {
     padding: 20px 80px;
 

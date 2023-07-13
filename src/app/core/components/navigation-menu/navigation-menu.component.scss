@@ -1,4 +1,4 @@
-@import "../../../styles/scss-variables";
+@import "../../../styles/screen-size-mixins";
 
 :host {
   display: block;
@@ -43,7 +43,7 @@
   transform: translateX(-50%);
 }
 
-@media (min-width: $minLaptopScreenWidth) {
+@include for-tablet {
   .navigation-menu {
     min-height: 22px;
   }

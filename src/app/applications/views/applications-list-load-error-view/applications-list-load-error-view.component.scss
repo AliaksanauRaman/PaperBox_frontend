@@ -1,4 +1,4 @@
-@import "../../../styles/scss-variables";
+@import "../../../styles/screen-size-mixins";
 
 :host {
   display: block;
@@ -43,7 +43,7 @@
   max-width: 280px;
 }
 
-@media (min-width: $minLaptopScreenWidth) {
+@include for-tablet {
   .image {
     &.image--mobile {
       display: none;

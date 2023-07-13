@@ -1,4 +1,4 @@
-@import "../../../styles/scss-variables";
+@import "../../../styles/screen-size-mixins";
 
 :host {
   display: flex;
@@ -46,7 +46,7 @@
   }
 }
 
-@media (min-width: $minLaptopScreenWidth) {
+@include for-tablet {
   .main {
     padding: 0 var(--horizontal-bordering-padding);
   }

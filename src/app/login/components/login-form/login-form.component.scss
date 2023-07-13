@@ -1,4 +1,4 @@
-@import "../../../styles/scss-variables";
+@import "../../../styles/screen-size-mixins";
 
 :host {
   display: block;
@@ -47,7 +47,7 @@
   display: block;
 }
 
-@media (min-width: $minLaptopScreenWidth) {
+@include for-tablet {
   .not-signed-up-call-to-action {
     margin-bottom: 40px;
   }

@@ -1,4 +1,4 @@
-@import "../scss-variables";
+@import "../screen-size-mixins";
 
 .cdk-global-overlay-wrapper:has(> div.about-us-dialog) {
   padding-top: 60px;
@@ -37,7 +37,7 @@
   }
 }
 
-@media (min-width: $minLaptopScreenWidth) {
+@include for-tablet {
   .cdk-global-overlay-wrapper:has(> div.about-us-dialog) {
     padding-top: 0;
   }

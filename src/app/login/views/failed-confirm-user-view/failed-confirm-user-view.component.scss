@@ -1,4 +1,4 @@
-@import "../../../styles/scss-variables";
+@import "../../../styles/screen-size-mixins";
 
 :host {
   display: block;
@@ -48,7 +48,7 @@
   display: none;
 }
 
-@media (min-width: $minLaptopScreenWidth) {
+@include for-tablet {
   .failed-confirm-user-view {
     align-items: center;
   }

@@ -1,4 +1,4 @@
-@import "../../styles/scss-variables";
+@import "../../styles/screen-size-mixins";
 
 :host {
   display: block;
@@ -35,7 +35,7 @@
   max-width: 100%;
 }
 
-@media (min-width: $minLaptopScreenWidth) {
+@include for-tablet {
   .section-root {
     padding: 30px;
   }

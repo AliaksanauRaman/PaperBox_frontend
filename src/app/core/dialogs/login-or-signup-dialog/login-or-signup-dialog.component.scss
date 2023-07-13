@@ -1,4 +1,4 @@
-@import "../../../styles/scss-variables";
+@import "../../../styles/screen-size-mixins";
 
 :host {
   display: block;
@@ -43,7 +43,7 @@
 // TODO: Desktop styles leave much to be desired
 // And they are not aligned with the design
 // Revisit them once there will be some free time
-@media (min-width: $minLaptopScreenWidth) {
+@include for-tablet {
   .content-container {
     flex-direction: row-reverse;
     justify-content: center;

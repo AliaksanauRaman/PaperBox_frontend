@@ -1,4 +1,4 @@
-@import "./scss-variables";
+@import "./screen-size-mixins";
 
 :root {
   --vertical-bordering-padding: 20px;
@@ -34,7 +34,7 @@
   --max-content-width: 1280px;
 }
 
-@media (min-width: $minLaptopScreenWidth) {
+@include for-tablet {
   :root {
     --vertical-bordering-padding: 26px;
     --horizontal-bordering-padding: 60px;
