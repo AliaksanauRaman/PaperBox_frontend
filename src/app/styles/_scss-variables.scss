@@ -1,8 +1,12 @@
-$extraSmallMobileScreenWidth: 280px; // GALAXY FOLD
-$smallMobileScreenWidth: 320px;
-$mediumMobileScreenWidth: 360px;
-$minTabletScreenWidth: 481px;
-$minLaptopScreenWidth: 769px;
-$minDesktopScreenWidth: 1025px;
-$mediumDesktopScreenWidth: 1440px;
+// https://www.browserstack.com/guide/ideal-screen-sizes-for-responsive-design
+// https://www.hobo-web.co.uk/best-screen-size/
+// https://www.altamira.ai/blog/common-screen-sizes-for-responsive-web-design/
+// The major part of mobile devices has width: 360px-414px
+
+$smallMobileScreenWidth: 320px; // IPhone 5SE
+$mediumMobileScreenWidth: 360px; // NOT USED
+$minTabletScreenWidth: 481px; // NOT USED
+$minLaptopScreenWidth: 768px;
+$minDesktopScreenWidth: 1025px; // NOT USED
+$mediumDesktopScreenWidth: 1440px; // NOT USED
 $mediumDesktopScreenHeight: 1010px;
