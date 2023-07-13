@@ -1,24 +1,10 @@
-@import '../../../styles/scss-variables';
-
 :host {
   display: block;
-  width: 26px;
-  height: 27px;
+  width: 30px;
+  height: 31px;
 }
 
 svg {
-  width: 26px;
-  height: 27px;
-}
-
-@media (min-width: $smallMobileScreenWidth) {
-  :host {
-    width: 30px;
-    height: 31px;
-  }
-
-  svg {
-    width: 30px;
-    height: 31px;
-  }
+  width: 30px;
+  height: 31px;
 }

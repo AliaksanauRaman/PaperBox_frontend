@@ -6,8 +6,8 @@ div.app-custom-dialog {
   width: 100%;
   max-width: 340px;
   max-height: 96%;
-  margin: 0 15px;
-  padding: 30px 15px;
+  margin: 0 20px;
+  padding: 40px 20px;
   background-color: var(--primary-background-color);
   border-radius: var(--border-radius);
   overflow-y: auto;
@@ -19,22 +19,22 @@ div.app-custom-dialog {
 }
 
 h2.app-custom-dialog-title {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 div.app-custom-dialog-close-button {
   cursor: pointer;
   position: absolute;
-  top: 12px;
-  right: 12px;
+  top: 15px;
+  right: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
 
   .app-custom-dialog-close-button-icon {
-    transform: rotate(45deg) scale(1.05);
+    transform: rotate(45deg) scale(1.1);
   }
 }
 
@@ -42,38 +42,12 @@ div.app-custom-dialog-actions {
   display: flex;
   flex-shrink: 0;
   width: 100%;
-  margin-top: 10px;
+  margin-top: 30px;
 }
 
 button.app-custom-dialog-actions__item {
   flex-shrink: 0;
   width: 100%;
-}
-
-@media (min-width: $smallMobileScreenWidth) {
-  div.app-custom-dialog {
-    margin: 0 20px;
-    padding: 40px 20px;
-  }
-
-  h2.app-custom-dialog-title {
-    margin-bottom: 30px;
-  }
-
-  div.app-custom-dialog-close-button {
-    top: 15px;
-    right: 15px;
-    width: 24px;
-    height: 24px;
-
-    .app-custom-dialog-close-button-icon {
-      transform: rotate(45deg) scale(1.1);
-    }
-  }
-
-  div.app-custom-dialog-actions {
-    margin-top: 30px;
-  }
 }
 
 @include for-tablet {

@@ -1,9 +1,7 @@
-@import '../../../styles/scss-variables';
-
 :host {
   display: flex;
-  width: 18px;
-  height: 8px;
+  width: 22px;
+  height: 10px;
 }
 
 svg {
@@ -12,7 +10,7 @@ svg {
 }
 
 path {
-  transition: .25s stroke ease-in-out;
+  transition: 0.25s stroke ease-in-out;
 
   &.grey {
     stroke: var(--grey-color);
@@ -20,12 +18,5 @@ path {
 
   &.primary {
     stroke: var(--primary-color);
-  }
-}
-
-@media (min-width: $smallMobileScreenWidth) {
-  :host {
-    width: 22px;
-    height: 10px;
   }
 }

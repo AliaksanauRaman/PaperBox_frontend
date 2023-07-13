@@ -28,8 +28,8 @@
 
 .container__navigation-menu {
   flex-shrink: 0;
-  margin-top: 20px;
-  margin-bottom: 10px;
+  margin-top: 30px;
+  margin-bottom: 20px;
 }
 
 .container__content {
@@ -37,13 +37,6 @@
   flex-direction: column;
   flex-grow: 1;
   min-height: 0;
-}
-
-@media (min-width: $smallMobileScreenWidth) {
-  .container__navigation-menu {
-    margin-top: 30px;
-    margin-bottom: 20px;
-  }
 }
 
 @include for-tablet {
