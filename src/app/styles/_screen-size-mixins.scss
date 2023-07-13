@@ -1,0 +1,7 @@
+@import "./scss-variables";
+
+@mixin for-tablet {
+  @media (min-width: $minLaptopScreenWidth) {
+    @content;
+  }
+}
