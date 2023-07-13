@@ -12,7 +12,6 @@ import { ClipboardModule } from '@angular/cdk/clipboard';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 
 import { PlusIconModule } from '../shared/icons/plus-icon/plus-icon.module';
-import { CalendarIconModule } from '../shared/icons/calendar-icon/calendar-icon.module';
 import { LocationIconModule } from '../shared/icons/location-icon/location-icon.module';
 import { InputControlModule } from '../shared/components/input-control/input-control.module';
 import { PhoneControlModule } from '../shared/components/phone-control/phone-control.module';
@@ -112,7 +111,6 @@ import {
     ClipboardModule,
     AngularSvgIconModule,
     PlusIconModule,
-    CalendarIconModule,
     LocationIconModule,
     InputControlModule,
     PhoneControlModule,
