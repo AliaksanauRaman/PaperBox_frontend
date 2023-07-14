@@ -1,15 +1,9 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  AfterViewInit,
-  ViewChild,
-  ElementRef,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import { MatRippleModule } from '@angular/material/core';
+import { AngularSvgIconModule } from 'angular-svg-icon';
 
-import { ImagesService } from '../../services/images.service';
+import { WhiteSquareButtonComponent } from '../white-square-button/white-square-button.component';
 
 @Component({
   selector: 'app-about-button',
@@ -17,17 +11,11 @@ import { ImagesService } from '../../services/images.service';
   styleUrls: ['./about-button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [TranslateModule, MatTooltipModule, MatRippleModule],
+  imports: [
+    TranslateModule,
+    MatTooltipModule,
+    AngularSvgIconModule,
+    WhiteSquareButtonComponent,
+  ],
 })
-export class AboutButtonComponent implements AfterViewInit {
-  @ViewChild('aboutButtonRef')
-  private readonly _aboutButtonElementRef!: ElementRef<HTMLButtonElement>;
-
-  protected readonly _infoImage = this._imagesService.getInfoImage();
-
-  constructor(private readonly _imagesService: ImagesService) {}
-
-  public ngAfterViewInit(): void {
-    this._aboutButtonElementRef.nativeElement.append(this._infoImage);
-  }
-}
+export class AboutButtonComponent {}

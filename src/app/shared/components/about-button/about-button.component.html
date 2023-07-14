@@ -1,7 +1,3 @@
-<button
-  #aboutButtonRef
-  class="about-button"
-  [matTooltip]="'button.aboutService' | translate"
-  matRipple
-  type="button"
-></button>
+<app-white-square-button [matTooltip]="'button.aboutService' | translate">
+  <svg-icon class="info-icon" src="/assets/svg/icons/info-icon.svg"></svg-icon>
+</app-white-square-button>
