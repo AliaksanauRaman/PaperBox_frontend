@@ -65,6 +65,7 @@
   }
 
   .girl-with-heart-desktop-image {
+    pointer-events: none; // is needed to not overlap recaptcha
     position: absolute;
     bottom: -14%;
     right: 68%;
