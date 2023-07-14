@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 
 enum AppImage {
-  INFO = 'info',
   LOGO_BIG_BETA = 'logo-big-beta',
   LOGO_SMALL_BETA = 'logo-small-beta',
 }
@@ -13,19 +12,8 @@ export class ImagesService {
   private readonly _imagesMap = new Map<AppImage, HTMLImageElement>([]);
 
   public loadImages(): void {
-    this.loadInfoImage();
     this.loadLogoBigBetaImage();
     this.loadLogoSmallBetaImage();
-  }
-
-  public getInfoImage(): HTMLImageElement {
-    const infoImage = this._imagesMap.get(AppImage.INFO);
-
-    if (infoImage === undefined) {
-      throw new Error('Info image is not defined!');
-    }
-
-    return infoImage;
   }
 
   public getLogoBigBetaImage(): HTMLImageElement {
@@ -46,12 +34,6 @@ export class ImagesService {
     }
 
     return logoSmallBetaImage;
-  }
-
-  private loadInfoImage(): void {
-    const infoImage = new Image(26, 26);
-    infoImage.src = '/assets/images/info_button.png';
-    this._imagesMap.set(AppImage.INFO, infoImage);
   }
 
   private loadLogoBigBetaImage(): void {
