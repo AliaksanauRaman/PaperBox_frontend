@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { tap } from 'rxjs';
 
+import { RECAPTCHA_CONFIG } from '../../dependencies/recaptcha-config';
 import { SignupService } from '../../../shared/services/signup.service';
 import { ErrorNotificationService } from '../../../core/services/error-notification.service';
 import { InfoNotificationService } from '../../../core/services/info-notification.service';
@@ -17,6 +18,7 @@ import { CustomValidators } from '../../../shared/classes/custom-validators.clas
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignupFormComponent {
+  protected readonly _recaptchaConfig = inject(RECAPTCHA_CONFIG);
   protected readonly _signupRequestState$ = this._signupService.state$.pipe(
     tap((state) => {
       if (state.inProgress) {
@@ -36,9 +38,11 @@ export class SignupFormComponent {
   );
   protected readonly _signupForm = this._formBuilder.group(
     {
+      fullName: ['', [Validators.required]],
       email: ['', [Validators.required, CustomValidators.emailFormat]],
       password: ['', [Validators.required, CustomValidators.passwordFormat]],
       confirmPassword: ['', [Validators.required]],
+      reCaptcha: ['', [Validators.required]],
       personalDataAgreementConfirmation: [false, [Validators.requiredTrue]],
     },
     { validators: [CustomValidators.passwordsMatch] }
@@ -62,8 +66,8 @@ export class SignupFormComponent {
       throw new Error('Signup form is invalid!');
     }
 
-    const { email, password } = this._signupForm.getRawValue();
-    const signupDto = { email, password };
+    const { fullName, email, password } = this._signupForm.getRawValue();
+    const signupDto = { fullName, email, password };
     this._signupService.performRequest(signupDto);
   }
 }

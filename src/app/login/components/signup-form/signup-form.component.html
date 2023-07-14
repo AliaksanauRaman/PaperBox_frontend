@@ -5,6 +5,29 @@
 >
   <div
     class="app-control-container"
+    *ngIf="_signupForm.controls.fullName as fullNameControl"
+  >
+    <app-input-control
+      [label]="'controlLabel.fullName' | translate"
+      [required]="true"
+      [placeholder]="'placeholders.fullNameField' | translate"
+      formControlName="fullName"
+    ></app-input-control>
+
+    <div class="app-control-errors">
+      <ng-container *ngIf="fullNameControl.touched">
+        <div
+          class="app-control-errors__item"
+          *ngIf="fullNameControl.errors?.['required']"
+        >
+          <span>{{ "error.fullNameIsRequired" | translate }}</span>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <div
+    class="app-control-container"
     *ngIf="_signupForm.controls.email as emailControl"
   >
     <app-input-control
@@ -113,6 +136,12 @@
       >{{ "components.signupForm.login" | translate }}</a
     >
   </div>
+
+  <re-captcha
+    class="re-captcha"
+    [siteKey]="_recaptchaConfig.siteKey"
+    formControlName="reCaptcha"
+  ></re-captcha>
 
   <app-checkbox-with-text-control
     class="confirmation-checkbox"
