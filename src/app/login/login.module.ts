@@ -8,8 +8,6 @@ import { ToolbarComponent } from '../shared/components/toolbar/toolbar.component
 import { FooterComponent } from '../shared/components/footer/footer.component';
 import { PrimaryButtonComponent } from '../shared/components/primary-button/primary-button.component';
 import { CheckboxWithTextControlComponent } from '../shared/components/checkbox-with-text-control/checkbox-with-text-control.component';
-import { ManWithHeartsMobileImageComponent } from '../shared/images/man-with-hearts-mobile-image/man-with-hearts-mobile-image.component';
-import { ManWithHeartsDesktopImageComponent } from '../shared/images/man-with-hearts-desktop-image/man-with-hearts-desktop-image.component';
 import { InputControlModule } from '../shared/components/input-control/input-control.module';
 import { LoginRoutingModule } from './login-routing.module';
 
@@ -31,8 +29,6 @@ import { FailedConfirmUserViewComponent } from './views/failed-confirm-user-view
     FooterComponent,
     PrimaryButtonComponent,
     CheckboxWithTextControlComponent,
-    ManWithHeartsMobileImageComponent,
-    ManWithHeartsDesktopImageComponent,
     InputControlModule,
     LoginRoutingModule,
   ],
