@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { AngularSvgIconModule } from 'angular-svg-icon';
+import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
 
 import { ToolbarComponent } from '../shared/components/toolbar/toolbar.component';
 import { FooterComponent } from '../shared/components/footer/footer.component';
@@ -19,12 +20,17 @@ import { SignupFormComponent } from './components/signup-form/signup-form.compon
 import { SuccessConfirmUserViewComponent } from './views/success-confirm-user-view/success-confirm-user-view.component';
 import { FailedConfirmUserViewComponent } from './views/failed-confirm-user-view/failed-confirm-user-view.component';
 
+import { RECAPTCHA_CONFIG_PROVIDER } from './dependencies/recaptcha-config';
+import { RECAPTCHA_LANGUAGE_PROVIDER } from './dependencies/recaptcha-language';
+
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
     TranslateModule,
     AngularSvgIconModule,
+    RecaptchaModule,
+    RecaptchaFormsModule,
     ToolbarComponent,
     FooterComponent,
     PrimaryButtonComponent,
@@ -41,7 +47,7 @@ import { FailedConfirmUserViewComponent } from './views/failed-confirm-user-view
     SuccessConfirmUserViewComponent,
     FailedConfirmUserViewComponent,
   ],
-  providers: [],
+  providers: [RECAPTCHA_CONFIG_PROVIDER, RECAPTCHA_LANGUAGE_PROVIDER],
   exports: [],
 })
 export class LoginModule {}
