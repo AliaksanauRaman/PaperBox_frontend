@@ -27,6 +27,7 @@ import { GirlWithLaptopImageComponent } from '../shared/images/girl-with-laptop-
 import { ToolbarComponent } from '../shared/components/toolbar/toolbar.component';
 import { FooterComponent } from '../shared/components/footer/footer.component';
 import { PrimaryButtonComponent } from '../shared/components/primary-button/primary-button.component';
+import { RecaptchaControlComponent } from '../shared/components/recaptcha-control/recaptcha-control.component';
 
 import { AppPageLayoutComponent } from './layouts/app-page-layout/app-page-layout.component';
 import { MainSectionLayoutComponent } from './layouts/main-section-layout/main-section-layout.component';
@@ -127,6 +128,7 @@ import { RECAPTCHA_LANGUAGE_PROVIDER } from './dependencies/recaptcha-language';
     ToolbarComponent,
     FooterComponent,
     PrimaryButtonComponent,
+    RecaptchaControlComponent,
   ],
   declarations: [
     AppPageLayoutComponent,

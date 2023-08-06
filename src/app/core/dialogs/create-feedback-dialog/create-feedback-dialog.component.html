@@ -80,7 +80,7 @@
         </div>
       </div>
 
-      <div class="control-container control-container--comment">
+      <div class="control-container">
         <app-textarea-field-control
           class="control"
           [label]="'dialogs.createFeedback.commentFieldLabel' | translate"
@@ -108,6 +108,12 @@
             </span>
           </ng-container>
         </div>
+      </div>
+
+      <div class="control-container">
+        <app-recaptcha-control
+          formControlName="recaptcha"
+        ></app-recaptcha-control>
       </div>
 
       <div class="app-custom-dialog-actions">

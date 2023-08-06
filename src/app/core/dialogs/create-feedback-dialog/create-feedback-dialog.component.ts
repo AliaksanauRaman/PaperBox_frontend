@@ -57,6 +57,7 @@ export class CreateFeedbackDialogComponent
     fullName: ['', [Validators.required]],
     email: ['', [Validators.required, CustomValidators.emailFormat]],
     comment: ['', [Validators.required, Validators.minLength(10)]],
+    recaptcha: ['', [Validators.required]],
   });
 
   constructor(
