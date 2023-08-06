@@ -95,6 +95,8 @@ import {
   PHONE_DIALLING_CODES,
   PHONE_DIALLING_CODES_VALUE,
 } from './dependencies/phone-dialling-codes';
+import { RECAPTCHA_CONFIG_PROVIDER } from './dependencies/recaptcha-config';
+import { RECAPTCHA_LANGUAGE_PROVIDER } from './dependencies/recaptcha-language';
 
 @NgModule({
   imports: [
@@ -209,6 +211,8 @@ import {
       provide: PHONE_DIALLING_CODES,
       useValue: PHONE_DIALLING_CODES_VALUE,
     },
+    RECAPTCHA_CONFIG_PROVIDER,
+    RECAPTCHA_LANGUAGE_PROVIDER,
   ],
 })
 export class CoreModule {}
