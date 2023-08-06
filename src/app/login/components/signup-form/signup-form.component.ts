@@ -1,8 +1,7 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { tap } from 'rxjs';
 
-import { RECAPTCHA_CONFIG } from '../../dependencies/recaptcha-config';
 import { SignupService } from '../../../shared/services/signup.service';
 import { ErrorNotificationService } from '../../../core/services/error-notification.service';
 import { InfoNotificationService } from '../../../core/services/info-notification.service';
@@ -18,7 +17,6 @@ import { CustomValidators } from '../../../shared/classes/custom-validators.clas
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignupFormComponent {
-  protected readonly _recaptchaConfig = inject(RECAPTCHA_CONFIG);
   protected readonly _signupRequestState$ = this._signupService.state$.pipe(
     tap((state) => {
       if (state.inProgress) {
