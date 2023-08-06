@@ -40,7 +40,7 @@ export class SignupFormComponent {
       email: ['', [Validators.required, CustomValidators.emailFormat]],
       password: ['', [Validators.required, CustomValidators.passwordFormat]],
       confirmPassword: ['', [Validators.required]],
-      reCaptcha: ['', [Validators.required]],
+      recaptcha: ['', [Validators.required]],
       personalDataAgreementConfirmation: [false, [Validators.requiredTrue]],
     },
     { validators: [CustomValidators.passwordsMatch] }
