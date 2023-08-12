@@ -1,19 +1,17 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 
-import { UserTokenService } from '../../shared/services/user-token.service';
+import { UserTokenStateService } from '../../state/user-token/user-token-state.service';
 import { InfoNotificationService } from './info-notification.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LogoutService {
-  constructor(
-    private readonly _userTokenService: UserTokenService,
-    private readonly _infoNotificationService: InfoNotificationService
-  ) {}
+  private readonly _userTokenStateService = inject(UserTokenStateService);
+  private readonly _infoNotificationService = inject(InfoNotificationService);
 
   public doLogout(): void {
-    this._userTokenService.remove();
+    this._userTokenStateService.remove();
     this._infoNotificationService.showMessage('info.loggedOutSuccessfully');
   }
 }
