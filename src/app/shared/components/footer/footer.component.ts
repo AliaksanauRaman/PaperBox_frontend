@@ -1,9 +1,9 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 
 import { LeaveFeedbackButtonComponent } from '../leave-feedback-button/leave-feedback-button.component';
 
 import { CreateFeedbackDialogService } from '../../../core/services/create-feedback-dialog.service';
-import { UserService } from '../../services/user.service';
+import { UserStateService } from '../../../state/user/user-state.service';
 
 @Component({
   selector: 'app-footer',
@@ -14,15 +14,14 @@ import { UserService } from '../../services/user.service';
   imports: [LeaveFeedbackButtonComponent],
 })
 export class FooterComponent {
-  constructor(
-    private readonly _createFeedbackDialogService: CreateFeedbackDialogService,
-    private readonly _userService: UserService
-  ) {}
+  private readonly _userStateService = inject(UserStateService);
+  private readonly _createFeedbackDialogService = inject(
+    CreateFeedbackDialogService
+  );
 
   protected handleLeaveFeedbackButtonClick(): void {
-    const userEmail = this._userService.isLoggedIn()
-      ? this._userService.getValue().email
-      : undefined;
-    this._createFeedbackDialogService.openDialog(userEmail);
+    this._createFeedbackDialogService.openDialog(
+      this._userStateService.get()?.email
+    );
   }
 }
