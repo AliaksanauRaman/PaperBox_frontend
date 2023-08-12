@@ -1,7 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Injector, inject } from '@angular/core';
 
 import { RoutingService } from '../services/routing.service';
-import { UserService } from '../../shared/services/user.service';
 
 import { CommandInterface } from './command.interface';
 import { RedirectToAdminHomeCommand } from './entries/redirect-to-admin-home.command';
@@ -13,6 +12,7 @@ import { LogUserCommand } from './entries/log-user.command';
   providedIn: 'root',
 })
 export class CommandsPanelService {
+  private readonly _injector = inject(Injector);
   private readonly COMMAND_MAP = new Map<string, CommandInterface>([
     [
       RedirectToAdminHomeCommand.Label,
@@ -26,13 +26,10 @@ export class CommandsPanelService {
       RedirectToHomeCommand.Label,
       new RedirectToHomeCommand(this._routingService),
     ],
-    [LogUserCommand.Label, new LogUserCommand(this._userService)],
+    [LogUserCommand.Label, this._injector.get(LogUserCommand)],
   ]);
 
-  constructor(
-    private readonly _routingService: RoutingService,
-    private readonly _userService: UserService
-  ) {}
+  constructor(private readonly _routingService: RoutingService) {}
 
   public show(): void {
     const rawInput = prompt('Run command:');
