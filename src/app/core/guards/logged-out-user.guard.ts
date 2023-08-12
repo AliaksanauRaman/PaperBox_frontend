@@ -1,20 +1,20 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { CanActivate } from '@angular/router';
 
-import { UserService } from '../../shared/services/user.service';
+import { UserIsLoggedInStateService } from '../../state/user-is-logged-in/user-is-logged-in-state.service';
 import { RoutingService } from '../services/routing.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoggedOutUserGuard implements CanActivate {
-  constructor(
-    private readonly _userService: UserService,
-    private readonly _routingService: RoutingService
-  ) {}
+  private readonly _userIsLoggedInStateService = inject(
+    UserIsLoggedInStateService
+  );
+  private readonly _routingService = inject(RoutingService);
 
   public async canActivate(): Promise<boolean> {
-    if (!this._userService.isLoggedIn()) {
+    if (!this._userIsLoggedInStateService.get()) {
       return true;
     }
 
