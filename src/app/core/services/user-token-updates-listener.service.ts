@@ -51,7 +51,7 @@ export class UserTokenUpdatesListenerService {
             userTokenValue
           );
           const user =
-            this._userMapperService.fromUserTokenValueToUser(userTokenValue);
+            this._userMapperService.fromUserTokenToUser(userTokenValue);
           this._userStateService.set(user);
         })
       )
