@@ -16,9 +16,9 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 
-import { UserTokenStorageService } from './core/services/user-token-storage.service';
-import { UserTokenEntityService } from './shared/services/user-token-entity.service';
-import { UserService } from './shared/services/user.service';
+import { UserTokenInitializerService } from './core/services/user-token-initializer.service';
+import { UserTokenUpdatesListenerService } from './core/services/user-token-updates-listener.service';
+import { UserUpdatesListenerService } from './core/services/user-updates-listener.service';
 import { ImagesService } from './shared/services/images.service';
 
 import { API_URL, API_URL_VALUE } from './shared/dependencies/api-url';
@@ -53,9 +53,9 @@ import { initAppFactory } from './init-app.factory';
       provide: APP_INITIALIZER,
       useFactory: initAppFactory,
       deps: [
-        UserTokenStorageService,
-        UserTokenEntityService,
-        UserService,
+        UserTokenInitializerService,
+        UserTokenUpdatesListenerService,
+        UserUpdatesListenerService,
         ImagesService,
       ],
       multi: true,
