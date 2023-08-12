@@ -46,6 +46,5 @@ import { FailedConfirmUserViewComponent } from './views/failed-confirm-user-view
     SuccessConfirmUserViewComponent,
     FailedConfirmUserViewComponent,
   ],
-  exports: [],
 })
 export class LoginModule {}
