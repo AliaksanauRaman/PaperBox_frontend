@@ -3,15 +3,16 @@ import {
   Component,
   ViewEncapsulation,
   ViewChild,
+  inject,
 } from '@angular/core';
 import { AsyncPipe, NgIf } from '@angular/common';
 import { MatMenuModule, MatMenu } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
 
-import { LogoutService } from '../../../core/services/logout.service';
-import { UserService } from '../../services/user.service';
+import { UserStateService } from '../../../state/user/user-state.service';
 import { RoutingService } from '../../../core/services/routing.service';
+import { LogoutService } from '../../../core/services/logout.service';
 import { UserRole } from '../../enums/user-role.enum';
 
 @Component({
@@ -27,14 +28,11 @@ export class AccountMenuComponent {
   @ViewChild(MatMenu)
   public readonly menuRef!: MatMenu;
 
-  protected readonly _user$ = this._userService.value$;
   protected readonly _UserRole = UserRole;
 
-  constructor(
-    private readonly _logoutService: LogoutService,
-    private readonly _userService: UserService,
-    private readonly _routingService: RoutingService
-  ) {}
+  protected readonly _userStateService = inject(UserStateService);
+  private readonly _routingService = inject(RoutingService);
+  private readonly _logoutService = inject(LogoutService);
 
   protected handleAdminClick(): void {
     this._routingService.navigateToAdminHome();

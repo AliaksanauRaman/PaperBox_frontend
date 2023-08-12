@@ -1,5 +1,5 @@
 <mat-menu class="app-custom-menu">
-  <ng-container *ngIf="_user$ | async as user">
+  <ng-container *ngIf="_userStateService.stream$ | async as user">
     <button
       *ngIf="user.role === _UserRole.ADMIN"
       mat-menu-item
