@@ -1,22 +1,22 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 
-import { NullableUserType } from '../types/user.type';
-import { UserTokenEntity } from '../entities/user-token.entity';
+import { JWT_TOKEN_DECODER } from '../../core/services/jwt-token-decoder';
+
+import { UserType } from '../types/user.type';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserMapperService {
-  public toUser(userTokenEntity: UserTokenEntity | null): NullableUserType {
-    if (userTokenEntity === null) {
-      return null;
-    }
+  private readonly _jwtTokenDecoder = inject(JWT_TOKEN_DECODER);
 
+  public fromUserTokenToUser(userTokenValue: string): UserType {
+    const decodedUserToken = this._jwtTokenDecoder.decode(userTokenValue);
     const {
       id,
       sub: email,
       permissions: [{ authority: role }],
-    } = userTokenEntity.decodedUserToken;
-    return { id, email, role, valid: !userTokenEntity.expired };
+    } = decodedUserToken.getData();
+    return { id, email, role, valid: !decodedUserToken.isExpired() };
   }
 }
