@@ -4,6 +4,7 @@ import {
   OnDestroy,
   OnInit,
   Inject,
+  inject,
 } from '@angular/core';
 import { BehaviorSubject, map, combineLatest } from 'rxjs';
 
@@ -11,7 +12,7 @@ import {
   GET_PUBLISHED_APPLICATIONS_STATE_SERVICE,
   GetPublishedApplicationsStateService,
 } from '../../dependencies/get-published-applications-state-service';
-import { UserService } from '../../../shared/services/user.service';
+import { UserStateService } from '../../../state/user/user-state.service';
 
 import { DestroyEmitter } from '../../../shared/abstracts/destroy-emitter.class';
 import { SuccessResponseState } from '../../../shared/classes/success-response-state.class';
@@ -27,6 +28,8 @@ export class ApplicationsListComponent
   extends DestroyEmitter
   implements OnInit, OnDestroy
 {
+  private readonly _userStateService = inject(UserStateService);
+
   private readonly _deletedApplicationsIds$ = new BehaviorSubject<
     ReadonlyArray<number>
   >([]);
@@ -34,7 +37,7 @@ export class ApplicationsListComponent
   protected readonly _templateContext$ = combineLatest([
     this._getPublishedApplications.state$,
     this._deletedApplicationsIds$.asObservable(),
-    this._userService.value$,
+    this._userStateService.stream$,
   ]).pipe(
     map(([state, deletedApplicationsIds, user]) => {
       if (state.data !== null) {
@@ -59,8 +62,7 @@ export class ApplicationsListComponent
 
   constructor(
     @Inject(GET_PUBLISHED_APPLICATIONS_STATE_SERVICE)
-    private readonly _getPublishedApplications: GetPublishedApplicationsStateService,
-    private readonly _userService: UserService
+    private readonly _getPublishedApplications: GetPublishedApplicationsStateService
   ) {
     super();
   }
