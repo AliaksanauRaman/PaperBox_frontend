@@ -201,8 +201,7 @@
     "sameCountries": "Same countries.",
     "sameCities": "Same cities.",
     "itIsBetterToLeaveAComment": "It is better to leave a comment.",
-    "sessionIsExpired": "Session is expired. Please, login again.",
-    "tokenIsBroken": "Login data is broken. Please, try to login again."
+    "sessionIsExpired": "Session is expired. Please, login again."
   },
   "error": {
     "fullNameIsRequired": "Full name is required.",
