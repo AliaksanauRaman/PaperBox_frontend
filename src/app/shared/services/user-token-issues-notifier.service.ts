@@ -1,40 +1,30 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { filter, tap } from 'rxjs';
 
-import { UserTokenService } from './user-token.service';
-import { TypeAssertionService } from '../../core/services/type-assertion.service';
-import { UserTokenEntity } from '../entities/user-token.entity';
+import { UserTokenStateService } from '../../state/user-token/user-token-state.service';
 import { WarningNotificationService } from '../../core/services/warning-notification.service';
+import { JWT_TOKEN_DECODER } from '../../core/services/jwt-token-decoder/injection-token';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserTokenIssuesNotifierService {
-  constructor(
-    private readonly _userTokenService: UserTokenService,
-    private readonly _typeAssertionService: TypeAssertionService,
-    private readonly _warningNotificationService: WarningNotificationService
-  ) {}
+  private readonly _userTokenStateService = inject(UserTokenStateService);
+  private readonly _warningNotificationService = inject(
+    WarningNotificationService
+  );
+  private readonly _jwtTokenDecoder = inject(JWT_TOKEN_DECODER);
 
   public startWatching(): void {
-    this._userTokenService.value$
+    this._userTokenStateService.stream$
       .pipe(
-        // We should not unsubscribe here because this service will
-        // leave as long as the app
-        filter(this._typeAssertionService.isNotNull),
-        tap((userToken) => {
-          const entity = new UserTokenEntity(userToken);
+        filter(
+          (userTokenValue): userTokenValue is string => userTokenValue !== null
+        ),
+        tap((userTokenValue) => {
+          const decodedUserToken = this._jwtTokenDecoder.decode(userTokenValue);
 
-          try {
-            entity.decode();
-          } catch (_error: unknown) {
-            this._warningNotificationService.showMessage(
-              'warnings.tokenIsBroken'
-            );
-            return;
-          }
-
-          if (entity.expired) {
+          if (decodedUserToken.isExpired()) {
             this._warningNotificationService.showMessage(
               'warnings.sessionIsExpired'
             );
