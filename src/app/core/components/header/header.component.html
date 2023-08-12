@@ -2,7 +2,7 @@
   <div class="container">
     <app-toolbar
       class="toolbar"
-      [userIsLoggedIn]="(_userService.isLoggedIn$ | async) === true"
+      [userIsLoggedIn]="(_userIsLoggedInStateService.stream$ | async) === true"
     ></app-toolbar>
   </div>
 </header>

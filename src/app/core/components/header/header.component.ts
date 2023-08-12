@@ -1,6 +1,6 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 
-import { UserService } from '../../../shared/services/user.service';
+import { UserIsLoggedInStateService } from '../../../state/user-is-logged-in/user-is-logged-in-state.service';
 
 @Component({
   selector: 'app-header',
@@ -9,5 +9,7 @@ import { UserService } from '../../../shared/services/user.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
-  constructor(protected readonly _userService: UserService) {}
+  protected readonly _userIsLoggedInStateService = inject(
+    UserIsLoggedInStateService
+  );
 }
