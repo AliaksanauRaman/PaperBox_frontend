@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import {
   HttpInterceptor,
   HttpRequest,
@@ -7,7 +7,7 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { UserTokenEntityService } from '../../shared/services/user-token-entity.service';
+import { UserTokenStateService } from '../../state/user-token/user-token-state.service';
 
 type RequestType = Readonly<{
   method: 'POST' | 'GET';
@@ -40,9 +40,7 @@ const REQUESTS_TO_SKIP: ReadonlyArray<RequestType> = [
   providedIn: 'root',
 })
 export class AuthorizationInterceptor implements HttpInterceptor {
-  constructor(
-    private readonly _userTokenEntityService: UserTokenEntityService
-  ) {}
+  private readonly _userTokenStateService = inject(UserTokenStateService);
 
   public intercept(
     req: HttpRequest<unknown>,
@@ -52,16 +50,16 @@ export class AuthorizationInterceptor implements HttpInterceptor {
       return next.handle(req);
     }
 
-    const userTokenEntity = this._userTokenEntityService.getValueOrNull();
+    const userTokenValue = this._userTokenStateService.get();
 
-    if (userTokenEntity === null || userTokenEntity.expired) {
+    if (userTokenValue === null) {
       return next.handle(req);
     }
 
     return next.handle(
       req.clone({
         setHeaders: {
-          Authorization: `Bearer ${userTokenEntity.userToken}`,
+          Authorization: `Bearer ${userTokenValue}`,
         },
       })
     );
