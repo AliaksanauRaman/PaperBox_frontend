@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { CanActivateChild } from '@angular/router';
 
-import { UserService } from '../../shared/services/user.service';
+import { UserStateService } from '../../state/user/user-state.service';
 import { RoutingService } from '../../core/services/routing.service';
 
 import { UserRole } from '../../shared/enums/user-role.enum';
@@ -10,18 +10,16 @@ import { UserRole } from '../../shared/enums/user-role.enum';
   providedIn: 'root',
 })
 export class AdminIsLoggedInGuard implements CanActivateChild {
-  constructor(
-    private readonly _userService: UserService,
-    private readonly _routingService: RoutingService
-  ) {}
+  private readonly _userStateService = inject(UserStateService);
+  private readonly _routingService = inject(RoutingService);
 
   public async canActivateChild(): Promise<boolean> {
-    const user = this._userService.getValueOrNull();
+    const user = this._userStateService.get();
 
-    if (user === null || !user.valid || user.role !== UserRole.ADMIN) {
-      return this._routingService.navigateToAdminLogin().then(() => false);
+    if (user !== null && user.valid && user.role === UserRole.ADMIN) {
+      return true;
     }
 
-    return true;
+    return this._routingService.navigateToAdminLogin().then(() => false);
   }
 }
