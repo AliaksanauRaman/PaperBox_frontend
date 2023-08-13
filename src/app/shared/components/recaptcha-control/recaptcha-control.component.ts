@@ -2,10 +2,15 @@ import {
   Component,
   forwardRef,
   ChangeDetectionStrategy,
+  ViewChild,
   inject,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { RecaptchaModule, RecaptchaFormsModule } from 'ng-recaptcha';
+import {
+  RecaptchaModule,
+  RecaptchaFormsModule,
+  RecaptchaComponent,
+} from 'ng-recaptcha';
 
 import { RECAPTCHA_CONFIG } from '../../../core/dependencies/recaptcha-config';
 
@@ -25,15 +30,24 @@ import { RECAPTCHA_CONFIG } from '../../../core/dependencies/recaptcha-config';
   imports: [RecaptchaModule, RecaptchaFormsModule],
 })
 export class RecaptchaControlComponent implements ControlValueAccessor {
+  @ViewChild(RecaptchaComponent)
+  private readonly _recaptchaComponent!: RecaptchaComponent;
+
   protected readonly _recaptchaConfig = inject(RECAPTCHA_CONFIG);
 
   protected _touched = false;
+  private _lastResolved = '';
 
   public writeValue(value: unknown): void {
     if (value !== '') {
       throw new Error(
         'Only an empty string is allowed as an initial value of recaptcha!'
       );
+    }
+
+    if (this._lastResolved !== '') {
+      this._recaptchaComponent.reset();
+      this._lastResolved = '';
     }
   }
 
@@ -46,6 +60,7 @@ export class RecaptchaControlComponent implements ControlValueAccessor {
   }
 
   protected handleResolved(resolvedValue: string): void {
+    this._lastResolved = resolvedValue;
     this.onChange(resolvedValue);
 
     if (!this._touched) {
