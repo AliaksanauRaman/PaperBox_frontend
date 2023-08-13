@@ -1,4 +1,4 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpParams, HttpStatusCode } from '@angular/common/http';
 import { Observable, catchError, map, of } from 'rxjs';
 
@@ -10,10 +10,8 @@ import { ConfirmUserResponseDataType } from '../../shared/types/confirm-user-res
   providedIn: 'root',
 })
 export class ConfirmUserHttpService {
-  constructor(
-    @Inject(API_URL) private readonly _apiUrl: string,
-    private readonly _httpClient: HttpClient
-  ) {}
+  private readonly _apiUrl = inject(API_URL);
+  private readonly _httpClient = inject(HttpClient);
 
   public confirmUser(
     userToken: string
@@ -36,7 +34,7 @@ export class ConfirmUserHttpService {
           throw new Error('User confirmation failed!');
         }),
         catchError((error: unknown) => {
-          console.error('Custom console error', error);
+          console.error(error);
 
           return of({ ok: false });
         })
