@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { ConfirmUserResolver } from './resolvers/confirm-user.resolver';
+import { userConfirmationResolver } from './resolvers/user-confirmation.resolver';
 
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
@@ -28,7 +28,7 @@ const loginRoutes: Routes = [
     title: 'Pushka | Confirm user',
     component: ConfirmUserPageComponent,
     resolve: {
-      userConfirmationState: ConfirmUserResolver,
+      userConfirmation: userConfirmationResolver,
     },
   },
 ];
