@@ -4,12 +4,6 @@ export abstract class StateService<T> {
   private readonly _stream$ = new BehaviorSubject<T>(this.getDefaultValue());
   public readonly stream$ = this._stream$.asObservable();
 
-  constructor() {
-    this._stream$.subscribe((value) =>
-      console.log(`[${this.getStateName()}]`, value)
-    );
-  }
-
   public abstract getStateName(): string;
   public abstract getDefaultValue(): T;
 
