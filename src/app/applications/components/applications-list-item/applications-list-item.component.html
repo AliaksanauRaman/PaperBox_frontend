@@ -71,15 +71,18 @@
         </div>
       </div>
 
-      <div class="public-id">
-        <div class="public-id__label">
-          <span>{{ "components.listCard.applicationId" | translate }}</span>
-        </div>
+      <!-- TODO: Temporary remove it from the page -->
+      <ng-template>
+        <div class="public-id">
+          <div class="public-id__label">
+            <span>{{ "components.listCard.applicationId" | translate }}</span>
+          </div>
 
-        <div class="public-id__value">
-          <span>{{ _publishedApplication.publicId }}</span>
+          <div class="public-id__value">
+            <span>{{ _publishedApplication.publicId }}</span>
+          </div>
         </div>
-      </div>
+      </ng-template>
 
       <app-delete-button
         class="app-list-card__delete-button"
