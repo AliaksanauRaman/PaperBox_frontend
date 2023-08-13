@@ -1,20 +1,22 @@
 import { Injectable, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { filter, map } from 'rxjs';
+import { catchError, filter, map, of } from 'rxjs';
 
 import { ConfirmUserResponseDataType } from '../../shared/types/confirm-user-response-data.type';
 import { isObject } from '../../shared/type-assertions/is-object.type-assertion';
 import { isBoolean } from '../../shared/type-assertions/is-boolean.type-assertion';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class ConfirmUserPageService {
   private readonly _activatedRoute = inject(ActivatedRoute);
 
   public readonly userConfirmationState$ = this._activatedRoute.data.pipe(
     filter(this.isUserConfirmation.bind(this)),
-    map(({ userConfirmation }) => userConfirmation)
+    map(({ userConfirmation }) => userConfirmation),
+    catchError((error) => {
+      console.error(error);
+      return of({ ok: false });
+    })
   );
 
   private isUserConfirmation(
