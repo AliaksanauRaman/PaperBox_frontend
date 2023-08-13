@@ -5,15 +5,16 @@ import {
   AfterViewInit,
   ViewChild,
   ElementRef,
+  inject,
 } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { tap } from 'rxjs';
 
+import { JWT_TOKEN_DECODER } from '../../../core/services/jwt-token-decoder/injection-token';
+import { UserTokenStateService } from '../../../state/user-token/user-token-state.service';
 import { LoginService } from '../../../shared/services/login.service';
-import { UserTokenService } from '../../../shared/services/user-token.service';
 import { RoutingService } from '../../../core/services/routing.service';
 
-import { UserTokenEntity } from '../../../shared/entities/user-token.entity';
 import { LoginDto } from '../../../shared/dtos/login.dto';
 import { UserRole } from '../../../shared/enums/user-role.enum';
 
@@ -28,6 +29,9 @@ export class AdminLoginCardComponent implements AfterViewInit, OnDestroy {
   @ViewChild('firstInputRef')
   private readonly _firstInputElementRef!: ElementRef<HTMLInputElement>;
 
+  private readonly _jwtTokenDecoder = inject(JWT_TOKEN_DECODER);
+  private readonly _userTokenStateService = inject(UserTokenStateService);
+
   protected readonly _loginState$ = this._logInService.state$.pipe(
     tap((state) => {
       if (state.inProgress) {
@@ -35,17 +39,15 @@ export class AdminLoginCardComponent implements AfterViewInit, OnDestroy {
       } else if (state.error !== null) {
         this._loginForm.enable();
       } else if (state.data !== null) {
-        const userTokenEntity = new UserTokenEntity(state.data.token);
-        userTokenEntity.decode();
+        const decodedUserToken = this._jwtTokenDecoder.decode(state.data.token);
 
         if (
-          userTokenEntity.decodedUserToken.permissions[0].authority !==
-          UserRole.ADMIN
+          decodedUserToken.getData().permissions[0].authority !== UserRole.ADMIN
         ) {
           this._notAdminError = true;
           this._loginForm.enable();
         } else {
-          this._userTokenService.set(state.data.token);
+          this._userTokenStateService.set(state.data.token);
           this._routingService.navigateToAdminHome();
         }
       }
@@ -60,7 +62,6 @@ export class AdminLoginCardComponent implements AfterViewInit, OnDestroy {
   constructor(
     private readonly _formBuilder: NonNullableFormBuilder,
     private readonly _logInService: LoginService,
-    private readonly _userTokenService: UserTokenService,
     private readonly _routingService: RoutingService
   ) {}
 
