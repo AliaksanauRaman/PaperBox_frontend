@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Dialog } from '@angular/cdk/dialog';
+import { Dialog, DialogRef } from '@angular/cdk/dialog';
 
 import { InfoSnackBarComponent } from '../components/info-snack-bar/info-snack-bar.component';
 import { InfoDialogComponent } from '../dialogs/info-dialog/info-dialog.component';
@@ -26,8 +26,10 @@ export class InfoNotificationService {
     });
   }
 
-  public showImportantMessage(messageTranslateKey: string): void {
-    this._dialog.open(InfoDialogComponent, {
+  public showImportantMessage(
+    messageTranslateKey: string
+  ): DialogRef<void, InfoDialogComponent> {
+    return this._dialog.open(InfoDialogComponent, {
       // TODO: Move to constants
       panelClass: 'app-custom-dialog',
       data: messageTranslateKey,
