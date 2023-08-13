@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { tap } from 'rxjs';
 
+import { RoutingService } from '../../../core/services/routing.service';
 import { SignupService } from '../../../shared/services/signup.service';
 import { ErrorNotificationService } from '../../../core/services/error-notification.service';
 import { InfoNotificationService } from '../../../core/services/info-notification.service';
@@ -17,16 +18,15 @@ import { CustomValidators } from '../../../shared/classes/custom-validators.clas
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignupFormComponent {
+  private readonly _routingService = inject(RoutingService);
   protected readonly _signupRequestState$ = this._signupService.state$.pipe(
     tap((state) => {
       if (state.inProgress) {
         this._signupForm.disable();
       } else if (state.data !== null) {
-        this._infoNotificationService.showImportantMessage(
-          'info.accountIsCreatedButNotActivated'
-        );
-        this._signupForm.reset();
-        this._signupForm.enable();
+        this._infoNotificationService
+          .showImportantMessage('info.accountIsCreatedButNotActivated')
+          .closed.subscribe(() => this._routingService.navigateToLogin());
       } else if (state.error !== null) {
         this._signupForm.enable();
         const signUpError = this._signupErrorFactory.build(state.error);
