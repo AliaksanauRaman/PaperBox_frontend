@@ -65,7 +65,7 @@
   }
 
   .girl-with-heart-desktop-image {
-    pointer-events: none; // is needed to not overlap recaptcha
+    pointer-events: none; // it is needed to not overlap form fields
     position: absolute;
     bottom: -14%;
     right: 68%;
@@ -75,6 +75,7 @@
   }
 
   .man-with-hearts-desktop-image {
+    pointer-events: none; // it is needed to not overlap form fields
     position: absolute;
     bottom: -14%;
     left: 68%;

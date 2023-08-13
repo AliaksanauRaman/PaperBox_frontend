@@ -65,6 +65,7 @@
   }
 
   .girl-with-heart-desktop-image {
+    pointer-events: none; // it is needed to not overlap form fields
     position: absolute;
     bottom: -33%;
     right: 68%;
@@ -75,6 +76,7 @@
   }
 
   .man-with-hearts-desktop-image {
+    pointer-events: none; // it is needed to not overlap form fields
     position: absolute;
     bottom: -33%;
     left: 68%;
