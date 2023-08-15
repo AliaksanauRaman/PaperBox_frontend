@@ -24,6 +24,7 @@
     "@angular/router": "^15.0.0",
     "@ngx-translate/core": "^14.0.0",
     "@ngx-translate/http-loader": "^7.0.0",
+    "@ngxs/store": "^3.8.1",
     "ajv": "^8.11.2",
     "angular-svg-icon": "^15.0.0",
     "jwt-decode": "^3.1.2",
@@ -34,7 +35,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^15.0.2",
-    "@angular/cli": "~15.0.2",
+    "@angular/cli": "^15.2.9",
     "@angular/compiler-cli": "^15.0.0",
     "@types/ajv": "^1.0.0",
     "@types/jasmine": "~4.3.0",
