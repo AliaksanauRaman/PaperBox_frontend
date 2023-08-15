@@ -15,19 +15,22 @@
           }}
         </p>
 
-        <div class="public-id">
-          <div class="public-id__label">
-            {{
-              "components.successCreateHelpItemSection.publicIdLabel"
-                | translate
-            }}
+        <!-- TODO: Temporary removed -->
+        <ng-template>
+          <div class="public-id">
+            <div class="public-id__label">
+              {{
+                "components.successCreateHelpItemSection.publicIdLabel"
+                  | translate
+              }}
+            </div>
+            <a
+              class="public-id__value"
+              (click)="handlePublicIdValueClick(_helpItemPublicId)"
+              >{{ _helpItemPublicId }}</a
+            >
           </div>
-          <a
-            class="public-id__value"
-            (click)="handlePublicIdValueClick(_helpItemPublicId)"
-            >{{ _helpItemPublicId }}</a
-          >
-        </div>
+        </ng-template>
       </div>
     </div>
 

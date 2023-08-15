@@ -39,6 +39,7 @@
 
 .description-text {
   margin-bottom: 40px;
+  padding-right: 86px;
   text-align: center;
   color: var(--grey-color);
 }
@@ -101,7 +102,7 @@
     justify-content: center;
     align-items: center;
     max-width: 365px;
-    padding-bottom: 30px;
+    // padding-bottom: 30px; // TODO: Temporary removed
   }
 
   .text-block {
@@ -116,6 +117,7 @@
 
   .description-text {
     margin-bottom: 24px;
+    padding-right: 0;
   }
 
   .public-id {
