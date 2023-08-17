@@ -7,6 +7,7 @@ import {
   HTTP_INTERCEPTORS,
 } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxsModule } from '@ngxs/store';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 
@@ -26,6 +27,7 @@ import { translateLoaderFactory } from './core/factories/translate-loader.factor
 import { AuthorizationInterceptor } from './core/interceptors/authorization.interceptor';
 import { LoadingOverlayInterceptor } from './core/interceptors/loading-overlay.interceptor';
 
+import { STORE } from './store';
 import { initAppFactory } from './init-app.factory';
 
 @NgModule({
@@ -37,6 +39,8 @@ import { initAppFactory } from './init-app.factory';
     ApplicationsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+
+    NgxsModule.forRoot(STORE),
 
     TranslateModule.forRoot({
       loader: {
