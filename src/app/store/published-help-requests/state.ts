@@ -8,12 +8,13 @@ import {
   Actions,
   ofAction,
 } from '@ngxs/store';
-import { catchError, takeUntil, tap } from 'rxjs';
+import { Observable, catchError, takeUntil, tap } from 'rxjs';
 
 import { HelpRequestsHttpService } from '../../core/services/help-requests-http.service';
 
 import { PublishedHelpRequestsStateModel } from './model';
 import { PublishedHelpRequests } from './actions';
+import { ListOfPublishedHelpRequestsType } from '../../shared/types/list-of-published-help-requests.type';
 
 type StateModel = PublishedHelpRequestsStateModel;
 
@@ -39,7 +40,9 @@ export class PublishedHelpRequestsState {
   }
 
   @Action(PublishedHelpRequests.Get, { cancelUncompleted: true })
-  public getPublishedHelpRequests(context: StateContext<StateModel>): unknown {
+  public getPublishedHelpRequests(
+    context: StateContext<StateModel>
+  ): Observable<ListOfPublishedHelpRequestsType> {
     context.setState({
       data: null,
       error: null,
