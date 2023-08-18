@@ -1,5 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import {
+  Selector,
   Action,
   Actions,
   State,
@@ -34,6 +35,11 @@ export class PublishedHelpOffersState {
   private readonly _store = inject(Store);
   private readonly _actions$ = inject(Actions);
   private readonly _helpOffersHttpService = inject(HelpOffersHttpService);
+
+  @Selector()
+  public static stream(state: StateModel): StateModel {
+    return state;
+  }
 
   @Action(PublishedHelpOffers.Get, { cancelUncompleted: true })
   public getPublishedHelpOffers(
