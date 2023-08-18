@@ -1,3 +1,4 @@
+import { ListOfPublishedHelpRequestsType } from '../../shared/types/list-of-published-help-requests.type';
 import { PublishedHelpRequestType } from '../../shared/types/published-help-request.type';
 
 export namespace PublishedHelpRequests {
@@ -12,7 +13,7 @@ export namespace PublishedHelpRequests {
   export class GetSuccess {
     public static type = '[Published Help Requests] Get Success';
     constructor(
-      public readonly listOfPublishedHelpRequests: ReadonlyArray<PublishedHelpRequestType>
+      public readonly listOfPublishedHelpRequests: ListOfPublishedHelpRequestsType
     ) {}
   }
 
