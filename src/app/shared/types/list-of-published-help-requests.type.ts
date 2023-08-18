@@ -1,4 +1,4 @@
 import { PublishedHelpRequestType } from './published-help-request.type';
 
-export type PublishedHelpRequestListType =
+export type ListOfPublishedHelpRequestsType =
   ReadonlyArray<PublishedHelpRequestType>;

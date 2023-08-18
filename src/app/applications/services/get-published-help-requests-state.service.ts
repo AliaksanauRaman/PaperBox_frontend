@@ -4,12 +4,12 @@ import { Observable } from 'rxjs';
 import { HelpRequestsHttpService } from '../../core/services/help-requests-http.service';
 
 import { HttpRequestWithoutParamsBaseService } from '../../shared/abstracts/http-request-without-params-base-service.class';
-import { PublishedHelpRequestListType } from '../../shared/types/published-help-request-list.type';
+import { ListOfPublishedHelpRequestsType } from '../../shared/types/list-of-published-help-requests.type';
 import { GetPublishedApplicationsStateService } from '../dependencies/get-published-applications-state-service';
 
 @Injectable()
 export class GetPublishedHelpRequestsStateService
-  extends HttpRequestWithoutParamsBaseService<PublishedHelpRequestListType>
+  extends HttpRequestWithoutParamsBaseService<ListOfPublishedHelpRequestsType>
   implements GetPublishedApplicationsStateService
 {
   constructor(
@@ -18,7 +18,7 @@ export class GetPublishedHelpRequestsStateService
     super();
   }
 
-  public doRequest(): Observable<PublishedHelpRequestListType> {
+  public doRequest(): Observable<ListOfPublishedHelpRequestsType> {
     return this._helpRequestsHttpService.getPublished();
   }
 }

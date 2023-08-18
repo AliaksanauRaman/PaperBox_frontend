@@ -5,7 +5,7 @@ import { Observable, map } from 'rxjs';
 import { MockHelpRequestsHttpService } from '../mocks/mock-help-requests-http.service';
 import { API_URL } from '../../shared/dependencies/api-url/injection-token';
 import { HelpRequestsHttpServiceInterface } from '../interfaces/help-requests-http-service.interface';
-import { PublishedHelpRequestListType } from '../../shared/types/published-help-request-list.type';
+import { ListOfPublishedHelpRequestsType } from '../../shared/types/list-of-published-help-requests.type';
 import { CreateHelpRequestDto } from '../../shared/dtos/create-help-request.dto';
 import { SuccessCreateHelpRequestResponseDataType } from '../../shared/types/success-create-help-request-response-data.type';
 import { DeleteHelpRequestResponseDataType } from '../../shared/types/delete-help-request-response-data.type';
@@ -26,8 +26,8 @@ export class HelpRequestsHttpService
     private readonly httpClient: HttpClient
   ) {}
 
-  public getPublished(): Observable<PublishedHelpRequestListType> {
-    return this.httpClient.get<PublishedHelpRequestListType>(
+  public getPublished(): Observable<ListOfPublishedHelpRequestsType> {
+    return this.httpClient.get<ListOfPublishedHelpRequestsType>(
       `${this.helpRequestsApiUrl}/published`
     );
   }
