@@ -108,7 +108,7 @@
     },
     "successCreateHelpItemSection": {
       "thankYouText": "Thank you for using our service!",
-      "descriptionText": "Your application has been successfully created and submitted for moderation.",
+      "descriptionText": "Your application has been successfully created and already awaits for replies :)",
       "publicIdLabel": "Application ID:",
       "thankYouButtonLabel": "Thank you!"
     },
