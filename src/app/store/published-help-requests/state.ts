@@ -10,21 +10,23 @@ import {
 } from '@ngxs/store';
 import { Observable, catchError, takeUntil, tap } from 'rxjs';
 
-import { HelpRequestsHttpService } from '../../core/services/help-requests-http.service';
+import { HelpRequestsHttpService } from '@core/services/help-requests-http.service';
 
+import {
+  ErrorState,
+  InitialState,
+  LoadingState,
+  ValueState,
+} from '@shared/classes/async-data.class';
+import { ListOfPublishedHelpRequestsType } from '@shared/types/list-of-published-help-requests.type';
 import { PublishedHelpRequestsStateModel } from './model';
 import { PublishedHelpRequests } from './actions';
-import { ListOfPublishedHelpRequestsType } from '../../shared/types/list-of-published-help-requests.type';
 
 type StateModel = PublishedHelpRequestsStateModel;
 
 @State<StateModel>({
   name: 'publishedHelpRequests',
-  defaults: {
-    data: null,
-    error: null,
-    inProgress: false,
-  },
+  defaults: new InitialState(),
 })
 @Injectable({
   providedIn: 'root',
@@ -43,11 +45,7 @@ export class PublishedHelpRequestsState {
   public getPublishedHelpRequests(
     context: StateContext<StateModel>
   ): Observable<ListOfPublishedHelpRequestsType> {
-    context.setState({
-      data: null,
-      error: null,
-      inProgress: true,
-    });
+    context.setState(new LoadingState());
 
     return this._helpRequestsHttpService.getPublished().pipe(
       tap((listOfPublishedHelpRequests) => {
@@ -68,11 +66,7 @@ export class PublishedHelpRequestsState {
     context: StateContext<StateModel>,
     action: PublishedHelpRequests.GetSuccess
   ): void {
-    context.setState({
-      data: action.listOfPublishedHelpRequests,
-      error: null,
-      inProgress: false,
-    });
+    context.setState(new ValueState(action.listOfPublishedHelpRequests));
   }
 
   @Action(PublishedHelpRequests.GetFail)
@@ -80,11 +74,7 @@ export class PublishedHelpRequestsState {
     context: StateContext<StateModel>,
     action: PublishedHelpRequests.GetFail
   ): void {
-    context.setState({
-      data: null,
-      error: action.error,
-      inProgress: false,
-    });
+    context.setState(new ErrorState(action.error));
   }
 
   @Action(PublishedHelpRequests.Prepend)
@@ -93,14 +83,11 @@ export class PublishedHelpRequestsState {
     action: PublishedHelpRequests.Prepend
   ): void {
     const state = context.getState();
+    const newValue =
+      state.value === null
+        ? [action.publishedHelpRequest]
+        : [action.publishedHelpRequest, ...state.value];
 
-    context.setState({
-      data:
-        state.data === null
-          ? [action.publishedHelpRequest]
-          : [action.publishedHelpRequest, ...state.data],
-      error: null,
-      inProgress: false,
-    });
+    context.setState(new ValueState(newValue));
   }
 }

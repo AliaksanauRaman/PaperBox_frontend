@@ -1,5 +1,5 @@
-import { HttpRequestState } from '../../shared/types/http-request-state.type';
-import { ListOfPublishedHelpRequestsType } from '../../shared/types/list-of-published-help-requests.type';
+import { AsyncData } from '@shared/classes/async-data.class';
+import { ListOfPublishedHelpRequestsType } from '@shared/types/list-of-published-help-requests.type';
 
 export type PublishedHelpRequestsStateModel =
-  HttpRequestState<ListOfPublishedHelpRequestsType>;
+  AsyncData<ListOfPublishedHelpRequestsType>;
