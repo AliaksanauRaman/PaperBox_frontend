@@ -22,6 +22,25 @@ export namespace PublishedHelpOffers {
     constructor(public readonly error: unknown) {}
   }
 
+  export class DeleteOne {
+    public static type = '[Published Help Offers] Delete One';
+    constructor(public readonly helpOfferId: number) {}
+  }
+
+  export class DestroyDeleteOne {
+    public static type = '[Published Help Offers] Destroy Delete One';
+  }
+
+  export class DeleteOneSuccess {
+    public static type = '[Published Help Offers] Delete One Success';
+    constructor(public readonly deletedHelpOfferId: number) {}
+  }
+
+  export class DeleteOneFail {
+    public static type = '[Published Help Offers] Delete One Fail';
+    constructor(public readonly error: unknown) {}
+  }
+
   export class Prepend {
     public static type = '[Published Help Offers] Prepend';
     constructor(public readonly publishedHelpOffer: PublishedHelpOfferType) {}
