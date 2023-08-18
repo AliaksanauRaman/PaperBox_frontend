@@ -3,7 +3,7 @@ import { Observable, of, delay } from 'rxjs';
 import { HelpOffersHttpServiceInterface } from '../interfaces/help-offers-http-service.interface';
 import { SuccessCreateHelpOfferResponseDataType } from '../../shared/types/success-create-help-offer-response-data.type';
 import { CreateHelpOfferDto } from '../../shared/dtos/create-help-offer.dto';
-import { PublishedHelpOfferListType } from '../../shared/types/published-help-offer-list.type';
+import { ListOfPublishedHelpOffersType } from '../../shared/types/list-of-published-help-offers.type';
 import { DeleteHelpOfferResponseDataType } from '../../shared/types/delete-help-offer-response-data.type';
 
 const DELAY_IN_MS = 1000;
@@ -11,7 +11,7 @@ const DELAY_IN_MS = 1000;
 export class MockHelpOffersHttpService
   implements HelpOffersHttpServiceInterface
 {
-  public getPublished(): Observable<PublishedHelpOfferListType> {
+  public getPublished(): Observable<ListOfPublishedHelpOffersType> {
     return of(MOCK_PUBLISHED_HELP_OFFERS).pipe(delay(DELAY_IN_MS));
   }
 
@@ -30,7 +30,7 @@ export class MockHelpOffersHttpService
   }
 }
 
-const MOCK_PUBLISHED_HELP_OFFERS: PublishedHelpOfferListType = [
+const MOCK_PUBLISHED_HELP_OFFERS: ListOfPublishedHelpOffersType = [
   {
     id: 1,
     userId: 6,
