@@ -1,3 +1,4 @@
+import { PublishedHelpOffersState } from './published-help-offers';
 import { PublishedHelpRequestsState } from './published-help-requests';
 
-export const STORE = [PublishedHelpRequestsState];
+export const STORE = [PublishedHelpOffersState, PublishedHelpRequestsState];
