@@ -8,6 +8,7 @@ import {
 } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxsModule } from '@ngxs/store';
+import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 
@@ -29,6 +30,7 @@ import { LoadingOverlayInterceptor } from './core/interceptors/loading-overlay.i
 
 import { STORE } from './store';
 import { initAppFactory } from './init-app.factory';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
@@ -41,6 +43,9 @@ import { initAppFactory } from './init-app.factory';
     BrowserAnimationsModule,
 
     NgxsModule.forRoot(STORE),
+    NgxsLoggerPluginModule.forRoot({
+      disabled: environment.production,
+    }),
 
     TranslateModule.forRoot({
       loader: {
