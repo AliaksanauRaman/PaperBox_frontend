@@ -1,0 +1,262 @@
+{
+  "aboutService": {
+    "firstSectionContent": "<span class=\"highlight\">Пушка</span> - это картонная или деревянная коробка, которая искользуется для упаковки посылки. Но чаще чем посылки нам необходимо упаковать небольшие \"передачки\".",
+    "secondSectionContent": "Вдохновлённые, полные любви и с целью сделать то, что будет помогать посылать и получать \"передачки\", была создана <span class=\"highlight\">Pushka</span> - сервис, который позволяет связать тех, кому необходимо что-то перадать с теми, кто может это сделать.",
+    "thirdSectionContent": "<span class=\"highlight\">Основной целью</span> было не только дать возможность не искать по чатам, знакомым, друзьям и друзьям друзей, но и сделать процесс поиска и предложения как можно проще, чтобы это не отнимало много времени и сил.",
+    "fourthSectionContent": "<span class=\"highlight\">Каждый человек</span>, который работал и продолжает развивать этот сервис желает Вам мира, тепла, любви, здаровья и сил. Чтобы каждый из Вас имел возможность быть рядом с родными людьми. А мы будем и дальше стараться помогать Вам делать им приятно."
+  },
+  "pages": {
+    "index": {
+      "actions": {
+        "offerHelpButtonLabel": "Предложить помощь",
+        "findHelpButtonLabel": "Найти помощь"
+      },
+      "navigationMenu": {
+        "offerHelpLinkLabel": "Предложения помощи",
+        "findHelpLinkLabel": "Ищут помощь"
+      }
+    },
+    "helpOffers": {
+      "header": {
+        "title": "Я могу помочь!",
+        "callToAction": "Помочь!"
+      }
+    },
+    "login": {
+      "title": "Вход"
+    },
+    "signup": {
+      "title": "Регистрация"
+    },
+    "notFound": {
+      "text": "Страница не найдена"
+    }
+  },
+  "dialogs": {
+    "createHelpOffer": {
+      "title": "Предложить помощь",
+      "loading": "Загрузка...",
+      "success": "Успех!"
+    },
+    "createHelpRequest": {
+      "title": "Найти помощь",
+      "loading": "Загрузка...",
+      "success": "Успех!"
+    },
+    "createFeedback": {
+      "title": "Обратная связь",
+      "loading": "Загрузка...",
+      "commentFieldLabel": "Как улучшить наш сервис?"
+    },
+    "loginOrSignup": {
+      "title": "Для того, чтобы создать заявку, войдите в систему или зарегестрируйтесь"
+    },
+    "adminManageHelpOffer": {
+      "title": "Управление преложением о помощи",
+      "statusFieldLabel": "Статус",
+      "whereFromFieldLabel": "Откуда",
+      "whereToFieldLabel": "Куда",
+      "dateFieldLabel": "Дата",
+      "phonesFieldLabel": "Телефоны",
+      "createdDateTimeFieldLabel": "Созданы",
+      "publishButtonLabel": "Опубликовать",
+      "unpublishButtonLabel": "Скрыть",
+      "rejectButtonLabel": "Отклонить",
+      "successfulHelpOfferDeletionMessage": "Удаление пройшло успешно!",
+      "accidentalHelpOfferDeletionWarningMessage": "Если удаление было случайным, обратитесь, пожалуйста, к команде разработки.",
+      "okButtonLabel": "Хорошо"
+    },
+    "info": {
+      "title": "Уведомление",
+      "itIsClear": "Понятно"
+    },
+    "confirmApplicationDeletionDialog": {
+      "title": "Вы на самом деле хотите удалить заявку?"
+    }
+  },
+  "components": {
+    "httpErrorResponseCard": {
+      "title": "Ошибка",
+      "statusFieldLabel": "Статус",
+      "statusTextFieldLabel": "Текст статуса",
+      "messageFieldLabel": "Уведомление",
+      "detailsFieldLabel": "Детали"
+    },
+    "dynamicListPhoneControl": {
+      "phoneNumbersLabel": "Номера телефонов"
+    },
+    "locationsControl": {
+      "whereFromFieldLabel": "Откуда",
+      "whereToFieldLabel": "Куда",
+      "whereFromRequiredErrorMessage": "Выберете вариант из списка",
+      "whereToRequiredErrorMessage": "Выберете вариант из списка"
+    },
+    "autocompleteControl": {
+      "noMatchesMessage": "Совпадений нет."
+    },
+    "listCardComment": {
+      "label": "Комментарий:",
+      "emptyText": "-"
+    },
+    "listLoadErrorView": {
+      "title": "Упс, ошибка!",
+      "reloadButtonLabel": "Перазагрузить"
+    },
+    "accountMenu": {
+      "admin": "Админ",
+      "logOut": "Выйти"
+    },
+    "successCreateHelpItemSection": {
+      "thankYouText": "Спасибо, что воспользовались нашим сервисом!",
+      "descriptionText": "Ваша заявка была успешно создана и уже ждёт откликов :)",
+      "publicIdLabel": "Идентификатор завяки:",
+      "thankYouButtonLabel": "Спасибо!"
+    },
+    "loginForm": {
+      "notWithUsYet": "Ещё не с нами?",
+      "signup": "Регистрация"
+    },
+    "signupForm": {
+      "alreadySignedUp": "Уже зарегестрированы?",
+      "login": "Вход"
+    },
+    "successCreateFeedbackSection": {
+      "title": "Спасибо за обратную связь!",
+      "text": "Ваш отзыв поможет сервису выйти на новый уровень!"
+    },
+    "successConfirmUserView": {
+      "title": "Поздравляем, регистрация прошла успешно!"
+    },
+    "failedConfirmUserView": {
+      "title": "Ошибка при активации аккаунта!",
+      "text": "Возможно аккаунт уже был активирован."
+    },
+    "listCard": {
+      "phones": "Телефоны:",
+      "applicationId": "Код заявки:"
+    }
+  },
+  "helpOfferStatus": {
+    "published": "Опубликован",
+    "unpublished": "Неопубликован",
+    "rejected": "Отклонён"
+  },
+  "country": {
+    "belarus": "Беларусь",
+    "poland": "Польша",
+    "georgia": "Грузия",
+    "ukraine": "Украина",
+    "lithuania": "Литва"
+  },
+  "city": {
+    "belarusian": {
+      "minsk": "Минск",
+      "vitebsk": "Витебск",
+      "gomel": "Гомель",
+      "mogilev": "Могилёв",
+      "grodno": "Гродно",
+      "brest": "Брест"
+    },
+    "polish": {
+      "warsaw": "Варшава",
+      "krakow": "Краков",
+      "wroclaw": "Вроцлав",
+      "gdansk": "Гданьск",
+      "lodz": "Лодзь",
+      "poznan": "Познань",
+      "bialystok": "Белосток"
+    },
+    "georgian": {
+      "tbilisi": "Тбилиси",
+      "batumi": "Батуми"
+    },
+    "ukrainian": {
+      "kyiv": "Киев",
+      "kharkiv": "Харьков",
+      "lviv": "Львов",
+      "odessa": "Одесса"
+    },
+    "lithuanian": {
+      "vilnius": "Вильнюс",
+      "kaunas": "Каунас"
+    },
+    "other": "Другой город"
+  },
+  "placeholders": {
+    "whereFromField": "Минск, Беларусь",
+    "whereToField": "Варшава, Польша",
+    "fullNameField": "Иван Иванов",
+    "commentField": "Текст вашего комменатрия...",
+    "emailField": "ivan.ivanov@gmail.com",
+    "passwordControl": "1234abcd",
+    "emptyList": "Список пустой."
+  },
+  "info": {
+    "applicationIdIsSuccessfullyCopied": "Идентификатор заявки успешно скопирован в буфер обмена!",
+    "loggedInSuccessfully": "Вход в систему прошёл успешно!",
+    "loggedOutSuccessfully": "Выход из системы прошёл успешно!",
+    "accountIsCreatedButNotActivated": "Ваш аккаунт был успешно создан, но ещё не активирован. Для того, чтобы активировать аккаунт перейдите по ссылке в электронном письме."
+  },
+  "warnings": {
+    "sameCountries": "Одинаковые страны.",
+    "sameCities": "Одинаковые города.",
+    "itIsBetterToLeaveAComment": "Желательно оставить комментарий.",
+    "sessionIsExpired": "Сеанс закончился. Пожалуйста, войдите в систему снова."
+  },
+  "error": {
+    "fullNameIsRequired": "Полное имя обязательно.",
+    "emailIsRequired": "Электронная почта обязательна.",
+    "passwordIsRequired": "Пароль обязателен.",
+    "passwordConfirmationIsRequired": "Подтверждение пароля обязательно.",
+    "incorrectEmailFormat": "Неправильный формат электронной почты.",
+    "commentIsRequired": "Комментарий обязателен.",
+    "minCharacters": "Минимальное количество знаков: {{ amount }}.",
+    "atLeastOnePhoneNumberIsRequired": "Необходим как минимум 1 номер телефона.",
+    "phonePatternIsNotMet": "Разрешены только цифры. Длина от 7 до 12 знаков.",
+    "createHelpOffer": "Ошибка сервера. Пожалуйста, повторите попытку позже. Если ошибка продолжает возникать, свяжитесь с нами по электронной почте или через обратную связь.",
+    "createHelpRequest": "Ошибка сервера. Пожалуйста, повторите попытку позже. Если ошибка продолжает возникать, свяжитесь с нами по электронной почте или через обратную связь.",
+    "createFeedback": "Ошибка сервера. Пожалуйста, повторите попытку позже. Если ошибка продолжает возникать, свяжитесь с нами по электронной почте.",
+    "applicationIdCopyError": "Неизвестная ошибка копирования идентификационного номера заявки в буфер обмена.",
+    "passwordsDoNotMatch": "Пароли не совпадают.",
+    "incorrectPasswordFormat": "Минимум 8 знаков, без пробелов.",
+    "invalidCredentials": "Неправильный адрес электронной почты или пароль. Пожалуйста, попробуйте еще раз.",
+    "accountIsNotActivated": "Аккаунт не активирован. Пожалуйста, проверьте свою электронную почту.",
+    "unknownLoginRequestError": "Неизвестная ошибка входа в систему. Пожалуйста, повторите попытку позже.",
+    "userWithSuchEmailAlreadyExists": "Пользователь с такой электронной почтой уже существует.",
+    "unknownSignupRequestError": "Неизвестная ошибка регистрации в системе. Пожалуйста, повторите попытку позже.",
+    "unknownApplicationDeleteError": "Неизвестная ошибка удаления заявки. Пожалуйста, повторите попытку позже."
+  },
+  "helpTitles": {
+    "clear": "Очистить",
+    "selectDates": "Выбрать даты",
+    "leaveFeedback": "Оставить обратную связь",
+    "swapLocations": "Поменять местами",
+    "closeDialog": "Закрыть диалог",
+    "addPhoneNumber": "Добавить номер телефона",
+    "removePhoneNumber": "Удалить номер телефона",
+    "delete": "Удалить"
+  },
+  "controlLabel": {
+    "email": "Электронная почта",
+    "password": "Пароль",
+    "confirmPassword": "Подтвердите пароль",
+    "fullName": "Полное имя",
+    "comment": "Комментарий",
+    "when": "Когда (ДД.ММ.ГГГГ)"
+  },
+  "button": {
+    "ok": "Хорошо",
+    "yes": "Да",
+    "no": "Нет",
+    "send": "Отправить",
+    "login": "Войти",
+    "signup": "Зарегистрироваться",
+    "gladToHelp": "Рады помочь!",
+    "mainPage": "Главная страница",
+    "aboutService": "Про сервис",
+    "accountMenu": "Меню аккаунта"
+  },
+  "personalDataAgreementText": "Я согласен(-на) на обработку и хранение моих персональных данных",
+  "allowedItemsConfirmationText": "Я подтверждаю, что вещи, которые перевозят, не являются запрещенными и их транспортирования не нарушает законов стран-участниц",
+  "noServiceResponsibilityConfirmationText": "Я подтверждаю, что сервис не несет ответственности за качество сделки"
+}
