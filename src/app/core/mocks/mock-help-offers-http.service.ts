@@ -1,4 +1,4 @@
-import { Observable, of, delay } from 'rxjs';
+import { Observable, of, delay, tap } from 'rxjs';
 
 import { HelpOffersHttpServiceInterface } from '../interfaces/help-offers-http-service.interface';
 import { SuccessCreateHelpOfferResponseDataType } from '../../shared/types/success-create-help-offer-response-data.type';
@@ -13,6 +13,14 @@ export class MockHelpOffersHttpService
 {
   public getPublished(): Observable<ListOfPublishedHelpOffersType> {
     return of(MOCK_PUBLISHED_HELP_OFFERS).pipe(delay(DELAY_IN_MS));
+  }
+
+  public getPublishedError(): Observable<ListOfPublishedHelpOffersType> {
+    return of(MOCK_PUBLISHED_HELP_OFFERS).pipe(
+      tap(() => {
+        throw new Error('Get published help offers error!');
+      })
+    );
   }
 
   public createOne(
