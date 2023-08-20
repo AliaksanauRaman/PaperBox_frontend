@@ -1,0 +1,49 @@
+@import "../../../styles/screen-size-mixins";
+
+:host {
+  display: flex;
+}
+
+.label {
+  flex-shrink: 0;
+  width: 50%;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--grey-color);
+}
+
+.list-of-phones {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex-grow: 1;
+}
+
+.list-of-phones__item {
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--primary-color);
+
+  &:not(:last-child) {
+    margin-bottom: 6px;
+  }
+}
+
+@include for-tablet {
+  .label {
+    width: auto;
+    margin-right: 5px;
+    font-size: 1.1rem;
+  }
+
+  .list-of-phones {
+    flex-direction: row;
+  }
+
+  .list-of-phones__item {
+    &:not(:last-child) {
+      margin-bottom: 0;
+      margin-right: 5px;
+    }
+  }
+}

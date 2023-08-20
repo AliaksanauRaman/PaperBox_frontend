@@ -1,0 +1,19 @@
+<div class="label">
+  <span *ngIf="_listOfPhones.length === 1">{{
+    "components.listCard.phone" | translate
+  }}</span>
+  <span *ngIf="_listOfPhones.length > 1">{{
+    "components.listCard.phones" | translate
+  }}</span>
+</div>
+
+<div class="list-of-phones">
+  <a
+    class="list-of-phones__item"
+    *ngFor="let phone of _listOfPhones"
+    [href]="phone | phoneHref"
+    (click)="$event.stopImmediatePropagation()"
+  >
+    <span>{{ phone | phoneView }}</span>
+  </a>
+</div>
