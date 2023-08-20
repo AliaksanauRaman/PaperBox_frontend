@@ -1,0 +1,14 @@
+@import "../../../styles/screen-size-mixins";
+
+:host {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--grey-color);
+}
+
+@include for-tablet {
+  :host {
+    font-size: 1.1rem;
+  }
+}
