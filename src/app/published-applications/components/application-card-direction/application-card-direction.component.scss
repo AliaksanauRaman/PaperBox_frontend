@@ -1,0 +1,19 @@
+@import "../../../styles/screen-size-mixins";
+
+:host {
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--black-color);
+  transition: 0.25s color ease-in-out;
+
+  &.active {
+    color: var(--primary-color);
+  }
+}
+
+@include for-tablet {
+  :host {
+    font-size: 1.2rem;
+  }
+}
