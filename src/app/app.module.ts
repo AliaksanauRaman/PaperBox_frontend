@@ -13,7 +13,6 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 
 import { CoreModule } from './core/core.module';
-import { ApplicationsModule } from './applications/applications.module';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
@@ -38,7 +37,6 @@ import { environment } from '../environments/environment';
     BrowserModule,
     HttpClientModule,
     CoreModule,
-    ApplicationsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
 
