@@ -1,0 +1,15 @@
+<ng-container *ngIf="_data$ | async as data">
+  <app-published-applications-loading-view
+    *ngIf="data.loading"
+  ></app-published-applications-loading-view>
+
+  <app-published-applications-content-view
+    *ngIf="data.value !== null"
+    [listOfPublishedApplications]="data.value"
+  ></app-published-applications-content-view>
+
+  <app-published-applications-error-view
+    *ngIf="data.error !== null"
+    (reloadClick)="handleReloadClick()"
+  ></app-published-applications-error-view>
+</ng-container>

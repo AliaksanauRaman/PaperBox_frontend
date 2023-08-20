@@ -1,0 +1,13 @@
+@import "../../../styles/screen-size-mixins";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 480px;
+}
+
+@include for-tablet {
+  :host {
+    height: 620px;
+  }
+}
