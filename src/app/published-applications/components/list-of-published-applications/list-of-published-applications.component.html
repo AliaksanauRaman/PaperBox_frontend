@@ -1,0 +1,8 @@
+<app-published-application-card
+  class="published-application-card"
+  *ngFor="
+    let publishedApplication of _data;
+    trackBy: trackByPublishedApplicationId
+  "
+  [publishedApplication]="publishedApplication"
+></app-published-application-card>
