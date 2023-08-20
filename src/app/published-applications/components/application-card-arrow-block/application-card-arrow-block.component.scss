@@ -1,0 +1,21 @@
+@import "../../../styles/screen-size-mixins";
+
+:host {
+  display: block;
+}
+
+.arrow-down-icon {
+  margin-top: 3px;
+  transition: 0.25s transform ease-in-out;
+
+  &.arrow-down-icon--turned {
+    transform: rotate(180deg);
+  }
+}
+
+@include for-tablet {
+  .arrow-down-icon {
+    width: 30px;
+    height: 13px;
+  }
+}
