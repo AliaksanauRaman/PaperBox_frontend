@@ -1,0 +1,19 @@
+@import "../../../styles/screen-size-mixins";
+
+:host {
+  display: block;
+}
+
+@include for-tablet {
+  :host {
+    position: absolute;
+    right: 80px;
+    bottom: 22px;
+    opacity: 0;
+    transition: 0.25s opacity ease-in-out;
+
+    &.shown-on-desktop {
+      opacity: 1;
+    }
+  }
+}
