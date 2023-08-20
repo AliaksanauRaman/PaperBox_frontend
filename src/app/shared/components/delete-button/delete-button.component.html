@@ -2,6 +2,7 @@
   class="delete-button"
   [class.delete-button--disabled]="_disabled"
   [matTooltip]="'helpTitles.delete' | translate"
+  matRipple
   type="button"
   (click)="innerClick.emit($event)"
 >

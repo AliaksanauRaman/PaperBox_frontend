@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { TranslateModule } from '@ngx-translate/core';
+import { MatRippleModule } from '@angular/material/core';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
@@ -15,7 +16,12 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   styleUrls: ['./delete-button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [AngularSvgIconModule, TranslateModule, MatTooltipModule],
+  imports: [
+    AngularSvgIconModule,
+    TranslateModule,
+    MatRippleModule,
+    MatTooltipModule,
+  ],
 })
 export class DeleteButtonComponent {
   @Input()
