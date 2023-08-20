@@ -1,0 +1,21 @@
+<ng-container *ngIf="_publishedApplication; else undefinedPublishedApplication">
+  <app-application-card-comment
+    class="comment"
+    [comment]="_publishedApplication.comment"
+  ></app-application-card-comment>
+
+  <app-application-card-phones
+    [listOfPhones]="_publishedApplication.phones"
+  ></app-application-card-phones>
+
+  <app-application-card-actions
+    class="actions"
+    *ngIf="_authorStateService.isApplicationAuthor$ | async"
+    [isShownOnDesktop]="(_expandStateService.isExpanded$ | async) === true"
+    (delete)="handleDeleteAction()"
+  ></app-application-card-actions>
+</ng-container>
+
+<ng-template #undefinedPublishedApplication>
+  <strong>Published application is undefined!</strong>
+</ng-template>

@@ -1,0 +1,19 @@
+@import "../../../styles/screen-size-mixins";
+
+:host {
+  display: block;
+}
+
+.comment {
+  margin-bottom: 20px;
+}
+
+.actions {
+  margin-top: 20px;
+}
+
+@include for-tablet {
+  .comment {
+    margin-bottom: 30px;
+  }
+}
