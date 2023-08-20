@@ -1,5 +1,7 @@
-import { ListOfPublishedHelpOffersType } from '@shared/types/list-of-published-help-offers.type';
-import { PublishedHelpOfferType } from '@shared/types/published-help-offer.type';
+import {
+  ListOfPublishedHelpOffers,
+  PublishedHelpOffer,
+} from '@shared/models/published-help-offer.model';
 
 export namespace PublishedHelpOffers {
   export class Get {
@@ -13,7 +15,7 @@ export namespace PublishedHelpOffers {
   export class GetSuccess {
     public static type = '[Published Help Offers] Get Success';
     constructor(
-      public readonly listOfPublishedHelpOffers: ListOfPublishedHelpOffersType
+      public readonly listOfPublishedHelpOffers: ListOfPublishedHelpOffers
     ) {}
   }
 
@@ -41,8 +43,18 @@ export namespace PublishedHelpOffers {
     constructor(public readonly error: unknown) {}
   }
 
-  export class Prepend {
-    public static type = '[Published Help Offers] Prepend';
-    constructor(public readonly publishedHelpOffer: PublishedHelpOfferType) {}
+  export class PrependOne {
+    public static type = '[Published Help Offers] Prepend One';
+    constructor(public readonly publishedHelpOffer: PublishedHelpOffer) {}
+  }
+
+  export class DisableOne {
+    public static type = '[Published Help Offers] Disable One';
+    constructor(public readonly helpOfferIdToDisable: number) {}
+  }
+
+  export class EnableOne {
+    public static type = '[Published Help Offers] Enable One';
+    constructor(public readonly helpOfferIdToEnable: number) {}
   }
 }
