@@ -1,5 +1,7 @@
-import { ListOfPublishedHelpRequestsType } from '../../shared/types/list-of-published-help-requests.type';
-import { PublishedHelpRequestType } from '../../shared/types/published-help-request.type';
+import {
+  ListOfPublishedHelpRequests,
+  PublishedHelpRequest,
+} from '@shared/models/published-help-request.model';
 
 export namespace PublishedHelpRequests {
   export class Get {
@@ -13,7 +15,7 @@ export namespace PublishedHelpRequests {
   export class GetSuccess {
     public static type = '[Published Help Requests] Get Success';
     constructor(
-      public readonly listOfPublishedHelpRequests: ListOfPublishedHelpRequestsType
+      public readonly listOfPublishedHelpRequests: ListOfPublishedHelpRequests
     ) {}
   }
 
@@ -22,10 +24,37 @@ export namespace PublishedHelpRequests {
     constructor(public readonly error: unknown) {}
   }
 
-  export class Prepend {
+  export class DeleteOne {
+    public static type = '[Published Help Requests] Delete One';
+    constructor(public readonly helpRequestId: number) {}
+  }
+
+  export class DestroyDeleteOne {
+    public static type = '[Published Help Requests] Destroy Delete One';
+  }
+
+  export class DeleteOneSuccess {
+    public static type = '[Published Help Requests] Delete One Success';
+    constructor(public readonly deletedHelpRequestId: number) {}
+  }
+
+  export class DeleteOneFail {
+    public static type = '[Published Help Requests] Delete One Fail';
+    constructor(public readonly error: unknown) {}
+  }
+
+  export class PrependOne {
     public static type = '[Published Help Requests] Prepend';
-    constructor(
-      public readonly publishedHelpRequest: PublishedHelpRequestType
-    ) {}
+    constructor(public readonly publishedHelpRequest: PublishedHelpRequest) {}
+  }
+
+  export class DisableOne {
+    public static type = '[Published Help Requests] Disable One';
+    constructor(public readonly helpRequestIdToDisable: number) {}
+  }
+
+  export class EnableOne {
+    public static type = '[Published Help Requests] Enable One';
+    constructor(public readonly helpRequestIdToEnable: number) {}
   }
 }
