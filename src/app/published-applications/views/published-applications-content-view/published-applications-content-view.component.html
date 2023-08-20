@@ -1,0 +1,11 @@
+<ng-container *ngIf="_listOfPublishedApplications.length > 0; else emptyList">
+  <app-list-of-published-applications
+    [data]="_listOfPublishedApplications"
+  ></app-list-of-published-applications>
+</ng-container>
+
+<ng-template #emptyList>
+  <app-empty-list-of-published-applications
+    class="empty-list"
+  ></app-empty-list-of-published-applications>
+</ng-template>

@@ -1,0 +1,21 @@
+@import "../../../styles/screen-size-mixins";
+
+:host {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  min-height: 0;
+  padding: 10px var(--horizontal-bordering-padding) 20px
+    var(--horizontal-bordering-padding);
+  overflow-y: auto;
+}
+
+.empty-list {
+  margin-top: 50px;
+}
+
+@include for-tablet {
+  .empty-list {
+    margin-top: 100px;
+  }
+}
