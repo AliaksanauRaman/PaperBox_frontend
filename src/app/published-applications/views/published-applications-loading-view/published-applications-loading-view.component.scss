@@ -1,0 +1,15 @@
+@import "../../../styles/screen-size-mixins";
+
+:host {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  min-height: 0;
+  padding-top: 50px;
+}
+
+@include for-tablet {
+  :host {
+    padding-top: 100px;
+  }
+}
