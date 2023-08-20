@@ -132,6 +132,7 @@
       "text": "The account may have already been activated."
     },
     "listCard": {
+      "phone": "Phone:",
       "phones": "Phones:",
       "applicationId": "Application ID:"
     }
