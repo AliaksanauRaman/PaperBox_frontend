@@ -1,0 +1,32 @@
+@import "../../../styles/screen-size-mixins";
+
+:host {
+  display: block;
+}
+
+.card {
+  cursor: pointer;
+  z-index: 0;
+  padding: 20px 16px;
+  background-color: var(--white-color);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  transition: 0.25s all ease-in-out;
+
+  &.card--hovered,
+  &.card--unfolded {
+    z-index: 1;
+    box-shadow: 5px 5px 18px 3px rgba($color: #4e91f7, $alpha: 0.23); // PRIMARY COLOR
+  }
+
+  &.card--disabled {
+    pointer-events: none;
+    opacity: 0.35;
+  }
+}
+
+@include for-tablet {
+  .card {
+    padding: 20px 80px;
+  }
+}

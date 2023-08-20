@@ -1,0 +1,29 @@
+<ng-container *ngIf="_publishedApplication; else undefinedPublishedApplication">
+  <app-fold
+    #fold="fold"
+    #hover="hover"
+    class="card"
+    [class.card--hovered]="hover.isHovered$ | async"
+    [class.card--unfolded]="fold.isUnfolded$ | async"
+    [class.card--disabled]="_publishedApplication.isDisabled"
+    matRipple
+    [matRippleAnimation]="{ enterDuration: 450 }"
+    appHover
+    [disabled]="_publishedApplication.isDisabled"
+    (click)="handleCardClick()"
+  >
+    <app-published-application-card-static-part
+      staticPart
+      [publishedApplication]="_publishedApplication"
+    ></app-published-application-card-static-part>
+
+    <app-published-application-card-foldable-part
+      foldablePart
+      [publishedApplication]="_publishedApplication"
+    ></app-published-application-card-foldable-part>
+  </app-fold>
+</ng-container>
+
+<ng-template #undefinedPublishedApplication>
+  <strong>Published application is undefined!</strong>
+</ng-template>
