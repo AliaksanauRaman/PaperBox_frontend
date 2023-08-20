@@ -3,7 +3,11 @@
     <ng-content select="[staticPart]"></ng-content>
   </div>
 
-  <div #foldablePart class="foldable-part" [class.unfolded]="isUnfolded">
+  <div
+    #foldablePart
+    class="foldable-part"
+    [class.foldable-part--unfolded]="isUnfolded$ | async"
+  >
     <ng-content select="[foldablePart]"></ng-content>
   </div>
 </div>

@@ -12,7 +12,7 @@
 
     .static-part,
     .foldable-part,
-    .foldable-part.unfolded {
+    .foldable-part.foldable-part--unfolded {
       pointer-events: none;
       user-select: none;
     }
@@ -30,7 +30,7 @@
   opacity: 0;
   transition: 0.15s opacity ease-in-out;
 
-  &.unfolded {
+  &.foldable-part--unfolded {
     pointer-events: all;
     opacity: 1;
   }
