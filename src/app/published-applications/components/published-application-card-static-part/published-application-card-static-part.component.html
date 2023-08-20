@@ -1,0 +1,40 @@
+<ng-container *ngIf="_publishedApplication; else undefinedPublishedApplication">
+  <ng-container
+    *ngIf="{
+      isExpanded: (_expandStateService.isExpanded$ | async) === true,
+      isActive: (_activeStateService.isActive$ | async) === true,
+    } as cardState"
+  >
+    <div class="left">
+      <div class="direction-and-full-name">
+        <app-application-card-direction
+          class="direction"
+          [isActive]="cardState.isActive"
+          [locationFrom]="_publishedApplication.locationFrom"
+          [locationTo]="_publishedApplication.locationTo"
+        ></app-application-card-direction>
+
+        <app-application-card-full-name
+          [fullName]="_publishedApplication.fullName"
+        ></app-application-card-full-name>
+      </div>
+
+      <app-application-card-dates
+        [isActive]="cardState.isActive"
+        [startDate]="_publishedApplication.startDate"
+        [endDate]="_publishedApplication.endDate"
+      ></app-application-card-dates>
+    </div>
+
+    <div class="right">
+      <app-application-card-arrow-block
+        [isActive]="cardState.isActive"
+        [isTurned]="cardState.isExpanded"
+      ></app-application-card-arrow-block>
+    </div>
+  </ng-container>
+</ng-container>
+
+<ng-template #undefinedPublishedApplication>
+  <strong>Published application is undefined!</strong>
+</ng-template>

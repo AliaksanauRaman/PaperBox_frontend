@@ -1,0 +1,41 @@
+@import "../../../styles/screen-size-mixins";
+
+:host {
+  display: flex;
+}
+
+.left {
+  flex-grow: 1;
+}
+
+.direction-and-full-name {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 12px;
+}
+
+.direction {
+  margin-bottom: 5px;
+}
+
+.right {
+  flex-shrink: 0;
+  margin-left: 10px;
+}
+
+@include for-tablet {
+  :host {
+    align-items: center;
+    min-height: 70px;
+  }
+
+  .left {
+    display: flex;
+  }
+
+  .direction-and-full-name {
+    flex-shrink: 0;
+    width: 55%;
+    margin-bottom: 0;
+  }
+}
