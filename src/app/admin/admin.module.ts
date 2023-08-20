@@ -20,7 +20,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
 import { A11yModule } from '@angular/cdk/a11y';
 
-import { HttpErrorResponseCardModule } from '../shared/components/http-error-response-card/http-error-response-card.module';
 import { LocationLabelPipe } from '../shared/pipes/location-label.pipe';
 import { DatesPipe } from './../shared/pipes/dates.pipe';
 import { AdminRoutingModule } from './admin-routing.module';
@@ -59,7 +58,6 @@ import { AdminUsersFilterFormComponent } from './components/admin-users-filter-f
     MatPaginatorModule,
     MatSelectModule,
     A11yModule,
-    HttpErrorResponseCardModule,
     LocationLabelPipe,
     DatesPipe,
     AdminRoutingModule,
