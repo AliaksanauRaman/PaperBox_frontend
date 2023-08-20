@@ -1,0 +1,27 @@
+<h2 class="title">
+  <span>{{ "components.listLoadErrorView.title" | translate }}</span>
+</h2>
+
+<svg-icon
+  class="image image--mobile"
+  [svgStyle]="{ 'width.px': 121, 'height.px': 110 }"
+  src="/assets/svg/images/man-with-phone-image.svg"
+></svg-icon>
+
+<svg-icon
+  class="image image--desktop"
+  [svgStyle]="{ 'width.px': 170, 'height.px': 155 }"
+  src="/assets/svg/images/man-with-phone-image.svg"
+></svg-icon>
+
+<div class="actions">
+  <button
+    class="actions__item app-primary-button"
+    type="button"
+    (click)="reloadClick.emit()"
+  >
+    <span>{{
+      "components.listLoadErrorView.reloadButtonLabel" | translate
+    }}</span>
+  </button>
+</div>
