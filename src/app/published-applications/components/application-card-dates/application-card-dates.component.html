@@ -1,0 +1,11 @@
+<ng-container *ngIf="_localeService.currentLocale$ | async as currentLocale">
+  <ng-container *ngIf="_startDate !== null; else startDateIsNull">
+    <span>{{
+      { startDate: _startDate, endDate: _endDate } | dates : currentLocale
+    }}</span>
+  </ng-container>
+
+  <ng-template #startDateIsNull>
+    <strong>Start date is null!</strong>
+  </ng-template>
+</ng-container>
