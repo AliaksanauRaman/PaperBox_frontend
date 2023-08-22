@@ -7,7 +7,7 @@ import { MatRippleModule } from '@angular/material/core';
   styleUrls: ['./white-square-button.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [MatRippleModule]
+  imports: [MatRippleModule],
 })
 export class WhiteSquareButtonComponent {
   @Input()
