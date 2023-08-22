@@ -24,9 +24,9 @@ export const listOfPublishedApplicationEntities = z
   .array(publishedApplicationEntity)
   .readonly();
 
-export type PublishedHelpOfferEntity = z.infer<
+export type PublishedApplicationEntity = z.infer<
   typeof publishedApplicationEntity
 >;
-export type ListOfPublishedHelpOfferEntities = z.infer<
+export type ListOfPublishedApplicationEntities = z.infer<
   typeof listOfPublishedApplicationEntities
 >;
