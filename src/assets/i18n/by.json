@@ -235,7 +235,8 @@
     "closeDialog": "Закрыць дыялог",
     "addPhoneNumber": "Дадаць нумар тэлефону",
     "removePhoneNumber": "Выдаліць нумар тэлефону",
-    "delete": "Выдаліць"
+    "delete": "Выдаліць",
+    "changeLanguage": "Змяніць мову"
   },
   "controlLabel": {
     "email": "Электронная пошта",

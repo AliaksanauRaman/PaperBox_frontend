@@ -235,7 +235,8 @@
     "closeDialog": "Закрыть диалог",
     "addPhoneNumber": "Добавить номер телефона",
     "removePhoneNumber": "Удалить номер телефона",
-    "delete": "Удалить"
+    "delete": "Удалить",
+    "changeLanguage": "Сменить язык"
   },
   "controlLabel": {
     "email": "Электронная почта",

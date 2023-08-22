@@ -235,7 +235,8 @@
     "closeDialog": "Close dialog",
     "addPhoneNumber": "Add phone number",
     "removePhoneNumber": "Remove phone number",
-    "delete": "Delete"
+    "delete": "Delete",
+    "changeLanguage": "Change language"
   },
   "controlLabel": {
     "email": "Email",
