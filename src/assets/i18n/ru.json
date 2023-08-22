@@ -191,7 +191,7 @@
     "emailField": "ivan.ivanov@gmail.com",
     "passwordControl": "1234abcd",
     "emptyList": "Список пустой.",
-    "selectValidityPeriod": "Выберите период актуальности вашей заявки"
+    "selectRelevancePeriod": "Выберите период актуальности вашей заявки"
   },
   "info": {
     "applicationIdIsSuccessfullyCopied": "Идентификатор заявки успешно скопирован в буфер обмена!",

@@ -191,7 +191,7 @@
     "emailField": "ivan.ivanov@gmail.com",
     "passwordControl": "1234abcd",
     "emptyList": "Спіс пусты.",
-    "selectValidityPeriod": "Абярыце перыяд актуальнасці вашай заяўкі"
+    "selectRelevancePeriod": "Абярыце перыяд актуальнасці вашай заяўкі"
   },
   "info": {
     "applicationIdIsSuccessfullyCopied": "Ідэнтыфікатар заяўкі паспяхова скапіраваны ў буфер абмену!",

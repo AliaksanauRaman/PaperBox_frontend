@@ -191,7 +191,7 @@
     "emailField": "john.smith@gmail.com",
     "passwordControl": "1234abcd",
     "emptyList": "The list is empty.",
-    "selectValidityPeriod": "Select the validity period of your application"
+    "selectRelevancePeriod": "Select the relevance period of your application"
   },
   "info": {
     "applicationIdIsSuccessfullyCopied": "Application ID is successfully copied to the clipboard!",
