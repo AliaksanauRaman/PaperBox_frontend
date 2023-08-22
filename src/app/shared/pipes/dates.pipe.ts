@@ -1,5 +1,7 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform, inject } from '@angular/core';
 import { DatePipe } from '@angular/common';
+
+import { DatesComparerService } from '@shared/services/dates-comparer.service';
 
 type DatesType = Readonly<{
   startDate: Date;
@@ -11,7 +13,8 @@ type DatesType = Readonly<{
   standalone: true,
 })
 export class DatesPipe implements PipeTransform {
-  constructor(private readonly _datePipe: DatePipe) {}
+  private readonly _datePipe = inject(DatePipe);
+  private readonly _datesComparer = inject(DatesComparerService);
 
   public transform(value: DatesType, locale: string): string {
     const { startDate, endDate } = value;
@@ -22,6 +25,10 @@ export class DatesPipe implements PipeTransform {
     ) as string;
 
     if (endDate !== null) {
+      if (this._datesComparer.areDatesEqual(startDate, endDate)) {
+        return formattedStartDate;
+      }
+
       const formattedEndDate = this._datePipe.transform(
         endDate,
         dateFormat
@@ -32,6 +39,7 @@ export class DatesPipe implements PipeTransform {
     return formattedStartDate;
   }
 
+  // TODO: Enhance
   private determineDateFormatByLocale(locale: string): string {
     if (locale === 'be-BY') {
       return 'dd.MM.YYYY';
