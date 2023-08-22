@@ -1,5 +1,5 @@
 import { Disableable } from '@shared/utility-types/disableable.utility-type';
-import { PublishedHelpRequestEntity } from '@shared/entities/published-help-request.entity';
+import { PublishedApplicationEntity } from '@shared/entities/published-application.entity';
 
-export type PublishedHelpRequest = Disableable<PublishedHelpRequestEntity>;
+export type PublishedHelpRequest = Disableable<PublishedApplicationEntity>;
 export type ListOfPublishedHelpRequests = ReadonlyArray<PublishedHelpRequest>;
