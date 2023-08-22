@@ -190,7 +190,8 @@
     "commentField": "Текст вашего комменатрия...",
     "emailField": "ivan.ivanov@gmail.com",
     "passwordControl": "1234abcd",
-    "emptyList": "Список пустой."
+    "emptyList": "Список пустой.",
+    "selectValidityPeriod": "Выберите период актуальности вашей заявки"
   },
   "info": {
     "applicationIdIsSuccessfullyCopied": "Идентификатор заявки успешно скопирован в буфер обмена!",
