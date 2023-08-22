@@ -6,7 +6,10 @@ import { MockHelpOffersHttpService } from '../mocks/mock-help-offers-http.servic
 
 import { HelpOffersHttpServiceInterface } from '../interfaces/help-offers-http-service.interface';
 import { API_URL } from '../../shared/dependencies/api-url/injection-token';
-import { ListOfPublishedHelpOfferEntities } from '@shared/entities/published-help-offer.entity';
+import {
+  ListOfPublishedApplicationEntities,
+  listOfPublishedApplicationEntities,
+} from '@shared/entities/published-application.entity';
 import { SuccessCreateHelpOfferResponseDataType } from '../../shared/types/success-create-help-offer-response-data.type';
 import { CreateHelpOfferDto } from '../../shared/dtos/create-help-offer.dto';
 import { DeleteHelpOfferResponseDataType } from '../../shared/types/delete-help-offer-response-data.type';
@@ -25,10 +28,14 @@ export class HelpOffersHttpService implements HelpOffersHttpServiceInterface {
     private readonly httpClient: HttpClient
   ) {}
 
-  public getPublished(): Observable<ListOfPublishedHelpOfferEntities> {
-    return this.httpClient.get<ListOfPublishedHelpOfferEntities>(
-      `${this.helpOffersApiUrl}/published`
-    );
+  public getPublished(): Observable<ListOfPublishedApplicationEntities> {
+    return this.httpClient
+      .get<unknown>(`${this.helpOffersApiUrl}/published`)
+      .pipe(
+        map((responseData) =>
+          listOfPublishedApplicationEntities.parse(responseData)
+        )
+      );
   }
 
   public createOne(
