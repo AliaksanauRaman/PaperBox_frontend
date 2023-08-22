@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatRippleModule } from '@angular/material/core';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { DropdownControlModule } from '../dropdown-control/dropdown-control.module';
 
@@ -14,6 +15,7 @@ import { PhoneControlComponent } from './phone-control.component';
     TranslateModule,
     ReactiveFormsModule,
     MatRippleModule,
+    MatTooltipModule,
     DropdownControlModule,
   ],
   declarations: [PhoneControlComponent],

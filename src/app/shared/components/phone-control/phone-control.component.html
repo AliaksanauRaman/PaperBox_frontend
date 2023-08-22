@@ -48,7 +48,7 @@
     <button
       class="trailing-button"
       *ngIf="showPlus"
-      [title]="'helpTitles.addPhoneNumber' | translate"
+      [matTooltip]="'helpTitles.addPhoneNumber' | translate"
       [disabled]="controlDisabled"
       matRipple
       type="button"
@@ -61,7 +61,7 @@
     <button
       class="trailing-button"
       *ngIf="showMinus"
-      [title]="'helpTitles.removePhoneNumber' | translate"
+      [matTooltip]="'helpTitles.removePhoneNumber' | translate"
       [disabled]="controlDisabled"
       matRipple
       type="button"
