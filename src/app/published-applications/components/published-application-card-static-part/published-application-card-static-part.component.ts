@@ -14,7 +14,7 @@ import { ApplicationCardArrowBlockComponent } from '../application-card-arrow-bl
 import { ApplicationCardExpandStateService } from '../../services/application-card-expand-state.service';
 import { ApplicationCardActiveStateService } from '../../services/application-card-active-state.service';
 
-import { PublishedApplicationType } from '@shared/types/published-application.type';
+import { PublishedApplicationType } from '../../types/published-application.type';
 
 type PublishedApplicationInterface = Pick<
   PublishedApplicationType,
