@@ -1,21 +1,21 @@
 import { Observable, of, delay, tap } from 'rxjs';
 
 import { HelpOffersHttpServiceInterface } from '../interfaces/help-offers-http-service.interface';
-import { SuccessCreateHelpOfferResponseDataType } from '../../shared/types/success-create-help-offer-response-data.type';
-import { CreateHelpOfferDto } from '../../shared/dtos/create-help-offer.dto';
-import { ListOfPublishedHelpOffersType } from '../../shared/types/list-of-published-help-offers.type';
-import { DeleteHelpOfferResponseDataType } from '../../shared/types/delete-help-offer-response-data.type';
+import { SuccessCreateHelpOfferResponseDataType } from '@shared/types/success-create-help-offer-response-data.type';
+import { CreateHelpOfferDto } from '@shared/dtos/create-help-offer.dto';
+import { ListOfPublishedApplicationEntities } from '@shared/entities/published-application.entity';
+import { DeleteHelpOfferResponseDataType } from '@shared/types/delete-help-offer-response-data.type';
 
 const DELAY_IN_MS = 1000;
 
 export class MockHelpOffersHttpService
   implements HelpOffersHttpServiceInterface
 {
-  public getPublished(): Observable<ListOfPublishedHelpOffersType> {
+  public getPublished(): Observable<ListOfPublishedApplicationEntities> {
     return of(MOCK_PUBLISHED_HELP_OFFERS).pipe(delay(DELAY_IN_MS));
   }
 
-  public getPublishedError(): Observable<ListOfPublishedHelpOffersType> {
+  public getPublishedError(): Observable<ListOfPublishedApplicationEntities> {
     return of(MOCK_PUBLISHED_HELP_OFFERS).pipe(
       tap(() => {
         throw new Error('Get published help offers error!');
@@ -38,7 +38,7 @@ export class MockHelpOffersHttpService
   }
 }
 
-const MOCK_PUBLISHED_HELP_OFFERS: ListOfPublishedHelpOffersType = [
+const MOCK_PUBLISHED_HELP_OFFERS: ListOfPublishedApplicationEntities = [
   {
     id: 1,
     userId: 6,
