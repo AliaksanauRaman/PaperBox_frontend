@@ -5,7 +5,10 @@ import { Observable, map } from 'rxjs';
 import { MockHelpRequestsHttpService } from '../mocks/mock-help-requests-http.service';
 import { API_URL } from '../../shared/dependencies/api-url/injection-token';
 import { HelpRequestsHttpServiceInterface } from '../interfaces/help-requests-http-service.interface';
-import { ListOfPublishedHelpRequestEntities } from '@shared/entities/published-help-request.entity';
+import {
+  ListOfPublishedApplicationEntities,
+  listOfPublishedApplicationEntities,
+} from '@shared/entities/published-application.entity';
 import { CreateHelpRequestDto } from '../../shared/dtos/create-help-request.dto';
 import { SuccessCreateHelpRequestResponseDataType } from '../../shared/types/success-create-help-request-response-data.type';
 import { DeleteHelpRequestResponseDataType } from '../../shared/types/delete-help-request-response-data.type';
@@ -26,10 +29,14 @@ export class HelpRequestsHttpService
     private readonly httpClient: HttpClient
   ) {}
 
-  public getPublished(): Observable<ListOfPublishedHelpRequestEntities> {
-    return this.httpClient.get<ListOfPublishedHelpRequestEntities>(
-      `${this.helpRequestsApiUrl}/published`
-    );
+  public getPublished(): Observable<ListOfPublishedApplicationEntities> {
+    return this.httpClient
+      .get<unknown>(`${this.helpRequestsApiUrl}/published`)
+      .pipe(
+        map((responseData) =>
+          listOfPublishedApplicationEntities.parse(responseData)
+        )
+      );
   }
 
   public createOne(
