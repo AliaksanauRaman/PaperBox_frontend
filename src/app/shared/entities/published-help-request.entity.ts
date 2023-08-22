@@ -1,4 +1,4 @@
-import { ListOfPhoneEntity } from './phone.entity';
+import { ListOfPhoneEntities } from './phone.entity';
 
 export type PublishedHelpRequestEntity = Readonly<{
   id: number;
@@ -8,7 +8,7 @@ export type PublishedHelpRequestEntity = Readonly<{
   locationTo: string;
   comment: string;
   fullName: string;
-  phones: ListOfPhoneEntity;
+  phones: ListOfPhoneEntities;
   startDate: Date;
   endDate: Date | null;
 }>;
