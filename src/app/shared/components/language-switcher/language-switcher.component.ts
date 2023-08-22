@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { NgIf, AsyncPipe, NgFor } from '@angular/common';
 import { MatRippleModule } from '@angular/material/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { WhiteSquareButtonComponent } from '../white-square-button/white-square-button.component';
 
@@ -20,6 +21,7 @@ import { AppLanguageValue } from '../../enums/app-language-value.enum';
     AsyncPipe,
     NgFor,
     MatRippleModule,
+    TranslateModule,
     WhiteSquareButtonComponent,
   ],
 })

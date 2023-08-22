@@ -1,7 +1,7 @@
 <div class="language-switcher" [class.language-switcher--big]="!_isCompact">
   <ng-container *ngIf="_isCompact; else languageListView">
     <app-white-square-button
-      title="Change language"
+      [title]="'helpTitles.changeLanguage' | translate"
       (click)="handleSingleLanguageClick()"
     >
       <span
