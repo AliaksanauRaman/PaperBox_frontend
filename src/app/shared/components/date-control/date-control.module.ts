@@ -4,7 +4,9 @@ import { TranslateModule } from '@ngx-translate/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule, MatRippleModule } from '@angular/material/core';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
+import { DateRangeAsStringPipe } from '@shared/pipes/date-range-as-string.pipe';
 import { DateControlComponent } from './date-control.component';
 
 @NgModule({
@@ -15,6 +17,8 @@ import { DateControlComponent } from './date-control.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatRippleModule,
+    MatTooltipModule,
+    DateRangeAsStringPipe,
   ],
   declarations: [DateControlComponent],
   exports: [DateControlComponent],

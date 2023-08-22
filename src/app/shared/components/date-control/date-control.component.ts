@@ -4,24 +4,26 @@ import {
   Component,
   forwardRef,
   Input,
+  inject,
   OnInit,
 } from '@angular/core';
 import {
   NG_VALUE_ACCESSOR,
-  FormGroup,
-  FormControl,
   NG_VALIDATORS,
   Validator,
   AbstractControl,
   ValidationErrors,
+  NonNullableFormBuilder,
 } from '@angular/forms';
 import { MatDateRangePicker } from '@angular/material/datepicker';
 import { DateAdapter } from '@angular/material/core';
-import { map, takeUntil, tap } from 'rxjs';
+import { takeUntil, tap } from 'rxjs';
 
-import { UniqueIdGeneratorService } from '../../../core/services/unique-id-generator.service';
-import { AppLocaleService } from '../../../core/services/app-locale.service';
-import { ScreenSizeObserverService } from '../../../core/services/screen-size-observer.service';
+import { AppLocaleService } from '@core/services/app-locale.service';
+import { ScreenSizeObserverService } from '@core/services/screen-size-observer.service';
+import { DatesComparerService } from '@shared/services/dates-comparer.service';
+import { DatesFormatterService } from '@shared/services/dates-formatter.service';
+import { UniqueIdGeneratorService } from '@core/services/unique-id-generator.service';
 
 import { CustomControl } from '../../abstracts/custom-control.class';
 import { DateControlValueType } from '../../types/date-control-value.type';
@@ -44,7 +46,6 @@ import { DateControlValueType } from '../../types/date-control-value.type';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-// TODO: Refactor this all!
 export class DateControlComponent
   extends CustomControl<DateControlValueType>
   implements OnInit, Validator
@@ -64,64 +65,70 @@ export class DateControlComponent
     this.controlPlaceholder = value;
   }
 
-  public readonly isMobileOrTablet$ =
-    this.screenSizeObserverService.isMobileOrTablet$;
-  protected readonly minDate = new Date();
-  protected readonly maxDate = new Date(
-    new Date().setMonth(this.minDate.getMonth() + 3)
+  protected readonly _localeService = inject(AppLocaleService);
+  private readonly _screenSizeObserverService = inject(
+    ScreenSizeObserverService
   );
-  protected readonly dateForm = new FormGroup({
-    start: new FormControl<Date | null>(null),
-    end: new FormControl<Date | null>(null),
+  private readonly _formBuilder = inject(NonNullableFormBuilder);
+  private readonly _datesFormatter = inject(DatesFormatterService);
+  private readonly _datesComparer = inject(DatesComparerService);
+  private readonly _dateAdapter: DateAdapter<Date> = inject(DateAdapter);
+
+  protected readonly _isMobileOrTablet$ =
+    this._screenSizeObserverService.isMobileOrTablet$;
+  protected readonly _minDate = new Date();
+  protected readonly _maxDate = new Date(
+    new Date().setMonth(this._minDate.getMonth() + 3)
+  );
+  protected readonly _datesForm = this._formBuilder.group({
+    start: [null as Date | null],
+    end: [null as Date | null],
   });
-  protected readonly viewValue$ = this.dateForm.valueChanges.pipe(
-    map(({ start, end }) => {
-      if (start === null || start === undefined) {
-        return '';
-      }
-
-      const formattedStartDate = this.formatDate(start);
-
-      if (end === null || end === undefined || this.areDatesEqual(start, end)) {
-        return formattedStartDate;
-      }
-
-      const formattedEndDate = this.formatDate(end);
-
-      return `${formattedStartDate} - ${formattedEndDate}`;
-    })
-  );
 
   constructor(
     uniqueIdGeneratorService: UniqueIdGeneratorService,
-    cdRef: ChangeDetectorRef,
-    private readonly dateAdapter: DateAdapter<Date>,
-    private readonly localeService: AppLocaleService,
-    private readonly screenSizeObserverService: ScreenSizeObserverService
+    cdRef: ChangeDetectorRef
   ) {
     super(uniqueIdGeneratorService, cdRef);
-
-    this.controlPlaceholder = this.generateDefaultPlaceholder();
   }
 
   public ngOnInit(): void {
-    this.dateAdapter.setLocale(this.localeService.currentLocale);
-    this.dateForm.valueChanges
+    this._dateAdapter.setLocale(this._localeService.currentLocale);
+    this._datesForm.valueChanges
       .pipe(
-        // TODO: Prevent redundant calls!!!
         tap(({ start, end }) => {
           if (start === undefined || end === undefined) {
             throw new Error('Values cannot be undefined!');
           }
 
-          if (start?.getTime() === end?.getTime()) {
-            this.onChange({ start, end: null });
+          if (start === null && end === null) {
+            this.onChange({ start: null, end: null });
             this.onValidatorChange();
             return;
           }
 
-          this.onChange({ start, end });
-          this.onValidatorChange();
+          if (start !== null && end === null) {
+            this.onChange({ start: this.toUTCDate(start), end: null });
+            this.onValidatorChange();
+            return;
+          }
+
+          if (start !== null && end !== null) {
+            if (this._datesComparer.areDatesEqual(start, end)) {
+              this.onChange({ start: this.toUTCDate(start), end: null });
+              this.onValidatorChange();
+              return;
+            }
+
+            this.onChange({
+              start: this.toUTCDate(start),
+              end: this.toUTCDate(end),
+            });
+            this.onValidatorChange();
+            return;
+          }
+
+          throw new Error('Impossible combination of dates values!');
         }),
         takeUntil(this.destroy$)
       )
@@ -131,7 +138,7 @@ export class DateControlComponent
   public writeValue(value: DateControlValueType): void {
     // TODO: Assert value type
     // TODO: !IMPORTANT Fix the issue with initial value set!
-    this.dateForm.setValue(value);
+    this._datesForm.setValue(value);
   }
 
   public validate(thisControl: AbstractControl): ValidationErrors | null {
@@ -172,28 +179,9 @@ export class DateControlComponent
     }
   }
 
-  private formatDate(date: Date): string {
-    return new Intl.DateTimeFormat(this.localeService.currentLocale, {
-      year: 'numeric',
-      month: '2-digit',
-      day: '2-digit',
-    }).format(date);
-  }
-
-  private areDatesEqual(date1: Date, date2: Date): boolean {
-    return (
-      date1.getFullYear() === date2.getFullYear() &&
-      date1.getMonth() === date2.getMonth() &&
-      date1.getDate() === date2.getDate()
-    );
-  }
-
   private onValidatorChange = () => {};
 
-  private generateDefaultPlaceholder(): string {
-    const now = new Date();
-    return `${this.formatDate(now)} - ${this.formatDate(
-      new Date(new Date().setDate(now.getDate() + 3))
-    )}`;
+  private toUTCDate(date: Date): Date {
+    return this._datesFormatter.toUTCDate(date);
   }
 }

@@ -6,27 +6,29 @@
     <span>{{ controlLabel }}</span>
   </label>
 
-  <input
-    #inputRef
-    class="custom-control__field custom-control__field--with-trailing-icon app-custom-placeholder"
-    [id]="controlId"
-    [class.custom-control__field--active]="matDateRangePickerRef.opened"
-    [disabled]="controlDisabled"
-    [value]="viewValue$ | async"
-    [placeholder]="controlPlaceholder"
-    type="text"
-    readonly
-    (click)="toggleDateRangePicker(matDateRangePickerRef)"
-    (focus)="handleInputFocus(matDateRangePickerRef)"
-    (blur)="handleInputBlur()"
-  />
+  <ng-container *ngIf="_localeService.currentLocale$ | async as currentLocale">
+    <input
+      class="custom-control__field custom-control__field--with-trailing-icon app-custom-placeholder"
+      [id]="controlId"
+      [class.custom-control__field--active]="matDateRangePickerRef.opened"
+      [disabled]="controlDisabled"
+      [value]="matDateRangeInput.value | dateRangeAsString : currentLocale"
+      [placeholder]="controlPlaceholder"
+      type="text"
+      readonly
+      (click)="toggleDateRangePicker(matDateRangePickerRef)"
+      (focus)="handleInputFocus(matDateRangePickerRef)"
+      (blur)="handleInputBlur()"
+    />
+  </ng-container>
 
   <mat-date-range-input
+    #matDateRangeInput
     class="date-range-input"
-    [formGroup]="dateForm"
+    [formGroup]="_datesForm"
     [rangePicker]="matDateRangePickerRef"
-    [min]="minDate"
-    [max]="maxDate"
+    [min]="_minDate"
+    [max]="_maxDate"
   >
     <input matStartDate formControlName="start" tabindex="-1" />
     <input matEndDate formControlName="end" tabindex="-1" />
@@ -34,7 +36,7 @@
 
   <mat-date-range-picker
     #matDateRangePickerRef
-    [touchUi]="isMobileOrTablet$ | async"
+    [touchUi]="_isMobileOrTablet$ | async"
     xPosition="end"
     yPosition="below"
   ></mat-date-range-picker>
@@ -42,7 +44,7 @@
   <button
     class="calendar-button"
     [disabled]="controlDisabled"
-    [title]="'helpTitles.selectDates' | translate"
+    [matTooltip]="'helpTitles.selectDates' | translate"
     matRipple
     tabindex="-1"
     type="button"
