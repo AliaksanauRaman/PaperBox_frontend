@@ -5,7 +5,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { PhoneHrefPipe } from '@shared/pipes/phone-href.pipe';
 import { PhoneViewPipe } from '@shared/pipes/phone-view.pipe';
 
-import { ListOfPhoneEntity } from '@shared/entities/phone.entity';
+import { ListOfPhoneEntities } from '@shared/entities/phone.entity';
 
 @Component({
   selector: 'app-application-card-phones',
@@ -17,9 +17,9 @@ import { ListOfPhoneEntity } from '@shared/entities/phone.entity';
 })
 export class ApplicationCardPhonesComponent {
   @Input()
-  public set listOfPhones(value: ListOfPhoneEntity) {
+  public set listOfPhones(value: ListOfPhoneEntities) {
     this._listOfPhones = value;
   }
 
-  protected _listOfPhones: ListOfPhoneEntity = [];
+  protected _listOfPhones: ListOfPhoneEntities = [];
 }
