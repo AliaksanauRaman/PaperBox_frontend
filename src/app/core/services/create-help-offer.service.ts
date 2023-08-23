@@ -4,12 +4,12 @@ import { Observable } from 'rxjs';
 import { HelpOffersHttpService } from './help-offers-http.service';
 
 import { HttpRequestWithParamsBaseService } from '../../shared/abstracts/http-request-with-params-base-service.class';
-import { SuccessCreateHelpOfferResponseDataType } from '../../shared/types/success-create-help-offer-response-data.type';
+import { PublishedApplicationEntity } from '@shared/entities/published-application.entity';
 import { CreateHelpOfferDto } from '../../shared/dtos/create-help-offer.dto';
 
 @Injectable()
 export class CreateHelpOfferService extends HttpRequestWithParamsBaseService<
-  SuccessCreateHelpOfferResponseDataType,
+  PublishedApplicationEntity,
   CreateHelpOfferDto
 > {
   constructor(private readonly helpOffersHttpService: HelpOffersHttpService) {
@@ -18,7 +18,7 @@ export class CreateHelpOfferService extends HttpRequestWithParamsBaseService<
 
   protected doRequest(
     createHelpOfferDto: CreateHelpOfferDto
-  ): Observable<SuccessCreateHelpOfferResponseDataType> {
+  ): Observable<PublishedApplicationEntity> {
     return this.helpOffersHttpService.createOne(createHelpOfferDto);
   }
 }

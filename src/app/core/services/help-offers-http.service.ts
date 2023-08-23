@@ -5,14 +5,15 @@ import { Observable, map } from 'rxjs';
 import { MockHelpOffersHttpService } from '../mocks/mock-help-offers-http.service';
 
 import { HelpOffersHttpServiceInterface } from '../interfaces/help-offers-http-service.interface';
-import { API_URL } from '../../shared/dependencies/api-url/injection-token';
+import { API_URL } from '@shared/dependencies/api-url/injection-token';
 import {
   ListOfPublishedApplicationEntities,
   listOfPublishedApplicationEntities,
+  PublishedApplicationEntity,
+  publishedApplicationEntity,
 } from '@shared/entities/published-application.entity';
-import { SuccessCreateHelpOfferResponseDataType } from '../../shared/types/success-create-help-offer-response-data.type';
-import { CreateHelpOfferDto } from '../../shared/dtos/create-help-offer.dto';
-import { DeleteHelpOfferResponseDataType } from '../../shared/types/delete-help-offer-response-data.type';
+import { CreateHelpOfferDto } from '@shared/dtos/create-help-offer.dto';
+import { DeleteHelpOfferResponseDataType } from '@shared/types/delete-help-offer-response-data.type';
 
 @Injectable({
   providedIn: 'root',
@@ -40,11 +41,12 @@ export class HelpOffersHttpService implements HelpOffersHttpServiceInterface {
 
   public createOne(
     createHelpOfferDto: CreateHelpOfferDto
-  ): Observable<SuccessCreateHelpOfferResponseDataType> {
-    return this.httpClient.post<SuccessCreateHelpOfferResponseDataType>(
-      this.helpOffersApiUrl,
-      createHelpOfferDto
-    );
+  ): Observable<PublishedApplicationEntity> {
+    return this.httpClient
+      .post<unknown>(this.helpOffersApiUrl, createHelpOfferDto)
+      .pipe(
+        map((responseData) => publishedApplicationEntity.parse(responseData))
+      );
   }
 
   public deleteOne(
