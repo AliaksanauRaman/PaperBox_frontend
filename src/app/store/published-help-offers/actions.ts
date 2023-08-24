@@ -2,6 +2,7 @@ import {
   ListOfPublishedHelpOffers,
   PublishedHelpOffer,
 } from '@shared/models/published-help-offer.model';
+import { CreateHelpOfferDto } from '@shared/dtos/create-help-offer.dto';
 
 export namespace PublishedHelpOffers {
   export class Get {
@@ -22,6 +23,29 @@ export namespace PublishedHelpOffers {
   export class GetFail {
     public static type = '[Published Help Offers] Get Fail';
     constructor(public readonly error: unknown) {}
+  }
+
+  export class CreateOne {
+    public static type = '[Published Help Offers] Create One';
+    constructor(public readonly createHelpOfferDto: CreateHelpOfferDto) {}
+  }
+
+  export class DestroyCreateOne {
+    public static type = '[Published Help Offers] Destroy Create One';
+  }
+
+  export class CreateOneSuccess {
+    public static type = '[Published Help Offers] Create One Success';
+    constructor(public readonly newHelpOffer: PublishedHelpOffer) {}
+  }
+
+  export class CreateOneFail {
+    public static type = '[Published Help Offers] Create One Fail';
+    constructor(public readonly error: unknown) {}
+  }
+
+  export class ResetCreateOne {
+    public static type = '[Published Help Offers] Reset Create One';
   }
 
   export class DeleteOne {

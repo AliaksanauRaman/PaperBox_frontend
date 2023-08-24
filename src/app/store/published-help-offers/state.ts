@@ -5,7 +5,6 @@ import {
   Actions,
   State,
   StateContext,
-  Store,
   ofAction,
 } from '@ngxs/store';
 import { Observable, catchError, finalize, map, takeUntil, tap } from 'rxjs';
@@ -19,7 +18,10 @@ import {
   LoadingState,
   ValueState,
 } from '@shared/classes/async-data.class';
-import { ListOfPublishedHelpOffers } from '@shared/models/published-help-offer.model';
+import {
+  ListOfPublishedHelpOffers,
+  PublishedHelpOffer,
+} from '@shared/models/published-help-offer.model';
 import { DeleteHelpOfferResponseDataType } from '@shared/types/delete-help-offer-response-data.type';
 import { toDisableable } from '@shared/utils/to-disableable.util';
 import { disable } from '@shared/utils/disable.util';
@@ -34,19 +36,24 @@ type StateModel = PublishedHelpOffersStateModel;
   defaults: {
     get: new InitialState(),
     deleteOne: new InitialState(),
+    createOne: new InitialState(),
   },
 })
 @Injectable({
   providedIn: 'root',
 })
 export class PublishedHelpOffersState {
-  private readonly _store = inject(Store);
   private readonly _actions$ = inject(Actions);
   private readonly _helpOffersHttpService = inject(HelpOffersHttpService);
 
   @Selector()
   public static get(state: StateModel): AsyncData<ListOfPublishedHelpOffers> {
     return state.get;
+  }
+
+  @Selector()
+  public static createOne(state: StateModel): AsyncData<PublishedHelpOffer> {
+    return state.createOne;
   }
 
   @Action(PublishedHelpOffers.Get, { cancelUncompleted: true })
@@ -61,12 +68,12 @@ export class PublishedHelpOffersState {
     return this._helpOffersHttpService.getPublished().pipe(
       map((listOfEntities) => listOfEntities.map(toDisableable)),
       tap((listOfPublishedHelpOffers) =>
-        this._store.dispatch(
+        context.dispatch(
           new PublishedHelpOffers.GetSuccess(listOfPublishedHelpOffers)
         )
       ),
       catchError((error: unknown) => {
-        this._store.dispatch(new PublishedHelpOffers.GetFail(error));
+        context.dispatch(new PublishedHelpOffers.GetFail(error));
         throw error;
       }),
       takeUntil(this._actions$.pipe(ofAction(PublishedHelpOffers.DestroyGet)))
@@ -95,6 +102,69 @@ export class PublishedHelpOffersState {
     });
   }
 
+  @Action(PublishedHelpOffers.CreateOne, { cancelUncompleted: true })
+  public createOnePublishedHelpOffer(
+    context: StateContext<StateModel>,
+    action: PublishedHelpOffers.CreateOne
+  ): Observable<PublishedHelpOffer> {
+    context.setState({
+      ...context.getState(),
+      createOne: new LoadingState(),
+    });
+
+    return this._helpOffersHttpService
+      .createOne(action.createHelpOfferDto)
+      .pipe(
+        map((entity) => toDisableable(entity)),
+        tap((publishedHelpOffer) =>
+          context.dispatch(
+            new PublishedHelpOffers.CreateOneSuccess(publishedHelpOffer)
+          )
+        ),
+        catchError((error: unknown) => {
+          context.dispatch(new PublishedHelpOffers.CreateOneFail(error));
+          throw error;
+        }),
+        takeUntil(
+          this._actions$.pipe(ofAction(PublishedHelpOffers.DestroyCreateOne))
+        )
+      );
+  }
+
+  @Action(PublishedHelpOffers.CreateOneSuccess)
+  public createOnePublishedHelpOfferSuccess(
+    context: StateContext<StateModel>,
+    action: PublishedHelpOffers.CreateOneSuccess
+  ): void {
+    context.setState({
+      ...context.getState(),
+      createOne: new ValueState(action.newHelpOffer),
+    });
+
+    context.dispatch(new PublishedHelpOffers.PrependOne(action.newHelpOffer));
+  }
+
+  @Action(PublishedHelpOffers.CreateOneFail)
+  public createOnePublishedHelpOfferFail(
+    context: StateContext<StateModel>,
+    action: PublishedHelpOffers.CreateOneFail
+  ): void {
+    context.setState({
+      ...context.getState(),
+      createOne: new ErrorState(action.error),
+    });
+  }
+
+  @Action(PublishedHelpOffers.ResetCreateOne)
+  public resetCreateOnePublishedHelpOffer(
+    context: StateContext<StateModel>
+  ): void {
+    context.setState({
+      ...context.getState(),
+      createOne: new InitialState(),
+    });
+  }
+
   @Action(PublishedHelpOffers.DeleteOne, { cancelUncompleted: true })
   public deleteOnePublishedHelpOffer(
     context: StateContext<StateModel>,
@@ -105,24 +175,20 @@ export class PublishedHelpOffersState {
       deleteOne: new LoadingState(),
     });
 
-    this._store.dispatch(
-      new PublishedHelpOffers.DisableOne(action.helpOfferId)
-    );
+    context.dispatch(new PublishedHelpOffers.DisableOne(action.helpOfferId));
 
     return this._helpOffersHttpService.deleteOne(action.helpOfferId).pipe(
       tap((responseData) =>
-        this._store.dispatch(
+        context.dispatch(
           new PublishedHelpOffers.DeleteOneSuccess(responseData.id)
         )
       ),
       catchError((error: unknown) => {
-        this._store.dispatch(new PublishedHelpOffers.DeleteOneFail(error));
+        context.dispatch(new PublishedHelpOffers.DeleteOneFail(error));
         throw error;
       }),
       finalize(() => {
-        this._store.dispatch(
-          new PublishedHelpOffers.EnableOne(action.helpOfferId)
-        );
+        context.dispatch(new PublishedHelpOffers.EnableOne(action.helpOfferId));
       }),
       takeUntil(
         this._actions$.pipe(ofAction(PublishedHelpOffers.DestroyDeleteOne))
