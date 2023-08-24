@@ -1,0 +1,21 @@
+<ng-container
+  *ngIf="
+    _listOfLocalizations$ | async as listOfLocalizations;
+    else noLocalizations
+  "
+>
+  <app-language-selection
+    *ngIf="listOfLocalizations.length > 0; else noLocalizations"
+    [listOfLocalizations]="listOfLocalizations"
+    (select)="handleSelect($event)"
+  ></app-language-selection>
+</ng-container>
+
+<ng-template #noLocalizations>
+  <app-square-rounded-button tooltipText="Languages load error">
+    <svg-icon
+      class="globe-error-icon"
+      src="/assets/svg/icons/globe-error-icon.svg"
+    ></svg-icon>
+  </app-square-rounded-button>
+</ng-template>
