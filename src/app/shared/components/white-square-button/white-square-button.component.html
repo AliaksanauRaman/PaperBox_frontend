@@ -1,3 +1,9 @@
-<button class="white-square-button" matRipple type="button" [title]="_title">
+<button
+  class="white-square-button"
+  matRipple
+  type="button"
+  [title]="_tooltip ? '' : _title"
+  [matTooltip]="_tooltip"
+>
   <ng-content></ng-content>
 </button>
