@@ -1,0 +1,41 @@
+@import "../../../styles/screen-size-mixins";
+
+:host {
+  display: block;
+}
+
+.globe-icon {
+  width: 26px;
+  height: 26px;
+}
+
+.languages-menu {
+  display: flex;
+  flex-direction: column;
+  width: 40px;
+  margin-top: 4px;
+  padding: 6px 0;
+  background-color: var(--white-color);
+  border-radius: var(--border-radius);
+  box-shadow: 2px 2px 5px 2px rgba($color: #4e91f7, $alpha: 0.2) !important; // PRIMARY COLOR
+}
+
+.languages-menu__item {
+  flex-shrink: 0;
+  height: 32px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--grey-color);
+  border-radius: 50%;
+
+  &.languages-menu__item--selected {
+    color: var(--primary-color);
+    font-weight: 700;
+  }
+}
+
+@include for-tablet {
+  .languages-menu__item {
+    font-size: 1rem;
+  }
+}

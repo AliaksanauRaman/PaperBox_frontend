@@ -1,0 +1,33 @@
+<app-square-rounded-button
+  [cdkMenuTriggerFor]="menu"
+  [tooltipText]="'helpTitles.changeLanguage' | translate"
+  [tooltipDisabled]="_isMenuOpened"
+  (cdkMenuOpened)="handleMenuOpened()"
+  (cdkMenuClosed)="handleMenuClosed()"
+>
+  <svg-icon
+    class="globe-icon"
+    src="/assets/svg/icons/globe-icon.svg"
+  ></svg-icon>
+</app-square-rounded-button>
+
+<ng-template #menu>
+  <div class="languages-menu" cdkMenu>
+    <button
+      class="languages-menu__item"
+      [class.languages-menu__item--selected]="localization.isSelected"
+      *ngFor="
+        let localization of _listOfLocalizations;
+        trackBy: trackByLocalizationLanguage
+      "
+      cdkMenuItem
+      matRipple
+      [matRippleCentered]="true"
+      [matRippleUnbounded]="true"
+      type="button"
+      (click)="select.emit(localization.language)"
+    >
+      <span>{{ localization.label }}</span>
+    </button>
+  </div>
+</ng-template>
