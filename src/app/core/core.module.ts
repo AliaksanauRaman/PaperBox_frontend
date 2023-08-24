@@ -59,10 +59,6 @@ import { ConfirmApplicationDeletionDialogComponent } from './dialogs/confirm-app
 import { AboutUsDialogComponent } from './dialogs/about-us-dialog/about-us-dialog.component';
 
 import {
-  LOCAL_STORAGE,
-  LOCAL_STORAGE_VALUE,
-} from './dependencies/local-storage';
-import {
   COUNTRIES_MAP,
   COUNTRIES_MAP_VALUE,
 } from './dependencies/countries-map';
@@ -160,10 +156,6 @@ import { RECAPTCHA_LANGUAGE_PROVIDER } from './dependencies/recaptcha-language';
     AboutUsDialogComponent,
   ],
   providers: [
-    {
-      provide: LOCAL_STORAGE,
-      useValue: LOCAL_STORAGE_VALUE,
-    },
     {
       provide: COUNTRIES_MAP,
       useValue: COUNTRIES_MAP_VALUE,

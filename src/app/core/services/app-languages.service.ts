@@ -1,8 +1,8 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { BehaviorSubject, map } from 'rxjs';
 
-import { LocalStorageType, LOCAL_STORAGE } from '../dependencies/local-storage';
+import { LOCAL_STORAGE } from '../dependencies/local-storage';
 import { AppLocaleService } from './app-locale.service';
 
 import { AppLanguageValue } from '../../shared/enums/app-language-value.enum';
@@ -51,9 +51,11 @@ const getLocaleByLanguageValue = (languageValue: string): string => {
 })
 // TODO: Name? AppLocalizationService
 export class AppLanguagesService {
+  private readonly _localStorage = inject(LOCAL_STORAGE);
+
   private readonly _languages$ = new BehaviorSubject(
     getInitialStateOfAppLanguages(
-      this.localStorage.getItem(LocalStorageKey.APP_CURRENT_LANGUAGE) ||
+      this._localStorage.getItem(LocalStorageKey.APP_CURRENT_LANGUAGE) ||
         DEFAULT_APP_LANGUAGE
     )
   );
@@ -84,8 +86,6 @@ export class AppLanguagesService {
   }
 
   constructor(
-    @Inject(LOCAL_STORAGE)
-    private readonly localStorage: LocalStorageType,
     private readonly translateService: TranslateService,
     private readonly localeService: AppLocaleService
   ) {}
@@ -93,7 +93,7 @@ export class AppLanguagesService {
   public setUp(): void {
     this.translateService.setDefaultLang(DEFAULT_APP_LANGUAGE);
     this.translateService.use(
-      this.localStorage.getItem(LocalStorageKey.APP_CURRENT_LANGUAGE) ||
+      this._localStorage.getItem(LocalStorageKey.APP_CURRENT_LANGUAGE) ||
         DEFAULT_APP_LANGUAGE
     );
   }
@@ -104,7 +104,7 @@ export class AppLanguagesService {
 
     // TODO: Refactor it please
     this.translateService.use(languageValue);
-    this.localStorage.setItem(
+    this._localStorage.setItem(
       LocalStorageKey.APP_CURRENT_LANGUAGE,
       languageValue
     );
@@ -128,7 +128,7 @@ export class AppLanguagesService {
     const nextLanguageValue = nextLanguage.value;
 
     this.translateService.use(nextLanguageValue);
-    this.localStorage.setItem(
+    this._localStorage.setItem(
       LocalStorageKey.APP_CURRENT_LANGUAGE,
       nextLanguageValue
     );
