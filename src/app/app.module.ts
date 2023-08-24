@@ -17,6 +17,8 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 
+import { TranslationsService } from '@core/services/translations.service';
+import { LocalizationsService } from '@core/services/localizations.service';
 import { UserTokenInitializerService } from './core/services/user-token-initializer.service';
 import { UserTokenUpdatesListenerService } from './core/services/user-token-updates-listener.service';
 import { UserUpdatesListenerService } from './core/services/user-updates-listener.service';
@@ -42,6 +44,7 @@ import { environment } from '../environments/environment';
 
     NgxsModule.forRoot(STORE),
     NgxsLoggerPluginModule.forRoot({
+      collapsed: true,
       disabled: environment.production,
     }),
 
@@ -60,6 +63,8 @@ import { environment } from '../environments/environment';
       provide: APP_INITIALIZER,
       useFactory: initAppFactory,
       deps: [
+        TranslationsService,
+        LocalizationsService,
         UserTokenInitializerService,
         UserTokenUpdatesListenerService,
         UserUpdatesListenerService,
