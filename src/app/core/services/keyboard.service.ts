@@ -1,7 +1,7 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { fromEvent, Observable, filter } from 'rxjs';
 
-import { WINDOW, WindowType } from '../dependencies/window';
+import { WINDOW } from '../dependencies/window';
 
 enum KeyCode {
   F8 = 'F8',
@@ -13,13 +13,10 @@ enum KeyCode {
 export class KeyboardService {
   public static readonly KeyCode = KeyCode;
 
-  constructor(
-    @Inject(WINDOW)
-    private readonly window: WindowType
-  ) {}
+  private readonly _window = inject(WINDOW);
 
   public onKeyup(code: KeyCode): Observable<KeyboardEvent> {
-    return fromEvent<KeyboardEvent>(this.window, 'keyup').pipe(
+    return fromEvent<KeyboardEvent>(this._window, 'keyup').pipe(
       filter((event) => event.code === code)
     );
   }

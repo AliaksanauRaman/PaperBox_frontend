@@ -58,7 +58,6 @@ import { InfoDialogComponent } from './dialogs/info-dialog/info-dialog.component
 import { ConfirmApplicationDeletionDialogComponent } from './dialogs/confirm-application-deletion-dialog/confirm-application-deletion-dialog.component';
 import { AboutUsDialogComponent } from './dialogs/about-us-dialog/about-us-dialog.component';
 
-import { WINDOW, WINDOW_VALUE } from './dependencies/window';
 import {
   LOCAL_STORAGE,
   LOCAL_STORAGE_VALUE,
@@ -161,10 +160,6 @@ import { RECAPTCHA_LANGUAGE_PROVIDER } from './dependencies/recaptcha-language';
     AboutUsDialogComponent,
   ],
   providers: [
-    {
-      provide: WINDOW,
-      useValue: WINDOW_VALUE,
-    },
     {
       provide: LOCAL_STORAGE,
       useValue: LOCAL_STORAGE_VALUE,
