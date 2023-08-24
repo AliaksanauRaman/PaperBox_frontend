@@ -7,7 +7,7 @@ import { ImagesService } from './shared/services/images.service';
 
 export const initAppFactory = (
   translationsService: TranslationsService,
-  appLocalizationsService: LocalizationsService,
+  localizationsService: LocalizationsService,
   userTokenInitializerService: UserTokenInitializerService,
   userTokenUpdatesListenerService: UserTokenUpdatesListenerService,
   userUpdatesListenerService: UserUpdatesListenerService,
@@ -15,7 +15,7 @@ export const initAppFactory = (
 ): (() => void) => {
   return () => {
     translationsService.setUp();
-    appLocalizationsService.init();
+    localizationsService.init();
     userTokenInitializerService.initialize();
     userTokenUpdatesListenerService.setUp();
     userUpdatesListenerService.setUp();
