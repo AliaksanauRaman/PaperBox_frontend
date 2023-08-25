@@ -9,6 +9,7 @@ import {
 } from '@shared/models/localization.model';
 import { select } from '@shared/utils/select.util';
 import { deselect } from '@shared/utils/deselect.util';
+import { LocalizationLocale } from '@shared/enums/localization-locale.enum';
 import { LocalStorageKey } from '@shared/enums/local-storage-key.enum';
 import { LocalizationsStateModel } from './model';
 import { LOCALIZATIONS_DEFAULTS } from './defaults';
@@ -35,6 +36,14 @@ export class LocalizationsState {
     }
 
     return currentLocalization;
+  }
+
+  @Selector([LocalizationsState.current])
+  public static currentLocale(
+    _state: StateModel,
+    currentLocalization: Localization
+  ): LocalizationLocale {
+    return currentLocalization.locale;
   }
 
   @Selector()
