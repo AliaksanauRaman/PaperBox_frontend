@@ -28,10 +28,9 @@ export class SignupHttpService {
     const currentLocalization = this._store.selectSnapshot(
       LocalizationsState.current
     );
-    params.append('lang', currentLocalization.language);
     return this.httpClient
       .post<null>(`${this.apiUrl}/api/registration`, signUpDto, {
-        params,
+        params: params.append('lang', currentLocalization.language),
         observe: 'response',
       })
       .pipe(
