@@ -1,8 +1,8 @@
 <div class="create-help-offer-dialog app-scrollbar">
-  <ng-container *ngIf="createHelpOfferState$ | async as state">
+  <ng-container *ngIf="_createHelpOfferState$ | async as state">
     <h2
       class="title app-custom-dialog-title"
-      [class.title--success]="state.data !== null"
+      [class.title--success]="state.value !== null"
       *ngIf="dialogTitle$ | async as dialogTitle"
     >
       {{ dialogTitle | translate }}
@@ -20,7 +20,7 @@
 
     <form
       class="form"
-      *ngIf="state.data === null"
+      *ngIf="state.value === null"
       [formGroup]="createHelpOfferForm"
       (ngSubmit)="handleCreateHelpOfferSubmit($event)"
     >
@@ -120,16 +120,16 @@
       <div class="app-custom-dialog-actions">
         <button
           class="app-custom-dialog-actions__item app-primary-button"
-          *ngIf="!state.inProgress && state.data === null"
+          *ngIf="!state.loading && state.value === null"
           [disabled]="createHelpOfferForm.invalid"
           type="submit"
         >
-          <span>{{ "button.send" | translate }}</span>
+          <span>{{ "button.publish" | translate }}</span>
         </button>
 
         <button
           class="app-custom-dialog-actions__item app-primary-button"
-          *ngIf="state.inProgress"
+          *ngIf="state.loading"
           [disabled]="true"
           type="button"
         >
@@ -142,8 +142,8 @@
     </form>
 
     <app-success-create-help-offer-section
-      *ngIf="state.data !== null"
-      [helpOfferPublicId]="state.data.publicId"
+      *ngIf="state.value !== null"
+      [helpOfferPublicId]="state.value.publicId"
       (ok)="closeDialog()"
     ></app-success-create-help-offer-section>
   </ng-container>
