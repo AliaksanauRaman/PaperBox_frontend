@@ -6,21 +6,19 @@
     <span>{{ controlLabel }}</span>
   </label>
 
-  <ng-container *ngIf="_localeService.currentLocale$ | async as currentLocale">
-    <input
-      class="custom-control__field custom-control__field--with-trailing-icon app-custom-placeholder"
-      [id]="controlId"
-      [class.custom-control__field--active]="matDateRangePickerRef.opened"
-      [disabled]="controlDisabled"
-      [value]="matDateRangeInput.value | dateRangeAsString : currentLocale"
-      [placeholder]="controlPlaceholder"
-      type="text"
-      readonly
-      (click)="toggleDateRangePicker(matDateRangePickerRef)"
-      (focus)="handleInputFocus(matDateRangePickerRef)"
-      (blur)="handleInputBlur()"
-    />
-  </ng-container>
+  <input
+    class="custom-control__field custom-control__field--with-trailing-icon app-custom-placeholder"
+    [id]="controlId"
+    [class.custom-control__field--active]="matDateRangePickerRef.opened"
+    [disabled]="controlDisabled"
+    [value]="matDateRangeInput.value | dateRangeAsString : _currentLocale"
+    [placeholder]="controlPlaceholder"
+    type="text"
+    readonly
+    (click)="toggleDateRangePicker(matDateRangePickerRef)"
+    (focus)="handleInputFocus(matDateRangePickerRef)"
+    (blur)="handleInputBlur()"
+  />
 
   <mat-date-range-input
     #matDateRangeInput

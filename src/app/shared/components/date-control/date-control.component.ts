@@ -17,9 +17,9 @@ import {
 } from '@angular/forms';
 import { MatDateRangePicker } from '@angular/material/datepicker';
 import { DateAdapter } from '@angular/material/core';
+import { Store } from '@ngxs/store';
 import { takeUntil, tap } from 'rxjs';
 
-import { AppLocaleService } from '@core/services/app-locale.service';
 import { ScreenSizeObserverService } from '@core/services/screen-size-observer.service';
 import { DatesComparerService } from '@shared/services/dates-comparer.service';
 import { DatesFormatterService } from '@shared/services/dates-formatter.service';
@@ -27,6 +27,7 @@ import { UniqueIdGeneratorService } from '@core/services/unique-id-generator.ser
 
 import { CustomControl } from '../../abstracts/custom-control.class';
 import { DateControlValueType } from '../../types/date-control-value.type';
+import { LocalizationsState } from '@store/localizations';
 
 @Component({
   selector: 'app-date-control',
@@ -65,7 +66,7 @@ export class DateControlComponent
     this.controlPlaceholder = value;
   }
 
-  protected readonly _localeService = inject(AppLocaleService);
+  private readonly _store = inject(Store);
   private readonly _screenSizeObserverService = inject(
     ScreenSizeObserverService
   );
@@ -74,6 +75,9 @@ export class DateControlComponent
   private readonly _datesComparer = inject(DatesComparerService);
   private readonly _dateAdapter: DateAdapter<Date> = inject(DateAdapter);
 
+  protected readonly _currentLocale = this._store.selectSnapshot(
+    LocalizationsState.currentLocale
+  );
   protected readonly _isMobileOrTablet$ =
     this._screenSizeObserverService.isMobileOrTablet$;
   protected readonly _minDate = new Date();
@@ -93,7 +97,7 @@ export class DateControlComponent
   }
 
   public ngOnInit(): void {
-    this._dateAdapter.setLocale(this._localeService.currentLocale);
+    this._dateAdapter.setLocale(this._currentLocale);
     this._datesForm.valueChanges
       .pipe(
         tap(({ start, end }) => {
