@@ -5,20 +5,23 @@ import { DatesComparerService } from '@shared/services/dates-comparer.service';
 
 import { LocalizationLocale } from '@shared/enums/localization-locale.enum';
 
-type DatesType = Readonly<{
+type RelevancePeriodType = Readonly<{
   startDate: Date;
   endDate: Date | null;
 }>;
 
 @Pipe({
-  name: 'dates',
+  name: 'relevancePeriod',
   standalone: true,
 })
-export class DatesPipe implements PipeTransform {
+export class RelevancePeriodPipe implements PipeTransform {
   private readonly _datesFormatter = inject(DatesFormatterService);
   private readonly _datesComparer = inject(DatesComparerService);
 
-  public transform(value: DatesType, locale = LocalizationLocale.BY): string {
+  public transform(
+    value: RelevancePeriodType,
+    locale = LocalizationLocale.BY
+  ): string {
     const { startDate, endDate } = value;
     const formattedStartDate = this.format(startDate, locale);
 

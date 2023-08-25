@@ -3,7 +3,8 @@
 >
   <ng-container *ngIf="_startDate !== null; else startDateIsNull">
     <span>{{
-      { startDate: _startDate, endDate: _endDate } | dates : currentLocale
+      { startDate: _startDate, endDate: _endDate }
+        | relevancePeriod : currentLocale
     }}</span>
   </ng-container>
 

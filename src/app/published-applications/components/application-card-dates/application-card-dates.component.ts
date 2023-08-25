@@ -8,7 +8,7 @@ import { AsyncPipe, NgIf } from '@angular/common';
 import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 
-import { DatesPipe } from '@shared/pipes/dates.pipe';
+import { RelevancePeriodPipe } from '@shared/pipes/relevance-period.pipe';
 
 import { LocalizationsState } from '@store/localizations';
 import { LocalizationLocale } from '@shared/enums/localization-locale.enum';
@@ -19,7 +19,7 @@ import { LocalizationLocale } from '@shared/enums/localization-locale.enum';
   styleUrls: ['./application-card-dates.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [NgIf, AsyncPipe, DatesPipe],
+  imports: [NgIf, AsyncPipe, RelevancePeriodPipe],
 })
 export class ApplicationCardDatesComponent {
   @Select(LocalizationsState.currentLocale)

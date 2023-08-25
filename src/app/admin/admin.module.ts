@@ -21,7 +21,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { A11yModule } from '@angular/cdk/a11y';
 
 import { LocationLabelPipe } from '../shared/pipes/location-label.pipe';
-import { DatesPipe } from './../shared/pipes/dates.pipe';
+import { RelevancePeriodPipe } from '../shared/pipes/relevance-period.pipe';
 import { AdminRoutingModule } from './admin-routing.module';
 
 import { AdminFeedbacksPageComponent } from './pages/admin-feedbacks-page/admin-feedbacks-page.component';
@@ -59,7 +59,7 @@ import { AdminUsersFilterFormComponent } from './components/admin-users-filter-f
     MatSelectModule,
     A11yModule,
     LocationLabelPipe,
-    DatesPipe,
+    RelevancePeriodPipe,
     AdminRoutingModule,
   ],
   declarations: [
