@@ -1,7 +1,9 @@
 import { Pipe, PipeTransform, inject } from '@angular/core';
-import { DatePipe } from '@angular/common';
 
+import { DatesFormatterService } from '@shared/services/dates-formatter.service';
 import { DatesComparerService } from '@shared/services/dates-comparer.service';
+
+import { LocalizationLocale } from '@shared/enums/localization-locale.enum';
 
 type DatesType = Readonly<{
   startDate: Date;
@@ -13,42 +15,25 @@ type DatesType = Readonly<{
   standalone: true,
 })
 export class DatesPipe implements PipeTransform {
-  private readonly _datePipe = inject(DatePipe);
+  private readonly _datesFormatter = inject(DatesFormatterService);
   private readonly _datesComparer = inject(DatesComparerService);
 
-  public transform(value: DatesType, locale: string): string {
+  public transform(value: DatesType, locale = LocalizationLocale.BY): string {
     const { startDate, endDate } = value;
-    const dateFormat = this.determineDateFormatByLocale(locale);
-    const formattedStartDate = this._datePipe.transform(
-      startDate,
-      dateFormat
-    ) as string;
+    const formattedStartDate = this.format(startDate, locale);
 
-    if (endDate !== null) {
-      if (this._datesComparer.areDatesEqual(startDate, endDate)) {
-        return formattedStartDate;
-      }
-
-      const formattedEndDate = this._datePipe.transform(
-        endDate,
-        dateFormat
-      ) as string;
-      return `${formattedStartDate} - ${formattedEndDate}`;
+    if (endDate === null) {
+      return formattedStartDate;
     }
 
-    return formattedStartDate;
+    if (this._datesComparer.areDatesEqual(startDate, endDate)) {
+      return formattedStartDate;
+    }
+
+    return `${formattedStartDate} - ${this.format(endDate, locale)}`;
   }
 
-  // TODO: Enhance
-  private determineDateFormatByLocale(locale: string): string {
-    if (locale === 'be-BY') {
-      return 'dd.MM.YYYY';
-    }
-
-    if (locale === 'en-GB') {
-      return 'dd/MM/YYYY';
-    }
-
-    throw new Error(`No such locale: '${locale}'!`);
+  private format(date: Date, locale: string): string {
+    return this._datesFormatter.toStringByLocale(date, locale);
   }
 }
