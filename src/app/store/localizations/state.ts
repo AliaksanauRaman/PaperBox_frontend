@@ -43,27 +43,6 @@ export class LocalizationsState {
     return state.list;
   }
 
-  @Action(Localizations.Init)
-  public initLocalizations(
-    context: StateContext<StateModel>,
-    action: Localizations.Init
-  ): void {
-    const state = context.getState();
-    const newList = state.list.map((localization) => {
-      if (localization.language === action.localizationLanguage) {
-        return select(localization);
-      }
-
-      return deselect(localization);
-    });
-
-    context.setState({
-      ...state,
-      source: action.source,
-      list: newList,
-    });
-  }
-
   @Action(Localizations.SelectOne)
   public selectOneLocalization(
     context: StateContext<StateModel>,
