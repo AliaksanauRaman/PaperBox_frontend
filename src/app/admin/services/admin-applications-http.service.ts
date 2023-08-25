@@ -6,7 +6,10 @@ import { API_URL } from '../../shared/dependencies/api-url';
 import { AdminHeadersService } from './admin-headers.service';
 
 import { FullApplicationStatus } from '../enums/full-application-status.enum';
-import { FullApplicationListType } from '../types/full-application.type';
+import {
+  FullApplicationListType,
+  listOfFullApplicationsType,
+} from '../types/full-application.type';
 import { UpdateApplicationStatusResponseDataType } from '../types/update-application-status-response-data.type';
 
 @Injectable({
@@ -25,10 +28,14 @@ export class AdminApplicationsHttpService {
       .set('statuses', FullApplicationStatus.PUBLISHED)
       .append('statuses', FullApplicationStatus.UNPUBLISHED)
       .append('statuses', FullApplicationStatus.REJECTED);
-    return this._httpClient.get<FullApplicationListType>(
-      `${this._apiUrl}/admin/help-offers`,
-      { headers: this._headersService.buildDefault(), params: httpParams }
-    );
+    return this._httpClient
+      .get<unknown>(`${this._apiUrl}/admin/help-offers`, {
+        headers: this._headersService.buildDefault(),
+        params: httpParams,
+      })
+      .pipe(
+        map((responseData) => listOfFullApplicationsType.parse(responseData))
+      );
   }
 
   public getAllHelpRequests(): Observable<FullApplicationListType> {
@@ -36,10 +43,14 @@ export class AdminApplicationsHttpService {
       .set('statuses', FullApplicationStatus.PUBLISHED)
       .append('statuses', FullApplicationStatus.UNPUBLISHED)
       .append('statuses', FullApplicationStatus.REJECTED);
-    return this._httpClient.get<FullApplicationListType>(
-      `${this._apiUrl}/admin/help-requests`,
-      { headers: this._headersService.buildDefault(), params: httpParams }
-    );
+    return this._httpClient
+      .get<unknown>(`${this._apiUrl}/admin/help-requests`, {
+        headers: this._headersService.buildDefault(),
+        params: httpParams,
+      })
+      .pipe(
+        map((responseData) => listOfFullApplicationsType.parse(responseData))
+      );
   }
 
   public updateHelpOfferStatus(
