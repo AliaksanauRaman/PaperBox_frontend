@@ -6,3 +6,13 @@ export enum LocalizationLanguage {
   ENGLISH = 'en',
   RUSSIAN = 'ru',
 }
+
+export const isLocalizationLanguage = (
+  language: string
+): language is LocalizationLanguage => {
+  return (
+    language === LocalizationLanguage.BELARUSIAN ||
+    language === LocalizationLanguage.ENGLISH ||
+    language === LocalizationLanguage.RUSSIAN
+  );
+};
