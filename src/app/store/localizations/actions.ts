@@ -1,4 +1,3 @@
-import { LocalizationSource } from '@shared/enums/localization-source.enum';
 import { LocalizationLanguage } from '@shared/enums/localization-language.enum';
 
 export namespace Localizations {

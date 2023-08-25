@@ -1,6 +1,5 @@
 import { determineInitialLanguage } from './determine-initial-language.util';
 
-import { LocalizationSource } from '@shared/enums/localization-source.enum';
 import { LocalizationLabel } from '@shared/enums/localization-label.enum';
 import { LocalizationLanguage } from '@shared/enums/localization-language.enum';
 import { LocalizationLocale } from '@shared/enums/localization-locale.enum';
@@ -12,7 +11,6 @@ const initialLanguage = determineInitialLanguage(
 );
 
 export const LOCALIZATIONS_DEFAULTS: LocalizationsStateModel = {
-  source: LocalizationSource.NONE,
   list: [
     {
       label: LocalizationLabel.BY,

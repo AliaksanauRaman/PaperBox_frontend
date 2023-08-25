@@ -9,7 +9,6 @@ import {
 } from '@shared/models/localization.model';
 import { select } from '@shared/utils/select.util';
 import { deselect } from '@shared/utils/deselect.util';
-import { LocalizationSource } from '@shared/enums/localization-source.enum';
 import { LocalStorageKey } from '@shared/enums/local-storage-key.enum';
 import { LocalizationsStateModel } from './model';
 import { LOCALIZATIONS_DEFAULTS } from './defaults';
@@ -59,7 +58,6 @@ export class LocalizationsState {
 
     context.setState({
       ...state,
-      source: LocalizationSource.SELECTED,
       list: newList,
     });
     context.dispatch(
