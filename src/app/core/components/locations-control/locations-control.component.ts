@@ -19,7 +19,7 @@ import {
 import { tap, takeUntil, merge, map, combineLatest, startWith } from 'rxjs';
 
 import { UniqueIdGeneratorService } from '../../services/unique-id-generator.service';
-import { AppLanguagesService } from '../../services/app-languages.service';
+import { TranslationsService } from '@core/services/translations.service';
 import { ALL_LOCATIONS } from '../../dependencies/all-locations';
 import {
   ALL_LOCATIONS_WITH_TRANSLATED_LABELS,
@@ -40,7 +40,7 @@ import { LocationsControlValueType } from '../../../shared/types/locations-contr
     {
       provide: ALL_LOCATIONS_WITH_TRANSLATED_LABELS,
       useFactory: allLocationsWithTranslatedLabelsFactory,
-      deps: [AppLanguagesService, ALL_LOCATIONS],
+      deps: [TranslationsService, ALL_LOCATIONS],
     },
     {
       provide: NG_VALUE_ACCESSOR,

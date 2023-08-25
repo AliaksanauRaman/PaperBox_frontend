@@ -1,29 +1,34 @@
-import { Inject, Injectable } from '@angular/core';
+import { Inject, Injectable, inject } from '@angular/core';
 import { HttpClient, HttpParams, HttpStatusCode } from '@angular/common/http';
+import { Store } from '@ngxs/store';
 import { Observable, map } from 'rxjs';
 
 import { API_URL } from '../dependencies/api-url';
-import { AppLanguagesService } from '../../core/services/app-languages.service';
 
 import { SignupDto } from '../dtos/signup.dto';
 import { SuccessSignupResponseDataType } from '../types/success-signup-response-data.type';
+import { LocalizationsState } from '@store/localizations';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SignupHttpService {
+  private readonly _store = inject(Store);
+
   constructor(
     @Inject(API_URL)
     private readonly apiUrl: string,
-    private readonly httpClient: HttpClient,
-    private readonly languagesService: AppLanguagesService
+    private readonly httpClient: HttpClient
   ) {}
 
   public signup(
     signUpDto: SignupDto
   ): Observable<SuccessSignupResponseDataType> {
     const params = new HttpParams();
-    params.append('lang', this.languagesService.currentLanguage.value);
+    const currentLocalization = this._store.selectSnapshot(
+      LocalizationsState.current
+    );
+    params.append('lang', currentLocalization.language);
     return this.httpClient
       .post<null>(`${this.apiUrl}/api/registration`, signUpDto, {
         params,
