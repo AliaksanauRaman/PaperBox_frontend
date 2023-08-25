@@ -1,4 +1,4 @@
-import { NgModule, APP_INITIALIZER } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import {
@@ -17,19 +17,13 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 
-import { TranslationsService } from '@core/services/translations.service';
-import { UserTokenInitializerService } from './core/services/user-token-initializer.service';
-import { UserTokenUpdatesListenerService } from './core/services/user-token-updates-listener.service';
-import { UserUpdatesListenerService } from './core/services/user-updates-listener.service';
-import { ImagesService } from './shared/services/images.service';
-
 import { API_URL, API_URL_VALUE } from './shared/dependencies/api-url';
 import { translateLoaderFactory } from './core/factories/translate-loader.factory';
 import { AuthorizationInterceptor } from './core/interceptors/authorization.interceptor';
 import { LoadingOverlayInterceptor } from './core/interceptors/loading-overlay.interceptor';
 
 import { STORE } from './store';
-import { initAppFactory } from './init-app.factory';
+import { INIT_APP_FACTORY_PROVIDER } from './init-app.factory';
 import { environment } from '../environments/environment';
 
 @NgModule({
@@ -58,18 +52,7 @@ import { environment } from '../environments/environment';
     AngularSvgIconModule.forRoot(),
   ],
   providers: [
-    {
-      provide: APP_INITIALIZER,
-      useFactory: initAppFactory,
-      deps: [
-        TranslationsService,
-        UserTokenInitializerService,
-        UserTokenUpdatesListenerService,
-        UserUpdatesListenerService,
-        ImagesService,
-      ],
-      multi: true,
-    },
+    INIT_APP_FACTORY_PROVIDER,
     {
       provide: API_URL,
       useValue: API_URL_VALUE,

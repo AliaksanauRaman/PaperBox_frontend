@@ -1,3 +1,5 @@
+import { APP_INITIALIZER, FactoryProvider } from '@angular/core';
+
 import { TranslationsService } from '@core/services/translations.service';
 import { UserTokenInitializerService } from './core/services/user-token-initializer.service';
 import { UserTokenUpdatesListenerService } from './core/services/user-token-updates-listener.service';
@@ -18,4 +20,17 @@ export const initAppFactory = (
     userUpdatesListenerService.setUp();
     imagesService.loadImages();
   };
+};
+
+export const INIT_APP_FACTORY_PROVIDER: FactoryProvider = {
+  provide: APP_INITIALIZER,
+  useFactory: initAppFactory,
+  deps: [
+    TranslationsService,
+    UserTokenInitializerService,
+    UserTokenUpdatesListenerService,
+    UserUpdatesListenerService,
+    ImagesService,
+  ],
+  multi: true,
 };
