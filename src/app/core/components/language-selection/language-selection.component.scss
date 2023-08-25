@@ -12,6 +12,7 @@
 .languages-menu {
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 40px;
   margin-top: 4px;
   padding: 6px 0;
@@ -22,6 +23,7 @@
 
 .languages-menu__item {
   flex-shrink: 0;
+  width: 32px;
   height: 32px;
   font-size: 1.1rem;
   font-weight: 600;
