@@ -1,24 +1,28 @@
 import { Injectable, inject } from '@angular/core';
-import { Select } from '@ngxs/store';
+import { Select, Store } from '@ngxs/store';
 import { Observable, tap } from 'rxjs';
 
 import { TranslateService } from '@ngx-translate/core';
 
 import { LocalizationsState } from '@store/localizations';
 import { Localization } from '@shared/models/localization.model';
-import { LocalizationLanguage } from '@shared/enums/localization-language.enum';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TranslationsService {
+  private readonly _store = inject(Store);
   private readonly _translateService = inject(TranslateService);
 
   @Select(LocalizationsState.current)
   private readonly _currentLocalization$!: Observable<Localization>;
 
   public setUp(): void {
-    this._translateService.setDefaultLang(LocalizationLanguage.BELARUSIAN);
+    const initialLocalization = this._store.selectSnapshot(
+      LocalizationsState.current
+    );
+    this._translateService.setDefaultLang(initialLocalization.language);
+
     this._currentLocalization$
       .pipe(tap(({ language }) => this._translateService.use(language)))
       .subscribe();
