@@ -1,15 +1,17 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  inject,
   Input,
   HostBinding,
 } from '@angular/core';
 import { AsyncPipe, NgIf } from '@angular/common';
+import { Select } from '@ngxs/store';
+import { Observable } from 'rxjs';
 
 import { DatesPipe } from '@shared/pipes/dates.pipe';
 
-import { AppLocaleService } from '@core/services/app-locale.service';
+import { LocalizationsState } from '@store/localizations';
+import { LocalizationLocale } from '@shared/enums/localization-locale.enum';
 
 @Component({
   selector: 'app-application-card-dates',
@@ -20,6 +22,9 @@ import { AppLocaleService } from '@core/services/app-locale.service';
   imports: [NgIf, AsyncPipe, DatesPipe],
 })
 export class ApplicationCardDatesComponent {
+  @Select(LocalizationsState.currentLocale)
+  public readonly _currentLocale$!: Observable<LocalizationLocale>;
+
   @Input()
   public set startDate(value: Date) {
     this._startDate = value;
@@ -36,6 +41,4 @@ export class ApplicationCardDatesComponent {
 
   protected _startDate: Date | null = null;
   protected _endDate: Date | null = null;
-  // TODO: Probably it can be implemented in a better way
-  protected readonly _localeService = inject(AppLocaleService);
 }
