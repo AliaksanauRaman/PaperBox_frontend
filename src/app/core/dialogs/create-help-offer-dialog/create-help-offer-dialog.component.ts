@@ -103,7 +103,7 @@ export class CreateHelpOfferDialogComponent
   }
 
   public ngOnDestroy(): void {
-    this._store.dispatch(new PublishedHelpOffers.ResetCreateOne());
+    this._store.dispatch(new PublishedHelpOffers.DestroyCreateOne());
   }
 
   public handleCreateHelpOfferSubmit(event: ShortSubmitEventType): void {
