@@ -29,17 +29,17 @@ const routes: Routes = [
           {
             path: '',
             pathMatch: 'full',
-            redirectTo: `/${Page.HELP_OFFERS}`,
-          },
-          {
-            path: Page.HELP_OFFERS,
-            title: 'Pushka | Help Offers',
-            component: PublishedHelpOffersPageComponent,
+            redirectTo: `/${Page.HELP_REQUESTS}`,
           },
           {
             path: Page.HELP_REQUESTS,
             title: 'Pushka | Looking for help',
             component: PublishedHelpRequestsPageComponent,
+          },
+          {
+            path: Page.HELP_OFFERS,
+            title: 'Pushka | Help Offers',
+            component: PublishedHelpOffersPageComponent,
           },
         ],
       },
