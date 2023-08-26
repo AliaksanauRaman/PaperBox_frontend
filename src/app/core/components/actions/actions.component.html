@@ -4,24 +4,6 @@
       <button
         class="item"
         matRipple
-        [class.item--inactive]="activePage !== _Page.HELP_OFFERS"
-        type="button"
-        (click)="handleOfferHelpButtonClick()"
-      >
-        <app-plus-icon
-          class="item__icon"
-          [color]="activePage === _Page.HELP_OFFERS ? 'black' : 'grey'"
-        >
-        </app-plus-icon>
-
-        <span class="item__text">{{
-          "pages.index.actions.offerHelpButtonLabel" | translate
-        }}</span>
-      </button>
-
-      <button
-        class="item"
-        matRipple
         [class.item--inactive]="activePage !== _Page.HELP_REQUESTS"
         type="button"
         (click)="handleFindHelpButtonClick()"
@@ -34,6 +16,24 @@
 
         <span class="item__text">{{
           "pages.index.actions.findHelpButtonLabel" | translate
+        }}</span>
+      </button>
+
+      <button
+        class="item"
+        matRipple
+        [class.item--inactive]="activePage !== _Page.HELP_OFFERS"
+        type="button"
+        (click)="handleOfferHelpButtonClick()"
+      >
+        <app-plus-icon
+          class="item__icon"
+          [color]="activePage === _Page.HELP_OFFERS ? 'black' : 'grey'"
+        >
+        </app-plus-icon>
+
+        <span class="item__text">{{
+          "pages.index.actions.offerHelpButtonLabel" | translate
         }}</span>
       </button>
     </ng-container>
