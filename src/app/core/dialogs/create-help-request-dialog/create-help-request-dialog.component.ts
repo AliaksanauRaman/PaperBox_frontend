@@ -1,9 +1,14 @@
-import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnDestroy,
+  inject,
+} from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { DialogRef } from '@angular/cdk/dialog';
-import { BehaviorSubject, tap } from 'rxjs';
+import { Store, Select } from '@ngxs/store';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 
-import { CreateHelpRequestService } from '../../services/create-help-request.service';
 import { ErrorNotificationService } from '../../services/error-notification.service';
 
 import { DialogComponent } from '../../../shared/abstracts/dialog-component.class';
@@ -16,6 +21,13 @@ import {
   LOADING_TITLE,
   SUCCESS_TITLE,
 } from './create-help-request.config';
+import { AsyncData } from '@shared/classes/async-data.class';
+import { PublishedHelpRequest } from '@shared/models/published-help-request.model';
+import {
+  CreateOneApplication,
+  CreateOneApplicationState,
+  DestroyCreateOneApplication,
+} from '@store/create-one-application';
 
 @Component({
   selector: 'app-create-help-request-dialog',
@@ -24,7 +36,6 @@ import {
     './create-help-request-dialog.component.scss',
     '../../../styles/shared/_create-help-offer-and-request-dialogs-styles.scss',
   ],
-  providers: [CreateHelpRequestService],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CreateHelpRequestDialogComponent
@@ -35,17 +46,24 @@ export class CreateHelpRequestDialogComponent
   private readonly _dialogTitle$ = new BehaviorSubject<string>(NORMAL_TITLE);
   public readonly dialogTitle$ = this._dialogTitle$.asObservable();
 
+  private readonly _store = inject(Store);
+
+  @Select(CreateOneApplicationState.stream)
+  private readonly createOneApplicationState$!: Observable<
+    AsyncData<PublishedHelpRequest>
+  >;
+
   public readonly createHelpRequestState$ =
-    this.createHelpRequestService.state$.pipe(
+    this.createOneApplicationState$.pipe(
       tap((state) => {
-        if (state.inProgress) {
+        if (state.loading) {
           this._dialogTitle$.next(LOADING_TITLE);
           this.createHelpRequestForm.disable();
         } else if (state.error !== null) {
           this._dialogTitle$.next(NORMAL_TITLE);
           this.createHelpRequestForm.enable();
           this._errorNotificationService.showMessage('error.createHelpRequest');
-        } else if (state.data !== null) {
+        } else if (state.value !== null) {
           this._dialogTitle$.next(SUCCESS_TITLE);
         }
       })
@@ -79,7 +97,6 @@ export class CreateHelpRequestDialogComponent
 
   constructor(
     private readonly formBuilder: FormBuilder,
-    private readonly createHelpRequestService: CreateHelpRequestService,
     private readonly _errorNotificationService: ErrorNotificationService,
     dialogRef: DialogRef<void>
   ) {
@@ -87,7 +104,7 @@ export class CreateHelpRequestDialogComponent
   }
 
   public ngOnDestroy(): void {
-    this.createHelpRequestService.destroyRequest();
+    this._store.dispatch(new DestroyCreateOneApplication());
   }
 
   public handleCreateHelpRequestSubmit(event: ShortSubmitEventType): void {
@@ -111,15 +128,17 @@ export class CreateHelpRequestDialogComponent
   ): void {
     const { locations, date, comment, fullName, phones } = validFormValue;
 
-    this.createHelpRequestService.performRequest(
-      new CreateHelpRequestDto(
-        locations.from,
-        locations.to,
-        date.start,
-        date.end,
-        comment,
-        fullName,
-        phones
+    this._store.dispatch(
+      new CreateOneApplication(
+        new CreateHelpRequestDto(
+          locations.from,
+          locations.to,
+          date.start,
+          date.end,
+          comment,
+          fullName,
+          phones
+        )
       )
     );
   }
