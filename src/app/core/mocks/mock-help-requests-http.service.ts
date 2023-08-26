@@ -1,9 +1,11 @@
 import { Observable, of, delay } from 'rxjs';
 
 import { HelpRequestsHttpServiceInterface } from '../interfaces/help-requests-http-service.interface';
-import { ListOfPublishedApplicationEntities } from '@shared/entities/published-application.entity';
+import {
+  ListOfPublishedApplicationEntities,
+  PublishedApplicationEntity,
+} from '@shared/entities/published-application.entity';
 import { CreateHelpRequestDto } from '@shared/dtos/create-help-request.dto';
-import { SuccessCreateHelpRequestResponseDataType } from '@shared/types/success-create-help-request-response-data.type';
 import { DeleteHelpRequestResponseDataType } from '@shared/types/delete-help-request-response-data.type';
 
 const DELAY_IN_MS = 1000;
@@ -17,8 +19,8 @@ export class MockHelpRequestsHttpService
 
   public createOne(
     _createHelpRequestDto: CreateHelpRequestDto
-  ): Observable<SuccessCreateHelpRequestResponseDataType> {
-    return of({ publicId: '555-666-777' }).pipe(delay(DELAY_IN_MS));
+  ): Observable<PublishedApplicationEntity> {
+    return of(MOCK_PUBLISHED_HELP_REQUEST).pipe(delay(DELAY_IN_MS));
   }
 
   public deleteOne(
@@ -30,24 +32,25 @@ export class MockHelpRequestsHttpService
   }
 }
 
+const MOCK_PUBLISHED_HELP_REQUEST = {
+  id: 1,
+  userId: 1,
+  publicId: '111',
+  locationFrom: '1 10000',
+  locationTo: '2 20000',
+  comment: 'Возьму маленький пакетик',
+  fullName: 'Владислав',
+  phones: [
+    {
+      diallingCode: '+48',
+      number: '667577900',
+    },
+  ],
+  startDate: new Date('2023-11-18'),
+  endDate: null,
+};
 const MOCK_PUBLISHED_HELP_REQUESTS: ListOfPublishedApplicationEntities = [
-  {
-    id: 1,
-    userId: 1,
-    publicId: '111',
-    locationFrom: '1 10000',
-    locationTo: '2 20000',
-    comment: 'Возьму маленький пакетик',
-    fullName: 'Владислав',
-    phones: [
-      {
-        diallingCode: '+48',
-        number: '667577900',
-      },
-    ],
-    startDate: new Date('2023-11-18'),
-    endDate: null,
-  },
+  MOCK_PUBLISHED_HELP_REQUEST,
   {
     id: 2,
     userId: 2,

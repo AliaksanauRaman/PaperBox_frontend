@@ -8,9 +8,10 @@ import { HelpRequestsHttpServiceInterface } from '../interfaces/help-requests-ht
 import {
   ListOfPublishedApplicationEntities,
   listOfPublishedApplicationEntities,
+  PublishedApplicationEntity,
+  publishedApplicationEntity,
 } from '@shared/entities/published-application.entity';
 import { CreateHelpRequestDto } from '../../shared/dtos/create-help-request.dto';
-import { SuccessCreateHelpRequestResponseDataType } from '../../shared/types/success-create-help-request-response-data.type';
 import { DeleteHelpRequestResponseDataType } from '../../shared/types/delete-help-request-response-data.type';
 
 @Injectable({
@@ -41,11 +42,12 @@ export class HelpRequestsHttpService
 
   public createOne(
     createHelpRequestDto: CreateHelpRequestDto
-  ): Observable<SuccessCreateHelpRequestResponseDataType> {
-    return this.httpClient.post<SuccessCreateHelpRequestResponseDataType>(
-      this.helpRequestsApiUrl,
-      createHelpRequestDto
-    );
+  ): Observable<PublishedApplicationEntity> {
+    return this.httpClient
+      .post<unknown>(this.helpRequestsApiUrl, createHelpRequestDto)
+      .pipe(
+        map((responseData) => publishedApplicationEntity.parse(responseData))
+      );
   }
 
   public deleteOne(
