@@ -187,7 +187,7 @@
     "whereFromField": "Минск, Беларусь",
     "whereToField": "Варшава, Польша",
     "fullNameField": "Иван Иванов",
-    "commentField": "Текст вашего комменатрия...",
+    "commentField": "Здесь вы можете описать вашу посылку, указать габариты и другие важные на ваш взгляд детали",
     "emailField": "ivan.ivanov@gmail.com",
     "passwordControl": "1234abcd",
     "emptyList": "Список пустой.",
