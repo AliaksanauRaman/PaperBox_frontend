@@ -1,21 +1,24 @@
+import { isEmptyString } from '@shared/type-assertions/is-empty-string.type-assertion';
+import { isUndefined } from '@shared/type-assertions/is-undefined.type-assertion';
+
 type DestructuredLocationValue = Readonly<{
   countryValueAsString: string;
   cityValueAsString: string;
 }>;
 
 export const destructureLocationValue = (
-  locationValue: string
+  locationValue: string,
+  separator = ' '
 ): DestructuredLocationValue => {
-  const [countryValueAsString, cityValueAsString, ...otherParts] =
-    locationValue.split(' ');
+  const [country, city, ...otherParts] = locationValue.split(separator);
 
-  if (isMissed(countryValueAsString)) {
+  if (isEmptyString(country)) {
     throw new Error(
       `Country value is missed in '${locationValue}' locationValue!`
     );
   }
 
-  if (isMissed(cityValueAsString)) {
+  if (isEmptyString(city) || isUndefined(city)) {
     throw new Error(
       `City value is missed in '${locationValue}' locationValue!`
     );
@@ -23,16 +26,12 @@ export const destructureLocationValue = (
 
   if (otherParts.length !== 0) {
     throw new Error(
-      `locationValue '${locationValue}' is wrong! It must have only two parts.`
+      `Provided locationValue '${locationValue}' is invalid! It must have only two parts.`
     );
   }
 
   return {
-    countryValueAsString,
-    cityValueAsString,
+    countryValueAsString: country,
+    cityValueAsString: city,
   };
-};
-
-const isMissed = (value: string | undefined): boolean => {
-  return value === undefined || value === '';
 };
