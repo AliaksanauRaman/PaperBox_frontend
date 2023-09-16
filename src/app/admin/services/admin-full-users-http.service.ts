@@ -1,10 +1,10 @@
-import { Inject, Injectable } from '@angular/core';
-import { HttpClient, HttpStatusCode } from '@angular/common/http';
+import { Injectable, inject } from '@angular/core';
+import { HttpStatusCode } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 
-import { API_URL } from '../../shared/dependencies/api-url/injection-token';
 import { AdminHeadersService } from './admin-headers.service';
 
+import { HttpService } from '@shared/abstracts/http-service.class';
 import { FullUserListType } from '../types/full-user.type';
 import { FullUserStatus } from '../enums/full-user-status.enum';
 import { UserRole } from '../../shared/enums/user-role.enum';
@@ -15,19 +15,15 @@ import { UpdateFullUserStatusDto } from '../dtos/update-full-user-status.dto';
 @Injectable({
   providedIn: 'root',
 })
-export class AdminFullUsersHttpService {
-  constructor(
-    @Inject(API_URL)
-    private readonly _apiUrl: string,
-    private readonly _httpClient: HttpClient,
-    private readonly _headersService: AdminHeadersService
-  ) {}
+export class AdminFullUsersHttpService extends HttpService {
+  private readonly _headersService = inject(AdminHeadersService);
 
   public getAll(): Observable<FullUserListType> {
     return this._httpClient.get<FullUserListType>(
       `${this._apiUrl}/admin/users`,
       {
         headers: this._headersService.buildDefault(),
+        context: this.getAuthorizedContext(),
       }
     );
   }
@@ -40,7 +36,11 @@ export class AdminFullUsersHttpService {
       .put<null>(
         `${this._apiUrl}/admin/users/${userId}`,
         new UpdateFullUserRoleDto(role),
-        { headers: this._headersService.buildDefault(), observe: 'response' }
+        {
+          headers: this._headersService.buildDefault(),
+          observe: 'response',
+          context: this.getAuthorizedContext(),
+        }
       )
       .pipe(
         map((response) => {
@@ -64,7 +64,11 @@ export class AdminFullUsersHttpService {
       .put<null>(
         `${this._apiUrl}/admin/users/${userId}`,
         new UpdateFullUserStatusDto(status),
-        { headers: this._headersService.buildDefault(), observe: 'response' }
+        {
+          headers: this._headersService.buildDefault(),
+          observe: 'response',
+          context: this.getAuthorizedContext(),
+        }
       )
       .pipe(
         map((response) => {

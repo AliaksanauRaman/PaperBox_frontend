@@ -21,7 +21,7 @@ export class SignupHttpService extends HttpService {
       LocalizationsState.current
     );
     return this._httpClient
-      .post<null>(`${this._apiUrl}/registration`, signUpDto, {
+      .post<null>(`${this._apiUrl}/api/registration`, signUpDto, {
         params: new HttpParams().append('lang', currentLocalization.language),
         observe: 'response',
       })

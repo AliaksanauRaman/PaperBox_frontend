@@ -24,9 +24,11 @@ export class HelpRequestsHttpService
   extends HttpService
   implements HelpRequestsHttpServiceInterface
 {
+  private readonly _helpRequestsEndpoint = `${this._apiUrl}/api/help-requests`;
+
   public getPublished(): Observable<ListOfPublishedApplicationEntities> {
     return this._httpClient
-      .get<unknown>(`${this._apiUrl}/help-requests/published`)
+      .get<unknown>(`${this._helpRequestsEndpoint}/published`)
       .pipe(
         map((responseData) =>
           listOfPublishedApplicationEntities.parse(responseData)
@@ -38,7 +40,9 @@ export class HelpRequestsHttpService
     createHelpRequestDto: CreateHelpRequestDto
   ): Observable<PublishedApplicationEntity> {
     return this._httpClient
-      .post<unknown>(`${this._apiUrl}/help-requests`, createHelpRequestDto)
+      .post<unknown>(this._helpRequestsEndpoint, createHelpRequestDto, {
+        context: this.getAuthorizedContext(),
+      })
       .pipe(
         map((responseData) => publishedApplicationEntity.parse(responseData))
       );
@@ -49,12 +53,13 @@ export class HelpRequestsHttpService
   ): Observable<DeleteHelpRequestResponseDataType> {
     return this._httpClient
       .patch<null>(
-        `${this._apiUrl}/help-requests/${helpRequestId}`,
+        `${this._helpRequestsEndpoint}/${helpRequestId}`,
         {
           status: 'DELETED',
         },
         {
           observe: 'response',
+          context: this.getAuthorizedContext(),
         }
       )
       .pipe(

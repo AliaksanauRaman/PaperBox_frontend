@@ -1,10 +1,10 @@
-import { Inject, Injectable } from '@angular/core';
-import { HttpClient, HttpParams, HttpStatusCode } from '@angular/common/http';
+import { Injectable, inject } from '@angular/core';
+import { HttpParams, HttpStatusCode } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 
-import { API_URL } from '../../shared/dependencies/api-url/injection-token';
 import { AdminHeadersService } from './admin-headers.service';
 
+import { HttpService } from '@shared/abstracts/http-service.class';
 import { FeedbackListType } from '../types/feedback.type';
 import { FeedbackStatus } from '../enums/feedback-status.enum';
 import { UpdateFeedbackStatusResponseDataType } from '../types/update-feedback-status-response-data.type';
@@ -12,19 +12,15 @@ import { UpdateFeedbackStatusResponseDataType } from '../types/update-feedback-s
 @Injectable({
   providedIn: 'root',
 })
-export class AdminFeedbacksHttpService {
-  constructor(
-    @Inject(API_URL)
-    private readonly _apiUrl: string,
-    private readonly _httpClient: HttpClient,
-    private readonly _headersService: AdminHeadersService
-  ) {}
+export class AdminFeedbacksHttpService extends HttpService {
+  private readonly _headersService = inject(AdminHeadersService);
 
   public getAll(): Observable<FeedbackListType> {
     return this._httpClient.get<FeedbackListType>(
       `${this._apiUrl}/admin/feedbacks`,
       {
         headers: this._headersService.buildDefault(),
+        context: this.getAuthorizedContext(),
       }
     );
   }
@@ -42,6 +38,7 @@ export class AdminFeedbacksHttpService {
           headers: this._headersService.buildDefault(),
           params: httpParams,
           observe: 'response',
+          context: this.getAuthorizedContext(),
         }
       )
       .pipe(

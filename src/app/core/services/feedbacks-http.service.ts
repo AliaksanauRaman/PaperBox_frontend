@@ -22,7 +22,7 @@ export class FeedbacksHttpService
     createFeedbackDto: CreateFeedbackDto
   ): Observable<SuccessCreateFeedbackResponseDataType> {
     return this._httpClient.post<SuccessCreateFeedbackResponseDataType>(
-      `${this._apiUrl}/feedbacks`,
+      `${this._apiUrl}/api/feedbacks`,
       createFeedbackDto
     );
   }

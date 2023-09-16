@@ -1,18 +1,14 @@
-import { Injectable, inject } from '@angular/core';
-import { HttpClient, HttpParams, HttpStatusCode } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { HttpParams, HttpStatusCode } from '@angular/common/http';
 import { Observable, catchError, map, of } from 'rxjs';
 
-import { API_URL } from '../../shared/dependencies/api-url';
-
+import { HttpService } from '@shared/abstracts/http-service.class';
 import { ConfirmUserResponseDataType } from '../../shared/types/confirm-user-response-data.type';
 
 @Injectable({
   providedIn: 'root',
 })
-export class ConfirmUserHttpService {
-  private readonly _apiUrl = inject(API_URL);
-  private readonly _httpClient = inject(HttpClient);
-
+export class ConfirmUserHttpService extends HttpService {
   public confirmUser(
     userToken: string
   ): Observable<ConfirmUserResponseDataType> {

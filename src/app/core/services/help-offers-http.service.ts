@@ -25,9 +25,11 @@ export class HelpOffersHttpService
   extends HttpService
   implements HelpOffersHttpServiceInterface
 {
+  private readonly _helpOffersEndpoint = `${this._apiUrl}/api/help-offers`;
+
   public getPublished(): Observable<ListOfPublishedApplicationEntities> {
     return this._httpClient
-      .get<unknown>(`${this._apiUrl}/help-offers/published`)
+      .get<unknown>(`${this._helpOffersEndpoint}/published`)
       .pipe(
         map((responseData) =>
           listOfPublishedApplicationEntities.parse(responseData)
@@ -39,7 +41,9 @@ export class HelpOffersHttpService
     createHelpOfferDto: CreateHelpOfferDto
   ): Observable<PublishedApplicationEntity> {
     return this._httpClient
-      .post<unknown>(`${this._apiUrl}/help-offers`, createHelpOfferDto)
+      .post<unknown>(this._helpOffersEndpoint, createHelpOfferDto, {
+        context: this.getAuthorizedContext(),
+      })
       .pipe(
         map((responseData) => publishedApplicationEntity.parse(responseData))
       );
@@ -50,12 +54,13 @@ export class HelpOffersHttpService
   ): Observable<DeleteHelpOfferResponseDataType> {
     return this._httpClient
       .patch<null>(
-        `${this._apiUrl}/help-offers/${helpOfferId}`,
+        `${this._helpOffersEndpoint}/${helpOfferId}`,
         {
           status: 'DELETED',
         },
         {
           observe: 'response',
+          context: this.getAuthorizedContext(),
         }
       )
       .pipe(

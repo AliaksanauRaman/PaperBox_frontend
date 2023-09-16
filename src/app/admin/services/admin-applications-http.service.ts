@@ -1,10 +1,10 @@
-import { Injectable, Inject } from '@angular/core';
-import { HttpClient, HttpParams, HttpStatusCode } from '@angular/common/http';
+import { Injectable, inject } from '@angular/core';
+import { HttpParams, HttpStatusCode } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 
-import { API_URL } from '../../shared/dependencies/api-url';
 import { AdminHeadersService } from './admin-headers.service';
 
+import { HttpService } from '@shared/abstracts/http-service.class';
 import { FullApplicationStatus } from '../enums/full-application-status.enum';
 import {
   FullApplicationListType,
@@ -15,13 +15,8 @@ import { UpdateApplicationStatusResponseDataType } from '../types/update-applica
 @Injectable({
   providedIn: 'root',
 })
-export class AdminApplicationsHttpService {
-  constructor(
-    @Inject(API_URL)
-    private readonly _apiUrl: string,
-    private readonly _httpClient: HttpClient,
-    private readonly _headersService: AdminHeadersService
-  ) {}
+export class AdminApplicationsHttpService extends HttpService {
+  private readonly _headersService = inject(AdminHeadersService);
 
   public getAllHelpOffers(): Observable<FullApplicationListType> {
     const httpParams = new HttpParams()
@@ -32,6 +27,7 @@ export class AdminApplicationsHttpService {
       .get<unknown>(`${this._apiUrl}/admin/help-offers`, {
         headers: this._headersService.buildDefault(),
         params: httpParams,
+        context: this.getAuthorizedContext(),
       })
       .pipe(
         map((responseData) => listOfFullApplicationsType.parse(responseData))
@@ -47,6 +43,7 @@ export class AdminApplicationsHttpService {
       .get<unknown>(`${this._apiUrl}/admin/help-requests`, {
         headers: this._headersService.buildDefault(),
         params: httpParams,
+        context: this.getAuthorizedContext(),
       })
       .pipe(
         map((responseData) => listOfFullApplicationsType.parse(responseData))
@@ -63,7 +60,11 @@ export class AdminApplicationsHttpService {
         {
           status: newStatus,
         },
-        { headers: this._headersService.buildDefault(), observe: 'response' }
+        {
+          headers: this._headersService.buildDefault(),
+          observe: 'response',
+          context: this.getAuthorizedContext(),
+        }
       )
       .pipe(
         map((response) => {
@@ -89,7 +90,11 @@ export class AdminApplicationsHttpService {
         {
           status: newStatus,
         },
-        { headers: this._headersService.buildDefault(), observe: 'response' }
+        {
+          headers: this._headersService.buildDefault(),
+          observe: 'response',
+          context: this.getAuthorizedContext(),
+        }
       )
       .pipe(
         map((response) => {
