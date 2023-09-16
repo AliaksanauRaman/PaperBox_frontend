@@ -1,11 +1,12 @@
-import { Inject, Injectable, isDevMode } from '@angular/core';
-import { HttpClient, HttpStatusCode } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { HttpStatusCode } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 
-import { MockHelpOffersHttpService } from '../mocks/mock-help-offers-http.service';
+import { DevModeService } from './dev-mode.service';
 
+import { HttpService } from '@shared/abstracts/http-service.class';
+import { MockHelpOffersHttpService } from '../mocks/mock-help-offers-http.service';
 import { HelpOffersHttpServiceInterface } from '../interfaces/help-offers-http-service.interface';
-import { API_URL } from '@shared/dependencies/api-url/injection-token';
 import {
   ListOfPublishedApplicationEntities,
   listOfPublishedApplicationEntities,
@@ -18,20 +19,15 @@ import { DeleteHelpOfferResponseDataType } from '@shared/types/delete-help-offer
 @Injectable({
   providedIn: 'root',
   useFactory: helpOffersHttpServiceFactory,
-  deps: [API_URL, HttpClient],
+  deps: [DevModeService],
 })
-export class HelpOffersHttpService implements HelpOffersHttpServiceInterface {
-  private readonly helpOffersApiUrl = `${this.apiUrl}/api/help-offers`;
-
-  constructor(
-    @Inject(API_URL)
-    private readonly apiUrl: string,
-    private readonly httpClient: HttpClient
-  ) {}
-
+export class HelpOffersHttpService
+  extends HttpService
+  implements HelpOffersHttpServiceInterface
+{
   public getPublished(): Observable<ListOfPublishedApplicationEntities> {
-    return this.httpClient
-      .get<unknown>(`${this.helpOffersApiUrl}/published`)
+    return this._httpClient
+      .get<unknown>(`${this._apiUrl}/help-offers/published`)
       .pipe(
         map((responseData) =>
           listOfPublishedApplicationEntities.parse(responseData)
@@ -42,8 +38,8 @@ export class HelpOffersHttpService implements HelpOffersHttpServiceInterface {
   public createOne(
     createHelpOfferDto: CreateHelpOfferDto
   ): Observable<PublishedApplicationEntity> {
-    return this.httpClient
-      .post<unknown>(this.helpOffersApiUrl, createHelpOfferDto)
+    return this._httpClient
+      .post<unknown>(`${this._apiUrl}/help-offers`, createHelpOfferDto)
       .pipe(
         map((responseData) => publishedApplicationEntity.parse(responseData))
       );
@@ -52,9 +48,9 @@ export class HelpOffersHttpService implements HelpOffersHttpServiceInterface {
   public deleteOne(
     helpOfferId: number
   ): Observable<DeleteHelpOfferResponseDataType> {
-    return this.httpClient
+    return this._httpClient
       .patch<null>(
-        `${this.helpOffersApiUrl}/${helpOfferId}`,
+        `${this._apiUrl}/help-offers/${helpOfferId}`,
         {
           status: 'DELETED',
         },
@@ -78,12 +74,11 @@ export class HelpOffersHttpService implements HelpOffersHttpServiceInterface {
 }
 
 function helpOffersHttpServiceFactory(
-  apiUrl: string,
-  httpClient: HttpClient
+  devModeService: DevModeService
 ): HelpOffersHttpServiceInterface {
-  if (isDevMode()) {
+  if (devModeService.isOn()) {
     return new MockHelpOffersHttpService();
   }
 
-  return new HelpOffersHttpService(apiUrl, httpClient);
+  return new HelpOffersHttpService();
 }
