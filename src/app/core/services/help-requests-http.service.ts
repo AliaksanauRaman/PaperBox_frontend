@@ -1,9 +1,10 @@
-import { Inject, Injectable, isDevMode } from '@angular/core';
-import { HttpClient, HttpStatusCode } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { HttpStatusCode } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 
+import { HttpService } from '@shared/abstracts/http-service.class';
 import { MockHelpRequestsHttpService } from '../mocks/mock-help-requests-http.service';
-import { API_URL } from '../../shared/dependencies/api-url/injection-token';
+import { DevModeService } from './dev-mode.service';
 import { HelpRequestsHttpServiceInterface } from '../interfaces/help-requests-http-service.interface';
 import {
   ListOfPublishedApplicationEntities,
@@ -17,22 +18,15 @@ import { DeleteHelpRequestResponseDataType } from '../../shared/types/delete-hel
 @Injectable({
   providedIn: 'root',
   useFactory: helpRequestsHttpServiceFactory,
-  deps: [API_URL, HttpClient],
+  deps: [DevModeService],
 })
 export class HelpRequestsHttpService
+  extends HttpService
   implements HelpRequestsHttpServiceInterface
 {
-  private readonly helpRequestsApiUrl = `${this.apiUrl}/api/help-requests`;
-
-  constructor(
-    @Inject(API_URL)
-    private readonly apiUrl: string,
-    private readonly httpClient: HttpClient
-  ) {}
-
   public getPublished(): Observable<ListOfPublishedApplicationEntities> {
-    return this.httpClient
-      .get<unknown>(`${this.helpRequestsApiUrl}/published`)
+    return this._httpClient
+      .get<unknown>(`${this._apiUrl}/help-requests/published`)
       .pipe(
         map((responseData) =>
           listOfPublishedApplicationEntities.parse(responseData)
@@ -43,8 +37,8 @@ export class HelpRequestsHttpService
   public createOne(
     createHelpRequestDto: CreateHelpRequestDto
   ): Observable<PublishedApplicationEntity> {
-    return this.httpClient
-      .post<unknown>(this.helpRequestsApiUrl, createHelpRequestDto)
+    return this._httpClient
+      .post<unknown>(`${this._apiUrl}/help-requests`, createHelpRequestDto)
       .pipe(
         map((responseData) => publishedApplicationEntity.parse(responseData))
       );
@@ -53,9 +47,9 @@ export class HelpRequestsHttpService
   public deleteOne(
     helpRequestId: number
   ): Observable<DeleteHelpRequestResponseDataType> {
-    return this.httpClient
+    return this._httpClient
       .patch<null>(
-        `${this.helpRequestsApiUrl}/${helpRequestId}`,
+        `${this._apiUrl}/help-requests/${helpRequestId}`,
         {
           status: 'DELETED',
         },
@@ -79,12 +73,11 @@ export class HelpRequestsHttpService
 }
 
 function helpRequestsHttpServiceFactory(
-  apiUrl: string,
-  httpClient: HttpClient
+  devModeService: DevModeService
 ): HelpRequestsHttpServiceInterface {
-  if (isDevMode()) {
+  if (devModeService.isOn()) {
     return new MockHelpRequestsHttpService();
   }
 
-  return new HelpRequestsHttpService(apiUrl, httpClient);
+  return new HelpRequestsHttpService();
 }
