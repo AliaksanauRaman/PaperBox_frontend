@@ -9,32 +9,7 @@ import { Observable } from 'rxjs';
 
 import { UserTokenStateService } from '../../state/user-token/user-token-state.service';
 
-type RequestType = Readonly<{
-  method: 'POST' | 'GET';
-  endpoint: string;
-}>;
-const REQUESTS_TO_SKIP: ReadonlyArray<RequestType> = [
-  {
-    method: 'POST',
-    endpoint: '/api/login',
-  },
-  {
-    method: 'POST',
-    endpoint: '/api/registration',
-  },
-  {
-    method: 'GET',
-    endpoint: '/api/help-offers/published',
-  },
-  {
-    method: 'GET',
-    endpoint: '/api/help-requests/published',
-  },
-  {
-    method: 'GET',
-    endpoint: '/assets',
-  },
-];
+import { IS_AUTHORIZED } from '@core/contexts/is-authorized.context';
 
 @Injectable({
   providedIn: 'root',
@@ -46,7 +21,9 @@ export class AuthorizationInterceptor implements HttpInterceptor {
     req: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    if (this.isRequestToSkip(req)) {
+    const isAuthorized = req.context.get(IS_AUTHORIZED);
+
+    if (!isAuthorized) {
       return next.handle(req);
     }
 
@@ -62,14 +39,6 @@ export class AuthorizationInterceptor implements HttpInterceptor {
           Authorization: `Bearer ${userTokenValue}`,
         },
       })
-    );
-  }
-
-  private isRequestToSkip(req: HttpRequest<unknown>): boolean {
-    const { url: currentRequestUrl, method: currentRequestMethod } = req;
-    return REQUESTS_TO_SKIP.some(
-      ({ method, endpoint }) =>
-        currentRequestMethod === method && currentRequestUrl.includes(endpoint)
     );
   }
 }
