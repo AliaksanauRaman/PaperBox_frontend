@@ -13,6 +13,8 @@ import { TranslateModule } from '@ngx-translate/core';
 import { UserStateService } from '../../../state/user/user-state.service';
 import { RoutingService } from '../../../core/services/routing.service';
 import { LogoutService } from '../../../core/services/logout.service';
+import { CommandsPanelService } from '@core/commands/commands-panel.service';
+
 import { UserRole } from '../../enums/user-role.enum';
 
 @Component({
@@ -33,9 +35,14 @@ export class AccountMenuComponent {
   protected readonly _userStateService = inject(UserStateService);
   private readonly _routingService = inject(RoutingService);
   private readonly _logoutService = inject(LogoutService);
+  private readonly _commandPanelService = inject(CommandsPanelService);
 
   protected handleAdminClick(): void {
     this._routingService.navigateToAdminHome();
+  }
+
+  protected handleCommandPanelClick(): void {
+    this._commandPanelService.show();
   }
 
   protected handleLogoutMenuItemClick(): void {

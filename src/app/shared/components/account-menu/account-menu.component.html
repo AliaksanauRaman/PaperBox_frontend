@@ -1,13 +1,16 @@
 <mat-menu class="app-custom-menu">
   <ng-container *ngIf="_userStateService.stream$ | async as user">
-    <button
-      *ngIf="user.role === _UserRole.ADMIN"
-      mat-menu-item
-      (click)="handleAdminClick()"
-    >
-      <mat-icon>admin_panel_settings</mat-icon>
-      <span>{{ "components.accountMenu.admin" | translate }}</span>
-    </button>
+    <ng-container *ngIf="user.role === _UserRole.ADMIN">
+      <button mat-menu-item (click)="handleAdminClick()">
+        <mat-icon>admin_panel_settings</mat-icon>
+        <span>{{ "components.accountMenu.admin" | translate }}</span>
+      </button>
+
+      <button mat-menu-item (click)="handleCommandPanelClick()">
+        <mat-icon>touch_app</mat-icon>
+        <span>{{ "components.accountMenu.commandPanel" | translate }}</span>
+      </button>
+    </ng-container>
   </ng-container>
 
   <button mat-menu-item (click)="handleLogoutMenuItemClick()">

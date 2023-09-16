@@ -104,6 +104,7 @@
     },
     "accountMenu": {
       "admin": "Админ",
+      "commandPanel": "Панель команд",
       "logOut": "Выйти"
     },
     "successCreateHelpItemSection": {

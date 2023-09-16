@@ -104,6 +104,7 @@
     },
     "accountMenu": {
       "admin": "Admin",
+      "commandPanel": "Command panel",
       "logOut": "Log out"
     },
     "successCreateHelpItemSection": {
