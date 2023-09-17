@@ -17,6 +17,7 @@ import { UniqueIdGeneratorService } from '../../../core/services/unique-id-gener
 import { CustomControl } from '../../abstracts/custom-control.class';
 import { DataSourceOption } from '../../classes/data-source-option.class';
 import { DataSource } from '../../classes/data-source.class';
+import { Place } from '@shared/types/place';
 
 @Component({
   selector: 'app-autocomplete-control',
@@ -84,6 +85,7 @@ export class AutocompleteControlComponent
 
   protected controlValue = '';
   protected controlWarningColored = false;
+  protected readonly _Place = Place;
 
   @ViewChild('inputRef')
   private readonly inputElementRef!: ElementRef<HTMLInputElement>;

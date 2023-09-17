@@ -6,7 +6,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { TranslateModule } from '@ngx-translate/core';
 
 import { AutocompleteControlComponent } from './autocomplete-control.component';
-import { DestructureLocationLabelPipe } from './destructure-location-label.pipe';
+import { PlaceListItemComponent } from '../place-list-item/place-list-item.component';
 
 @NgModule({
   imports: [
@@ -15,8 +15,9 @@ import { DestructureLocationLabelPipe } from './destructure-location-label.pipe'
     MatRippleModule,
     MatTooltipModule,
     TranslateModule,
+    PlaceListItemComponent,
   ],
-  declarations: [AutocompleteControlComponent, DestructureLocationLabelPipe],
+  declarations: [AutocompleteControlComponent],
   providers: [],
   exports: [AutocompleteControlComponent],
 })
