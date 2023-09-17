@@ -3,7 +3,7 @@ import { filter, tap } from 'rxjs';
 
 import { UserTokenStateService } from '../../state/user-token/user-token-state.service';
 import { UserStateService } from '../../state/user/user-state.service';
-import { UserMapperService } from '../../shared/services/user-mapper.service';
+import { UserMapperService } from '@shared/services/user-mapper/user-mapper.service';
 import { LOCAL_STORAGE } from '../dependencies/local-storage';
 
 import { LocalStorageKey } from '../../shared/enums/local-storage-key.enum';
