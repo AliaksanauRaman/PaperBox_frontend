@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { LoginHttpService } from './login-http.service';
+import { LoginHttpService } from '@core/http/login/login-http.service';
 
 import { HttpRequestWithParamsBaseService } from '../abstracts/http-request-with-params-base-service.class';
 import { SuccessLoginResponseDataType } from '../types/success-login-response-data.type';
