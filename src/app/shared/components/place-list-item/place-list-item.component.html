@@ -1,0 +1,15 @@
+<div class="content" [class.content--selected]="_isSelected()">
+  <ng-container *ngIf="_place() as place">
+    <div class="city-label">
+      <span>{{ place.getCityLabel() }}</span>
+    </div>
+
+    <div class="country-label">
+      <span>{{ place.getCountryLabel() }}</span>
+    </div>
+  </ng-container>
+</div>
+
+<div class="arrow-icon-container">
+  <app-icon class="arrow-icon" [src]="_arrowIconSrc()"></app-icon>
+</div>
