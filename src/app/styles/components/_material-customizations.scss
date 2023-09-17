@@ -1,10 +1,10 @@
 // MAT-CALENDAR START
 .mat-calendar-body-selected {
-  background-color: var(--primary-color);
+  background-color: var(--primary-color) !important;
 }
 
 .mat-calendar-body-in-range::before {
-  background-color: var(--primary-highlight-color);
+  background-color: var(--primary-highlight-color) !important;
 }
 
 .mat-datepicker-close-button {
@@ -17,7 +17,7 @@
   > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(
     .mat-calendar-body-comparison-identical
   ) {
-  background-color: var(--primary-highlight-color);
+  background-color: var(--primary-highlight-color) !important;
 }
 
 .cdk-program-focused
@@ -25,7 +25,7 @@
   > .mat-calendar-body-cell-content:not(.mat-calendar-body-selected):not(
     .mat-calendar-body-comparison-identical
   ) {
-  background-color: var(--primary-highlight-color);
+  background-color: var(--primary-highlight-color) !important;
 }
 // MAT-CALENDAR END
 
@@ -55,7 +55,9 @@
   z-index: 999;
 }
 
-.cdk-global-overlay-wrapper:has(.mdc-snackbar.mat-mdc-snack-bar-container.mdc-snackbar--open) {
+.cdk-global-overlay-wrapper:has(
+    .mdc-snackbar.mat-mdc-snack-bar-container.mdc-snackbar--open
+  ) {
   z-index: 1001;
 }
 
