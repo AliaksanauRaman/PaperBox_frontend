@@ -29,7 +29,9 @@ export class LoginHttpService
   }
 }
 
-function loginHttpServiceFactory(devModeService: DevModeService) {
+function loginHttpServiceFactory(
+  devModeService: DevModeService
+): LoginHttpServiceInterface {
   if (devModeService.isOn()) {
     return new LoginHttpServiceMock();
   }
