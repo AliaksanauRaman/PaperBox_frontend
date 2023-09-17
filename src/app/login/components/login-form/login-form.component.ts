@@ -8,6 +8,7 @@ import { ErrorNotificationService } from '../../../core/services/error-notificat
 import { LoginErrorFactory } from '../../factories/login-error.factory';
 
 import { CustomValidators } from '../../../shared/classes/custom-validators.class';
+import { LoginDto } from '@shared/dtos/login.dto';
 
 @Component({
   selector: 'app-login-form',
@@ -53,6 +54,7 @@ export class LoginFormComponent {
       throw new Error('Login form is invalid!');
     }
 
-    this._loginService.performRequest(this._loginForm.getRawValue());
+    const { email, password } = this._loginForm.getRawValue();
+    this._loginService.performRequest(new LoginDto(email, password));
   }
 }
