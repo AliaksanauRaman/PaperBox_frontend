@@ -1,0 +1,8 @@
+<input
+  [id]="_uniqueId()"
+  class="checkbox"
+  type="checkbox"
+  [checked]="_isChecked()"
+  (click)="puClick.emit($event)"
+  (focus)="puFocus.emit($event)"
+/>
