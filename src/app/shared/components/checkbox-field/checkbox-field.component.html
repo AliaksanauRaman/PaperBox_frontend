@@ -1,0 +1,8 @@
+<pu-checkbox
+  class="checkbox"
+  [uniqueId]="_id()"
+  [isChecked]="_value()"
+  (puClick)="handleCheckboxClick()"
+></pu-checkbox>
+
+<label class="text" [for]="_id()">{{ _text() }}</label>
