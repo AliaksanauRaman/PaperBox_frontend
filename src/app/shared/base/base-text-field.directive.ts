@@ -2,7 +2,7 @@ import { Directive, inject, Input, signal } from '@angular/core';
 import { ControlValueAccessor } from '@angular/forms';
 import { z } from 'zod';
 
-import { IdGeneratorService } from '@core/services/id-generator.service';
+import { IdGeneratorService } from '@shared/services/id-generator.service';
 
 const DEFAULT_MAX_LENGTH = 30;
 
