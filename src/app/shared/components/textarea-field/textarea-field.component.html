@@ -1,8 +1,8 @@
-<label class="label" [for]="_id()">{{ _label() }}</label>
+<label class="label" [for]="_uniqueId()">{{ _label() }}</label>
 
 <textarea
   #fieldRef
-  [id]="_id()"
+  [id]="_uniqueId()"
   class="field"
   [placeholder]="_placeholder()"
   [maxLength]="_maxLength()"

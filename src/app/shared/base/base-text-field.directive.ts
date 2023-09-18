@@ -11,8 +11,8 @@ export abstract class BaseTextField implements ControlValueAccessor {
   private readonly _idGenerator = inject(IdGeneratorService);
 
   @Input()
-  public set id(value: string) {
-    this._id.set(value);
+  public set uniqueId(value: string) {
+    this._uniqueId.set(value);
   }
 
   @Input({ required: true })
@@ -26,16 +26,11 @@ export abstract class BaseTextField implements ControlValueAccessor {
   }
 
   @Input()
-  public set isDisabled(value: boolean) {
-    this._isDisabled.set(value);
-  }
-
-  @Input()
   public set maxLength(value: number) {
     this._maxLength.set(value);
   }
 
-  protected readonly _id = signal(this._idGenerator.generateUUID());
+  protected readonly _uniqueId = signal(this._idGenerator.generateUUID());
   protected readonly _label = signal('');
   protected readonly _placeholder = signal('');
   protected readonly _isDisabled = signal(false);
