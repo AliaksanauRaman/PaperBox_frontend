@@ -22,8 +22,8 @@ describe('TextFieldComponent', () => {
     expect(component).toBeDefined();
   });
 
-  it('should set id to label for', () => {
-    component.id = '321';
+  it('should set unique id to label [for]', () => {
+    component.uniqueId = '321';
 
     fixture.detectChanges();
 
@@ -40,15 +40,15 @@ describe('TextFieldComponent', () => {
     );
   });
 
-  it('should set id to field', () => {
-    component.id = '123';
+  it('should set unique id to field [id]', () => {
+    component.uniqueId = '123';
 
     fixture.detectChanges();
 
     expect(getFieldDebugElement(fixture).attributes['id']).toBe('123');
   });
 
-  it('should set placeholder to field', () => {
+  it('should set placeholder to field [placeholder]', () => {
     component.placeholder = 'My placeholder';
 
     fixture.detectChanges();
@@ -58,7 +58,7 @@ describe('TextFieldComponent', () => {
     );
   });
 
-  it('should set max length to field', () => {
+  it('should set max length to field [maxlength]', () => {
     component.maxLength = 100;
 
     fixture.detectChanges();
@@ -66,7 +66,7 @@ describe('TextFieldComponent', () => {
     expect(getFieldDebugElement(fixture).attributes['maxlength']).toBe('100');
   });
 
-  it('should set initial value to field', () => {
+  it('should set initial value to field [value]', () => {
     component.writeValue('text');
 
     fixture.detectChanges();
