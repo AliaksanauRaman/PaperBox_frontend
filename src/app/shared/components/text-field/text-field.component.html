@@ -1,0 +1,12 @@
+<label class="label" [for]="_id()">{{ _label() }}</label>
+
+<input
+  #fieldRef
+  [id]="_id()"
+  class="field"
+  [placeholder]="_placeholder()"
+  [maxLength]="_maxLength()"
+  [value]="_value()"
+  type="text"
+  (input)="handleFieldInput(fieldRef.value)"
+/>
