@@ -1,0 +1,11 @@
+<label class="label" [for]="_id()">{{ _label() }}</label>
+
+<textarea
+  #fieldRef
+  [id]="_id()"
+  class="field"
+  [placeholder]="_placeholder()"
+  [maxLength]="_maxLength()"
+  [value]="_value()"
+  (input)="handleFieldInput(fieldRef.value)"
+></textarea>
