@@ -1,13 +1,12 @@
 import { Directive, inject, Input, signal } from '@angular/core';
-import { ControlValueAccessor } from '@angular/forms';
 import { z } from 'zod';
 
 import { IdGeneratorService } from '@shared/services/id-generator.service';
 
-const DEFAULT_MAX_LENGTH = 30;
+import { BaseReactiveField } from './base-reactive-field.directive';
 
 @Directive()
-export abstract class BaseTextField implements ControlValueAccessor {
+export abstract class BaseTextField extends BaseReactiveField<string> {
   private readonly _idGenerator = inject(IdGeneratorService);
 
   @Input()
@@ -15,7 +14,7 @@ export abstract class BaseTextField implements ControlValueAccessor {
     this._uniqueId.set(value);
   }
 
-  @Input({ required: true })
+  @Input()
   public set label(value: string) {
     this._label.set(value);
   }
@@ -30,31 +29,34 @@ export abstract class BaseTextField implements ControlValueAccessor {
     this._maxLength.set(value);
   }
 
-  protected readonly _uniqueId = signal(this._idGenerator.generateUUID());
-  protected readonly _label = signal('');
-  protected readonly _placeholder = signal('');
-  protected readonly _isDisabled = signal(false);
-  protected readonly _maxLength = signal(DEFAULT_MAX_LENGTH);
-  protected readonly _value = signal('');
+  protected readonly _uniqueId = signal(this.getDefaultUniqueId());
+  protected readonly _label = signal(this.getDefaultLabel());
+  protected readonly _placeholder = signal(this.getDefaultPlaceholder());
+  protected readonly _maxLength = signal(this.getDefaultMaxLength());
 
-  public writeValue(value: unknown): void {
+  public override writeValue(value: unknown): void {
     this._value.set(z.string().parse(value));
   }
 
-  public registerOnChange(fn: (value: string) => void): void {
-    this.onChange = fn;
+  protected override getDefaultValue(): string {
+    return '';
   }
 
-  public registerOnTouched(fn: () => void): void {
-    this.onTouched = fn;
+  protected getDefaultUniqueId(): string {
+    return this._idGenerator.generateUUID();
   }
 
-  public setDisabledState(isDisabled: boolean): void {
-    this._isDisabled.set(isDisabled);
+  protected getDefaultLabel(): string {
+    return '';
   }
 
-  protected onChange(value: string): void {}
-  protected onTouched(): void {}
+  protected getDefaultPlaceholder(): string {
+    return '';
+  }
+
+  protected getDefaultMaxLength(): number {
+    return 30;
+  }
 
   protected handleFieldInput(value: string): void {
     if (!this.checkIsNewValue(value)) {
