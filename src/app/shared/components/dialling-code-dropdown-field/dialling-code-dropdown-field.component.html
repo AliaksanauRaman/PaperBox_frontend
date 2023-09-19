@@ -1,0 +1,20 @@
+<button
+  cdkOverlayOrigin
+  #origin="cdkOverlayOrigin"
+  type="button"
+  (click)="togglePanel()"
+>
+  <span>{{ _value()?.value || _placeholder() }}</span>
+</button>
+
+<ng-template
+  cdkConnectedOverlay
+  [cdkConnectedOverlayOrigin]="origin"
+  [cdkConnectedOverlayOpen]="_isPanelOpened()"
+>
+  <ul cdkListbox (cdkListboxValueChange)="handleListboxValueChange($event)">
+    <li *ngFor="let code of _diallingCodes" [cdkOption]="code">
+      <span>{{ code.value }}</span>
+    </li>
+  </ul>
+</ng-template>
