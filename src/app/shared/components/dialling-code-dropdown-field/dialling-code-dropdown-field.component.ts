@@ -2,11 +2,10 @@ import {
   ChangeDetectionStrategy,
   Component,
   inject,
-  signal,
   forwardRef,
 } from '@angular/core';
 import { NgFor } from '@angular/common';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { OverlayModule } from '@angular/cdk/overlay';
 import {
   CdkListboxModule,
@@ -32,15 +31,10 @@ import { DiallingCode } from '@shared/types/dialling-code';
   standalone: true,
   imports: [NgFor, OverlayModule, CdkListboxModule],
 })
-export class DiallingCodeDropdownFieldComponent
-  extends BaseDropdownField
-  implements ControlValueAccessor
-{
-  protected readonly _value = signal<DiallingCode | null>(null);
-  protected readonly _idDisabled = signal(false);
+export class DiallingCodeDropdownFieldComponent extends BaseDropdownField<DiallingCode | null> {
   protected readonly _diallingCodes = inject(DIALLING_CODES);
 
-  public writeValue(value: unknown): void {
+  public override writeValue(value: unknown): void {
     if (value !== null && !DiallingCode.is(value)) {
       throw new Error('Only null or DiallingCode values are expected!');
     }
@@ -48,20 +42,9 @@ export class DiallingCodeDropdownFieldComponent
     this._value.set(value);
   }
 
-  public registerOnChange(fn: (value: DiallingCode | null) => void): void {
-    this.onChange = fn;
+  protected override getDefaultValue(): DiallingCode | null {
+    return null;
   }
-
-  public registerOnTouched(fn: () => void): void {
-    this.onTouched = fn;
-  }
-
-  public setDisabledState(isDisabled: boolean): void {
-    this._idDisabled.set(isDisabled);
-  }
-
-  protected onChange(value: DiallingCode | null) {}
-  protected onTouched() {}
 
   protected override getDefaultPlaceholder(): string {
     return '+XXX';
