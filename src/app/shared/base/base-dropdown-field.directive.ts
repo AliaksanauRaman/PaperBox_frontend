@@ -1,7 +1,11 @@
 import { Directive, Input, signal } from '@angular/core';
 
+import { BaseReactiveField } from './base-reactive-field.directive';
+
 @Directive()
-export abstract class BaseDropdownField {
+export abstract class BaseDropdownField<
+  T = unknown
+> extends BaseReactiveField<T> {
   @Input()
   public set placeholder(value: string) {
     this._placeholder.set(value);
