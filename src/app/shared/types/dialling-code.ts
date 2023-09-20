@@ -1,4 +1,10 @@
-export class DiallingCode {
+import { Nullish } from './nullish';
+
+export class DiallingCode extends Nullish {
+  public static nullish(): DiallingCode {
+    return new DiallingCode('', '', true);
+  }
+
   public static is(value: unknown): value is DiallingCode {
     return value instanceof DiallingCode;
   }
@@ -11,6 +17,9 @@ export class DiallingCode {
 
   constructor(
     public readonly countryName: string,
-    public readonly value: string
-  ) {}
+    public readonly value: string,
+    isNullish = false
+  ) {
+    super(isNullish);
+  }
 }
