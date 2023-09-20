@@ -1,6 +1,9 @@
-import { Injectable, OnDestroy } from "@angular/core";
-import { Subject } from "rxjs";
+import { Injectable, OnDestroy } from '@angular/core';
+import { Subject } from 'rxjs';
 
+/**
+ * @deprecated Use {AutoDestroy} instead
+ */
 @Injectable()
 export abstract class DestroyEmitter implements OnDestroy {
   protected readonly destroy$ = new Subject<void>();
