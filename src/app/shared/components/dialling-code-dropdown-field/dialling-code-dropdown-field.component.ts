@@ -4,7 +4,7 @@ import {
   inject,
   forwardRef,
 } from '@angular/core';
-import { NgFor } from '@angular/common';
+import { NgFor, NgIf } from '@angular/common';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { OverlayModule } from '@angular/cdk/overlay';
 import {
@@ -29,21 +29,22 @@ import { DiallingCode } from '@shared/types/dialling-code';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [NgFor, OverlayModule, CdkListboxModule],
+  imports: [NgIf, NgFor, OverlayModule, CdkListboxModule],
 })
-export class DiallingCodeDropdownFieldComponent extends BaseDropdownField<DiallingCode | null> {
+export class DiallingCodeDropdownFieldComponent extends BaseDropdownField<DiallingCode> {
   protected readonly _diallingCodes = inject(DIALLING_CODES);
 
   public override writeValue(value: unknown): void {
-    if (value !== null && !DiallingCode.is(value)) {
-      throw new Error('Only null or DiallingCode values are expected!');
+    if (DiallingCode.is(value)) {
+      this._value.set(value);
+      return;
     }
 
-    this._value.set(value);
+    throw new Error('Only DiallingCode value is expected!');
   }
 
-  protected override getDefaultValue(): DiallingCode | null {
-    return null;
+  protected override getDefaultValue(): DiallingCode {
+    return DiallingCode.nullish();
   }
 
   protected override getDefaultPlaceholder(): string {
@@ -56,7 +57,7 @@ export class DiallingCodeDropdownFieldComponent extends BaseDropdownField<Dialli
     const selectedValue = event.value[0];
 
     if (!DiallingCode.is(selectedValue)) {
-      throw new Error('An instance of DiallingCode is expected!');
+      throw new Error('A DiallingCode is expected!');
     }
 
     if (this.checkIsNewValue(selectedValue)) {
@@ -67,13 +68,7 @@ export class DiallingCodeDropdownFieldComponent extends BaseDropdownField<Dialli
     this.closePanel();
   }
 
-  private checkIsNewValue(value: DiallingCode | null): boolean {
-    const currentValue = this._value();
-
-    if (value !== null && currentValue !== null) {
-      return !DiallingCode.equals(value, currentValue);
-    }
-
-    return value !== currentValue;
+  private checkIsNewValue(value: DiallingCode): boolean {
+    return !DiallingCode.equals(value, this._value());
   }
 }
