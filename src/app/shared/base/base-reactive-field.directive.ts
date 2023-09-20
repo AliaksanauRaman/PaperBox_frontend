@@ -1,8 +1,11 @@
 import { signal, Directive } from '@angular/core';
 import { ControlValueAccessor } from '@angular/forms';
 
+import { AutoDestroy } from '@shared/abstracts/auto-destroy.class';
+
 @Directive()
 export abstract class BaseReactiveField<T = unknown>
+  extends AutoDestroy
   implements ControlValueAccessor
 {
   protected readonly _value = signal(this.getDefaultValue());
