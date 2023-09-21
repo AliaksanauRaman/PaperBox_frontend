@@ -17,7 +17,7 @@ export abstract class BaseReactiveField<T = unknown>
     this.onChange = fn;
   }
 
-  public registerOnTouched(fn: any): void {
+  public registerOnTouched(fn: () => void): void {
     this.onTouched = fn;
   }
 
