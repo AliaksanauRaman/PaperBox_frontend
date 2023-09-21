@@ -1,0 +1,11 @@
+<input
+  readonly
+  type="text"
+  [matDatepicker]="datepicker"
+  [formControl]="_inputControl"
+  (focus)="datepicker.open()"
+  (dateChange)="handleDateChange($event)"
+/>
+<mat-datepicker #datepicker></mat-datepicker>
+<button (click)="datepicker.open()">Open</button>
+<button (click)="_inputControl.setValue(null)">Reset</button>
