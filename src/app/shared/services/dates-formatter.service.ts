@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import * as moment from 'moment';
 
 @Injectable({
   providedIn: 'root',
@@ -16,5 +17,9 @@ export class DatesFormatterService {
     return new Date(
       Date.UTC(date.getFullYear(), date.getMonth(), date.getDate())
     );
+  }
+
+  public toMomentDate(date: Date): moment.Moment {
+    return moment(date);
   }
 }
