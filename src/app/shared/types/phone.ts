@@ -1,6 +1,7 @@
+import { Comparable } from '@shared/interfaces/comparable';
 import { DiallingCode } from './dialling-code';
 
-export class Phone {
+export class Phone implements Comparable<Phone> {
   public static is(value: unknown): value is Phone {
     return value instanceof Phone;
   }
