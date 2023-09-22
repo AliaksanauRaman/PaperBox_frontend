@@ -1,0 +1,13 @@
+<label class="label" [for]="_uniqueId()">{{ _label() }}</label>
+
+<input
+  #fieldRef
+  class="field"
+  [id]="_uniqueId()"
+  [placeholder]="_placeholder()"
+  [maxLength]="_maxLength()"
+  [value]="_value()"
+  type="email"
+  inputmode="email"
+  (input)="handleFieldInput(fieldRef.value)"
+/>
