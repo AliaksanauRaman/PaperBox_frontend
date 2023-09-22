@@ -8,6 +8,9 @@ export abstract class BaseReactiveField<T = unknown>
   extends AutoDestroy
   implements ControlValueAccessor
 {
+  private _fieldValue = this.getDefaultValue();
+
+  // TODO: Remove
   protected readonly _value = signal(this.getDefaultValue());
   protected readonly _isDisabled = signal(false);
 
@@ -28,4 +31,12 @@ export abstract class BaseReactiveField<T = unknown>
   protected abstract getDefaultValue(): T;
   protected onChange(value: T): void {}
   protected onTouched(): void {}
+
+  protected setFieldValue(value: T): void {
+    this._fieldValue = value;
+  }
+
+  protected getFieldValue(): T {
+    return this._fieldValue;
+  }
 }
