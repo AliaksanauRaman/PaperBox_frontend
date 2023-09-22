@@ -1,28 +1,29 @@
-import { Nullish } from './nullish';
 import { DiallingCode } from './dialling-code';
 
-export class Phone extends Nullish {
-  public static nullish(): Phone {
-    return new Phone(DiallingCode.nullish(), '', true);
-  }
-
+export class Phone {
   public static is(value: unknown): value is Phone {
     return value instanceof Phone;
   }
 
-  public static equals(phone1: Phone, phone2: Phone): boolean {
-    return (
-      phone1.number === phone2.number &&
-      DiallingCode.equals(phone1.diallingCode, phone2.diallingCode)
-    );
-  }
-
   constructor(
-    public readonly diallingCode: DiallingCode,
-    public readonly number: string,
-    isNullish = false
-  ) {
-    super(isNullish);
+    public readonly diallingCode: DiallingCode | null,
+    public readonly number: string
+  ) {}
+
+  public equalsTo(phone: Phone): boolean {
+    if (this.number !== phone.number) {
+      return false;
+    }
+
+    if (this.diallingCode === null && phone.diallingCode === null) {
+      return true;
+    }
+
+    if (this.diallingCode !== null && phone.diallingCode !== null) {
+      return this.diallingCode.equalsTo(phone.diallingCode);
+    }
+
+    return false;
   }
 
   public toMap() {
