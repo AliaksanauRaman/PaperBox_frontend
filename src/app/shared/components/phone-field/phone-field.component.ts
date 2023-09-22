@@ -35,23 +35,20 @@ import { PhoneFormValue } from '@shared/types/phone-form-value';
   imports: [ReactiveFormsModule, DiallingCodeDropdownFieldComponent],
 })
 export class PhoneFieldComponent
-  extends BaseReactiveField<Phone>
+  extends BaseReactiveField<Phone | null>
   implements OnInit
 {
   private readonly _formBuilder = inject(NonNullableFormBuilder);
 
   protected readonly _phoneForm = this._formBuilder.group({
-    diallingCode: [DiallingCode.nullish()],
+    diallingCode: [null as DiallingCode | null],
     number: [''],
   });
 
   public ngOnInit(): void {
     this._phoneForm.valueChanges
       .pipe(
-        map(
-          (rawValue) =>
-            new PhoneFormValue(rawValue.diallingCode, rawValue.number)
-        ),
+        map((rawFormValue) => new PhoneFormValue(rawFormValue)),
         map((formValue) => formValue.toPhone()),
         filter((phone) => this.checkIsNewValue(phone)),
         tap((phone) => {
@@ -64,22 +61,38 @@ export class PhoneFieldComponent
   }
 
   public override writeValue(value: unknown): void {
-    if (Phone.is(value)) {
-      this._value.set(value);
-      this._phoneForm.setValue(value.toMap(), {
-        emitEvent: false,
-      });
+    if (value !== null && !Phone.is(value)) {
+      throw new Error('A null or Phone value is expected!');
+    }
+
+    if (value === null) {
+      this.writeNull(value);
       return;
     }
 
-    throw new Error('Only Phone value is expected!');
+    this.writePhone(value);
   }
 
-  protected override getDefaultValue(): Phone {
-    return Phone.nullish();
+  protected override getDefaultValue(): Phone | null {
+    return null;
+  }
+
+  private writeNull(value: null): void {
+    this._value.set(value);
+    this._phoneForm.setValue(PhoneFormValue.empty().toMap(), {
+      emitEvent: false,
+    });
+  }
+
+  private writePhone(value: Phone): void {
+    this._value.set(value);
+    this._phoneForm.setValue(value.toMap(), {
+      emitEvent: false,
+    });
   }
 
   private checkIsNewValue(value: Phone): boolean {
-    return !Phone.equals(value, this._value());
+    const currentValue = this._value();
+    return currentValue === null || !currentValue.equalsTo(value);
   }
 }
