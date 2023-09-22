@@ -1,0 +1,39 @@
+<ng-container *ngIf="_state() as state">
+  <!-- TODO: for -->
+  <label>{{ _labelDirective.label }}</label>
+
+  <input
+    #fieldRef
+    cdkOverlayOrigin
+    #origin="cdkOverlayOrigin"
+    type="text"
+    [placeholder]="_placeholder()"
+    [value]="state.fieldValue"
+    (focus)="openPanel()"
+    (input)="_stateService.handleFieldInput(fieldRef.value)"
+  />
+
+  <button
+    *ngIf="state.isClearShown"
+    (click)="_stateService.handleClearSelection()"
+  >
+    Clear
+  </button>
+
+  <ng-template
+    cdkConnectedOverlay
+    [cdkConnectedOverlayOrigin]="origin"
+    [cdkConnectedOverlayOpen]="_isPanelOpened()"
+  >
+    <button (click)="closePanel()">Close</button>
+    <ul cdkListbox (cdkListboxValueChange)="handleListboxValueChange($event)">
+      <li
+        *ngFor="let place of state.filteredPlaces; trackBy: trackByPlace"
+        [cdkOption]="place"
+      >
+        <!-- TODO: Remove pipe once component is used instead -->
+        <span>{{ place | puPlaceLabel }}</span>
+      </li>
+    </ul>
+  </ng-template>
+</ng-container>
