@@ -3,5 +3,11 @@
     formControlName="diallingCode"
   ></pu-dialling-code-dropdown-field>
 
-  <input type="text" formControlName="number" />
+  <input
+    type="tel"
+    inputmode="tel"
+    pattern="[0-9]*"
+    placeholder="XXXXXXXXX"
+    formControlName="number"
+  />
 </form>
