@@ -4,15 +4,7 @@
   type="button"
   (click)="togglePanel()"
 >
-  <ng-container
-    *ngIf="_value().isNullish || _value().value === ''; else valueBlock"
-  >
-    <span>{{ _placeholder() }}</span>
-  </ng-container>
-
-  <ng-template #valueBlock>
-    <span>{{ _value().value }}</span>
-  </ng-template>
+  <span>{{ _value()?.value || _placeholder() }}</span>
 </button>
 
 <ng-template

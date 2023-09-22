@@ -4,7 +4,7 @@ import {
   inject,
   forwardRef,
 } from '@angular/core';
-import { NgFor, NgIf } from '@angular/common';
+import { NgFor } from '@angular/common';
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { OverlayModule } from '@angular/cdk/overlay';
 import {
@@ -29,22 +29,21 @@ import { DiallingCode } from '@shared/types/dialling-code';
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [NgIf, NgFor, OverlayModule, CdkListboxModule],
+  imports: [NgFor, OverlayModule, CdkListboxModule],
 })
-export class DiallingCodeDropdownFieldComponent extends BaseDropdownField<DiallingCode> {
+export class DiallingCodeDropdownFieldComponent extends BaseDropdownField<DiallingCode | null> {
   protected readonly _diallingCodes = inject(DIALLING_CODES);
 
   public override writeValue(value: unknown): void {
-    if (DiallingCode.is(value)) {
-      this._value.set(value);
-      return;
+    if (value !== null && !DiallingCode.is(value)) {
+      throw new Error('A null or DiallingCode is expected!');
     }
 
-    throw new Error('Only DiallingCode value is expected!');
+    this._value.set(value);
   }
 
-  protected override getDefaultValue(): DiallingCode {
-    return DiallingCode.nullish();
+  protected override getDefaultValue(): DiallingCode | null {
+    return null;
   }
 
   protected override getDefaultPlaceholder(): string {
@@ -69,6 +68,7 @@ export class DiallingCodeDropdownFieldComponent extends BaseDropdownField<Dialli
   }
 
   private checkIsNewValue(value: DiallingCode): boolean {
-    return !DiallingCode.equals(value, this._value());
+    const currentValue = this._value();
+    return currentValue === null || !currentValue.equalsTo(value);
   }
 }
