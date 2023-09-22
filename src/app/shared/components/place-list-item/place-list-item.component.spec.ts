@@ -16,7 +16,7 @@ import { City } from '@shared/types/city';
 const pathToArrowIcon = 'assets/arrow-icon.svg';
 const pathToActiveArrowIcon = 'assets/arrow-icon-active.svg';
 const country = new Country(1, 'Belarus');
-const city = new City(1, country.id, 'Minsk');
+const city = new City(1, 'Minsk');
 
 describe('PlaceListItemComponent', () => {
   let fixture: ComponentFixture<PlaceListItemComponent>;

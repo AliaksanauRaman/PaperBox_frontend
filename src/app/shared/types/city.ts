@@ -1,11 +1,9 @@
-export class City {
-  public static null(): City {
-    return new City(-1, -1, 'Unknown city');
-  }
+import { Comparable } from '@shared/interfaces/comparable';
 
-  constructor(
-    public readonly id: number,
-    public readonly countryId: number,
-    public readonly label: string
-  ) {}
+export class City implements Comparable<City> {
+  constructor(public readonly id: number, public readonly label: string) {}
+
+  public equalsTo(city: City): boolean {
+    return this.id === city.id && this.label === city.label;
+  }
 }

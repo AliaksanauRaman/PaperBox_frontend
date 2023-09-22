@@ -1,19 +1,20 @@
 import { Country } from './country';
 import { City } from './city';
+import { Comparable } from '@shared/interfaces/comparable';
 import { DataSourceOption } from '@shared/classes/data-source-option.class';
 
-export class Place {
+export class Place implements Comparable<Place> {
   public static fromOption(option: DataSourceOption<string>): Place {
     const [cityLabel, countryLabel] = option.label.split(', ');
     const [countryId, cityId] = option.value.split(' ');
     return new Place(
       new Country(Number(countryId), countryLabel),
-      new City(Number(cityId), Number(countryId), cityLabel)
+      new City(Number(cityId), cityLabel)
     );
   }
 
-  public static null(): Place {
-    return new Place(Country.null(), City.null());
+  public static is(value: unknown): value is Place {
+    return value instanceof Place;
   }
 
   constructor(public readonly country: Country, public readonly city: City) {}
@@ -36,5 +37,11 @@ export class Place {
 
   public getCityLabel(): string {
     return this.city.label;
+  }
+
+  public equalsTo(place: Place): boolean {
+    return (
+      this.country.equalsTo(place.country) && this.city.equalsTo(place.city)
+    );
   }
 }

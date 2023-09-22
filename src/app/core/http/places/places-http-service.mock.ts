@@ -14,7 +14,7 @@ export class PlacesHttpServiceMock implements PlacesHttpServiceInterface {
 const BELARUS = new Country(1, 'country.belarus');
 const POLAND = new Country(2, 'country.poland');
 
-const MINSK = new City(1, BELARUS.id, 'city.belarusian.minsk');
-const WARSAW = new City(2, POLAND.id, 'city.polish.warsaw');
+const MINSK = new City(1, 'city.belarusian.minsk');
+const WARSAW = new City(2, 'city.polish.warsaw');
 
 const MOCK_PLACES = [new Place(BELARUS, MINSK), new Place(POLAND, WARSAW)];
