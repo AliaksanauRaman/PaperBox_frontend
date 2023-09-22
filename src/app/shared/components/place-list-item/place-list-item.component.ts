@@ -41,7 +41,7 @@ export class PlaceListItemComponent {
 
   public readonly arrowIconSrc = computed(() => this._arrowIconSrc());
 
-  protected readonly _place = signal(Place.null());
+  protected readonly _place = signal<Place | null>(null);
   protected readonly _isSelected = signal(false);
   protected readonly _arrowIconSrc = computed(() =>
     this._isSelected() ? this._pathToActiveArrowIcon : this._pathToArrowIcon
